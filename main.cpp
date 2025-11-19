@@ -64,12 +64,6 @@ int LoadEnv() {
 }
 
 int main ( int argc, char* argv[] ) {
-    if ( !LoadEnv() ) {
-        return 0;
-    }
-
-    std::cout << "SERVER_IP = " << ( std::getenv("SERVER_IP") ? std::getenv("SERVER_IP") : "non impostato" ) << "\n";
-    std::cout << "SERVER_PORT = " << ( std::getenv("SERVER_PORT") ? std::getenv("SERVER_PORT") : "non impostato" ) << "\n";
 
     const Window window(1920, 1080, "HERION HERO");
 
@@ -91,15 +85,15 @@ int main ( int argc, char* argv[] ) {
 
         while ( SDL_PollEvent( &event ) ) {
 
-            SDL_SetRenderDrawColor( window.GetRenderer(), 0, 0, 0, 255 ) ;
-            SDL_RenderClear( window.GetRenderer() );
+            window.SetColor( COLORS::BLACK );
+            window.Clear();
 
             processor.SetEvent( event );
             processor.Process();
 
             room_manager.DrawCurrentRoom( window.GetRenderer() );
 
-            SDL_RenderPresent( window.GetRenderer() );
+            window.Present();
 
         }
 

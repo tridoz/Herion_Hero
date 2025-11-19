@@ -86,3 +86,14 @@ SDL_Window* Window::GetWindow() const {
     return this->window;
 }
 
+void Window::Clear() const {
+    SDL_RenderClear(this->renderer);
+}
+
+void Window::SetColor(const COLORS::Color color ) const {
+    SDL_SetRenderDrawColor( renderer, color.r, color.g, color.b, color.a );
+}
+
+void Window::Present() const {
+    SDL_RenderPresent( renderer );
+}

@@ -11,6 +11,7 @@
 
 //CUSTOM INCLUDES
 #include "Logger.hpp"
+#include "COLORS.hpp"
 
 class Window {
 
@@ -19,8 +20,9 @@ private:
     SDL_Renderer* renderer = nullptr;
 
 
-
 public:
+
+
     Window();
     Window(const int width, const int height, const std::string& title);
 
@@ -28,6 +30,11 @@ public:
 
     [[nodiscard]] SDL_Renderer* GetRenderer() const;
     [[nodiscard]] SDL_Window* GetWindow() const;
+
+    void Clear() const;
+    void SetColor( COLORS::Color ) const;
+    void Present() const ;
+
 };
 
 
