@@ -21,13 +21,13 @@ add_executable(Herion_Hero ${SRC_FILES})
 
 # Link delle librerie in base alla piattaforma
 if(WIN32)
-    link_directories("${SDL3_DIR}/lib/Windows")
     target_link_libraries(Herion_Hero PRIVATE
-            SDL3
-            SDL3_image
-            SDL3_ttf
+            "${SDL3_DIR}/lib/Windows/SDL3.lib"
+            "${SDL3_DIR}/lib/Windows/SDL3_image.lib"
+            "${SDL3_DIR}/lib/Windows/SDL3_ttf.lib"
     )
 
+    # Copia le DLL accanto all'eseguibile
     foreach(DLL SDL3 SDL3_image SDL3_ttf)
         add_custom_command(TARGET Herion_Hero POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
