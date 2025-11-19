@@ -14,6 +14,8 @@ void TextureManager::SetRenderer(SDL_Renderer* renderer)  {
 }
 
 void TextureManager::LoadTextures( const std::string& filepath ) {
+
+
     std::ifstream texture_file( base_path + filepath, std::ios::in) ;
 
     if ( !texture_file.is_open() ) {

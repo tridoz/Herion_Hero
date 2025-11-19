@@ -3,11 +3,14 @@
 #include "src/InputProcessor.hpp"
 #include "src/TextureManager.hpp"
 #include "src/RoomManager.hpp"
+#include "src/Menu.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstdlib>
+
+#include "src/Player.hpp"
 
 #ifdef _WIN32
     #include <stdlib.h>
@@ -69,34 +72,40 @@ int main ( int argc, char* argv[] ) {
 
     InputProcessor processor;
     TextureManager texture_manager;
+    RoomManager room_manager;
+    Player player;
+    Menu main_menu;
+
+    Player::PlayerState player_state;
+    Player::GameMode game_mode;
 
     texture_manager.SetRenderer( window.GetRenderer() );
     texture_manager.LoadTextures("assets/all_textures.txt");
 
-    RoomManager room_manager;
+
 
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( 1920, 1080, 32, 18 );
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
+
+    main_menu.SetDimension( 1920, 1080);
+    main_menu.SetTexture( texture_manager.GetTexture("assets/backgrounds/main_menu.png") );
 
     SDL_Event event;
 
     while ( !processor.ShouldQuit() ) {
 
         while ( SDL_PollEvent( &event ) ) {
-
-            window.SetColor( COLORS::BLACK );
-            window.Clear();
-
             processor.SetEvent( event );
             processor.Process();
-
-            room_manager.DrawCurrentRoom( window.GetRenderer() );
-
-            window.Present();
-
         }
 
+        window.SetColor( COLORS::BLACK );
+        window.Clear();
+
+        main_menu.Draw( window.GetRenderer() );
+
+        window.Present();
     }
 
 }

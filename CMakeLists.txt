@@ -17,7 +17,11 @@ file(GLOB SRC_FILES
 
 add_executable(Herion_Hero ${SRC_FILES}
         src/COLORS.cpp
-        src/COLORS.hpp)
+        src/COLORS.hpp
+        src/Player.cpp
+        src/Player.hpp
+        src/Menu.cpp
+        src/Menu.hpp)
 
 if(WIN32)
     target_link_libraries(Herion_Hero PRIVATE

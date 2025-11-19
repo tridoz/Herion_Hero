@@ -68,3 +68,4 @@ assets/floors/poison/poison_cracked_floor_5.png
 assets/floors/poison/poison_cracked_floor_6.png
 assets/floors/poison/poison_cracked_floor_7.png
 assets/floors/poison/poison_cracked_floor_8.png
+assets/backgrounds/main_menu.png

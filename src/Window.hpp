@@ -19,9 +19,7 @@ private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
-
 public:
-
 
     Window();
     Window(const int width, const int height, const std::string& title);
