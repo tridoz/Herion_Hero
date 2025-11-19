@@ -1,0 +1,88 @@
+//
+// Created by david on 16/11/2025.
+//
+
+#include "Window.hpp"
+
+Window::Window() {
+    this->window = nullptr;
+    this->renderer = nullptr;
+}
+
+Window::~Window() {
+    SDL_DestroyRenderer(this->renderer);
+    SDL_DestroyWindow(this->window);
+}
+
+Window::Window( const int width, const int height, const std::string& title) {
+    if ( !SDL_Init(SDL_INIT_VIDEO) ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "INITIALIZATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+    Logger::LogOK(
+        std::time(nullptr),
+        "INITIALIZATION",
+        "Window",
+        "Window",
+        "SDL_INIT_VIDEO successfully initialized"
+        );
+
+    this->window = SDL_CreateWindow(title.c_str(), width, height, 0);
+
+    if ( !this->window ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "CREATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+    Logger::LogOK(
+        std::time(nullptr),
+        "CREATION",
+        "Window",
+        "Window",
+        "SDL_Window successfully created"
+        );
+
+    this->renderer = SDL_CreateRenderer(this->window, nullptr);
+    if ( !this->renderer ) {
+        SDL_DestroyWindow(this->window);
+        Logger::LogErr(
+            std::time(nullptr),
+            "CREATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+    Logger::LogOK(
+        std::time(nullptr),
+        "CREATION",
+        "Window",
+        "Window",
+        "SDL_Renderer successfully created"
+        );
+
+}
+
+SDL_Renderer* Window::GetRenderer() const {
+    return this->renderer;
+}
+
+SDL_Window* Window::GetWindow() const {
+    return this->window;
+}
+
