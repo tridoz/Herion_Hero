@@ -58,7 +58,7 @@ Window::Window( const int width, const int height, const std::string& title) {
         "SDL_Window successfully created"
         );
 
-    this->renderer = SDL_CreateRenderer(this->window, "opengl");
+    this->renderer = SDL_CreateRenderer(this->window, "opengl" );
     if ( !this->renderer ) {
         SDL_DestroyWindow(this->window);
         Logger::LogErr(

@@ -82,8 +82,6 @@ int main ( int argc, char* argv[] ) {
     texture_manager.SetRenderer( window.GetRenderer() );
     texture_manager.LoadTextures("assets/all_textures.txt");
 
-
-
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( 1920, 1080, 32, 18 );
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
@@ -103,7 +101,26 @@ int main ( int argc, char* argv[] ) {
         window.SetColor( COLORS::BLACK );
         window.Clear();
 
+        game_mode = player.GetGameMode();
+
+        switch ( game_mode ) {
+
+            default:
+                break;
+
+            case Player::MAIN_MENU:
+                main_menu.Draw( window.GetRenderer() );
+                break;
+
+            case Player::IN_GAME:
+                room_manager.DrawCurrentRoom( window.GetRenderer() );
+                break;
+
+        }
+
+
         main_menu.Draw( window.GetRenderer() );
+//        room_manager.DrawCurrentRoom( window.GetRenderer() );
 
         window.Present();
     }

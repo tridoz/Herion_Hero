@@ -40,6 +40,7 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
     std::string texture_name = "";
 
     while ( (std::getline(texture_file, texture_name)) ) {
+        if ( texture_name.compare( "" ) == 0 ) continue;
 
         Texture texture;
         texture.CreateTexture( renderer, texture_name );
