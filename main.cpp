@@ -4,13 +4,14 @@
 #include "src_game/TextureManager.hpp"
 #include "src_game/RoomManager.hpp"
 #include "src_game/Menu.hpp"
+#include "src_game/Player.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstdlib>
 
-#include "src/Player.hpp"
+
 
 #ifdef _WIN32
     #include <stdlib.h>

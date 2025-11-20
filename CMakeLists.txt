@@ -9,19 +9,20 @@ set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
 include_directories("${SDL3_DIR}/include")
 
 file(GLOB SRC_FILES
-        ${CMAKE_SOURCE_DIR}/src/*.cpp
-        ${CMAKE_SOURCE_DIR}/src/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/*.hpp
         ${CMAKE_SOURCE_DIR}/main.cpp
 )
 
 
 add_executable(Herion_Hero ${SRC_FILES}
-        src/COLORS.cpp
-        src/COLORS.hpp
-        src/Player.cpp
-        src/Player.hpp
-        src/Menu.cpp
-        src/Menu.hpp)
+        src_game/COLORS.cpp
+        src_game/COLORS.hpp
+        src_game/Player.cpp
+        src_game/Player.hpp
+        src_game/Menu.cpp
+        src_game/Menu.hpp
+        src_game/COLORS.cpp)
 
 if(WIN32)
     target_link_libraries(Herion_Hero PRIVATE
