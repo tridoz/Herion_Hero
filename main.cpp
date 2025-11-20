@@ -10,7 +10,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
-
+#include <unistd.h>
 
 
 #ifdef _WIN32
@@ -86,10 +86,12 @@ int main ( int argc, char* argv[] ) {
 
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( 1920, 1080, 32, 18 );
-    room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
-    main_menu.LoadCfg( "../configs/menu/main_menu.cfg");
+    main_menu.LoadCfg( "configs/menu/main_menu.cfg");
+
+    room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
+
 
     SDL_Event event;
 
@@ -120,9 +122,6 @@ int main ( int argc, char* argv[] ) {
 
         }
 
-
-        main_menu.Draw( window.GetRenderer() );
-//        room_manager.DrawCurrentRoom( window.GetRenderer() );
 
         window.Present();
     }

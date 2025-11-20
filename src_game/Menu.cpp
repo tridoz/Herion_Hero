@@ -31,7 +31,8 @@ std::vector< std::string > Menu::split( const std::string &str ) {
 
 void Menu::LoadCfg( const std::string& filepath ) {
 
-	std::ifstream cfg_file( filepath, std::ios::in );
+	std::string file_to_open = base_path + filepath;
+	std::ifstream cfg_file( file_to_open, std::ios::in );
 
 	if ( !cfg_file.is_open() ) {
 		Logger::LogErr(
@@ -39,7 +40,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 			"CONFIGURATION",
 			"Menu",
 			"LoadCfg",
-			"Loading cfg file [" + filepath + "] gone wrong : " + strerror(errno)
+			"Loading cfg file [" + file_to_open + "] gone wrong : " + strerror(errno)
 			);
 		return;
 	}
@@ -49,7 +50,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 		"CONFIGURTION",
 		"Menu",
 		"LoadCfg",
-		"cfg file [" + filepath + "] loaded correctly"
+		"cfg file [" + file_to_open + "] loaded correctly"
 		);
 
 	std::string line;
@@ -57,7 +58,18 @@ void Menu::LoadCfg( const std::string& filepath ) {
 
 	for ( int line_number = 1 ; std::getline( cfg_file, line ); line_number++ ) {
 
-		if ( line_number == 0 ) {
+		if ( line.empty() ) {
+			Logger::LogErr(
+				std::time(nullptr),
+				"CONFIGURTION",
+				"Menu",
+				"LoadCfg",
+				"line [" + std::to_string(line_number) + "] in file [" + file_to_open + "] is empty"
+				);
+			continue;
+		}
+
+		if ( line_number == 1 ) {
 			std::vector < std::string > tokens = split( line );
 			if ( tokens.size() !=  3) {
 				Logger::LogErr(
@@ -65,7 +77,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 					"CONFIGURTION",
 					"Menu",
 					"LoadCfg",
-					"file [" + filepath + "] is malformed at line" + std::to_string(line_number)
+					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
 					);
 				return ;
 			}
@@ -81,13 +93,13 @@ void Menu::LoadCfg( const std::string& filepath ) {
 					"CONFIGURTION",
 					"Menu",
 					"LoadCfg",
-					"arguments at line [" + std::to_string(line_number) + "] of file [" + filepath + "] are in wrong format"
+					"arguments at line [" + std::to_string(line_number) + "] of file [" + file_to_open + "] are in wrong format"
 					);
 				return;
 			}
 		}
 
-		if ( line_number != 0 ) {
+		if ( line_number != 1 ) {
 			std::vector < std::string > tokens = split( line );
 			if ( tokens.size() !=  7) {
 				Logger::LogErr(
@@ -95,7 +107,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 					"CONFIGURTION",
 					"Menu",
 					"LoadCfg",
-					"file [" + filepath + "] is malformed at line" + std::to_string(line_number)
+					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
 					);
 				return ;
 			}
@@ -115,7 +127,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 						"CONFIGURTION",
 						"Menu",
 						"LoadCfg",
-						"arguments at line [" + std::to_string(line_number) + "] of file [" + filepath + "] are in wrong format"
+						"arguments at line [" + std::to_string(line_number) + "] of file [" + file_to_open + "] are in wrong format"
 						);
 					return;
 				}
@@ -123,6 +135,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 			}
 		}
 	}
+
 }
 
 void Menu::Draw( SDL_Renderer* renderer ) const {

@@ -19,6 +19,7 @@ class Menu {
 private:
 	TextureManager *texture_manager;
 	std::string filepath;
+	const std::string base_path = "../";
 	SDL_FRect background_rect;
 
 	std::vector<Tile*> buttons;

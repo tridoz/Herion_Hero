@@ -4,8 +4,16 @@
 
 #include "Player.hpp"
 
-Player::Player() {}
-Player::~Player() {}
+
+Player::Player() {
+	this->mode = MAIN_MENU;
+	this->state = IDLE;
+}
+
+Player::~Player() {
+	this->mode = MAIN_MENU;
+	this->state = IDLE;
+}
 
 Player::GameMode Player::GetGameMode() const {
 	return mode;
