@@ -75,6 +75,7 @@ int main ( int argc, char* argv[] ) {
     TextureManager texture_manager;
     RoomManager room_manager;
     Player player;
+
     Menu main_menu;
 
     Player::PlayerState player_state;
@@ -87,8 +88,8 @@ int main ( int argc, char* argv[] ) {
     room_manager.SetDimensions( 1920, 1080, 32, 18 );
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
 
-    main_menu.SetDimension( 1920, 1080);
-    main_menu.SetTexture( texture_manager.GetTexture("assets/backgrounds/main_menu.png") );
+    main_menu.SetTextureManager( &texture_manager );
+    main_menu.LoadCfg( "../configs/menu/main_menu.cfg");
 
     SDL_Event event;
 
