@@ -1,9 +1,9 @@
-#include "src/Window.hpp"
-#include "src/Logger.hpp"
-#include "src/InputProcessor.hpp"
-#include "src/TextureManager.hpp"
-#include "src/RoomManager.hpp"
-#include "src/Menu.hpp"
+#include "src_game/Window.hpp"
+#include "src_game/Logger.hpp"
+#include "src_game/InputProcessor.hpp"
+#include "src_game/TextureManager.hpp"
+#include "src_game/RoomManager.hpp"
+#include "src_game/Menu.hpp"
 
 #include <iostream>
 #include <fstream>
