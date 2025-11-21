@@ -78,10 +78,10 @@ void Menu::LoadCfg( const std::string& filepath ) {
 
 		if ( line_number == 1 ) {
 			std::vector < std::string > tokens = split( line );
-			if ( tokens.size() !=  3) {
+			if ( tokens.size() !=  1) {
 				Logger::LogErr(
 					std::time(nullptr),
-					"CONFIGURTION",
+					"CONFIGURATION",
 					"Menu",
 					"LoadCfg",
 					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
@@ -91,19 +91,6 @@ void Menu::LoadCfg( const std::string& filepath ) {
 
 			this->filepath = tokens[0];
 
-			try {
-				// x y w h
-				this->background_rect = {0, 0, std::stof(tokens[1]), std::stof(tokens[2])  };
-			} catch ( const std::invalid_argument& e ) {
-				Logger::LogErr(
-					std::time(nullptr),
-					"CONFIGURTION",
-					"Menu",
-					"LoadCfg",
-					"arguments at line [" + std::to_string(line_number) + "] of file [" + file_to_open + "] are in wrong format"
-					);
-				return;
-			}
 		}
 
 		if ( line_number != 1 ) {

@@ -14,7 +14,10 @@ Window::~Window() {
     SDL_DestroyWindow(this->window);
 }
 
-Window::Window( const int width, const int height, const std::string& title) {
+Window::Window( const std::string& title) {
+
+    this->flags = SDL_WINDOW_FULLSCREEN ;
+
     if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         Logger::LogErr(
             std::time(nullptr),
@@ -26,18 +29,40 @@ Window::Window( const int width, const int height, const std::string& title) {
         return;
     }
 
-    SDL_SetHint("SDL_RENDERER_SRGB", "1");
+    Logger::LogOK(
+    std::time(nullptr),
+    "INITIALIZATION",
+    "Window",
+    "Window",
+    "SDL_INIT_VIDEO successfully initialized"
+    );
 
+
+    const SDL_DisplayID displayID = SDL_GetPrimaryDisplay();
+    this->display_mode = SDL_GetCurrentDisplayMode( displayID );
+
+    if ( !this->display_mode ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "DISPLAY MODE",
+            "Window",
+            "Window",
+            "Error while getting display mode for dimension: " + std::string(SDL_GetError() )
+            );
+    }
 
     Logger::LogOK(
         std::time(nullptr),
-        "INITIALIZATION",
+        "DISPLAY MODE",
         "Window",
         "Window",
-        "SDL_INIT_VIDEO successfully initialized"
+        "Screen dimension retrieved correctly"
         );
 
-    this->window = SDL_CreateWindow(title.c_str(), width, height, 0);
+    this->width = this->display_mode->w;
+    this->height = this->display_mode->h;
+
+    this->window = SDL_CreateWindow(title.c_str(), width, height, flags );
 
     if ( !this->window ) {
         Logger::LogErr(
@@ -99,4 +124,12 @@ void Window::SetColor(const COLORS::Color color ) const {
 
 void Window::Present() const {
     SDL_RenderPresent( renderer );
+}
+
+int Window::GetWidth() const {
+    return this->width;
+}
+
+int Window::GetHeight() const {
+    return this->height;
 }

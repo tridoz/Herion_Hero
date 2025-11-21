@@ -71,7 +71,7 @@ int LoadEnv() {
 
 int main ( int argc, char* argv[] ) {
 
-    const Window window(1920, 1080, "HERION HERO");
+    const Window window(  "HERION HERO");
 
     InputProcessor processor;
     TextureManager texture_manager;
@@ -87,10 +87,11 @@ int main ( int argc, char* argv[] ) {
     texture_manager.LoadTextures("assets/all_textures.txt");
 
     room_manager.SetTextureManager( &texture_manager );
-    room_manager.SetDimensions( 1920, 1080, 32, 18 );
+    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");
+    main_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
 
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
     processor.SetPlayer( &player );
@@ -100,6 +101,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("MAIN_MENU", &main_menu );
 
     SDL_Event event;
+    std::cout << "Width: " + window.GetWidth() << "\t Height: " + window.GetHeight() << std::endl;
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::EXIT ) {
 

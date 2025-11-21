@@ -16,13 +16,17 @@
 class Window {
 
 private:
+    int flags;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    const SDL_DisplayMode* display_mode;
+
+    int width, height;
 
 public:
 
     Window();
-    Window(const int width, const int height, const std::string& title);
+    Window( const std::string& title);
 
     ~Window();
 
@@ -32,6 +36,9 @@ public:
     void Clear() const;
     void SetColor( COLORS::Color ) const;
     void Present() const ;
+
+    int GetWidth() const;
+    int GetHeight() const;
 
 };
 
