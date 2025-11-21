@@ -54,7 +54,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 
 	Logger::LogOK(
 		std::time(nullptr),
-		"CONFIGURTION",
+		"CONFIGURATION",
 		"Menu",
 		"LoadCfg",
 		"cfg file [" + file_to_open + "] loaded correctly"

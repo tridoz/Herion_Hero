@@ -96,14 +96,6 @@ void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
 
             row.push_back( tile );
 
-            Logger::LogOK(
-                std::time(nullptr),
-                "TILE",
-                "RoomManager",
-                "GenerateSpawnRoom",
-                "Tile in position {" + std::to_string(i) + " , " + std::to_string(j) + "} with texture " + textureManager->GetTexture( texture_path ).GetTextureName() + " created successfully"
-                );
-
         }
 
         tiles.push_back( row );
