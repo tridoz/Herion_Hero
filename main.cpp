@@ -78,8 +78,11 @@ int main ( int argc, char* argv[] ) {
     const Window window(  "HERION HERO");
 
     InputProcessor processor;
+
     TextureManager texture_manager;
+
     RoomManager room_manager;
+
     Player player;
 
     Menu main_menu;
@@ -88,11 +91,14 @@ int main ( int argc, char* argv[] ) {
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
+    ButtonsFunctions::SetPlayer( &player );
+
     texture_manager.SetRenderer( window.GetRenderer() );
     texture_manager.LoadTextures("assets/all_textures.txt");
 
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
+    room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");
@@ -102,13 +108,9 @@ int main ( int argc, char* argv[] ) {
     settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
     settings_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
 
-    room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
-    processor.SetPlayer( &player );
-
-    ButtonsFunctions::SetPlayer( &player );
-
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
+    processor.SetPlayer( &player );
 
     SDL_Event event;
 

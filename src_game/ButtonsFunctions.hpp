@@ -9,17 +9,61 @@
 
 
 class ButtonsFunctions {
-    private:
-        static Player* player;
+private:
+    static Player* player;
 
-    public:
-        static void StartGame();
-        static void EndGame();
-        static void OpenMainMenu();
-        static void OpenSettings();
-        static void CloseSettings();
+public:
 
-        static void SetPlayer( Player* player );
+    // CHANGE GAMEMODE
+    static void StartGame();
+    static void EndGame();
+    static void OpenMainMenu();
+    static void OpenSettings();
+    static void CloseSettings();
+
+
+    //GRAPHICS SETTINGS
+    static void IncreaseResolution();
+    static void DecreaseResolution();
+    static void ChangeWindowMode();
+    static void IncreaseFrameLimit();
+    static void DecreaseFrameLimit();
+    static void IncreaseBrightness();
+    static void DecreaseBrightness();
+    static void IncreaseGamma();
+    static void DecreaseGamma();
+
+    //AUDIO SETTINGS
+    static void IncreaseGeneralAudio();
+    static void DecreaseGeneralAudio();
+    static void IncreaseMusicVolume();
+    static void DecreaseMusicVolume();
+    static void IncreaseEffectsVolume();
+    static void DecreaseEffectsVolume();
+    static void ToggleMute();
+    static void SelectMusicTrack();
+
+    //KEYMAPPING
+    static void ResetKeybinds();
+    static void ChangeKey();
+
+    //GAME
+    static void IncreaseDifficulty();
+    static void DecreaseDifficulty();
+    static void ChangeGameMode();
+    static void ToggleTutorial();
+
+    //INTERFACE
+    static void ToggleHUD();
+    static void ChangeTheme();
+
+    //SAVE
+    static void ToggleAutoSave();
+    static void IncreaseAutoSaveTime();
+    static void DecreaseAutoSaveTime();
+    static void ToggleSaveCloud();
+
+    static void SetPlayer( Player* player );
 
 };
 
