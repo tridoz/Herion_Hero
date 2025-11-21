@@ -38,7 +38,7 @@ void InputProcessor::process_key_down(int scancode) {
                     running = false;
                     break;
                 case Player::IN_GAME:
-                    this->player->SetGameMode( Player::MAIN_MENU );
+                    this->player->SetGameMode( Player::SETTINGS_MENU );
                     break;
             }
             break;
@@ -62,6 +62,10 @@ void InputProcessor::process_mouse_left_pressed() {
 
         case Player::MAIN_MENU:
             menus.at("MAIN_MENU")->GetCollisionButton( mouse_x, mouse_y )->Click();
+            break;
+
+        case Player::SETTINGS_MENU:
+            menus.at("SETTINGS_MENU")->GetCollisionButton( mouse_x, mouse_y )->Click();
             break;
 
     }

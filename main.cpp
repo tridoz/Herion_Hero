@@ -7,6 +7,10 @@
 #include "src_game/Player.hpp"
 #include "src_game/ButtonsFunctions.hpp"
 
+#include <boost/asio.hpp>
+#include <boost/beast.hpp>
+#include <boost/json.hpp>
+
 #include <iostream>
 #include <fstream>
 #include <string>
