@@ -62,7 +62,7 @@ Window::Window( const std::string& title) {
     this->width = this->display_mode->w;
     this->height = this->display_mode->h;
 
-    this->window = SDL_CreateWindow(title.c_str(), width, height, flags );
+    this->window = SDL_CreateWindow(title.c_str(), width, height, 0 /*flags*/ );
 
     if ( !this->window ) {
         Logger::LogErr(

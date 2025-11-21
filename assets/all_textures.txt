@@ -79,4 +79,5 @@ assets/floors/poison/poison_cracked_floor_7.png
 assets/floors/poison/poison_cracked_floor_8.png
 
 assets/backgrounds/main_menu.png
+assets/backgrounds/settings_menu.png
 

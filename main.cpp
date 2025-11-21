@@ -79,6 +79,7 @@ int main ( int argc, char* argv[] ) {
     Player player;
 
     Menu main_menu;
+    Menu settings_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
@@ -91,7 +92,11 @@ int main ( int argc, char* argv[] ) {
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");
-    main_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
+    main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
+    settings_menu.SetTextureManager( &texture_manager );
+    settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
+    settings_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
 
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
     processor.SetPlayer( &player );
@@ -99,9 +104,9 @@ int main ( int argc, char* argv[] ) {
     ButtonsFunctions::SetPlayer( &player );
 
     processor.SetMenus("MAIN_MENU", &main_menu );
+    processor.SetMenus("SETTINGS_MENU", &settings_menu );
 
     SDL_Event event;
-    std::cout << "Width: " + window.GetWidth() << "\t Height: " + window.GetHeight() << std::endl;
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::EXIT ) {
 
@@ -124,9 +129,14 @@ int main ( int argc, char* argv[] ) {
                 main_menu.Draw( window.GetRenderer() );
                 break;
 
+            case Player::SETTINGS_MENU:
+                settings_menu.Draw( window.GetRenderer() );
+                break;
+
             case Player::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );
                 break;
+
 
         }
 

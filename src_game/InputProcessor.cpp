@@ -64,7 +64,6 @@ void InputProcessor::process_mouse_left_pressed() {
             menus.at("MAIN_MENU")->GetCollisionButton( mouse_x, mouse_y )->Click();
             break;
 
-
     }
 }
 
