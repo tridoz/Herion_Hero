@@ -5,6 +5,7 @@
 #include "src_game/RoomManager.hpp"
 #include "src_game/Menu.hpp"
 #include "src_game/Player.hpp"
+#include "src_game/ButtonsFunctions.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -47,6 +48,7 @@ int LoadEnv() {
         if ( line.empty() || line[0] == '#' ) continue;
 
         size_t eqPos = line.find('=');
+
         if ( eqPos == std::string::npos ) continue;
 
         std::string key = line.substr(0, eqPos);
@@ -59,7 +61,7 @@ int LoadEnv() {
         #ifdef _WIN32
                 _putenv_s(key.c_str(), value.c_str());
         #else
-                setenv(key.c_str(), value.c_str(), 1); // sovrascrive se esiste già
+                setenv(key.c_str(), value.c_str(), 1);
         #endif
     }
 
@@ -91,11 +93,15 @@ int main ( int argc, char* argv[] ) {
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");
 
     room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
+    processor.SetPlayer( &player );
 
+    ButtonsFunctions::SetPlayer( &player );
+
+    processor.SetMenus("MAIN_MENU", &main_menu );
 
     SDL_Event event;
 
-    while ( !processor.ShouldQuit() ) {
+    while ( !processor.ShouldQuit() && player.GetGameMode() != Player::EXIT ) {
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
@@ -122,8 +128,8 @@ int main ( int argc, char* argv[] ) {
 
         }
 
-
         window.Present();
+
     }
 
 }

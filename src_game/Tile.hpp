@@ -20,6 +20,7 @@ public:
     void SetTexture( const Texture& texture );
     void SetRect( float x, float y, float w, float h );
     void Draw( SDL_Renderer* renderer ) const;
+    SDL_FRect* GetRect();
 
     [[nodiscard]] bool IsWalkable() const;
 

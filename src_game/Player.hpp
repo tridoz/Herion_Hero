@@ -15,7 +15,8 @@ public:
 		SETTINGS_MENU,
 		PAUSE_MENU,
 		INVENTORY_MENU,
-		IN_GAME
+		IN_GAME,
+		EXIT
 	}GameMode;
 
 	typedef enum {
@@ -31,11 +32,20 @@ public:
 	PlayerState GetPlayerState() const;
 	GameMode GetGameMode() const;
 
+	PlayerState GetPreviousState() const;
+	GameMode GetPreviousGameMode() const;
+
+
+	void SetGameMode( GameMode mode );
+	void SetPlayerState( PlayerState state );
+
 private:
 
 	PlayerState state;
 	GameMode mode;
 
+	PlayerState previousState;
+	GameMode previousGameMode;
 
 };
 

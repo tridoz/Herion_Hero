@@ -18,6 +18,10 @@ void Tile::SetTexture(const Texture& texture) {
     this->texture = texture;
 }
 
+SDL_FRect* Tile::GetRect() {
+    return &rect;
+}
+
 void Tile::Draw(SDL_Renderer* renderer) const {
     SDL_SetTextureBlendMode( texture.GetTexture(), SDL_BLENDMODE_BLEND );
     SDL_RenderTexture( renderer, texture.GetTexture(), nullptr, &rect );

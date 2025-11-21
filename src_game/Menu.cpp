@@ -6,7 +6,14 @@
 
 #include "TextureManager.hpp"
 
-Menu::Menu() {}
+Menu::Menu() {
+	buttons_functions.clear();
+	buttons_functions.emplace("START_GAME", ButtonsFunctions::StartGame );
+	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
+	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
+	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
+}
+
 Menu::~Menu() {}
 
 void Menu::SetDimension(float w, float h) {
@@ -104,7 +111,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 			if ( tokens.size() !=  7) {
 				Logger::LogErr(
 					std::time(nullptr),
-					"CONFIGURTION",
+					"CONFIGURATION",
 					"Menu",
 					"LoadCfg",
 					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
@@ -116,15 +123,16 @@ void Menu::LoadCfg( const std::string& filepath ) {
 
 				try {
 
-					Tile* tile = new Tile();
-					tile->SetRect( std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]), std::stof(tokens[4])  );
-					tile->SetTexture( texture_manager->GetTexture( tokens[5]) ) ;
-					buttons.push_back( tile );
+					Button* btn = new Button();
+					btn->SetRect( std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]), std::stof(tokens[4])  );
+					btn->SetTexture( texture_manager->GetTexture( tokens[5]) ) ;
+					btn->SetOnClick( buttons_functions.at( tokens[6] ) );
+					buttons.emplace( tokens[6], btn );
 
 				} catch ( const std::invalid_argument& e) {
 					Logger::LogErr(
 						std::time(nullptr),
-						"CONFIGURTION",
+						"CONFIGURATION",
 						"Menu",
 						"LoadCfg",
 						"arguments at line [" + std::to_string(line_number) + "] of file [" + file_to_open + "] are in wrong format"
@@ -133,7 +141,9 @@ void Menu::LoadCfg( const std::string& filepath ) {
 				}
 
 			}
+
 		}
+
 	}
 
 }
@@ -142,12 +152,44 @@ void Menu::Draw( SDL_Renderer* renderer ) const {
 	SDL_SetTextureBlendMode( texture_manager->GetTexture( this->filepath).GetTexture() , SDL_BLENDMODE_BLEND );
 	SDL_RenderTexture( renderer, texture_manager->GetTexture( this->filepath).GetTexture(), nullptr, &background_rect );
 
-	for ( Tile* tile : buttons ) {
-		tile->Draw( renderer );
+	for ( const auto& [key, btn] : buttons ) {
+		btn->Draw( renderer );
 	}
 
 }
 
+Button* Menu::GetButton( const std::string& action )  {
+	return buttons.at( action );
+}
+
+std::vector < Button* > Menu::GetButtons() {
+	std::vector < Button* > vec_buttons;
+	for ( const std::pair< std::string, Button*> pair : this->buttons ) {
+		vec_buttons.push_back( pair.second );
+	}
+
+	return vec_buttons;
+}
+
+bool Menu::CheckCollision(SDL_FRect* button, float x, float y) {
+	return (
+		x >= button->x &&
+		x <= button->x + button->w &&
+		y >= button->y &&
+		y <= button->y + button->h
+	);
+}
+
+
+Button* Menu::GetCollisionButton(float x, float y) {
+	for ( const std::pair< std::string, Button*> pair : this->buttons ) {
+		if ( CheckCollision(pair.second->GetRect(), x, y) ) {
+			return pair.second;
+		}
+	}
+
+	return nullptr;
+}
 
 
 

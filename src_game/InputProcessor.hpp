@@ -5,26 +5,37 @@
 #ifndef HERION_HERO_INPUTINTERPRETER_HPP
 #define HERION_HERO_INPUTINTERPRETER_HPP
 
+#include <unordered_map>
 #include <SDL3/SDL.h>
+#include <string>
+
+#include "Player.hpp"
+#include "Menu.hpp"
 
 #define MAX_SCANCODES 514
 
-
-
 class InputProcessor {
 private:
+    Player* player;
+
+
     SDL_Event event{};
     bool keys[ MAX_SCANCODES ] = { false };
+
+    std::unordered_map< std::string, Menu* > menus;
 
     bool running;
 
     bool mouse_left_pressed;
     bool mouse_right_pressed;
 
+    void process_key_down( int scancode );
 
-    int mouse_x;
-    int mouse_y;
+    void process_mouse_left_pressed();
+    void process_mouse_rigth_pressed();
 
+    float mouse_x;
+    float mouse_y;
 
 public:
     InputProcessor();
@@ -37,7 +48,9 @@ public:
     [[nodiscard]] bool isMouseLeftPressed() const;
     [[nodiscard]] bool isMouseRightPressed() const;
 
-    bool isKeyPressed( int scancode ) const;
+    void SetPlayer( Player* player );
+    void SetMenus( std::string name, Menu* menu );
+
 
 };
 

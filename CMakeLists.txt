@@ -22,7 +22,10 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Player.hpp
         src_game/Menu.cpp
         src_game/Menu.hpp
-        src_game/COLORS.cpp)
+        src_game/Button.cpp
+        src_game/Button.hpp
+        src_game/ButtonsFunctions.cpp
+        src_game/ButtonsFunctions.hpp)
 
 if(WIN32)
     target_link_libraries(Herion_Hero PRIVATE
