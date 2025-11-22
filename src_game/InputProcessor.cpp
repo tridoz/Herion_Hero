@@ -1,7 +1,3 @@
-//
-// Created by david on 16/11/2025.
-//
-
 #include "InputProcessor.hpp"
 
 #include <iostream>
@@ -75,7 +71,15 @@ void InputProcessor::process_mouse_left_pressed() {
             }
             break;
 
+        case Player::PAUSE_MENU:
+            btn = menus.at( "PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            if ( btn != nullptr ) {
+                btn->Click();
+            }
+            break;
+
     }
+
 }
 
 void InputProcessor::process_mouse_right_pressed() {
@@ -89,6 +93,7 @@ void InputProcessor::SetMenus(std::string name, Menu* menu) {
 void InputProcessor::Process()  {
 
     switch ( this->event.type ) {
+
         case SDL_EVENT_QUIT:
             this->running = false;
             break;
@@ -110,7 +115,7 @@ void InputProcessor::Process()  {
             if ( event.button.button == SDL_BUTTON_LEFT ) {
                 process_mouse_left_pressed();
             }else if ( event.button.button == SDL_BUTTON_RIGHT ) {
-
+                process_mouse_right_pressed();
             }
             break;
 

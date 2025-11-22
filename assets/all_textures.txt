@@ -79,6 +79,7 @@ assets/floors/poison/poison_cracked_floor_8.png
 
 assets/backgrounds/main_menu.png
 assets/backgrounds/settings_menu.png
+assets/backgrounds/pause_menu.png
 
 assets/font/lowercase_letters/a.png
 assets/font/lowercase_letters/b.png
