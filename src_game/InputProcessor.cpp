@@ -43,13 +43,6 @@ void InputProcessor::process_key_down(int scancode) {
             }
             break;
 
-        case SDL_SCANCODE_P:
-            switch ( player->GetGameMode() ) {
-                case Player::MAIN_MENU:
-                    player->SetGameMode( Player::IN_GAME );
-                    break;
-            }
-            break;
     }
 
 }
@@ -71,7 +64,7 @@ void InputProcessor::process_mouse_left_pressed() {
     }
 }
 
-void InputProcessor::process_mouse_rigth_pressed() {
+void InputProcessor::process_mouse_right_pressed() {
 
 }
 

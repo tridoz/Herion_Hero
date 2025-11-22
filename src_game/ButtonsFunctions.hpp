@@ -30,8 +30,6 @@ public:
     static void DecreaseFrameLimit();
     static void IncreaseBrightness();
     static void DecreaseBrightness();
-    static void IncreaseGamma();
-    static void DecreaseGamma();
 
     //AUDIO SETTINGS
     static void IncreaseGeneralAudio();

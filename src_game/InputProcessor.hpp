@@ -5,14 +5,15 @@
 #ifndef HERION_HERO_INPUTINTERPRETER_HPP
 #define HERION_HERO_INPUTINTERPRETER_HPP
 
-#include <unordered_map>
 #include <SDL3/SDL.h>
+
+#include <unordered_map>
 #include <string>
 
 #include "Player.hpp"
 #include "Menu.hpp"
 
-#define MAX_SCANCODES 514
+#define MAX_SCANCODES 512
 
 class InputProcessor {
 private:
@@ -32,7 +33,7 @@ private:
     void process_key_down( int scancode );
 
     void process_mouse_left_pressed();
-    void process_mouse_rigth_pressed();
+    void process_mouse_right_pressed();
 
     float mouse_x;
     float mouse_y;
