@@ -37,6 +37,6 @@ void Player::SetPlayerState( PlayerState state ) {
 }
 
 void Player::SetGameMode( GameMode mode ) {
-	this->previousGameMode = mode;
+	this->previousGameMode = this->mode;
 	this->mode = mode;
 }
