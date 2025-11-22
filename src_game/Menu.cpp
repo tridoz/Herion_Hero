@@ -12,6 +12,7 @@ Menu::Menu() {
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
+	buttons_functions.emplace( "RETURN_PREVIOUS_GAME_MODE", ButtonsFunctions::ReturnPreviousState );
 }
 
 Menu::~Menu() {}
@@ -34,6 +35,7 @@ std::vector< std::string > Menu::split( const std::string &str ) {
 	}
 
 	return tokens;
+
 }
 
 void Menu::LoadCfg( const std::string& filepath ) {
@@ -63,12 +65,12 @@ void Menu::LoadCfg( const std::string& filepath ) {
 	std::string line;
 	std::string background_image_path;
 
-	for ( int line_number = 1 ; std::getline( cfg_file, line ); line_number++ ) {
+	for ( int line_number = 0 ; std::getline( cfg_file, line ); line_number++ ) {
 
 		if ( line.empty() ) {
 			Logger::LogErr(
 				std::time(nullptr),
-				"CONFIGURTION",
+				"CONFIGURATION",
 				"Menu",
 				"LoadCfg",
 				"line [" + std::to_string(line_number) + "] in file [" + file_to_open + "] is empty"
@@ -76,26 +78,28 @@ void Menu::LoadCfg( const std::string& filepath ) {
 			continue;
 		}
 
-		if ( line_number == 1 ) {
+		if ( line_number == 0 ) {
 			std::vector < std::string > tokens = split( line );
-			if ( tokens.size() !=  1) {
+			if ( tokens.size() !=  4 ) {
 				Logger::LogErr(
 					std::time(nullptr),
 					"CONFIGURATION",
 					"Menu",
 					"LoadCfg",
-					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
+					"file [" + file_to_open + "] is malformed at line " + std::to_string(line_number)
 					);
 				return ;
 			}
 
 			this->filepath = tokens[0];
+			this->start_y = std::stof( tokens[1] );
+			this->button_offset = std::stof( tokens[2] );
+			this->center_piece_offset = std::stof( tokens[3] );
 
-		}
+		} else {
 
-		if ( line_number != 1 ) {
 			std::vector < std::string > tokens = split( line );
-			if ( tokens.size() !=  7) {
+			if ( tokens.size() !=  4) {
 				Logger::LogErr(
 					std::time(nullptr),
 					"CONFIGURATION",
@@ -104,6 +108,7 @@ void Menu::LoadCfg( const std::string& filepath ) {
 					"file [" + file_to_open + "] is malformed at line" + std::to_string(line_number)
 					);
 				return ;
+
 			}
 
 			if ( tokens[0] == "BUTTON" ) {
@@ -111,10 +116,72 @@ void Menu::LoadCfg( const std::string& filepath ) {
 				try {
 
 					Button* btn = new Button();
-					btn->SetRect( std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]), std::stof(tokens[4])  );
-					btn->SetTexture( texture_manager->GetTexture( tokens[5]) ) ;
-					btn->SetOnClick( buttons_functions.at( tokens[6] ) );
-					buttons.emplace( tokens[6], btn );
+
+					std::string text = tokens[2];
+					std::vector< SDL_FRect > rects;
+					std::vector< Texture > textures;
+
+					Texture left_rect_texture = texture_manager->GetTexture( "assets/ui/buttons/button_left.png" );
+					Texture	right_rect_texture = texture_manager->GetTexture( "assets/ui/buttons/button_right.png" );
+					Texture center_rect_texture = texture_manager->GetTexture( "assets/ui/buttons/button_center.png" );
+
+					textures.push_back( left_rect_texture );
+
+					float ct_w, ct_h;
+					float t_w, t_h;
+
+					SDL_GetTextureSize( left_rect_texture.GetTexture(), &t_w, &t_h );
+					SDL_FRect left_rect = { std::stof( tokens[1] ), start_y + (line_number * t_h) + (line_number*this->button_offset) , t_w, t_h };
+					rects.push_back( left_rect );
+					int x_offset, y_offset, width_offset, height_offset;
+
+					for ( char c: text ) {
+
+						Texture character;
+						if ( isupper( c) ) {
+							std::string path = std::string("assets/font/uppercase_letters/") + c + ".png";
+							character = texture_manager->GetTexture( path );
+							x_offset = 2;
+							y_offset = 36;
+							width_offset = -2;
+							height_offset = -72;
+						}else {
+							std::string path = std::string("assets/font/lowercase_letters/") + c + ".png";
+							character = texture_manager->GetTexture( path );
+							x_offset = 4;
+							y_offset = 44;
+							width_offset = -4;
+							height_offset = -80;
+						}
+
+						SDL_GetTextureSize( character.GetTexture(), &t_w, &t_h );
+						SDL_GetTextureSize( center_rect_texture.GetTexture(), &ct_w, &ct_h );
+
+						textures.push_back( center_rect_texture );
+						textures.push_back( character );
+
+						SDL_FRect prev = rects.at( rects.size() - 1 );
+						SDL_FRect background_rect = { prev.x + prev.w, rects[0].y + this->center_piece_offset  , (t_w * 1.5f) , ct_h } ;
+						SDL_FRect character_rect = { background_rect.x + x_offset,background_rect.y + y_offset, background_rect.w + width_offset, background_rect.h + height_offset  } ;
+
+						rects.push_back( background_rect );
+						rects.push_back( character_rect );
+
+					}
+
+					SDL_GetTextureSize( right_rect_texture.GetTexture(), &t_w, &t_h );
+
+					SDL_FRect prev = rects.at( rects.size() - 1 );
+					SDL_FRect right_rect = { prev.x + prev.w,start_y + (line_number * t_h) + (line_number * this->button_offset), t_w, t_h };
+
+					textures.push_back( right_rect_texture );
+					rects.push_back( right_rect );
+
+					btn->SetRects( rects );
+					btn->SetTextures( textures );
+					btn->SetOnClick( buttons_functions.at( tokens[3] ) );
+
+					buttons.emplace( tokens[3], btn );
 
 				} catch ( const std::invalid_argument& e) {
 					Logger::LogErr(
@@ -158,19 +225,24 @@ std::vector < Button* > Menu::GetButtons() {
 	return vec_buttons;
 }
 
-bool Menu::CheckCollision(SDL_FRect* button, float x, float y) {
-	return (
-		x >= button->x &&
-		x <= button->x + button->w &&
-		y >= button->y &&
-		y <= button->y + button->h
-	);
+bool Menu::CheckCollision( std::vector<SDL_FRect> buttons, float x, float y) {
+	for ( SDL_FRect button : buttons ) {
+		if (
+			x >= button.x &&
+			x <= button.x + button.w &&
+			y >= button.y &&
+			y <= button.y + button.h
+		) {
+			return true;
+		}
+	}
+	return false;
 }
 
 
 Button* Menu::GetCollisionButton(float x, float y) {
-	for ( const std::pair< std::string, Button*> pair : this->buttons ) {
-		if ( CheckCollision(pair.second->GetRect(), x, y) ) {
+	for ( const std::pair< std::string, Button* > pair : this->buttons ) {
+		if ( CheckCollision(pair.second->GetRects(), x, y) ) {
 			return pair.second;
 		}
 	}

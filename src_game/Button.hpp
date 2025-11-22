@@ -6,13 +6,19 @@
 #define HERION_HERO_BUTTON_HPP
 
 #include <functional>
+#include <SDL3/SDL.h>
 
-#include "Tile.hpp"
+#include "Texture.hpp"
+#include "Logger.hpp"
 
 
-class Button : public Tile {
+
+class Button {
 private:
     std::function<void()> onClick;
+
+    std::vector< Texture > textures;
+    std::vector< SDL_FRect > rects ;
 
 public:
 
@@ -20,7 +26,10 @@ public:
 
     void SetOnClick(std::function<void()> action);
     void Click() const;
-
+    void SetTextures( std::vector< Texture > textures );
+    void SetRects( std::vector< SDL_FRect > rects );
+    void Draw( SDL_Renderer* renderer ) const ;
+    std::vector< SDL_FRect > GetRects() const;
 };
 
 

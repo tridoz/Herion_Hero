@@ -83,6 +83,7 @@ int main ( int argc, char* argv[] ) {
 
     Menu main_menu;
     Menu settings_menu;
+    Menu pause_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
@@ -104,8 +105,14 @@ int main ( int argc, char* argv[] ) {
     settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
     settings_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
 
+    pause_menu.SetTextureManager( &texture_manager );
+    pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
+    pause_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
+
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
+    processor.SetMenus("PAUSE_MENU", &pause_menu );
+
     processor.SetPlayer( &player );
 
     SDL_Event event;
@@ -133,6 +140,10 @@ int main ( int argc, char* argv[] ) {
 
             case Player::SETTINGS_MENU:
                 settings_menu.Draw( window.GetRenderer() );
+                break;
+
+            case Player::PAUSE_MENU:
+                pause_menu.Draw( window.GetRenderer() );
                 break;
 
             case Player::IN_GAME:

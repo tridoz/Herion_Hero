@@ -20,6 +20,7 @@ public:
     static void OpenMainMenu();
     static void OpenSettings();
     static void CloseSettings();
+    static void ReturnPreviousState();
 
 
     //GRAPHICS SETTINGS

@@ -6,10 +6,9 @@ assets/ui/boxes/item_description.png
 assets/ui/boxes/text_avatar.png
 assets/ui/boxes/text.png
 
-assets/ui/buttons/exit.png
-assets/ui/buttons/options.png
-assets/ui/buttons/play.png
-assets/ui/buttons/settings.png
+assets/ui/buttons/button_left.png
+assets/ui/buttons/button_center.png
+assets/ui/buttons/button_right.png
 
 assets/ui/icons/apply.png
 assets/ui/icons/close.png

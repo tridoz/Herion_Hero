@@ -28,18 +28,25 @@ void InputProcessor::SetPlayer(Player* player) {
 }
 
 void InputProcessor::process_key_down(int scancode) {
+
     switch ( scancode ) {
         default:
             break;
 
         case SDL_SCANCODE_ESCAPE:
             switch ( player->GetGameMode() ) {
+
                 case Player::MAIN_MENU:
                     running = false;
                     break;
+
                 case Player::IN_GAME:
-                    this->player->SetGameMode( Player::SETTINGS_MENU );
+                    this->player->SetGameMode( Player::PAUSE_MENU );
                     break;
+
+                default:
+                    break;
+
             }
             break;
 
@@ -50,15 +57,22 @@ void InputProcessor::process_key_down(int scancode) {
 void InputProcessor::process_mouse_left_pressed() {
 
     SDL_GetMouseState( &mouse_x, &mouse_y );
+    Button *btn;
 
     switch ( player->GetGameMode() ) {
 
         case Player::MAIN_MENU:
-            menus.at("MAIN_MENU")->GetCollisionButton( mouse_x, mouse_y )->Click();
+            btn = menus.at( "MAIN_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            if ( btn != nullptr ) {
+                btn->Click();
+            }
             break;
 
         case Player::SETTINGS_MENU:
-            menus.at("SETTINGS_MENU")->GetCollisionButton( mouse_x, mouse_y )->Click();
+            btn = menus.at( "SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            if ( btn != nullptr ) {
+                btn->Click();
+            }
             break;
 
     }

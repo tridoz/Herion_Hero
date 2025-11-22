@@ -10,6 +10,10 @@ void ButtonsFunctions::StartGame() {
     player->SetGameMode( Player::IN_GAME );
 }
 
+void ButtonsFunctions::ReturnPreviousState() {
+    player->SetGameMode( player->GetPreviousGameMode() );
+}
+
 void ButtonsFunctions::EndGame() {
     player->SetGameMode( Player::EXIT );
 }

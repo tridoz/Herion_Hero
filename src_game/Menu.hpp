@@ -8,6 +8,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_image.h>
 
+
+
 #include "TextureManager.hpp"
 #include "ButtonsFunctions.hpp"
 #include "Logger.hpp"
@@ -28,9 +30,13 @@ private:
 
 	std::unordered_map< std::string, Button*> buttons;
 
+	float start_y;
+	float button_offset;
+	float center_piece_offset;
+
 	std::vector< std::string > split( const std::string &str );
 
-	bool CheckCollision( SDL_FRect* button, float x, float y );
+	bool CheckCollision( std::vector<SDL_FRect> buttons, float x, float y );
 
 public:
 	Menu();
