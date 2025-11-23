@@ -1,6 +1,6 @@
 {
-  "master_volume": 0.8,
-  "music_volume": 0.7,
-  "sfx_volume": 0.9,
-  "mute": false
+    "master_volume" : 0.8,
+    "music_volume" : 0.7,
+    "sfx_volume" : 0.9,
+    "mute" : false
 }

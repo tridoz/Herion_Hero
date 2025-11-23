@@ -1,5 +1,5 @@
 {
-  "difficulty": "normal",
-  "game_mode": "story",
-  "show_tutorials": false
+    "difficulty"  : "normal",
+    "game_mode" : "story",
+    "show_tutorials" : false
 }

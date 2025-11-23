@@ -27,6 +27,8 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Button.hpp
         src_game/ButtonsFunctions.cpp
         src_game/ButtonsFunctions.hpp
+        src_game/JSONParserer.cpp
+        src_game/JSONParserer.hpp
 )
 
 if(WIN32)
