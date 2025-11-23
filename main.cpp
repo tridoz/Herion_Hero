@@ -71,7 +71,7 @@ int LoadEnv() {
 
 int main ( int argc, char* argv[] ) {
 
-    const Window window(  "HERION HERO");
+    Window window(  "HERION HERO");
 
     InputProcessor processor;
 
@@ -122,6 +122,21 @@ int main ( int argc, char* argv[] ) {
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
             processor.Process();
+        }
+
+        if ( JSONParser::graphics::Changed() ) {
+
+            window.Resize();
+
+            main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            main_menu.LoadCfg( "configs/menu/main_menu.cfg" );
+
+            settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
+            settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
+
+            pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
+            pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
+
         }
 
         window.SetColor( COLORS::BLACK );

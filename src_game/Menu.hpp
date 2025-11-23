@@ -15,6 +15,7 @@
 #include "Logger.hpp"
 #include "Texture.hpp"
 #include "Button.hpp"
+#include "JSONParser.hpp"
 
 class Menu {
 
@@ -23,6 +24,7 @@ private:
 
 	std::string filepath;
 	const std::string base_path = "../";
+	float scale;
 
 	SDL_FRect background_rect;
 
@@ -37,8 +39,10 @@ private:
 	std::vector< std::string > split( const std::string &str );
 
 	bool CheckCollision( std::vector<SDL_FRect> buttons, float x, float y );
+	void Rescale( SDL_FRect* rect );
 
 public:
+
 	Menu();
 	~Menu();
 

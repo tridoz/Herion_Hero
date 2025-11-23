@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "JSONParser.hpp"
+
 InputProcessor::InputProcessor() {
     this->event = {0};
     this->running = true;
@@ -45,6 +47,16 @@ void InputProcessor::process_key_down(int scancode) {
 
             }
             break;
+
+        case SDL_SCANCODE_P:
+            JSONParser::graphics::IncreaseResolution();
+            break;
+
+        case SDL_SCANCODE_M:
+            JSONParser::graphics::DecreaseResolution();
+            break;
+
+
 
     }
 

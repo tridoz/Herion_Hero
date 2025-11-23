@@ -4,6 +4,8 @@
 
 #include "Window.hpp"
 
+#include "JSONParser.hpp"
+
 Window::Window() {
     this->window = nullptr;
     this->renderer = nullptr;
@@ -37,30 +39,8 @@ Window::Window( const std::string& title) {
     "SDL_INIT_VIDEO successfully initialized"
     );
 
-
-    const SDL_DisplayID displayID = SDL_GetPrimaryDisplay();
-    this->display_mode = SDL_GetCurrentDisplayMode( displayID );
-
-    if ( !this->display_mode ) {
-        Logger::LogErr(
-            std::time(nullptr),
-            "DISPLAY MODE",
-            "Window",
-            "Window",
-            "Error while getting display mode for dimension: " + std::string(SDL_GetError() )
-            );
-    }
-
-    Logger::LogOK(
-        std::time(nullptr),
-        "DISPLAY MODE",
-        "Window",
-        "Window",
-        "Screen dimension retrieved correctly"
-        );
-
-    this->width = this->display_mode->w;
-    this->height = this->display_mode->h;
+    this->width = JSONParser::graphics::GetWidth();
+    this->height = JSONParser::graphics::GetHeight();
 
     this->window = SDL_CreateWindow(title.c_str(), width, height, 0 /*flags*/ );
 
@@ -124,6 +104,19 @@ void Window::SetColor(const COLORS::Color color ) const {
 
 void Window::Present() const {
     SDL_RenderPresent( renderer );
+}
+
+void Window::Resize() {
+
+    this->height = JSONParser::graphics::GetHeight();
+    this->width = JSONParser::graphics::GetWidth();
+
+    SDL_SetWindowSize( this->window, this->width, this->height );
+    SDL_SetWindowPosition( this->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED );
+    SDL_SetRenderViewport( this->renderer, nullptr );
+
+    JSONParser::graphics::ChangesApplied();
+
 }
 
 int Window::GetWidth() const {

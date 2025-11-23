@@ -12,14 +12,15 @@
 //CUSTOM INCLUDES
 #include "Logger.hpp"
 #include "COLORS.hpp"
+#include "JSONParser.hpp"
 
 class Window {
 
 private:
+
     int flags;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    const SDL_DisplayMode* display_mode;
 
     int width, height;
 
@@ -36,9 +37,12 @@ public:
     void Clear() const;
     void SetColor( COLORS::Color ) const;
     void Present() const ;
+    void Resize();
 
     int GetWidth() const;
     int GetHeight() const;
+
+
 
 };
 

@@ -1,9 +1,9 @@
 {
+    "brightness": 1.0,
+    "frame_limit": 60,
+    "fullscreen": false,
     "resolution": {
-        "width" : 3840,
-        "height" : 2160
-    },
-    "fullscreen" : true,
-    "frame_limit" : 60,
-    "brightness" : 1.0
+        "height": 1440,
+        "width": 2560
+    }
 }
