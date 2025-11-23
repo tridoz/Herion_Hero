@@ -208,7 +208,9 @@ void Menu::LoadCfg(const std::string& filepath) {
 }
 
 
+
 void Menu::Draw( SDL_Renderer* renderer ) const {
+
 	SDL_SetTextureBlendMode( texture_manager->GetTexture( this->filepath).GetTexture() , SDL_BLENDMODE_BLEND );
 	SDL_RenderTexture( renderer, texture_manager->GetTexture( this->filepath).GetTexture(), nullptr, &background_rect );
 

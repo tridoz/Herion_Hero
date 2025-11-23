@@ -18,7 +18,7 @@ Window::~Window() {
 
 Window::Window( const std::string& title) {
 
-    this->flags = SDL_WINDOW_FULLSCREEN ;
+    this->flags = SDL_WINDOW_BORDERLESS  ;
 
     if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         Logger::LogErr(
@@ -42,7 +42,7 @@ Window::Window( const std::string& title) {
     this->width = JSONParser::graphics::GetWidth();
     this->height = JSONParser::graphics::GetHeight();
 
-    this->window = SDL_CreateWindow(title.c_str(), width, height, 0 /*flags*/ );
+    this->window = SDL_CreateWindow(title.c_str(), this->width, this->height, this->flags );
 
     if ( !this->window ) {
         Logger::LogErr(
