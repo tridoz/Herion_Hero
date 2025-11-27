@@ -1,0 +1,142 @@
+//
+// Created by david on 18/11/2025.
+//
+
+#include "../hpp/RoomManager.hpp"
+
+RoomManager::RoomManager() {
+    spawn_room = nullptr;
+    CurrentRoom = nullptr;
+}
+
+void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
+
+    std::string room_type_path;
+    switch ( room_type ) {
+        default:
+            room_type_path = "no_texture";
+            break;
+
+        case ANCIENT_RUINS:
+            room_type_path = "ancient_ruins";
+            break;
+
+        case LAVA:
+            room_type_path = "lava";
+            break;
+
+        case ICE:
+            room_type_path = "ice";
+            break;
+
+        case DARK:
+            room_type_path = "dark";
+            break;
+
+        case HOLY:
+            room_type_path = "holy";
+            break;
+
+        case POISON:
+            room_type_path = "poison";
+            break;
+    }
+
+    std::vector<std::vector<Tile*> > tiles;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0, 8);
+
+    const float w = screen_width / horizontal_tiles;
+    const float h = screen_height / vertical_tiles;
+
+    for ( int i = 0 ; i < horizontal_tiles ; i++ ) {
+        std::vector<Tile*> row;
+        for ( int j = 0 ; j < vertical_tiles ; j++ ) {
+            Tile* tile = new Tile();
+
+            int texture_type = dis(gen);
+            std::string texture_path;
+
+            switch ( texture_type ) {
+                default:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_base_floor.png";
+                    break;
+                case 0:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_base_floor.png";
+                    break;
+                case 1:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_1.png";
+                    break;
+                case 2:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_2.png";
+                    break;
+                case 3:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_3.png";
+                    break;
+                case 4:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_4.png";
+                    break;
+                case 5:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_5.png";
+                    break;
+                case 6:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_6.png";
+                    break;
+                case 7:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_7.png";
+                    break;
+                case 8:
+                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_8.png";
+                    break;
+            }
+
+            tile->SetTexture( textureManager->GetTexture(texture_path) );
+            tile->SetRect( i*w , j*h , w, h );
+
+            row.push_back( tile );
+
+        }
+
+        tiles.push_back( row );
+
+    }
+
+    Logger::LogOK(
+        std::time(nullptr),
+        "TILES",
+        "RoomManager",
+        "GenerateSpawnRoom",
+        "All tiles created successfully"
+        );
+
+    spawn_room = new Node();
+    spawn_room->room = new Room();
+    spawn_room->room->SetTiles( tiles );
+
+    CurrentRoom = spawn_room;
+
+    Logger::LogOK(
+        std::time(nullptr),
+        "SETTING",
+        "RoomManager",
+        "GenerateSpawnRoom",
+        "Spawn room generated correctly"
+        );
+}
+
+void RoomManager::DrawCurrentRoom( SDL_Renderer* renderer) const {
+    CurrentRoom->room->Draw( renderer );
+}
+
+
+void RoomManager::SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles) {
+    this->screen_width = screen_width;
+    this->screen_height = screen_height;
+    this->horizontal_tiles = horizontal_tiles;
+    this->vertical_tiles = vertical_tiles;
+}
+
+void RoomManager::SetTextureManager(TextureManager* texture_manager) {
+    this->textureManager = texture_manager;
+}

@@ -1,11 +1,11 @@
-#include "src_game/Window.hpp"
-#include "src_game/Helpers/Logger.hpp"
-#include "src_game/Helpers/InputProcessor.hpp"
-#include "src_game/Textures/TextureManager.hpp"
-#include "src_game/WorldBuilding/RoomManager.hpp"
-#include "src_game/UI/Menu.hpp"
-#include "src_game/Entities/Player.hpp"
-#include "src_game/Helpers/ButtonsFunctions.hpp"
+#include "src_game/UI/hpp/Window.hpp"
+#include "src_game/Utils/hpp/Logger.hpp"
+#include "src_game/Utils/hpp/InputProcessor.hpp"
+#include "src_game/Textures/hpp/TextureManager.hpp"
+#include "src_game/WorldBuilding/hpp/RoomManager.hpp"
+#include "src_game/UI/hpp/Menu.hpp"
+#include "src_game/Entities/hpp/Player.hpp"
+#include "src_game/Utils/hpp/ButtonsFunctions.hpp"
 
 #include <iostream>
 #include <fstream>

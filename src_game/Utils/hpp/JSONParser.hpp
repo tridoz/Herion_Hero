@@ -1,0 +1,88 @@
+//
+// Created by david on 23/11/2025.
+//
+
+#ifndef HERION_HERO_JSONPARSERER_HPP
+#define HERION_HERO_JSONPARSERER_HPP
+
+#include "../../../headers_only_dependencies/json.hpp"
+
+#include <fstream>
+
+#include "Logger.hpp"
+
+namespace JSONParser {
+
+    namespace audio {
+        const std::string json_audio_file_path = "../settings/audio.json";
+
+        void IncreaseMasterVolume();
+        void DecreaseMasterVolume();
+
+        void IncreaseMusicVolume();
+        void DecreaseMusicVolume();
+
+        void IncreaseSFXVolume();
+        void DecreaseSFXVolume();
+
+        void ToggleMute();
+    }
+
+    namespace controls {
+
+    }
+
+    namespace gameplay {
+
+    }
+
+    namespace graphics {
+        const std::string json_graphics_file_path = "../settings/graphics.json";
+        inline bool changed = false;
+
+        const std::vector < std::pair <int, int > > resolutions{
+            { 640, 360},
+            { 854, 480 },
+            { 960, 540 },
+            { 1280, 720 },
+            { 1600, 900 },
+            { 1920, 1080 },
+            { 2560, 1440 },
+            { 3840, 2160 }
+        };
+
+        const std::vector<float> texture_scales{
+            0.25,
+            0.333,
+            0.375,
+            0.5,
+            0.625,
+            0.75,
+            1.0,
+            1.5
+        };
+
+        void IncreaseResolution();
+        void DecreaseResolution();
+
+        int GetWidth();
+        int GetHeight();
+
+        void IncreaseFPSLimit();
+        void DecreaseFPSLimit();
+
+        bool Changed();
+        void ChangesApplied();
+
+        float GetScale();
+
+    }
+
+    namespace ui {
+
+    }
+
+}
+
+
+#endif //HERION_HERO_JSONPARSERER_HPP

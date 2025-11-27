@@ -10,46 +10,43 @@ include_directories("${SDL3_DIR}/include")
 include_directories("${CMAKE_SOURCE_DIR}/BOOST/boost_1_89_0")
 
 file(GLOB SRC_FILES
-        ${CMAKE_SOURCE_DIR}/src_game/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/Utils/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Utils/hpp/*.hpp
 
-        ${CMAKE_SOURCE_DIR}/src_game/Helpers/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/Helpers/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/Entities/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Entities/hpp/*.hpp
 
-        ${CMAKE_SOURCE_DIR}/src_game/Entities/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/Entities/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/Textures/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Textures/hpp/*.hpp
 
-        ${CMAKE_SOURCE_DIR}/src_game/Textures/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/Textures/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/UI/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/UI/hpp/*.hpp
 
-        ${CMAKE_SOURCE_DIR}/src_game/UI/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/UI/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/hpp/*.hpp
 
-        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/*.hpp
-
-        ${CMAKE_SOURCE_DIR}/src_TCP/*.cpp
-        ${CMAKE_SOURCE_DIR}/src_TCP/*.hpp
+        ${CMAKE_SOURCE_DIR}/src_TCP/cpp/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_TCP/hpp/*.hpp
 
         ${CMAKE_SOURCE_DIR}/main.cpp
 )
 
 
 add_executable(Herion_Hero ${SRC_FILES}
-        src_game/Helpers/COLORS.cpp
-        src_game/Helpers/COLORS.hpp
-        src_game/Entities/Player.cpp
-        src_game/Entities/Player.hpp
-        src_game/UI/Menu.cpp
-        src_game/UI/Menu.hpp
-        src_game/UI/Button.cpp
-        src_game/UI/Button.hpp
-        src_game/Helpers/ButtonsFunctions.cpp
-        src_game/Helpers/ButtonsFunctions.hpp
-        src_game/Helpers/JSONParser.cpp
-        src_game/Helpers/JSONParser.hpp
-        src_TCP/TcpClient.cpp
-        src_TCP/TcpClient.hpp
+        src_game/Utils/cpp/COLORS.cpp
+        src_game/Utils/hpp/COLORS.hpp
+        src_game/Entities/cpp/Player.cpp
+        src_game/Entities/hpp/Player.hpp
+        src_game/UI/cpp/Menu.cpp
+        src_game/UI/hpp/Menu.hpp
+        src_game/UI/cpp/Button.cpp
+        src_game/UI/hpp/Button.hpp
+        src_game/Utils/cpp/ButtonsFunctions.cpp
+        src_game/Utils/hpp/ButtonsFunctions.hpp
+        src_game/Utils/cpp/JSONParser.cpp
+        src_game/Utils/hpp/JSONParser.hpp
+        src_TCP/cpp/TcpClient.cpp
+        src_TCP/hpp/TcpClient.hpp
 )
 
 if(WIN32)
