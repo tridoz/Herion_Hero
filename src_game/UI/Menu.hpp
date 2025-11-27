@@ -10,12 +10,12 @@
 
 
 
-#include "TextureManager.hpp"
-#include "ButtonsFunctions.hpp"
-#include "Logger.hpp"
-#include "Texture.hpp"
+#include "../Textures/TextureManager.hpp"
+#include "../Helpers/ButtonsFunctions.hpp"
+#include "../Helpers/Logger.hpp"
+#include "../Textures/Texture.hpp"
 #include "Button.hpp"
-#include "JSONParser.hpp"
+#include "../Helpers/JSONParser.hpp"
 
 class Menu {
 

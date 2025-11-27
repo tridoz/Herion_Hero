@@ -1,11 +1,11 @@
 #include "src_game/Window.hpp"
-#include "src_game/Logger.hpp"
-#include "src_game/InputProcessor.hpp"
-#include "src_game/TextureManager.hpp"
-#include "src_game/RoomManager.hpp"
-#include "src_game/Menu.hpp"
-#include "src_game/Player.hpp"
-#include "src_game/ButtonsFunctions.hpp"
+#include "src_game/Helpers/Logger.hpp"
+#include "src_game/Helpers/InputProcessor.hpp"
+#include "src_game/Textures/TextureManager.hpp"
+#include "src_game/WorldBuilding/RoomManager.hpp"
+#include "src_game/UI/Menu.hpp"
+#include "src_game/Entities/Player.hpp"
+#include "src_game/Helpers/ButtonsFunctions.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -19,7 +19,8 @@
 #endif
 
 int LoadEnv() {
-     std::string base_path = "../";
+
+    std::string base_path = "../";
     std::string path =  ".env";
 
     std::ifstream file(base_path + path);
@@ -70,6 +71,17 @@ int LoadEnv() {
 }
 
 int main ( int argc, char* argv[] ) {
+
+    LoadEnv();
+
+    // Logger::EnableHTTPLogging();
+    // Logger::EnableFileLogging();
+
+    Logger::EnableCoutLogging();
+
+    auto& client = TcpClient::GetInstance();
+    client.Init();
+    client.ConnectAll( std::getenv("SERVER_IP") );
 
     Window window(  "HERION HERO");
 

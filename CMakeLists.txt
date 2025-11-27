@@ -12,23 +12,44 @@ include_directories("${CMAKE_SOURCE_DIR}/BOOST/boost_1_89_0")
 file(GLOB SRC_FILES
         ${CMAKE_SOURCE_DIR}/src_game/*.cpp
         ${CMAKE_SOURCE_DIR}/src_game/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_game/Helpers/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Helpers/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_game/Entities/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Entities/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_game/Textures/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/Textures/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_game/UI/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/UI/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/*.hpp
+
+        ${CMAKE_SOURCE_DIR}/src_TCP/*.cpp
+        ${CMAKE_SOURCE_DIR}/src_TCP/*.hpp
+
         ${CMAKE_SOURCE_DIR}/main.cpp
 )
 
 
 add_executable(Herion_Hero ${SRC_FILES}
-        src_game/COLORS.cpp
-        src_game/COLORS.hpp
-        src_game/Player.cpp
-        src_game/Player.hpp
-        src_game/Menu.cpp
-        src_game/Menu.hpp
-        src_game/Button.cpp
-        src_game/Button.hpp
-        src_game/ButtonsFunctions.cpp
-        src_game/ButtonsFunctions.hpp
-        src_game/JSONParser.cpp
-        src_game/JSONParser.hpp
+        src_game/Helpers/COLORS.cpp
+        src_game/Helpers/COLORS.hpp
+        src_game/Entities/Player.cpp
+        src_game/Entities/Player.hpp
+        src_game/UI/Menu.cpp
+        src_game/UI/Menu.hpp
+        src_game/UI/Button.cpp
+        src_game/UI/Button.hpp
+        src_game/Helpers/ButtonsFunctions.cpp
+        src_game/Helpers/ButtonsFunctions.hpp
+        src_game/Helpers/JSONParser.cpp
+        src_game/Helpers/JSONParser.hpp
+        src_TCP/TcpClient.cpp
+        src_TCP/TcpClient.hpp
 )
 
 if(WIN32)

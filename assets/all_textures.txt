@@ -135,5 +135,15 @@ assets/font/uppercase_letters/X.png
 assets/font/uppercase_letters/Y.png
 assets/font/uppercase_letters/Z.png
 
+assets/font/numbers/0.png
+assets/font/numbers/1.png
+assets/font/numbers/2.png
+assets/font/numbers/3.png
+assets/font/numbers/4.png
+assets/font/numbers/5.png
+assets/font/numbers/6.png
+assets/font/numbers/7.png
+assets/font/numbers/8.png
+assets/font/numbers/9.png
 
 

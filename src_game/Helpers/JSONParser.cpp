@@ -408,6 +408,7 @@ void JSONParser::audio::ToggleMute() {
 
 }
 
+//GRAPHICS
 void JSONParser::graphics::IncreaseResolution() {
 
     std::ifstream graphics_file( json_graphics_file_path, std::ios::in );
@@ -652,6 +653,119 @@ float JSONParser::graphics::GetScale() {
     }
 
     return texture_scales[index];
+
+}
+
+void JSONParser::graphics::IncreaseFPSLimit() {
+    std::ifstream graphics_file( json_graphics_file_path, std::ios::in );
+    if ( !graphics_file.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::graphics",
+            "IncreaseFPSLimit",
+            "Error while opening file [" + json_graphics_file_path + "] for input : " + strerror( errno )
+            );
+        return;
+    }
+
+    //need logging;
+    nlohmann::json json_graphics;
+    graphics_file >> json_graphics;
+
+    int fps_limit = 0;
+
+    if ( json_graphics.contains("fps_limit") ) {
+        fps_limit = json_graphics["fps_limit"].get<int>();
+    } else {
+        Logger::LogErr(
+            std::time(nullptr),
+            "PARSING",
+            "JSONParser::graphics",
+            "IncreaseFPSLimit",
+            "Error while parsing file [" + json_graphics_file_path + "] for output : fps_limit doesn't exist"
+            );
+        return;
+    }
+
+    fps_limit++;
+
+    json_graphics["fps_limit"] = fps_limit;
+
+    std::ofstream graphics_file_output (json_graphics_file_path, std::ios::out );
+
+    if ( !graphics_file_output.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::graphics",
+            "IncreaseFPSLimit",
+            "Error while opening file [" + json_graphics_file_path + "] for output : " + strerror( errno  )
+            );
+        return;
+    }
+
+    graphics_file_output << json_graphics.dump(4);
+    graphics_file_output.close();
+    graphics_file.close();
+
+}
+
+void JSONParser::graphics::DecreaseFPSLimit() {
+    std::ifstream graphics_file( json_graphics_file_path, std::ios::in );
+    if ( !graphics_file.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::graphics",
+            "DecreaseFPSLimit",
+            "Error while opening file [" + json_graphics_file_path + "] for input : " + strerror( errno )
+            );
+        return;
+    }
+
+    //need logging;
+    nlohmann::json json_graphics;
+    graphics_file >> json_graphics;
+
+    int fps_limit = 0;
+
+    if ( json_graphics.contains("fps_limit") ) {
+        fps_limit = json_graphics["fps_limit"].get<int>();
+    } else {
+        Logger::LogErr(
+            std::time(nullptr),
+            "PARSING",
+            "JSONParser::graphics",
+            "DecreaseFPSLimit",
+            "Error while parsing file [" + json_graphics_file_path + "] for output : fps_limit doesn't exist"
+            );
+        return;
+    }
+
+    fps_limit--;
+    if ( fps_limit < 1 ) {
+        fps_limit = 1;
+    }
+
+    json_graphics["fps_limit"] = fps_limit;
+
+    std::ofstream graphics_file_output (json_graphics_file_path, std::ios::out );
+
+    if ( !graphics_file_output.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::graphics",
+            "DecreaseFPSLimit",
+            "Error while opening file [" + json_graphics_file_path + "] for output : " + strerror( errno  )
+            );
+        return;
+    }
+
+    graphics_file_output << json_graphics.dump(4);
+    graphics_file_output.close();
+    graphics_file.close();
 
 }
 

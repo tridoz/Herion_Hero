@@ -4,7 +4,7 @@
 
 #include "Window.hpp"
 
-#include "JSONParser.hpp"
+#include "Helpers/JSONParser.hpp"
 
 Window::Window() {
     this->window = nullptr;
@@ -18,7 +18,7 @@ Window::~Window() {
 
 Window::Window( const std::string& title) {
 
-    this->flags = SDL_WINDOW_BORDERLESS  ;
+    this->flags = 0  ;
 
     if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         Logger::LogErr(
@@ -62,6 +62,7 @@ Window::Window( const std::string& title) {
         "Window",
         "SDL_Window successfully created"
         );
+    SDL_SetWindowPosition( this->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED );
 
     this->renderer = SDL_CreateRenderer(this->window, "opengl" );
     if ( !this->renderer ) {

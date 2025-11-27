@@ -4,8 +4,8 @@
 
 #include "Menu.hpp"
 
-#include "JSONParser.hpp"
-#include "TextureManager.hpp"
+#include "../Helpers/JSONParser.hpp"
+#include "../Textures/TextureManager.hpp"
 
 Menu::Menu() {
 	buttons_functions.clear();
@@ -106,6 +106,7 @@ void Menu::LoadCfg(const std::string& filepath) {
             current_y = start_y;
 
         } else if (tokens.size() == 4 && tokens[0] == "BUTTON") {
+
             try {
                 Button* btn = new Button();
                 std::string text = tokens[2];
@@ -130,21 +131,28 @@ void Menu::LoadCfg(const std::string& filepath) {
 
                 // Ciclo caratteri
                 for (char c : text) {
+
                     Texture character;
                     float x_offset, y_offset, width_offset, height_offset;
 
-                    if (isupper(c)) {
+                    if ( std::isupper(c) ) {
                         character = texture_manager->GetTexture("assets/font/uppercase_letters/" + std::string(1, c) + ".png");
                         x_offset = 2 * scale;
                         y_offset = 36 * scale;
                         width_offset = -2 * scale;
                         height_offset = -72 * scale;
-                    } else {
+                    } else if ( std::islower(c) ){
                         character = texture_manager->GetTexture("assets/font/lowercase_letters/" + std::string(1, c) + ".png");
                         x_offset = 4 * scale;
                         y_offset = 44 * scale;
                         width_offset = -4 * scale;
                         height_offset = -80 * scale;
+                    } else if ( std::isdigit(c) ) {
+                    	character = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
+                    	x_offset = 2 * scale;
+                    	y_offset = 36 * scale;
+                    	width_offset = -2 * scale;
+                    	height_offset = -72 * scale;
                     }
 
                     SDL_GetTextureSize(character.GetTexture(), &t_w, &t_h);

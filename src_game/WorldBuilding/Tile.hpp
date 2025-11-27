@@ -4,8 +4,8 @@
 
 #include <SDL3/SDL.h>
 
-#include "Texture.hpp"
-#include "Logger.hpp"
+#include "../Textures/Texture.hpp"
+#include "../Helpers/Logger.hpp"
 class Tile {
 private:
     Texture texture;

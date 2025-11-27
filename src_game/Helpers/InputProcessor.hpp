@@ -10,8 +10,8 @@
 #include <unordered_map>
 #include <string>
 
-#include "Player.hpp"
-#include "Menu.hpp"
+#include "../Entities/Player.hpp"
+#include "../UI/Menu.hpp"
 
 #define MAX_SCANCODES 512
 

@@ -10,9 +10,9 @@
 
 
 //CUSTOM INCLUDES
-#include "Logger.hpp"
-#include "COLORS.hpp"
-#include "JSONParser.hpp"
+#include "Helpers/Logger.hpp"
+#include "Helpers/COLORS.hpp"
+#include "Helpers/JSONParser.hpp"
 
 class Window {
 

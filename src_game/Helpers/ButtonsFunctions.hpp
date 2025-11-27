@@ -5,7 +5,7 @@
 #ifndef HERION_HERO_BUTTONSFUNCTIONS_HPP
 #define HERION_HERO_BUTTONSFUNCTIONS_HPP
 
-#include "Player.hpp"
+#include "../Entities/Player.hpp"
 
 
 class ButtonsFunctions {
@@ -21,8 +21,7 @@ public:
     static void OpenSettings();
     static void CloseSettings();
     static void ReturnPreviousState();
-
-
+    
     //GRAPHICS SETTINGS
     static void IncreaseResolution();
     static void DecreaseResolution();

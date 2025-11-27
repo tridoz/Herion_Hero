@@ -5,7 +5,7 @@
 #ifndef HERION_HERO_JSONPARSERER_HPP
 #define HERION_HERO_JSONPARSERER_HPP
 
-#include "../headers_only_dependencies/json.hpp"
+#include "../../headers_only_dependencies/json.hpp"
 
 #include <fstream>
 
@@ -67,6 +67,9 @@ namespace JSONParser {
 
         int GetWidth();
         int GetHeight();
+
+        void IncreaseFPSLimit();
+        void DecreaseFPSLimit();
 
         bool Changed();
         void ChangesApplied();

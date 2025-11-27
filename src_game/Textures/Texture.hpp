@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cmath>
 
-#include "Logger.hpp"
+#include "../Helpers/Logger.hpp"
 
 
 class Texture {
