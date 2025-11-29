@@ -24,8 +24,7 @@ bool TcpClient::Init() {
 bool TcpClient::ConnectAll(const std::string& ip) {
     // chiudi socket già aperti
     CloseAll();
-    std::cout << ip << std::endl;
-    // esempio: lista di nomi di porte da cercare nel .env
+
     const std::string portNames[] = {
         "LOG_PORT",
     };
@@ -34,7 +33,13 @@ bool TcpClient::ConnectAll(const std::string& ip) {
 
         const char* portStr = std::getenv(name.c_str());
         if (!portStr) {
-            std::cerr << "Env var not found: " << name << "\n";
+            Logger::LogErr(
+                std::time(nullptr),
+                "ENVS",
+                "TcpClient",
+                "ConnectAll",
+                "Failed to get env key = " + name
+                );
             continue;
         }
 
@@ -52,6 +57,7 @@ bool TcpClient::ConnectAll(const std::string& ip) {
         sockaddr_in addr{};
         addr.sin_family = AF_INET;
         addr.sin_port = htons(port);
+
 #ifdef _WIN32
         InetPtonA(AF_INET, ip.c_str(), &addr.sin_addr);
 #else
@@ -59,12 +65,20 @@ bool TcpClient::ConnectAll(const std::string& ip) {
 #endif
 
         if (connect(sock, (sockaddr*)&addr, sizeof(addr)) != 0) {
+
 #ifdef _WIN32
             closesocket(sock);
 #else
             close(sock);
 #endif
-            std::cerr << "Failed to connect to " << name << " on port " << port << " : " << strerror( errno)<< "\n";
+
+            Logger::LogErr(
+                std::time(nullptr),
+                "CONNECTION",
+                "TcpClient",
+                "ConnectAll",
+                "Failed to connect to " + name + " on port " + std::to_string(port) + " : " + strerror( errno)
+                );
             continue;
         }
 

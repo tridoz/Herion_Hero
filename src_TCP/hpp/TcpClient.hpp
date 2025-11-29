@@ -14,6 +14,8 @@ using SocketType = SOCKET;
 using SocketType = int;
 #endif
 
+#include "../../src_game/Utils/hpp/Logger.hpp"
+
 class TcpClient {
 
 public:

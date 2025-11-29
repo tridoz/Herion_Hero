@@ -9,11 +9,17 @@ Room::Room() {}
 Room::~Room() {
 
     for ( std::vector<Tile*> & tile_row : tiles) {
-        tile_row.clear();
+        for (const Tile* tile : tile_row) {
+            delete tile;
+        }
     }
 
     tiles.clear();
 
+}
+
+std::vector< std::vector<Tile* > > Room::GetTiles() {
+    return this->tiles;
 }
 
 void Room::Draw(SDL_Renderer* renderer) {

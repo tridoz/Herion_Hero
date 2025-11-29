@@ -19,6 +19,8 @@ public:
     Room();
     ~Room();
 
+    std::vector< std::vector< Tile * > > GetTiles();
+
     void SetTiles(std::vector< std::vector<Tile*> > tiles);
     void Draw( SDL_Renderer* renderer );
 

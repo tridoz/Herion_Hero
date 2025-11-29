@@ -16,7 +16,13 @@ Menu::Menu() {
 	buttons_functions.emplace( "RETURN_PREVIOUS_GAME_MODE", ButtonsFunctions::ReturnPreviousState );
 }
 
-Menu::~Menu() {}
+Menu::~Menu() {
+
+	for ( auto button : buttons ) {
+		delete button.second;
+	}
+
+}
 
 void Menu::SetDimension(float w, float h) {
 	background_rect = { 0, 0, w, h };

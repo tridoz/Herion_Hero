@@ -23,6 +23,9 @@ private:
 public:
 
     TextureManager();
+
+    ~TextureManager();
+
     void LoadTextures( const std::string& filepath );
     void SetRenderer( SDL_Renderer* renderer ) ;
     Texture GetTexture( const std::string& texture_name );

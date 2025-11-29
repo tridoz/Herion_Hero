@@ -74,10 +74,9 @@ int main ( int argc, char* argv[] ) {
 
     LoadEnv();
 
-    // Logger::EnableHTTPLogging();
+     Logger::EnableHTTPLogging();
     // Logger::EnableFileLogging();
-
-    Logger::EnableCoutLogging();
+    // Logger::EnableCoutLogging();
 
     auto& client = TcpClient::GetInstance();
     client.Init();
@@ -138,6 +137,7 @@ int main ( int argc, char* argv[] ) {
 
         if ( JSONParser::graphics::Changed() ) {
 
+
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
@@ -148,6 +148,8 @@ int main ( int argc, char* argv[] ) {
 
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
             pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
+
+            room_manager.ResizeRoom();
 
         }
 

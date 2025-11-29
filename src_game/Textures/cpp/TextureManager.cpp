@@ -9,6 +9,12 @@ TextureManager::TextureManager()  {
     textures.clear();
 }
 
+TextureManager::~TextureManager() {
+    for ( auto pair : textures ) {
+        SDL_DestroyTexture( pair.second.GetTexture() );
+    }
+}
+
 void TextureManager::SetRenderer(SDL_Renderer* renderer)  {
     this->renderer = renderer;
 }

@@ -42,13 +42,14 @@ void Logger::LogOK( const std::time_t log_time, const std::string& type, const s
     const std::string time = FormatTime(log_time);
     const std::string ok_type = MakeGreen( type );
 
-    const std::string final_log_message =
+    std::string final_log_message =
         "[ " + ok_type + " ] { " + time + "} => " + class_name + "::" + function_name + "\n" +
-        log_message + "\n<end>\n";
+        log_message + "\n";
 
 
     if ( http_logging_enabled ) {
         auto& client = TcpClient::GetInstance();
+        final_log_message += "\n<end>\n";
         client.Send( "LOG_PORT", final_log_message);
     }
 

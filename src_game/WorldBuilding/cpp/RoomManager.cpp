@@ -4,7 +4,35 @@
 
 #include "../hpp/RoomManager.hpp"
 
+#include <set>
+
+#include "../../Utils/hpp/JSONParser.hpp"
+
 RoomManager::RoomManager() {
+    spawn_room = nullptr;
+    CurrentRoom = nullptr;
+}
+
+RoomManager::~RoomManager() {
+    if (!spawn_room) return;
+
+    std::set<Node*> visited;
+
+    std::function<void(Node*)> FreeNode = [&](Node* node) {
+        if (!node || visited.count(node)) return;
+        visited.insert(node);
+
+        FreeNode(node->left);
+        FreeNode(node->right);
+        FreeNode(node->up);
+        FreeNode(node->down);
+
+        delete node->room;
+        delete node;
+    };
+
+    FreeNode(spawn_room);
+
     spawn_room = nullptr;
     CurrentRoom = nullptr;
 }
@@ -47,12 +75,15 @@ void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0, 8);
 
-    const float w = screen_width / horizontal_tiles;
-    const float h = screen_height / vertical_tiles;
+    const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
+    const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
 
     for ( int i = 0 ; i < horizontal_tiles ; i++ ) {
+
         std::vector<Tile*> row;
+
         for ( int j = 0 ; j < vertical_tiles ; j++ ) {
+
             Tile* tile = new Tile();
 
             int texture_type = dis(gen);
@@ -123,6 +154,22 @@ void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
         "GenerateSpawnRoom",
         "Spawn room generated correctly"
         );
+}
+
+void RoomManager::ResizeRoom() {
+    std::vector < std::vector< Tile* > > tiles = this->CurrentRoom->room->GetTiles();
+    for ( int i = 0 ; i < tiles.size() ; i++ ) {
+        for ( int j = 0 ; j < tiles[i].size() ; j++ ) {
+            float newX, newY, newW, newH;
+
+            newW = JSONParser::graphics::GetWidth() / horizontal_tiles;
+            newH = JSONParser::graphics::GetHeight() / vertical_tiles;
+
+
+            tiles[i][j] -> SetRect( i*newW, j*newH, newW, newH  );
+
+        }
+    }
 }
 
 void RoomManager::DrawCurrentRoom( SDL_Renderer* renderer) const {

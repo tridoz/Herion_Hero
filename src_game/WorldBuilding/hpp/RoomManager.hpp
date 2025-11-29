@@ -47,9 +47,14 @@ public:
 
     RoomManager();
 
+    ~RoomManager();
+
     void SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles);
     void SetTextureManager(TextureManager* texture_manager);
     void GenerateSpawnRoom( ROOM_TYPE room_type);
+
+    void ResizeRoom();
+
     void DrawCurrentRoom( SDL_Renderer* renderer) const;
 
 };
