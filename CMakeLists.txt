@@ -47,6 +47,8 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/hpp/JSONParser.hpp
         src_TCP/cpp/TcpClient.cpp
         src_TCP/hpp/TcpClient.hpp
+        src_game/Utils/cpp/Animation.cpp
+        src_game/Utils/hpp/Animation.hpp
 )
 
 if(WIN32)

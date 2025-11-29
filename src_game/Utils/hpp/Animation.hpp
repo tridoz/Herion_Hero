@@ -1,0 +1,38 @@
+//
+// Created by trida on 11/29/25.
+//
+
+#ifndef HERION_HERO_ANIMATION_HPP
+#define HERION_HERO_ANIMATION_HPP
+
+#include <vector>
+
+#include "../../Textures/hpp/Texture.hpp"
+
+class Animation {
+private:
+
+	std::vector< SDL_FRect* > animation_rects;
+	std::vector < Texture* > animation_textures;
+
+	int frame_rate;
+	int current_animation_frame;
+	float how_often_frame_update;
+	float frame_duration;
+
+public:
+	Animation();
+
+	void AddFrameTexture( Texture* new_texture );
+	void AddFrameRect( SDL_FRect* new_rect );
+
+	SDL_FRect* GetCurrentFrameRect() const;
+	Texture* GetCurrentFrameTexture() const;
+
+	void Update();
+	void SetFrameRate( int new_frame_rate );
+
+};
+
+
+#endif //HERION_HERO_ANIMATION_HPP
