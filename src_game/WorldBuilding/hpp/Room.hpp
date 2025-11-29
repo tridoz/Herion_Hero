@@ -21,7 +21,7 @@ public:
 
     std::vector< std::vector< Tile * > > GetTiles();
 
-    void SetTiles(std::vector< std::vector<Tile*> > tiles);
+    void SetTiles(const std::vector< std::vector<Tile*> > &new_tiles);
     void Draw( SDL_Renderer* renderer );
 
 };

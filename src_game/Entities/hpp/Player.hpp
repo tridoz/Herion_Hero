@@ -35,8 +35,8 @@ public:
 	PlayerState GetPreviousState() const;
 	GameMode GetPreviousGameMode() const;
 
-	void SetGameMode( GameMode mode );
-	void SetPlayerState( PlayerState state );
+	void SetGameMode( GameMode new_game_mode );
+	void SetPlayerState( PlayerState new_player_state );
 
 private:
 

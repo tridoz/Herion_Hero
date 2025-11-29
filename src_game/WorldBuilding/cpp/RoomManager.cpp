@@ -10,7 +10,7 @@
 
 RoomManager::RoomManager() {
     spawn_room = nullptr;
-    CurrentRoom = nullptr;
+    current_room = nullptr;
 }
 
 RoomManager::~RoomManager() {
@@ -34,12 +34,13 @@ RoomManager::~RoomManager() {
     FreeNode(spawn_room);
 
     spawn_room = nullptr;
-    CurrentRoom = nullptr;
+    current_room = nullptr;
 }
 
-void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
+void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
     std::string room_type_path;
+
     switch ( room_type ) {
         default:
             room_type_path = "no_texture";
@@ -141,11 +142,38 @@ void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
         "All tiles created successfully"
         );
 
-    spawn_room = new Node();
-    spawn_room->room = new Room();
-    spawn_room->room->SetTiles( tiles );
+    Node* newRoom = new Node();
+    newRoom->room = new Room();
+    newRoom->room->SetTiles( tiles );
 
-    CurrentRoom = spawn_room;
+    if ( spawn_room == nullptr ) {
+        spawn_room = newRoom;
+        current_room = spawn_room;
+    }else {
+        switch ( dir ) {
+            case DIR_UP:
+                current_room -> up = newRoom;
+                current_room -> up -> down = current_room;
+                break;
+
+            case DIR_LEFT:
+                current_room -> left = newRoom;
+                current_room -> left -> right = current_room;
+                break;
+
+            case DIR_DOWN:
+                current_room -> down = newRoom;
+                current_room -> down -> up = current_room;
+                break;
+
+            case DIR_RIGHT:
+                current_room -> right = newRoom;
+                current_room -> right -> left = current_room;
+                break;
+
+        }
+
+    }
 
     Logger::LogOK(
         std::time(nullptr),
@@ -156,8 +184,42 @@ void RoomManager::GenerateSpawnRoom( ROOM_TYPE room_type ) {
         );
 }
 
+void RoomManager::GoLeft() {
+
+    if ( current_room->left == nullptr ) {
+        GenerateRoom( ICE, DIR_LEFT );
+    }
+
+    current_room = current_room->left;
+}
+
+void RoomManager::GoRight() {
+    if ( current_room->right == nullptr ) {
+        GenerateRoom( ICE, DIR_RIGHT );
+    }
+
+    current_room = current_room->right;
+}
+
+void RoomManager::GoUp() {
+
+    if ( current_room->up == nullptr ) {
+        GenerateRoom( ICE, DIR_UP );
+    }
+
+    current_room = current_room->up;
+}
+
+void RoomManager::GoDown() {
+    if ( current_room->down == nullptr ) {
+        GenerateRoom( ICE, DIR_DOWN );
+    }
+
+    current_room = current_room->down;
+}
+
 void RoomManager::ResizeRoom() {
-    std::vector < std::vector< Tile* > > tiles = this->CurrentRoom->room->GetTiles();
+    std::vector < std::vector< Tile* > > tiles = this->current_room->room->GetTiles();
     for ( int i = 0 ; i < tiles.size() ; i++ ) {
         for ( int j = 0 ; j < tiles[i].size() ; j++ ) {
             float newX, newY, newW, newH;
@@ -173,7 +235,7 @@ void RoomManager::ResizeRoom() {
 }
 
 void RoomManager::DrawCurrentRoom( SDL_Renderer* renderer) const {
-    CurrentRoom->room->Draw( renderer );
+    current_room->room->Draw( renderer );
 }
 
 

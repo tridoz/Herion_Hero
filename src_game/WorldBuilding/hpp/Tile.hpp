@@ -17,7 +17,7 @@ public:
     Tile();
     ~Tile();
 
-    void SetTexture( const Texture& texture );
+    void SetTexture( const Texture& new_texture );
     void SetRect( float x, float y, float w, float h );
     void Draw( SDL_Renderer* renderer ) const;
     SDL_FRect* GetRect();

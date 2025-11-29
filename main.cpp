@@ -105,8 +105,8 @@ int main ( int argc, char* argv[] ) {
     texture_manager.LoadTextures("assets/all_textures.txt");
 
     room_manager.SetTextureManager( &texture_manager );
-    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
-    room_manager.GenerateSpawnRoom( room_manager.ICE ) ;
+    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 4, 4 );
+    room_manager.GenerateRoom( room_manager.ICE, RoomManager::DIR_NONE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");
@@ -123,8 +123,8 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
     processor.SetMenus("PAUSE_MENU", &pause_menu );
-
     processor.SetPlayer( &player );
+    processor.SetRoomManager( &room_manager );
 
     SDL_Event event;
 

@@ -11,6 +11,7 @@
 #include <string>
 
 #include "../../Entities/hpp/Player.hpp"
+#include "../../WorldBuilding/hpp/RoomManager.hpp"
 #include "../../UI/hpp/Menu.hpp"
 
 #define MAX_SCANCODES 512
@@ -18,7 +19,7 @@
 class InputProcessor {
 private:
     Player* player;
-
+    RoomManager* room_manager;
 
     SDL_Event event{};
     bool keys[ MAX_SCANCODES ] = { false };
@@ -50,6 +51,8 @@ public:
     [[nodiscard]] bool isMouseRightPressed() const;
 
     void SetPlayer( Player* player );
+    void SetRoomManager( RoomManager* room_manager );
+
     void SetMenus( std::string name, Menu* menu );
 
 

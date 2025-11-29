@@ -51,8 +51,12 @@ public:
         );
 
     static void EnableHTTPLogging();
-    static void EnableCoutLogging();
-    static void EnableFileLogging();
+    static void EnableSTDOUTLogging();
+    static void EnableFILELogging();
+
+    static void DisableHTTPLogging();
+    static void DisableSTDOUTLogging();
+    static void DisableFILELogging();
 
 };
 

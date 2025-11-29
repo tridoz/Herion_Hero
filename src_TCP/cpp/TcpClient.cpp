@@ -33,6 +33,10 @@ bool TcpClient::ConnectAll(const std::string& ip) {
 
         const char* portStr = std::getenv(name.c_str());
         if (!portStr) {
+            Logger::DisableHTTPLogging();
+            Logger::EnableSTDOUTLogging();
+            Logger::EnableFILELogging();
+
             Logger::LogErr(
                 std::time(nullptr),
                 "ENVS",
@@ -43,7 +47,7 @@ bool TcpClient::ConnectAll(const std::string& ip) {
             continue;
         }
 
-        int port = std::stoi(portStr);
+        const uint16_t port = std::stoi(portStr);
 
         SocketType sock;
 #ifdef _WIN32
@@ -64,13 +68,16 @@ bool TcpClient::ConnectAll(const std::string& ip) {
         inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 #endif
 
-        if (connect(sock, (sockaddr*)&addr, sizeof(addr)) != 0) {
+        if (connect(sock, reinterpret_cast<sockaddr *>(&addr), sizeof(addr)) != 0) {
 
 #ifdef _WIN32
             closesocket(sock);
 #else
             close(sock);
 #endif
+            Logger::DisableHTTPLogging();
+            Logger::EnableSTDOUTLogging();
+            Logger::EnableFILELogging();
 
             Logger::LogErr(
                 std::time(nullptr),
@@ -101,11 +108,11 @@ void TcpClient::Send(const std::string& portName, const std::string& data) {
 #endif
 }
 
-int TcpClient::Receive(const std::string& portName, char* buffer, int size) {
+int TcpClient::Receive(const std::string& portName, char* buffer, const int buffer_size) {
     auto it = sockets.find(portName);
     if (it == sockets.end()) return -1;
 
-    return recv(it->second, buffer, size, 0);
+    return recv(it->second, buffer, buffer_size, 0);
 }
 
 void TcpClient::CloseAll() {

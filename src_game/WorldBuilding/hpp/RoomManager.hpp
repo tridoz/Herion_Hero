@@ -19,15 +19,16 @@ private:
     TextureManager *textureManager;
 
     typedef struct Node{
-        Room* room;
+        Room* room = nullptr;
         Node *left = nullptr;
         Node *right = nullptr;
         Node *up = nullptr;
         Node *down = nullptr;
     }Node;
 
+
     Node* spawn_room;
-    Node* CurrentRoom;
+    Node* current_room;
 
     int screen_width;
     int screen_height;
@@ -45,13 +46,30 @@ public:
         POISON
     }ROOM_TYPE;
 
+    typedef enum {
+        DIR_NONE,
+        DIR_UP,
+        DIR_LEFT,
+        DIR_DOWN,
+        DIR_RIGHT
+
+    }Direction;
+
     RoomManager();
 
     ~RoomManager();
 
     void SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles);
     void SetTextureManager(TextureManager* texture_manager);
-    void GenerateSpawnRoom( ROOM_TYPE room_type);
+    void GenerateRoom( ROOM_TYPE room_type, Direction dir );
+
+    void GoLeft();
+
+    void GoRight();
+
+    void GoUp();
+
+    void GoDown();
 
     void ResizeRoom();
 

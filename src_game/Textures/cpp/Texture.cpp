@@ -19,8 +19,8 @@ Texture::~Texture() {
 }
 
 
-void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_name ) {
-    this->texture_name = base_path + texture_name;
+void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_to_create_name ) {
+    this->texture_name = base_path + texture_to_create_name;
 
     this->texture = IMG_LoadTexture( renderer, this->texture_name.c_str() );
 

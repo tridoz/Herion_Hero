@@ -32,8 +32,9 @@ void Room::Draw(SDL_Renderer* renderer) {
 
 }
 
-void Room::SetTiles(std::vector<std::vector<Tile*>> tiles) {
-    this->tiles = tiles;
+void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
+
+    this->tiles = new_tiles;
     Logger::LogOK(
         std::time(nullptr),
         "SETTING",

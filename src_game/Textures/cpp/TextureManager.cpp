@@ -15,8 +15,8 @@ TextureManager::~TextureManager() {
     }
 }
 
-void TextureManager::SetRenderer(SDL_Renderer* renderer)  {
-    this->renderer = renderer;
+void TextureManager::SetRenderer( SDL_Renderer* new_renderer )  {
+    this->renderer = new_renderer;
 }
 
 void TextureManager::LoadTextures( const std::string& filepath ) {

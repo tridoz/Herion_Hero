@@ -31,12 +31,12 @@ Player::GameMode Player::GetPreviousGameMode() const {
 	return previousGameMode;
 }
 
-void Player::SetPlayerState( PlayerState state ) {
-	this->previousState = state;
-	this->state = state;
+void Player::SetPlayerState( const PlayerState new_player_state ) {
+	this->previousState = new_player_state;
+	this->state = new_player_state;
 }
 
-void Player::SetGameMode( GameMode mode ) {
+void Player::SetGameMode( const GameMode new_game_mode ) {
 	this->previousGameMode = this->mode;
-	this->mode = mode;
+	this->mode = new_game_mode;
 }

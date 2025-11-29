@@ -14,8 +14,8 @@ Tile::~Tile() {
     rect = {0,0,0,0 };
 }
 
-void Tile::SetTexture(const Texture& texture) {
-    this->texture = texture;
+void Tile::SetTexture(const Texture& new_texture) {
+    this->texture = new_texture;
 }
 
 SDL_FRect* Tile::GetRect() {

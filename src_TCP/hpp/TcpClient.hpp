@@ -24,7 +24,7 @@ public:
 	bool Init();
 	bool ConnectAll(const std::string& ip);       // apre tutte le socket sulle porte dal .env
 	void Send(const std::string& portName, const std::string& data);
-	int Receive(const std::string& portName, char* buffer, int size);
+	int Receive(const std::string &portName, char *buffer, int buffer_size);
 	void CloseAll();
 
 private:

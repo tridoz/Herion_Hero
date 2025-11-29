@@ -23,9 +23,10 @@ public:
     Texture();
     ~Texture();
 
-    void CreateTexture( SDL_Renderer* renderer, const std::string& texture_name );
+    void CreateTexture( SDL_Renderer* renderer, const std::string& texture_to_create_name );
+
     [[nodiscard]] bool TextureCreated() const;
-    std::string GetTextureName() const;
+    [[nodiscard]] std::string GetTextureName() const;
 
     void operator=(const Texture& other);
 

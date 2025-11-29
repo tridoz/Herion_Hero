@@ -3,7 +3,7 @@
     "frame_limit": 60,
     "fullscreen": false,
     "resolution": {
-        "height": 1440,
-        "width": 2560
+        "height": 540,
+        "width": 960
     }
 }

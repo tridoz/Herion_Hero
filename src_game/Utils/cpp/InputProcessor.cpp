@@ -25,14 +25,19 @@ void InputProcessor::SetPlayer(Player* player) {
     this->player = player;
 }
 
+void InputProcessor::SetRoomManager(RoomManager *room_manager) {
+    this->room_manager = room_manager;
+}
+
 void InputProcessor::process_key_down(int scancode) {
+    Player::GameMode game_mode = player->GetGameMode();
 
     switch ( scancode ) {
         default:
             break;
 
         case SDL_SCANCODE_ESCAPE:
-            switch ( player->GetGameMode() ) {
+            switch ( game_mode ) {
 
                 case Player::MAIN_MENU:
                     running = false;
@@ -56,6 +61,37 @@ void InputProcessor::process_key_down(int scancode) {
             JSONParser::graphics::DecreaseResolution();
             break;
 
+        case SDL_SCANCODE_UP:
+                switch ( game_mode ) {
+                    case Player::IN_GAME:
+                        room_manager->GoUp();
+                        break;
+                }
+            break;
+
+            case SDL_SCANCODE_LEFT:
+                switch ( game_mode ) {
+                    case Player::IN_GAME:
+                        room_manager->GoLeft();
+                        break;
+                }
+                break;
+
+            case SDL_SCANCODE_DOWN:
+                switch ( game_mode ) {
+                    case Player::IN_GAME:
+                        room_manager->GoDown();
+                        break;
+                }
+                break;
+
+            case SDL_SCANCODE_RIGHT:
+                switch ( game_mode ) {
+                    case Player::IN_GAME:
+                        room_manager->GoRight();
+                        break;
+                }
+                break;
 
 
     }

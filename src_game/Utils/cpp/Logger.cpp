@@ -69,12 +69,13 @@ void Logger::LogErr( const std::time_t log_time, const std::string& type, const 
     const std::string time = FormatTime(log_time);
     const std::string err_type = MakeRed( type );
 
-    const std::string final_log_message =
+    std::string final_log_message =
         "[ " + err_type + " ] { " + time + "} => " + class_name + "::" + function_name + "\n" +
         log_message + "\n";
 
     if ( http_logging_enabled ) {
         auto& client = TcpClient::GetInstance();
+        final_log_message += "\n<end>\n";
         client.Send( "LOG_PORT", final_log_message);
     }
 
@@ -90,19 +91,31 @@ void Logger::LogErr( const std::time_t log_time, const std::string& type, const 
 
 }
 
-void Logger::EnableFileLogging() {
+void Logger::EnableFILELogging() {
     file_logging_enabled = true;
 }
 
-void Logger::EnableCoutLogging() {
+void Logger::DisableFILELogging() {
+    file_logging_enabled = false;
+}
+
+
+void Logger::EnableSTDOUTLogging() {
     cout_logging_enabled = true;
 }
+
+void Logger::DisableSTDOUTLogging() {
+    cout_logging_enabled = false;
+}
+
 
 void Logger::EnableHTTPLogging() {
     http_logging_enabled = true;
 }
 
-
+void Logger::DisableHTTPLogging() {
+    http_logging_enabled = false;
+}
 
 
 
