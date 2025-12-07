@@ -14,7 +14,7 @@ Tile::~Tile() {
     rect = {0,0,0,0 };
 }
 
-void Tile::SetTexture(const Texture& new_texture) {
+void Tile::SetTexture(const Texture* new_texture) {
     this->texture = new_texture;
 }
 
@@ -23,8 +23,8 @@ SDL_FRect* Tile::GetRect() {
 }
 
 void Tile::Draw(SDL_Renderer* renderer) const {
-    SDL_SetTextureBlendMode( texture.GetTexture(), SDL_BLENDMODE_BLEND );
-    SDL_RenderTexture( renderer, texture.GetTexture(), nullptr, &rect );
+    SDL_SetTextureBlendMode( texture->GetTexture(), SDL_BLENDMODE_BLEND );
+    SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
 }
 
 bool Tile::IsWalkable() const {

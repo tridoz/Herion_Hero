@@ -134,13 +134,13 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "TILES",
-        "RoomManager",
-        "GenerateSpawnRoom",
-        "All tiles created successfully"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "TILES",
+    //     "RoomManager",
+    //     "GenerateSpawnRoom",
+    //     "All tiles created successfully"
+    //     );
 
     Node* newRoom = new Node();
     newRoom->room = new Room();
@@ -175,13 +175,13 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "SETTING",
-        "RoomManager",
-        "GenerateSpawnRoom",
-        "Spawn room generated correctly"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "SETTING",
+    //     "RoomManager",
+    //     "GenerateSpawnRoom",
+    //     "Spawn room generated correctly"
+    //     );
 }
 
 void RoomManager::GoLeft() {

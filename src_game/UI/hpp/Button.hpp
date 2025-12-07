@@ -17,7 +17,7 @@ class Button {
 private:
     std::function<void()> onClick;
 
-    std::vector< Texture > textures;
+    std::vector< Texture* > textures;
     std::vector< SDL_FRect > rects ;
 
 public:
@@ -26,7 +26,7 @@ public:
 
     void SetOnClick(std::function<void()> action);
     void Click() const;
-    void SetTextures( std::vector< Texture > textures );
+    void SetTextures( std::vector< Texture* > textures );
     void SetRects( std::vector< SDL_FRect > rects );
     void Draw( SDL_Renderer* renderer ) const ;
     std::vector< SDL_FRect > GetRects() const;

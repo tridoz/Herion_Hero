@@ -32,13 +32,13 @@ Window::Window( const std::string& title) {
         return;
     }
 
-    Logger::LogOK(
-    std::time(nullptr),
-    "INITIALIZATION",
-    "Window",
-    "Window",
-    "SDL_INIT_VIDEO successfully initialized"
-    );
+    // Logger::LogOk(
+    // std::time(nullptr),
+    // "INITIALIZATION",
+    // "Window",
+    // "Window",
+    // "SDL_INIT_VIDEO successfully initialized"
+    // );
 
     this->width = JSONParser::graphics::GetWidth();
     this->height = JSONParser::graphics::GetHeight();
@@ -56,13 +56,13 @@ Window::Window( const std::string& title) {
         return;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "CREATION",
-        "Window",
-        "Window",
-        "SDL_Window successfully created"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "CREATION",
+    //     "Window",
+    //     "Window",
+    //     "SDL_Window successfully created"
+    //     );
     SDL_SetWindowPosition( this->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED );
 
     this->renderer = SDL_CreateRenderer(this->window, "opengl" );
@@ -78,13 +78,13 @@ Window::Window( const std::string& title) {
         return;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "CREATION",
-        "Window",
-        "Window",
-        "SDL_Renderer successfully created"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "CREATION",
+    //     "Window",
+    //     "Window",
+    //     "SDL_Renderer successfully created"
+    //     );
 
 }
 
@@ -127,4 +127,8 @@ int Window::GetWidth() const {
 
 int Window::GetHeight() const {
     return this->height;
+}
+
+void Window::Sleep() const {
+    SDL_Delay( 1000 / JSONParser::graphics::GetFrameRate() );
 }

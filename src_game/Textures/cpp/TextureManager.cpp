@@ -34,18 +34,18 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
         return;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "LOADING",
-        "TextureManager",
-        "LoadTextures",
-        "Texture file opened successfully"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "LOADING",
+    //     "TextureManager",
+    //     "LoadTextures",
+    //     "Texture file opened successfully"
+    //     );
 
-    std::string texture_name = "";
+    std::string texture_name;
 
     while ( (std::getline(texture_file, texture_name)) ) {
-        if ( texture_name.compare( "" ) == 0 ) continue;
+        if ( texture_name.empty() ) continue;
 
         Texture texture;
         texture.CreateTexture( renderer, texture_name );
@@ -58,6 +58,6 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
 
 }
 
-Texture TextureManager::GetTexture( const std::string& texture_name ) {
-    return textures.at( texture_name );
+Texture *TextureManager::GetTexture(const std::string &texture_name) {
+    return &textures.at( texture_name );
 }

@@ -35,13 +35,13 @@ void Room::Draw(SDL_Renderer* renderer) {
 void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
 
     this->tiles = new_tiles;
-    Logger::LogOK(
-        std::time(nullptr),
-        "SETTING",
-        "Room",
-        "SetTiles",
-        "Tiles Setted Correctly"
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "SETTING",
+    //     "Room",
+    //     "SetTiles",
+    //     "Tiles Setted Correctly"
+    //     );
 }
 
 

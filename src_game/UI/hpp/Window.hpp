@@ -39,8 +39,10 @@ public:
     void Present() const ;
     void Resize();
 
-    int GetWidth() const;
-    int GetHeight() const;
+    [[nodiscard]] int GetWidth() const;
+    [[nodiscard]] int GetHeight() const;
+
+    void Sleep() const;
 
 
 

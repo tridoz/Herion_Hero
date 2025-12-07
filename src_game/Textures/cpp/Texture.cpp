@@ -36,13 +36,13 @@ void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_
         return;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "CREATION",
-        "Texture",
-        "CreateTexture",
-        "Texture " + this->texture_name + " created successfully "
-        );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "CREATION",
+    //     "Texture",
+    //     "CreateTexture",
+    //     "Texture " + this->texture_name + " created successfully "
+    //     );
     texture_created = true;
 
 }

@@ -71,13 +71,13 @@ void Menu::LoadCfg(const std::string& filepath) {
         return;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "CONFIGURATION",
-        "Menu",
-        "LoadCfg",
-        "cfg file [" + file_to_open + "] loaded correctly"
-    );
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "CONFIGURATION",
+    //     "Menu",
+    //     "LoadCfg",
+    //     "cfg file [" + file_to_open + "] loaded correctly"
+    // );
 
     std::string line;
     int line_number = 0;
@@ -118,16 +118,16 @@ void Menu::LoadCfg(const std::string& filepath) {
                 std::string text = tokens[2];
 
                 std::vector<SDL_FRect> rects;
-                std::vector<Texture> textures;
+                std::vector<Texture* > textures;
 
-                Texture left_texture = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
-                Texture center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
-                Texture right_texture = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
+                Texture* left_texture = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
+                Texture* center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
+                Texture* right_texture = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
 
                 textures.push_back(left_texture);
 
                 float t_w, t_h, ct_w, ct_h;
-                SDL_GetTextureSize(left_texture.GetTexture(), &t_w, &t_h);
+                SDL_GetTextureSize(left_texture->GetTexture(), &t_w, &t_h);
 
                 // Rettangolo LEFT
                 SDL_FRect left_rect = { std::stof(tokens[1]) * scale, current_y, t_w * scale, t_h * scale };
@@ -138,7 +138,7 @@ void Menu::LoadCfg(const std::string& filepath) {
                 // Ciclo caratteri
                 for (char c : text) {
 
-                    Texture character;
+                    Texture* character;
                     float x_offset, y_offset, width_offset, height_offset;
 
                     if ( std::isupper(c) ) {
@@ -161,8 +161,8 @@ void Menu::LoadCfg(const std::string& filepath) {
                     	height_offset = -72 * scale;
                     }
 
-                    SDL_GetTextureSize(character.GetTexture(), &t_w, &t_h);
-                    SDL_GetTextureSize(center_texture.GetTexture(), &ct_w, &ct_h);
+                    SDL_GetTextureSize(character->GetTexture(), &t_w, &t_h);
+                    SDL_GetTextureSize(center_texture->GetTexture(), &ct_w, &ct_h);
 
                     // Rettangolo center
                     SDL_FRect background_rect = {
@@ -190,7 +190,7 @@ void Menu::LoadCfg(const std::string& filepath) {
                 }
 
                 // Rettangolo RIGHT
-                SDL_GetTextureSize(right_texture.GetTexture(), &t_w, &t_h);
+                SDL_GetTextureSize(right_texture->GetTexture(), &t_w, &t_h);
                 SDL_FRect right_rect = { prev.x + prev.w, current_y, t_w * scale, t_h * scale };
                 textures.push_back(right_texture);
                 rects.push_back(right_rect);
@@ -225,8 +225,8 @@ void Menu::LoadCfg(const std::string& filepath) {
 
 void Menu::Draw( SDL_Renderer* renderer ) const {
 
-	SDL_SetTextureBlendMode( texture_manager->GetTexture( this->filepath).GetTexture() , SDL_BLENDMODE_BLEND );
-	SDL_RenderTexture( renderer, texture_manager->GetTexture( this->filepath).GetTexture(), nullptr, &background_rect );
+	SDL_SetTextureBlendMode( texture_manager->GetTexture( this->filepath)->GetTexture() , SDL_BLENDMODE_BLEND );
+	SDL_RenderTexture( renderer, texture_manager->GetTexture( this->filepath)->GetTexture(), nullptr, &background_rect );
 
 	for ( const auto& [key, btn] : buttons ) {
 		btn->Draw( renderer );

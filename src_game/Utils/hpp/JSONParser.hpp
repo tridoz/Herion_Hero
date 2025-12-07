@@ -37,6 +37,7 @@ namespace JSONParser {
     }
 
     namespace graphics {
+
         const std::string json_graphics_file_path = "../settings/graphics.json";
         inline bool changed = false;
 
@@ -75,6 +76,8 @@ namespace JSONParser {
         void ChangesApplied();
 
         float GetScale();
+
+        int GetFrameRate();
 
     }
 

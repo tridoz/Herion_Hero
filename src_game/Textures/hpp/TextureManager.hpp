@@ -28,7 +28,8 @@ public:
 
     void LoadTextures( const std::string& filepath );
     void SetRenderer( SDL_Renderer* new_renderer ) ;
-    Texture GetTexture( const std::string& texture_name );
+
+    Texture *GetTexture(const std::string &texture_name);
 
 };
 

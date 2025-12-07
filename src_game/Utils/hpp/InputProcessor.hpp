@@ -32,6 +32,7 @@ private:
     bool mouse_right_pressed;
 
     void process_key_down( int scancode );
+    void process_key_up( int scancode );
 
     void process_mouse_left_pressed();
     void process_mouse_right_pressed();

@@ -36,13 +36,14 @@ int LoadEnv() {
         return 0;
     }
 
-    Logger::LogOK(
-        std::time(nullptr),
-        "LOADING",
-        "Main",
-        "LoadEnv",
-        ".env file loaded correctly"
-        );
+
+    // Logger::LogOk(
+    //     std::time(nullptr),
+    //     "LOADING",
+    //     "Main",
+    //     "LoadEnv",
+    //     ".env file loaded correctly"
+    //     );
 
     std::string line;
     while ( std::getline(file, line) ) {
@@ -74,13 +75,16 @@ int main ( int argc, char* argv[] ) {
 
     LoadEnv();
 
-     Logger::EnableHTTPLogging();
-    // Logger::EnableFileLogging();
-    // Logger::EnableCoutLogging();
+    // Logger::EnableHTTPLogging();
+    Logger::EnableFILELogging();
+    Logger::EnableSTDOUTLogging();
+    Logger::ClearTempLoggingFiles();
 
+    /*
     auto& client = TcpClient::GetInstance();
     client.Init();
     client.ConnectAll( std::getenv("SERVER_IP") );
+    */
 
     Window window(  "HERION HERO");
 
@@ -99,13 +103,14 @@ int main ( int argc, char* argv[] ) {
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
+
     ButtonsFunctions::SetPlayer( &player );
 
     texture_manager.SetRenderer( window.GetRenderer() );
     texture_manager.LoadTextures("assets/all_textures.txt");
 
     room_manager.SetTextureManager( &texture_manager );
-    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 4, 4 );
+    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
     room_manager.GenerateRoom( room_manager.ICE, RoomManager::DIR_NONE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
@@ -126,9 +131,21 @@ int main ( int argc, char* argv[] ) {
     processor.SetPlayer( &player );
     processor.SetRoomManager( &room_manager );
 
+    player.SetTextureManager( &texture_manager );
+
+    player.LoadAnimation( "configs/animations/player/idle/idle_down.cfg", "IDLE_DOWN");
+    player.LoadAnimation( "configs/animations/player/idle/idle_left.cfg", "IDLE_LEFT");
+    player.LoadAnimation( "configs/animations/player/idle/idle_up.cfg", "IDLE_UP");
+    player.LoadAnimation( "configs/animations/player/idle/idle_right.cfg", "IDLE_RIGHT");
+
+    player.LoadAnimation( "configs/animations/player/run/run_down.cfg", "RUN_DOWN");
+    player.LoadAnimation( "configs/animations/player/run/run_left.cfg", "RUN_LEFT");
+    player.LoadAnimation( "configs/animations/player/run/run_up.cfg", "RUN_UP");
+    player.LoadAnimation( "configs/animations/player/run/run_right.cfg", "RUN_RIGHT");
+
     SDL_Event event;
 
-    while ( !processor.ShouldQuit() && player.GetGameMode() != Player::EXIT ) {
+    while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
@@ -136,7 +153,6 @@ int main ( int argc, char* argv[] ) {
         }
 
         if ( JSONParser::graphics::Changed() ) {
-
 
             window.Resize();
 
@@ -163,27 +179,33 @@ int main ( int argc, char* argv[] ) {
             default:
                 break;
 
-            case Player::MAIN_MENU:
+
+
+            case Player::GameMode::MAIN_MENU:
                 main_menu.Draw( window.GetRenderer() );
                 break;
 
-            case Player::SETTINGS_MENU:
+            case Player::GameMode::SETTINGS_MENU:
                 settings_menu.Draw( window.GetRenderer() );
                 break;
 
-            case Player::PAUSE_MENU:
+            case Player::GameMode::PAUSE_MENU:
                 pause_menu.Draw( window.GetRenderer() );
                 break;
 
-            case Player::IN_GAME:
+            case Player::GameMode::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );
+                player.Update();
+                player.Draw( window.GetRenderer() );
                 break;
 
         }
 
         window.Present();
+        window.Sleep();
 
     }
+
 
 }
 

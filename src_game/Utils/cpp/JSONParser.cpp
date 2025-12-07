@@ -769,6 +769,39 @@ void JSONParser::graphics::DecreaseFPSLimit() {
 
 }
 
+int JSONParser::graphics::GetFrameRate() {
+    std::ifstream graphics_file( json_graphics_file_path, std::ios::in );
+    if ( !graphics_file.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::graphics",
+            "GetFrameRate",
+            "Error while opening file [" + json_graphics_file_path + "] for input : " + strerror( errno  )
+            );
+        return -1;
+    }
+
+    nlohmann::json json_graphics;
+    graphics_file >> json_graphics;
+    int frame_rate = 0;
+
+    if ( !json_graphics.contains("frame_rate") ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "PARSING",
+            "JSONParser::graphics",
+            "GetFrameRate",
+            "File [" + json_graphics_file_path + "] is malformed"
+            );
+        return -1;
+    }
+
+    frame_rate = json_graphics["frame_rate"].get<int>();
+    return frame_rate;
+}
+
+
 
 bool JSONParser::graphics::Changed() {
     return changed;

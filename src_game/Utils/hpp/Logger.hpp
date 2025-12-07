@@ -5,6 +5,7 @@
 #ifndef HERION_HERO_LOGGER_HPP
 #define HERION_HERO_LOGGER_HPP
 
+
 #include <string>
 #include <ctime>
 #include <iostream>
@@ -15,7 +16,6 @@
 
 #include "../../../src_TCP/hpp/TcpClient.hpp"
 
-
 class Logger {
 private:
 
@@ -25,16 +25,17 @@ private:
 
     static bool http_logging_enabled;
     static bool file_logging_enabled;
-    static bool cout_logging_enabled;
+    static bool stdout_logging_enabled;
 
 
     static std::string MakeRed( const std::string& message );
     static std::string MakeGreen( const std::string& message );
     static std::string FormatTime( std::time_t time_to_format);
 
+
 public:
 
-    static void LogOK(
+    static void LogOk(
         std::time_t log_time,
         const std::string& type,
         const std::string& class_name,
@@ -55,6 +56,9 @@ public:
     static void EnableFILELogging();
 
     static void DisableHTTPLogging();
+
+    static void ClearTempLoggingFiles();
+
     static void DisableSTDOUTLogging();
     static void DisableFILELogging();
 

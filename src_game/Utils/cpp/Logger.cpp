@@ -6,12 +6,17 @@
 
 #include <complex>
 
+#include "../hpp/JSONParser.hpp"
+
 const std::string Logger::RED   = "\033[31m";
 const std::string Logger::GREEN = "\033[32m";
 const std::string Logger::CLEAR = "\033[0m";
+
 bool Logger::http_logging_enabled = false;
 bool Logger::file_logging_enabled = false;
-bool Logger::cout_logging_enabled = false;
+bool Logger::stdout_logging_enabled = false;
+
+
 
 std::string Logger::FormatTime(const std::time_t time_to_format) {
     const std::tm *lt = std::localtime(&time_to_format);
@@ -37,7 +42,7 @@ std::string Logger::MakeGreen( const std::string& message ) {
     return GREEN + message + CLEAR;
 }
 
-void Logger::LogOK( const std::time_t log_time, const std::string& type, const std::string& class_name, const std::string& function_name, const std::string& log_message) {
+void Logger::LogOk( const std::time_t log_time, const std::string& type, const std::string& class_name, const std::string& function_name, const std::string& log_message) {
 
     const std::string time = FormatTime(log_time);
     const std::string ok_type = MakeGreen( type );
@@ -46,7 +51,6 @@ void Logger::LogOK( const std::time_t log_time, const std::string& type, const s
         "[ " + ok_type + " ] { " + time + "} => " + class_name + "::" + function_name + "\n" +
         log_message + "\n";
 
-
     if ( http_logging_enabled ) {
         auto& client = TcpClient::GetInstance();
         final_log_message += "\n<end>\n";
@@ -54,12 +58,17 @@ void Logger::LogOK( const std::time_t log_time, const std::string& type, const s
     }
 
     if ( file_logging_enabled ) {
-        std::ofstream output( "log_ok.txt" , std::ios::app );
+        std::ofstream output( "../logs/Herion_Hero_Ok.log" , std::ios::app );
+        std::ofstream output_temp( "../logs/Herion_Hero_Ok_temp.log", std::ios::app );
         output << final_log_message << std::endl;
+        output_temp << final_log_message << std::endl;
+
         output.close();
+        output_temp.close();
+
     }
 
-    if ( cout_logging_enabled ) {
+    if ( stdout_logging_enabled ) {
         std::cout << final_log_message << std::endl;
     }
 
@@ -80,16 +89,21 @@ void Logger::LogErr( const std::time_t log_time, const std::string& type, const 
     }
 
     if ( file_logging_enabled ) {
-        std::ofstream output( "log_err.txt" , std::ios::app );
+        std::ofstream output( "../logs/Herion_Hero_Err.log" , std::ios::app );
+        std::ofstream output_temp( "../logs/Herion_Hero_Err_temp.log", std::ios::app );
         output << final_log_message << std::endl;
+        output_temp << final_log_message << std::endl;
         output.close();
+        output_temp.close();
     }
 
-    if ( cout_logging_enabled ) {
+    if ( stdout_logging_enabled ) {
         std::cout << final_log_message << std::endl;
     }
 
 }
+
+
 
 void Logger::EnableFILELogging() {
     file_logging_enabled = true;
@@ -101,11 +115,11 @@ void Logger::DisableFILELogging() {
 
 
 void Logger::EnableSTDOUTLogging() {
-    cout_logging_enabled = true;
+    stdout_logging_enabled = true;
 }
 
 void Logger::DisableSTDOUTLogging() {
-    cout_logging_enabled = false;
+    stdout_logging_enabled = false;
 }
 
 
@@ -115,6 +129,11 @@ void Logger::EnableHTTPLogging() {
 
 void Logger::DisableHTTPLogging() {
     http_logging_enabled = false;
+}
+
+void Logger::ClearTempLoggingFiles() {
+    std::ofstream output_temp_ok("../logs/Herion_Hero_Ok_temp.log", std::ios::out );
+    std::ofstream output_temp_err("../logs/Herion_Hero_Err_temp.log", std::ios::out );
 }
 
 

@@ -14,16 +14,16 @@ void ButtonsFunctions::SetPlayer( Player* setter_player ) {
 
 //CHANGE GAMEMODE
 void ButtonsFunctions::StartGame() {
-    player->SetGameMode( Player::IN_GAME );
+    player->SetGameMode( Player::GameMode::IN_GAME );
 }
 void ButtonsFunctions::EndGame() {
-    player->SetGameMode( Player::EXIT );
+    player->SetGameMode( Player::GameMode::EXIT );
 }
 void ButtonsFunctions::OpenMainMenu() {
-    player->SetGameMode( Player::MAIN_MENU );
+    player->SetGameMode( Player::GameMode::MAIN_MENU );
 }
 void ButtonsFunctions::OpenSettings() {
-    player->SetGameMode( Player::SETTINGS_MENU );
+    player->SetGameMode( Player::GameMode::SETTINGS_MENU );
 }
 void ButtonsFunctions::CloseSettings() {
     player->SetGameMode( player->GetPreviousGameMode() );

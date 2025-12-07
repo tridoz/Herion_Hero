@@ -36,15 +36,26 @@ void InputProcessor::process_key_down(int scancode) {
         default:
             break;
 
+        case SDL_SCANCODE_L:
+            switch ( game_mode ) {
+                case Player::GameMode::LOG_MENU:
+                    player->SetGameMode( player->GetPreviousGameMode() );
+                    break;
+
+            default:
+                    player->SetGameMode( Player::GameMode::LOG_MENU );
+
+            }
+
         case SDL_SCANCODE_ESCAPE:
             switch ( game_mode ) {
 
-                case Player::MAIN_MENU:
+                case Player::GameMode::MAIN_MENU:
                     running = false;
                     break;
 
-                case Player::IN_GAME:
-                    this->player->SetGameMode( Player::PAUSE_MENU );
+                case Player::GameMode::IN_GAME:
+                    this->player->SetGameMode( Player::GameMode::PAUSE_MENU );
                     break;
 
                 default:
@@ -63,37 +74,115 @@ void InputProcessor::process_key_down(int scancode) {
 
         case SDL_SCANCODE_UP:
                 switch ( game_mode ) {
-                    case Player::IN_GAME:
+                    case Player::GameMode::IN_GAME:
                         room_manager->GoUp();
                         break;
                 }
             break;
 
-            case SDL_SCANCODE_LEFT:
-                switch ( game_mode ) {
-                    case Player::IN_GAME:
-                        room_manager->GoLeft();
+        case SDL_SCANCODE_LEFT:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    room_manager->GoLeft();
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_DOWN:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    room_manager->GoDown();
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_RIGHT:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    room_manager->GoRight();
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_W:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                        player->SetPlayerState( Player::PlayerState::RUN );
+                        player->SetPlayerDirection( Player::FacingDirection::NORTH );
                         break;
-                }
-                break;
+            }
+            break;
 
-            case SDL_SCANCODE_DOWN:
-                switch ( game_mode ) {
-                    case Player::IN_GAME:
-                        room_manager->GoDown();
-                        break;
-                }
-                break;
+        case SDL_SCANCODE_D:
+            switch ( game_mode ) {
+            case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::RUN );
+                    player->SetPlayerDirection( Player::FacingDirection::EAST );
+                    break;
+            }
+            break;
 
-            case SDL_SCANCODE_RIGHT:
-                switch ( game_mode ) {
-                    case Player::IN_GAME:
-                        room_manager->GoRight();
-                        break;
-                }
-                break;
+        case SDL_SCANCODE_S:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::RUN );
+                    player->SetPlayerDirection( Player::FacingDirection::SOUTH );
+                    break;
+            }
+            break;
 
 
+        case SDL_SCANCODE_A:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::RUN );
+                    player->SetPlayerDirection( Player::FacingDirection::WEST );
+                    break;
+            }
+            break;
+
+    }
+
+}
+
+void InputProcessor::process_key_up(int scancode) {
+    Player::GameMode game_mode = player->GetGameMode();
+    switch ( scancode ) {
+        case SDL_SCANCODE_W:
+            switch ( game_mode ) {
+            case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::IDLE );
+                    player->SetPlayerDirection( Player::FacingDirection::NORTH );
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_D:
+            switch ( game_mode ) {
+            case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::IDLE );
+                    player->SetPlayerDirection( Player::FacingDirection::EAST );
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_S:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::IDLE );
+                    player->SetPlayerDirection( Player::FacingDirection::SOUTH );
+                    break;
+            }
+            break;
+
+        case SDL_SCANCODE_A:
+            switch ( game_mode ) {
+                case Player::GameMode::IN_GAME:
+                    player->SetPlayerState( Player::PlayerState::IDLE );
+                    player->SetPlayerDirection( Player::FacingDirection::WEST );
+                    break;
+            }
+            break;
     }
 
 }
@@ -105,21 +194,21 @@ void InputProcessor::process_mouse_left_pressed() {
 
     switch ( player->GetGameMode() ) {
 
-        case Player::MAIN_MENU:
+        case Player::GameMode::MAIN_MENU:
             btn = menus.at( "MAIN_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if ( btn != nullptr ) {
                 btn->Click();
             }
             break;
 
-        case Player::SETTINGS_MENU:
+        case Player::GameMode::SETTINGS_MENU:
             btn = menus.at( "SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if ( btn != nullptr ) {
                 btn->Click();
             }
             break;
 
-        case Player::PAUSE_MENU:
+        case Player::GameMode::PAUSE_MENU:
             btn = menus.at( "PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if ( btn != nullptr ) {
                 btn->Click();
@@ -156,6 +245,7 @@ void InputProcessor::Process()  {
         case SDL_EVENT_KEY_UP:
             if ( event.key.scancode < MAX_SCANCODES ) {
                 this->keys[event.key.scancode] = false;
+                process_key_up( event.key.scancode );
             }
             break;
 
