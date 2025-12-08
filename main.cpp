@@ -76,15 +76,11 @@ int main ( int argc, char* argv[] ) {
     LoadEnv();
 
     // Logger::EnableHTTPLogging();
+
     Logger::EnableFILELogging();
     Logger::EnableSTDOUTLogging();
     Logger::ClearTempLoggingFiles();
 
-    /*
-    auto& client = TcpClient::GetInstance();
-    client.Init();
-    client.ConnectAll( std::getenv("SERVER_IP") );
-    */
 
     Window window(  "HERION HERO");
 

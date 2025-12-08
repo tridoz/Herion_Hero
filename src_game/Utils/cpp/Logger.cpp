@@ -124,6 +124,9 @@ void Logger::DisableSTDOUTLogging() {
 
 
 void Logger::EnableHTTPLogging() {
+    auto& client = TcpClient::GetInstance();
+    client.Init();
+    client.ConnectAll( std::getenv("SERVER_IP") );
     http_logging_enabled = true;
 }
 
