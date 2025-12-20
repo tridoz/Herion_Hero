@@ -19,7 +19,7 @@ Window::~Window() {
 
 Window::Window( const std::string& title) {
 
-    this->flags = 0  ;
+    this->flags = 0;
 
     if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         Logger::LogErr(

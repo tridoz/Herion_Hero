@@ -40,4 +40,8 @@
   - Items
     - [ ] Textures
     - [ ] Animations
-    
+  
+- Menus
+  - [ ] Setting menu
+  - [ ] Pause Menu
+  

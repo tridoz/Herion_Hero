@@ -49,6 +49,8 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_TCP/hpp/TcpClient.hpp
         src_game/Utils/cpp/Animation.cpp
         src_game/Utils/hpp/Animation.hpp
+        src_game/UI/cpp/Text.cpp
+        src_game/UI/hpp/Text.hpp
 )
 
 if(WIN32)

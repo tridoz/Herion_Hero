@@ -49,9 +49,9 @@ public:
 	void SetDimension( float w, float h);
 	void SetTextureManager( TextureManager* texture_manager );
 	void Draw( SDL_Renderer* renderer) const ;
-	void LoadCfg( const std::string& filepath );
-	Button* GetButton( const std::string& action );
-	std::vector < Button* > GetButtons();
+	void LoadCfg( const std::string& cfg_filepath );
+	Button* GetButton( const std::string& action ) const;
+	std::vector < Button* > GetButtons() const;
 	Button* GetCollisionButton ( float x, float y );
 
 };

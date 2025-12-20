@@ -52,10 +52,11 @@ void Menu::Rescale(SDL_FRect* rect) {
     rect->h *= this->scale;
 }
 
-void Menu::LoadCfg(const std::string& filepath) {
+void Menu::LoadCfg(const std::string& cfg_filepath) {
+
     this->scale = JSONParser::graphics::GetScale();
 
-    std::string file_to_open = base_path + filepath;
+    std::string file_to_open = base_path + cfg_filepath;
     std::ifstream cfg_file(file_to_open, std::ios::in);
 
     buttons.clear();
@@ -80,11 +81,13 @@ void Menu::LoadCfg(const std::string& filepath) {
     // );
 
     std::string line;
+
     int line_number = 0;
     float current_y = 0.0f;
 
     while (std::getline(cfg_file, line)) {
-        if (line.empty()) {
+
+    	if (line.empty()) {
             line_number++;
             continue;
         }
@@ -110,10 +113,12 @@ void Menu::LoadCfg(const std::string& filepath) {
             this->center_piece_offset = std::stof(tokens[3]) * scale;
 
             current_y = start_y;
+			continue;
+        }
 
-        } else if (tokens.size() == 4 && tokens[0] == "BUTTON") {
-
+    	if (tokens.size() == 4 ) {
             try {
+
                 Button* btn = new Button();
                 std::string text = tokens[2];
 
@@ -234,11 +239,11 @@ void Menu::Draw( SDL_Renderer* renderer ) const {
 
 }
 
-Button* Menu::GetButton( const std::string& action )  {
+Button* Menu::GetButton( const std::string& action ) const {
 	return buttons.at( action );
 }
 
-std::vector < Button* > Menu::GetButtons() {
+std::vector < Button* > Menu::GetButtons() const {
 	std::vector < Button* > vec_buttons;
 	for ( const std::pair< std::string, Button*> pair : this->buttons ) {
 		vec_buttons.push_back( pair.second );
@@ -260,7 +265,6 @@ bool Menu::CheckCollision( std::vector<SDL_FRect> buttons, float x, float y) {
 	}
 	return false;
 }
-
 
 Button* Menu::GetCollisionButton(float x, float y) {
 	for ( const std::pair< std::string, Button* > pair : this->buttons ) {

@@ -43,10 +43,10 @@ void ButtonsFunctions::ChangeWindowMode() {
 
 }
 void ButtonsFunctions::IncreaseFrameLimit() {
-
+    JSONParser::graphics::IncreaseFPSLimit();
 }
 void ButtonsFunctions::DecreaseFrameLimit() {
-
+    JSONParser::graphics::DecreaseFPSLimit();
 }
 void ButtonsFunctions::IncreaseBrightness() {
 
