@@ -114,12 +114,14 @@ int main ( int argc, char* argv[] ) {
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     settings_menu.SetTextureManager( &texture_manager );
-    settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
-    settings_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
+    //settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
+    settings_menu.LoadCfgJson( "configs/menu/settings_menu.json" );
+
+    settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     pause_menu.SetTextureManager( &texture_manager );
     pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
-    pause_menu.SetDimension( (float)window.GetWidth(), (float)window.GetHeight() );
+    pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
@@ -156,7 +158,8 @@ int main ( int argc, char* argv[] ) {
             main_menu.LoadCfg( "configs/menu/main_menu.cfg" );
 
             settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
+            //settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
+            settings_menu.LoadCfgJson( "configs/menu/settings_menu.json" );
 
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
             pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
@@ -164,6 +167,8 @@ int main ( int argc, char* argv[] ) {
             room_manager.ResizeRoom();
 
         }
+
+
 
         window.SetColor( COLORS::BLACK );
         window.Clear();

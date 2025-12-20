@@ -14,7 +14,7 @@
 namespace JSONParser {
 
     namespace audio {
-        const std::string json_audio_file_path = "../settings/audio.json";
+        inline const std::string json_audio_file_path = "../settings/audio.json";
 
         void IncreaseMasterVolume();
         void DecreaseMasterVolume();
@@ -38,10 +38,10 @@ namespace JSONParser {
 
     namespace graphics {
 
-        const std::string json_graphics_file_path = "../settings/graphics.json";
+        inline const std::string json_graphics_file_path = "../settings/graphics.json";
         inline bool changed = false;
 
-        const std::vector < std::pair <int, int > > resolutions{
+        inline const std::vector < std::pair <int, int > > resolutions{
             { 640, 360},
             { 854, 480 },
             { 960, 540 },
@@ -52,7 +52,7 @@ namespace JSONParser {
             { 3840, 2160 }
         };
 
-        const std::vector<float> texture_scales{
+        inline const std::vector<float> texture_scales{
             0.25,
             0.333,
             0.375,
@@ -83,6 +83,33 @@ namespace JSONParser {
 
     namespace ui {
 
+    }
+
+    namespace menu_configuration {
+
+        inline nlohmann::json config_file;
+        struct RowElementFields {
+            std::string type;
+            std::string text;
+            std::optional<std::string> action;
+            std::string id;
+        };
+
+        void SetConfigFile( const std::string& config_file_path );
+        std::string GetBackgroundImagePath();
+
+        float GetStartY();
+        float GetButtonYOffset();
+        float GetCenterPieceOffset();
+
+        int GetNumRows();
+
+        int GetRowStartingX( int num_row );
+        int GetRowButtonXOffset( int num_row );
+
+        int GetRowNumElements( int num_row );
+
+        RowElementFields GetRowElementFields( int num_row, int num_element );
     }
 
 }

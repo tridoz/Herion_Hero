@@ -1,0 +1,76 @@
+{
+  "background_image_path" : "assets/backgrounds/pause_menu.png",
+  "start_y" : 150,
+  "button_y_offset" : 12,
+  "center_piece_offset" : 8,
+  "rows": [
+    {
+      "starting_x": 500,
+      "button_x_offset": 50,
+      "elements": [
+        {
+          "type": "STATIC_TEXT",
+          "text": "Resolution",
+          "id": "static_text_display_resolution_label"
+        },
+        {
+          "type": "DYNAMIC_TEXT",
+          "text": "RESOLUTION_ASPECT",
+          "id": "dynamic_text_current_resolution_value"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Minus",
+          "action": "DECREASE_RESOLUTION",
+          "id": "button_decrease_resolution"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Plus",
+          "action": "INCREASE_RESOLUTION",
+          "id": "button_increase_resolution"
+        }
+      ]
+    },
+    {
+      "starting_x": 500,
+      "button_x_offset": 50,
+      "elements": [
+        {
+          "type": "STATIC_TEXT",
+          "text": "FrameRate",
+          "id": "static_text_display_framerate_label"
+        },
+        {
+          "type": "DYNAMIC_TEXT",
+          "text": "FRAME_RATE",
+          "id": "dynamic_text_current_framerate_value"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Minus",
+          "action": "DECREASE_FRAME_RATE",
+          "id": "button_decrease_framerate"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Plus",
+          "action": "INCREASE_FRAME_RATE",
+          "id": "button_increase_framerate"
+        }
+      ]
+    },
+    {
+      "starting_x" : 1000,
+      "button_x_offset" : 0,
+      "elements": [
+        {
+          "type" : "BUTTON",
+          "text" : "Done",
+          "action": "RETURN_PREVIOUS_GAME_MODE",
+          "id": "button_return_previous_game_mode"
+        }
+      ]
+    }
+  ]
+}

@@ -64,3 +64,90 @@ Invalid arguments at line 2
 [ [31mCONFIGURATION[0m ] { 2025:12:08 16:00:01} => Menu::LoadCfg
 Invalid arguments at line 2
 
+[ [31mCONFIGURATION[0m ] { 2025:12:20 21:04:19} => Menu::LoadCfg
+Invalid arguments at line 1
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 21:04:43} => Menu::LoadCfg
+Invalid arguments at line 1
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 22:24:55} => Menu::LoadCfg
+Invalid arguments at line 1
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 22:26:03} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mPARSING[0m ] { 2025:12:20 22:48:26} => JSONParserMenuConfiguration::SetConfigFile
+Error while opening the file [configs/menu/settings_menu.json for input: No such file or directory
+
+[ [31mPARSING[0m ] { 2025:12:20 22:49:30} => JSONParserMenuConfiguration::SetConfigFile
+Error while opening the file [configs/menu/settings_menu.json] for input: No such file or directory
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 23:13:45} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 23:22:44} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 23:25:13} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 23:25:28} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mCONFIGURATION[0m ] { 2025:12:20 23:28:28} => Menu::LoadCfg
+Invalid arguments at line 1 in file: configs/menu/settings_menu.cfg
+
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:38} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:38} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:39} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:41} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:43} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:43} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:44} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:44} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:44} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:45} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:45} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:45} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:46} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:46} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:46} => JSONParser::graphics::DecreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+
+[ [31mPARSING[0m ] { 2025:12:21 00:10:47} => JSONParser::graphics::IncreaseFPSLimit
+Error while parsing file [../settings/graphics.json] for output : fps_limit doesn't exist
+

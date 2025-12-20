@@ -43,7 +43,6 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/UI/hpp/Button.hpp
         src_game/Utils/cpp/ButtonsFunctions.cpp
         src_game/Utils/hpp/ButtonsFunctions.hpp
-        src_game/Utils/cpp/JSONParser.cpp
         src_game/Utils/hpp/JSONParser.hpp
         src_TCP/cpp/TcpClient.cpp
         src_TCP/hpp/TcpClient.hpp
@@ -51,6 +50,9 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/hpp/Animation.hpp
         src_game/UI/cpp/Text.cpp
         src_game/UI/hpp/Text.hpp
+        src_game/Utils/cpp/JSonParserAudio.cpp
+        src_game/Utils/cpp/JSONParserGraphics.cpp
+        src_game/Utils/cpp/JSONParserMenuConfiguration.cpp
 )
 
 if(WIN32)
