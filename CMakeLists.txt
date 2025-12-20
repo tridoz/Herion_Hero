@@ -53,6 +53,8 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/cpp/JSonParserAudio.cpp
         src_game/Utils/cpp/JSONParserGraphics.cpp
         src_game/Utils/cpp/JSONParserMenuConfiguration.cpp
+        src_game/Sound/cpp/SoundBoard.cpp
+        src_game/Sound/hpp/SoundBoard.hpp
 )
 
 if(WIN32)

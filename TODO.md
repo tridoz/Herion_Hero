@@ -42,6 +42,11 @@
     - [ ] Animations
   
 - Menus
-  - [ ] Setting menu
-  - [ ] Pause Menu
+  - To Json
+    - [ ] Main Menu
+    - [ ] Pause Menu
+
+- Sounds
+  - [ ] implement sounds
+  - [ ] create sounds
   
