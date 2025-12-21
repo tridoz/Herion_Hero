@@ -7,7 +7,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
 
 include_directories("${SDL3_DIR}/include")
-include_directories("${CMAKE_SOURCE_DIR}/BOOST/boost_1_89_0")
 
 file(GLOB SRC_FILES
         ${CMAKE_SOURCE_DIR}/src_game/Utils/cpp/*.cpp

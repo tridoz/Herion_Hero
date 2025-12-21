@@ -5,9 +5,30 @@
 #ifndef HERION_HERO_SOUNDBOARD_HPP
 #define HERION_HERO_SOUNDBOARD_HPP
 
+#define MINIAUDIO_IMPLEMENTATION
+
+#include "../../headers_only_dependencies/miniaudio.h"
+#include <string>
+#include <unordered_map>
+
+class SoundBoard {
+
+private:
+    ma_engine engine{};
+    std::unordered_map<std::string, ma_sound> sounds;
+
+public:
+    SoundBoard();
+    ~SoundBoard();
+
+    bool loadSound(const std::string& id, const std::string& filepath);
+
+    bool playSound(const std::string& id);
+
+    void stopAll();
 
 
-class SoundBoard {};
+};
 
+#endif // SOUNDBOARD_HPP
 
-#endif //HERION_HERO_SOUNDBOARD_HPP
