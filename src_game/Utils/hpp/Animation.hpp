@@ -12,7 +12,6 @@
 class Animation {
 private:
 
-	std::vector< SDL_FRect* > animation_rects;
 	std::vector < Texture* > animation_textures;
 
 	int frame_rate;
@@ -28,15 +27,15 @@ public:
 	Animation();
 
 	void AddFrameTexture( Texture* new_texture );
-	void AddFrameRect( SDL_FRect* new_rect );
 
-	SDL_FRect* GetCurrentFrameRect() const;
 	Texture* GetCurrentFrameTexture() const;
 
 	void Update();
 	void SetFrameRate( int new_frame_rate );
 	void SetAnimationFrameNUmber( int new_frame_number );
 
+	float GetCurrentFrameTextureHeight() const;
+	float GetCurrentFrameTextureWidth() const;
 };
 
 

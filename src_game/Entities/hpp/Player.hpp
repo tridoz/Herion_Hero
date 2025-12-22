@@ -33,19 +33,12 @@ public:
 		EAST
 	};
 
-	enum class MovingDirection{
-		NORTH,
-		NORTH_EAST,
-		EAST,
-		SOUTH_EAST,
-		SOUTH,
-		SOUTH_WEST,
-		WEST,
-		NORTH_WEST
-	};
+
 
 	Player();
 	~Player();
+
+	SDL_FRect player_rect;
 
 	PlayerState GetPlayerState() const;
 	GameMode GetGameMode() const;
@@ -62,8 +55,12 @@ public:
 
 	void LoadAnimation( const std::string &dir_filepath, const std::string &animation_name );
 
-	void Update() const;
-	void Draw( SDL_Renderer *renderer ) const;
+	void Update(SDL_Renderer* renderer);
+	void Draw( SDL_Renderer *renderer );
+
+	void Move(float x, float y);
+	void Resize();
+
 
 private:
 
@@ -75,12 +72,20 @@ private:
 	GameMode previousGameMode;
 
 	float pos_x, pos_y;
+	float next_x, next_y;
+	float movement_angle;
+
+	float speed;
+
 	float fixed_pos_x, fixed_pos_y;
 	float fixed_width, fixed_height;
+	float scale;
 
 	TextureManager* texture_manager;
 	std::unordered_map< std::string, Animation* > animations;
 	Animation* current_animation;
+
+	void UpdateAnimationFrame( SDL_Renderer* renderer );
 
 };
 

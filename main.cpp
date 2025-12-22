@@ -99,7 +99,6 @@ int main ( int argc, char* argv[] ) {
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
-
     ButtonsFunctions::SetPlayer( &player );
 
     texture_manager.SetRenderer( window.GetRenderer() );
@@ -143,7 +142,8 @@ int main ( int argc, char* argv[] ) {
 
     SDL_Event event;
 
-    while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
+        while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
+
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
@@ -165,6 +165,7 @@ int main ( int argc, char* argv[] ) {
             pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
 
             room_manager.ResizeRoom();
+            player.Resize();
 
         }
 
@@ -180,8 +181,6 @@ int main ( int argc, char* argv[] ) {
             default:
                 break;
 
-
-
             case Player::GameMode::MAIN_MENU:
                 main_menu.Draw( window.GetRenderer() );
                 break;
@@ -196,7 +195,7 @@ int main ( int argc, char* argv[] ) {
 
             case Player::GameMode::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );
-                player.Update();
+                player.Update( window.GetRenderer() );
                 player.Draw( window.GetRenderer() );
                 break;
 

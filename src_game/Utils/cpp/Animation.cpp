@@ -13,19 +13,11 @@ void Animation::AddFrameTexture( Texture* new_texture ) {
 	animation_textures.push_back( new_texture );
 }
 
-void Animation::AddFrameRect(SDL_FRect *new_rect) {
-	animation_rects.push_back( new_rect );
-}
-
-SDL_FRect *Animation::GetCurrentFrameRect() const {
-	return animation_rects[current_animation_frame];
-}
-
 Texture *Animation::GetCurrentFrameTexture() const {
 	return animation_textures[current_animation_frame];
 }
 
-void Animation::Update() {
+void Animation::Update( ) {
 	current_time = SDL_GetTicks();
 	if ( current_time - last_update_time > how_often_frame_update ) {
 		current_animation_frame++;
@@ -43,6 +35,17 @@ void Animation::SetAnimationFrameNUmber( int new_frame_number ) {
 	this->frame_number = new_frame_number;
 }
 
+float Animation::GetCurrentFrameTextureHeight() const {
+	float w, h;
+	SDL_GetTextureSize( animation_textures[current_animation_frame]->GetTexture(), &w, &h );
+	return h;
+}
+
+float Animation::GetCurrentFrameTextureWidth() const {
+	float w, h;
+	SDL_GetTextureSize( animation_textures[current_animation_frame]->GetTexture(), &w, &h );
+	return w;
+}
 
 
 

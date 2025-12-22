@@ -38,6 +38,7 @@ namespace JSONParser {
 
     namespace graphics {
 
+        static inline const std::vector<int> allowedFPS = {10, 15, 20, 30, 45, 60, 120, 180, 240, 360, 500};
         inline const std::string json_graphics_file_path = "../settings/graphics.json";
         inline bool changed = false;
 

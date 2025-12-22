@@ -9,6 +9,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <chrono>
 
 #include "../../Entities/hpp/Player.hpp"
 #include "../../WorldBuilding/hpp/RoomManager.hpp"
@@ -34,6 +35,7 @@ private:
     void process_key_down( int scancode );
     void process_key_up( int scancode );
 
+
     void process_mouse_left_pressed();
     void process_mouse_right_pressed();
 
@@ -47,6 +49,8 @@ public:
     void SetEvent( SDL_Event& event );
 
     void Process() ;
+
+
     [[nodiscard]] bool ShouldQuit() const;
     [[nodiscard]] bool isMouseLeftPressed() const;
     [[nodiscard]] bool isMouseRightPressed() const;
