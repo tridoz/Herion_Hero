@@ -74,7 +74,7 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
     std::vector<std::vector<Tile*> > tiles;
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0, 8);
+    std::uniform_real_distribution<> floor_type(1, 100);
 
     const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
     const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
@@ -87,40 +87,21 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
             Tile* tile = new Tile();
 
-            int texture_type = dis(gen);
+            int texture_type = floor_type(gen);
             std::string texture_path;
 
-            switch ( texture_type ) {
-                default:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_base_floor.png";
-                    break;
-                case 0:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_base_floor.png";
-                    break;
-                case 1:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_1.png";
-                    break;
-                case 2:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_2.png";
-                    break;
-                case 3:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_3.png";
-                    break;
-                case 4:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_4.png";
-                    break;
-                case 5:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_5.png";
-                    break;
-                case 6:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_6.png";
-                    break;
-                case 7:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_7.png";
-                    break;
-                case 8:
-                    texture_path = "assets/floors/" + room_type_path + "/" + room_type_path + "_cracked_floor_8.png";
-                    break;
+            if ( texture_type >= 1 && texture_type <= 85 ) {
+                texture_path = "assets/floors/my_floors/" + room_type_path +
+                               "/interior/pattern_1.png";
+            } else if ( texture_type >= 86 && texture_type <= 90 ) {
+                texture_path = "assets/floors/my_floors/" + room_type_path +
+                               "/interior/pattern_2.png";
+            } else if ( texture_type >= 91 && texture_type <= 95 ) {
+                texture_path = "assets/floors/my_floors/" + room_type_path +
+                               "/interior/pattern_3.png";
+            } else if ( texture_type >= 96 && texture_type <= 100 ) {
+                texture_path = "assets/floors/my_floors/" + room_type_path +
+                               "/interior/pattern_4.png";
             }
 
             tile->SetTexture( textureManager->GetTexture(texture_path) );

@@ -75,7 +75,7 @@ int main ( int argc, char* argv[] ) {
 
     LoadEnv();
 
-    // Logger::EnableHTTPLogging();
+    //Logger::EnableHTTPLogging();
 
     Logger::EnableFILELogging();
     Logger::EnableSTDOUTLogging();
@@ -106,7 +106,7 @@ int main ( int argc, char* argv[] ) {
 
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
-    room_manager.GenerateRoom( room_manager.ICE, RoomManager::DIR_NONE ) ;
+    room_manager.GenerateRoom( RoomManager::ANCIENT_RUINS, RoomManager::DIR_NONE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.LoadCfg( "configs/menu/main_menu.cfg");

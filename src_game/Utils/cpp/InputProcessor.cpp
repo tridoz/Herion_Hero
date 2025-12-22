@@ -40,6 +40,7 @@ void InputProcessor::process_key_down(int scancode) {
                 case Player::GameMode::IN_GAME:
                     this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
                     break;
+
                 default:
                     break;
             }

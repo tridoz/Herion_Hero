@@ -17,6 +17,11 @@ assets/ui/icons/info.png
 assets/ui/icons/missing_heart.png
 assets/ui/icons/settings.png
 
+assets/floors/my_floors/ancient_ruins/interior/pattern_1.png
+assets/floors/my_floors/ancient_ruins/interior/pattern_2.png
+assets/floors/my_floors/ancient_ruins/interior/pattern_3.png
+assets/floors/my_floors/ancient_ruins/interior/pattern_4.png
+
 assets/floors/ancient_ruins/ancient_ruins_base_floor.png
 assets/floors/ancient_ruins/ancient_ruins_cracked_floor_1.png
 assets/floors/ancient_ruins/ancient_ruins_cracked_floor_2.png
