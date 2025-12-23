@@ -1,0 +1,43 @@
+{
+  "background_image_path" : "assets/backgrounds/pause_menu.png",
+  "start_y" : 350,
+  "button_y_offset" : 12,
+  "center_piece_offset" : 8,
+  "rows": [
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Done",
+          "action" : "START_GAME",
+          "id" : "button_for_starting_game"
+        }
+      ]
+    },{
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Settings",
+          "action" : "OPEN_SETTINGS_MENU",
+          "id" : "button_for_opening_settings_menu"
+        }
+      ]
+    },
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Exit",
+          "action" : "OPEN_MAIN_MENU",
+          "id" : "button_for_exiting_the_game"
+        }
+      ]
+    }
+  ]
+}

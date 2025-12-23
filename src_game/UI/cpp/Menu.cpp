@@ -338,6 +338,7 @@ void Menu::LoadCfgJson(const std::string& cfg_json_filepath) {
             }
 
             cumulative_x += left_rect.w + center_rect.w + right_rect.w + button_x_offset;
+
         }
 
         current_y += row_height + button_y_offset;
