@@ -8,6 +8,8 @@
 #define MINIAUDIO_IMPLEMENTATION
 
 #include "../../headers_only_dependencies/miniaudio.h"
+#include "../../Utils/hpp/Logger.hpp"
+
 #include <string>
 #include <unordered_map>
 
@@ -21,11 +23,13 @@ public:
     SoundBoard();
     ~SoundBoard();
 
-    bool loadSound(const std::string& id, const std::string& filepath);
+    void LoadSound(const std::string& id, const std::string& filepath);
 
-    bool playSound(const std::string& id);
+    void PlaySound(const std::string& id);
 
-    void stopAll();
+    void StopSound(const std::string &id);
+
+    void StopAll();
 
 
 };

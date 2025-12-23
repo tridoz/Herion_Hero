@@ -3,7 +3,13 @@
 
 SoundBoard::SoundBoard() {
     if (ma_engine_init(NULL, &engine) != MA_SUCCESS) {
-        std::cerr << "Errore inizializzazione motore audio\n";
+        Logger::LogErr(
+            std::time(nullptr),
+            "PLAYING",
+            "SoundBoard",
+            "PlaySound",
+            "Error while initializing the sound engine : " + std::string( strerror( errno ) )
+            );
     }
 }
 
@@ -15,30 +21,66 @@ SoundBoard::~SoundBoard() {
     ma_engine_uninit(&engine);
 }
 
-bool SoundBoard::loadSound(const std::string& id, const std::string& filepath) {
+void SoundBoard::LoadSound(const std::string& id, const std::string& filepath) {
     ma_sound sound;
     if (ma_sound_init_from_file(&engine, filepath.c_str(), 0, NULL, NULL, &sound) != MA_SUCCESS) {
-        std::cerr << "Errore caricamento suono: " << filepath << "\n";
-        return false;
+        Logger::LogErr(
+        std::time(nullptr),
+        "PLAYING",
+        "SoundBoard",
+        "PlaySound",
+        "Error while playing file with id [" + id + "] : " + strerror( errno )
+        );
+        return;
     }
     sounds[id] = sound;
-    return true;
+    return;
 }
 
-bool SoundBoard::playSound(const std::string& id) {
+void SoundBoard::PlaySound(const std::string &id) {
     auto it = sounds.find(id);
     if (it == sounds.end()) {
-        std::cerr << "Suono non trovato: " << id << "\n";
-        return false;
+        Logger::LogErr(
+            std::time(nullptr),
+            "PLAYING",
+            "SoundBoard",
+            "PlaySound",
+            "Error while playing file with id [" + id + "] : " + strerror( errno )
+            );
+        return;
     }
     if (ma_sound_start(&it->second) != MA_SUCCESS) {
-        std::cerr << "Errore riproduzione suono: " << id << "\n";
-        return false;
+        Logger::LogErr(
+            std::time(nullptr),
+            "PLAYING",
+            "SoundBoard",
+            "PlaySound",
+            "Error while playing sound with id [" + id + "] : " + strerror( errno )
+            );
+        return;
     }
-    return true;
+    return;
 }
 
-void SoundBoard::stopAll() {
+void SoundBoard::StopSound( const std::string& id ) {
+    auto it = sounds.find( id );
+
+    if ( it == sounds.end() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "STOPPING",
+            "SoundBoard",
+            "StopSound",
+            "Error while stopping sound with id [" + id + "] : " + strerror( errno )
+            );
+        return;
+    }
+
+    ma_sound_stop(&it->second);
+    return;
+}
+
+void SoundBoard::StopAll() {
     for (auto& pair : sounds) {
         ma_sound_stop(&pair.second);
     }
