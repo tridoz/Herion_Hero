@@ -132,3 +132,32 @@ int Window::GetHeight() const {
 void Window::Sleep() const {
     SDL_Delay( 1000 / JSONParser::graphics::GetFrameRate() );
 }
+
+void Window::LoadCursors( const std::string &filename ) {
+    std::ifstream cursors_file( "../" + filename, std::ios::in );
+    std::string line;
+    std::stringstream ss;
+
+    while ( std::getline( cursors_file, line) ) {
+        ss << line << std::endl;
+        std::string cursor_name, cursor_path;
+        int hotX, hotY;
+        ss >> cursor_name >> cursor_path >> hotX >> hotY;
+
+        ss.clear();
+        SDL_Surface*  cursor_surface = IMG_Load( cursor_path.c_str() );
+        Cursors[cursor_name] = SDL_CreateColorCursor( cursor_surface, hotX, hotY);
+        SDL_DestroySurface( cursor_surface );
+
+    }
+
+}
+
+void Window::SetCursor(const std::string &cursor_name) {
+    SDL_SetCursor( Cursors[cursor_name] );
+    current_cursor_name = cursor_name;
+}
+
+SDL_Cursor* Window::GetCursor() {
+    return Cursors[current_cursor_name];
+}

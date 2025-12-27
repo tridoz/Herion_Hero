@@ -3,6 +3,7 @@
 
 //SDL3 INCLUDES
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_image.h>
 
 
 //STD INCLUDES
@@ -21,6 +22,9 @@ private:
     int flags;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+
+    std::unordered_map<std::string, SDL_Cursor* > Cursors;
+    std::string current_cursor_name;
 
     int width, height;
 
@@ -43,6 +47,12 @@ public:
     [[nodiscard]] int GetHeight() const;
 
     void Sleep() const;
+    void LoadCursors(const std::string &);
+    void SetCursor( const std::string& );
+    SDL_Cursor* GetCursor();
+
+
+    
 
 
 

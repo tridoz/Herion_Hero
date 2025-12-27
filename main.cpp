@@ -101,6 +101,8 @@ int main ( int argc, char* argv[] ) {
 
     ButtonsFunctions::SetPlayer( &player );
 
+    window.LoadCursors( "assets/all_cursors.txt");
+
     texture_manager.SetRenderer( window.GetRenderer() );
     texture_manager.LoadTextures("assets/all_textures.txt");
 
