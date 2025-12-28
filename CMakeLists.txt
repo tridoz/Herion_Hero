@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(Herion_Hero)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
@@ -54,6 +54,7 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/cpp/JSONParserMenuConfiguration.cpp
         src_game/Sound/cpp/SoundBoard.cpp
         src_game/Sound/hpp/SoundBoard.hpp
+
 )
 
 if(WIN32)

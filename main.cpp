@@ -123,6 +123,7 @@ int main ( int argc, char* argv[] ) {
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     pause_menu.SetTextureManager( &texture_manager );
+    //pause_menu.LoadCfg( "configs/menu/pause_menu.cfg");
     pause_menu.LoadCfgJson( "configs/menu/pause_menu.json" );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
@@ -146,8 +147,7 @@ int main ( int argc, char* argv[] ) {
 
     SDL_Event event;
 
-        while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
-
+    while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
@@ -155,10 +155,10 @@ int main ( int argc, char* argv[] ) {
         }
 
         if ( JSONParser::graphics::Changed() ) {
-
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            //main_menu.LoadCfg( "configs/menu/main_menu.cfg" );
             main_menu.LoadCfgJson( "configs/menu/main_menu.json" );
 
             settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
@@ -166,14 +166,12 @@ int main ( int argc, char* argv[] ) {
             settings_menu.LoadCfgJson( "configs/menu/settings_menu.json" );
 
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
+            //pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
             pause_menu.LoadCfgJson( "configs/menu/pause_menu.json" );
 
             room_manager.ResizeRoom();
             player.Resize();
-
         }
-
-
 
         window.SetColor( COLORS::BLACK );
         window.Clear();
@@ -209,7 +207,6 @@ int main ( int argc, char* argv[] ) {
         window.Sleep();
 
     }
-
 
 }
 
