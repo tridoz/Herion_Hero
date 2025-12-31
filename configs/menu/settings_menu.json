@@ -38,7 +38,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "FrameRate",
+          "text": "Frame Rate",
           "id": "static_text_display_framerate_label"
         },
         {

@@ -151,6 +151,8 @@ assets/font/numbers/7.png
 assets/font/numbers/8.png
 assets/font/numbers/9.png
 
+assets/font/special_characters/space.png
+
 assets/entities/player/idle/down/frame0.png
 assets/entities/player/idle/down/frame1.png
 assets/entities/player/idle/down/frame2.png

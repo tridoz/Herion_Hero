@@ -102,12 +102,14 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             rects.push_back(left_rect);
             textures.push_back(left_texture);
 
-            float char_w = 16.0f * scale;
+            float char_w = 20.0f * scale;
             float text_total_w = text.size() * char_w;
+
             SDL_FRect center_rect = { cumulative_x + left_rect.w,
                                       current_y + center_piece_offset,
                                       text_total_w,
                                       center_h * scale };
+
             rects.push_back(center_rect);
             textures.push_back(center_texture);
 
@@ -126,8 +128,11 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
                     char_tex = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
                 else if (isspecial(c))
                     char_tex = texture_manager->GetTexture("assets/font/special_characters/" + GetNameOfSpecialChar(c) + ".png");
+				else if ( isspace(c))
+					char_tex = texture_manager->GetTexture("assets/font/special_characters/space.png");
 
                 float cw, ch;
+
                 SDL_GetTextureSize(char_tex->GetTexture(), &cw, &ch);
                 SDL_FRect char_rect = {
                     char_x + (char_w - cw * scale) / 2.0f,
