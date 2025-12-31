@@ -219,7 +219,6 @@ void RoomManager::DrawCurrentRoom( SDL_Renderer* renderer) const {
     current_room->room->Draw( renderer );
 }
 
-
 void RoomManager::SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles) {
     this->screen_width = screen_width;
     this->screen_height = screen_height;

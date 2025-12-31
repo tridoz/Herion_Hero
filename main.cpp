@@ -111,20 +111,15 @@ int main ( int argc, char* argv[] ) {
     room_manager.GenerateRoom( RoomManager::ANCIENT_RUINS, RoomManager::DIR_NONE ) ;
 
     main_menu.SetTextureManager( &texture_manager );
-    //main_menu.LoadCfg( "configs/menu/main_menu.cfg");
-    main_menu.LoadCfgJson( "configs/menu/main_menu.json");
-
+    main_menu.LoadCfg( "configs/menu/main_menu.json");
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     settings_menu.SetTextureManager( &texture_manager );
-    //settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
-    settings_menu.LoadCfgJson( "configs/menu/settings_menu.json" );
-
+    settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     pause_menu.SetTextureManager( &texture_manager );
-    //pause_menu.LoadCfg( "configs/menu/pause_menu.cfg");
-    pause_menu.LoadCfgJson( "configs/menu/pause_menu.json" );
+    pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     processor.SetMenus("MAIN_MENU", &main_menu );
@@ -158,16 +153,13 @@ int main ( int argc, char* argv[] ) {
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            //main_menu.LoadCfg( "configs/menu/main_menu.cfg" );
-            main_menu.LoadCfgJson( "configs/menu/main_menu.json" );
+            main_menu.LoadCfg( "configs/menu/main_menu.json" );
 
             settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            //settings_menu.LoadCfg( "configs/menu/settings_menu.cfg" );
-            settings_menu.LoadCfgJson( "configs/menu/settings_menu.json" );
+            settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
 
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            //pause_menu.LoadCfg( "configs/menu/pause_menu.cfg" );
-            pause_menu.LoadCfgJson( "configs/menu/pause_menu.json" );
+            pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
 
             room_manager.ResizeRoom();
             player.Resize();

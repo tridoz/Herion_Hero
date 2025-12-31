@@ -32,6 +32,8 @@ void InputProcessor::process_key_down(int scancode) {
 
     switch (scancode) {
         default:
+            break;
+            
         case SDL_SCANCODE_ESCAPE:
             switch (game_mode) {
                 case Player::GameMode::MAIN_MENU:

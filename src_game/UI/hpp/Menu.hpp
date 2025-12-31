@@ -55,8 +55,7 @@ public:
 	void SetDimension( float w, float h);
 	void SetTextureManager( TextureManager* texture_manager );
 	void Draw( SDL_Renderer* renderer) const ;
-	void LoadCfg( const std::string& cfg_filepath );
-	void LoadCfgJson(const std::string& cfg_json_filepath);
+	void LoadCfg(const std::string& cfg_json_filepath);
 	Button* GetButton( const std::string& action ) const;
 	std::vector < Button* > GetButtons() const;
 	Button* GetCollisionButton ( float x, float y );

@@ -58,182 +58,7 @@ void Menu::Rescale(SDL_FRect* rect) {
     rect->h *= this->scale;
 }
 
-void Menu::LoadCfg(const std::string& cfg_filepath) {
-
-    this->scale = JSONParser::graphics::GetScale();
-
-    std::string file_to_open = base_path + cfg_filepath;
-    std::ifstream cfg_file(file_to_open, std::ios::in);
-
-    buttons.clear();
-
-    if (!cfg_file.is_open()) {
-        Logger::LogErr(
-            std::time(nullptr),
-            "CONFIGURATION",
-            "Menu",
-            "LoadCfg",
-            "Loading cfg file [" + file_to_open + "] failed: " + strerror(errno)
-        );
-        return;
-    }
-
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "CONFIGURATION",
-    //     "Menu",
-    //     "LoadCfg",
-    //     "cfg file [" + file_to_open + "] loaded correctly"
-    // );
-
-    std::string line;
-
-    int line_number = 0;
-    float current_y = 0.0f;
-
-    while (std::getline(cfg_file, line)) {
-
-    	if (line.empty()) {
-            line_number++;
-            continue;
-        }
-
-        std::vector<std::string> tokens = split(line);
-
-        // LINEA 0: CONFIG GENERALE
-        if (line_number == 0) {
-            if (tokens.size() != 4) {
-                Logger::LogErr(
-                    std::time(nullptr),
-                    "CONFIGURATION",
-                    "Menu",
-                    "LoadCfg",
-                    "Malformed cfg at line 0"
-                );
-                return;
-            }
-
-            this->filepath = tokens[0];
-            this->start_y = std::stof(tokens[1]) * scale;
-            this->button_y_offset = std::stof(tokens[2]) * scale;
-            this->center_piece_offset = std::stof(tokens[3]) * scale;
-
-            current_y = start_y;
-			continue;
-        }
-
-    	if (tokens.size() == 4 ) {
-            try {
-
-                Button* btn = new Button();
-                std::string text = tokens[2];
-
-                std::vector<SDL_FRect > rects;
-                std::vector<Texture* > textures;
-
-                Texture* left_texture = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
-                Texture* center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
-                Texture* right_texture = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
-
-                textures.push_back(left_texture);
-
-                float t_w, t_h, ct_w, ct_h;
-                SDL_GetTextureSize(left_texture->GetTexture(), &t_w, &t_h);
-
-                // Rettangolo LEFT
-                SDL_FRect left_rect = { std::stof(tokens[1]) * scale, current_y, t_w * scale, t_h * scale };
-                rects.push_back( left_rect);
-
-                SDL_FRect prev = left_rect;
-
-                // Ciclo caratteri
-                for (char c : text) {
-
-                    Texture* character;
-                    float x_offset, y_offset, width_offset, height_offset;
-
-                    if ( std::isupper(c) ) {
-                        character = texture_manager->GetTexture("assets/font/uppercase_letters/" + std::string(1, c) + ".png");
-                        x_offset = 2 * scale;
-                        y_offset = 36 * scale;
-                        width_offset = -2 * scale;
-                        height_offset = -72 * scale;
-                    } else if ( std::islower(c) ){
-                        character = texture_manager->GetTexture("assets/font/lowercase_letters/" + std::string(1, c) + ".png");
-                        x_offset = 4 * scale;
-                        y_offset = 44 * scale;
-                        width_offset = -4 * scale;
-                        height_offset = -80 * scale;
-                    } else if ( std::isdigit(c) ) {
-                    	character = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
-                    	x_offset = 2 * scale;
-                    	y_offset = 36 * scale;
-                    	width_offset = -2 * scale;
-                    	height_offset = -72 * scale;
-                    }
-
-                    SDL_GetTextureSize(character->GetTexture(), &t_w, &t_h);
-                    SDL_GetTextureSize(center_texture->GetTexture(), &ct_w, &ct_h);
-
-                    // Rettangolo center
-                    SDL_FRect background_rect = {
-                        prev.x + prev.w,
-                        left_rect.y + center_piece_offset,
-                        t_w * 1.5f * scale,
-                        ct_h * scale
-                    };
-
-                    // Rettangolo carattere
-                    SDL_FRect character_rect = {
-                        background_rect.x + x_offset,
-                        background_rect.y + y_offset,
-                        background_rect.w + width_offset,
-                        background_rect.h + height_offset
-                    };
-
-                    textures.push_back(center_texture);
-                    textures.push_back(character);
-
-                    rects.push_back( background_rect);
-                    rects.push_back( character_rect);
-
-                    prev = character_rect;
-                }
-
-                // Rettangolo RIGHT
-                SDL_GetTextureSize(right_texture->GetTexture(), &t_w, &t_h);
-                SDL_FRect right_rect = { prev.x + prev.w, current_y, t_w * scale, t_h * scale };
-                textures.push_back(right_texture);
-                rects.push_back( right_rect);
-
-                btn->SetRects( rects );
-                btn->SetTextures(textures);
-                btn->SetOnClick(buttons_functions.at(tokens[3]));
-
-                buttons.emplace(tokens[3], btn);
-
-                // Aggiorno la posizione Y per il prossimo pulsante
-                current_y += (t_h * scale) + button_y_offset;
-
-            } catch (const std::invalid_argument&) {
-                Logger::LogErr(
-                    std::time(nullptr),
-                    "CONFIGURATION",
-                    "Menu",
-                    "LoadCfg",
-                    "Invalid arguments at line " + std::to_string(line_number) + " in file: " + cfg_filepath + "\n"
-                );
-                return;
-            }
-        }
-
-        line_number++;
-    }
-
-}
-
-
-void Menu::LoadCfgJson(const std::string& cfg_json_filepath) {
+void Menu::LoadCfg(const std::string& cfg_json_filepath) {
     this->scale = JSONParser::graphics::GetScale();
     JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
 
@@ -273,27 +98,23 @@ void Menu::LoadCfgJson(const std::string& cfg_json_filepath) {
             SDL_GetTextureSize(center_texture->GetTexture(), &center_w, &center_h);
             SDL_GetTextureSize(right_texture->GetTexture(), &right_w, &right_h);
 
-            // Rettangolo left
             SDL_FRect left_rect = { cumulative_x, current_y, left_w * scale, left_h * scale };
             rects.push_back(left_rect);
             textures.push_back(left_texture);
 
-            // Rettangolo center: larghezza stimata testo
-            float char_w = 16.0f * scale; // dimensione media carattere
+            float char_w = 16.0f * scale;
             float text_total_w = text.size() * char_w;
             SDL_FRect center_rect = { cumulative_x + left_rect.w,
-                                      current_y + center_piece_offset,  // center offset scalato
+                                      current_y + center_piece_offset,
                                       text_total_w,
                                       center_h * scale };
             rects.push_back(center_rect);
             textures.push_back(center_texture);
 
-            // Rettangolo right
             SDL_FRect right_rect = { center_rect.x + center_rect.w, current_y, right_w * scale, right_h * scale };
             rects.push_back(right_rect);
             textures.push_back(right_texture);
 
-            // Centra i caratteri dentro il rettangolo center
             float char_x = center_rect.x;
             for (char c : text) {
                 Texture* char_tex = nullptr;
@@ -320,10 +141,8 @@ void Menu::LoadCfgJson(const std::string& cfg_json_filepath) {
                 char_x += char_w;
             }
 
-            // Aggiorna altezza riga
             row_height = std::max({ row_height, left_rect.h, center_rect.h, right_rect.h });
 
-            // Creazione Button o Text
             if (fields.type == "BUTTON") {
                 Button* btn = new Button();
                 btn->SetRects(rects);
