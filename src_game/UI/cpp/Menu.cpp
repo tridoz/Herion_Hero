@@ -82,9 +82,9 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
         float row_height = 0.0f;
 
         for (int element_number = 0; element_number < num_elements; element_number++) {
-            const auto fields = JSONParser::menu_configuration::GetRowElementFields(row_number, element_number);
+            const JSONParser::menu_configuration::RowElementFields menu_element_characteristic = JSONParser::menu_configuration::GetRowElementFields(row_number, element_number);
 
-            std::string text = (fields.type == "DYNAMIC_TEXT") ? GetText(fields.text) : fields.text;
+            std::string text = (menu_element_characteristic.type == "DYNAMIC_TEXT") ? GetText(menu_element_characteristic.text) : menu_element_characteristic.text;
 
             std::vector<SDL_FRect> rects;
             std::vector<Texture*> textures;
@@ -118,6 +118,7 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             textures.push_back(right_texture);
 
             float char_x = center_rect.x;
+
             for (char c : text) {
                 Texture* char_tex = nullptr;
                 if (std::isupper(c))
@@ -148,17 +149,17 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 
             row_height = std::max({ row_height, left_rect.h, center_rect.h, right_rect.h });
 
-            if (fields.type == "BUTTON") {
+            if (menu_element_characteristic.type == "BUTTON") {
                 Button* btn = new Button();
                 btn->SetRects(rects);
                 btn->SetTextures(textures);
-                btn->SetOnClick(buttons_functions.at(fields.action.value()));
-                buttons.emplace(fields.id, btn);
-            } else {
+                btn->SetOnClick(buttons_functions.at(menu_element_characteristic.action.value()));
+                buttons.emplace(menu_element_characteristic.id, btn);
+            } else if ( menu_element_characteristic.type == "TEXT") {
                 Text* txt = new Text();
                 txt->SetRects(rects);
                 txt->SetTextures(textures);
-                texts.emplace(fields.id, txt);
+                texts.emplace(menu_element_characteristic.id, txt);
             }
 
             cumulative_x += left_rect.w + center_rect.w + right_rect.w + button_x_offset;
@@ -166,6 +167,7 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
         }
 
         current_y += row_height + button_y_offset;
+
     }
 }
 
