@@ -16,6 +16,11 @@ void ButtonsFunctions::SetPlayer( Player* setter_player ) {
 void ButtonsFunctions::StartGame() {
     player->SetGameMode( Player::GameMode::IN_GAME );
 }
+
+void ButtonsFunctions::StartNewGame() {
+
+}
+
 void ButtonsFunctions::EndGame() {
     player->SetGameMode( Player::GameMode::EXIT );
 }

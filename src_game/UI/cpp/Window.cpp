@@ -6,13 +6,15 @@
 
 #include "../../Utils/hpp/JSONParser.hpp"
 
+std::unordered_map<std::string, SDL_Cursor*> Window::Cursors;
+std::string Window::current_cursor_name;
+
 Window::Window() {
     this->window = nullptr;
     this->renderer = nullptr;
 }
 
 Window::~Window() {
-    
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
 }
@@ -134,6 +136,7 @@ void Window::Sleep() const {
 }
 
 void Window::LoadCursors( const std::string &filename ) {
+
     std::ifstream cursors_file( "../" + filename, std::ios::in );
     std::string line;
     std::stringstream ss;

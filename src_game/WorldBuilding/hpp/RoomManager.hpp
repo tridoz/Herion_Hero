@@ -9,6 +9,7 @@
 #include <random>
 
 #include "../../Textures/hpp/TextureManager.hpp"
+#include "../../Exceptions//hpp/HerionFileException.hpp"
 #include "Tile.hpp"
 #include "Room.hpp"
 

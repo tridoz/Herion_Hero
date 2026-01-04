@@ -104,9 +104,14 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
                                "/interior/pattern_4.png";
             }
 
-            tile->SetTexture( textureManager->GetTexture(texture_path) );
-            tile->SetRect( i*w , j*h , w, h );
+            try {
+                tile->SetTexture( textureManager->GetTexture(texture_path) );
+            } catch ( HerionException::File::FileException& ex ) {
+                ex.UpdateStackTrace( GET_CONTEXT() );
+                throw;
+            }
 
+            tile->SetRect( i*w , j*h , w, h );
             row.push_back( tile );
 
         }

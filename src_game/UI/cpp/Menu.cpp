@@ -9,8 +9,10 @@
 
 
 Menu::Menu() {
+
 	buttons_functions.clear();
 	buttons_functions.emplace("START_GAME", ButtonsFunctions::StartGame );
+	buttons_functions.emplace( "START_NEW_GAME", ButtonsFunctions::StartNewGame );
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
@@ -23,11 +25,9 @@ Menu::Menu() {
 }
 
 Menu::~Menu() {
-
 	for ( auto button : buttons ) {
 		delete button.second;
 	}
-
 }
 
 void Menu::SetDimension(float w, float h) {
@@ -42,13 +42,10 @@ std::vector< std::string > Menu::split( const std::string &str ) {
 	std::vector< std::string > tokens;
 	std::stringstream ss(str);
 	std::string token;
-
 	while ( ss >> token ) {
 		tokens.push_back(token);
 	}
-
 	return tokens;
-
 }
 
 void Menu::Rescale(SDL_FRect* rect) {
@@ -59,13 +56,26 @@ void Menu::Rescale(SDL_FRect* rect) {
 }
 
 void Menu::LoadCfg(const std::string& cfg_json_filepath) {
+
     this->scale = JSONParser::graphics::GetScale();
-    JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
+	try {
+		JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
+	} catch ( HerionException::File::FileException &ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
 
     this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
     this->start_y = JSONParser::menu_configuration::GetStartY();
     this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
     this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale; // SCALING
+
+	try {
+		this->background = texture_manager->GetTexture(this->filepath );
+	} catch ( HerionException::File::FileException& ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
 
     const int num_rows = JSONParser::menu_configuration::GetNumRows();
     float current_y = start_y;
@@ -89,11 +99,21 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             std::vector<SDL_FRect> rects;
             std::vector<Texture*> textures;
 
-            Texture* left_texture   = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
-            Texture* center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
-            Texture* right_texture  = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
+        	Texture* left_texture = nullptr;
+        	Texture* center_texture = nullptr;
+        	Texture* right_texture = nullptr;
+
+        	try {
+        		left_texture   = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
+        		center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
+        		right_texture  = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
+        	} catch ( HerionException::File::FileNotFoundException &ex ) {
+				ex.UpdateStackTrace( GET_CONTEXT() );
+        		throw;
+        	}
 
             float left_w, left_h, center_w, center_h, right_w, right_h;
+
             SDL_GetTextureSize(left_texture->GetTexture(), &left_w, &left_h);
             SDL_GetTextureSize(center_texture->GetTexture(), &center_w, &center_h);
             SDL_GetTextureSize(right_texture->GetTexture(), &right_w, &right_h);
@@ -121,16 +141,24 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 
             for (char c : text) {
                 Texture* char_tex = nullptr;
-                if (std::isupper(c))
-                    char_tex = texture_manager->GetTexture("assets/font/uppercase_letters/" + std::string(1, c) + ".png");
-                else if (std::islower(c))
-                    char_tex = texture_manager->GetTexture("assets/font/lowercase_letters/" + std::string(1, c) + ".png");
-                else if (std::isdigit(c))
-                    char_tex = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
-                else if (isspecial(c))
-                    char_tex = texture_manager->GetTexture("assets/font/special_characters/" + GetNameOfSpecialChar(c) + ".png");
-				else if ( isspace(c))
-					char_tex = texture_manager->GetTexture("assets/font/special_characters/space.png");
+
+            	try {
+
+            		if (std::isupper(c))
+            			char_tex = texture_manager->GetTexture("assets/font/uppercase_letters/" + std::string(1, c) + ".png");
+            		else if (std::islower(c))
+            			char_tex = texture_manager->GetTexture("assets/font/lowercase_letters/" + std::string(1, c) + ".png");
+            		else if (std::isdigit(c))
+            			char_tex = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
+            		else if (isspecial(c))
+            			char_tex = texture_manager->GetTexture("assets/font/special_characters/" + GetNameOfSpecialChar(c) + ".png");
+            		else if ( isspace(c))
+            			char_tex = texture_manager->GetTexture("assets/font/special_characters/space.png");
+
+            	} catch ( HerionException::File::FileNotFoundException &ex ) {
+            		ex.UpdateStackTrace( GET_CONTEXT() );
+            		throw;
+            	}
 
                 float cw, ch;
 
@@ -155,7 +183,7 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
                 btn->SetTextures(textures);
                 btn->SetOnClick(buttons_functions.at(menu_element_characteristic.action.value()));
                 buttons.emplace(menu_element_characteristic.id, btn);
-            } else if ( menu_element_characteristic.type == "TEXT") {
+            } else if ( menu_element_characteristic.type.contains("TEXT") ) {
                 Text* txt = new Text();
                 txt->SetRects(rects);
                 txt->SetTextures(textures);
@@ -171,11 +199,10 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
     }
 }
 
-
 void Menu::Draw( SDL_Renderer* renderer ) const {
 
-	SDL_SetTextureBlendMode( texture_manager->GetTexture( this->filepath)->GetTexture() , SDL_BLENDMODE_BLEND );
-	SDL_RenderTexture( renderer, texture_manager->GetTexture( this->filepath)->GetTexture(), nullptr, &background_rect );
+	SDL_SetTextureBlendMode( this->background->GetTexture() , SDL_BLENDMODE_BLEND );
+	SDL_RenderTexture( renderer, this->background->GetTexture(), nullptr, &background_rect );
 
 	for ( const auto& [key, btn] : buttons ) {
 		btn->Draw( renderer );
@@ -207,17 +234,16 @@ std::string Menu::GetText( const std::string& text_type ) {
 }
 
 bool Menu::isspecial(const char c) {
-	// Vettore di caratteri speciali
+
 	std::vector<char> special_characters = {
 		'+', '-', '*', '/', '%', '&', '|', '^', '!', '=', '<', '>', '?', '~', '@', '#', '$', '_'
 	};
 
-	// Controllo se 'c' è presente nel vettore
 	return std::find(special_characters.begin(), special_characters.end(), c) != special_characters.end();
 }
 
 std::string Menu::GetNameOfSpecialChar( const char c ) {
-	// Mappa dei caratteri speciali con il loro nome in CamelCase
+
 	static const std::unordered_map<char, std::string> charNames = {
 		{'+', "Plus"},
 		{'-', "Minus"},

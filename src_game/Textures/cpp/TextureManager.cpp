@@ -3,6 +3,7 @@
 //
 
 #include "../hpp/TextureManager.hpp"
+#include "../../Utils/hpp/FileOpener.hpp"
 
 TextureManager::TextureManager()  {
     this->renderer = nullptr;
@@ -21,26 +22,14 @@ void TextureManager::SetRenderer( SDL_Renderer* new_renderer )  {
 
 void TextureManager::LoadTextures( const std::string& filepath ) {
 
-    std::ifstream texture_file( base_path + filepath, std::ios::in) ;
+    std::ifstream texture_file;
 
-    if ( !texture_file.is_open() ) {
-        Logger::LogErr(
-            std::time(nullptr),
-            "LOADING",
-            "TextureManager",
-            "LoadTextures",
-            strerror(errno)
-            );
-        return;
+    try {
+        FileOpener::OpenFileInput( texture_file, base_path + filepath );
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
     }
-
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "LOADING",
-    //     "TextureManager",
-    //     "LoadTextures",
-    //     "Texture file opened successfully"
-    //     );
 
     std::string texture_name;
 
@@ -48,7 +37,12 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
         if ( texture_name.empty() ) continue;
 
         Texture texture;
-        texture.CreateTexture( renderer, texture_name );
+        try {
+            texture.CreateTexture( renderer, texture_name );
+        } catch ( HerionException::File::FileNotFoundException& ex ) {
+            ex.UpdateStackTrace( GET_CONTEXT() );
+            throw;
+        }
 
         if ( texture.TextureCreated() ) {
             textures.insert( {texture_name, texture} );
@@ -59,5 +53,10 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
 }
 
 Texture *TextureManager::GetTexture(const std::string &texture_name) {
-    return &textures.at( texture_name );
+    if ( textures.contains( texture_name) ) {
+        return &textures.at( texture_name );
+    }
+
+    THROW_FILE_NOT_FOUND( texture_name );
+
 }

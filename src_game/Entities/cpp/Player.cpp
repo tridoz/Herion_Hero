@@ -122,17 +122,15 @@ void Player::SetTextureManager( TextureManager *new_texture_manager ) {
 
 void Player::LoadAnimation( const std::string &filepath, const std::string &animation_name ) {
 
-	std::ifstream animation_cfg_file( "../" + filepath );
-	if ( !animation_cfg_file.is_open() ) {
-		Logger::LogErr(
-			std::time(nullptr),
-			"OPENING",
-			"Player",
-			"LoadAnimation",
-			"Error while opening file [" + filepath + "]"  + strerror( errno )
-			);
-		return;
+	std::ifstream animation_cfg_file;
+
+	try {
+		FileOpener::OpenFileInput( animation_cfg_file, "../" + filepath );
+	} catch ( HerionException::File::FileException& ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
 	}
+
 
 	std::string line;
 	try {

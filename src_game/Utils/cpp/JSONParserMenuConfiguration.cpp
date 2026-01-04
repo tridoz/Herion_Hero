@@ -4,8 +4,16 @@
 
 #include "../hpp/JSONParser.hpp"
 
+
 void JSONParser::menu_configuration::SetConfigFile(const std::string& config_file_path) {
-    std::ifstream json_file( "../" + config_file_path, std::ios::in );
+    std::ifstream json_file;
+
+    try {
+        FileOpener::OpenFileInput( json_file, "../" + config_file_path );
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
 
     if ( !json_file.is_open() ) {
         Logger::LogErr(

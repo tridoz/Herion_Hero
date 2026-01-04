@@ -4,6 +4,7 @@
 
 #include "../hpp/Texture.hpp"
 
+#include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../hpp/TextureManager.hpp"
 
 Texture::Texture()  {
@@ -20,29 +21,15 @@ Texture::~Texture() {
 
 
 void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_to_create_name ) {
+
     this->texture_name = base_path + texture_to_create_name;
 
     this->texture = IMG_LoadTexture( renderer, this->texture_name.c_str() );
 
     if ( !this->texture ) {
-        Logger::LogErr(
-            std::time(nullptr),
-            "CREATION",
-            "Texture",
-            "CreateTexture",
-            SDL_GetError()
-            );
-        texture_created = false;
-        return;
+        THROW_FILE_NOT_FOUND( this->texture_name );
     }
 
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "CREATION",
-    //     "Texture",
-    //     "CreateTexture",
-    //     "Texture " + this->texture_name + " created successfully "
-    //     );
     texture_created = true;
 
 }

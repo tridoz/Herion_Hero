@@ -18,6 +18,7 @@ class TextureManager {
 
 private:
     SDL_Renderer* renderer;
+
     std::unordered_map<std::string, Texture> textures;
     const std::string base_path = "../";
 public:

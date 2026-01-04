@@ -16,6 +16,7 @@ public:
 
     // CHANGE GAMEMODE
     static void StartGame();
+    static void StartNewGame();
     static void EndGame();
     static void OpenMainMenu();
     static void OpenSettings();

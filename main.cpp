@@ -13,6 +13,8 @@
 #include <cstdlib>
 #include <unistd.h>
 
+#include "src_game/Exceptions/hpp/HerionFileException.hpp"
+
 
 #ifdef _WIN32
     #include <stdlib.h>
@@ -104,23 +106,42 @@ int main ( int argc, char* argv[] ) {
     window.LoadCursors( "assets/all_cursors.txt");
 
     texture_manager.SetRenderer( window.GetRenderer() );
-    texture_manager.LoadTextures("assets/all_textures.txt");
+
+    try {
+        texture_manager.LoadTextures("assets/all_textures.txt");
+    } catch ( HerionException::File::FileException &ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+        return -1;
+    }
 
     room_manager.SetTextureManager( &texture_manager );
     room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
-    room_manager.GenerateRoom( RoomManager::ANCIENT_RUINS, RoomManager::DIR_NONE ) ;
+
+    try {
+        room_manager.GenerateRoom( RoomManager::ANCIENT_RUINS, RoomManager::DIR_NONE ) ;
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+        return -1;
+    }
 
     main_menu.SetTextureManager( &texture_manager );
-    main_menu.LoadCfg( "configs/menu/main_menu.json");
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-
     settings_menu.SetTextureManager( &texture_manager );
-    settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-
     pause_menu.SetTextureManager( &texture_manager );
-    pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
+    try {
+        main_menu.LoadCfg( "configs/menu/main_menu.json");
+        settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
+        pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
+    } catch ( HerionException::File::FileException &ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+        return -1;
+    }
 
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
@@ -130,15 +151,21 @@ int main ( int argc, char* argv[] ) {
 
     player.SetTextureManager( &texture_manager );
 
-    player.LoadAnimation( "configs/animations/player/idle/idle_down.cfg", "IDLE_DOWN");
-    player.LoadAnimation( "configs/animations/player/idle/idle_left.cfg", "IDLE_LEFT");
-    player.LoadAnimation( "configs/animations/player/idle/idle_up.cfg", "IDLE_UP");
-    player.LoadAnimation( "configs/animations/player/idle/idle_right.cfg", "IDLE_RIGHT");
+    try {
+        player.LoadAnimation( "configs/animations/player/idle/idle_down.cfg", "IDLE_DOWN");
+        player.LoadAnimation( "configs/animations/player/idle/idle_left.cfg", "IDLE_LEFT");
+        player.LoadAnimation( "configs/animations/player/idle/idle_up.cfg", "IDLE_UP");
+        player.LoadAnimation( "configs/animations/player/idle/idle_right.cfg", "IDLE_RIGHT");
 
-    player.LoadAnimation( "configs/animations/player/run/run_down.cfg", "RUN_DOWN");
-    player.LoadAnimation( "configs/animations/player/run/run_left.cfg", "RUN_LEFT");
-    player.LoadAnimation( "configs/animations/player/run/run_up.cfg", "RUN_UP");
-    player.LoadAnimation( "configs/animations/player/run/run_right.cfg", "RUN_RIGHT");
+        player.LoadAnimation( "configs/animations/player/run/run_down.cfg", "RUN_DOWN");
+        player.LoadAnimation( "configs/animations/player/run/run_left.cfg", "RUN_LEFT");
+        player.LoadAnimation( "configs/animations/player/run/run_up.cfg", "RUN_UP");
+        player.LoadAnimation( "configs/animations/player/run/run_right.cfg", "RUN_RIGHT");
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+        return -1;
+    }
 
     SDL_Event event;
 
@@ -153,13 +180,19 @@ int main ( int argc, char* argv[] ) {
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            main_menu.LoadCfg( "configs/menu/main_menu.json" );
-
             settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
-
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
+
+
+            try {
+                main_menu.LoadCfg( "configs/menu/main_menu.json");
+                settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
+                pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
+            } catch ( HerionException::File::FileException &ex ) {
+                ex.UpdateStackTrace( GET_CONTEXT() );
+                Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+                return -1;
+            }
 
             room_manager.ResizeRoom();
             player.Resize();

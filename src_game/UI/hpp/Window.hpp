@@ -23,8 +23,8 @@ private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
-    std::unordered_map<std::string, SDL_Cursor* > Cursors;
-    std::string current_cursor_name;
+    static std::unordered_map<std::string, SDL_Cursor* > Cursors;
+    static std::string current_cursor_name;
 
     int width, height;
 
@@ -48,13 +48,9 @@ public:
 
     void Sleep() const;
     void LoadCursors(const std::string &);
-    void SetCursor( const std::string& );
-    SDL_Cursor* GetCursor();
 
-
-    
-
-
+    static void SetCursor( const std::string& );
+    static SDL_Cursor* GetCursor();
 
 };
 

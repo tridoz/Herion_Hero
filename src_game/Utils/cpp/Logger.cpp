@@ -10,6 +10,7 @@
 
 const std::string Logger::RED   = "\033[31m";
 const std::string Logger::GREEN = "\033[32m";
+const std::string Logger::MAGENTA = "\033[35m";
 const std::string Logger::CLEAR = "\033[0m";
 
 bool Logger::http_logging_enabled = false;
@@ -40,6 +41,10 @@ std::string Logger::MakeRed( const std::string& message ) {
 
 std::string Logger::MakeGreen( const std::string& message ) {
     return GREEN + message + CLEAR;
+}
+
+std::string Logger::MakeMagenta( const std::string& message ) {
+    return MAGENTA + message + CLEAR;
 }
 
 void Logger::LogOk( const std::time_t log_time, const std::string& type, const std::string& class_name, const std::string& function_name, const std::string& log_message) {
@@ -103,7 +108,20 @@ void Logger::LogErr( const std::time_t log_time, const std::string& type, const 
 
 }
 
+void Logger::LogStackTrace(std::time_t log_time, const std::vector<std::string> &stack_trace) {
 
+    const std::string type = MakeMagenta( "STACK TRACE" );
+    const std::string time = FormatTime(log_time);
+
+    std::string final_log_message = "[" + type + "] => " + time + "\n";
+
+    for ( const auto line : stack_trace ) {
+        final_log_message +=  line + "\n";
+    }
+
+    std::cout << final_log_message << std::endl;
+
+}
 
 void Logger::EnableFILELogging() {
     file_logging_enabled = true;

@@ -6,6 +6,8 @@
 #define HERION_HERO_JSONPARSERER_HPP
 
 #include "../../../headers_only_dependencies/json.hpp"
+#include "../../Exceptions/hpp/HerionFileException.hpp"
+#include "FileOpener.hpp"
 
 #include <fstream>
 
@@ -87,7 +89,6 @@ namespace JSONParser {
     }
 
     namespace menu_configuration {
-
         inline nlohmann::json config_file;
         struct RowElementFields {
             std::string type;

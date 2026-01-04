@@ -157,3 +157,84 @@ Couldn't open ../assets/font/spacial_characters/space.png: No such file or direc
 [ [31mCREATION[0m ] { 2025:12:31 15:26:48} => Texture::CreateTexture
 Couldn't open ../assets/font/spacial_characters/space.png: No such file or directory
 
+[ [31mCREATION[0m ] { 2026:01:04 17:06:52} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mCREATION[0m ] { 2026:01:04 17:32:59} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mCREATION[0m ] { 2026:01:04 17:34:21} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mCREATION[0m ] { 2026:01:04 17:34:41} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mCREATION[0m ] { 2026:01:04 17:35:01} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mLOADING[0m ] { 2026:01:04 17:36:07} => FileOpener::OpenFileInput
+File not found: ../assets/all_textures.txt
+
+[ [31mLOADING[0m ] { 2026:01:04 17:36:54} => FileOpener::OpenFileInput
+File not found: ../assets/all_textures.txt
+
+[ [31mLOADING[0m ] { 2026:01:04 17:37:37} => FileOpener::OpenFileInput
+File not found: ../assets/all_textures.txt
+
+[ [31mCREATION[0m ] { 2026:01:04 17:39:42} => Texture::CreateTexture
+Couldn't open ../ciao: No such file or directory
+
+[ [31mLOADING[0m ] { 2026:01:04 17:42:47} => FileOpener::OpenFileInput
+File not found: ../cassets/all_textures.txt
+
+[ [31mLOADING[0m ] { 2026:01:04 17:44:07} => FileOpener::OpenFileInput
+File not found: ../cassets/all_textures.txt
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/idle/idle_down.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/idle/idle_left.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/idle/idle_up.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/idle/idle_right.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/run/run_down.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/run/run_left.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/run/run_up.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:52:59} => Player::LoadAnimation
+File configs/animations/player/run/run_right.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/idle/idle_down.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/idle/idle_left.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/idle/idle_up.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/idle/idle_right.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/run/run_down.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/run/run_left.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/run/run_up.cfg is malformed
+
+[ [31mPARSING[0m ] { 2026:01:04 18:53:15} => Player::LoadAnimation
+File configs/animations/player/run/run_right.cfg is malformed
+

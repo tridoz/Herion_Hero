@@ -13,6 +13,7 @@
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Utils/hpp/ButtonsFunctions.hpp"
 #include "../../Utils/hpp/Logger.hpp"
+#include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../../Textures/hpp/Texture.hpp"
 #include "Button.hpp"
 #include "Text.hpp"
@@ -22,6 +23,8 @@ class Menu {
 
 private:
 	TextureManager *texture_manager;
+
+	Texture* background;
 
 	std::string filepath;
 	const std::string base_path = "../";

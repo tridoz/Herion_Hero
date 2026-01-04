@@ -10,7 +10,19 @@
       "elements" : [
         {
           "type" : "BUTTON",
-          "text" : "Play",
+          "text" : "New Game",
+          "action" : "START_NEW_GAME",
+          "id" : "button_for_starting_new_game"
+        }
+      ]
+    },
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Continue",
           "action" : "START_GAME",
           "id" : "button_for_starting_game"
         }

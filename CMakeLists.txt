@@ -54,6 +54,12 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/cpp/JSONParserMenuConfiguration.cpp
         src_game/Sound/cpp/SoundBoard.cpp
         src_game/Sound/hpp/SoundBoard.hpp
+        src_game/Utils/cpp/Save.cpp
+        src_game/Utils/hpp/Save.hpp
+        src_game/Exceptions/hpp/HerionFileException.hpp
+        src_game/Exceptions/cpp/HerionFileException.cpp
+        src_game/Utils/cpp/FileOpener.cpp
+        src_game/Utils/hpp/FileOpener.hpp
 
 )
 

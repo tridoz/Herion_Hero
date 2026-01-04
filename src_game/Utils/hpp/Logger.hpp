@@ -22,6 +22,7 @@ private:
     static const std::string RED;
     static const std::string GREEN;
     static const std::string CLEAR;
+    static const std::string MAGENTA;
 
     static bool http_logging_enabled;
     static bool file_logging_enabled;
@@ -30,7 +31,11 @@ private:
 
     static std::string MakeRed( const std::string& message );
     static std::string MakeGreen( const std::string& message );
+    static std::string MakeMagenta( const std::string& message );
+
+
     static std::string FormatTime( std::time_t time_to_format);
+
 
 
 public:
@@ -49,6 +54,11 @@ public:
         const std::string& class_name,
         const std::string& function_name,
         const std::string& log_message
+        );
+
+    static void LogStackTrace(
+        std::time_t log_time,
+        const std::vector< std::string >& stack_trace
         );
 
     static void EnableHTTPLogging();
