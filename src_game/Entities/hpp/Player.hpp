@@ -55,7 +55,7 @@ public:
 
 	void SetTextureManager( TextureManager *new_texture_manager );
 
-	void LoadAnimation( const std::string &dir_filepath, const std::string &animation_name );
+	void LoadAnimation(const std::string &filepath);
 
 	void Update(SDL_Renderer* renderer);
 	void Draw( SDL_Renderer *renderer );

@@ -151,15 +151,7 @@ int main ( int argc, char* argv[] ) {
     player.SetTextureManager( &texture_manager );
 
     try {
-        player.LoadAnimation( "configs/animations/player/idle/idle_down.cfg", "IDLE_DOWN");
-        player.LoadAnimation( "configs/animations/player/idle/idle_left.cfg", "IDLE_LEFT");
-        player.LoadAnimation( "configs/animations/player/idle/idle_up.cfg", "IDLE_UP");
-        player.LoadAnimation( "configs/animations/player/idle/idle_right.cfg", "IDLE_RIGHT");
-
-        player.LoadAnimation( "configs/animations/player/run/run_down.cfg", "RUN_DOWN");
-        player.LoadAnimation( "configs/animations/player/run/run_left.cfg", "RUN_LEFT");
-        player.LoadAnimation( "configs/animations/player/run/run_up.cfg", "RUN_UP");
-        player.LoadAnimation( "configs/animations/player/run/run_right.cfg", "RUN_RIGHT");
+        player.LoadAnimation( "configs/animations/player.json");
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );

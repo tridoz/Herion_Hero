@@ -128,51 +128,28 @@ void Player::SetTextureManager( TextureManager *new_texture_manager ) {
 	this->texture_manager = new_texture_manager;
 }
 
-void Player::LoadAnimation( const std::string &filepath, const std::string &animation_name ) {
-
-	std::ifstream animation_cfg_file;
+void Player::LoadAnimation( const std::string &filepath ) {
 
 	try {
-		FileOpener::OpenFileInput( animation_cfg_file, "../" + filepath );
+		JSONParser::animations::SetConfigFile( filepath );
 	} catch ( HerionException::File::FileException& ex ) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
 		throw;
 	}
 
+	int number_of_animations = JSONParser::animations::GetAnimationNumbers();
 
-	std::string line;
-	try {
-		std::getline( animation_cfg_file, line );
-		int frame_number = std::stoi( line );
+	for ( int i = 0 ; i<number_of_animations ; i++ ) {
+		JSONParser::animations::AnimationElementsFields animation_characteristics = JSONParser::animations::GetAnimationElementsFields( i );
+		std::string animation_name = animation_characteristics.name;
 
-		if ( !animations.contains( animation_name ) ) {
-			THROW_FILE_NOT_FOUND( animation_name );
+		animations.at( animation_name )->SetFrameRate( animation_characteristics.frame_number );
+		animations.at( animation_name )->SetAnimationFrameNUmber( animation_characteristics.frame_to_load );
+
+		for ( int j = 0 ; j<animation_characteristics.frame_to_load ; j++ ) {
+			Texture* texture = texture_manager->GetTexture( animation_characteristics.path + "frame" + std::to_string(j) + ".png" );
+			animations.at(animation_name)->AddFrameTexture( texture );
 		}
-
-		animations.at( animation_name )->SetAnimationFrameNUmber( frame_number );
-		animations.at( animation_name )->SetFrameRate( frame_number );
-
-	} catch ( std::invalid_argument ) {
-		Logger::LogErr(
-			std::time(nullptr),
-			"PARSING",
-			"Player",
-			"LoadAnimation",
-			"File " + filepath + " is malformed"
-			);
-		return;
-
-	}
-
-	while ( std::getline( animation_cfg_file, line ) ) {
-
-		Texture* animation_texture = texture_manager->GetTexture( line );
-
-		if ( !animations.contains( animation_name ) ) {
-			THROW_FILE_NOT_FOUND( animation_name );
-		}
-
-		animations.at( animation_name )->AddFrameTexture( animation_texture );
 	}
 
 }

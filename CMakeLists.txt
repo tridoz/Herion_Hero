@@ -60,6 +60,7 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Exceptions/cpp/HerionFileException.cpp
         src_game/Utils/cpp/FileOpener.cpp
         src_game/Utils/hpp/FileOpener.hpp
+        src_game/Utils/cpp/JSONParserAnimations.cpp
 
 )
 

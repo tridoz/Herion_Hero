@@ -115,6 +115,19 @@ namespace JSONParser {
         RowElementFields GetRowElementFields( int num_row, int num_element );
     }
 
+    namespace animations {
+        inline nlohmann::json animation_file;
+        inline std::string animation_file_path;
+        struct AnimationElementsFields {
+            std::string path;
+            std::string name;
+            int frame_number;
+            int frame_to_load;
+        };
+        void SetConfigFile( const std::string& config_file_path );
+        int GetAnimationNumbers();
+        AnimationElementsFields GetAnimationElementsFields( int num_animation);
+    }
 }
 
 

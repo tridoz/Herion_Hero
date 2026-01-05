@@ -16,16 +16,6 @@ void JSONParser::menu_configuration::SetConfigFile(const std::string& filename) 
         throw;
     }
 
-    if ( !json_file.is_open() ) {
-        Logger::LogErr(
-            std::time(nullptr),
-            "PARSING",
-            "JSONParserMenuConfiguration",
-            "SetConfigFile",
-            "Error while opening the file [" + config_file_path + "] for input: " + strerror( errno )
-            );
-        return;
-    }
 
     json_file >> config_file;
 }
