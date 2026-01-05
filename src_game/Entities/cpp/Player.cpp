@@ -85,6 +85,9 @@ void Player::SetPlayerDirection( const FacingDirection new_direction) {
 	std::string str_direction = "";
 
 	switch ( this->state ) {
+		default:
+			break;
+
 		case PlayerState::IDLE:
 			str_state = "IDLE_";
 			break;
@@ -92,6 +95,7 @@ void Player::SetPlayerDirection( const FacingDirection new_direction) {
 		case PlayerState::RUN:
 			str_state = "RUN_";
 			break;
+
 	}
 
 	switch ( new_direction ) {
@@ -110,6 +114,10 @@ void Player::SetPlayerDirection( const FacingDirection new_direction) {
 		case FacingDirection::EAST:
 			str_direction = "RIGHT";
 			break;
+	}
+
+	if ( !animations.contains( str_state + str_direction ) ) {
+		THROW_FILE_NOT_FOUND( str_state + str_direction );
 	}
 
 	current_animation = animations.at( str_state + str_direction );
@@ -137,6 +145,10 @@ void Player::LoadAnimation( const std::string &filepath, const std::string &anim
 		std::getline( animation_cfg_file, line );
 		int frame_number = std::stoi( line );
 
+		if ( !animations.contains( animation_name ) ) {
+			THROW_FILE_NOT_FOUND( animation_name );
+		}
+
 		animations.at( animation_name )->SetAnimationFrameNUmber( frame_number );
 		animations.at( animation_name )->SetFrameRate( frame_number );
 
@@ -153,7 +165,13 @@ void Player::LoadAnimation( const std::string &filepath, const std::string &anim
 	}
 
 	while ( std::getline( animation_cfg_file, line ) ) {
+
 		Texture* animation_texture = texture_manager->GetTexture( line );
+
+		if ( !animations.contains( animation_name ) ) {
+			THROW_FILE_NOT_FOUND( animation_name );
+		}
+
 		animations.at( animation_name )->AddFrameTexture( animation_texture );
 	}
 
@@ -178,9 +196,18 @@ void Player::Update( SDL_Renderer* renderer ) {
 	double distance_x = std::abs( pos_x - next_x );
 	double distance_y = std::abs( pos_y - next_y );
 
+
 	double distance = std::sqrt( distance_x * distance_x + distance_y * distance_y );
 
-	const double deltaTime = 1.0 / JSONParser::graphics::GetFrameRate();
+	double FrameRate;
+	try {
+		FrameRate = JSONParser::graphics::GetFrameRate();
+	} catch ( HerionException::File::FileMalformedException& ex) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
+
+	const double deltaTime = 1.0 / FrameRate;
 
 	if ( distance >= this->speed * deltaTime ) {
 
@@ -290,7 +317,14 @@ void Player::Move( float x, float y ) {
 }
 
 void Player::Resize() {
-	this-> scale = JSONParser::graphics::GetScale();
+
+	try {
+		this-> scale = JSONParser::graphics::GetScale();
+	} catch ( HerionException::File::FileMalformedException& ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
+
 }
 
 

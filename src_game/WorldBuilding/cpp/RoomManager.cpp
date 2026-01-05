@@ -120,13 +120,6 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
     }
 
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "TILES",
-    //     "RoomManager",
-    //     "GenerateSpawnRoom",
-    //     "All tiles created successfully"
-    //     );
 
     Node* newRoom = new Node();
     newRoom->room = new Room();
@@ -161,13 +154,10 @@ void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
 
     }
 
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "SETTING",
-    //     "RoomManager",
-    //     "GenerateSpawnRoom",
-    //     "Spawn room generated correctly"
-    //     );
+}
+
+Room* RoomManager::GetCurrentRoom() const {
+    return this->current_room->room;
 }
 
 void RoomManager::GoLeft() {
@@ -206,13 +196,21 @@ void RoomManager::GoDown() {
 
 void RoomManager::ResizeRoom() {
     std::vector < std::vector< Tile* > > tiles = this->current_room->room->GetTiles();
+    int w, h;
+    try {
+        w = JSONParser::graphics::GetWidth();
+        h = JSONParser::graphics::GetHeight();
+    } catch ( HerionException::File::FileMalformedException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
     for ( int i = 0 ; i < tiles.size() ; i++ ) {
         for ( int j = 0 ; j < tiles[i].size() ; j++ ) {
-            float newX, newY, newW, newH;
+            float newW, newH;
 
-            newW = JSONParser::graphics::GetWidth() / horizontal_tiles;
-            newH = JSONParser::graphics::GetHeight() / vertical_tiles;
-
+            newW = w / horizontal_tiles;
+            newH = h / vertical_tiles;
 
             tiles[i][j] -> SetRect( i*newW, j*newH, newW, newH  );
 

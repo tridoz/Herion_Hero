@@ -63,6 +63,7 @@ public:
     void SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles);
     void SetTextureManager(TextureManager* texture_manager);
     void GenerateRoom( ROOM_TYPE room_type, Direction dir );
+    [[nodiscard]] Room* GetCurrentRoom() const;
 
     void GoLeft();
 

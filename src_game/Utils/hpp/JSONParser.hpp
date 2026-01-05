@@ -90,6 +90,7 @@ namespace JSONParser {
 
     namespace menu_configuration {
         inline nlohmann::json config_file;
+        inline std::string config_file_path;
         struct RowElementFields {
             std::string type;
             std::string text;

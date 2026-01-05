@@ -112,8 +112,13 @@ void Window::Present() const {
 
 void Window::Resize() {
 
-    this->height = JSONParser::graphics::GetHeight();
-    this->width = JSONParser::graphics::GetWidth();
+    try {
+        this->height = JSONParser::graphics::GetHeight();
+        this->width = JSONParser::graphics::GetWidth();
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
 
     SDL_SetWindowSize( this->window, this->width, this->height );
     SDL_SetWindowPosition( this->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED );

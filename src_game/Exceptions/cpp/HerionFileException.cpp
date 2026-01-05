@@ -40,7 +40,7 @@ HerionException::File::FileNotFoundException::FileNotFoundException(
     const std::string& location
 )
     : HerionException::File::FileException("File not found: " + path,
-                                           "LOADING",
+                                           "FILE",
                                            location)
 {}
 
@@ -51,7 +51,7 @@ HerionException::File::FileOpenException::FileOpenException(
     const std::string& location
 )
     : HerionException::File::FileException("Unable to open file: " + path,
-                                           "LOADING",
+                                           "OPENING",
                                            location)
 {}
 
@@ -62,7 +62,7 @@ HerionException::File::FileReadException::FileReadException(
     const std::string& location
 )
     : HerionException::File::FileException("Unable to read file: " + path,
-                                           "LOADING",
+                                           "READING",
                                            location)
 {}
 
@@ -73,6 +73,15 @@ HerionException::File::FileWriteException::FileWriteException(
     const std::string& location
 )
     : HerionException::File::FileException("Unable to write file: " + path,
-                                           "LOADING",
+                                           "WRITING",
+                                           location)
+{}
+
+HerionException::File::FileMalformedException::FileMalformedException(
+    const std::string& path,
+    const std::string& location
+)
+    : HerionException::File::FileException("Malformed file: " + path,
+                                           "PARSING",
                                            location)
 {}

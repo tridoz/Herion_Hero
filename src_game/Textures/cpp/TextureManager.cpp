@@ -53,10 +53,11 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
 }
 
 Texture *TextureManager::GetTexture(const std::string &texture_name) {
-    if ( textures.contains( texture_name) ) {
-        return &textures.at( texture_name );
+
+    if ( !textures.contains( texture_name) ) {
+        THROW_FILE_NOT_FOUND( texture_name );
     }
 
-    THROW_FILE_NOT_FOUND( texture_name );
+    return &textures.at( texture_name );
 
 }

@@ -57,7 +57,6 @@ void Menu::Rescale(SDL_FRect* rect) {
 
 void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 
-    this->scale = JSONParser::graphics::GetScale();
 	try {
 		JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
 	} catch ( HerionException::File::FileException &ex ) {
@@ -65,10 +64,16 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 		throw;
 	}
 
-    this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
-    this->start_y = JSONParser::menu_configuration::GetStartY();
-    this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
-    this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale; // SCALING
+	try {
+		this->scale = JSONParser::graphics::GetScale();
+		this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
+		this->start_y = JSONParser::menu_configuration::GetStartY();
+		this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
+		this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale;
+	} catch ( HerionException::File::FileMalformedException& ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
 
 	try {
 		this->background = texture_manager->GetTexture(this->filepath );
@@ -178,11 +183,18 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             row_height = std::max({ row_height, left_rect.h, center_rect.h, right_rect.h });
 
             if (menu_element_characteristic.type == "BUTTON") {
-                Button* btn = new Button();
+
+            	Button* btn = new Button();
                 btn->SetRects(rects);
                 btn->SetTextures(textures);
+
+            	if ( !buttons_functions.contains(menu_element_characteristic.action.value() ) ) {
+            		THROW_FILE_NOT_FOUND( menu_element_characteristic.action.value() );
+            	}
+
                 btn->SetOnClick(buttons_functions.at(menu_element_characteristic.action.value()));
                 buttons.emplace(menu_element_characteristic.id, btn);
+
             } else if ( menu_element_characteristic.type.contains("TEXT") ) {
                 Text* txt = new Text();
                 txt->SetRects(rects);

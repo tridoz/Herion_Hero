@@ -90,6 +90,10 @@ void InputProcessor::process_mouse_left_pressed() {
     Button* btn;
 
     switch (player->GetGameMode()) {
+
+        default:
+            break;
+
         case Player::GameMode::MAIN_MENU:
             btn = menus.at("MAIN_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
@@ -109,7 +113,7 @@ void InputProcessor::process_mouse_left_pressed() {
             float x, y;
             SDL_GetMouseState(&x, &y);
             player->Move( x, y );
-        break;
+            break;
     }
 
 }

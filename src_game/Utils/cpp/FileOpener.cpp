@@ -22,3 +22,19 @@ void FileOpener::OpenFileInput(std::ifstream& in, const std::string& filepath)
 	in.exceptions(std::ifstream::badbit);
 }
 
+void FileOpener::OpenFileOutput(std::ofstream& out, const std::string& filepath)
+{
+	out.open(filepath, std::ios::out);
+
+	if (!out.is_open()) {
+		if (!std::filesystem::exists(filepath)) {
+			THROW_FILE_NOT_FOUND(filepath);
+		} else {
+			THROW_FILE_OPEN(filepath);
+		}
+	}
+
+	out.exceptions(std::ifstream::badbit);
+}
+
+

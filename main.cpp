@@ -83,7 +83,6 @@ int main ( int argc, char* argv[] ) {
     Logger::EnableSTDOUTLogging();
     Logger::ClearTempLoggingFiles();
 
-
     Window window(  "HERION HERO");
 
     InputProcessor processor;
@@ -182,7 +181,6 @@ int main ( int argc, char* argv[] ) {
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-
 
             try {
                 main_menu.LoadCfg( "configs/menu/main_menu.json");

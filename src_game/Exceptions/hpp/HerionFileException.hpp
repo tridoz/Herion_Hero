@@ -61,6 +61,14 @@ namespace HerionException::File {
         );
     };
 
+    class FileMalformedException final : public FileException {
+    public:
+        explicit FileMalformedException (
+            const std::string& path,
+            const std::string& location = "UnknownLocation"
+            );
+    };
+
 }
 
 #define THROW_FILE_NOT_FOUND(path) \
@@ -74,5 +82,8 @@ namespace HerionException::File {
 
 #define THROW_FILE_WRITE(path) \
     throw  HerionException::File::FileWriteException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+
+#define THROW_FILE_MALFORMED(path) \
+    throw HerionException::File::FileMalformedException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
 
 #define GET_CONTEXT() (  std::string(__PRETTY_FUNCTION__) + " at line=> " + std::to_string(__LINE__) )
