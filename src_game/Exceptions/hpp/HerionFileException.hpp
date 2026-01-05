@@ -3,6 +3,17 @@
 #include <string>
 #include <ctime>
 
+#pragma once
+
+#if defined(_MSC_VER)
+    #define HERION_FUNCTION_SIGNATURE __FUNCSIG__
+#elif defined(__GNUC__) || defined(__clang__)
+    #define HERION_FUNCTION_SIGNATURE __PRETTY_FUNCTION__
+#else
+    #define HERION_FUNCTION_SIGNATURE __FUNCTION__
+#endif
+
+
 
 #include "../../Utils/hpp/Logger.hpp"
 
@@ -72,18 +83,19 @@ namespace HerionException::File {
 }
 
 #define THROW_FILE_NOT_FOUND(path) \
-    throw  HerionException::File::FileNotFoundException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+    throw HerionException::File::FileNotFoundException( "\033[1m" + path + "\033[22m", HERION_FUNCTION_SIGNATURE)
 
 #define THROW_FILE_OPEN(path) \
-    throw  HerionException::File::FileOpenException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+    throw HerionException::File::FileOpenException( "\033[1m" + path + "\033[22m", HERION_FUNCTION_SIGNATURE)
 
 #define THROW_FILE_READ(path) \
-    throw  HerionException::File::FileReadException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+throw HerionException::File::FileReadException( "\033[1m" + path + "\033[22m", HERION_FUNCTION_SIGNATURE)
 
 #define THROW_FILE_WRITE(path) \
-    throw  HerionException::File::FileWriteException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+    throw HerionException::File::FileWriteException( "\033[1m" + path + "\033[22m", HERION_FUNCTION_SIGNATURE)
 
 #define THROW_FILE_MALFORMED(path) \
-    throw HerionException::File::FileMalformedException( "\033[1m" + path + "\033[22m", __PRETTY_FUNCTION__)
+    throw HerionException::File::FileMalformedException( "\033[1m" + path + "\033[22m", HERION_FUNCTION_SIGNATURE)
 
-#define GET_CONTEXT() (  std::string(__PRETTY_FUNCTION__) + " at line=> " + std::to_string(__LINE__) )
+#define GET_CONTEXT() \
+    (std::string(HERION_FUNCTION_SIGNATURE) + " at line => " + std::to_string(__LINE__))
