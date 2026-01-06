@@ -1,6 +1,6 @@
 {
     "brightness": 1.0,
-    "frame_rate": 500,
+    "frame_rate": 180,
     "fullscreen": false,
     "resolution": {
         "height": 1080,

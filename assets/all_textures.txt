@@ -10,6 +10,10 @@ assets/ui/buttons/button_left.png
 assets/ui/buttons/button_center.png
 assets/ui/buttons/button_right.png
 
+assets/ui/buttons/button_left2.png
+assets/ui/buttons/button_center2.png
+assets/ui/buttons/button_right2.png
+
 assets/ui/icons/apply.png
 assets/ui/icons/close.png
 assets/ui/icons/full_heart.png

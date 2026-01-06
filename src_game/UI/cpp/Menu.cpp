@@ -109,9 +109,9 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
         	Texture* right_texture = nullptr;
 
         	try {
-        		left_texture   = texture_manager->GetTexture("assets/ui/buttons/button_left.png");
-        		center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center.png");
-        		right_texture  = texture_manager->GetTexture("assets/ui/buttons/button_right.png");
+        		left_texture   = texture_manager->GetTexture("assets/ui/buttons/button_left2.png");
+        		center_texture = texture_manager->GetTexture("assets/ui/buttons/button_center2.png");
+        		right_texture  = texture_manager->GetTexture("assets/ui/buttons/button_right2.png");
         	} catch ( HerionException::File::FileNotFoundException &ex ) {
 				ex.UpdateStackTrace( GET_CONTEXT() );
         		throw;

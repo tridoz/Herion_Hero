@@ -233,11 +233,9 @@ void JSONParser::graphics::IncreaseFPSLimit() {
 
 
     auto it = std::upper_bound(allowedFPS.begin(), allowedFPS.end(), frame_rate);
-    if (it == allowedFPS.end()) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t => frame reate value can't exists");
+    if (it != allowedFPS.end() ) {
+        frame_rate = *it;
     }
-
-    frame_rate = *it;
 
     json_graphics["frame_rate"] = frame_rate;
 
@@ -276,12 +274,11 @@ void JSONParser::graphics::DecreaseFPSLimit() {
     frame_rate = json_graphics["frame_rate"].get<int>();
 
     auto it = std::lower_bound(allowedFPS.begin(), allowedFPS.end(), frame_rate);
-    if (it == allowedFPS.begin()) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t => frame reate value can't exists");
+    if (it != allowedFPS.begin()) {
+        --it;
+        frame_rate = *it;   
     }
 
-    --it;
-    frame_rate = *it;
 
     json_graphics["frame_rate"] = frame_rate;
 
