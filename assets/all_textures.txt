@@ -96,60 +96,21 @@ assets/font/numbers/9.png
 
 assets/font/special_characters/space.png
 
-assets/entities/player/idle/down/frame0.png
-assets/entities/player/idle/down/frame1.png
-assets/entities/player/idle/down/frame2.png
-assets/entities/player/idle/down/frame3.png
-assets/entities/player/idle/down/frame4.png
-assets/entities/player/idle/down/frame5.png
-
 assets/entities/player/idle/left/frame0.png
 assets/entities/player/idle/left/frame1.png
 assets/entities/player/idle/left/frame2.png
 assets/entities/player/idle/left/frame3.png
-assets/entities/player/idle/left/frame4.png
-assets/entities/player/idle/left/frame5.png
-
-assets/entities/player/idle/up/frame0.png
-assets/entities/player/idle/up/frame1.png
-assets/entities/player/idle/up/frame2.png
-assets/entities/player/idle/up/frame3.png
-assets/entities/player/idle/up/frame4.png
-assets/entities/player/idle/up/frame5.png
 
 assets/entities/player/idle/right/frame0.png
 assets/entities/player/idle/right/frame1.png
 assets/entities/player/idle/right/frame2.png
 assets/entities/player/idle/right/frame3.png
-assets/entities/player/idle/right/frame4.png
-assets/entities/player/idle/right/frame5.png
-
-assets/entities/player/run/down/frame0.png
-assets/entities/player/run/down/frame1.png
-assets/entities/player/run/down/frame2.png
-assets/entities/player/run/down/frame3.png
-assets/entities/player/run/down/frame4.png
-assets/entities/player/run/down/frame5.png
 
 assets/entities/player/run/left/frame0.png
 assets/entities/player/run/left/frame1.png
-assets/entities/player/run/left/frame2.png
-assets/entities/player/run/left/frame3.png
-assets/entities/player/run/left/frame4.png
-assets/entities/player/run/left/frame5.png
-
-assets/entities/player/run/up/frame0.png
-assets/entities/player/run/up/frame1.png
-assets/entities/player/run/up/frame2.png
-assets/entities/player/run/up/frame3.png
-assets/entities/player/run/up/frame4.png
-assets/entities/player/run/up/frame5.png
 
 assets/entities/player/run/right/frame0.png
 assets/entities/player/run/right/frame1.png
-assets/entities/player/run/right/frame2.png
-assets/entities/player/run/right/frame3.png
-assets/entities/player/run/right/frame4.png
-assets/entities/player/run/right/frame5.png
+
 
 

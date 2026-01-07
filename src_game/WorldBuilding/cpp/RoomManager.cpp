@@ -49,6 +49,9 @@ void RoomManager::GenerateRoom(  Direction dir ) {
 
     std::ifstream map_file;
 
+    Node* newRoom = new Node();
+    newRoom->room = new Room();
+
     try {
         FileOpener::OpenFileInput( map_file, "../maps/room1/map.hhmap" );
     } catch (HerionException::File::FileException& ex ) {
@@ -62,6 +65,7 @@ void RoomManager::GenerateRoom(  Direction dir ) {
     while (std::getline(map_file, line)) {
         std::stringstream ss(line);
         std::string cell;
+
         std::vector<Tile*> row;
         int x = 0;
 
@@ -70,8 +74,13 @@ void RoomManager::GenerateRoom(  Direction dir ) {
         }
 
         if ( line.starts_with('?') ) {
-            ss >> this->player_spawn_cell_y;
-            ss >> this->player_spawn_cell_x;
+            char a;
+            int x, y;
+            ss >> a;
+            ss >> y;
+            ss >> x;
+            newRoom->room->SetSpawnCoord( x, y );
+            continue;
         }
 
         while (ss >> cell) {
@@ -93,15 +102,14 @@ void RoomManager::GenerateRoom(  Direction dir ) {
 
             x++;
         }
-
         tiles.push_back(row);
         y++;
+
     }
 
-    Node* newRoom = new Node();
-    newRoom->room = new Room();
+
     newRoom->room->SetTiles( tiles );
-    newRoom->room->SetSpawnCoord( this->player_spawn_cell_x, this->player_spawn_cell_y );
+
 
     if ( spawn_room == nullptr ) {
         spawn_room = newRoom;
@@ -212,9 +220,9 @@ void RoomManager::SetTextureManager(TextureManager* texture_manager) {
 }
 
 int RoomManager::GetPlayerSpawnCellX() const {
-    return current_room->room->GetSpawnX() * (  JSONParser::graphics::GetWidth() / this->horizontal_tiles );
+    return this->current_room->room->GetSpawnX() * (  JSONParser::graphics::GetWidth() / this->horizontal_tiles );
 }
 
 int RoomManager::GetPlayerSpawnCellY() const {
-    return this->current_room->room->GetSpawnY()  * ( JSONParser::graphics::GetHeight() / this->vertical_tiles  );
+    return  this->current_room->room->GetSpawnY()  * ( JSONParser::graphics::GetHeight() / this->vertical_tiles  );
 }

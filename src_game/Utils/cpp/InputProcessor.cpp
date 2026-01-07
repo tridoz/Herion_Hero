@@ -9,6 +9,9 @@ InputProcessor::InputProcessor() {
     this->mouse_right_pressed = false;
     this->mouse_x = 0;
     this->mouse_y = 0;
+    this->key_left_pressed = false;
+    this->key_right_pressed = false;
+
 }
 
 InputProcessor::~InputProcessor() {
@@ -33,18 +36,18 @@ void InputProcessor::process_key_down(int scancode) {
     switch (scancode) {
         default:
             break;
-            
+
         case SDL_SCANCODE_ESCAPE:
             switch (game_mode) {
-                case Player::GameMode::MAIN_MENU:
-                    running = false;
-                    break;
-                case Player::GameMode::IN_GAME:
-                    this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
-                    break;
+        case Player::GameMode::MAIN_MENU:
+                running = false;
+                break;
+        case Player::GameMode::IN_GAME:
+                this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
+                break;
 
-                default:
-                    break;
+        default:
+                break;
             }
             break;
 
@@ -76,13 +79,38 @@ void InputProcessor::process_key_down(int scancode) {
                 room_manager->GoRight();
             break;
 
+        case SDL_SCANCODE_D:
+            if ( game_mode == Player::GameMode::IN_GAME ) {
+                key_right_pressed = true;
+            }
+            break;
+
+        case SDL_SCANCODE_A:
+            if (game_mode == Player::GameMode::IN_GAME) {
+                key_left_pressed = true;
+            }
+            break;
     }
 
 
 }
 
 void InputProcessor::process_key_up(const int scancode)  {
+    Player::GameMode game_mode = player->GetGameMode();
 
+    switch (scancode) {
+        case SDL_SCANCODE_D:
+            if ( game_mode == Player::GameMode::IN_GAME ) {
+                key_right_pressed = false;
+            }
+            break;
+
+        case SDL_SCANCODE_A:
+            if (game_mode == Player::GameMode::IN_GAME) {
+                key_left_pressed = false;
+            }
+        break;
+    }
 }
 
 void InputProcessor::process_mouse_left_pressed() {
@@ -109,11 +137,6 @@ void InputProcessor::process_mouse_left_pressed() {
             if (btn != nullptr) btn->Click();
             break;
 
-        case Player::GameMode::IN_GAME:
-            float x, y;
-            SDL_GetMouseState(&x, &y);
-            player->Move( x, y );
-            break;
     }
 
 }
@@ -173,3 +196,17 @@ bool InputProcessor::isMouseLeftPressed() const {
 bool InputProcessor::isMouseRightPressed() const {
     return this->mouse_right_pressed;
 }
+
+void InputProcessor::update_player_movement(float delta_time) const {
+    if (player->GetGameMode() != Player::GameMode::IN_GAME)
+        return;
+
+    if (key_left_pressed)
+        player->Move(Player::FacingDirection::WEST, delta_time);
+    else if (key_right_pressed)
+        player->Move(Player::FacingDirection::EAST, delta_time);
+    else
+        player->SetPlayerState(Player::PlayerState::IDLE);
+
+}
+

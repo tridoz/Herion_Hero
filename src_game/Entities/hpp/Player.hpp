@@ -29,9 +29,7 @@ public:
 	};
 
 	 enum class FacingDirection{
-		NORTH,
 		WEST,
-		SOUTH,
 		EAST
 	};
 
@@ -60,7 +58,7 @@ public:
 	void Update(SDL_Renderer* renderer);
 	void Draw( SDL_Renderer *renderer );
 
-	void Move(float x, float y);
+	void Move(FacingDirection direction, float delta_time);
 	void Resize();
 	void Spawn( int spawn_x, int spawn_y );
 
@@ -78,6 +76,7 @@ private:
 	float next_x, next_y;
 	float movement_angle;
 
+	float velocity_x;
 	float speed;
 
 	float fixed_pos_x, fixed_pos_y;

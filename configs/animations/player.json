@@ -1,45 +1,25 @@
 {
   "animations" : [
     {
-      "path" : "assets/entities/player/idle/down/",
-      "frame_number" : 12,
-      "frame_to_load": 6,
-      "name": "IDLE_DOWN"
-    },{
       "path" : "assets/entities/player/idle/left/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
+      "frame_number" : 8,
+      "frame_to_load" : 4,
       "name" : "IDLE_LEFT"
     },{
       "path" : "assets/entities/player/idle/right/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
+      "frame_number" : 8,
+      "frame_to_load" : 4,
       "name" : "IDLE_RIGHT"
     },{
-      "path" : "assets/entities/player/idle/up/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
-      "name" : "IDLE_UP"
-    },{
-      "path" : "assets/entities/player/run/down/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
-      "name" : "RUN_DOWN"
-    },{
       "path" : "assets/entities/player/run/left/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
+      "frame_number" : 8,
+      "frame_to_load" : 2,
       "name" : "RUN_LEFT"
     },{
       "path" : "assets/entities/player/run/right/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
+      "frame_number" : 8,
+      "frame_to_load" : 2,
       "name" : "RUN_RIGHT"
-    },{
-      "path" : "assets/entities/player/run/up/",
-      "frame_number" : 12,
-      "frame_to_load" : 6,
-      "name" : "RUN_UP"
     }
   ]
 }

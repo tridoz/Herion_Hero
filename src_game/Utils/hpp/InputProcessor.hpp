@@ -21,6 +21,9 @@ class InputProcessor {
 private:
     Player* player;
     RoomManager* room_manager;
+    bool key_left_pressed;
+    bool key_right_pressed;
+
 
     SDL_Event event{};
     bool keys[ MAX_SCANCODES ] = { false };
@@ -54,6 +57,7 @@ public:
     [[nodiscard]] bool ShouldQuit() const;
     [[nodiscard]] bool isMouseLeftPressed() const;
     [[nodiscard]] bool isMouseRightPressed() const;
+    void update_player_movement(float delta_time) const;
 
     void SetPlayer( Player* player );
     void SetRoomManager( RoomManager* room_manager );

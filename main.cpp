@@ -148,8 +148,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetPlayer( &player );
     processor.SetRoomManager( &room_manager );
 
-    //player.Spawn( room_manager.GetPlayerSpawnCellX() , room_manager.GetPlayerSpawnCellX()  );
-    player.Spawn( 200, 200 );
+    player.Spawn( room_manager.GetPlayerSpawnCellX() , room_manager.GetPlayerSpawnCellY()  );
     player.SetTextureManager( &texture_manager );
 
     try {
@@ -162,7 +161,14 @@ int main ( int argc, char* argv[] ) {
 
     SDL_Event event;
 
+    Uint32 last_frame_time = SDL_GetTicks();
+    bool running = true;
+
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
+
+        Uint32 current_time = SDL_GetTicks();
+        float deltaTime = (current_time - last_frame_time) / 1000.0f;
+        last_frame_time = current_time;
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
@@ -215,7 +221,9 @@ int main ( int argc, char* argv[] ) {
             case Player::GameMode::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );
                 player.Update( window.GetRenderer() );
-                //player.Draw( window.GetRenderer() );
+
+                processor.update_player_movement( deltaTime );
+                player.Draw( window.GetRenderer() );
                 break;
 
         }

@@ -12,12 +12,15 @@ Player::Player() {
 
 	this->mode = GameMode::MAIN_MENU;
 	this->state = PlayerState::IDLE;
-	this->direction = FacingDirection::SOUTH;
+	this->direction = FacingDirection::EAST;
 
-	this->next_x = pos_x;
-	this->next_y = pos_y;
 
-	this->speed = 1000;
+
+	this->velocity_x = 0.0f;
+	this->speed = 500;
+
+	this->player_rect.w = 30;
+	this->player_rect.h = 60;
 
 	this->player_rect = {pos_x, pos_y, pos_x, pos_y};
 
@@ -26,17 +29,13 @@ Player::Player() {
 
 	this->scale = JSONParser::graphics::GetScale();
 
-	animations.emplace( "IDLE_DOWN", new Animation() );
 	animations.emplace( "IDLE_LEFT", new Animation() );
-	animations.emplace( "IDLE_UP", new Animation() );
 	animations.emplace( "IDLE_RIGHT", new Animation() );
 
-	animations.emplace("RUN_DOWN", new Animation() );
 	animations.emplace("RUN_LEFT", new Animation() );
-	animations.emplace("RUN_UP", new Animation() );
 	animations.emplace("RUN_RIGHT", new Animation() );
 
-	current_animation = animations.at("IDLE_DOWN");
+	current_animation = animations.at("IDLE_RIGHT");
 
 }
 
@@ -96,16 +95,8 @@ void Player::SetPlayerDirection( const FacingDirection new_direction) {
 	}
 
 	switch ( new_direction ) {
-		case FacingDirection::NORTH:
-			str_direction = "UP";
-			break;
-
 		case FacingDirection::WEST:
 			str_direction = "LEFT";
-			break;
-
-		case FacingDirection::SOUTH:
-			str_direction = "DOWN";
 			break;
 
 		case FacingDirection::EAST:
@@ -162,44 +153,11 @@ void Player::Draw( SDL_Renderer* renderer ) {
 	player_rect.x = pos_x * scale - player_rect.w / 2;
 	player_rect.y = pos_y * scale - player_rect.h / 2;
 
-	SDL_RenderTexture( renderer, current_animation->GetCurrentFrameTexture()->GetTexture(), nullptr, &player_rect );
+	SDL_RenderTexture(renderer, current_animation->GetCurrentFrameTexture()->GetTexture(), nullptr, &player_rect);
+
 }
 
 void Player::Update( SDL_Renderer* renderer ) {
-
-	double distance_x = std::abs( pos_x - next_x );
-	double distance_y = std::abs( pos_y - next_y );
-
-
-	double distance = std::sqrt( distance_x * distance_x + distance_y * distance_y );
-
-	double FrameRate;
-	try {
-		FrameRate = JSONParser::graphics::GetFrameRate();
-	} catch ( HerionException::File::FileMalformedException& ex) {
-		ex.UpdateStackTrace( GET_CONTEXT() );
-		throw;
-	}
-
-	const double deltaTime = 1.0 / FrameRate;
-
-	if ( distance >= this->speed * deltaTime ) {
-
-		this->state = PlayerState::RUN;
-
-		const double dx = speed * deltaTime * std::cos(movement_angle);
-		const double dy = speed * deltaTime * std::sin(movement_angle);
-
-		pos_x += dx;
-		pos_y += dy;
-
-	} else {
-
-		pos_x = next_x;
-		pos_y = next_y;
-
-		state = PlayerState::IDLE;
-	}
 
 	UpdateAnimationFrame( renderer ) ;
 }
@@ -211,16 +169,10 @@ void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
 
 	if ( state == PlayerState::RUN ) {
 		switch ( direction ) {
-			case FacingDirection::NORTH:
-				toSet = animations.at( "RUN_UP" );
-			break;
+
 
 			case FacingDirection::WEST:
 				toSet = animations.at( "RUN_LEFT" );
-			break;
-
-			case FacingDirection::SOUTH:
-				toSet = animations.at( "RUN_DOWN" );
 			break;
 
 			case FacingDirection::EAST:
@@ -238,16 +190,9 @@ void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
 
 	} else if ( state == PlayerState::IDLE ) {
 		switch ( direction ) {
-			case FacingDirection::NORTH:
-				toSet = animations.at( "IDLE_UP" );
-				break;
 
 			case FacingDirection::WEST:
 				toSet = animations.at( "IDLE_LEFT" );
-				break;
-
-			case FacingDirection::SOUTH:
-				toSet = animations.at( "IDLE_DOWN" );
 				break;
 
 			case FacingDirection::EAST:
@@ -265,30 +210,38 @@ void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
 	}
 }
 
-void Player::Move( float x, float y ) {
+void Player::Move(FacingDirection direction, float delta_time) {
 
-	this-> next_x = x / scale;
-	this-> next_y = y / scale;
+	const float distance = speed * delta_time;
 
-	const double distanceX = next_x - pos_x;
-	const double distanceY = next_y - pos_y;
+	bool is_moving = false;
 
-	this->movement_angle = atan2( distanceY, distanceX );
+	if (direction == FacingDirection::WEST) {
+		pos_x -= distance;
+		is_moving = true;
 
-	const float degree = this->movement_angle * 180 / M_PI;
-
-
-	if ( degree > -45 && degree <= 45 ) {
-		this->direction = FacingDirection::EAST;
-	}else if ( degree > 45 && degree <= 135) {
-		this->direction = FacingDirection::SOUTH;
-	}else if ( degree > -135 && degree <= -45) {
-		this->direction = FacingDirection::NORTH;
-	}else {
-		this->direction = FacingDirection::WEST;
+		if (this->direction != FacingDirection::WEST)
+			SetPlayerDirection(FacingDirection::WEST);
 	}
 
+	else if (direction == FacingDirection::EAST) {
+		pos_x += distance;
+		is_moving = true;
+
+		if (this->direction != FacingDirection::EAST)
+			SetPlayerDirection(FacingDirection::EAST);
+	}
+
+	if (is_moving) {
+		if (state != PlayerState::RUN)
+			SetPlayerState(PlayerState::RUN);
+	} else {
+		if (state != PlayerState::IDLE)
+			SetPlayerState(PlayerState::IDLE);
+	}
 }
+
+
 
 void Player::Resize() {
 
@@ -302,8 +255,10 @@ void Player::Resize() {
 }
 
 void Player::Spawn(const int spawn_x, const int spawn_y) {
+
 	this->pos_x = spawn_x;
 	this->pos_y = spawn_y;
+
 }
 
 

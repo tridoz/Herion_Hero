@@ -1,7 +1,7 @@
 # F=Floor, C=Ceiling, W=Wall, O=Object
 # L=Lava, I=Ice, D=Dark, H=Holy, B=Base
-
-? 0 0
+# coord = ? y x
+? 23 1
 
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
 .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
