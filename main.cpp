@@ -118,7 +118,7 @@ int main ( int argc, char* argv[] ) {
     room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
-        room_manager.GenerateRoom( RoomManager::ANCIENT_RUINS, RoomManager::DIR_NONE ) ;
+        room_manager.GenerateRoom( RoomManager::DIR_NONE) ;
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -148,6 +148,8 @@ int main ( int argc, char* argv[] ) {
     processor.SetPlayer( &player );
     processor.SetRoomManager( &room_manager );
 
+    //player.Spawn( room_manager.GetPlayerSpawnCellX() , room_manager.GetPlayerSpawnCellX()  );
+    player.Spawn( 200, 200 );
     player.SetTextureManager( &texture_manager );
 
     try {
@@ -213,7 +215,7 @@ int main ( int argc, char* argv[] ) {
             case Player::GameMode::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );
                 player.Update( window.GetRenderer() );
-                player.Draw( window.GetRenderer() );
+                //player.Draw( window.GetRenderer() );
                 break;
 
         }

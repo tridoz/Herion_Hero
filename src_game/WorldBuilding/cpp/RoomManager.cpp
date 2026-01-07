@@ -37,93 +37,71 @@ RoomManager::~RoomManager() {
     current_room = nullptr;
 }
 
-void RoomManager::GenerateRoom( ROOM_TYPE room_type, Direction dir ) {
+void RoomManager::GenerateRoom(  Direction dir ) {
 
-    std::string room_type_path;
-
-    switch ( room_type ) {
-        default:
-            room_type_path = "no_texture";
-            break;
-
-        case ANCIENT_RUINS:
-            room_type_path = "ancient_ruins";
-            break;
-
-        case LAVA:
-            room_type_path = "lava";
-            break;
-
-        case ICE:
-            room_type_path = "ice";
-            break;
-
-        case DARK:
-            room_type_path = "dark";
-            break;
-
-        case HOLY:
-            room_type_path = "holy";
-            break;
-
-        case POISON:
-            room_type_path = "poison";
-            break;
-    }
 
     std::vector<std::vector<Tile*> > tiles;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> floor_type(1, 100);
+
 
     const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
     const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
 
-    for ( int i = 0 ; i < horizontal_tiles ; i++ ) {
 
-        std::vector<Tile*> row;
+    std::ifstream map_file;
 
-        for ( int j = 0 ; j < vertical_tiles ; j++ ) {
-
-            Tile* tile = new Tile();
-
-            int texture_type = floor_type(gen);
-            std::string texture_path;
-
-            if ( texture_type >= 1 && texture_type <= 85 ) {
-                texture_path = "assets/floors/my_floors/" + room_type_path +
-                               "/interior/pattern_1.png";
-            } else if ( texture_type >= 86 && texture_type <= 90 ) {
-                texture_path = "assets/floors/my_floors/" + room_type_path +
-                               "/interior/pattern_2.png";
-            } else if ( texture_type >= 91 && texture_type <= 95 ) {
-                texture_path = "assets/floors/my_floors/" + room_type_path +
-                               "/interior/pattern_3.png";
-            } else if ( texture_type >= 96 && texture_type <= 100 ) {
-                texture_path = "assets/floors/my_floors/" + room_type_path +
-                               "/interior/pattern_4.png";
-            }
-
-            try {
-                tile->SetTexture( textureManager->GetTexture(texture_path) );
-            } catch ( HerionException::File::FileException& ex ) {
-                ex.UpdateStackTrace( GET_CONTEXT() );
-                throw;
-            }
-
-            tile->SetRect( i*w , j*h , w, h );
-            row.push_back( tile );
-
-        }
-
-        tiles.push_back( row );
-
+    try {
+        FileOpener::OpenFileInput( map_file, "../maps/room1/map.hhmap" );
+    } catch (HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT()   );
+        throw;
     }
 
+    std::string line;
+    int y = 0;
+
+    while (std::getline(map_file, line)) {
+        std::stringstream ss(line);
+        std::string cell;
+        std::vector<Tile*> row;
+        int x = 0;
+
+        if (line.starts_with("#") || line.empty() ) {
+            continue;
+        }
+
+        if ( line.starts_with('?') ) {
+            ss >> this->player_spawn_cell_y;
+            ss >> this->player_spawn_cell_x;
+        }
+
+        while (ss >> cell) {
+
+            Tile* tile = new Tile();
+            std::string texture_path;
+
+            if (cell == "FB") {
+                texture_path = "assets/world_building/floor/base_floor.png";
+            } else if (cell == "CB") {
+                texture_path = "assets/world_building/ceiling/base_ceiling.png";
+            } else if (cell == ".") {
+                texture_path = "assets/world_building/nothing.png";
+            }
+
+            tile->SetTexture(textureManager->GetTexture(texture_path));
+            tile->SetRect(x * w, y * h, w, h);
+            row.push_back(tile);
+
+            x++;
+        }
+
+        tiles.push_back(row);
+        y++;
+    }
 
     Node* newRoom = new Node();
     newRoom->room = new Room();
     newRoom->room->SetTiles( tiles );
+    newRoom->room->SetSpawnCoord( this->player_spawn_cell_x, this->player_spawn_cell_y );
 
     if ( spawn_room == nullptr ) {
         spawn_room = newRoom;
@@ -163,7 +141,7 @@ Room* RoomManager::GetCurrentRoom() const {
 void RoomManager::GoLeft() {
 
     if ( current_room->left == nullptr ) {
-        GenerateRoom( ICE, DIR_LEFT );
+        GenerateRoom( DIR_LEFT);
     }
 
     current_room = current_room->left;
@@ -171,7 +149,7 @@ void RoomManager::GoLeft() {
 
 void RoomManager::GoRight() {
     if ( current_room->right == nullptr ) {
-        GenerateRoom( ICE, DIR_RIGHT );
+        GenerateRoom( DIR_RIGHT);
     }
 
     current_room = current_room->right;
@@ -180,7 +158,7 @@ void RoomManager::GoRight() {
 void RoomManager::GoUp() {
 
     if ( current_room->up == nullptr ) {
-        GenerateRoom( ICE, DIR_UP );
+        GenerateRoom( DIR_UP);
     }
 
     current_room = current_room->up;
@@ -188,7 +166,7 @@ void RoomManager::GoUp() {
 
 void RoomManager::GoDown() {
     if ( current_room->down == nullptr ) {
-        GenerateRoom( ICE, DIR_DOWN );
+        GenerateRoom( DIR_DOWN);
     }
 
     current_room = current_room->down;
@@ -205,14 +183,14 @@ void RoomManager::ResizeRoom() {
         throw;
     }
 
-    for ( int i = 0 ; i < tiles.size() ; i++ ) {
-        for ( int j = 0 ; j < tiles[i].size() ; j++ ) {
+    for ( int x = 0 ; x < tiles.size() ; x++ ) {
+        for ( int y = 0 ; y < tiles[x].size() ; y++ ) {
             float newW, newH;
 
             newW = w / horizontal_tiles;
             newH = h / vertical_tiles;
 
-            tiles[i][j] -> SetRect( i*newW, j*newH, newW, newH  );
+            tiles[x][y] -> SetRect( y*newW, x*newH, newW, newH  );
 
         }
     }
@@ -231,4 +209,12 @@ void RoomManager::SetDimensions(int screen_width, int screen_height, int horizon
 
 void RoomManager::SetTextureManager(TextureManager* texture_manager) {
     this->textureManager = texture_manager;
+}
+
+int RoomManager::GetPlayerSpawnCellX() const {
+    return current_room->room->GetSpawnX() * (  JSONParser::graphics::GetWidth() / this->horizontal_tiles );
+}
+
+int RoomManager::GetPlayerSpawnCellY() const {
+    return this->current_room->room->GetSpawnY()  * ( JSONParser::graphics::GetHeight() / this->vertical_tiles  );
 }

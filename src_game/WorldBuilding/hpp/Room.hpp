@@ -14,7 +14,7 @@ class Room {
 
 private:
     std::vector< std::vector<Tile* > > tiles;
-
+    int spawn_x, spawn_y;
 public:
     Room();
     ~Room();
@@ -23,6 +23,9 @@ public:
 
     void SetTiles(const std::vector< std::vector<Tile*> > &new_tiles);
     void Draw( SDL_Renderer* renderer );
+    void SetSpawnCoord( int x, int y );
+    int GetSpawnX() const;
+    int GetSpawnY() const;
 
 };
 

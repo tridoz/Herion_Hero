@@ -46,6 +46,7 @@ public:
     [[nodiscard]] int GetWidth() const;
     [[nodiscard]] int GetHeight() const;
 
+
     void Sleep() const;
     void LoadCursors(const std::string &);
 

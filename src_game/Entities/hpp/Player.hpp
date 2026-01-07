@@ -62,6 +62,7 @@ public:
 
 	void Move(float x, float y);
 	void Resize();
+	void Spawn( int spawn_x, int spawn_y );
 
 
 private:

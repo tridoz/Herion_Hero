@@ -18,6 +18,8 @@ class RoomManager {
 
 private:
     TextureManager *textureManager;
+    int player_spawn_cell_y;
+    int player_spawn_cell_x;
 
     typedef struct Node{
         Room* room = nullptr;
@@ -62,7 +64,7 @@ public:
 
     void SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles);
     void SetTextureManager(TextureManager* texture_manager);
-    void GenerateRoom( ROOM_TYPE room_type, Direction dir );
+    void GenerateRoom(Direction dir);
     [[nodiscard]] Room* GetCurrentRoom() const;
 
     void GoLeft();
@@ -72,6 +74,9 @@ public:
     void GoUp();
 
     void GoDown();
+
+    int GetPlayerSpawnCellY() const;
+    int GetPlayerSpawnCellX() const;
 
     void ResizeRoom();
 

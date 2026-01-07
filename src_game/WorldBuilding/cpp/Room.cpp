@@ -33,15 +33,20 @@ void Room::Draw(SDL_Renderer* renderer) {
 }
 
 void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
-
     this->tiles = new_tiles;
-    // Logger::LogOk(
-    //     std::time(nullptr),
-    //     "SETTING",
-    //     "Room",
-    //     "SetTiles",
-    //     "Tiles Setted Correctly"
-    //     );
+}
+
+void Room::SetSpawnCoord(int x, int y) {
+    this -> spawn_x = x;
+    this -> spawn_y = y;
+}
+
+int Room::GetSpawnX() const {
+    return spawn_x;
+}
+
+int Room::GetSpawnY() const {
+    return spawn_y;
 }
 
 

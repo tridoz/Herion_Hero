@@ -14,9 +14,6 @@ Player::Player() {
 	this->state = PlayerState::IDLE;
 	this->direction = FacingDirection::SOUTH;
 
-	this->pos_x = 200;
-	this->pos_y = 200;
-
 	this->next_x = pos_x;
 	this->next_y = pos_y;
 
@@ -302,6 +299,11 @@ void Player::Resize() {
 		throw;
 	}
 
+}
+
+void Player::Spawn(const int spawn_x, const int spawn_y) {
+	this->pos_x = spawn_x;
+	this->pos_y = spawn_y;
 }
 
 
