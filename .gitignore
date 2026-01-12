@@ -1,4 +1,5 @@
 cmake-build-debug/
 bin/
+settings/
 .idea/
 .env
