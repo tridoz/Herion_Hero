@@ -822,7 +822,7 @@ extern SDL_DECLSPEC bool SDLCALL TTF_GetFontKerning(const TTF_Font *font);
  * Query whether a font is fixed-width.
  *
  * A "fixed-width" font means all glyphs are the same width across; a
- * lowercase 'i' will be the same size across as a capital 'W', for example.
+ * lowercase_letters 'i' will be the same size across as a capital 'W', for example.
  * This is common for terminals and text editors, and other apps that treat
  * text as a grid. Most other things (WYSIWYG word processors, web pages, etc)
  * are more likely to not be fixed-width in most cases.

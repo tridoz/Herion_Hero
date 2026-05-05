@@ -137,6 +137,11 @@ void InputProcessor::process_mouse_left_pressed() {
             if (btn != nullptr) btn->Click();
             break;
 
+        case Player::GameMode::EDITOR_MENU:
+            btn = menus.at("PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            if (btn != nullptr) btn->Click();
+            break;
+
     }
 
 }

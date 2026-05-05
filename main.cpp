@@ -20,6 +20,7 @@
     #include <stdlib.h>
 #endif
 
+
 int LoadEnv() {
 
     std::string base_path = "../";
@@ -96,6 +97,7 @@ int main ( int argc, char* argv[] ) {
     Menu main_menu;
     Menu settings_menu;
     Menu pause_menu;
+    Menu editor_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
@@ -131,11 +133,15 @@ int main ( int argc, char* argv[] ) {
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
     pause_menu.SetTextureManager( &texture_manager );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    editor_menu.SetTextureManager( &texture_manager );
+    editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
 
     try {
         main_menu.LoadCfg( "configs/menu/main_menu.json");
         settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
         pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
+        editor_menu.LoadCfg( "configs/menu/editor_menu.json" );
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -145,6 +151,8 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("MAIN_MENU", &main_menu );
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
     processor.SetMenus("PAUSE_MENU", &pause_menu );
+    processor.SetMenus("EDITOR_MENU", &editor_menu );
+
     processor.SetPlayer( &player );
     processor.SetRoomManager( &room_manager );
 
@@ -179,13 +187,15 @@ int main ( int argc, char* argv[] ) {
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            settings_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
-            pause_menu.SetDimension( static_cast<float>(window.GetWidth()), (float)window.GetHeight() );
+            settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
             try {
                 main_menu.LoadCfg( "configs/menu/main_menu.json");
                 settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
                 pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
+                editor_menu.LoadCfg( "configs/menu/editor_menu.json" );
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -217,6 +227,12 @@ int main ( int argc, char* argv[] ) {
             case Player::GameMode::PAUSE_MENU:
                 pause_menu.Draw( window.GetRenderer() );
                 break;
+
+            case Player::GameMode::EDITOR_MENU:
+                editor_menu.Draw( window.GetRenderer() );
+                break;
+
+
 
             case Player::GameMode::IN_GAME:
                 room_manager.DrawCurrentRoom( window.GetRenderer() );

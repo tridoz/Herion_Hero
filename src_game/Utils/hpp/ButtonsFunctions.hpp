@@ -7,10 +7,15 @@
 
 #include "../../Entities/hpp/Player.hpp"
 
-
 class ButtonsFunctions {
+
 private:
     static Player* player;
+    static TextureManager* texture_manager;
+    static Texture* texture;
+
+    static void SetTexture( Texture* texture );
+    static Texture* GetTexture();
 
 public:
 
@@ -20,8 +25,16 @@ public:
     static void EndGame();
     static void OpenMainMenu();
     static void OpenSettings();
+    static void OpenEditorMenu();
     static void CloseSettings();
     static void ReturnPreviousState();
+
+    // EDITOR ACTION
+    static void PlaceTexture();
+    static void RemoveTexture();
+    static void LoadRoom();
+    static void LoadTexture();
+
     
     //GRAPHICS SETTINGS
     static void IncreaseResolution();
@@ -63,7 +76,7 @@ public:
     static void ToggleSaveCloud();
 
     static void SetPlayer( Player* player );
-
+    static void SetTextureManager( TextureManager* texture_manager );
 };
 
 

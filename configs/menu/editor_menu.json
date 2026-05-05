@@ -1,0 +1,43 @@
+{
+  "background_path" : "assets/backgrounds/main_menu.png",
+  "start_y" : 350,
+  "button_y_offset" : 12,
+  "center_piece_offset" : 8,
+  "rows": [
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Levels",
+          "action" : "START_GAME",
+          "id" : "button_for_starting_new_game"
+        }
+      ]
+    },
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Animations",
+          "action" : "START_GAME",
+          "id" : "button_for_starting_game"
+        }
+      ]
+    },{
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Done",
+          "action" : "RETURN_PREVIOUS_GAME_MODE",
+          "id" : "button_return_previous_game_mode"
+        }
+      ]
+    }
+  ]
+}

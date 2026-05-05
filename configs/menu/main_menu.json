@@ -27,6 +27,18 @@
           "id" : "button_for_starting_game"
         }
       ]
+    },
+    {
+      "starting_x" : 250,
+      "button_x_offset" : 50,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text" : "Editor",
+          "action" : "OPEN_EDITOR_MENU",
+          "id" : "button_for_opening_editor_menu"
+        }
+      ]
     },{
       "starting_x" : 250,
       "button_x_offset" : 50,
@@ -38,8 +50,7 @@
           "id" : "button_for_opening_settings_menu"
         }
       ]
-    },
-    {
+    },{
       "starting_x" : 250,
       "button_x_offset" : 50,
       "elements" : [

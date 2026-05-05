@@ -19391,7 +19391,7 @@ class serializer
     }
 
     /*!
-     * @brief convert a byte to a uppercase hex representation
+     * @brief convert a byte to a uppercase_letters hex representation
      * @param[in] byte byte to represent
      * @return representation ("00".."FF")
      */

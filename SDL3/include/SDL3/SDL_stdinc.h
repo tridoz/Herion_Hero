@@ -2379,13 +2379,13 @@ extern SDL_DECLSPEC int SDLCALL SDL_isprint(int x);
 extern SDL_DECLSPEC int SDLCALL SDL_isgraph(int x);
 
 /**
- * Convert low-ASCII English letters to uppercase.
+ * Convert low-ASCII English letters to uppercase_letters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'a' through 'z' to uppercase.
+ * values 'a' through 'z' to uppercase_letters.
  *
- * This function returns the uppercase equivalent of `x`. If a character
- * cannot be converted, or is already uppercase, this function returns `x`.
+ * This function returns the uppercase_letters equivalent of `x`. If a character
+ * cannot be converted, or is already uppercase_letters, this function returns `x`.
  *
  * \param x character value to check.
  * \returns capitalized version of x, or x if no conversion available.
@@ -2397,16 +2397,16 @@ extern SDL_DECLSPEC int SDLCALL SDL_isgraph(int x);
 extern SDL_DECLSPEC int SDLCALL SDL_toupper(int x);
 
 /**
- * Convert low-ASCII English letters to lowercase.
+ * Convert low-ASCII English letters to lowercase_letters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to lowercase.
+ * values 'A' through 'Z' to lowercase_letters.
  *
- * This function returns the lowercase equivalent of `x`. If a character
- * cannot be converted, or is already lowercase, this function returns `x`.
+ * This function returns the lowercase_letters equivalent of `x`. If a character
+ * cannot be converted, or is already lowercase_letters, this function returns `x`.
  *
  * \param x character value to check.
- * \returns lowercase version of x, or x if no conversion available.
+ * \returns lowercase_letters version of x, or x if no conversion available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -3208,14 +3208,14 @@ extern SDL_DECLSPEC SDL_MALLOC char * SDLCALL SDL_strndup(const char *str, size_
 extern SDL_DECLSPEC char * SDLCALL SDL_strrev(char *str);
 
 /**
- * Convert a string to uppercase.
+ * Convert a string to uppercase_letters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to uppercase.
+ * values 'A' through 'Z' to uppercase_letters.
  *
  * This function operates on a null-terminated string of bytes--even if it is
  * malformed UTF-8!--and converts ASCII characters 'a' through 'z' to their
- * uppercase equivalents in-place, returning the original `str` pointer.
+ * uppercase_letters equivalents in-place, returning the original `str` pointer.
  *
  * \param str the string to convert in-place. Can not be NULL.
  * \returns the `str` pointer passed into this function.
@@ -3229,14 +3229,14 @@ extern SDL_DECLSPEC char * SDLCALL SDL_strrev(char *str);
 extern SDL_DECLSPEC char * SDLCALL SDL_strupr(char *str);
 
 /**
- * Convert a string to lowercase.
+ * Convert a string to lowercase_letters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to lowercase.
+ * values 'A' through 'Z' to lowercase_letters.
  *
  * This function operates on a null-terminated string of bytes--even if it is
  * malformed UTF-8!--and converts ASCII characters 'A' through 'Z' to their
- * lowercase equivalents in-place, returning the original `str` pointer.
+ * lowercase_letters equivalents in-place, returning the original `str` pointer.
  *
  * \param str the string to convert in-place. Can not be NULL.
  * \returns the `str` pointer passed into this function.

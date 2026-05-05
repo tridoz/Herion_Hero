@@ -14,6 +14,7 @@ Menu::Menu() {
 	buttons_functions.emplace("START_GAME", ButtonsFunctions::StartGame );
 	buttons_functions.emplace( "START_NEW_GAME", ButtonsFunctions::StartNewGame );
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
+	buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu );
 	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
 	buttons_functions.emplace( "RETURN_PREVIOUS_GAME_MODE", ButtonsFunctions::ReturnPreviousState );
@@ -127,7 +128,7 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             rects.push_back(left_rect);
             textures.push_back(left_texture);
 
-            float char_w = 20.0f * scale;
+            float char_w = 40.0f * scale;
             float text_total_w = text.size() * char_w;
 
             SDL_FRect center_rect = { cumulative_x + left_rect.w,
@@ -150,15 +151,15 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
             	try {
 
             		if (std::isupper(c))
-            			char_tex = texture_manager->GetTexture("assets/font/uppercase_letters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTexture("assets/font/Editor/uppercase_letters/" + std::string(1, c) + ".png");
             		else if (std::islower(c))
-            			char_tex = texture_manager->GetTexture("assets/font/lowercase_letters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTexture("assets/font/Editor/lowercase_letters/" + std::string(1, c) + ".png");
             		else if (std::isdigit(c))
-            			char_tex = texture_manager->GetTexture("assets/font/numbers/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTexture("assets/font/Editor/numbers/" + std::string(1, c) + ".png");
             		else if (isspecial(c))
-            			char_tex = texture_manager->GetTexture("assets/font/special_characters/" + GetNameOfSpecialChar(c) + ".png");
+            			char_tex = texture_manager->GetTexture("assets/font/Editor/special_characters/" + GetNameOfSpecialChar(c) + ".png");
             		else if ( isspace(c))
-            			char_tex = texture_manager->GetTexture("assets/font/special_characters/space.png");
+            			char_tex = texture_manager->GetTexture("assets/font/Editor/special_characters/space.png");
 
             	} catch ( HerionException::File::FileNotFoundException &ex ) {
             		ex.UpdateStackTrace( GET_CONTEXT() );
