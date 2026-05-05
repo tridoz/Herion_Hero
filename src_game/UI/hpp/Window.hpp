@@ -20,6 +20,7 @@ class Window {
 private:
 
     int flags;
+    int is_open;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
@@ -32,6 +33,7 @@ public:
 
     Window();
     Window( const std::string& title);
+    Window( const std::string& title, int width, int height);
 
     ~Window();
 

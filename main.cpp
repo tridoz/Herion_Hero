@@ -86,11 +86,17 @@ int main ( int argc, char* argv[] ) {
 
     Window window(  "HERION HERO");
 
+    std::vector < Window* > editors_windows = {
+        new Window("Texture selection", 500, 300),
+        new Window("Action selection", 500, 300)
+    };
+
     InputProcessor processor;
 
     TextureManager texture_manager;
 
-    RoomManager room_manager;
+    RoomManager game_room_manager;
+    Room editor_room;
 
     Player player;
 
@@ -116,11 +122,11 @@ int main ( int argc, char* argv[] ) {
         return -1;
     }
 
-    room_manager.SetTextureManager( &texture_manager );
-    room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
+    game_room_manager.SetTextureManager( &texture_manager );
+    game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
-        room_manager.GenerateRoom( RoomManager::DIR_NONE) ;
+        game_room_manager.GenerateRoom( RoomManager::DIR_NONE) ;
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -135,7 +141,6 @@ int main ( int argc, char* argv[] ) {
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
     editor_menu.SetTextureManager( &texture_manager );
     editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-
 
     try {
         main_menu.LoadCfg( "configs/menu/main_menu.json");
@@ -154,9 +159,9 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("EDITOR_MENU", &editor_menu );
 
     processor.SetPlayer( &player );
-    processor.SetRoomManager( &room_manager );
+    processor.SetRoomManager( &game_room_manager );
 
-    player.Spawn( room_manager.GetPlayerSpawnCellX() , room_manager.GetPlayerSpawnCellY()  );
+    player.Spawn( game_room_manager.GetPlayerSpawnCellX() , game_room_manager.GetPlayerSpawnCellY()  );
     player.SetTextureManager( &texture_manager );
 
     try {
@@ -171,6 +176,8 @@ int main ( int argc, char* argv[] ) {
 
     Uint32 last_frame_time = SDL_GetTicks();
     bool running = true;
+
+    game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/map.hhmap" );
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
@@ -202,7 +209,7 @@ int main ( int argc, char* argv[] ) {
                 return -1;
             }
 
-            room_manager.ResizeRoom();
+            game_room_manager.ResizeRoom();
             player.Resize();
         }
 
@@ -232,10 +239,13 @@ int main ( int argc, char* argv[] ) {
                 editor_menu.Draw( window.GetRenderer() );
                 break;
 
-
+            case Player::GameMode::LEVEL_EDITOR:
+                editor_room.Draw( window.GetRenderer() );
+                editor_room.DrawAxis( window.GetRenderer() );
+                break;
 
             case Player::GameMode::IN_GAME:
-                room_manager.DrawCurrentRoom( window.GetRenderer() );
+                game_room_manager.DrawCurrentRoom( window.GetRenderer() );
                 player.Update( window.GetRenderer() );
 
                 processor.update_player_movement( deltaTime );

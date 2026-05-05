@@ -19,8 +19,8 @@
 
 class InputProcessor {
 private:
-    Player* player;
-    RoomManager* room_manager;
+    Player* player{};
+    RoomManager* room_manager{};
     bool key_left_pressed;
     bool key_right_pressed;
 

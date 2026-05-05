@@ -7,6 +7,8 @@
 #include "../hpp/JSONParser.hpp"
 
 Player* ButtonsFunctions::player = nullptr;
+TextureManager* ButtonsFunctions::texture_manager = nullptr;
+Texture* ButtonsFunctions::texture = nullptr;
 
 void ButtonsFunctions::SetPlayer( Player* setter_player ) {
     player = setter_player;
@@ -24,6 +26,7 @@ Texture* ButtonsFunctions::GetTexture() {
 //EDITOR ACTION
 
 
+
 //CHANGE GAMEMODE
 void ButtonsFunctions::StartGame() {
     player->SetGameMode( Player::GameMode::IN_GAME );
@@ -37,6 +40,12 @@ void ButtonsFunctions::EndGame() {
 void ButtonsFunctions::OpenMainMenu() {
     player->SetGameMode( Player::GameMode::MAIN_MENU );
 }
+void ButtonsFunctions::OpenLevelEditor() {
+    player->SetGameMode( Player::GameMode::LEVEL_EDITOR );
+}
+void ButtonsFunctions::OpenAnimationEditor() {
+    player->SetGameMode( Player::GameMode::ANIMATION_EDITOR );
+}
 void ButtonsFunctions::OpenEditorMenu() {
     player->SetGameMode( Player::GameMode::EDITOR_MENU );
 }
@@ -49,7 +58,6 @@ void ButtonsFunctions::CloseSettings() {
 void ButtonsFunctions::ReturnPreviousState() {
     player->SetGameMode( player->GetPreviousGameMode() );
 }
-
 
 
 //GRAPHICS SETTINGS

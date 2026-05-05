@@ -66,6 +66,57 @@ Window::Window( const std::string& title) {
         return;
     }
 
+    is_open = true;
+
+}
+
+Window::Window(const std::string &title, int width, int height) {
+    this->flags = SDL_WINDOW_RESIZABLE;
+
+    if ( !SDL_Init(SDL_INIT_VIDEO) ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "INITIALIZATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+
+    this->width = width;
+    this->height = height;
+
+    this->window = SDL_CreateWindow(title.c_str(), this->width, this->height, this->flags );
+
+    if ( !this->window ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "CREATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+    SDL_SetWindowPosition( this->window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED );
+
+    this->renderer = SDL_CreateRenderer(this->window, "opengl" );
+    if ( !this->renderer ) {
+        SDL_DestroyWindow(this->window);
+        Logger::LogErr(
+            std::time(nullptr),
+            "CREATION",
+            "Window",
+            "Window",
+            SDL_GetError()
+            );
+        return;
+    }
+
+    is_open = false;
 }
 
 SDL_Renderer* Window::GetRenderer() const {

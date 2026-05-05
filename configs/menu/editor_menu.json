@@ -11,8 +11,8 @@
         {
           "type" : "BUTTON",
           "text" : "Levels",
-          "action" : "START_GAME",
-          "id" : "button_for_starting_new_game"
+          "action" : "OPEN_LEVEL_EDITOR",
+          "id" : "button_for_opening_level_editor"
         }
       ]
     },
@@ -23,8 +23,8 @@
         {
           "type" : "BUTTON",
           "text" : "Animations",
-          "action" : "START_GAME",
-          "id" : "button_for_starting_game"
+          "action" : "OPEN_ANIMATION_EDITOR",
+          "id" : "button_for_opening_animation_editor"
         }
       ]
     },{
@@ -33,8 +33,8 @@
       "elements" : [
         {
           "type" : "BUTTON",
-          "text" : "Done",
-          "action" : "RETURN_PREVIOUS_GAME_MODE",
+          "text" : "Back",
+          "action" : "OPEN_MAIN_MENU",
           "id" : "button_return_previous_game_mode"
         }
       ]

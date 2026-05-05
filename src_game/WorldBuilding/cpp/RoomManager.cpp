@@ -37,6 +37,73 @@ RoomManager::~RoomManager() {
     current_room = nullptr;
 }
 
+void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) {
+
+    std::vector< std::vector <Tile* > > tiles;
+    const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
+    const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
+
+    std::ifstream map_file;
+
+    try {
+        FileOpener::OpenFileInput( map_file, map_path );
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    std::string line;
+    int y = 0;
+
+    while (std::getline(map_file, line)) {
+        std::stringstream ss(line);
+        std::string cell;
+
+        std::vector<Tile*> row;
+        int x = 0;
+
+        if (line.starts_with("#") || line.empty() ) {
+            continue;
+        }
+
+        if ( line.starts_with('?') ) {
+            char a;
+            int x, y;
+            ss >> a;
+            ss >> y;
+            ss >> x;
+            room->SetSpawnCoord( x, y );
+            continue;
+        }
+
+        while (ss >> cell) {
+
+            Tile* tile = new Tile();
+            std::string texture_path;
+
+            if (cell == "FB") {
+                texture_path = "assets/world_building/floor/base_floor.png";
+            } else if (cell == "CB") {
+                texture_path = "assets/world_building/ceiling/base_ceiling.png";
+            } else if (cell == ".") {
+                texture_path = "assets/world_building/nothing.png";
+            }
+
+            tile->SetTexture(textureManager->GetTexture(texture_path));
+            tile->SetRect(x * w, y * h, w, h);
+            row.push_back(tile);
+
+            x++;
+        }
+        tiles.push_back(row);
+        y++;
+
+    }
+
+    room->SetTiles( tiles );
+
+}
+
 void RoomManager::GenerateRoom(  Direction dir ) {
 
 

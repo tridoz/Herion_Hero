@@ -3,6 +3,8 @@
 #include "../hpp/JSONParser.hpp"
 
 InputProcessor::InputProcessor() {
+    this->player = nullptr;
+    this->room_manager = nullptr;
     this->event = {0};
     this->running = true;
     this->mouse_left_pressed = false;
@@ -11,7 +13,6 @@ InputProcessor::InputProcessor() {
     this->mouse_y = 0;
     this->key_left_pressed = false;
     this->key_right_pressed = false;
-
 }
 
 InputProcessor::~InputProcessor() {
@@ -39,25 +40,21 @@ void InputProcessor::process_key_down(int scancode) {
 
         case SDL_SCANCODE_ESCAPE:
             switch (game_mode) {
-        case Player::GameMode::MAIN_MENU:
-                running = false;
-                break;
-        case Player::GameMode::IN_GAME:
-                this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
-                break;
+                case Player::GameMode::MAIN_MENU:
+                        running = false;
+                        break;
+                case Player::GameMode::LEVEL_EDITOR:
+                        this->player->SetGameMode(Player::GameMode::EDITOR_MENU);
+                        break;
+                case Player::GameMode::IN_GAME:
+                        this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
+                        break;
 
         default:
                 break;
             }
             break;
 
-        case SDL_SCANCODE_P:
-            JSONParser::graphics::IncreaseResolution();
-            break;
-
-        case SDL_SCANCODE_M:
-            JSONParser::graphics::DecreaseResolution();
-            break;
 
         case SDL_SCANCODE_UP:
             if (game_mode == Player::GameMode::IN_GAME)
@@ -138,7 +135,7 @@ void InputProcessor::process_mouse_left_pressed() {
             break;
 
         case Player::GameMode::EDITOR_MENU:
-            btn = menus.at("PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at("EDITOR_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 

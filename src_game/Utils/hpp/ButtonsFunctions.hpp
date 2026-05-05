@@ -26,6 +26,8 @@ public:
     static void OpenMainMenu();
     static void OpenSettings();
     static void OpenEditorMenu();
+    static void OpenLevelEditor();
+    static void OpenAnimationEditor();
     static void CloseSettings();
     static void ReturnPreviousState();
 

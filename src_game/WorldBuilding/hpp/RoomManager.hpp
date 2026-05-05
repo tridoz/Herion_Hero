@@ -65,6 +65,7 @@ public:
     void SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles);
     void SetTextureManager(TextureManager* texture_manager);
     void GenerateRoom(Direction dir);
+    void GenerateEditorRoom(Room* room, const std::string& map_path );
     [[nodiscard]] Room* GetCurrentRoom() const;
 
     void GoLeft();

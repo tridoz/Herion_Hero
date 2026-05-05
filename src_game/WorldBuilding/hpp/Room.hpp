@@ -22,10 +22,14 @@ public:
     std::vector< std::vector< Tile * > > GetTiles();
 
     void SetTiles(const std::vector< std::vector<Tile*> > &new_tiles);
+
     void Draw( SDL_Renderer* renderer );
+    void DrawAxis( SDL_Renderer* renderer ) const;
+
     void SetSpawnCoord( int x, int y );
     int GetSpawnX() const;
     int GetSpawnY() const;
+
 
 };
 
