@@ -38,6 +38,11 @@ private:
     void process_key_down( int scancode );
     void process_key_up( int scancode );
 
+    void process_main_menu( int scancode );
+    void process_level_editor( int scancode );
+    void process_in_game( int scancode );
+
+
 
     void process_mouse_left_pressed();
     void process_mouse_right_pressed();

@@ -31,64 +31,68 @@ void InputProcessor::SetRoomManager(RoomManager* room_manager) {
     this->room_manager = room_manager;
 }
 
-void InputProcessor::process_key_down(int scancode) {
-    Player::GameMode game_mode = player->GetGameMode();
+void InputProcessor::process_main_menu( int scancode ) {
+    if ( scancode == SDL_SCANCODE_ESCAPE )
+        this->running = false;
+}
 
-    switch (scancode) {
-        default:
-            break;
-
+void InputProcessor::process_in_game( int scancode ) {
+    switch ( scancode ) {
         case SDL_SCANCODE_ESCAPE:
-            switch (game_mode) {
-                case Player::GameMode::MAIN_MENU:
-                        running = false;
-                        break;
-                case Player::GameMode::LEVEL_EDITOR:
-                        this->player->SetGameMode(Player::GameMode::EDITOR_MENU);
-                        break;
-                case Player::GameMode::IN_GAME:
-                        this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
-                        break;
-
-        default:
-                break;
-            }
+            this->player->SetGameMode( Player::GameMode::PAUSE_MENU );
             break;
-
 
         case SDL_SCANCODE_UP:
-            if (game_mode == Player::GameMode::IN_GAME)
-                room_manager->GoUp();
+            room_manager->GoUp();
             break;
 
         case SDL_SCANCODE_LEFT:
-            if (game_mode == Player::GameMode::IN_GAME)
-                room_manager->GoLeft();
+            room_manager->GoLeft();
             break;
 
         case SDL_SCANCODE_DOWN:
-            if (game_mode == Player::GameMode::IN_GAME)
-                room_manager->GoDown();
+            room_manager->GoDown();
             break;
 
         case SDL_SCANCODE_RIGHT:
-            if (game_mode == Player::GameMode::IN_GAME)
-                room_manager->GoRight();
+            room_manager->GoRight();
             break;
 
         case SDL_SCANCODE_D:
-            if ( game_mode == Player::GameMode::IN_GAME ) {
-                key_right_pressed = true;
-            }
+            key_right_pressed = true;
+
             break;
 
         case SDL_SCANCODE_A:
-            if (game_mode == Player::GameMode::IN_GAME) {
-                key_left_pressed = true;
-            }
+            key_left_pressed = true;
             break;
     }
 
+}
+
+void InputProcessor::process_level_editor(int scancode) {
+    if ( scancode == SDL_SCANCODE_ESCAPE )
+        this->player->SetGameMode( Player::GameMode::EDITOR_MENU );
+}
+
+
+void InputProcessor::process_key_down(int scancode) {
+
+    Player::GameMode game_mode = player->GetGameMode();
+
+    switch ( game_mode ) {
+        case Player::GameMode::MAIN_MENU:
+            process_main_menu( scancode );
+            break;
+
+        case Player::GameMode::LEVEL_EDITOR:
+            process_level_editor( scancode );
+            break;
+
+        case Player::GameMode::IN_GAME:
+            process_in_game( scancode );
+            break;
+    }
 
 }
 
