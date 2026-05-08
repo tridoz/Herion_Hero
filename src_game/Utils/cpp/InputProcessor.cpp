@@ -31,6 +31,14 @@ void InputProcessor::SetRoomManager(RoomManager* room_manager) {
     this->room_manager = room_manager;
 }
 
+void InputProcessor::SetMenus(std::string name, Menu* menu) {
+    menus.emplace(name, menu);
+}
+
+void InputProcessor::SetWindowTools( std::unordered_map< std::string,  Window* > window_tools ) {
+    this->window_tools = window_tools;
+}
+
 void InputProcessor::process_main_menu( int scancode ) {
     if ( scancode == SDL_SCANCODE_ESCAPE )
         this->running = false;
@@ -151,9 +159,6 @@ void InputProcessor::process_mouse_right_pressed() {
     // Non implementato
 }
 
-void InputProcessor::SetMenus(std::string name, Menu* menu) {
-    menus.emplace(name, menu);
-}
 
 void InputProcessor::Process() {
     switch (this->event.type) {

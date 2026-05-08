@@ -47,12 +47,12 @@ void Room::DrawAxis(SDL_Renderer* renderer) const {
     const float tile_width = width / horizontal_tiles;
     const float tile_height = height / vertical_tiles;
 
-    for ( int i = 0 ; i < horizontal_tiles ; ++i ) {
+    for ( int i = 0 ; i <= horizontal_tiles ; ++i ) {
         SDL_RenderLine( renderer, i*tile_width, 0, i*tile_width, height );
     }
 
-    for ( int i = 0 ; i < vertical_tiles ; ++i ) {
-        SDL_RenderLine( renderer, 0, i*tile_height, i*width, i*tile_height );
+    for ( int i = 0 ; i <= vertical_tiles ; ++i ) {
+        SDL_RenderLine( renderer, 0, i*tile_height, width, i*tile_height );
     }
 
 }

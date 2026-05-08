@@ -14,6 +14,7 @@
 #include "../../Entities/hpp/Player.hpp"
 #include "../../WorldBuilding/hpp/RoomManager.hpp"
 #include "../../UI/hpp/Menu.hpp"
+#include "../../UI/hpp/Window.hpp"
 
 #define MAX_SCANCODES 512
 
@@ -23,6 +24,8 @@ private:
     RoomManager* room_manager{};
     bool key_left_pressed;
     bool key_right_pressed;
+
+    std::unordered_map < std::string,  Window* > window_tools;
 
 
     SDL_Event event{};
@@ -66,6 +69,7 @@ public:
 
     void SetPlayer( Player* player );
     void SetRoomManager( RoomManager* room_manager );
+    void SetWindowTools( std::unordered_map< std::string,  Window* > window_tools );
 
     void SetMenus( std::string name, Menu* menu );
 

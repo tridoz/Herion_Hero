@@ -271,6 +271,32 @@ void RoomManager::ResizeRoom() {
     }
 }
 
+void RoomManager::ResizeEditorRoom( Room* room ) {
+    std::vector < std::vector < Tile* > > tiles = room->GetTiles();
+
+    int w, h;
+
+    try {
+        w = JSONParser::graphics::GetWidth();
+        h = JSONParser::graphics::GetHeight();
+    } catch ( HerionException::File::FileMalformedException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    for ( int x = 0 ; x < tiles.size() ; x++ ) {
+        for ( int y = 0 ; y < tiles[x].size() ; y++ ) {
+            float newW, newH;
+
+            newW = w / horizontal_tiles;
+            newH = h / vertical_tiles;
+
+            tiles[x][y] -> SetRect( y*newW, x*newH, newW, newH  );
+
+        }
+    }
+}
+
 void RoomManager::DrawCurrentRoom( SDL_Renderer* renderer) const {
     current_room->room->Draw( renderer );
 }

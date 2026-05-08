@@ -86,9 +86,9 @@ int main ( int argc, char* argv[] ) {
 
     Window window(  "HERION HERO");
 
-    std::vector < Window* > editors_windows = {
-        new Window("Texture selection", 500, 300),
-        new Window("Action selection", 500, 300)
+    std::unordered_map < std::string,  Window* > editors_windows = {
+          { "TEXTURE_SELECTION", new Window("Texture selection", 500, 300) },
+        { "ACTION_SELECTION", new Window("Action selection", 500, 300) }
     };
 
     InputProcessor processor;
@@ -158,6 +158,8 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("PAUSE_MENU", &pause_menu );
     processor.SetMenus("EDITOR_MENU", &editor_menu );
 
+    processor.SetWindowTools( editors_windows );
+
     processor.SetPlayer( &player );
     processor.SetRoomManager( &game_room_manager );
 
@@ -198,6 +200,7 @@ int main ( int argc, char* argv[] ) {
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
+
             try {
                 main_menu.LoadCfg( "configs/menu/main_menu.json");
                 settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
@@ -210,6 +213,7 @@ int main ( int argc, char* argv[] ) {
             }
 
             game_room_manager.ResizeRoom();
+            game_room_manager.ResizeEditorRoom( &editor_room );
             player.Resize();
         }
 
@@ -242,7 +246,13 @@ int main ( int argc, char* argv[] ) {
             case Player::GameMode::LEVEL_EDITOR:
                 editor_room.Draw( window.GetRenderer() );
                 editor_room.DrawAxis( window.GetRenderer() );
+
+                for ( const auto [editor_win_name, editor_win] : editors_windows ) {
+
+                }
                 break;
+
+
 
             case Player::GameMode::IN_GAME:
                 game_room_manager.DrawCurrentRoom( window.GetRenderer() );
