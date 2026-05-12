@@ -99,7 +99,9 @@ namespace JSONParser {
         };
 
         void SetConfigFile( const std::string& config_file_path );
+
         std::string GetBackgroundImagePath();
+        std::string GetMenuType();
 
         float GetStartY();
         float GetButtonYOffset();

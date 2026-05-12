@@ -211,7 +211,7 @@ typedef Uint64 SDL_WindowFlags;
 #define SDL_WINDOW_ALWAYS_ON_TOP        SDL_UINT64_C(0x0000000000010000)    /**< window should always be above others */
 #define SDL_WINDOW_UTILITY              SDL_UINT64_C(0x0000000000020000)    /**< window should be treated as a utility window, not showing in the task bar and window list */
 #define SDL_WINDOW_TOOLTIP              SDL_UINT64_C(0x0000000000040000)    /**< window should be treated as a tooltip and does not get mouse or keyboard focus, requires a parent window */
-#define SDL_WINDOW_POPUP_MENU           SDL_UINT64_C(0x0000000000080000)    /**< window should be treated as a popup menu, requires a parent window */
+#define SDL_WINDOW_POPUP_MENU           SDL_UINT64_C(0x0000000000080000)    /**< window should be treated as a popup menus, requires a parent window */
 #define SDL_WINDOW_KEYBOARD_GRABBED     SDL_UINT64_C(0x0000000000100000)    /**< window has grabbed keyboard input */
 #define SDL_WINDOW_VULKAN               SDL_UINT64_C(0x0000000010000000)    /**< window usable for Vulkan surface */
 #define SDL_WINDOW_METAL                SDL_UINT64_C(0x0000000020000000)    /**< window usable for Metal view */
@@ -718,7 +718,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetDisplayBounds(SDL_DisplayID displayID, S
  *
  * This is the same area as SDL_GetDisplayBounds() reports, but with portions
  * reserved by the system removed. For example, on Apple's macOS, this
- * subtracts the area occupied by the menu bar and dock.
+ * subtracts the area occupied by the menus bar and dock.
  *
  * Setting a window to be fullscreen generally bypasses these unusable areas,
  * so these are good guidelines for the maximum space available to a
@@ -1115,7 +1115,7 @@ extern SDL_DECLSPEC SDL_Window ** SDLCALL SDL_GetWindows(int *count);
  *   showing in the task bar and window list
  * - `SDL_WINDOW_TOOLTIP`: window should be treated as a tooltip and does not
  *   get mouse or keyboard focus, requires a parent window
- * - `SDL_WINDOW_POPUP_MENU`: window should be treated as a popup menu,
+ * - `SDL_WINDOW_POPUP_MENU`: window should be treated as a popup menus,
  *   requires a parent window
  * - `SDL_WINDOW_KEYBOARD_GRABBED`: window has grabbed keyboard input
  * - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance
@@ -1185,8 +1185,8 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreateWindow(const char *title, int
  *
  * - `SDL_WINDOW_TOOLTIP`: The popup window is a tooltip and will not pass any
  *   input events.
- * - `SDL_WINDOW_POPUP_MENU`: The popup window is a popup menu. The topmost
- *   popup menu will implicitly gain the keyboard focus.
+ * - `SDL_WINDOW_POPUP_MENU`: The popup window is a popup menus. The topmost
+ *   popup menus will implicitly gain the keyboard focus.
  *
  * The following flags are not relevant to popup window creation and will be
  * ignored:
@@ -1264,7 +1264,7 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreatePopupWindow(SDL_Window *paren
  * - `SDL_PROP_WINDOW_CREATE_BORDERLESS_BOOLEAN`: true if the window has no
  *   window decoration
  * - `SDL_PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEAN`: true if the "tooltip"
- *   and "menu" window types should be automatically constrained to be
+ *   and "menus" window types should be automatically constrained to be
  *   entirely within display bounds (default), false if no constraints on the
  *   position are desired.
  * - `SDL_PROP_WINDOW_CREATE_EXTERNAL_GRAPHICS_CONTEXT_BOOLEAN`: true if the
@@ -1280,7 +1280,7 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreatePopupWindow(SDL_Window *paren
  *   uses a high pixel density buffer if possible
  * - `SDL_PROP_WINDOW_CREATE_MAXIMIZED_BOOLEAN`: true if the window should
  *   start maximized
- * - `SDL_PROP_WINDOW_CREATE_MENU_BOOLEAN`: true if the window is a popup menu
+ * - `SDL_PROP_WINDOW_CREATE_MENU_BOOLEAN`: true if the window is a popup menus
  * - `SDL_PROP_WINDOW_CREATE_METAL_BOOLEAN`: true if the window will be used
  *   with Metal rendering
  * - `SDL_PROP_WINDOW_CREATE_MINIMIZED_BOOLEAN`: true if the window should
@@ -1292,7 +1292,7 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreatePopupWindow(SDL_Window *paren
  * - `SDL_PROP_WINDOW_CREATE_OPENGL_BOOLEAN`: true if the window will be used
  *   with OpenGL rendering
  * - `SDL_PROP_WINDOW_CREATE_PARENT_POINTER`: an SDL_Window that will be the
- *   parent of this window, required for windows with the "tooltip", "menu",
+ *   parent of this window, required for windows with the "tooltip", "menus",
  *   and "modal" properties
  * - `SDL_PROP_WINDOW_CREATE_RESIZABLE_BOOLEAN`: true if the window should be
  *   resizable
@@ -1308,11 +1308,11 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreatePopupWindow(SDL_Window *paren
  * - `SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER`: the width of the window
  * - `SDL_PROP_WINDOW_CREATE_X_NUMBER`: the x position of the window, or
  *   `SDL_WINDOWPOS_CENTERED`, defaults to `SDL_WINDOWPOS_UNDEFINED`. This is
- *   relative to the parent for windows with the "tooltip" or "menu" property
+ *   relative to the parent for windows with the "tooltip" or "menus" property
  *   set.
  * - `SDL_PROP_WINDOW_CREATE_Y_NUMBER`: the y position of the window, or
  *   `SDL_WINDOWPOS_CENTERED`, defaults to `SDL_WINDOWPOS_UNDEFINED`. This is
- *   relative to the parent for windows with the "tooltip" or "menu" property
+ *   relative to the parent for windows with the "tooltip" or "menus" property
  *   set.
  *
  * These are additional supported properties on macOS:
@@ -1374,7 +1374,7 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreatePopupWindow(SDL_Window *paren
  * - "#canvas": the WebGL canvas element
  * - "#none": Don't bind anything at all
  * - any other string without a leading # sign applies to the element on the
- *   page with that ID. Windows with the "tooltip" and "menu" properties are
+ *   page with that ID. Windows with the "tooltip" and "menus" properties are
  *   popup windows and have the behaviors and guidelines outlined in
  *   SDL_CreatePopupWindow().
  *
@@ -1413,7 +1413,7 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_CreateWindowWithProperties(SDL_Prop
 #define SDL_PROP_WINDOW_CREATE_HIDDEN_BOOLEAN                      "SDL.window.create.hidden"
 #define SDL_PROP_WINDOW_CREATE_HIGH_PIXEL_DENSITY_BOOLEAN          "SDL.window.create.high_pixel_density"
 #define SDL_PROP_WINDOW_CREATE_MAXIMIZED_BOOLEAN                   "SDL.window.create.maximized"
-#define SDL_PROP_WINDOW_CREATE_MENU_BOOLEAN                        "SDL.window.create.menu"
+#define SDL_PROP_WINDOW_CREATE_MENU_BOOLEAN                        "SDL.window.create.menus"
 #define SDL_PROP_WINDOW_CREATE_METAL_BOOLEAN                       "SDL.window.create.metal"
 #define SDL_PROP_WINDOW_CREATE_MINIMIZED_BOOLEAN                   "SDL.window.create.minimized"
 #define SDL_PROP_WINDOW_CREATE_MODAL_BOOLEAN                       "SDL.window.create.modal"
@@ -2757,9 +2757,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetWindowFocusable(SDL_Window *window, bool
 
 
 /**
- * Display the system-level window menu.
+ * Display the system-level window menus.
  *
- * This default window menu is provided by the system and on some platforms
+ * This default window menus is provided by the system and on some platforms
  * provides functionality for setting or changing privileged state on the
  * window, such as moving it between workspaces or displays, or toggling the
  * always-on-top property.
@@ -2767,10 +2767,10 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetWindowFocusable(SDL_Window *window, bool
  * On platforms or desktops where this is unsupported, this function does
  * nothing.
  *
- * \param window the window for which the menu will be displayed.
- * \param x the x coordinate of the menu, relative to the origin (top-left) of
+ * \param window the window for which the menus will be displayed.
+ * \param x the x coordinate of the menus, relative to the origin (top-left) of
  *          the client area.
- * \param y the y coordinate of the menu, relative to the origin (top-left) of
+ * \param y the y coordinate of the menus, relative to the origin (top-left) of
  *          the client area.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.

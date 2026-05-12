@@ -4,10 +4,8 @@
 
 #include "../hpp/Window.hpp"
 
+#include "../../../headers_only_dependencies/miniaudio.h"
 #include "../../Utils/hpp/JSONParser.hpp"
-
-std::unordered_map<std::string, SDL_Cursor*> Window::Cursors;
-std::string Window::current_cursor_name;
 
 Window::Window() {
     this->window = nullptr;
@@ -197,4 +195,12 @@ void Window::SetCursor(const std::string &cursor_name) {
 
 SDL_Cursor* Window::GetCursor() {
     return Cursors[current_cursor_name];
+}
+
+void Window::SetMenu(const std::string &name, Menu *menu_to_set) {
+    menus.emplace( name, menu_to_set );
+}
+
+Menu* Window::GetMenu(const std::string &name) {
+    return menus.at(name);
 }

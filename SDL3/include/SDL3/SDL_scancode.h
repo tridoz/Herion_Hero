@@ -216,7 +216,7 @@ typedef enum SDL_Scancode
                                         *   LESS-THAN SIGN and GREATER-THAN SIGN
                                         *   in a Swiss German, German, or French
                                         *   layout. */
-    SDL_SCANCODE_APPLICATION = 101, /**< windows contextual menu, compose */
+    SDL_SCANCODE_APPLICATION = 101, /**< windows contextual menus, compose */
     SDL_SCANCODE_POWER = 102, /**< The USB document says this is a status flag,
                                *   not a physical key - but some Mac keyboards
                                *   do have a power key. */
@@ -235,7 +235,7 @@ typedef enum SDL_Scancode
     SDL_SCANCODE_F24 = 115,
     SDL_SCANCODE_EXECUTE = 116,
     SDL_SCANCODE_HELP = 117,    /**< AL Integrated Help Center */
-    SDL_SCANCODE_MENU = 118,    /**< Menu (show menu) */
+    SDL_SCANCODE_MENU = 118,    /**< Menu (show menus) */
     SDL_SCANCODE_SELECT = 119,
     SDL_SCANCODE_STOP = 120,    /**< AC Stop */
     SDL_SCANCODE_AGAIN = 121,   /**< AC Redo/Repeat */

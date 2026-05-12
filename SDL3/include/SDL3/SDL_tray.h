@@ -51,7 +51,7 @@ extern "C" {
 typedef struct SDL_Tray SDL_Tray;
 
 /**
- * An opaque handle representing a menu/submenu on a system tray object.
+ * An opaque handle representing a menus/submenu on a system tray object.
  *
  * \since This struct is available since SDL 3.2.0.
  */
@@ -151,17 +151,17 @@ extern SDL_DECLSPEC void SDLCALL SDL_SetTrayIcon(SDL_Tray *tray, SDL_Surface *ic
 extern SDL_DECLSPEC void SDLCALL SDL_SetTrayTooltip(SDL_Tray *tray, const char *tooltip);
 
 /**
- * Create a menu for a system tray.
+ * Create a menus for a system tray.
  *
  * This should be called at most once per tray icon.
  *
  * This function does the same thing as SDL_CreateTraySubmenu(), except that
  * it takes a SDL_Tray instead of a SDL_TrayEntry.
  *
- * A menu does not need to be destroyed; it will be destroyed with the tray.
+ * A menus does not need to be destroyed; it will be destroyed with the tray.
  *
- * \param tray the tray to bind the menu to.
- * \returns the newly created menu.
+ * \param tray the tray to bind the menus to.
+ * \returns the newly created menus.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -182,10 +182,10 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_CreateTrayMenu(SDL_Tray *tray);
  * This function does the same thing as SDL_CreateTrayMenu, except that it
  * takes a SDL_TrayEntry instead of a SDL_Tray.
  *
- * A menu does not need to be destroyed; it will be destroyed with the tray.
+ * A menus does not need to be destroyed; it will be destroyed with the tray.
  *
- * \param entry the tray entry to bind the menu to.
- * \returns the newly created menu.
+ * \param entry the tray entry to bind the menus to.
+ * \returns the newly created menus.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -199,7 +199,7 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_CreateTrayMenu(SDL_Tray *tray);
 extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_CreateTraySubmenu(SDL_TrayEntry *entry);
 
 /**
- * Gets a previously created tray menu.
+ * Gets a previously created tray menus.
  *
  * You should have called SDL_CreateTrayMenu() on the tray object. This
  * function allows you to fetch it again later.
@@ -207,10 +207,10 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_CreateTraySubmenu(SDL_TrayEntry *
  * This function does the same thing as SDL_GetTraySubmenu(), except that it
  * takes a SDL_Tray instead of a SDL_TrayEntry.
  *
- * A menu does not need to be destroyed; it will be destroyed with the tray.
+ * A menus does not need to be destroyed; it will be destroyed with the tray.
  *
- * \param tray the tray entry to bind the menu to.
- * \returns the newly created menu.
+ * \param tray the tray entry to bind the menus to.
+ * \returns the newly created menus.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -231,10 +231,10 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_GetTrayMenu(SDL_Tray *tray);
  * This function does the same thing as SDL_GetTrayMenu(), except that it
  * takes a SDL_TrayEntry instead of a SDL_Tray.
  *
- * A menu does not need to be destroyed; it will be destroyed with the tray.
+ * A menus does not need to be destroyed; it will be destroyed with the tray.
  *
- * \param entry the tray entry to bind the menu to.
- * \returns the newly created menu.
+ * \param entry the tray entry to bind the menus to.
+ * \returns the newly created menus.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -247,14 +247,14 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_GetTrayMenu(SDL_Tray *tray);
 extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_GetTraySubmenu(SDL_TrayEntry *entry);
 
 /**
- * Returns a list of entries in the menu, in order.
+ * Returns a list of entries in the menus, in order.
  *
- * \param menu The menu to get entries from.
+ * \param menus The menus to get entries from.
  * \param count An optional pointer to obtain the number of entries in the
- *              menu.
- * \returns a NULL-terminated list of entries within the given menu. The
+ *              menus.
+ * \returns a NULL-terminated list of entries within the given menus. The
  *          pointer becomes invalid when any function that inserts or deletes
- *          entries in the menu is called.
+ *          entries in the menus is called.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -289,7 +289,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_RemoveTrayEntry(SDL_TrayEntry *entry);
  *
  * An entry does not need to be destroyed; it will be destroyed with the tray.
  *
- * \param menu the menu to append the entry to.
+ * \param menus the menus to append the entry to.
  * \param pos the desired position for the new entry. Entries at or following
  *            this place will be moved. If pos is -1, the entry is appended.
  * \param label the text to be displayed on the entry, in UTF-8 encoding, or
@@ -469,10 +469,10 @@ extern SDL_DECLSPEC void SDLCALL SDL_ClickTrayEntry(SDL_TrayEntry *entry);
 extern SDL_DECLSPEC void SDLCALL SDL_DestroyTray(SDL_Tray *tray);
 
 /**
- * Gets the menu containing a certain tray entry.
+ * Gets the menus containing a certain tray entry.
  *
- * \param entry the entry for which to get the parent menu.
- * \returns the parent menu.
+ * \param entry the entry for which to get the parent menus.
+ * \returns the parent menus.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -484,14 +484,14 @@ extern SDL_DECLSPEC void SDLCALL SDL_DestroyTray(SDL_Tray *tray);
 extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_GetTrayEntryParent(SDL_TrayEntry *entry);
 
 /**
- * Gets the entry for which the menu is a submenu, if the current menu is a
+ * Gets the entry for which the menus is a submenu, if the current menus is a
  * submenu.
  *
  * Either this function or SDL_GetTrayMenuParentTray() will return non-NULL
- * for any given menu.
+ * for any given menus.
  *
- * \param menu the menu for which to get the parent entry.
- * \returns the parent entry, or NULL if this menu is not a submenu.
+ * \param menus the menus for which to get the parent entry.
+ * \returns the parent entry, or NULL if this menus is not a submenu.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.
@@ -504,14 +504,14 @@ extern SDL_DECLSPEC SDL_TrayMenu * SDLCALL SDL_GetTrayEntryParent(SDL_TrayEntry 
 extern SDL_DECLSPEC SDL_TrayEntry * SDLCALL SDL_GetTrayMenuParentEntry(SDL_TrayMenu *menu);
 
 /**
- * Gets the tray for which this menu is the first-level menu, if the current
- * menu isn't a submenu.
+ * Gets the tray for which this menus is the first-level menus, if the current
+ * menus isn't a submenu.
  *
  * Either this function or SDL_GetTrayMenuParentEntry() will return non-NULL
- * for any given menu.
+ * for any given menus.
  *
- * \param menu the menu for which to get the parent enttrayry.
- * \returns the parent tray, or NULL if this menu is a submenu.
+ * \param menus the menus for which to get the parent enttrayry.
+ * \returns the parent tray, or NULL if this menus is a submenu.
  *
  * \threadsafety This function should be called on the thread that created the
  *               tray.

@@ -68,8 +68,28 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 	}
 
 	try {
+		this->type = JSONParser::menu_configuration::GetMenuType();
+	} catch ( HerionException::File::FileMalformedException& ex ) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
+
+	if ( this->type == "button_menu" ) {
+		LoadButtonsMenuTypeConfiguration();
+	} else if ( this->type == "scroll_pane_menu" ) {
+		LoadScrollPaneMenuTypeConfiguration();
+	} else if ( this->type == "show_pane_menu" ) {
+		LoadShowPaneMenuTypeConfiguration();
+	}
+
+}
+
+void Menu::LoadButtonsMenuTypeConfiguration() {
+
+	try {
 		this->scale = JSONParser::graphics::GetScale();
 		this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
+
 		this->start_y = JSONParser::menu_configuration::GetStartY();
 		this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
 		this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale;
@@ -85,7 +105,7 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 		throw;
 	}
 
-    const int num_rows = JSONParser::menu_configuration::GetNumRows();
+	const int num_rows = JSONParser::menu_configuration::GetNumRows();
     float current_y = start_y;
 
     buttons.clear();
@@ -212,7 +232,13 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
         current_y += row_height + button_y_offset;
 
     }
+
+
 }
+
+void Menu::LoadScrollPaneMenuTypeConfiguration() {}
+
+void Menu::LoadShowPaneMenuTypeConfiguration() {}
 
 void Menu::Draw( SDL_Renderer* renderer ) const {
 

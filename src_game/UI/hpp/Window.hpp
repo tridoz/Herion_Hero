@@ -11,6 +11,9 @@
 
 
 //CUSTOM INCLUDES
+#include <random>
+
+#include "Menu.hpp"
 #include "../../Utils/hpp/Logger.hpp"
 #include "../../Utils/hpp/COLORS.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
@@ -24,8 +27,10 @@ private:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
-    static std::unordered_map<std::string, SDL_Cursor* > Cursors;
-    static std::string current_cursor_name;
+    std::unordered_map< std::string, Menu* > menus;
+
+    std::unordered_map<std::string, SDL_Cursor* > Cursors;
+    std::string current_cursor_name;
 
     int width, height;
 
@@ -52,8 +57,11 @@ public:
     void Sleep() const;
     void LoadCursors(const std::string &);
 
-    static void SetCursor( const std::string& );
-    static SDL_Cursor* GetCursor();
+    void SetCursor( const std::string& );
+    SDL_Cursor* GetCursor();
+
+    void SetMenu( const std::string& name, Menu* menu_to_set );
+    Menu* GetMenu( const std::string& name );
 
 };
 

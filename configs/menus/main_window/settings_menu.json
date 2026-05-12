@@ -3,6 +3,7 @@
   "start_y" : 150,
   "button_y_offset" : 12,
   "center_piece_offset" : 8,
+  "menu_type": "button_menu",
   "rows": [
     {
       "starting_x": 500,

@@ -40,7 +40,7 @@
  *
  * SDL3 apps are strongly encouraged to call SDL_SetAppMetadata() at startup
  * to fill in details about the program. This is completely optional, but it
- * helps in small ways (we can provide an About dialog box for the macOS menu,
+ * helps in small ways (we can provide an About dialog box for the macOS menus,
  * we can name the app in the system's audio mixer, etc). Those that want to
  * provide a _lot_ of information should look at the more-detailed
  * SDL_SetAppMetadataProperty().
@@ -363,7 +363,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RunOnMainThread(SDL_MainThreadCallback call
  * required, but strongly encouraged.
  *
  * There are several locations where SDL can make use of metadata (an "About"
- * box in the macOS menu bar, the name of the app can be shown on some audio
+ * box in the macOS menus bar, the name of the app can be shown on some audio
  * mixers, etc). Any piece of metadata can be left as NULL, if a specific
  * detail doesn't make sense for the app.
  *
@@ -401,7 +401,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetAppMetadata(const char *appname, const c
  * required, but strongly encouraged.
  *
  * There are several locations where SDL can make use of metadata (an "About"
- * box in the macOS menu bar, the name of the app can be shown on some audio
+ * box in the macOS menus bar, the name of the app can be shown on some audio
  * mixers, etc). Any piece of metadata can be left out, if a specific detail
  * doesn't make sense for the app.
  *

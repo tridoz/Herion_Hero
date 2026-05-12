@@ -30,6 +30,14 @@ std::string JSONParser::menu_configuration::GetBackgroundImagePath() {
 
 }
 
+std::string JSONParser::menu_configuration::GetMenuType() {
+    if ( !config_file.contains("menu_type") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> menu_type");
+    }
+
+    return config_file["menu_type"];
+}
+
 float JSONParser::menu_configuration::GetStartY() {
     if ( !config_file.contains("start_y") ) {
         THROW_FILE_MALFORMED( config_file_path + "\t=> start_y" );

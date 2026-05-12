@@ -110,6 +110,11 @@ int main ( int argc, char* argv[] ) {
 
     ButtonsFunctions::SetPlayer( &player );
 
+    window.SetMenu( "MAIN_MENU", &main_menu );
+    window.SetMenu( "SETTINGS_MENU", &settings_menu );
+    window.SetMenu( "PAUSE_MENU", &pause_menu );
+    window.SetMenu( "EDITOR_MENU", &editor_menu );
+
     window.LoadCursors( "assets/all_cursors.txt");
 
     texture_manager.SetRenderer( window.GetRenderer() );
@@ -143,10 +148,10 @@ int main ( int argc, char* argv[] ) {
     editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     try {
-        main_menu.LoadCfg( "configs/menu/main_menu.json");
-        settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
-        pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
-        editor_menu.LoadCfg( "configs/menu/editor_menu.json" );
+        main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
+        settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
+        pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
+        editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -200,12 +205,11 @@ int main ( int argc, char* argv[] ) {
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-
             try {
-                main_menu.LoadCfg( "configs/menu/main_menu.json");
-                settings_menu.LoadCfg( "configs/menu/settings_menu.json" );
-                pause_menu.LoadCfg( "configs/menu/pause_menu.json" );
-                editor_menu.LoadCfg( "configs/menu/editor_menu.json" );
+                main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
+                settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
+                pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
+                editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -215,6 +219,7 @@ int main ( int argc, char* argv[] ) {
             game_room_manager.ResizeRoom();
             game_room_manager.ResizeEditorRoom( &editor_room );
             player.Resize();
+
         }
 
         window.SetColor( COLORS::BLACK );
@@ -228,31 +233,34 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::MAIN_MENU:
-                main_menu.Draw( window.GetRenderer() );
+                window.GetMenu("MAIN_MENU")->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::SETTINGS_MENU:
-                settings_menu.Draw( window.GetRenderer() );
+                window.GetMenu("SETTINGS_MENU")->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::PAUSE_MENU:
-                pause_menu.Draw( window.GetRenderer() );
+                window.GetMenu("PAUSE_MENU")->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                editor_menu.Draw( window.GetRenderer() );
+                window.GetMenu("EDITOR_MENU")->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::LEVEL_EDITOR:
                 editor_room.Draw( window.GetRenderer() );
                 editor_room.DrawAxis( window.GetRenderer() );
 
+                /*
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {
-
+                    editor_win->Clear();
+                    editor_win->GetMenu("")->Draw(editor_win->GetRenderer());
+                    editor_win->Present();
                 }
+                */
+
                 break;
-
-
 
             case Player::GameMode::IN_GAME:
                 game_room_manager.DrawCurrentRoom( window.GetRenderer() );

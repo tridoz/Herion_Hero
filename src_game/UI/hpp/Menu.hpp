@@ -8,9 +8,6 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_image.h>
 
-
-
-
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Utils/hpp/ButtonsFunctions.hpp"
 #include "../../Utils/hpp/Logger.hpp"
@@ -28,6 +25,7 @@ private:
 	Texture* background;
 
 	std::string filepath;
+	std::string type;
 	const std::string base_path = "../";
 	float scale;
 
@@ -50,6 +48,10 @@ private:
 	std::string GetText( const std::string& text_type );
 	bool isspecial( const char c );
 	std::string GetNameOfSpecialChar( const char c );
+
+	void LoadButtonsMenuTypeConfiguration();
+	void LoadScrollPaneMenuTypeConfiguration();
+	void LoadShowPaneMenuTypeConfiguration();
 
 public:
 
