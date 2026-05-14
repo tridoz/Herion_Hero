@@ -61,6 +61,8 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/Utils/cpp/FileOpener.cpp
         src_game/Utils/hpp/FileOpener.hpp
         src_game/Utils/cpp/JSONParserAnimations.cpp
+        src_game/Utils/cpp/CMD.cpp
+        src_game/Utils/hpp/CMD.hpp
 
 )
 

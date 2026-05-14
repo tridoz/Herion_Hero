@@ -236,7 +236,75 @@ void Menu::LoadButtonsMenuTypeConfiguration() {
 
 }
 
-void Menu::LoadScrollPaneMenuTypeConfiguration() {}
+void Menu::LoadScrollPaneMenuTypeConfiguration() {
+	std::string cmd;
+	try {
+		cmd = JSONParser::menu_configuration::GetCmd();
+	} catch (HerionException::File::FileMalformedException &ex) {
+		ex.UpdateStackTrace( GET_CONTEXT() );
+		throw;
+	}
+
+	if ( cmd == "select_all_directory" ) {
+		std::string base_directory = "../assets/";
+		CreateSubDirectories( this->directory, base_directory, 0 );
+		/*
+		std::vector < std::string > cmd_output = CMD::multiline_exec("ls ../assets/");
+
+
+
+		this->directory = new Directory(0, {}, {} );
+
+		for( const auto& output_line : cmd_output ) {
+			Directory* dir = new Directory(1, {}, {} );
+
+			if ( !output_line.contains(".png") ) {
+				this->directory->SubDirectory.emplace( std::make_pair(output_line, dir) );
+			}
+
+		}
+		*/
+
+	}
+
+}
+
+void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_directory, int depth ) {
+	std::vector < std::string > cmd_output = CMD::multiline_exec( "ls " + base_directory );
+
+	if ( directory == nullptr ) {
+		directory = new Directory( depth, {}, {} );
+	}
+
+	if ( cmd_output.size() == 0) {
+		return;
+	}
+
+	for ( const auto& output_line : cmd_output ) {
+		Directory* dir = new Directory( depth+1, {}, {} );
+		if ( !output_line.contains(".png") && !output_line.contains(".txt") ) {
+			directory->SubDirectory.emplace( std::make_pair(output_line, dir) );
+			CreateSubDirectories( dir, base_directory + output_line + "/", depth+1 );
+		} else if ( output_line.contains(".png") ) {
+			std::string file_name = base_directory + output_line;
+			file_name = file_name.substr(3,file_name.size()-3);
+			directory->Files.emplace_back( output_line + "/", this->texture_manager->GetTexture( file_name ) );
+		}
+
+	}
+
+}
+
+int Menu::HowManyFiles( std::vector < std::string > cmd_output_to_check ) {
+	int files = 0;
+	for ( int i = 0 ; i< cmd_output_to_check.size() ; i++ ) {
+		if ( cmd_output_to_check.at( i ).contains(".png") ) {
+			files++;
+		}
+	}
+
+	return files;
+}
 
 void Menu::LoadShowPaneMenuTypeConfiguration() {}
 

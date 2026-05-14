@@ -27,7 +27,7 @@ assets/backgrounds/pause_menu.png
 
 assets/world_building/ceiling/base_ceiling.png
 assets/world_building/floor/base_floor.png
-assets/world_building/nothing.png
+assets/world_building/background/nothing.png
 
 assets/font/Game/lowercase_letters/a.png
 assets/font/Game/lowercase_letters/b.png

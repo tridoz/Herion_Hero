@@ -38,6 +38,31 @@ std::string JSONParser::menu_configuration::GetMenuType() {
     return config_file["menu_type"];
 }
 
+std::string JSONParser::menu_configuration::GetCmd() {
+    if ( !config_file.contains("cmd") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> cmd");
+    }
+
+    return config_file["cmd"];
+}
+
+int JSONParser::menu_configuration::GetTabIndentSubdirectory() {
+    if ( !config_file.contains("tab_indent_subdirectory") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\n => tab_indent_subdirectory");
+    }
+
+    return config_file["tab_indent_subdirectory"];
+}
+
+int JSONParser::menu_configuration::GetTextureSize() {
+    if ( !config_file.contains("texture_size") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> texture_size");
+    }
+
+    return config_file["texture_size"];
+}
+
+
 float JSONParser::menu_configuration::GetStartY() {
     if ( !config_file.contains("start_y") ) {
         THROW_FILE_MALFORMED( config_file_path + "\t=> start_y" );

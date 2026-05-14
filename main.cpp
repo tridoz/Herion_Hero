@@ -151,7 +151,7 @@ int main ( int argc, char* argv[] ) {
         main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
         settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
         pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
-        editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
+        editor_menu.LoadCfg( "configs/menus/level_editors_windows/directory_texture_selection.json" );
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );

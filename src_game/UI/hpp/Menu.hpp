@@ -16,6 +16,7 @@
 #include "Button.hpp"
 #include "Text.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "../../Utils/hpp/CMD.hpp"
 
 class Menu {
 
@@ -24,10 +25,30 @@ private:
 
 	Texture* background;
 
+	struct TextureFile {
+		std::string name;
+		Texture* texture;
+	};
+
+	struct Directory{
+		int depth;
+
+		std::unordered_map <
+			std::string,
+			Directory*
+		>SubDirectory;
+
+		std::vector<TextureFile> Files;
+
+	};
+
 	std::string filepath;
 	std::string type;
+	float mouse_offset;
 	const std::string base_path = "../";
 	float scale;
+
+	Directory* directory;
 
 	SDL_FRect background_rect;
 
@@ -35,7 +56,6 @@ private:
 
 	std::unordered_map< std::string, Button*> buttons;
 	std::unordered_map< std::string, Text*> texts;
-
 
 	float start_y;
 	float button_y_offset;
@@ -52,6 +72,11 @@ private:
 	void LoadButtonsMenuTypeConfiguration();
 	void LoadScrollPaneMenuTypeConfiguration();
 	void LoadShowPaneMenuTypeConfiguration();
+
+	void CreateSubDirectories(Directory*& directory, const std::string &base_directory, int depth);
+
+	int HowManyFiles(std::vector<std::string> cmd_output_to_check);
+
 
 public:
 
