@@ -27,6 +27,7 @@ private:
 
 	struct TextureFile {
 		std::string name;
+		std::string path;
 		Texture* texture;
 	};
 
@@ -44,6 +45,7 @@ private:
 
 	std::string filepath;
 	std::string type;
+
 	float mouse_offset;
 	const std::string base_path = "../";
 	float scale;
@@ -71,11 +73,12 @@ private:
 
 	void LoadButtonsMenuTypeConfiguration();
 	void LoadScrollPaneMenuTypeConfiguration();
+
+	void CreateButtonsAndTexts(Directory *dir);
+
 	void LoadShowPaneMenuTypeConfiguration();
 
 	void CreateSubDirectories(Directory*& directory, const std::string &base_directory, int depth);
-
-	int HowManyFiles(std::vector<std::string> cmd_output_to_check);
 
 
 public:

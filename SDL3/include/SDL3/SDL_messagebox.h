@@ -27,7 +27,7 @@
  * the need to build a UI for it (or informing the user _before_ your UI is
  * ready).
  *
- * These message boxes are native system dialogs where possible.
+ * These message Boxes are native system dialogs where possible.
  *
  * There is both a customizable function (SDL_ShowMessageBox()) that offers
  * lots of options for what to display and reports on what choice the user
@@ -61,8 +61,8 @@ typedef Uint32 SDL_MessageBoxFlags;
 #define SDL_MESSAGEBOX_ERROR                    0x00000010u /**< error dialog */
 #define SDL_MESSAGEBOX_WARNING                  0x00000020u /**< warning dialog */
 #define SDL_MESSAGEBOX_INFORMATION              0x00000040u /**< informational dialog */
-#define SDL_MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT    0x00000080u /**< buttons placed left to right */
-#define SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT    0x00000100u /**< buttons placed right to left */
+#define SDL_MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT    0x00000080u /**< Buttons placed Left to Right */
+#define SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT    0x00000100u /**< Buttons placed Right to Left */
 
 /**
  * SDL_MessageBoxButtonData flags.

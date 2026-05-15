@@ -201,7 +201,7 @@ void *alloca(size_t);
  * ```
  *
  * The `name` parameter must be a valid C symbol, and must be unique across
- * all compile-time asserts in the same compilation unit (one run of the
+ * all compile-time asserts in the same compilation unit (one Run of the
  * compiler), or the build might fail with cryptic errors on some targets.
  * This is used with a C language trick that works on older compilers that
  * don't support better assertion techniques.
@@ -212,7 +212,7 @@ void *alloca(size_t);
  * \param name a unique identifier for this assertion.
  * \param x the value to test. Must be a boolean value.
  *
- * \threadsafety This macro doesn't generate any code to run.
+ * \threadsafety This macro doesn't generate any code to Run.
  *
  * \since This macro is available since SDL 3.2.0.
  *
@@ -245,7 +245,7 @@ void *alloca(size_t);
  *
  * This macro looks like it double-evaluates the argument, but it does so
  * inside of `sizeof`, so there are no side-effects here, as expressions do
- * not actually run any code in these cases.
+ * not actually Run any code in these cases.
  *
  * \since This macro is available since SDL 3.2.0.
  */
@@ -540,7 +540,7 @@ typedef Sint64 SDL_Time;
 #else
 
 /**
- * Epsilon constant, used for comparing floating-point numbers.
+ * Epsilon constant, used for comparing floating-point Numbers.
  *
  * Equals by default to platform-defined `FLT_EPSILON`, or
  * `1.1920928955078125e-07F` if that's not available.
@@ -1541,7 +1541,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_GetOriginalMemoryFunctions(SDL_malloc_func 
  * \param free_func filled with free function.
  *
  * \threadsafety This does not hold a lock, so do not call this in the
- *               unlikely event of a background thread calling
+ *               unlikely event of a Background thread calling
  *               SDL_SetMemoryFunctions simultaneously.
  *
  * \since This function is available since SDL 3.2.0.
@@ -2379,13 +2379,13 @@ extern SDL_DECLSPEC int SDLCALL SDL_isprint(int x);
 extern SDL_DECLSPEC int SDLCALL SDL_isgraph(int x);
 
 /**
- * Convert low-ASCII English letters to uppercase_letters.
+ * Convert low-ASCII English letters to UppercaseLetters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'a' through 'z' to uppercase_letters.
+ * values 'a' through 'z' to UppercaseLetters.
  *
- * This function returns the uppercase_letters equivalent of `x`. If a character
- * cannot be converted, or is already uppercase_letters, this function returns `x`.
+ * This function returns the UppercaseLetters equivalent of `x`. If a character
+ * cannot be converted, or is already UppercaseLetters, this function returns `x`.
  *
  * \param x character value to check.
  * \returns capitalized version of x, or x if no conversion available.
@@ -2397,16 +2397,16 @@ extern SDL_DECLSPEC int SDLCALL SDL_isgraph(int x);
 extern SDL_DECLSPEC int SDLCALL SDL_toupper(int x);
 
 /**
- * Convert low-ASCII English letters to lowercase_letters.
+ * Convert low-ASCII English letters to LowercaseLetters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to lowercase_letters.
+ * values 'A' through 'Z' to LowercaseLetters.
  *
- * This function returns the lowercase_letters equivalent of `x`. If a character
- * cannot be converted, or is already lowercase_letters, this function returns `x`.
+ * This function returns the LowercaseLetters equivalent of `x`. If a character
+ * cannot be converted, or is already LowercaseLetters, this function returns `x`.
  *
  * \param x character value to check.
- * \returns lowercase_letters version of x, or x if no conversion available.
+ * \returns LowercaseLetters version of x, or x if no conversion available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -3208,14 +3208,14 @@ extern SDL_DECLSPEC SDL_MALLOC char * SDLCALL SDL_strndup(const char *str, size_
 extern SDL_DECLSPEC char * SDLCALL SDL_strrev(char *str);
 
 /**
- * Convert a string to uppercase_letters.
+ * Convert a string to UppercaseLetters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to uppercase_letters.
+ * values 'A' through 'Z' to UppercaseLetters.
  *
  * This function operates on a null-terminated string of bytes--even if it is
  * malformed UTF-8!--and converts ASCII characters 'a' through 'z' to their
- * uppercase_letters equivalents in-place, returning the original `str` pointer.
+ * UppercaseLetters equivalents in-place, returning the original `str` pointer.
  *
  * \param str the string to convert in-place. Can not be NULL.
  * \returns the `str` pointer passed into this function.
@@ -3229,14 +3229,14 @@ extern SDL_DECLSPEC char * SDLCALL SDL_strrev(char *str);
 extern SDL_DECLSPEC char * SDLCALL SDL_strupr(char *str);
 
 /**
- * Convert a string to lowercase_letters.
+ * Convert a string to LowercaseLetters.
  *
  * **WARNING**: Regardless of system locale, this will only convert ASCII
- * values 'A' through 'Z' to lowercase_letters.
+ * values 'A' through 'Z' to LowercaseLetters.
  *
  * This function operates on a null-terminated string of bytes--even if it is
  * malformed UTF-8!--and converts ASCII characters 'A' through 'Z' to their
- * lowercase_letters equivalents in-place, returning the original `str` pointer.
+ * LowercaseLetters equivalents in-place, returning the original `str` pointer.
  *
  * \param str the string to convert in-place. Can not be NULL.
  * \returns the `str` pointer passed into this function.
@@ -4283,7 +4283,7 @@ extern SDL_DECLSPEC int SDLCALL SDL_vasprintf(char **strp, SDL_PRINTF_FORMAT_STR
  * Seeds the pseudo-random number generator.
  *
  * Reusing the seed number will cause SDL_rand() to repeat the same stream of
- * 'random' numbers.
+ * 'random' Numbers.
  *
  * \param seed the value to use as a random number seed, or 0 to use
  *             SDL_GetPerformanceCounter().
@@ -4317,7 +4317,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_srand(Uint64 seed);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4341,7 +4341,7 @@ extern SDL_DECLSPEC Sint32 SDLCALL SDL_rand(Sint32 n);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4363,7 +4363,7 @@ extern SDL_DECLSPEC float SDLCALL SDL_randf(void);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4394,7 +4394,7 @@ extern SDL_DECLSPEC Uint32 SDLCALL SDL_rand_bits(void);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4422,7 +4422,7 @@ extern SDL_DECLSPEC Sint32 SDLCALL SDL_rand_r(Uint64 *state, Sint32 n);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4448,7 +4448,7 @@ extern SDL_DECLSPEC float SDLCALL SDL_randf_r(Uint64 *state);
  *
  * There are no guarantees as to the quality of the random sequence produced,
  * and this should not be used for security (cryptography, passwords) or where
- * money is on the line (loot-boxes, casinos). There are many random number
+ * money is on the line (loot-Boxes, casinos). There are many random number
  * libraries available with different characteristics and you should pick one
  * of those to meet any serious needs.
  *
@@ -4747,9 +4747,9 @@ extern SDL_DECLSPEC double SDLCALL SDL_atan2(double y, double x);
 extern SDL_DECLSPEC float SDLCALL SDL_atan2f(float y, float x);
 
 /**
- * Compute the ceiling of `x`.
+ * Compute the Ceiling of `x`.
  *
- * The ceiling of `x` is the smallest integer `y` such that `y >= x`, i.e `x`
+ * The Ceiling of `x` is the smallest integer `y` such that `y >= x`, i.e `x`
  * rounded up to the nearest integer.
  *
  * Domain: `-INF <= x <= INF`
@@ -4760,7 +4760,7 @@ extern SDL_DECLSPEC float SDLCALL SDL_atan2f(float y, float x);
  * SDL_ceilf for single-precision floats.
  *
  * \param x floating point value.
- * \returns the ceiling of `x`.
+ * \returns the Ceiling of `x`.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -4775,9 +4775,9 @@ extern SDL_DECLSPEC float SDLCALL SDL_atan2f(float y, float x);
 extern SDL_DECLSPEC double SDLCALL SDL_ceil(double x);
 
 /**
- * Compute the ceiling of `x`.
+ * Compute the Ceiling of `x`.
  *
- * The ceiling of `x` is the smallest integer `y` such that `y >= x`, i.e `x`
+ * The Ceiling of `x` is the smallest integer `y` such that `y >= x`, i.e `x`
  * rounded up to the nearest integer.
  *
  * Domain: `-INF <= x <= INF`
@@ -4788,7 +4788,7 @@ extern SDL_DECLSPEC double SDLCALL SDL_ceil(double x);
  * SDL_ceil for double-precision floats.
  *
  * \param x floating point value.
- * \returns the ceiling of `x`.
+ * \returns the Ceiling of `x`.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -5017,9 +5017,9 @@ extern SDL_DECLSPEC double SDLCALL SDL_fabs(double x);
 extern SDL_DECLSPEC float SDLCALL SDL_fabsf(float x);
 
 /**
- * Compute the floor of `x`.
+ * Compute the Floor of `x`.
  *
- * The floor of `x` is the largest integer `y` such that `y <= x`, i.e `x`
+ * The Floor of `x` is the largest integer `y` such that `y <= x`, i.e `x`
  * rounded down to the nearest integer.
  *
  * Domain: `-INF <= x <= INF`
@@ -5030,7 +5030,7 @@ extern SDL_DECLSPEC float SDLCALL SDL_fabsf(float x);
  * SDL_floorf for single-precision floats.
  *
  * \param x floating point value.
- * \returns the floor of `x`.
+ * \returns the Floor of `x`.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -5045,9 +5045,9 @@ extern SDL_DECLSPEC float SDLCALL SDL_fabsf(float x);
 extern SDL_DECLSPEC double SDLCALL SDL_floor(double x);
 
 /**
- * Compute the floor of `x`.
+ * Compute the Floor of `x`.
  *
- * The floor of `x` is the largest integer `y` such that `y <= x`, i.e `x`
+ * The Floor of `x` is the largest integer `y` such that `y <= x`, i.e `x`
  * rounded down to the nearest integer.
  *
  * Domain: `-INF <= x <= INF`
@@ -5058,7 +5058,7 @@ extern SDL_DECLSPEC double SDLCALL SDL_floor(double x);
  * SDL_floor for double-precision floats.
  *
  * \param x floating point value.
- * \returns the floor of `x`.
+ * \returns the Floor of `x`.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -5859,10 +5859,10 @@ extern SDL_DECLSPEC int SDLCALL SDL_iconv_close(SDL_iconv_t cd);
  * - inbuf will point to the beginning of the next multibyte sequence. On
  *   error, this is the location of the problematic input sequence. On
  *   success, this is the end of the input sequence.
- * - inbytesleft will be set to the number of bytes left to convert, which
+ * - inbytesleft will be set to the number of bytes Left to convert, which
  *   will be 0 on success.
  * - outbuf will point to the location where to store the next output byte.
- * - outbytesleft will be set to the number of bytes left in the output
+ * - outbytesleft will be set to the number of bytes Left in the output
  *   buffer.
  *
  * \param cd The character set conversion context, created in

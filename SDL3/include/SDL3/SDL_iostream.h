@@ -234,7 +234,7 @@ typedef struct SDL_IOStream SDL_IOStream;
  *
  * In Android, SDL_IOFromFile() can be used to open content:// URIs. As a
  * fallback, SDL_IOFromFile() will transparently open a matching filename in
- * the app's `assets`.
+ * the app's `Assets`.
  *
  * Closing the SDL_IOStream will close SDL's internal file handle.
  *

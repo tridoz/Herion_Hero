@@ -55,7 +55,7 @@ extern "C" {
 #endif
 
 /**
- * Get the directory where the application was run from.
+ * Get the directory where the application was Run from.
  *
  * SDL caches the result of this call internally, but the first call to this
  * function is not necessarily fast, so plan accordingly.
@@ -133,7 +133,7 @@ extern SDL_DECLSPEC const char * SDLCALL SDL_GetBasePath(void);
  * - Always use a unique app string for each one, and make sure it never
  *   changes for an app once you've decided on it.
  * - Unicode characters are legal, as long as they are UTF-8 encoded, but...
- * - ...only use letters, numbers, and spaces. Avoid punctuation like "Game
+ * - ...only use letters, Numbers, and spaces. Avoid punctuation like "Game
  *   Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.
  *
  * Due to historical mistakes, `org` is allowed to be NULL or "". In such
@@ -192,16 +192,16 @@ extern SDL_DECLSPEC char * SDLCALL SDL_GetPrefPath(const char *org, const char *
 typedef enum SDL_Folder
 {
     SDL_FOLDER_HOME,        /**< The folder which contains all of the current user's data, preferences, and documents. It usually contains most of the other folders. If a requested folder does not exist, the home folder can be considered a safe fallback to store a user's documents. */
-    SDL_FOLDER_DESKTOP,     /**< The folder of files that are displayed on the desktop. Note that the existence of a desktop folder does not guarantee that the system does show icons on its desktop; certain GNU/Linux distros with a graphical environment may not have desktop icons. */
+    SDL_FOLDER_DESKTOP,     /**< The folder of files that are displayed on the desktop. Note that the existence of a desktop folder does not guarantee that the system does show Icons on its desktop; certain GNU/Linux distros with a graphical environment may not have desktop Icons. */
     SDL_FOLDER_DOCUMENTS,   /**< User document files, possibly application-specific. This is a good place to save a user's projects. */
     SDL_FOLDER_DOWNLOADS,   /**< Standard folder for user files downloaded from the internet. */
-    SDL_FOLDER_MUSIC,       /**< Music files that can be played using a standard music player (mp3, ogg...). */
+    SDL_FOLDER_MUSIC,       /**< Music files that can be played using a standard music Player (mp3, ogg...). */
     SDL_FOLDER_PICTURES,    /**< Image files that can be displayed using a standard viewer (png, jpg...). */
     SDL_FOLDER_PUBLICSHARE, /**< Files that are meant to be shared with other users on the same computer. */
     SDL_FOLDER_SAVEDGAMES,  /**< Save files for games. */
     SDL_FOLDER_SCREENSHOTS, /**< Application screenshots. */
     SDL_FOLDER_TEMPLATES,   /**< Template files to be used when the user requests the desktop environment to create a new file in a certain folder, such as "New Text File.txt".  Any file in the Templates folder can be used as a starting point for a new file. */
-    SDL_FOLDER_VIDEOS,      /**< Video files that can be played using a standard video player (mp4, webm...). */
+    SDL_FOLDER_VIDEOS,      /**< Video files that can be played using a standard video Player (mp4, webm...). */
     SDL_FOLDER_COUNT        /**< Total number of types in this enum, not a folder type by itself. */
 } SDL_Folder;
 

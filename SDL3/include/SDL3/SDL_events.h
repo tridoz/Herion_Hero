@@ -97,11 +97,11 @@ typedef enum SDL_EventType
                                      Called on iOS in applicationDidReceiveMemoryWarning()
                                      Called on Android in onTrimMemory()
                                 */
-    SDL_EVENT_WILL_ENTER_BACKGROUND, /**< The application is about to enter the background. This event must be handled in a callback set with SDL_AddEventWatch().
+    SDL_EVENT_WILL_ENTER_BACKGROUND, /**< The application is about to enter the Background. This event must be handled in a callback set with SDL_AddEventWatch().
                                      Called on iOS in applicationWillResignActive()
                                      Called on Android in onPause()
                                 */
-    SDL_EVENT_DID_ENTER_BACKGROUND, /**< The application did enter the background and may not get CPU for some time. This event must be handled in a callback set with SDL_AddEventWatch().
+    SDL_EVENT_DID_ENTER_BACKGROUND, /**< The application did enter the Background and may not get CPU for some time. This event must be handled in a callback set with SDL_AddEventWatch().
                                      Called on iOS in applicationDidEnterBackground()
                                      Called on Android in onPause()
                                 */
@@ -157,7 +157,7 @@ typedef enum SDL_EventType
     SDL_EVENT_WINDOW_SAFE_AREA_CHANGED, /**< The window safe area has been changed */
     SDL_EVENT_WINDOW_OCCLUDED,          /**< The window has been occluded */
     SDL_EVENT_WINDOW_ENTER_FULLSCREEN,  /**< The window has entered fullscreen mode */
-    SDL_EVENT_WINDOW_LEAVE_FULLSCREEN,  /**< The window has left fullscreen mode */
+    SDL_EVENT_WINDOW_LEAVE_FULLSCREEN,  /**< The window has Left fullscreen mode */
     SDL_EVENT_WINDOW_DESTROYED,         /**< The window with the associated ID is being or has been destroyed. If this message is being handled
                                              in an event watcher, the window handle is still valid and can still be used to retrieve any properties
                                              associated with the window. Otherwise, the handle has already been destroyed and all resources
@@ -496,7 +496,7 @@ typedef struct SDL_MouseWheelEvent
     Uint64 timestamp;   /**< In nanoseconds, populated using SDL_GetTicksNS() */
     SDL_WindowID windowID; /**< The window with mouse focus, if any */
     SDL_MouseID which;  /**< The mouse instance id in relative mode or 0 */
-    float x;            /**< The amount scrolled horizontally, positive to the right and negative to the left */
+    float x;            /**< The amount scrolled horizontally, positive to the Right and negative to the Left */
     float y;            /**< The amount scrolled vertically, positive away from the user and negative toward the user */
     SDL_MouseWheelDirection direction; /**< Set to one of the SDL_MOUSEWHEEL_* defines. When FLIPPED the values in X and Y will be opposite. Multiply by -1 to change them back */
     float mouse_x;      /**< X coordinate, relative to window */
@@ -689,7 +689,7 @@ typedef struct SDL_GamepadTouchpadEvent
     SDL_JoystickID which; /**< The joystick instance id */
     Sint32 touchpad;    /**< The index of the touchpad */
     Sint32 finger;      /**< The index of the finger on the touchpad */
-    float x;            /**< Normalized in the range 0...1 with 0 being on the left */
+    float x;            /**< Normalized in the range 0...1 with 0 being on the Left */
     float y;            /**< Normalized in the range 0...1 with 0 being at the top */
     float pressure;     /**< Normalized in the range 0...1 */
 } SDL_GamepadTouchpadEvent;
@@ -715,7 +715,7 @@ typedef struct SDL_GamepadSensorEvent
  *
  * Note that SDL will send a SDL_EVENT_AUDIO_DEVICE_ADDED event for every
  * device it discovers during initialization. After that, this event will only
- * arrive when a device is hotplugged during the program's run.
+ * arrive when a device is hotplugged during the program's Run.
  *
  * \since This struct is available since SDL 3.2.0.
  */
@@ -764,10 +764,10 @@ typedef struct SDL_RenderEvent
  *
  * Coordinates in this event are normalized. `x` and `y` are normalized to a
  * range between 0.0f and 1.0f, relative to the window, so (0,0) is the top
- * left and (1,1) is the bottom right. Delta coordinates `dx` and `dy` are
+ * Left and (1,1) is the bottom Right. Delta coordinates `dx` and `dy` are
  * normalized in the ranges of -1.0f (traversed all the way from the bottom or
- * right to all the way up or left) to 1.0f (traversed all the way from the
- * top or left to all the way down or right).
+ * Right to all the way up or Left) to 1.0f (traversed all the way from the
+ * top or Left to all the way down or Right).
  *
  * Note that while the coordinates are _normalized_, they are not _clamped_,
  * which means in some circumstances you can get a value outside of this
@@ -877,7 +877,7 @@ typedef struct SDL_PenTouchEvent
 /**
  * Pressure-sensitive pen button event structure (event.pbutton.*)
  *
- * This is for buttons on the pen itself that the user might click. The pen
+ * This is for Buttons on the pen itself that the user might click. The pen
  * itself pressing down to draw triggers a SDL_EVENT_PEN_DOWN event instead.
  *
  * \since This struct is available since SDL 3.2.0.
@@ -1424,7 +1424,7 @@ typedef bool (SDLCALL *SDL_EventFilter)(void *userdata, SDL_Event *event);
  * allows selective filtering of dynamically arriving events.
  *
  * **WARNING**: Be very careful of what you do in the event filter function,
- * as it may run in a different thread! The exception is handling of
+ * as it may Run in a different thread! The exception is handling of
  * SDL_EVENT_WINDOW_EXPOSED, which is guaranteed to be sent from the OS on the
  * main thread and you are expected to redraw your window in response to this
  * event.
@@ -1481,7 +1481,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetEventFilter(SDL_EventFilter *filter, voi
  * ignored.
  *
  * **WARNING**: Be very careful of what you do in the event filter function,
- * as it may run in a different thread!
+ * as it may Run in a different thread!
  *
  * If the quit event is generated by a signal (e.g. SIGINT), it will bypass
  * the internal queue and be delivered to the watch callback immediately, and
@@ -1577,7 +1577,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_EventEnabled(Uint32 type);
  *
  * \param numevents the number of events to be allocated.
  * \returns the beginning event number, or 0 if numevents is invalid or if
- *          there are not enough user-defined events left.
+ *          there are not enough user-defined events Left.
  *
  * \threadsafety It is safe to call this function from any thread.
  *

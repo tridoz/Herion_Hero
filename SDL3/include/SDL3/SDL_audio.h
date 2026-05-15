@@ -93,19 +93,19 @@
  * Abbreviations:
  *
  * - FRONT = single mono speaker
- * - FL = front left speaker
- * - FR = front right speaker
+ * - FL = front Left speaker
+ * - FR = front Right speaker
  * - FC = front center speaker
- * - BL = back left speaker
- * - BR = back right speaker
- * - SR = surround right speaker
- * - SL = surround left speaker
+ * - BL = back Left speaker
+ * - BR = back Right speaker
+ * - SR = surround Right speaker
+ * - SL = surround Left speaker
  * - BC = back center speaker
  * - LFE = low-frequency speaker
  *
  * These are listed in the order they are laid out in memory, so "FL, FR"
- * means "the front left speaker is laid out in memory first, then the front
- * right, then it repeats for the next audio frame".
+ * means "the front Left speaker is laid out in memory first, then the front
+ * Right, then it repeats for the next audio frame".
  *
  * - 1 channel (mono) layout: FRONT
  * - 2 channels (stereo) layout: FL, FR
@@ -1295,10 +1295,10 @@ extern SDL_DECLSPEC int * SDLCALL SDL_GetAudioStreamOutputChannelMap(SDL_AudioSt
  * data in the new channel order.
  *
  * Each item in the array represents an input channel, and its value is the
- * channel that it should be remapped to. To reverse a stereo signal's left
- * and right values, you'd have an array of `{ 1, 0 }`. It is legal to remap
+ * channel that it should be remapped to. To reverse a stereo signal's Left
+ * and Right values, you'd have an array of `{ 1, 0 }`. It is legal to remap
  * multiple channels to the same thing, so `{ 1, 1 }` would duplicate the
- * right channel to both channels of a stereo signal. An element in the
+ * Right channel to both channels of a stereo signal. An element in the
  * channel map set to -1 instead of a valid channel will mute that channel,
  * setting it to a silence value.
  *
@@ -1354,10 +1354,10 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetAudioStreamInputChannelMap(SDL_AudioStre
  * SDL_GetAudioStreamData.
  *
  * Each item in the array represents an input channel, and its value is the
- * channel that it should be remapped to. To reverse a stereo signal's left
- * and right values, you'd have an array of `{ 1, 0 }`. It is legal to remap
+ * channel that it should be remapped to. To reverse a stereo signal's Left
+ * and Right values, you'd have an array of `{ 1, 0 }`. It is legal to remap
  * multiple channels to the same thing, so `{ 1, 1 }` would duplicate the
- * right channel to both channels of a stereo signal. An element in the
+ * Right channel to both channels of a stereo signal. An element in the
  * channel map set to -1 instead of a valid channel will mute that channel,
  * setting it to a silence value.
  *
@@ -1449,7 +1449,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_PutAudioStreamData(SDL_AudioStream *stream,
  * \param buflen the size of buffer, in bytes, provided to
  *               SDL_PutAudioStreamDataNoCopy().
  *
- * \threadsafety This callbacks may run from any thread, so if you need to
+ * \threadsafety This callbacks may Run from any thread, so if you need to
  *               protect shared data, you should use SDL_LockAudioStream to
  *               serialize access; this lock will be held before your callback
  *               is called, so your callback does not need to manage the lock
@@ -1625,7 +1625,7 @@ extern SDL_DECLSPEC int SDLCALL SDL_GetAudioStreamAvailable(SDL_AudioStream *str
  * This is the number of bytes put into a stream as input, not the number that
  * can be retrieved as output. Because of several details, it's not possible
  * to calculate one number directly from the other. If you need to know how
- * much usable data can be retrieved right now, you should use
+ * much usable data can be retrieved Right now, you should use
  * SDL_GetAudioStreamAvailable() and not this function.
  *
  * Note that audio streams can change their input format at any time, even if
@@ -1775,7 +1775,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_AudioStreamDevicePaused(SDL_AudioStream *st
  *
  * One does not need to lock a stream to use in it most cases, as the stream
  * manages this lock internally. However, this lock is held during callbacks,
- * which may run from arbitrary threads at any time, so if an app needs to
+ * which may Run from arbitrary threads at any time, so if an app needs to
  * protect shared data during those callbacks, locking the stream guarantees
  * that the callback is not running while the lock is held.
  *
@@ -1835,14 +1835,14 @@ extern SDL_DECLSPEC bool SDLCALL SDL_UnlockAudioStream(SDL_AudioStream *stream);
  * if this callback does nothing.
  *
  * \param stream the SDL audio stream associated with this callback.
- * \param additional_amount the amount of data, in bytes, that is needed right
+ * \param additional_amount the amount of data, in bytes, that is needed Right
  *                          now.
  * \param total_amount the total amount of data requested, in bytes, that is
  *                     requested or available.
  * \param userdata an opaque pointer provided by the app for their personal
  *                 use.
  *
- * \threadsafety This callbacks may run from any thread, so if you need to
+ * \threadsafety This callbacks may Run from any thread, so if you need to
  *               protect shared data, you should use SDL_LockAudioStream to
  *               serialize access; this lock will be held before your callback
  *               is called, so your callback does not need to manage the lock
@@ -2041,7 +2041,7 @@ extern SDL_DECLSPEC SDL_AudioStream * SDLCALL SDL_OpenAudioDeviceStream(SDL_Audi
  * This is useful for accessing the final mix, perhaps for writing a
  * visualizer or applying a final effect to the audio data before playback.
  *
- * This callback should run as quickly as possible and not block for any
+ * This callback should Run as quickly as possible and not block for any
  * significant time, as this callback delays submission of data to the audio
  * device, which can cause audio playback problems.
  *
@@ -2062,7 +2062,7 @@ extern SDL_DECLSPEC SDL_AudioStream * SDLCALL SDL_OpenAudioDeviceStream(SDL_Audi
  *               inspect and/or modify this data.
  * \param buflen the size of `buffer` in bytes.
  *
- * \threadsafety This will run from a background thread owned by SDL. The
+ * \threadsafety This will Run from a Background thread owned by SDL. The
  *               application is responsible for locking resources the callback
  *               touches that need to be protected.
  *
@@ -2095,7 +2095,7 @@ typedef void (SDLCALL *SDL_AudioPostmixCallback)(void *userdata, const SDL_Audio
  * change between calls. Accordingly, the size of the buffer might change
  * between calls as well.
  *
- * This callback can run at any time, and from any thread; if you need to
+ * This callback can Run at any time, and from any thread; if you need to
  * serialize access to your app's data, you should provide and use a mutex or
  * other synchronization device.
  *

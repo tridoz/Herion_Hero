@@ -45,11 +45,11 @@ extern int FONT_CHARACTER_SIZE;
 #define FONT_LINE_HEIGHT    (FONT_CHARACTER_SIZE + 2)
 
 /*
- *  Draw a string in the currently set font.
+ *  Draw a string in the currently set Font.
  *
  *  \param renderer The renderer to draw on.
- *  \param x The X coordinate of the upper left corner of the character.
- *  \param y The Y coordinate of the upper left corner of the character.
+ *  \param x The X coordinate of the upper Left corner of the character.
+ *  \param y The Y coordinate of the upper Left corner of the character.
  *  \param c The character to draw.
  *
  *  \returns true on success, false on failure.
@@ -57,13 +57,13 @@ extern int FONT_CHARACTER_SIZE;
 bool SDLCALL SDLTest_DrawCharacter(SDL_Renderer *renderer, float x, float y, Uint32 c);
 
 /*
- *  Draw a UTF-8 string in the currently set font.
+ *  Draw a UTF-8 string in the currently set Font.
  *
- *  The font currently only supports characters in the Basic Latin and Latin-1 Supplement sets.
+ *  The Font currently only supports characters in the Basic Latin and Latin-1 Supplement sets.
  *
  *  \param renderer The renderer to draw on.
- *  \param x The X coordinate of the upper left corner of the string.
- *  \param y The Y coordinate of the upper left corner of the string.
+ *  \param x The X coordinate of the upper Left corner of the string.
+ *  \param y The Y coordinate of the upper Left corner of the string.
  *  \param s The string to draw.
  *
  *  \returns true on success, false on failure.
@@ -84,8 +84,8 @@ typedef struct SDLTest_TextWindow
 /*
  *  Create a multi-line text output window
  *
- *  \param x The X coordinate of the upper left corner of the window.
- *  \param y The Y coordinate of the upper left corner of the window.
+ *  \param x The X coordinate of the upper Left corner of the window.
+ *  \param y The Y coordinate of the upper Left corner of the window.
  *  \param w The width of the window (currently ignored)
  *  \param h The height of the window (currently ignored)
  *
@@ -156,7 +156,7 @@ void SDLCALL SDLTest_TextWindowClear(SDLTest_TextWindow *textwin);
 void SDLCALL SDLTest_TextWindowDestroy(SDLTest_TextWindow *textwin);
 
 /*
- *  Cleanup textures used by font drawing functions.
+ *  Cleanup textures used by Font drawing functions.
  */
 void SDLCALL SDLTest_CleanupTextDrawing(void);
 

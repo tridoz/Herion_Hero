@@ -23,7 +23,7 @@
  * # CategoryGamepad
  *
  * SDL provides a low-level joystick API, which just treats joysticks as an
- * arbitrary pile of buttons, axes, and hat switches. If you're planning to
+ * arbitrary pile of Buttons, axes, and hat switches. If you're planning to
  * write your own control configuration screen, this can give you a lot of
  * flexibility, but that's a lot of work, and most things that we consider
  * "joysticks" now are actually console-style gamepads. So SDL provides the
@@ -31,8 +31,8 @@
  *
  * The difference between a joystick and a gamepad is that a gamepad tells you
  * _where_ a button or axis is on the device. You don't speak to gamepads in
- * terms of arbitrary numbers like "button 3" or "axis 2" but in standard
- * locations: the d-pad, the shoulder buttons, triggers, A/B/X/Y (or
+ * terms of arbitrary Numbers like "button 3" or "axis 2" but in standard
+ * locations: the d-pad, the shoulder Buttons, triggers, A/B/X/Y (or
  * X/O/Square/Triangle, if you will).
  *
  * One turns a joystick into a gamepad by providing a magic configuration
@@ -49,7 +49,7 @@
  * load appropriate drivers.
  *
  * If you would like to receive gamepad updates while the application is in
- * the background, you should set the following hint before calling
+ * the Background, you should set the following hint before calling
  * SDL_Init(): SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS
  *
  * Gamepads support various optional features such as rumble, color LEDs,
@@ -103,7 +103,7 @@ typedef struct SDL_Gamepad SDL_Gamepad;
  * Microsoft/Sony/Nintendo; in many cases, third-party controllers can report
  * as these, either because they were designed for a specific console, or they
  * simply most closely match that console's controllers (does it have A/B/X/Y
- * buttons or X/O/Square/Triangle? Does it have a touchpad? etc).
+ * Buttons or X/O/Square/Triangle? Does it have a touchpad? etc).
  */
 typedef enum SDL_GamepadType
 {
@@ -123,25 +123,25 @@ typedef enum SDL_GamepadType
 } SDL_GamepadType;
 
 /**
- * The list of buttons available on a gamepad
+ * The list of Buttons available on a gamepad
  *
- * For controllers that use a diamond pattern for the face buttons, the
- * south/east/west/north buttons below correspond to the locations in the
+ * For controllers that use a diamond pattern for the face Buttons, the
+ * south/east/west/north Buttons below correspond to the locations in the
  * diamond pattern. For Xbox controllers, this would be A/B/X/Y, for Nintendo
  * Switch controllers, this would be B/A/Y/X, for GameCube controllers this
  * would be A/X/B/Y, for PlayStation controllers this would be
  * Cross/Circle/Square/Triangle.
  *
- * For controllers that don't use a diamond pattern for the face buttons, the
- * south/east/west/north buttons indicate the buttons labeled A, B, C, D, or
+ * For controllers that don't use a diamond pattern for the face Buttons, the
+ * south/east/west/north Buttons indicate the Buttons labeled A, B, C, D, or
  * 1, 2, 3, 4, or for controllers that aren't labeled, they are the primary,
- * secondary, etc. buttons.
+ * secondary, etc. Buttons.
  *
  * The activate action is often the south button and the cancel action is
  * often the east button, but in some regions this is reversed, so your game
  * should allow remapping actions based on user preferences.
  *
- * You can query the labels for the face buttons using
+ * You can query the labels for the face Buttons using
  * SDL_GetGamepadButtonLabel()
  *
  * \since This enum is available since SDL 3.2.0.
@@ -165,14 +165,14 @@ typedef enum SDL_GamepadButton
     SDL_GAMEPAD_BUTTON_DPAD_LEFT,
     SDL_GAMEPAD_BUTTON_DPAD_RIGHT,
     SDL_GAMEPAD_BUTTON_MISC1,           /**< Additional button (e.g. Xbox Series X share button, PS5 microphone button, Nintendo Switch Pro capture button, Amazon Luna microphone button, Google Stadia capture button) */
-    SDL_GAMEPAD_BUTTON_RIGHT_PADDLE1,   /**< Upper or primary paddle, under your right hand (e.g. Xbox Elite paddle P1, DualSense Edge RB button, Right Joy-Con SR button) */
-    SDL_GAMEPAD_BUTTON_LEFT_PADDLE1,    /**< Upper or primary paddle, under your left hand (e.g. Xbox Elite paddle P3, DualSense Edge LB button, Left Joy-Con SL button) */
-    SDL_GAMEPAD_BUTTON_RIGHT_PADDLE2,   /**< Lower or secondary paddle, under your right hand (e.g. Xbox Elite paddle P2, DualSense Edge right Fn button, Right Joy-Con SL button) */
-    SDL_GAMEPAD_BUTTON_LEFT_PADDLE2,    /**< Lower or secondary paddle, under your left hand (e.g. Xbox Elite paddle P4, DualSense Edge left Fn button, Left Joy-Con SR button) */
+    SDL_GAMEPAD_BUTTON_RIGHT_PADDLE1,   /**< Upper or primary paddle, under your Right hand (e.g. Xbox Elite paddle P1, DualSense Edge RB button, Right Joy-Con SR button) */
+    SDL_GAMEPAD_BUTTON_LEFT_PADDLE1,    /**< Upper or primary paddle, under your Left hand (e.g. Xbox Elite paddle P3, DualSense Edge LB button, Left Joy-Con SL button) */
+    SDL_GAMEPAD_BUTTON_RIGHT_PADDLE2,   /**< Lower or secondary paddle, under your Right hand (e.g. Xbox Elite paddle P2, DualSense Edge Right Fn button, Right Joy-Con SL button) */
+    SDL_GAMEPAD_BUTTON_LEFT_PADDLE2,    /**< Lower or secondary paddle, under your Left hand (e.g. Xbox Elite paddle P4, DualSense Edge Left Fn button, Left Joy-Con SR button) */
     SDL_GAMEPAD_BUTTON_TOUCHPAD,        /**< PS4/PS5 touchpad button */
     SDL_GAMEPAD_BUTTON_MISC2,           /**< Additional button */
-    SDL_GAMEPAD_BUTTON_MISC3,           /**< Additional button (e.g. Nintendo GameCube left trigger click) */
-    SDL_GAMEPAD_BUTTON_MISC4,           /**< Additional button (e.g. Nintendo GameCube right trigger click) */
+    SDL_GAMEPAD_BUTTON_MISC3,           /**< Additional button (e.g. Nintendo GameCube Left trigger click) */
+    SDL_GAMEPAD_BUTTON_MISC4,           /**< Additional button (e.g. Nintendo GameCube Right trigger click) */
     SDL_GAMEPAD_BUTTON_MISC5,           /**< Additional button */
     SDL_GAMEPAD_BUTTON_MISC6,           /**< Additional button */
     SDL_GAMEPAD_BUTTON_COUNT
@@ -181,7 +181,7 @@ typedef enum SDL_GamepadButton
 /**
  * The set of gamepad button labels
  *
- * This isn't a complete set, just the face buttons to make it easy to show
+ * This isn't a complete set, just the face Buttons to make it easy to show
  * button prompts.
  *
  * For a complete set, you should look at the button and gamepad type and have
@@ -231,7 +231,7 @@ typedef enum SDL_GamepadAxis
 /**
  * Types of gamepad control bindings.
  *
- * A gamepad is a collection of bindings that map arbitrary joystick buttons,
+ * A gamepad is a collection of bindings that map arbitrary joystick Buttons,
  * axes and hat switches to specific positions on a generic console-style
  * gamepad. This enum is used as part of SDL_GamepadBinding to specify those
  * mappings.
@@ -588,12 +588,12 @@ extern SDL_DECLSPEC const char * SDLCALL SDL_GetGamepadNameForID(SDL_JoystickID 
 extern SDL_DECLSPEC const char * SDLCALL SDL_GetGamepadPathForID(SDL_JoystickID instance_id);
 
 /**
- * Get the player index of a gamepad.
+ * Get the Player index of a gamepad.
  *
  * This can be called before any gamepads are opened.
  *
  * \param instance_id the joystick instance ID.
- * \returns the player index of a gamepad, or -1 if it's not available.
+ * \returns the Player index of a gamepad, or -1 if it's not available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -764,10 +764,10 @@ extern SDL_DECLSPEC SDL_Gamepad * SDLCALL SDL_OpenGamepad(SDL_JoystickID instanc
 extern SDL_DECLSPEC SDL_Gamepad * SDLCALL SDL_GetGamepadFromID(SDL_JoystickID instance_id);
 
 /**
- * Get the SDL_Gamepad associated with a player index.
+ * Get the SDL_Gamepad associated with a Player index.
  *
- * \param player_index the player index, which different from the instance ID.
- * \returns the SDL_Gamepad associated with a player index.
+ * \param player_index the Player index, which different from the instance ID.
+ * \returns the SDL_Gamepad associated with a Player index.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -790,9 +790,9 @@ extern SDL_DECLSPEC SDL_Gamepad * SDLCALL SDL_GetGamepadFromPlayerIndex(int play
  * - `SDL_PROP_GAMEPAD_CAP_RGB_LED_BOOLEAN`: true if this gamepad has an LED
  *   that has adjustable color
  * - `SDL_PROP_GAMEPAD_CAP_PLAYER_LED_BOOLEAN`: true if this gamepad has a
- *   player LED
+ *   Player LED
  * - `SDL_PROP_GAMEPAD_CAP_RUMBLE_BOOLEAN`: true if this gamepad has
- *   left/right rumble
+ *   Left/Right rumble
  * - `SDL_PROP_GAMEPAD_CAP_TRIGGER_RUMBLE_BOOLEAN`: true if this gamepad has
  *   simple trigger rumble
  *
@@ -890,12 +890,12 @@ extern SDL_DECLSPEC SDL_GamepadType SDLCALL SDL_GetGamepadType(SDL_Gamepad *game
 extern SDL_DECLSPEC SDL_GamepadType SDLCALL SDL_GetRealGamepadType(SDL_Gamepad *gamepad);
 
 /**
- * Get the player index of an opened gamepad.
+ * Get the Player index of an opened gamepad.
  *
  * For XInput gamepads this returns the XInput user index.
  *
  * \param gamepad the gamepad object to query.
- * \returns the player index for gamepad, or -1 if it's not available.
+ * \returns the Player index for gamepad, or -1 if it's not available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -906,11 +906,11 @@ extern SDL_DECLSPEC SDL_GamepadType SDLCALL SDL_GetRealGamepadType(SDL_Gamepad *
 extern SDL_DECLSPEC int SDLCALL SDL_GetGamepadPlayerIndex(SDL_Gamepad *gamepad);
 
 /**
- * Set the player index of an opened gamepad.
+ * Set the Player index of an opened gamepad.
  *
  * \param gamepad the gamepad object to adjust.
- * \param player_index player index to assign to this gamepad, or -1 to clear
- *                     the player index and turn off player LEDs.
+ * \param player_index Player index to assign to this gamepad, or -1 to clear
+ *                     the Player index and turn off Player LEDs.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
  *
@@ -1034,11 +1034,11 @@ extern SDL_DECLSPEC SDL_JoystickConnectionState SDLCALL SDL_GetGamepadConnection
  * (especially failing batteries) are delicate hardware, and the values
  * reported here are best estimates based on what that hardware reports. It's
  * not uncommon for older batteries to lose stored power much faster than it
- * reports, or completely drain when reporting it has 20 percent left, etc.
+ * reports, or completely drain when reporting it has 20 percent Left, etc.
  *
  * \param gamepad the gamepad object to query.
  * \param percent a pointer filled in with the percentage of battery life
- *                left, between 0 and 100, or NULL to ignore. This will be
+ *                Left, between 0 and 100, or NULL to ignore. This will be
  *                filled in with -1 we can't determine a value or there is no
  *                battery.
  * \returns the current battery state.
@@ -1247,8 +1247,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GamepadHasAxis(SDL_Gamepad *gamepad, SDL_Ga
  *
  * The axis indices start at index 0.
  *
- * For thumbsticks, the state is a value ranging from -32768 (up/left) to
- * 32767 (down/right).
+ * For thumbsticks, the state is a value ranging from -32768 (up/Left) to
+ * 32767 (down/Right).
  *
  * Triggers range from 0 when released to 32767 when fully pressed, and never
  * return a negative value. Note that this differs from the value reported by
@@ -1410,9 +1410,9 @@ extern SDL_DECLSPEC int SDLCALL SDL_GetNumGamepadTouchpadFingers(SDL_Gamepad *ga
  * \param down a pointer filled with true if the finger is down, false
  *             otherwise, may be NULL.
  * \param x a pointer filled with the x position, normalized 0 to 1, with the
- *          origin in the upper left, may be NULL.
+ *          origin in the upper Left, may be NULL.
  * \param y a pointer filled with the y position, normalized 0 to 1, with the
- *          origin in the upper left, may be NULL.
+ *          origin in the upper Left, may be NULL.
  * \param pressure a pointer filled with pressure value, may be NULL.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
@@ -1517,9 +1517,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetGamepadSensorData(SDL_Gamepad *gamepad, 
  * SDL_UpdateJoysticks() to update rumble state.
  *
  * \param gamepad the gamepad to vibrate.
- * \param low_frequency_rumble the intensity of the low frequency (left)
+ * \param low_frequency_rumble the intensity of the low frequency (Left)
  *                             rumble motor, from 0 to 0xFFFF.
- * \param high_frequency_rumble the intensity of the high frequency (right)
+ * \param high_frequency_rumble the intensity of the high frequency (Right)
  *                              rumble motor, from 0 to 0xFFFF.
  * \param duration_ms the duration of the rumble effect, in milliseconds.
  * \returns true on success or false on failure; call SDL_GetError() for more
@@ -1545,9 +1545,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RumbleGamepad(SDL_Gamepad *gamepad, Uint16 
  * SDL_UpdateJoysticks() to update rumble state.
  *
  * \param gamepad the gamepad to vibrate.
- * \param left_rumble the intensity of the left trigger rumble motor, from 0
+ * \param left_rumble the intensity of the Left trigger rumble motor, from 0
  *                    to 0xFFFF.
- * \param right_rumble the intensity of the right trigger rumble motor, from 0
+ * \param right_rumble the intensity of the Right trigger rumble motor, from 0
  *                     to 0xFFFF.
  * \param duration_ms the duration of the rumble effect, in milliseconds.
  * \returns true on success or false on failure; call SDL_GetError() for more

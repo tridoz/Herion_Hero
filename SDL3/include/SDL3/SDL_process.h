@@ -161,7 +161,7 @@ typedef enum SDL_ProcessIO
  * These are the supported properties:
  *
  * - `SDL_PROP_PROCESS_CREATE_ARGS_POINTER`: an array of strings containing
- *   the program to run, any arguments, and a NULL pointer, e.g. const char
+ *   the program to Run, any arguments, and a NULL pointer, e.g. const char
  *   *args[] = { "myprogram", "argument", NULL }. This is a required property.
  * - `SDL_PROP_PROCESS_CREATE_ENVIRONMENT_POINTER`: an SDL_Environment
  *   pointer. If this property is set, it will be the entire environment for
@@ -192,11 +192,11 @@ typedef enum SDL_ProcessIO
  *   the process. This property has no effect if
  *   `SDL_PROP_PROCESS_CREATE_STDERR_NUMBER` is set.
  * - `SDL_PROP_PROCESS_CREATE_BACKGROUND_BOOLEAN`: true if the process should
- *   run in the background. In this case the default input and output is
+ *   Run in the Background. In this case the default input and output is
  *   `SDL_PROCESS_STDIO_NULL` and the exitcode of the process is not
  *   available, and will always be 0.
  * - `SDL_PROP_PROCESS_CREATE_CMDLINE_STRING`: a string containing the program
- *   to run and any parameters. This string is passed directly to
+ *   to Run and any parameters. This string is passed directly to
  *   `CreateProcess` on Windows, and does nothing on other platforms. This
  *   property is only important if you want to start programs that does
  *   non-standard command-line processing, and in most cases using
@@ -236,7 +236,7 @@ extern SDL_DECLSPEC SDL_Process * SDLCALL SDL_CreateProcessWithProperties(SDL_Pr
 #define SDL_PROP_PROCESS_CREATE_STDERR_NUMBER               "SDL.process.create.stderr_option"
 #define SDL_PROP_PROCESS_CREATE_STDERR_POINTER              "SDL.process.create.stderr_source"
 #define SDL_PROP_PROCESS_CREATE_STDERR_TO_STDOUT_BOOLEAN    "SDL.process.create.stderr_to_stdout"
-#define SDL_PROP_PROCESS_CREATE_BACKGROUND_BOOLEAN          "SDL.process.create.background"
+#define SDL_PROP_PROCESS_CREATE_BACKGROUND_BOOLEAN          "SDL.process.create.Background"
 #define SDL_PROP_PROCESS_CREATE_CMDLINE_STRING              "SDL.process.create.cmdline"
 
 /**
@@ -255,7 +255,7 @@ extern SDL_DECLSPEC SDL_Process * SDLCALL SDL_CreateProcessWithProperties(SDL_Pr
  *   be used to read error output from the process, if it was created with
  *   `SDL_PROP_PROCESS_CREATE_STDERR_NUMBER` set to `SDL_PROCESS_STDIO_APP`.
  * - `SDL_PROP_PROCESS_BACKGROUND_BOOLEAN`: true if the process is running in
- *   the background.
+ *   the Background.
  *
  * \param process the process to query.
  * \returns a valid property ID on success or 0 on failure; call
@@ -274,7 +274,7 @@ extern SDL_DECLSPEC SDL_PropertiesID SDLCALL SDL_GetProcessProperties(SDL_Proces
 #define SDL_PROP_PROCESS_STDIN_POINTER      "SDL.process.stdin"
 #define SDL_PROP_PROCESS_STDOUT_POINTER     "SDL.process.stdout"
 #define SDL_PROP_PROCESS_STDERR_POINTER     "SDL.process.stderr"
-#define SDL_PROP_PROCESS_BACKGROUND_BOOLEAN "SDL.process.background"
+#define SDL_PROP_PROCESS_BACKGROUND_BOOLEAN "SDL.process.Background"
 
 /**
  * Read all the output from a process.

@@ -31,7 +31,7 @@
  * current state of the mouse at any time with SDL_GetMouseState().
  *
  * For certain games, it's useful to disassociate the mouse cursor from mouse
- * input. An FPS, for example, would not want the player's motion to stop as
+ * input. An FPS, for example, would not want the Player's motion to stop as
  * the mouse hits the edge of the window. For these scenarios, use
  * SDL_SetWindowRelativeMouseMode(), which hides the cursor, grabs mouse input
  * to the window, and reads mouse input no matter how far it moves.
@@ -108,14 +108,14 @@ typedef enum SDL_SystemCursor
     SDL_SYSTEM_CURSOR_MOVE,         /**< Four pointed arrow pointing north, south, east, and west. */
     SDL_SYSTEM_CURSOR_NOT_ALLOWED,  /**< Not permitted. Usually a slashed circle or crossbones. */
     SDL_SYSTEM_CURSOR_POINTER,      /**< Pointer that indicates a link. Usually a pointing hand. */
-    SDL_SYSTEM_CURSOR_NW_RESIZE,    /**< Window resize top-left. This may be a single arrow or a double arrow like NWSE_RESIZE. */
+    SDL_SYSTEM_CURSOR_NW_RESIZE,    /**< Window resize top-Left. This may be a single arrow or a double arrow like NWSE_RESIZE. */
     SDL_SYSTEM_CURSOR_N_RESIZE,     /**< Window resize top. May be NS_RESIZE. */
-    SDL_SYSTEM_CURSOR_NE_RESIZE,    /**< Window resize top-right. May be NESW_RESIZE. */
-    SDL_SYSTEM_CURSOR_E_RESIZE,     /**< Window resize right. May be EW_RESIZE. */
-    SDL_SYSTEM_CURSOR_SE_RESIZE,    /**< Window resize bottom-right. May be NWSE_RESIZE. */
+    SDL_SYSTEM_CURSOR_NE_RESIZE,    /**< Window resize top-Right. May be NESW_RESIZE. */
+    SDL_SYSTEM_CURSOR_E_RESIZE,     /**< Window resize Right. May be EW_RESIZE. */
+    SDL_SYSTEM_CURSOR_SE_RESIZE,    /**< Window resize bottom-Right. May be NWSE_RESIZE. */
     SDL_SYSTEM_CURSOR_S_RESIZE,     /**< Window resize bottom. May be NS_RESIZE. */
-    SDL_SYSTEM_CURSOR_SW_RESIZE,    /**< Window resize bottom-left. May be NESW_RESIZE. */
-    SDL_SYSTEM_CURSOR_W_RESIZE,     /**< Window resize left. May be EW_RESIZE. */
+    SDL_SYSTEM_CURSOR_SW_RESIZE,    /**< Window resize bottom-Left. May be NESW_RESIZE. */
+    SDL_SYSTEM_CURSOR_W_RESIZE,     /**< Window resize Left. May be EW_RESIZE. */
     SDL_SYSTEM_CURSOR_COUNT
 } SDL_SystemCursor;
 
@@ -142,7 +142,7 @@ typedef struct SDL_CursorFrameInfo
 } SDL_CursorFrameInfo;
 
 /**
- * A bitmask of pressed mouse buttons, as reported by SDL_GetMouseState, etc.
+ * A bitmask of pressed mouse Buttons, as reported by SDL_GetMouseState, etc.
  *
  * - Button 1: Left mouse button
  * - Button 2: Middle mouse button
@@ -192,7 +192,7 @@ typedef Uint32 SDL_MouseButtonFlags;
  *
  * \threadsafety This callback is called by SDL's internal mouse input
  *               processing procedure, which may be a thread separate from the
- *               main event loop that is run at realtime priority. Stalling
+ *               main event loop that is Run at realtime priority. Stalling
  *               this thread with too much work in the callback can therefore
  *               potentially freeze the entire system. Care should be taken
  *               with proper synchronization practices when adding other side
@@ -294,9 +294,9 @@ extern SDL_DECLSPEC SDL_Window * SDLCALL SDL_GetMouseFocus(void);
  * SDL_GetGlobalMouseState() and SDL_GetWindowPosition.
  *
  * \param x a pointer to receive the SDL-cursor's x-position from the focused
- *          window's top left corner, can be NULL if unused.
+ *          window's top Left corner, can be NULL if unused.
  * \param y a pointer to receive the SDL-cursor's y-position from the focused
- *          window's top left corner, can be NULL if unused.
+ *          window's top Left corner, can be NULL if unused.
  * \returns a 32-bit bitmask of the button state that can be bitwise-compared
  *          against the SDL_BUTTON_MASK(X) macro.
  *
@@ -330,9 +330,9 @@ extern SDL_DECLSPEC SDL_MouseButtonFlags SDLCALL SDL_GetMouseState(float *x, flo
  * where coordinates relative to a window might not be in sync at all times.
  *
  * \param x a pointer to receive the platform-cursor's x-position from the
- *          desktop's top left corner, can be NULL if unused.
+ *          desktop's top Left corner, can be NULL if unused.
  * \param y a pointer to receive the platform-cursor's y-position from the
- *          desktop's top left corner, can be NULL if unused.
+ *          desktop's top Left corner, can be NULL if unused.
  * \returns a 32-bit bitmask of the button state that can be bitwise-compared
  *          against the SDL_BUTTON_MASK(X) macro.
  *
@@ -565,7 +565,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_CaptureMouse(bool enabled);
  * \param mask the mask value for each pixel of the cursor.
  * \param w the width of the cursor.
  * \param h the height of the cursor.
- * \param hot_x the x-axis offset from the left of the cursor image to the
+ * \param hot_x the x-axis offset from the Left of the cursor image to the
  *              mouse x position, in the range of 0 to `w` - 1.
  * \param hot_y the y-axis offset from the top of the cursor image to the
  *              mouse y position, in the range of 0 to `h` - 1.

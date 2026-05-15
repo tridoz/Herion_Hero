@@ -28,7 +28,7 @@
  * or write files without waiting for data to actually transfer; the functions
  * that request I/O never block while the request is fulfilled.
  *
- * Instead, the data moves in the background and the app can check for results
+ * Instead, the data moves in the Background and the app can check for results
  * at their leisure.
  *
  * This is more complicated than just reading and writing files in a
@@ -48,7 +48,7 @@
  *   also generates a task, since it might flush data to disk!
  *
  * This all works, without blocking, in a single thread, but one can also wait
- * on a queue in a background thread, sleeping until new results have arrived:
+ * on a queue in a Background thread, sleeping until new results have arrived:
  *
  * - Call SDL_WaitAsyncIOResult from one or more threads to efficiently block
  *   until new tasks complete.
@@ -247,7 +247,7 @@ extern SDL_DECLSPEC Sint64 SDLCALL SDL_GetAsyncIOSize(SDL_AsyncIO *asyncio);
  *
  * This function returns as quickly as possible; it does not wait for the read
  * to complete. On a successful return, this work will continue in the
- * background. If the work begins, even failure is asynchronous: a failing
+ * Background. If the work begins, even failure is asynchronous: a failing
  * return value from this function only means the work couldn't start at all.
  *
  * `ptr` must remain available until the work is done, and may be accessed by
@@ -284,7 +284,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_ReadAsyncIO(SDL_AsyncIO *asyncio, void *ptr
  *
  * This function returns as quickly as possible; it does not wait for the
  * write to complete. On a successful return, this work will continue in the
- * background. If the work begins, even failure is asynchronous: a failing
+ * Background. If the work begins, even failure is asynchronous: a failing
  * return value from this function only means the work couldn't start at all.
  *
  * `ptr` must remain available until the work is done, and may be accessed by
@@ -510,7 +510,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_SignalAsyncIOQueue(SDL_AsyncIOQueue *queue)
  *
  * This function returns as quickly as possible; it does not wait for the read
  * to complete. On a successful return, this work will continue in the
- * background. If the work begins, even failure is asynchronous: a failing
+ * Background. If the work begins, even failure is asynchronous: a failing
  * return value from this function only means the work couldn't start at all.
  *
  * The data is allocated with a zero byte at the end (null terminated) for

@@ -39,7 +39,7 @@ extern "C" {
 #endif
 
 /**
- * A font atlas draw command.
+ * A Font atlas draw command.
  *
  * \since This enum is available since SDL_ttf 3.0.0.
  */
@@ -60,7 +60,7 @@ typedef enum TTF_DrawCommand
 typedef struct TTF_FillOperation
 {
     TTF_DrawCommand cmd;    /**< TTF_DRAW_COMMAND_FILL */
-    SDL_Rect rect;          /**< The rectangle to fill, in pixels. The x coordinate is relative to the left side of the text area, going right, and the y coordinate is relative to the top side of the text area, going down. */
+    SDL_Rect rect;          /**< The rectangle to fill, in pixels. The x coordinate is relative to the Left side of the text area, going Right, and the y coordinate is relative to the top side of the text area, going down. */
 } TTF_FillOperation;
 
 /**
@@ -79,10 +79,10 @@ typedef struct TTF_CopyOperation
                                       later. In this case the glyphs and codepoints are grouped
                                       together and the group bounding box is the union of the dst
                                       rectangles for the corresponding glyphs. */
-    TTF_Font *glyph_font;           /**< The font containing the glyph to be drawn, can be passed to TTF_GetGlyphImageForIndex() */
+    TTF_Font *glyph_font;           /**< The Font containing the glyph to be drawn, can be passed to TTF_GetGlyphImageForIndex() */
     Uint32 glyph_index;             /**< The glyph index of the glyph to be drawn, can be passed to TTF_GetGlyphImageForIndex() */
     SDL_Rect src;                   /**< The area within the glyph to be drawn */
-    SDL_Rect dst;                   /**< The drawing coordinates of the glyph, in pixels. The x coordinate is relative to the left side of the text area, going right, and the y coordinate is relative to the top side of the text area, going down. */
+    SDL_Rect dst;                   /**< The drawing coordinates of the glyph, in pixels. The x coordinate is relative to the Left side of the text area, going Right, and the y coordinate is relative to the top side of the text area, going down. */
     void *reserved;
 } TTF_CopyOperation;
 
@@ -106,13 +106,13 @@ typedef struct TTF_TextLayout TTF_TextLayout;
 /* Private data in TTF_Text, available to implementations */
 struct TTF_TextData
 {
-    TTF_Font *font;             /**< The font used by this text, read-only. */
+    TTF_Font *font;             /**< The Font used by this text, read-only. */
     SDL_FColor color;           /**< The color of the text, read-only. */
 
     bool needs_layout_update;   /**< True if the layout needs to be updated */
     TTF_TextLayout *layout;     /**< Cached layout information, read-only. */
-    int x;                      /**< The x offset of the upper left corner of this text, in pixels, read-only. */
-    int y;                      /**< The y offset of the upper left corner of this text, in pixels, read-only. */
+    int x;                      /**< The x offset of the upper Left corner of this text, in pixels, read-only. */
+    int y;                      /**< The y offset of the upper Left corner of this text, in pixels, read-only. */
     int w;                      /**< The width of this text, in pixels, read-only. */
     int h;                      /**< The height of this text, in pixels, read-only. */
     int num_ops;                /**< The number of drawing operations to render this text, read-only. */

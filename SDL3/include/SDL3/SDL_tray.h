@@ -103,7 +103,7 @@ typedef void (SDLCALL *SDL_TrayCallback)(void *userdata, SDL_TrayEntry *entry);
  * necessary feature. Avoid needlessly creating a tray icon, as the user may
  * feel like it clutters their interface.
  *
- * Using tray icons require the video subsystem.
+ * Using tray Icons require the video subsystem.
  *
  * \param icon a surface to be used as icon. May be NULL.
  * \param tooltip a tooltip to be displayed when the mouse hovers the icon in

@@ -33,7 +33,7 @@
  * get a new instance_id. instance_id's are monotonically increasing
  * identifiers of a joystick plugged in.
  *
- * The term "player_index" is the number assigned to a player on a specific
+ * The term "player_index" is the number assigned to a Player on a specific
  * controller. For XInput controllers this returns the XInput user index. Many
  * joysticks will not be able to supply this information.
  *
@@ -46,7 +46,7 @@
  * and load appropriate drivers.
  *
  * If you would like to receive joystick updates while the application is in
- * the background, you should set the following hint before calling
+ * the Background, you should set the following hint before calling
  * SDL_Init(): SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS
  *
  * SDL can provide virtual joysticks as well: the app defines an imaginary
@@ -266,12 +266,12 @@ extern SDL_DECLSPEC const char * SDLCALL SDL_GetJoystickNameForID(SDL_JoystickID
 extern SDL_DECLSPEC const char * SDLCALL SDL_GetJoystickPathForID(SDL_JoystickID instance_id);
 
 /**
- * Get the player index of a joystick.
+ * Get the Player index of a joystick.
  *
  * This can be called before any joysticks are opened.
  *
  * \param instance_id the joystick instance ID.
- * \returns the player index of a joystick, or -1 if it's not available.
+ * \returns the Player index of a joystick, or -1 if it's not available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -408,9 +408,9 @@ extern SDL_DECLSPEC SDL_Joystick * SDLCALL SDL_OpenJoystick(SDL_JoystickID insta
 extern SDL_DECLSPEC SDL_Joystick * SDLCALL SDL_GetJoystickFromID(SDL_JoystickID instance_id);
 
 /**
- * Get the SDL_Joystick associated with a player index.
+ * Get the SDL_Joystick associated with a Player index.
  *
- * \param player_index the player index to get the SDL_Joystick for.
+ * \param player_index the Player index to get the SDL_Joystick for.
  * \returns an SDL_Joystick on success or NULL on failure; call SDL_GetError()
  *          for more information.
  *
@@ -470,13 +470,13 @@ typedef struct SDL_VirtualJoystickDesc
     Uint16 vendor_id;   /**< the USB vendor ID of this joystick */
     Uint16 product_id;  /**< the USB product ID of this joystick */
     Uint16 naxes;       /**< the number of axes on this joystick */
-    Uint16 nbuttons;    /**< the number of buttons on this joystick */
+    Uint16 nbuttons;    /**< the number of Buttons on this joystick */
     Uint16 nballs;      /**< the number of balls on this joystick */
     Uint16 nhats;       /**< the number of hats on this joystick */
     Uint16 ntouchpads;  /**< the number of touchpads on this joystick, requires `touchpads` to point at valid descriptions */
     Uint16 nsensors;    /**< the number of sensors on this joystick, requires `sensors` to point at valid descriptions */
     Uint16 padding2[2]; /**< unused */
-    Uint32 button_mask; /**< A mask of which buttons are valid for this controller
+    Uint32 button_mask; /**< A mask of which Buttons are valid for this controller
                              e.g. (1 << SDL_GAMEPAD_BUTTON_SOUTH) */
     Uint32 axis_mask;   /**< A mask of which axes are valid for this controller
                              e.g. (1 << SDL_GAMEPAD_AXIS_LEFTX) */
@@ -486,7 +486,7 @@ typedef struct SDL_VirtualJoystickDesc
 
     void *userdata;     /**< User data pointer passed to callbacks */
     void (SDLCALL *Update)(void *userdata); /**< Called when the joystick state should be updated */
-    void (SDLCALL *SetPlayerIndex)(void *userdata, int player_index); /**< Called when the player index is set */
+    void (SDLCALL *SetPlayerIndex)(void *userdata, int player_index); /**< Called when the Player index is set */
     bool (SDLCALL *Rumble)(void *userdata, Uint16 low_frequency_rumble, Uint16 high_frequency_rumble); /**< Implements SDL_RumbleJoystick() */
     bool (SDLCALL *RumbleTriggers)(void *userdata, Uint16 left_rumble, Uint16 right_rumble); /**< Implements SDL_RumbleJoystickTriggers() */
     bool (SDLCALL *SetLED)(void *userdata, Uint8 red, Uint8 green, Uint8 blue); /**< Implements SDL_SetJoystickLED() */
@@ -694,9 +694,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetJoystickVirtualHat(SDL_Joystick *joystic
  * \param finger the index of the finger on the touchpad to set.
  * \param down true if the finger is pressed, false if the finger is released.
  * \param x the x coordinate of the finger on the touchpad, normalized 0 to 1,
- *          with the origin in the upper left.
+ *          with the origin in the upper Left.
  * \param y the y coordinate of the finger on the touchpad, normalized 0 to 1,
- *          with the origin in the upper left.
+ *          with the origin in the upper Left.
  * \param pressure the pressure of the finger.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
@@ -753,9 +753,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SendJoystickVirtualSensorData(SDL_Joystick 
  * - `SDL_PROP_JOYSTICK_CAP_RGB_LED_BOOLEAN`: true if this joystick has an LED
  *   that has adjustable color
  * - `SDL_PROP_JOYSTICK_CAP_PLAYER_LED_BOOLEAN`: true if this joystick has a
- *   player LED
+ *   Player LED
  * - `SDL_PROP_JOYSTICK_CAP_RUMBLE_BOOLEAN`: true if this joystick has
- *   left/right rumble
+ *   Left/Right rumble
  * - `SDL_PROP_JOYSTICK_CAP_TRIGGER_RUMBLE_BOOLEAN`: true if this joystick has
  *   simple trigger rumble
  *
@@ -806,13 +806,13 @@ extern SDL_DECLSPEC const char * SDLCALL SDL_GetJoystickName(SDL_Joystick *joyst
 extern SDL_DECLSPEC const char * SDLCALL SDL_GetJoystickPath(SDL_Joystick *joystick);
 
 /**
- * Get the player index of an opened joystick.
+ * Get the Player index of an opened joystick.
  *
  * For XInput controllers this returns the XInput user index. Many joysticks
  * will not be able to supply this information.
  *
  * \param joystick the SDL_Joystick obtained from SDL_OpenJoystick().
- * \returns the player index, or -1 if it's not available.
+ * \returns the Player index, or -1 if it's not available.
  *
  * \threadsafety It is safe to call this function from any thread.
  *
@@ -823,11 +823,11 @@ extern SDL_DECLSPEC const char * SDLCALL SDL_GetJoystickPath(SDL_Joystick *joyst
 extern SDL_DECLSPEC int SDLCALL SDL_GetJoystickPlayerIndex(SDL_Joystick *joystick);
 
 /**
- * Set the player index of an opened joystick.
+ * Set the Player index of an opened joystick.
  *
  * \param joystick the SDL_Joystick obtained from SDL_OpenJoystick().
- * \param player_index player index to assign to this joystick, or -1 to clear
- *                     the player index and turn off player LEDs.
+ * \param player_index Player index to assign to this joystick, or -1 to clear
+ *                     the Player index and turn off Player LEDs.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
  *
@@ -1001,7 +1001,7 @@ extern SDL_DECLSPEC SDL_JoystickID SDLCALL SDL_GetJoystickID(SDL_Joystick *joyst
  * Get the number of general axis controls on a joystick.
  *
  * Often, the directional pad on a game controller will either look like 4
- * separate buttons or a POV hat, and not axes, but all of this is up to the
+ * separate Buttons or a POV hat, and not axes, but all of this is up to the
  * device and platform.
  *
  * \param joystick an SDL_Joystick structure containing joystick information.
@@ -1061,10 +1061,10 @@ extern SDL_DECLSPEC int SDLCALL SDL_GetNumJoystickBalls(SDL_Joystick *joystick);
 extern SDL_DECLSPEC int SDLCALL SDL_GetNumJoystickHats(SDL_Joystick *joystick);
 
 /**
- * Get the number of buttons on a joystick.
+ * Get the number of Buttons on a joystick.
  *
  * \param joystick an SDL_Joystick structure containing joystick information.
- * \returns the number of buttons on success or -1 on failure; call
+ * \returns the number of Buttons on success or -1 on failure; call
  *          SDL_GetError() for more information.
  *
  * \threadsafety It is safe to call this function from any thread.
@@ -1132,7 +1132,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_UpdateJoysticks(void);
  * to. Your game should have some sort of configuration UI to let users
  * specify what each axis should be bound to. Alternately, SDL's higher-level
  * Game Controller API makes a great effort to apply order to this lower-level
- * interface, so you know that a specific axis is the "left thumb stick," etc.
+ * interface, so you know that a specific axis is the "Left thumb stick," etc.
  *
  * The value returned by SDL_GetJoystickAxis() is a signed integer (-32768 to
  * 32767) representing the current position of the axis. It may be necessary
@@ -1245,9 +1245,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetJoystickButton(SDL_Joystick *joystick, i
  * SDL_UpdateJoysticks() to update rumble state.
  *
  * \param joystick the joystick to vibrate.
- * \param low_frequency_rumble the intensity of the low frequency (left)
+ * \param low_frequency_rumble the intensity of the low frequency (Left)
  *                             rumble motor, from 0 to 0xFFFF.
- * \param high_frequency_rumble the intensity of the high frequency (right)
+ * \param high_frequency_rumble the intensity of the high frequency (Right)
  *                              rumble motor, from 0 to 0xFFFF.
  * \param duration_ms the duration of the rumble effect, in milliseconds.
  * \returns true, or false if rumble isn't supported on this joystick.
@@ -1273,9 +1273,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RumbleJoystick(SDL_Joystick *joystick, Uint
  * SDL_UpdateJoysticks() to update rumble state.
  *
  * \param joystick the joystick to vibrate.
- * \param left_rumble the intensity of the left trigger rumble motor, from 0
+ * \param left_rumble the intensity of the Left trigger rumble motor, from 0
  *                    to 0xFFFF.
- * \param right_rumble the intensity of the right trigger rumble motor, from 0
+ * \param right_rumble the intensity of the Right trigger rumble motor, from 0
  *                     to 0xFFFF.
  * \param duration_ms the duration of the rumble effect, in milliseconds.
  * \returns true on success or false on failure; call SDL_GetError() for more
@@ -1360,11 +1360,11 @@ extern SDL_DECLSPEC SDL_JoystickConnectionState SDLCALL SDL_GetJoystickConnectio
  * (especially failing batteries) are delicate hardware, and the values
  * reported here are best estimates based on what that hardware reports. It's
  * not uncommon for older batteries to lose stored power much faster than it
- * reports, or completely drain when reporting it has 20 percent left, etc.
+ * reports, or completely drain when reporting it has 20 percent Left, etc.
  *
  * \param joystick the joystick to query.
  * \param percent a pointer filled in with the percentage of battery life
- *                left, between 0 and 100, or NULL to ignore. This will be
+ *                Left, between 0 and 100, or NULL to ignore. This will be
  *                filled in with -1 we can't determine a value or there is no
  *                battery.
  * \returns the current battery state or `SDL_POWERSTATE_ERROR` on failure;

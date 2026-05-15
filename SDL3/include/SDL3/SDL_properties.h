@@ -89,8 +89,8 @@ typedef enum SDL_PropertyType
  * standard key that any piece of code could reasonably agree to use.
  *
  * For example, the properties associated with an SDL_Texture might have a
- * name string of "player sprites", or an SDL_AudioStream might have
- * "background music", etc. This might also be useful for an SDL_IOStream to
+ * name string of "Player sprites", or an SDL_AudioStream might have
+ * "Background music", etc. This might also be useful for an SDL_IOStream to
  * list the path to its asset.
  *
  * There is no format for the value set with this key; it is expected to be
@@ -220,7 +220,7 @@ typedef void (SDLCALL *SDL_CleanupPropertyCallback)(void *userdata, void *value)
  * The cleanup function is also called if setting the property fails for any
  * reason.
  *
- * For simply setting basic data types, like numbers, bools, or strings, use
+ * For simply setting basic data types, like Numbers, bools, or strings, use
  * SDL_SetNumberProperty, SDL_SetBooleanProperty, or SDL_SetStringProperty
  * instead, as those functions will handle cleanup on your behalf. This
  * function is only for more complex, custom data.

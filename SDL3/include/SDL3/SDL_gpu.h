@@ -38,7 +38,7 @@
  * Next, the app prepares static data (things that are created once and used
  * over and over). For example:
  *
- * - Shaders (programs that run on the GPU): use SDL_CreateGPUShader().
+ * - Shaders (programs that Run on the GPU): use SDL_CreateGPUShader().
  * - Vertex buffers (arrays of geometry data) and other rendering data: use
  *   SDL_CreateGPUBuffer() and SDL_UploadToGPUBuffer().
  * - Textures (images): use SDL_CreateGPUTexture() and
@@ -268,17 +268,17 @@
  *
  * ## Coordinate System
  *
- * The GPU API uses a left-handed coordinate system, following the convention
+ * The GPU API uses a Left-handed coordinate system, following the convention
  * of D3D12 and Metal. Specifically:
  *
- * - **Normalized Device Coordinates:** The lower-left corner has an x,y
- *   coordinate of `(-1.0, -1.0)`. The upper-right corner is `(1.0, 1.0)`. Z
+ * - **Normalized Device Coordinates:** The lower-Left corner has an x,y
+ *   coordinate of `(-1.0, -1.0)`. The upper-Right corner is `(1.0, 1.0)`. Z
  *   values range from `[0.0, 1.0]` where 0 is the near plane.
- * - **Viewport Coordinates:** The top-left corner has an x,y coordinate of
- *   `(0, 0)` and extends to the bottom-right corner at `(viewportWidth,
+ * - **Viewport Coordinates:** The top-Left corner has an x,y coordinate of
+ *   `(0, 0)` and extends to the bottom-Right corner at `(viewportWidth,
  *   viewportHeight)`. +Y is down.
- * - **Texture Coordinates:** The top-left corner has an x,y coordinate of
- *   `(0, 0)` and extends to the bottom-right corner at `(1.0, 1.0)`. +Y is
+ * - **Texture Coordinates:** The top-Left corner has an x,y coordinate of
+ *   `(0, 0)` and extends to the bottom-Right corner at `(1.0, 1.0)`. +Y is
  *   down.
  *
  * If the backend driver differs from this convention (e.g. Vulkan, which has
@@ -366,7 +366,7 @@
  *   [RenderDoc](https://renderdoc.org/)
  * * For MacOS (Metal), use Xcode built-in debugger (Open XCode, go to Debug >
  *   Debug Executable..., select your application, set "GPU Frame Capture" to
- *   "Metal" in scheme "Options" window, run your app, and click the small
+ *   "Metal" in scheme "Options" window, Run your app, and click the small
  *   Metal icon on the bottom to capture a frame)
  *
  * Aside from that, you may want to enable additional debug layers to receive
@@ -378,7 +378,7 @@
  * * For Vulkan, you will need to install Vulkan SDK on Windows, and on Linux,
  *   you usually have some sort of `vulkan-validation-layers` system package
  *   that should be installed.
- * * For Metal, it should be enough just to run the application from XCode to
+ * * For Metal, it should be enough just to Run the application from XCode to
  *   receive detailed errors or warnings in the output.
  *
  * Don't hesitate to use tools as RenderDoc when encountering runtime issues
@@ -1381,7 +1381,7 @@ typedef enum SDL_GPUSwapchainComposition
  */
 typedef struct SDL_GPUViewport
 {
-    float x;          /**< The left offset of the viewport. */
+    float x;          /**< The Left offset of the viewport. */
     float y;          /**< The top offset of the viewport. */
     float w;          /**< The width of the viewport. */
     float h;          /**< The height of the viewport. */
@@ -1447,7 +1447,7 @@ typedef struct SDL_GPUTextureLocation
     SDL_GPUTexture *texture;  /**< The texture used in the copy operation. */
     Uint32 mip_level;         /**< The mip level index of the location. */
     Uint32 layer;             /**< The layer index of the location. */
-    Uint32 x;                 /**< The left offset of the location. */
+    Uint32 x;                 /**< The Left offset of the location. */
     Uint32 y;                 /**< The top offset of the location. */
     Uint32 z;                 /**< The front offset of the location. */
 } SDL_GPUTextureLocation;
@@ -1468,7 +1468,7 @@ typedef struct SDL_GPUTextureRegion
     SDL_GPUTexture *texture;  /**< The texture used in the copy operation. */
     Uint32 mip_level;         /**< The mip level index to transfer. */
     Uint32 layer;             /**< The layer index to transfer. */
-    Uint32 x;                 /**< The left offset of the region. */
+    Uint32 x;                 /**< The Left offset of the region. */
     Uint32 y;                 /**< The top offset of the region. */
     Uint32 z;                 /**< The front offset of the region. */
     Uint32 w;                 /**< The width of the region. */
@@ -1488,7 +1488,7 @@ typedef struct SDL_GPUBlitRegion
     SDL_GPUTexture *texture;      /**< The texture. */
     Uint32 mip_level;             /**< The mip level index of the region. */
     Uint32 layer_or_depth_plane;  /**< The layer index or depth plane of the region. This value is treated as a layer index on 2D array and cube textures, and as a depth plane on 3D textures. */
-    Uint32 x;                     /**< The left offset of the region. */
+    Uint32 x;                     /**< The Left offset of the region. */
     Uint32 y;                     /**< The top offset of the region.  */
     Uint32 w;                     /**< The width of the region. */
     Uint32 h;                     /**< The height of the region. */
@@ -2261,22 +2261,22 @@ extern SDL_DECLSPEC SDL_GPUDevice * SDLCALL SDL_CreateGPUDevice(
  *   device feature shaderClipDistance. If disabled, clip distances are not
  *   supported in shader code: gl_ClipDistance[] built-ins of GLSL,
  *   SV_ClipDistance0/1 semantics of HLSL and [[clip_distance]] attribute of
- *   Metal. Disabling optional features allows the application to run on some
+ *   Metal. Disabling optional features allows the application to Run on some
  *   older Android devices. Defaults to true.
  * - `SDL_PROP_GPU_DEVICE_CREATE_FEATURE_DEPTH_CLAMPING_BOOLEAN`: Enable
  *   Vulkan device feature depthClamp. If disabled, there is no depth clamp
  *   support and enable_depth_clip in SDL_GPURasterizerState must always be
- *   set to true. Disabling optional features allows the application to run on
+ *   set to true. Disabling optional features allows the application to Run on
  *   some older Android devices. Defaults to true.
  * - `SDL_PROP_GPU_DEVICE_CREATE_FEATURE_INDIRECT_DRAW_FIRST_INSTANCE_BOOLEAN`:
  *   Enable Vulkan device feature drawIndirectFirstInstance. If disabled, the
  *   argument first_instance of SDL_GPUIndirectDrawCommand must be set to
- *   zero. Disabling optional features allows the application to run on some
+ *   zero. Disabling optional features allows the application to Run on some
  *   older Android devices. Defaults to true.
  * - `SDL_PROP_GPU_DEVICE_CREATE_FEATURE_ANISOTROPY_BOOLEAN`: Enable Vulkan
  *   device feature samplerAnisotropy. If disabled, enable_anisotropy of
  *   SDL_GPUSamplerCreateInfo must be set to false. Disabling optional
- *   features allows the application to run on some older Android devices.
+ *   features allows the application to Run on some older Android devices.
  *   Defaults to true.
  *
  * These are the current shader format properties:
@@ -4318,7 +4318,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_CancelGPUCommandBuffer(
     SDL_GPUCommandBuffer *command_buffer);
 
 /**
- * Blocks the thread until the GPU is completely idle.
+ * Blocks the thread until the GPU is completely Idle.
  *
  * \param device a GPU context.
  * \returns true on success, false on failure; call SDL_GetError() for more

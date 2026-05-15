@@ -105,6 +105,8 @@ int main ( int argc, char* argv[] ) {
     Menu pause_menu;
     Menu editor_menu;
 
+    Menu texture_selection_menu;
+
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
@@ -114,13 +116,14 @@ int main ( int argc, char* argv[] ) {
     window.SetMenu( "SETTINGS_MENU", &settings_menu );
     window.SetMenu( "PAUSE_MENU", &pause_menu );
     window.SetMenu( "EDITOR_MENU", &editor_menu );
+    window.SetMenu( "TEXTURE_SELECTIONS", &texture_selection_menu );
 
-    window.LoadCursors( "assets/all_cursors.txt");
+    window.LoadCursors( "Assets/all_cursors.txt");
 
     texture_manager.SetRenderer( window.GetRenderer() );
 
     try {
-        texture_manager.LoadTextures("assets/all_textures.txt");
+        texture_manager.LoadTextures("Assets/all_textures.txt");
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -146,12 +149,17 @@ int main ( int argc, char* argv[] ) {
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
     editor_menu.SetTextureManager( &texture_manager );
     editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    texture_selection_menu.SetTextureManager( &texture_manager );
+    texture_selection_menu.SetDimension( static_cast<float>( editors_windows.at("TEXTURE_SELECTION")->GetWidth()), static_cast<float>(editors_windows.at("TEXTURE_SELECTION")->GetHeight()) );
 
     try {
         main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
         settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
         pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
-        editor_menu.LoadCfg( "configs/menus/level_editors_windows/directory_texture_selection.json" );
+        editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
+
+        texture_selection_menu.LoadCfg("configs/menus/level_editors_windows/directory_texture_selection.json");
+
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );

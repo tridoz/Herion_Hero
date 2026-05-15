@@ -23,7 +23,7 @@
 
 /*
  * SDL_revision.h contains the SDL revision, which might be defined on the
- * compiler command line, or generated right into the header itself by the
+ * compiler command line, or generated Right into the header itself by the
  * build system.
  */
 

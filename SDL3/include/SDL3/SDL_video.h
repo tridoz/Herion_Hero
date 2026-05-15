@@ -157,8 +157,8 @@ typedef struct SDL_DisplayMode
 typedef enum SDL_DisplayOrientation
 {
     SDL_ORIENTATION_UNKNOWN,            /**< The display orientation can't be determined */
-    SDL_ORIENTATION_LANDSCAPE,          /**< The display is in landscape mode, with the right side up, relative to portrait mode */
-    SDL_ORIENTATION_LANDSCAPE_FLIPPED,  /**< The display is in landscape mode, with the left side up, relative to portrait mode */
+    SDL_ORIENTATION_LANDSCAPE,          /**< The display is in landscape mode, with the Right side up, relative to portrait mode */
+    SDL_ORIENTATION_LANDSCAPE_FLIPPED,  /**< The display is in landscape mode, with the Left side up, relative to portrait mode */
     SDL_ORIENTATION_PORTRAIT,           /**< The display is in portrait mode */
     SDL_ORIENTATION_PORTRAIT_FLIPPED    /**< The display is in portrait mode, upside down */
 } SDL_DisplayOrientation;
@@ -1971,11 +1971,11 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetWindowAspectRatio(SDL_Window *window, fl
  *               (decorations) from.
  * \param top pointer to variable for storing the size of the top border; NULL
  *            is permitted.
- * \param left pointer to variable for storing the size of the left border;
+ * \param Left pointer to variable for storing the size of the Left border;
  *             NULL is permitted.
  * \param bottom pointer to variable for storing the size of the bottom
  *               border; NULL is permitted.
- * \param right pointer to variable for storing the size of the right border;
+ * \param Right pointer to variable for storing the size of the Right border;
  *              NULL is permitted.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
@@ -2768,9 +2768,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetWindowFocusable(SDL_Window *window, bool
  * nothing.
  *
  * \param window the window for which the menus will be displayed.
- * \param x the x coordinate of the menus, relative to the origin (top-left) of
+ * \param x the x coordinate of the menus, relative to the origin (top-Left) of
  *          the client area.
- * \param y the y coordinate of the menus, relative to the origin (top-left) of
+ * \param y the y coordinate of the menus, relative to the origin (top-Left) of
  *          the client area.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
@@ -2794,14 +2794,14 @@ typedef enum SDL_HitTestResult
 {
     SDL_HITTEST_NORMAL,             /**< Region is normal. No special properties. */
     SDL_HITTEST_DRAGGABLE,          /**< Region can drag entire window. */
-    SDL_HITTEST_RESIZE_TOPLEFT,     /**< Region is the resizable top-left corner border. */
+    SDL_HITTEST_RESIZE_TOPLEFT,     /**< Region is the resizable top-Left corner border. */
     SDL_HITTEST_RESIZE_TOP,         /**< Region is the resizable top border. */
-    SDL_HITTEST_RESIZE_TOPRIGHT,    /**< Region is the resizable top-right corner border. */
-    SDL_HITTEST_RESIZE_RIGHT,       /**< Region is the resizable right border. */
-    SDL_HITTEST_RESIZE_BOTTOMRIGHT, /**< Region is the resizable bottom-right corner border. */
+    SDL_HITTEST_RESIZE_TOPRIGHT,    /**< Region is the resizable top-Right corner border. */
+    SDL_HITTEST_RESIZE_RIGHT,       /**< Region is the resizable Right border. */
+    SDL_HITTEST_RESIZE_BOTTOMRIGHT, /**< Region is the resizable bottom-Right corner border. */
     SDL_HITTEST_RESIZE_BOTTOM,      /**< Region is the resizable bottom border. */
-    SDL_HITTEST_RESIZE_BOTTOMLEFT,  /**< Region is the resizable bottom-left corner border. */
-    SDL_HITTEST_RESIZE_LEFT         /**< Region is the resizable left border. */
+    SDL_HITTEST_RESIZE_BOTTOMLEFT,  /**< Region is the resizable bottom-Left corner border. */
+    SDL_HITTEST_RESIZE_LEFT         /**< Region is the resizable Left border. */
 } SDL_HitTestResult;
 
 /**
@@ -2828,7 +2828,7 @@ typedef SDL_HitTestResult (SDLCALL *SDL_HitTest)(SDL_Window *win,
  * any part, or simulate its own title bar, etc.
  *
  * This function lets the app provide a callback that designates pieces of a
- * given window as special. This callback is run during event processing if we
+ * given window as special. This callback is Run during event processing if we
  * need to tell the OS to treat a region of the window specially; the use of
  * this callback is known as "hit testing."
  *
@@ -3239,7 +3239,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GL_GetAttribute(SDL_GLAttr attr, int *value
  *
  * Windows users new to OpenGL should note that, for historical reasons, GL
  * functions added after OpenGL version 1.1 are not available by default.
- * Those functions must be loaded at run-time, either with an OpenGL
+ * Those functions must be loaded at Run-time, either with an OpenGL
  * extension-handling library or with SDL_GL_GetProcAddress() and its related
  * functions.
  *

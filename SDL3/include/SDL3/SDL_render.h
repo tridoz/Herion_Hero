@@ -1719,7 +1719,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_ConvertEventToRenderCoordinates(SDL_Rendere
  * Set the drawing area for rendering on the current target.
  *
  * Drawing will clip to this area (separately from any clipping done with
- * SDL_SetRenderClipRect), and the top left of the area will become coordinate
+ * SDL_SetRenderClipRect), and the top Left of the area will become coordinate
  * (0, 0) for future drawing commands.
  *
  * The area's width and height must be >= 0.
@@ -2310,15 +2310,15 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RenderTextureRotated(SDL_Renderer *renderer
  * \param texture the source texture.
  * \param srcrect a pointer to the source rectangle, or NULL for the entire
  *                texture.
- * \param origin a pointer to a point indicating where the top-left corner of
+ * \param origin a pointer to a point indicating where the top-Left corner of
  *               srcrect should be mapped to, or NULL for the rendering
  *               target's origin.
- * \param right a pointer to a point indicating where the top-right corner of
+ * \param Right a pointer to a point indicating where the top-Right corner of
  *              srcrect should be mapped to, or NULL for the rendering
- *              target's top-right corner.
- * \param down a pointer to a point indicating where the bottom-left corner of
+ *              target's top-Right corner.
+ * \param down a pointer to a point indicating where the bottom-Left corner of
  *             srcrect should be mapped to, or NULL for the rendering target's
- *             bottom-left corner.
+ *             bottom-Left corner.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
  *
@@ -2373,8 +2373,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RenderTextureTiled(SDL_Renderer *renderer, 
  * \param texture the source texture.
  * \param srcrect the SDL_Rect structure representing the rectangle to be used
  *                for the 9-grid, or NULL to use the entire texture.
- * \param left_width the width, in pixels, of the left corners in `srcrect`.
- * \param right_width the width, in pixels, of the right corners in `srcrect`.
+ * \param left_width the width, in pixels, of the Left corners in `srcrect`.
+ * \param right_width the width, in pixels, of the Right corners in `srcrect`.
  * \param top_height the height, in pixels, of the top corners in `srcrect`.
  * \param bottom_height the height, in pixels, of the bottom corners in
  *                      `srcrect`.
@@ -2408,8 +2408,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RenderTexture9Grid(SDL_Renderer *renderer, 
  * \param texture the source texture.
  * \param srcrect the SDL_Rect structure representing the rectangle to be used
  *                for the 9-grid, or NULL to use the entire texture.
- * \param left_width the width, in pixels, of the left corners in `srcrect`.
- * \param right_width the width, in pixels, of the right corners in `srcrect`.
+ * \param left_width the width, in pixels, of the Left corners in `srcrect`.
+ * \param right_width the width, in pixels, of the Right corners in `srcrect`.
  * \param top_height the height, in pixels, of the top corners in `srcrect`.
  * \param bottom_height the height, in pixels, of the bottom corners in
  *                      `srcrect`.
@@ -2796,7 +2796,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetRenderVSync(SDL_Renderer *renderer, int 
 /**
  * The size, in pixels, of a single SDL_RenderDebugText() character.
  *
- * The font is monospaced and square, so this applies to all characters.
+ * The Font is monospaced and square, so this applies to all characters.
  *
  * \since This macro is available since SDL 3.2.0.
  *
@@ -2816,7 +2816,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetRenderVSync(SDL_Renderer *renderer, int 
  * - It accepts UTF-8 strings, but will only renders ASCII characters.
  * - It has a single, tiny size (8x8 pixels). You can use logical presentation
  *   or SDL_SetRenderScale() to adjust it.
- * - It uses a simple, hardcoded bitmap font. It does not allow different font
+ * - It uses a simple, hardcoded bitmap Font. It does not allow different Font
  *   selections and it does not support truetype, for proper scaling.
  * - It does no word-wrapping and does not treat newline characters as a line
  *   break. If the text goes out of the window, it's gone.
@@ -2830,8 +2830,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetRenderVSync(SDL_Renderer *renderer, int 
  * The text is drawn in the color specified by SDL_SetRenderDrawColor().
  *
  * \param renderer the renderer which should draw a line of text.
- * \param x the x coordinate where the top-left corner of the text will draw.
- * \param y the y coordinate where the top-left corner of the text will draw.
+ * \param x the x coordinate where the top-Left corner of the text will draw.
+ * \param y the y coordinate where the top-Left corner of the text will draw.
  * \param str the string to render.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.
@@ -2856,8 +2856,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RenderDebugText(SDL_Renderer *renderer, flo
  * SDL_RenderDebugText.
  *
  * \param renderer the renderer which should draw the text.
- * \param x the x coordinate where the top-left corner of the text will draw.
- * \param y the y coordinate where the top-left corner of the text will draw.
+ * \param x the x coordinate where the top-Left corner of the text will draw.
+ * \param y the y coordinate where the top-Left corner of the text will draw.
  * \param fmt the format string to draw.
  * \param ... additional parameters matching % tokens in the `fmt` string, if
  *            any.

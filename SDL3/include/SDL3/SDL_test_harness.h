@@ -60,13 +60,13 @@ extern "C" {
 #define TEST_RESULT_SKIPPED             3
 #define TEST_RESULT_SETUP_FAILURE       4
 
-/* !< Function pointer to a test case setup function (run before every test) */
+/* !< Function pointer to a test case setup function (Run before every test) */
 typedef void (SDLCALL *SDLTest_TestCaseSetUpFp)(void **arg);
 
 /* !< Function pointer to a test case function */
 typedef int (SDLCALL *SDLTest_TestCaseFp)(void *arg);
 
-/* !< Function pointer to a test case teardown function (run after every test) */
+/* !< Function pointer to a test case teardown function (Run after every test) */
 typedef void  (SDLCALL *SDLTest_TestCaseTearDownFp)(void *arg);
 
 /*
@@ -79,7 +79,7 @@ typedef struct SDLTest_TestCaseReference {
     const char *name;
     /* !< Long name or full description "This test pushes func2() to the limit." */
     const char *description;
-    /* !< Set to TEST_ENABLED or TEST_DISABLED (test won't be run) */
+    /* !< Set to TEST_ENABLED or TEST_DISABLED (test won't be Run) */
     int enabled;
 } SDLTest_TestCaseReference;
 
@@ -89,17 +89,17 @@ typedef struct SDLTest_TestCaseReference {
 typedef struct SDLTest_TestSuiteReference {
     /* !< "PlatformSuite" */
     const char *name;
-    /* !< The function that is run before each test. NULL skips. */
+    /* !< The function that is Run before each test. NULL skips. */
     SDLTest_TestCaseSetUpFp testSetUp;
-    /* !< The test cases that are run as part of the suite. Last item should be NULL. */
+    /* !< The test cases that are Run as part of the suite. Last item should be NULL. */
     const SDLTest_TestCaseReference **testCases;
-    /* !< The function that is run after each test. NULL skips. */
+    /* !< The function that is Run after each test. NULL skips. */
     SDLTest_TestCaseTearDownFp testTearDown;
 } SDLTest_TestSuiteReference;
 
 
 /*
- * Generates a random run seed string for the harness. The generated seed
+ * Generates a random Run seed string for the harness. The generated seed
  * will contain alphanumeric characters (0-9A-Z).
  *
  * \param buffer Buffer in which to generate the random seed. Must have a capacity of at least length + 1 characters.
@@ -121,7 +121,7 @@ typedef struct SDLTest_TestSuiteRunner SDLTest_TestSuiteRunner;
  * \param state Common SDL state on which to register CLI arguments.
  * \param testSuites NULL-terminated test suites containing test cases.
  *
- * \returns the test run result: 0 when all tests passed, 1 if any tests failed.
+ * \returns the test Run result: 0 when all tests passed, 1 if any tests failed.
  */
 SDLTest_TestSuiteRunner * SDLCALL SDLTest_CreateTestSuiteRunner(SDLTest_CommonState *state, SDLTest_TestSuiteReference *testSuites[]);
 
@@ -134,11 +134,11 @@ SDLTest_TestSuiteRunner * SDLCALL SDLTest_CreateTestSuiteRunner(SDLTest_CommonSt
 void SDLCALL SDLTest_DestroyTestSuiteRunner(SDLTest_TestSuiteRunner *runner);
 
 /*
- * Execute a test suite, using the configured run seed, execution key, filter, etc.
+ * Execute a test suite, using the configured Run seed, execution key, filter, etc.
  *
  * \param runner The runner that should be executed.
  *
- * \returns the test run result: 0 when all tests passed, 1 if any tests failed.
+ * \returns the test Run result: 0 when all tests passed, 1 if any tests failed.
  */
 int SDLCALL SDLTest_ExecuteTestSuiteRunner(SDLTest_TestSuiteRunner *runner);
 

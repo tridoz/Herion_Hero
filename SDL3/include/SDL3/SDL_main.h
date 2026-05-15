@@ -167,7 +167,7 @@
 
     #elif defined(SDL_PLATFORM_IOS)
         /* On iOS SDL provides a main function that creates an application delegate
-           and starts the iOS application run loop.
+           and starts the iOS application Run loop.
 
            To use it, just #include SDL_main.h in the source file that contains your
            main() function.
@@ -354,7 +354,7 @@ extern SDLMAIN_DECLSPEC SDL_AppResult SDLCALL SDL_AppInit(void **appstate, int a
  *
  * On some platforms, this function will be called at the refresh rate of the
  * display (which might change during the life of your app!). There are no
- * promises made about what frequency this function might run at. You should
+ * promises made about what frequency this function might Run at. You should
  * use SDL's timer functions if you need to see how much time has passed since
  * the last iteration.
  *

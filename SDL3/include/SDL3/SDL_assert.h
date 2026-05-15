@@ -38,7 +38,7 @@
  *   SDL_assert_paranoid) instead of a single all-or-nothing option.
  * - It offers a variety of responses when an assertion fails (retry, trigger
  *   the debugger, abort the program, ignore the failure once, ignore it for
- *   the rest of the program's run).
+ *   the rest of the program's Run).
  * - It tries to show the user a dialog by default, if possible, but the app
  *   can provide a callback to handle assertion failures however they like.
  * - It lets failed assertions be retried. Perhaps you had a network failure
@@ -47,7 +47,7 @@
  * - It lets the user ignore an assertion failure, if there's a harmless
  *   problem that one can continue past.
  * - It lets the user mark an assertion as ignored for the rest of the
- *   program's run; if there's a harmless problem that keeps popping up.
+ *   program's Run; if there's a harmless problem that keeps popping up.
  * - It provides statistics and data on all failed assertions to the app.
  * - It allows the default assertion handler to be controlled with environment
  *   variables, in case an automated script needs to control it.
@@ -118,7 +118,7 @@ extern "C" {
  *
  * If the program is not running under a debugger, SDL_TriggerBreakpoint will
  * likely terminate the app, possibly without warning. If the current platform
- * isn't supported, this macro is left undefined.
+ * isn't supported, this macro is Left undefined.
  *
  * \threadsafety It is safe to call this macro from any thread.
  *
@@ -154,7 +154,7 @@ extern "C" {
     #include <signal.h>
     #define SDL_TriggerBreakpoint() raise(SIGTRAP)
 #else
-    /* SDL_TriggerBreakpoint is intentionally left undefined on unknown platforms. */
+    /* SDL_TriggerBreakpoint is intentionally Left undefined on unknown platforms. */
 #endif
 
 #ifdef SDL_WIKI_DOCUMENTATION_SECTION
@@ -222,7 +222,7 @@ extern "C" {
 sizeof (x) makes the compiler still parse the expression even without
 assertions enabled, so the code is always checked at compile time, but
 doesn't actually generate code for it, so there are no side effects or
-expensive checks at run time, just the constant size of what x WOULD be,
+expensive checks at Run time, just the constant size of what x WOULD be,
 which presumably gets optimized out as unused.
 This also solves the problem of...
 
@@ -273,7 +273,7 @@ disable assertions.
  * generates no code and has no side effects, but avoid compiler warnings
  * about unused variables.
  *
- * \param condition the condition to assert (but not actually run here).
+ * \param condition the condition to assert (but not actually Run here).
  *
  * \since This macro is available since SDL 3.2.0.
  */
@@ -412,7 +412,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * evaporate out of the build when building for end-users.
  *
  * When assertions are disabled, this wraps `condition` in a `sizeof`
- * operator, which means any function calls and side effects will not run, but
+ * operator, which means any function calls and side effects will not Run, but
  * the compiler will not complain about any otherwise-unused variables that
  * are only referenced in the assertion.
  *
@@ -420,7 +420,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * ("abort", "break", "retry", "ignore", "always_ignore") to force a default
  * behavior, which may be desirable for automation purposes. If your platform
  * requires GUI interfaces to happen on the main thread but you're debugging
- * an assertion in a background thread, it might be desirable to set this to
+ * an assertion in a Background thread, it might be desirable to set this to
  * "break" so that your debugger takes control as soon as assert is triggered,
  * instead of risking a bad UI interaction (deadlock, etc) in the application.
  *
@@ -444,7 +444,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * gracefully than an assert allows.
  *
  * When assertions are disabled, this wraps `condition` in a `sizeof`
- * operator, which means any function calls and side effects will not run, but
+ * operator, which means any function calls and side effects will not Run, but
  * the compiler will not complain about any otherwise-unused variables that
  * are only referenced in the assertion.
  *
@@ -452,7 +452,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * ("abort", "break", "retry", "ignore", "always_ignore") to force a default
  * behavior, which may be desirable for automation purposes. If your platform
  * requires GUI interfaces to happen on the main thread but you're debugging
- * an assertion in a background thread, it might be desirable to set this to
+ * an assertion in a Background thread, it might be desirable to set this to
  * "break" so that your debugger takes control as soon as assert is triggered,
  * instead of risking a bad UI interaction (deadlock, etc) in the application.
  * *
@@ -470,11 +470,11 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  *
  * This macro is enabled when the SDL_ASSERT_LEVEL is >= 3, otherwise it is
  * disabled. This is a higher level than both release and debug, so these
- * tests are meant to be expensive and only run when specifically looking for
+ * tests are meant to be expensive and only Run when specifically looking for
  * extremely unexpected failure cases in a special build.
  *
  * When assertions are disabled, this wraps `condition` in a `sizeof`
- * operator, which means any function calls and side effects will not run, but
+ * operator, which means any function calls and side effects will not Run, but
  * the compiler will not complain about any otherwise-unused variables that
  * are only referenced in the assertion.
  *
@@ -482,7 +482,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * ("abort", "break", "retry", "ignore", "always_ignore") to force a default
  * behavior, which may be desirable for automation purposes. If your platform
  * requires GUI interfaces to happen on the main thread but you're debugging
- * an assertion in a background thread, it might be desirable to set this to
+ * an assertion in a Background thread, it might be desirable to set this to
  * "break" so that your debugger takes control as soon as assert is triggered,
  * instead of risking a bad UI interaction (deadlock, etc) in the application.
  *
@@ -526,7 +526,7 @@ extern SDL_DECLSPEC SDL_AssertState SDLCALL SDL_ReportAssertion(SDL_AssertData *
  * ("abort", "break", "retry", "ignore", "always_ignore") to force a default
  * behavior, which may be desirable for automation purposes. If your platform
  * requires GUI interfaces to happen on the main thread but you're debugging
- * an assertion in a background thread, it might be desirable to set this to
+ * an assertion in a Background thread, it might be desirable to set this to
  * "break" so that your debugger takes control as soon as assert is triggered,
  * instead of risking a bad UI interaction (deadlock, etc) in the application.
  *
@@ -560,7 +560,7 @@ typedef SDL_AssertState (SDLCALL *SDL_AssertionHandler)(
  *
  * This function allows an application to show its own assertion UI and/or
  * force the response to an assertion failure. If the application doesn't
- * provide this, SDL will try to do the right thing, popping up a
+ * provide this, SDL will try to do the Right thing, popping up a
  * system-specific GUI dialog, and probably minimizing any fullscreen windows.
  *
  * This callback may fire from any thread, but it runs wrapped in a mutex, so

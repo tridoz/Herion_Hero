@@ -1,5 +1,5 @@
 {
-  "background_path" : "assets/backgrounds/pause_menu.png",
+  "background_path" : "Assets/Backgrounds/PauseMenu.png",
   "start_y" : 350,
   "button_y_offset" : 12,
   "center_piece_offset" : 8,

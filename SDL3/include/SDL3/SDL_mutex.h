@@ -407,7 +407,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_DestroyMutex(SDL_Mutex *mutex);
 /* @{ */
 
 /**
- * A mutex that allows read-only threads to run in parallel.
+ * A mutex that allows read-only threads to Run in parallel.
  *
  * A rwlock is roughly the same concept as SDL_Mutex, but allows threads that
  * request read-only access to all hold the lock at the same time. If a thread
@@ -431,13 +431,13 @@ typedef struct SDL_RWLock SDL_RWLock;
  *
  * A read/write lock is useful for situations where you have multiple threads
  * trying to access a resource that is rarely updated. All threads requesting
- * a read-only lock will be allowed to run in parallel; if a thread requests a
+ * a read-only lock will be allowed to Run in parallel; if a thread requests a
  * write lock, it will be provided exclusive access. This makes it safe for
  * multiple threads to use a resource at the same time if they promise not to
  * change it, and when it has to be changed, the rwlock will serve as a
  * gateway to make sure those changes can be made safely.
  *
- * In the right situation, a rwlock can be more efficient than a mutex, which
+ * In the Right situation, a rwlock can be more efficient than a mutex, which
  * only lets a single thread proceed at a time, even if it won't be modifying
  * the data.
  *

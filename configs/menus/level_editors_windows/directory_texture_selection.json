@@ -1,5 +1,5 @@
 {
-  "background_path" : "assets/backgrounds/black.png",
+  "background_path" : "Assets/Backgrounds/Black.png",
   "tab_indend_subdirectory" : 50,
   "start_y" : 20,
   "button_y_offset" : 12,

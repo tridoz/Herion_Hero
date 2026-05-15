@@ -98,7 +98,7 @@ typedef Uint32 SDL_SensorID;
  * For phones and tablets held in natural orientation and game controllers
  * held in front of you, the axes are defined as follows:
  *
- * - -X ... +X : left ... right
+ * - -X ... +X : Left ... Right
  * - -Y ... +Y : bottom ... top
  * - -Z ... +Z : farther ... closer
  *
@@ -119,7 +119,7 @@ typedef Uint32 SDL_SensorID;
  * For phones and tablets held in natural orientation and game controllers
  * held in front of you, the axes are defined as follows:
  *
- * - -X ... +X : left ... right
+ * - -X ... +X : Left ... Right
  * - -Y ... +Y : bottom ... top
  * - -Z ... +Z : farther ... closer
  *
@@ -135,10 +135,10 @@ typedef enum SDL_SensorType
     SDL_SENSOR_UNKNOWN,         /**< Unknown sensor type */
     SDL_SENSOR_ACCEL,           /**< Accelerometer */
     SDL_SENSOR_GYRO,            /**< Gyroscope */
-    SDL_SENSOR_ACCEL_L,         /**< Accelerometer for left Joy-Con controller and Wii nunchuk */
-    SDL_SENSOR_GYRO_L,          /**< Gyroscope for left Joy-Con controller */
-    SDL_SENSOR_ACCEL_R,         /**< Accelerometer for right Joy-Con controller */
-    SDL_SENSOR_GYRO_R,          /**< Gyroscope for right Joy-Con controller */
+    SDL_SENSOR_ACCEL_L,         /**< Accelerometer for Left Joy-Con controller and Wii nunchuk */
+    SDL_SENSOR_GYRO_L,          /**< Gyroscope for Left Joy-Con controller */
+    SDL_SENSOR_ACCEL_R,         /**< Accelerometer for Right Joy-Con controller */
+    SDL_SENSOR_GYRO_R,          /**< Gyroscope for Right Joy-Con controller */
     SDL_SENSOR_COUNT
 } SDL_SensorType;
 

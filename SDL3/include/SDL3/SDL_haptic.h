@@ -711,8 +711,8 @@ typedef struct SDL_HapticPeriodic
  * Direction is handled by condition internals instead of a direction member.
  * The condition effect specific members have three parameters. The first
  * refers to the X axis, the second refers to the Y axis and the third refers
- * to the Z axis. The right terms refer to the positive side of the axis and
- * the left terms refer to the negative side of the axis. Please refer to the
+ * to the Z axis. The Right terms refer to the positive side of the axis and
+ * the Left terms refer to the negative side of the axis. Please refer to the
  * SDL_HapticDirection diagram for which side is positive and which is
  * negative.
  *
@@ -795,8 +795,8 @@ typedef struct SDL_HapticRamp
  * This struct is exclusively for the SDL_HAPTIC_LEFTRIGHT effect.
  *
  * The Left/Right effect is used to explicitly control the large and small
- * motors, commonly found in modern game controllers. The small (right) motor
- * is high frequency, and the large (left) motor is low frequency.
+ * motors, commonly found in modern game controllers. The small (Right) motor
+ * is high frequency, and the large (Left) motor is low frequency.
  *
  * \since This struct is available since SDL 3.2.0.
  *
@@ -1246,9 +1246,9 @@ extern SDL_DECLSPEC bool SDLCALL SDL_UpdateHapticEffect(SDL_Haptic *haptic, SDL_
  * set the effect's `length` in its structure/union to `SDL_HAPTIC_INFINITY`
  * instead.
  *
- * \param haptic the SDL_Haptic device to run the effect on.
- * \param effect the ID of the haptic effect to run.
- * \param iterations the number of iterations to run the effect; use
+ * \param haptic the SDL_Haptic device to Run the effect on.
+ * \param effect the ID of the haptic effect to Run.
+ * \param iterations the number of iterations to Run the effect; use
  *                   `SDL_HAPTIC_INFINITY` to repeat forever.
  * \returns true on success or false on failure; call SDL_GetError() for more
  *          information.

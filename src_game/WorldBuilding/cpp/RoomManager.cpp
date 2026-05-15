@@ -82,11 +82,11 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
             std::string texture_path;
 
             if (cell == "FB") {
-                texture_path = "assets/world_building/floor/base_floor.png";
+                texture_path = "Assets/WorldBuilding/Floor/BaseFloor.png";
             } else if (cell == "CB") {
-                texture_path = "assets/world_building/ceiling/base_ceiling.png";
+                texture_path = "Assets/WorldBuilding/Ceiling/BaseCeiling.png";
             } else if (cell == ".") {
-                texture_path = "assets/world_building/background/nothing.png";
+                texture_path = "Assets/WorldBuilding/Background/Nothing.png";
             }
 
             tile->SetTexture(textureManager->GetTexture(texture_path));
@@ -156,11 +156,11 @@ void RoomManager::GenerateRoom(  Direction dir ) {
             std::string texture_path;
 
             if (cell == "FB") {
-                texture_path = "assets/world_building/floor/base_floor.png";
+                texture_path = "Assets/WorldBuilding/Floor/BaseFloor.png";
             } else if (cell == "CB") {
-                texture_path = "assets/world_building/ceiling/base_ceiling.png";
+                texture_path = "Assets/WorldBuilding/Ceiling/BaseCeiling.png";
             } else if (cell == ".") {
-                texture_path = "assets/world_building/background/nothing.png";
+                texture_path = "Assets/WorldBuilding/Background/Nothing.png";
             }
 
             tile->SetTexture(textureManager->GetTexture(texture_path));

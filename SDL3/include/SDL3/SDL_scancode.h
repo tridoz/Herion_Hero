@@ -108,8 +108,8 @@ typedef enum SDL_Scancode
     SDL_SCANCODE_EQUALS = 46,
     SDL_SCANCODE_LEFTBRACKET = 47,
     SDL_SCANCODE_RIGHTBRACKET = 48,
-    SDL_SCANCODE_BACKSLASH = 49, /**< Located at the lower left of the return
-                                  *   key on ISO keyboards and at the right end
+    SDL_SCANCODE_BACKSLASH = 49, /**< Located at the lower Left of the return
+                                  *   key on ISO keyboards and at the Right end
                                   *   of the QWERTY row on ANSI keyboards.
                                   *   Produces REVERSE SOLIDUS (backslash) and
                                   *   VERTICAL LINE in a US layout, REVERSE
@@ -136,7 +136,7 @@ typedef enum SDL_Scancode
                                   */
     SDL_SCANCODE_SEMICOLON = 51,
     SDL_SCANCODE_APOSTROPHE = 52,
-    SDL_SCANCODE_GRAVE = 53, /**< Located in the top left corner (on both ANSI
+    SDL_SCANCODE_GRAVE = 53, /**< Located in the top Left corner (on both ANSI
                               *   and ISO keyboards). Produces GRAVE ACCENT and
                               *   TILDE in a US Windows layout and in US and UK
                               *   Mac layouts on ANSI keyboards, GRAVE ACCENT
@@ -208,7 +208,7 @@ typedef enum SDL_Scancode
 
     SDL_SCANCODE_NONUSBACKSLASH = 100, /**< This is the additional key that ISO
                                         *   keyboards have over ANSI ones,
-                                        *   located between left shift and Z.
+                                        *   located between Left shift and Z.
                                         *   Produces GRAVE ACCENT and TILDE in a
                                         *   US or UK Mac layout, REVERSE SOLIDUS
                                         *   (backslash) and VERTICAL LINE in a
@@ -407,11 +407,11 @@ typedef enum SDL_Scancode
 
     SDL_SCANCODE_SOFTLEFT = 287, /**< Usually situated below the display on phones and
                                       used as a multi-function feature key for selecting
-                                      a software defined function shown on the bottom left
+                                      a software defined function shown on the bottom Left
                                       of the display. */
     SDL_SCANCODE_SOFTRIGHT = 288, /**< Usually situated below the display on phones and
                                        used as a multi-function feature key for selecting
-                                       a software defined function shown on the bottom right
+                                       a software defined function shown on the bottom Right
                                        of the display. */
     SDL_SCANCODE_CALL = 289, /**< Used for accepting phone calls. */
     SDL_SCANCODE_ENDCALL = 290, /**< Used for rejecting phone calls. */

@@ -78,7 +78,7 @@ typedef struct tagMSG MSG;
 typedef bool (SDLCALL *SDL_WindowsMessageHook)(void *userdata, MSG *msg);
 
 /**
- * Set a callback for every Windows message, run before TranslateMessage().
+ * Set a callback for every Windows message, Run before TranslateMessage().
  *
  * The callback may modify the message, and should return true if the message
  * should continue to be processed, or false to prevent further processing.

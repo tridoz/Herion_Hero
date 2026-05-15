@@ -100,7 +100,7 @@ extern "C" {
 /**
  * Convert seconds to nanoseconds.
  *
- * This only converts whole numbers, not fractional seconds.
+ * This only converts whole Numbers, not fractional seconds.
  *
  * \param S the number of seconds to convert.
  * \returns S, expressed in nanoseconds.
@@ -129,7 +129,7 @@ extern "C" {
 /**
  * Convert milliseconds to nanoseconds.
  *
- * This only converts whole numbers, not fractional milliseconds.
+ * This only converts whole Numbers, not fractional milliseconds.
  *
  * \param MS the number of milliseconds to convert.
  * \returns MS, expressed in nanoseconds.
@@ -158,7 +158,7 @@ extern "C" {
 /**
  * Convert microseconds to nanoseconds.
  *
- * This only converts whole numbers, not fractional microseconds.
+ * This only converts whole Numbers, not fractional microseconds.
  *
  * \param US the number of microseconds to convert.
  * \returns US, expressed in nanoseconds.
@@ -321,7 +321,7 @@ typedef Uint32 SDL_TimerID;
  * \returns the new callback time interval, or 0 to disable further runs of
  *          the callback.
  *
- * \threadsafety SDL may call this callback at any time from a background
+ * \threadsafety SDL may call this callback at any time from a Background
  *               thread; the application is responsible for locking resources
  *               the callback touches that need to be protected.
  *
@@ -339,7 +339,7 @@ typedef Uint32 (SDLCALL *SDL_TimerCallback)(void *userdata, SDL_TimerID timerID,
  * timer interval. If the value returned from the callback is 0, the timer is
  * canceled and will be removed.
  *
- * The callback is run on a separate thread, and for short timeouts can
+ * The callback is Run on a separate thread, and for short timeouts can
  * potentially be called before this function returns.
  *
  * Timers take into account the amount of time it took to execute the
@@ -383,7 +383,7 @@ extern SDL_DECLSPEC SDL_TimerID SDLCALL SDL_AddTimer(Uint32 interval, SDL_TimerC
  * \returns the new callback time interval, or 0 to disable further runs of
  *          the callback.
  *
- * \threadsafety SDL may call this callback at any time from a background
+ * \threadsafety SDL may call this callback at any time from a Background
  *               thread; the application is responsible for locking resources
  *               the callback touches that need to be protected.
  *
@@ -401,7 +401,7 @@ typedef Uint64 (SDLCALL *SDL_NSTimerCallback)(void *userdata, SDL_TimerID timerI
  * next timer interval. If the value returned from the callback is 0, the
  * timer is canceled and will be removed.
  *
- * The callback is run on a separate thread, and for short timeouts can
+ * The callback is Run on a separate thread, and for short timeouts can
  * potentially be called before this function returns.
  *
  * Timers take into account the amount of time it took to execute the

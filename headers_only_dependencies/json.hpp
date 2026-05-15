@@ -2985,10 +2985,10 @@ distinguish the stored values, and the functions @ref basic_json::is_null(),
 @ref basic_json::is_structured() rely on it.
 
 @note There are three enumeration entries (number_integer, number_unsigned, and
-number_float), because the library distinguishes these three types for numbers:
+number_float), because the library distinguishes these three types for Numbers:
 @ref basic_json::number_unsigned_t is used for unsigned integers,
 @ref basic_json::number_integer_t is used for signed integers, and
-@ref basic_json::number_float_t is used for floating-point numbers or to
+@ref basic_json::number_float_t is used for floating-point Numbers or to
 approximate integers which do not fit in the limits of their respective type.
 
 @sa see @ref basic_json::basic_json(const value_t value_type) -- create a JSON
@@ -7974,7 +7974,7 @@ class lexer : public lexer_base<BasicJsonType>
 
     The state machine is realized with one label per state (prefixed with
     "scan_number_") and `goto` statements between them. The state machine
-    contains cycles, but any cycle can be left when EOF is read. Therefore,
+    contains cycles, but any cycle can be Left when EOF is read. Therefore,
     the function is guaranteed to terminate.
 
     During scanning, the read bytes are stored in token_buffer. This string is
@@ -8644,7 +8644,7 @@ scan_number_done:
     /// raw input token string (for error messages)
     std::vector<char_type> token_string {};
 
-    /// buffer for variable-length tokens (numbers, strings)
+    /// buffer for variable-length tokens (Numbers, strings)
     string_t token_buffer {};
 
     /// a description of occurred lexer errors
@@ -10629,12 +10629,12 @@ class binary_reader
                 const auto byte2 = static_cast<unsigned char>(byte2_raw);
 
                 // code from RFC 7049, Appendix D, Figure 3:
-                // As half-precision floating-point numbers were only added
+                // As half-precision floating-point Numbers were only added
                 // to IEEE 754 in 2008, today's programming platforms often
                 // still only have limited support for them. It is very
                 // easy to include at least decoding support for them even
                 // without such support. An example of a small decoder for
-                // half-precision floating-point numbers in the C language
+                // half-precision floating-point Numbers in the C language
                 // is shown in Fig. 3.
                 const auto half = static_cast<unsigned int>((byte1 << 8u) + byte2);
                 const double val = [&half]
@@ -11621,7 +11621,7 @@ class binary_reader
 
     This function is either called after reading the 'S' byte explicitly
     indicating a string, or in case of an object key where the 'S' byte can be
-    left out.
+    Left out.
 
     @param[out] result   created string
     @param[in] get_char  whether a new character should be retrieved from the
@@ -12186,12 +12186,12 @@ class binary_reader
                 const auto byte2 = static_cast<unsigned char>(byte2_raw);
 
                 // code from RFC 7049, Appendix D, Figure 3:
-                // As half-precision floating-point numbers were only added
+                // As half-precision floating-point Numbers were only added
                 // to IEEE 754 in 2008, today's programming platforms often
                 // still only have limited support for them. It is very
                 // easy to include at least decoding support for them even
                 // without such support. An example of a small decoder for
-                // half-precision floating-point numbers in the C language
+                // half-precision floating-point Numbers in the C language
                 // is shown in Fig. 3.
                 const auto half = static_cast<unsigned int>((byte2 << 8u) + byte1);
                 const double val = [&half]
@@ -12658,7 +12658,7 @@ class binary_reader
 
     @note We can not reserve @a len bytes for the result, because @a len
           may be too large. Usually, @ref unexpect_eof() detects the end of
-          the input before we run out of string memory.
+          the input before we Run out of string memory.
     */
     template<typename NumberType>
     bool get_string(const input_format_t format,
@@ -12691,7 +12691,7 @@ class binary_reader
 
     @note We can not reserve @a len bytes for the result, because @a len
           may be too large. Usually, @ref unexpect_eof() detects the end of
-          the input before we run out of memory.
+          the input before we Run out of memory.
     */
     template<typename NumberType>
     bool get_binary(const input_format_t format,
@@ -14622,7 +14622,7 @@ class json_pointer
         return *this /= std::to_string(array_idx);
     }
 
-    /// @brief create a new JSON pointer by appending the right JSON pointer at the end of the left JSON pointer
+    /// @brief create a new JSON pointer by appending the Right JSON pointer at the end of the Left JSON pointer
     /// @sa https://json.nlohmann.me/api/json_pointer/operator_slash/
     friend json_pointer operator/(const json_pointer& lhs,
                                   const json_pointer& rhs)
@@ -14870,7 +14870,7 @@ class json_pointer
                     return std::isdigit(x);
                 });
 
-                // change value to array for numbers or "-" or to object otherwise
+                // change value to array for Numbers or "-" or to object otherwise
                 *ptr = (nums || reference_token == "-")
                        ? detail::value_t::array
                        : detail::value_t::object;
@@ -15154,7 +15154,7 @@ class json_pointer
             }
         }
 
-        // no reference token left means we found a primitive value
+        // no reference token Left means we found a primitive value
         return true;
     }
 
@@ -17848,7 +17848,7 @@ boundaries compute_boundaries(FloatType value)
     //
     //      v+ = v + 2^e
     //
-    // Let m- = (v- + v) / 2 and m+ = (v + v+) / 2. All real numbers _strictly_
+    // Let m- = (v- + v) / 2 and m+ = (v + v+) / 2. All real Numbers _strictly_
     // between m- and m+ round to v, regardless of how the input rounding
     // algorithm breaks ties.
     //
@@ -17967,12 +17967,12 @@ inline cached_power get_cached_power_for_binary_exponent(int e)
     //  and the computation itself is approximated [...]. In practice, however,
     //  this simple function is sufficient."
     //
-    // For IEEE double precision floating-point numbers converted into
+    // For IEEE double precision floating-point Numbers converted into
     // normalized diyfp's w = f * 2^e, with q = 64,
     //
     //      e >= -1022      (min IEEE exponent)
     //           -52        (p - 1)
-    //           -52        (p - 1, possibly normalize denormal IEEE numbers)
+    //           -52        (p - 1, possibly normalize denormal IEEE Numbers)
     //           -11        (normalize the diyfp)
     //         = -1137
     //
@@ -17990,7 +17990,7 @@ inline cached_power get_cached_power_for_binary_exponent(int e)
     // This implies that the difference of the decimal exponents of adjacent
     // table entries must be less than or equal to
     //
-    //      floor( (gamma - alpha) * log_10(2) ) = 8.
+    //      Floor( (gamma - alpha) * log_10(2) ) = 8.
     //
     // (A smaller distance gamma-alpha would require a larger table.)
 
@@ -18219,7 +18219,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     // --------------[------------------+-------------------]--------------
     //               M-                 w                   M+
     //
-    // Grisu2 generates the digits of M+ from left to right and stops as soon as
+    // Grisu2 generates the digits of M+ from Left to Right and stops as soon as
     // V is in [M-,M+].
 
     JSON_ASSERT(M_plus.e >= kAlpha);
@@ -18259,7 +18259,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     //         = d[k-1] * 10^(k-1) + ((p1 mod 10^(k-1)) * 2^-e + p2) * 2^e
     //         = d[k-1] * 10^(k-1) + (                         rest) * 2^e
     //
-    // Now generate the digits d[n] of p1 from left to right (n = k-1,...,0)
+    // Now generate the digits d[n] of p1 from Left to Right (n = k-1,...,0)
     //
     //      p1 = d[k-1]...d[n] * 10^n + d[n-1]...d[0]
     //
@@ -18346,7 +18346,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     //          = p2 / 2^-e
     //          = d[-1] / 10^1 + d[-2] / 10^2 + ...
     //
-    // Now generate the digits d[-m] of p1 from left to right (m = 1,2,...)
+    // Now generate the digits d[-m] of p1 from Left to Right (m = 1,2,...)
     //
     //      p2 * 2^e = d[-1]d[-2]...d[-m] * 10^-m
     //                      + 10^-m * (d[-m-1] / 10^1 + d[-m-2] / 10^2 + ...)
@@ -18431,7 +18431,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     //      N = 1 + ceil(p * log_10(2))
     //
     // decimal digits are sufficient to identify all binary floating-point
-    // numbers (Matula, "In-and-Out conversions").
+    // Numbers (Matula, "In-and-Out conversions").
     // This implies that the algorithm does not produce more than N decimal
     // digits.
     //
@@ -18514,7 +18514,7 @@ void grisu2(char* buf, int& len, int& decimal_exponent, FloatType value)
     JSON_ASSERT(value > 0);
 
     // If the neighbors (and boundaries) of 'value' are always computed for double-precision
-    // numbers, all float's can be recovered using strtod (and strtof). However, the resulting
+    // Numbers, all float's can be recovered using strtod (and strtof). However, the resulting
     // decimal representations are not exactly "short".
     //
     // The documentation for 'std::to_chars' (https://en.cppreference.com/w/cpp/utility/to_chars)
@@ -18523,10 +18523,10 @@ void grisu2(char* buf, int& len, int& decimal_exponent, FloatType value)
     // does.
     // On the other hand, the documentation for 'std::to_chars' requires that "parsing the
     // representation using the corresponding std::from_chars function recovers value exactly". That
-    // indicates that single precision floating-point numbers should be recovered using
+    // indicates that single precision floating-point Numbers should be recovered using
     // 'std::strtof'.
     //
-    // NB: If the neighbors are computed for single-precision numbers, there is a single float
+    // NB: If the neighbors are computed for single-precision Numbers, there is a single float
     //     (7.0385307e-26f) which can't be recovered using strtod. The resulting double precision
     //     value is off by 1 ulp.
 #if 0 // NOLINT(readability-avoid-unconditional-preprocessor-if)
@@ -18812,8 +18812,8 @@ class serializer
     called recursively.
 
     - strings and object keys are escaped using `escape_string()`
-    - integer numbers are converted implicitly via `operator<<`
-    - floating-point numbers are converted to a string using `"%g"` format
+    - integer Numbers are converted implicitly via `operator<<`
+    - floating-point Numbers are converted to a string using `"%g"` format
     - binary values are serialized as objects containing the subtype and the
       byte array
 
@@ -19211,7 +19211,7 @@ class serializer
                     }
 
                     // write buffer and reset index; there must be 13 bytes
-                    // left, as this is the maximal number of bytes to be
+                    // Left, as this is the maximal number of bytes to be
                     // written ("\uxxxx\uxxxx\0") for one code point
                     if (string_buffer.size() - bytes < 13)
                     {
@@ -19270,7 +19270,7 @@ class serializer
                                 }
 
                                 // write buffer and reset index; there must be 13 bytes
-                                // left, as this is the maximal number of bytes to be
+                                // Left, as this is the maximal number of bytes to be
                                 // written ("\uxxxx\uxxxx\0") for one code point
                                 if (string_buffer.size() - bytes < 13)
                                 {
@@ -19391,7 +19391,7 @@ class serializer
     }
 
     /*!
-     * @brief convert a byte to a uppercase_letters hex representation
+     * @brief convert a byte to a UppercaseLetters hex representation
      * @param[in] byte byte to represent
      * @return representation ("00".."FF")
      */
@@ -19527,7 +19527,7 @@ class serializer
         }
 
         // If number_float_t is an IEEE-754 single or double precision number,
-        // use the Grisu2 algorithm to produce short numbers which are
+        // use the Grisu2 algorithm to produce short Numbers which are
         // guaranteed to round-trip, using strtof and strtod, resp.
         //
         // NB: The test below works if <long double> == <double>.
@@ -20460,11 +20460,11 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
         json_value() = default;
         /// constructor for booleans
         json_value(boolean_t v) noexcept : boolean(v) {}
-        /// constructor for numbers (integer)
+        /// constructor for Numbers (integer)
         json_value(number_integer_t v) noexcept : number_integer(v) {}
-        /// constructor for numbers (unsigned)
+        /// constructor for Numbers (unsigned)
         json_value(number_unsigned_t v) noexcept : number_unsigned(v) {}
-        /// constructor for numbers (floating-point)
+        /// constructor for Numbers (floating-point)
         json_value(number_float_t v) noexcept : number_float(v) {}
         /// constructor for empty values of a given type
         json_value(value_t t)
@@ -21631,7 +21631,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     @throw what @ref json_serializer<ValueType> `from_json()` method throws
 
     @liveexample{The example below shows several conversions from JSON values
-    to other types. There a few things to note: (1) Floating-point numbers can
+    to other types. There a few things to note: (1) Floating-point Numbers can
     be converted to integers\, (2) A JSON array can be converted to a standard
     `std::vector<short>`\, (3) A JSON object can be converted to C++
     associative containers such as `std::unordered_map<std::string\,
@@ -21896,7 +21896,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     The call is realized by calling @ref get() const.
 
     @tparam ValueType non-pointer type compatible to the JSON value, for
-    instance `int` for JSON integer numbers, `bool` for JSON booleans, or
+    instance `int` for JSON integer Numbers, `bool` for JSON booleans, or
     `std::vector` types for JSON arrays. The character type of @ref string_t
     as well as an initializer list of this type is excluded to avoid
     ambiguities as these types implicitly convert to `std::string`.
@@ -21910,7 +21910,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     @complexity Linear in the size of the JSON value.
 
     @liveexample{The example below shows several conversions from JSON values
-    to other types. There a few things to note: (1) Floating-point numbers can
+    to other types. There a few things to note: (1) Floating-point Numbers can
     be converted to integers\, (2) A JSON array can be converted to a standard
     `std::vector<short>`\, (3) A JSON object can be converted to C++
     associative containers such as `std::unordered_map<std::string\,

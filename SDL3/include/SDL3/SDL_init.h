@@ -98,7 +98,7 @@ typedef Uint32 SDL_InitFlags;
  * generally or not.
  *
  * Returning SDL_APP_CONTINUE from these functions will let the app continue
- * to run.
+ * to Run.
  *
  * See
  * [Main callbacks in SDL3](https://wiki.libsdl.org/SDL3/README-main-functions#main-callbacks-in-sdl3)
@@ -186,7 +186,7 @@ typedef void (SDLCALL *SDL_AppQuit_func)(void *appstate, SDL_AppResult result);
  * SDL_InitSubSystem() might be preferred.
  *
  * The file I/O (for example: SDL_IOFromFile) and threading (SDL_CreateThread)
- * subsystems are initialized by default. Message boxes
+ * subsystems are initialized by default. Message Boxes
  * (SDL_ShowSimpleMessageBox) also attempt to work without initializing the
  * video subsystem, in hopes of being useful in showing an error dialog when
  * SDL_Init fails. You must specifically initialize other subsystems if you
@@ -288,7 +288,7 @@ extern SDL_DECLSPEC SDL_InitFlags SDLCALL SDL_WasInit(SDL_InitFlags flags);
  * initialized subsystem with SDL_QuitSubSystem(). It is safe to call this
  * function even in the case of errors in initialization.
  *
- * You can use this function with atexit() to ensure that it is run when your
+ * You can use this function with atexit() to ensure that it is Run when your
  * application is shutdown, but it is not wise to do this from a library or
  * other dynamically loaded code.
  *
@@ -320,7 +320,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_Quit(void);
 extern SDL_DECLSPEC bool SDLCALL SDL_IsMainThread(void);
 
 /**
- * Callback run on the main thread.
+ * Callback Run on the main thread.
  *
  * \param userdata an app-controlled pointer that is passed to the callback.
  *
@@ -364,7 +364,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_RunOnMainThread(SDL_MainThreadCallback call
  *
  * There are several locations where SDL can make use of metadata (an "About"
  * box in the macOS menus bar, the name of the app can be shown on some audio
- * mixers, etc). Any piece of metadata can be left as NULL, if a specific
+ * mixers, etc). Any piece of metadata can be Left as NULL, if a specific
  * detail doesn't make sense for the app.
  *
  * This function should be called as early as possible, before SDL_Init.
@@ -402,7 +402,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetAppMetadata(const char *appname, const c
  *
  * There are several locations where SDL can make use of metadata (an "About"
  * box in the macOS menus bar, the name of the app can be shown on some audio
- * mixers, etc). Any piece of metadata can be left out, if a specific detail
+ * mixers, etc). Any piece of metadata can be Left out, if a specific detail
  * doesn't make sense for the app.
  *
  * This function should be called as early as possible, before SDL_Init.
@@ -425,7 +425,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetAppMetadata(const char *appname, const c
  *   identifies this app. This must be in reverse-domain format, like
  *   "com.example.mygame2". This string is used by desktop compositors to
  *   identify and group windows together, as well as match applications with
- *   associated desktop settings and icons. If you plan to package your
+ *   associated desktop settings and Icons. If you plan to package your
  *   application in a container such as Flatpak, the app ID should match the
  *   name of your Flatpak container as well. This has no default.
  * - `SDL_PROP_APP_METADATA_CREATOR_STRING`: The human-readable name of the
@@ -439,7 +439,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetAppMetadata(const char *appname, const c
  *   further information This has no default.
  * - `SDL_PROP_APP_METADATA_TYPE_STRING`: The type of application this is.
  *   Currently this string can be "game" for a video game, "mediaplayer" for a
- *   media player, or generically "application" if nothing else applies.
+ *   media Player, or generically "application" if nothing else applies.
  *   Future versions of SDL might add new types. This defaults to
  *   "application".
  *

@@ -65,7 +65,7 @@ extern "C" {
 #define SDL_MICRO_VERSION   2
 
 /**
- * This macro turns the version numbers into a numeric value.
+ * This macro turns the version Numbers into a numeric value.
  *
  * (1,2,3) becomes 1002003.
  *

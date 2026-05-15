@@ -95,7 +95,7 @@ struct VkAllocationCallbacks;
  * there have been an equivalent number of calls to SDL_Vulkan_UnloadLibrary.
  *
  * It is fairly common for Vulkan applications to link with libvulkan instead
- * of explicitly loading it at run time. This will work with SDL provided the
+ * of explicitly loading it at Run time. This will work with SDL provided the
  * application links to a dynamic library and both it and SDL use the same
  * search path.
  *

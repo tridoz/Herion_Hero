@@ -106,7 +106,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetClipboardText(const char *text);
 /**
  * Get UTF-8 text from the clipboard.
  *
- * This function returns an empty string if there is not enough memory left
+ * This function returns an empty string if there is not enough memory Left
  * for a copy of the clipboard's content.
  *
  * \returns the clipboard text on success or an empty string on failure; call
@@ -155,7 +155,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_SetPrimarySelectionText(const char *text);
 /**
  * Get UTF-8 text from the primary selection.
  *
- * This function returns an empty string if there is not enough memory left
+ * This function returns an empty string if there is not enough memory Left
  * for a copy of the primary selection's content.
  *
  * \returns the primary selection text on success or an empty string on

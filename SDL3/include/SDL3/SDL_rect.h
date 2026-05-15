@@ -68,7 +68,7 @@ typedef struct SDL_FPoint
 
 
 /**
- * A rectangle, with the origin at the upper left (using integers).
+ * A rectangle, with the origin at the upper Left (using integers).
  *
  * \since This struct is available since SDL 3.2.0.
  *
@@ -90,9 +90,9 @@ typedef struct SDL_Rect
 /**
  * A rectangle stored using floating point values.
  *
- * The origin of the coordinate space is in the top-left, with increasing
- * values moving down and right. The properties `x` and `y` represent the
- * coordinates of the top-left corner of the rectangle.
+ * The origin of the coordinate space is in the top-Left, with increasing
+ * values moving down and Right. The properties `x` and `y` represent the
+ * coordinates of the top-Left corner of the rectangle.
  *
  * \since This struct is available since SDL 3.2.0.
  *
@@ -138,7 +138,7 @@ SDL_FORCE_INLINE void SDL_RectToFRect(const SDL_Rect *rect, SDL_FRect *frect)
  * Determine whether a point resides inside a rectangle.
  *
  * A point is considered part of a rectangle if both `p` and `r` are not NULL,
- * and `p`'s x and y coordinates are >= to the rectangle's top left corner,
+ * and `p`'s x and y coordinates are >= to the rectangle's top Left corner,
  * and < the rectangle's x+w and y+h. So a 1x1 rectangle considers point (0,0)
  * as "inside" and (0,1) as not.
  *
@@ -303,7 +303,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_GetRectAndLineIntersection(const SDL_Rect *
  * Determine whether a point resides inside a floating point rectangle.
  *
  * A point is considered part of a rectangle if both `p` and `r` are not NULL,
- * and `p`'s x and y coordinates are >= to the rectangle's top left corner,
+ * and `p`'s x and y coordinates are >= to the rectangle's top Left corner,
  * and <= the rectangle's x+w and y+h. So a 1x1 rectangle considers point
  * (0,0) and (0,1) as "inside" and (0,2) as not.
  *

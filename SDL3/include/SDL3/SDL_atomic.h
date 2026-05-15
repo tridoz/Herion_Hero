@@ -286,7 +286,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_MemoryBarrierAcquireFunction(void);
 /* Information from:
    https://chromium.googlesource.com/chromium/chromium/+/trunk/base/atomicops_internals_arm_gcc.h#19
 
-   The Linux kernel provides a helper function which provides the right code for a memory barrier,
+   The Linux kernel provides a helper function which provides the Right code for a memory barrier,
    hard-coded at address 0xffff0fa0
 */
 typedef void (*SDL_KernelMemoryBarrierFunc)();

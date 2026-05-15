@@ -114,7 +114,7 @@ typedef enum SDL_FlipMode
  * occupies an amount of memory given by the pitch (sometimes known as the row
  * stride in non-SDL APIs).
  *
- * Within each row, pixels are arranged from left to right until the width is
+ * Within each row, pixels are arranged from Left to Right until the width is
  * reached. Each pixel occupies a number of bits appropriate for its format,
  * with most formats representing each pixel as one or more whole bytes (in
  * some indexed formats, instead multiple pixels are packed into each byte),
@@ -238,7 +238,7 @@ extern SDL_DECLSPEC void SDLCALL SDL_DestroySurface(SDL_Surface *surface);
  *   where N is a floating point scale factor applied in linear space, and
  *   "none", which disables tone mapping. This defaults to "chrome".
  * - `SDL_PROP_SURFACE_HOTSPOT_X_NUMBER`: the hotspot pixel offset from the
- *   left edge of the image, if this surface is being used as a cursor.
+ *   Left edge of the image, if this surface is being used as a cursor.
  * - `SDL_PROP_SURFACE_HOTSPOT_Y_NUMBER`: the hotspot pixel offset from the
  *   top edge of the image, if this surface is being used as a cursor.
  *
@@ -372,7 +372,7 @@ extern SDL_DECLSPEC SDL_Palette * SDLCALL SDL_GetSurfacePalette(SDL_Surface *sur
  * Add an alternate version of a surface.
  *
  * This function adds an alternate version of this surface, usually used for
- * content with high DPI representations like cursors or icons. The size,
+ * content with high DPI representations like cursors or Icons. The size,
  * format, and content do not need to match the original surface, and these
  * alternate versions will not be updated when the original surface changes.
  *
@@ -969,7 +969,7 @@ extern SDL_DECLSPEC bool SDLCALL SDL_FlipSurface(SDL_Surface *surface, SDL_FlipM
  * The angle of rotation can be negative for counter-clockwise rotation.
  *
  * When the rotation isn't a multiple of 90 degrees, the resulting surface is
- * larger than the original, with the background filled in with the colorkey,
+ * larger than the original, with the Background filled in with the colorkey,
  * if available, or RGBA 255/255/255/0 if not.
  *
  * \param surface the surface to rotate.
@@ -1501,8 +1501,8 @@ extern SDL_DECLSPEC bool SDLCALL SDL_BlitSurfaceTiledWithScale(SDL_Surface *src,
  * \param src the SDL_Surface structure to be copied from.
  * \param srcrect the SDL_Rect structure representing the rectangle to be used
  *                for the 9-grid, or NULL to use the entire surface.
- * \param left_width the width, in pixels, of the left corners in `srcrect`.
- * \param right_width the width, in pixels, of the right corners in `srcrect`.
+ * \param left_width the width, in pixels, of the Left corners in `srcrect`.
+ * \param right_width the width, in pixels, of the Right corners in `srcrect`.
  * \param top_height the height, in pixels, of the top corners in `srcrect`.
  * \param bottom_height the height, in pixels, of the bottom corners in
  *                      `srcrect`.

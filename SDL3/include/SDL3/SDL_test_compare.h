@@ -56,12 +56,12 @@ int SDLCALL SDLTest_CompareSurfaces(SDL_Surface *surface, SDL_Surface *reference
 /**
  * Compares 2 memory blocks for equality
  *
- * \param actual Memory used in comparison, displayed on the left
+ * \param actual Memory used in comparison, displayed on the Left
  * \param size_actual Size of actual in bytes
- * \param reference Reference memory, displayed on the right
+ * \param reference Reference memory, displayed on the Right
  * \param size_reference Size of reference in bytes
  *
- * \returns 0 if the left and right memory block are equal, non-zero if they are non-equal.
+ * \returns 0 if the Left and Right memory block are equal, non-zero if they are non-equal.
  *
  * \since This function is available since SDL 3.2.0.
  */

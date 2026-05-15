@@ -1,22 +1,22 @@
 {
   "animations" : [
     {
-      "path" : "assets/entities/player/idle/left/",
+      "path" : "Assets/Entities/Player/Idle/Left/",
       "frame_number" : 8,
       "frame_to_load" : 4,
       "name" : "IDLE_LEFT"
     },{
-      "path" : "assets/entities/player/idle/right/",
+      "path" : "Assets/Entities/Player/Idle/Right/",
       "frame_number" : 8,
       "frame_to_load" : 4,
       "name" : "IDLE_RIGHT"
     },{
-      "path" : "assets/entities/player/run/left/",
+      "path" : "Assets/Entities/Player/Run/Left/",
       "frame_number" : 8,
       "frame_to_load" : 2,
       "name" : "RUN_LEFT"
     },{
-      "path" : "assets/entities/player/run/right/",
+      "path" : "Assets/Entities/Player/Run/Right/",
       "frame_number" : 8,
       "frame_to_load" : 2,
       "name" : "RUN_RIGHT"
