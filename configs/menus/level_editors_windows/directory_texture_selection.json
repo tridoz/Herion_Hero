@@ -1,9 +1,5 @@
 {
   "background_path" : "Assets/Backgrounds/Black.png",
-  "tab_indend_subdirectory" : 50,
-  "start_y" : 20,
-  "button_y_offset" : 12,
-  "center_piece_offset" : 8,
   "menu_type" : "scroll_pane_menu",
   "cmd" : "select_all_directory",
   "texture_size" : 16

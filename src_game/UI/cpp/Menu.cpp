@@ -247,6 +247,7 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 	this->background_rect = {0, 0, w, h};
 
 	try {
+		this->scale = JSONParser::graphics::GetScale();
 		cmd = JSONParser::menu_configuration::GetCmd();
 	} catch (HerionException::File::FileMalformedException &ex) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
@@ -254,7 +255,7 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 	}
 
 	if ( cmd == "select_all_directory" ) {
-		std::string base_directory = "../Assets/WorldBuilding/";
+		std::string base_directory = "../Assets/";
 		CreateSubDirectories( this->directory, base_directory, 0 );
 		this->buttons.clear();
 		this->texts.clear();
@@ -265,11 +266,11 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 
 void Menu::CreateButtonsAndTexts( Directory* dir) {
 
+	const int texture_size = JSONParser::menu_configuration::GetTextureSize();
+
 	if (  dir->SubDirectory.size() == 0 ) {
 		//DRAW FILES
 
-
-		int texture_size = JSONParser::menu_configuration::GetTextureSize();
 		for ( const auto& [name, path, texture] : dir->Files ) {
 
 			const int depth = dir->depth;
@@ -283,8 +284,8 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 
 			Texture* file_text = texture_manager->GetTexture(right_path);
 			SDL_FRect file_rect = {
-				1,
-				1,
+				static_cast<float>( (depth*texture_size) + texture_size ),
+				static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
 				static_cast<float>(texture_size),
 				static_cast<float>(texture_size)
 			};
@@ -299,29 +300,27 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 				try {
 
 					if (std::isupper(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Game/UppercaseLetters/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTexture("Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png");
 					else if (std::islower(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Game/LowercaseLetters/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTexture("Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png");
 					else if (std::isdigit(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Game/Numbers/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTexture("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
 					else if (isspecial(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Game/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
+						char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
 					else if ( isspace(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Game/SpecialCharacters/space.png");
+						char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/space.png");
 
 				} catch ( HerionException::File::FileNotFoundException &ex ) {
 					ex.UpdateStackTrace( GET_CONTEXT() );
 					throw;
 				}
 
-				float cw, ch;
-				SDL_GetTextureSize(char_tex->GetTexture(), &cw, &ch);
 
 				SDL_FRect char_rect = {
-					(depth*cw) + (cw*i) + texture_size,
-					(previous_element_already_drawn*ch),
-					cw*scale,
-					ch*scale
+					static_cast<float>( (depth*texture_size) + (texture_size*(i+1) + texture_size ) ),
+					static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
+					static_cast<float>( texture_size*scale ),
+					static_cast<float>( texture_size*scale )
 				};
 				rects.emplace_back(char_rect);
 				textures.emplace_back(char_tex);
@@ -367,14 +366,12 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 				throw;
 			}
 
-			float cw, ch;
 
-			SDL_GetTextureSize(char_tex->GetTexture(), &cw, &ch);
 			SDL_FRect char_rect = {
-				(cw*depth) + (cw*i),
-				(ch*previous_element_already_drawn),
-				cw * scale,
-				ch * scale
+				static_cast<float>( (texture_size*depth) + (texture_size*i) ),
+				static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
+				static_cast<float>( texture_size * scale ),
+				static_cast<float>( texture_size * scale )
 			};
 
 			rects.push_back(char_rect);

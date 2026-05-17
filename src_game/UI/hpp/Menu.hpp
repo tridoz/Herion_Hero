@@ -80,7 +80,6 @@ private:
 
 	void CreateSubDirectories(Directory*& directory, const std::string &base_directory, int depth);
 
-
 public:
 
 	Menu();
