@@ -54,12 +54,20 @@ int JSONParser::menu_configuration::GetTabIndentSubdirectory() {
     return config_file["tab_indent_subdirectory"];
 }
 
-int JSONParser::menu_configuration::GetTextureSize() {
-    if ( !config_file.contains("texture_size") ) {
-        THROW_FILE_MALFORMED( config_file_path + "\t=> texture_size");
+int JSONParser::menu_configuration::GetDirectoryTextureSize() {
+    if ( !config_file.contains("texture_size_directory") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> texture_size_directory");
     }
 
-    return config_file["texture_size"];
+    return config_file["texture_size_directory"];
+}
+
+int JSONParser::menu_configuration::GetFileTextureSize() {
+    if ( !config_file.contains("texture_size_file") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> texture_size_file");
+    }
+
+    return config_file["texture_size_file"];
 }
 
 

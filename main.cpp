@@ -170,7 +170,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("SETTINGS_MENU", &settings_menu );
     processor.SetMenus("PAUSE_MENU", &pause_menu );
     processor.SetMenus("EDITOR_MENU", &editor_menu );
-
+    processor.SetMenus("TEXTURE_SELECTIONS", &texture_selection_menu );
 
     processor.SetWindowTools( editors_windows );
 
@@ -254,6 +254,10 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::EDITOR_MENU:
+                window.GetMenu("EDITOR_MENU")->Draw( window.GetRenderer() );
+                break;
+
+            case Player::GameMode::TEXTURE_SELECTION:
                 window.GetMenu("TEXTURE_SELECTIONS")->Draw( window.GetRenderer() );
                 break;
 

@@ -29,6 +29,7 @@ public:
     void SetTextures( std::vector< Texture* > textures );
     void SetRects( std::vector< SDL_FRect > rects );
     void Draw( SDL_Renderer* renderer ) const ;
+    void DrawWithOffset( SDL_Renderer* renderer, const float offset_y, const float offset_x ) const ;
     std::vector< SDL_FRect > GetRects() const;
 };
 

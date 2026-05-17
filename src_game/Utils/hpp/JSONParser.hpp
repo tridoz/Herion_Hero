@@ -105,8 +105,8 @@ namespace JSONParser {
         std::string GetCmd();
 
         int GetTabIndentSubdirectory();
-        int GetTextureSize();
-
+        int GetDirectoryTextureSize();
+        int GetFileTextureSize();
 
         float GetStartY();
         float GetButtonYOffset();

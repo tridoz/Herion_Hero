@@ -69,7 +69,7 @@ Window::Window( const std::string& title) {
 }
 
 Window::Window(const std::string &title, int width, int height) {
-    this->flags = SDL_WINDOW_RESIZABLE;
+    this->flags = 0;
 
     if ( !SDL_Init(SDL_INIT_VIDEO) ) {
         Logger::LogErr(

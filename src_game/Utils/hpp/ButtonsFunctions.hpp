@@ -26,6 +26,7 @@ public:
     static void OpenMainMenu();
     static void OpenSettings();
     static void OpenEditorMenu();
+    static void OpenTextureSelectionMenu();
     static void OpenLevelEditor();
     static void OpenAnimationEditor();
     static void CloseSettings();
@@ -37,7 +38,6 @@ public:
     static void LoadRoom();
     static void LoadTexture();
 
-    
     //GRAPHICS SETTINGS
     static void IncreaseResolution();
     static void DecreaseResolution();

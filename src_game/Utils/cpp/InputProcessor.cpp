@@ -191,6 +191,16 @@ void InputProcessor::Process() {
         case SDL_EVENT_MOUSE_BUTTON_UP:
             break;
 
+        case SDL_EVENT_MOUSE_WHEEL:
+
+            if ( player->GetGameMode() == Player::GameMode::TEXTURE_SELECTION ) {
+                for ( const auto& [name, menu] : menus ) {
+                    menu->SetMouseOffset( event.wheel.y);
+                }
+            }
+    
+            break;
+
         default:
             break;
     }

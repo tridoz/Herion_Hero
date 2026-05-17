@@ -85,6 +85,7 @@ public:
 	Menu();
 	~Menu();
 
+	void SetMouseOffset( float diff );
 	void SetDimension( float w, float h);
 	void SetTextureManager( TextureManager* texture_manager );
 	void Draw( SDL_Renderer* renderer) const ;

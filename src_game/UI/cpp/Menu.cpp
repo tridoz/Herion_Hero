@@ -16,6 +16,7 @@ Menu::Menu() {
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu );
 	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
+	buttons_functions.emplace("OPEN_TEXTURE_SELECTION_MENU", ButtonsFunctions::OpenTextureSelectionMenu);
 	buttons_functions.emplace( "OPEN_LEVEL_EDITOR", ButtonsFunctions::OpenLevelEditor );
 	buttons_functions.emplace( "OPEN_ANIMATION_EDITOR", ButtonsFunctions::OpenAnimationEditor );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
@@ -266,7 +267,9 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 
 void Menu::CreateButtonsAndTexts( Directory* dir) {
 
-	const int texture_size = JSONParser::menu_configuration::GetTextureSize();
+	const int texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
+	const int texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
+	const int diff = texture_size_directory - texture_size_file;
 
 	if (  dir->SubDirectory.size() == 0 ) {
 		//DRAW FILES
@@ -281,17 +284,6 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
-
-			Texture* file_text = texture_manager->GetTexture(right_path);
-			SDL_FRect file_rect = {
-				static_cast<float>( (depth*texture_size) + texture_size ),
-				static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
-				static_cast<float>(texture_size),
-				static_cast<float>(texture_size)
-			};
-
-			textures.emplace_back(file_text);
-			rects.emplace_back(file_rect);
 
 			for ( int i = 0 ; i<right_name.size() ; i++ ) {
 				char c = right_name[i];
@@ -317,13 +309,13 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 
 
 				SDL_FRect char_rect = {
-					static_cast<float>( (depth*texture_size) + (texture_size*(i+1) + texture_size ) ),
-					static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
-					static_cast<float>( texture_size*scale ),
-					static_cast<float>( texture_size*scale )
+					static_cast<float>( (depth*texture_size_file) + (texture_size_file*i + texture_size_file ) ),
+					static_cast<float>( (previous_element_already_drawn*texture_size_file + texture_size_file*scale*previous_element_already_drawn)  ),
+					static_cast<float>( texture_size_file*scale ),
+					static_cast<float>( texture_size_file*scale )
 				};
-				rects.emplace_back(char_rect);
-				textures.emplace_back(char_tex);
+				rects.push_back(char_rect);
+				textures.push_back(char_tex);
 			}
 
 			Text* txt = new Text();
@@ -368,10 +360,10 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 
 
 			SDL_FRect char_rect = {
-				static_cast<float>( (texture_size*depth) + (texture_size*i) ),
-				static_cast<float>( (previous_element_already_drawn*texture_size + texture_size*scale*previous_element_already_drawn) ),
-				static_cast<float>( texture_size * scale ),
-				static_cast<float>( texture_size * scale )
+				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*i) ),
+				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
+				static_cast<float>( texture_size_directory * scale ),
+				static_cast<float>( texture_size_directory * scale )
 			};
 
 			rects.push_back(char_rect);
@@ -391,7 +383,8 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 }
 
 void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_directory, int depth ) {
-	std::vector < std::string > cmd_output = CMD::multiline_exec( "ls " + base_directory );
+
+	std::vector < std::string > cmd_output = CMD::multiline_exec( "ls " + base_directory + " | grep -v '^Font$' " );
 
 	if ( directory == nullptr ) {
 		directory = new Directory( depth, {}, {} );
@@ -416,8 +409,6 @@ void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_
 
 }
 
-
-
 void Menu::LoadShowPaneMenuTypeConfiguration() {}
 
 void Menu::Draw( SDL_Renderer* renderer ) const {
@@ -426,13 +417,24 @@ void Menu::Draw( SDL_Renderer* renderer ) const {
 	SDL_RenderTexture( renderer, this->background->GetTexture(), nullptr, &background_rect );
 
 	for ( const auto& [key, btn] : buttons ) {
-		btn->Draw( renderer );
+		if ( this->type == "scroll_pane_menu")
+			btn->DrawWithOffset( renderer, mouse_offset, 0 );
+		else
+			btn->Draw( renderer );
+
 	}
 
 	for ( const auto& [key, txt] : texts ) {
-		txt->Draw( renderer );
+		if ( this->type == "scroll_pane_menu")
+			txt->DrawWithOffset( renderer, mouse_offset, 0 );
+		else
+			txt->Draw( renderer );
 	}
 
+}
+
+void Menu::SetMouseOffset( float diff ) {
+	this->mouse_offset += diff*4;
 }
 
 std::string Menu::GetText( const std::string& text_type ) {
