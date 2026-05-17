@@ -171,6 +171,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("PAUSE_MENU", &pause_menu );
     processor.SetMenus("EDITOR_MENU", &editor_menu );
 
+
     processor.SetWindowTools( editors_windows );
 
     processor.SetPlayer( &player );
@@ -253,12 +254,14 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                window.GetMenu("EDITOR_MENU")->Draw( window.GetRenderer() );
+                window.GetMenu("TEXTURE_SELECTIONS")->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::LEVEL_EDITOR:
                 editor_room.Draw( window.GetRenderer() );
                 editor_room.DrawAxis( window.GetRenderer() );
+
+
 
                 /*
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {

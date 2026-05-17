@@ -24,6 +24,7 @@ Assets/Ui/Icons/Settings.png
 Assets/Backgrounds/MainMenu.png
 Assets/Backgrounds/SettingsMenu.png
 Assets/Backgrounds/PauseMenu.png
+Assets/Backgrounds/Black.png
 
 Assets/WorldBuilding/Ceiling/BaseCeiling.png
 Assets/WorldBuilding/Floor/BaseFloor.png

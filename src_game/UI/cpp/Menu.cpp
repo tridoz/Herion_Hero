@@ -237,7 +237,15 @@ void Menu::LoadButtonsMenuTypeConfiguration() {
 }
 
 void Menu::LoadScrollPaneMenuTypeConfiguration() {
+
 	std::string cmd;
+
+	this->background = this->texture_manager->GetTexture(JSONParser::menu_configuration::GetBackgroundImagePath() );
+	float w = JSONParser::graphics::GetWidth();
+	float h = JSONParser::graphics::GetHeight();
+
+	this->background_rect = {0, 0, w, h};
+
 	try {
 		cmd = JSONParser::menu_configuration::GetCmd();
 	} catch (HerionException::File::FileMalformedException &ex) {
