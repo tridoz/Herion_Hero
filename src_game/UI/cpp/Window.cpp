@@ -204,3 +204,15 @@ void Window::SetMenu(const std::string &name, Menu *menu_to_set) {
 Menu* Window::GetMenu(const std::string &name) {
     return menus.at(name);
 }
+
+bool Window::IsOpen() const {
+    return this->is_open;
+}
+
+void Window::Hide() {
+    this->is_open = false;
+}
+
+void Window::Show() {
+    this->is_open = true;
+}

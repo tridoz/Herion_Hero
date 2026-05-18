@@ -317,7 +317,6 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 					throw;
 				}
 
-
 				SDL_FRect char_rect = {
 					static_cast<float>( (depth*texture_size_file) + (texture_size_file*(i+2) + texture_size_file ) ),
 					static_cast<float>( (previous_element_already_drawn*texture_size_file + texture_size_file*scale*previous_element_already_drawn + diff*scale*previous_element_already_drawn)  ),

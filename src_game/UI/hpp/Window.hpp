@@ -60,6 +60,10 @@ public:
     void SetCursor( const std::string& );
     SDL_Cursor* GetCursor();
 
+    bool IsOpen() const;
+    void Show();
+    void Hide();
+
     void SetMenu( const std::string& name, Menu* menu_to_set );
     Menu* GetMenu( const std::string& name );
 

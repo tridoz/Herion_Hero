@@ -269,13 +269,15 @@ int main ( int argc, char* argv[] ) {
                 editor_room.Draw( window.GetRenderer() );
                 editor_room.DrawAxis( window.GetRenderer() );
 
-                /*
+
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {
-                    editor_win->Clear();
-                    editor_win->GetMenu("")->Draw(editor_win->GetRenderer());
-                    editor_win->Present();
+                    if ( editor_win->IsOpen() ) {
+                        editor_win->Clear();
+                        editor_win->GetMenu("")->Draw(editor_win->GetRenderer());
+                        editor_win->Present();
+                    }
                 }
-                */
+
 
                 break;
 
