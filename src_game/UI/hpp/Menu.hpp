@@ -31,8 +31,11 @@ private:
 		Texture* texture;
 	};
 
+
+
 	struct Directory{
 		int depth;
+		std::string path;
 
 		std::unordered_map <
 			std::string,
@@ -74,7 +77,7 @@ private:
 	void LoadButtonsMenuTypeConfiguration();
 	void LoadScrollPaneMenuTypeConfiguration();
 
-	void CreateButtonsAndTexts(Directory *dir);
+	void CreateButtonsAndTexts(Directory*& dir);
 
 	void LoadShowPaneMenuTypeConfiguration();
 

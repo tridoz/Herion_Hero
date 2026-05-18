@@ -265,7 +265,7 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 
 }
 
-void Menu::CreateButtonsAndTexts( Directory* dir) {
+void Menu::CreateButtonsAndTexts( Directory*& dir) {
 
 	const int texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
 	const int texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
@@ -274,19 +274,29 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 	if (  dir->SubDirectory.size() == 0 ) {
 		//DRAW FILES
 
-		for ( const auto& [name, path, texture] : dir->Files ) {
+		for ( auto& [name, path, texture] : dir->Files ) {
 
 			const int depth = dir->depth;
 			const int previous_element_already_drawn = texts.size() + buttons.size();
 
-			std::string right_name = name.substr(0, name.size()-4 );
 			std::string right_path = path.substr(3, path.size()-3 );
 
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
 
-			for ( int i = 0 ; i<right_name.size() ; i++ ) {
-				char c = right_name[i];
+			Texture* file_txt = texture_manager->GetTexture(right_path);
+			SDL_FRect file_rect = {
+				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*2) ),
+				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
+				static_cast<float>( texture_size_directory * scale ),
+				static_cast<float>( texture_size_directory * scale )
+			};
+
+			textures.push_back(file_txt);
+			rects.push_back(file_rect);
+
+			for ( int i = 0 ; i<name.size() ; i++ ) {
+				char c = name[i];
 
 				Texture* char_tex = nullptr;
 				try {
@@ -309,8 +319,8 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 
 
 				SDL_FRect char_rect = {
-					static_cast<float>( (depth*texture_size_file) + (texture_size_file*i + texture_size_file ) ),
-					static_cast<float>( (previous_element_already_drawn*texture_size_file + texture_size_file*scale*previous_element_already_drawn)  ),
+					static_cast<float>( (depth*texture_size_file) + (texture_size_file*(i+2) + texture_size_file ) ),
+					static_cast<float>( (previous_element_already_drawn*texture_size_file + texture_size_file*scale*previous_element_already_drawn + diff*scale*previous_element_already_drawn)  ),
 					static_cast<float>( texture_size_file*scale ),
 					static_cast<float>( texture_size_file*scale )
 				};
@@ -321,19 +331,32 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 			Text* txt = new Text();
 			txt->SetRects(rects);
 			txt->SetTextures(textures);
-			texts.emplace( right_name, txt );
+			texts.emplace( right_path, txt );
 
 		}
 		return;
 	}
 
-	for ( const auto& [name, dir] : dir->SubDirectory ) {
+	for ( auto& [name, dir] : dir->SubDirectory ) {
 
 		const int depth = dir->depth;
+		const std::string path = dir->path;
 		const int previous_element_already_drawn = texts.size() + buttons.size();
 
 		std::vector<Texture*> textures;
 		std::vector<SDL_FRect> rects;
+
+		Texture* folder_txt = texture_manager->GetTexture("Assets/Ui/Editor/Folder.png");
+		SDL_FRect folder_rect = {
+			static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
+			static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
+			static_cast<float>( texture_size_directory * scale ),
+			static_cast<float>( texture_size_directory * scale )
+		};
+
+		textures.push_back(folder_txt);
+		rects.push_back(folder_rect);
+
 		//DRAWING
 
 		for ( int i = 0 ; i<name.size() ; i++ ) {
@@ -358,9 +381,8 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 				throw;
 			}
 
-
 			SDL_FRect char_rect = {
-				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*i) ),
+				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*(i+1) + texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
 				static_cast<float>( texture_size_directory * scale ),
 				static_cast<float>( texture_size_directory * scale )
@@ -374,7 +396,7 @@ void Menu::CreateButtonsAndTexts( Directory* dir) {
 		Text* txt = new Text();
 		txt->SetRects(rects);
 		txt->SetTextures(textures);
-		texts.emplace(name, txt);
+		texts.emplace( path, txt);
 
 		CreateButtonsAndTexts( dir );
 
@@ -395,9 +417,10 @@ void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_
 	}
 
 	for ( const auto& output_line : cmd_output ) {
-		Directory* dir = new Directory( depth+1, {}, {} );
+		Directory* dir = new Directory( depth+1, {}, {}, {} );
 		if ( !output_line.contains(".png") && !output_line.contains(".txt") ) {
 			directory->SubDirectory.emplace( std::make_pair(output_line, dir) );
+			dir->path = base_directory + output_line + "/";
 			CreateSubDirectories( dir, base_directory + output_line + "/", depth+1 );
 		} else if ( output_line.contains(".png") ) {
 			std::string file_name = base_directory + output_line;
@@ -459,7 +482,7 @@ std::string Menu::GetText( const std::string& text_type ) {
 bool Menu::isspecial(const char c) {
 
 	std::vector<char> special_characters = {
-		'+', '-', '*', '/', '%', '&', '|', '^', '!', '=', '<', '>', '?', '~', '@', '#', '$', '_'
+		'+', '-', '*', '/', '%', '&', '|', '^', '!', '=', '<', '>', '?', '~', '@', '#', '$', '_','.'
 	};
 
 	return std::find(special_characters.begin(), special_characters.end(), c) != special_characters.end();
@@ -485,7 +508,8 @@ std::string Menu::GetNameOfSpecialChar( const char c ) {
 		{'@', "at"},
 		{'#', "hash"},
 		{'$', "dollar"},
-		{'_', "underscore"}
+		{'_', "underscore"},
+		{'.', "dot"}
 	};
 
 	auto it = charNames.find(c);

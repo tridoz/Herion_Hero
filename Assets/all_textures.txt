@@ -21,6 +21,8 @@ Assets/Ui/Icons/Info.png
 Assets/Ui/Icons/MissingHeart.png
 Assets/Ui/Icons/Settings.png
 
+Assets/Ui/Editor/Folder.png
+
 Assets/Backgrounds/MainMenu.png
 Assets/Backgrounds/SettingsMenu.png
 Assets/Backgrounds/PauseMenu.png
@@ -96,6 +98,7 @@ Assets/Font/Game/Numbers/8.png
 Assets/Font/Game/Numbers/9.png
 
 Assets/Font/Editor/SpecialCharacters/space.png
+Assets/Font/Editor/SpecialCharacters/dot.png
 
 Assets/Font/Editor/LowercaseLetters/a.png
 Assets/Font/Editor/LowercaseLetters/b.png

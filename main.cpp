@@ -143,12 +143,16 @@ int main ( int argc, char* argv[] ) {
 
     main_menu.SetTextureManager( &texture_manager );
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
     settings_menu.SetTextureManager( &texture_manager );
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
     pause_menu.SetTextureManager( &texture_manager );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
     editor_menu.SetTextureManager( &texture_manager );
     editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
     texture_selection_menu.SetTextureManager( &texture_manager );
     texture_selection_menu.SetDimension( static_cast<float>( editors_windows.at("TEXTURE_SELECTION")->GetWidth()), static_cast<float>(editors_windows.at("TEXTURE_SELECTION")->GetHeight()) );
 
