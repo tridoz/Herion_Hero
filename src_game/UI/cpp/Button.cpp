@@ -43,7 +43,7 @@ void Button::DrawWithOffset( SDL_Renderer* renderer, const float offset_y, const
         rect.x += offset_x;
         rect.y += offset_y;
 
-        if ( rect.y >= 300 && rect.y <= 900 ) {
+        if ( rect.y >= 0 && rect.y <= 600 ) {
             SDL_SetTextureBlendMode( texture->GetTexture(), SDL_BLENDMODE_BLEND );
             SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
         }

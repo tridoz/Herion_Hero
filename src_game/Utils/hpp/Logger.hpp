@@ -14,8 +14,6 @@
 #include <chrono>
 #include <iomanip>
 
-#include "../../../src_TCP/hpp/TcpClient.hpp"
-
 class Logger {
 private:
 

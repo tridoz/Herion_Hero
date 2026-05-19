@@ -93,7 +93,8 @@ int main ( int argc, char* argv[] ) {
 
     InputProcessor processor;
 
-    TextureManager texture_manager;
+    TextureManager main_texture_manager;
+    TextureManager texture_selection_texture_manager;
 
     RoomManager game_room_manager;
     Room editor_room;
@@ -116,21 +117,25 @@ int main ( int argc, char* argv[] ) {
     window.SetMenu( "SETTINGS_MENU", &settings_menu );
     window.SetMenu( "PAUSE_MENU", &pause_menu );
     window.SetMenu( "EDITOR_MENU", &editor_menu );
-    window.SetMenu( "TEXTURE_SELECTIONS", &texture_selection_menu );
+
+    editors_windows.at("TEXTURE_SELECTION")->SetMenu("TEXTURE_SELECTION", &texture_selection_menu );
+    editors_windows.at("TEXTURE_SELECTION")->SetCurrentMenu("TEXTURE_SELECTION");
 
     window.LoadCursors( "Assets/all_cursors.txt");
 
-    texture_manager.SetRenderer( window.GetRenderer() );
+    main_texture_manager.SetRenderer( window.GetRenderer() );
+    texture_selection_texture_manager.SetRenderer( editors_windows.at("TEXTURE_SELECTION")->GetRenderer() );
 
     try {
-        texture_manager.LoadTextures("Assets/all_textures.txt");
+        main_texture_manager.LoadTextures("Assets/all_textures.txt");
+        texture_selection_texture_manager.LoadTextures("Assets/all_textures.txt");
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
         return -1;
     }
 
-    game_room_manager.SetTextureManager( &texture_manager );
+    game_room_manager.SetTextureManager( &main_texture_manager );
     game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
@@ -141,19 +146,19 @@ int main ( int argc, char* argv[] ) {
         return -1;
     }
 
-    main_menu.SetTextureManager( &texture_manager );
+    main_menu.SetTextureManager( &main_texture_manager );
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-    settings_menu.SetTextureManager( &texture_manager );
+    settings_menu.SetTextureManager( &main_texture_manager );
     settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-    pause_menu.SetTextureManager( &texture_manager );
+    pause_menu.SetTextureManager( &main_texture_manager );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-    editor_menu.SetTextureManager( &texture_manager );
+    editor_menu.SetTextureManager( &main_texture_manager );
     editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-    texture_selection_menu.SetTextureManager( &texture_manager );
+    texture_selection_menu.SetTextureManager( &texture_selection_texture_manager );
     texture_selection_menu.SetDimension( static_cast<float>( editors_windows.at("TEXTURE_SELECTION")->GetWidth()), static_cast<float>(editors_windows.at("TEXTURE_SELECTION")->GetHeight()) );
 
     try {
@@ -182,7 +187,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetRoomManager( &game_room_manager );
 
     player.Spawn( game_room_manager.GetPlayerSpawnCellX() , game_room_manager.GetPlayerSpawnCellY()  );
-    player.SetTextureManager( &texture_manager );
+    player.SetTextureManager( &main_texture_manager );
 
     try {
         player.LoadAnimation( "configs/animations/player.json");
@@ -246,38 +251,38 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::MAIN_MENU:
-                window.GetMenu("MAIN_MENU")->Draw( window.GetRenderer() );
+                window.SetCurrentMenu("MAIN_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::SETTINGS_MENU:
-                window.GetMenu("SETTINGS_MENU")->Draw( window.GetRenderer() );
+                window.SetCurrentMenu("SETTINGS_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::PAUSE_MENU:
-                window.GetMenu("PAUSE_MENU")->Draw( window.GetRenderer() );
+                window.SetCurrentMenu("PAUSE_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                window.GetMenu("EDITOR_MENU")->Draw( window.GetRenderer() );
-                break;
-
-            case Player::GameMode::TEXTURE_SELECTION:
-                window.GetMenu("TEXTURE_SELECTIONS")->Draw( window.GetRenderer() );
+                window.SetCurrentMenu("EDITOR_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::LEVEL_EDITOR:
                 editor_room.Draw( window.GetRenderer() );
                 editor_room.DrawAxis( window.GetRenderer() );
 
-
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {
                     if ( editor_win->IsOpen() ) {
+                        editor_win->SetColor( COLORS::BLACK );
                         editor_win->Clear();
-                        editor_win->GetMenu("")->Draw(editor_win->GetRenderer());
+                        editor_win->GetCurrentMenu()->Draw(editor_win->GetRenderer());
                         editor_win->Present();
+                        editor_win->Sleep();
                     }
                 }
-
 
                 break;
 

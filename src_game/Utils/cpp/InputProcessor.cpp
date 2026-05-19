@@ -79,8 +79,27 @@ void InputProcessor::process_in_game( int scancode ) {
 }
 
 void InputProcessor::process_level_editor(int scancode) {
-    if ( scancode == SDL_SCANCODE_ESCAPE )
-        this->player->SetGameMode( Player::GameMode::EDITOR_MENU );
+    switch ( scancode ) {
+        case SDL_SCANCODE_ESCAPE:
+            this->player->SetGameMode( Player::GameMode::EDITOR_MENU ) ;
+            for ( auto& [name, win] : window_tools ) {
+                win->Hide();
+            }
+            break;
+
+        case SDL_SCANCODE_T: {
+            Window* win = this->window_tools.at("TEXTURE_SELECTION");
+            if ( win->IsOpen() ) {
+                win->Hide();
+            } else {
+                win->Show();
+            }
+            break;
+        }
+
+        case SDL_SCANCODE_P:
+            break;
+    }
 }
 
 
@@ -193,7 +212,7 @@ void InputProcessor::Process() {
 
         case SDL_EVENT_MOUSE_WHEEL:
 
-            if ( player->GetGameMode() == Player::GameMode::TEXTURE_SELECTION ) {
+            if ( window_tools.at("TEXTURE_SELECTION")->IsOpen() ) {
                 for ( const auto& [name, menu] : menus ) {
                     menu->SetMouseOffset( event.wheel.y);
                 }

@@ -1,6 +1,8 @@
 #ifndef HERION_HERO_PLAYER_HPP
 #define HERION_HERO_PLAYER_HPP
 
+#include <unordered_map>
+
 #include "../../Utils/hpp/Animation.hpp"
 #include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../../Utils/hpp/FileOpener.hpp"
@@ -20,7 +22,6 @@ public:
 		PAUSE_MENU,
 		EDITOR_MENU,
 		ROOM_SELECTION,
-		TEXTURE_SELECTION,
 		EDITOR,
 		INVENTORY_MENU,
 		LEVEL_EDITOR,

@@ -55,12 +55,6 @@ void Logger::LogOk( const std::time_t log_time, const std::string& type, const s
         "[ " + ok_type + " ] { " + time + "} => " + class_name + "::" + function_name + "\n" +
         log_message + "\n";
 
-    if ( http_logging_enabled ) {
-        auto& client = TcpClient::GetInstance();
-        final_log_message += "\n<end>\n";
-        client.Send( "LOG_PORT", final_log_message);
-    }
-
     if ( file_logging_enabled ) {
         std::ofstream output( "../logs/Herion_Hero_Ok.log" , std::ios::app );
         std::ofstream output_temp( "../logs/Herion_Hero_Ok_temp.log", std::ios::app );
@@ -86,11 +80,6 @@ void Logger::LogErr( const std::time_t log_time, const std::string& type, const 
         "[ " + err_type + " ] { " + time + "} => " + class_name + "::" + function_name + "\n" +
         log_message + "\n";
 
-    if ( http_logging_enabled ) {
-        auto& client = TcpClient::GetInstance();
-        final_log_message += "\n<end>\n";
-        client.Send( "LOG_PORT", final_log_message);
-    }
 
     if ( file_logging_enabled ) {
         std::ofstream output( "../logs/Herion_Hero_Err.log" , std::ios::app );

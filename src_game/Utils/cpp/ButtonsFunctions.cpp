@@ -49,9 +49,7 @@ void ButtonsFunctions::OpenAnimationEditor() {
 void ButtonsFunctions::OpenEditorMenu() {
     player->SetGameMode( Player::GameMode::EDITOR_MENU );
 }
-void ButtonsFunctions::OpenTextureSelectionMenu() {
-    player->SetGameMode( Player::GameMode::TEXTURE_SELECTION );
-}
+
 void ButtonsFunctions::OpenSettings() {
     player->SetGameMode( Player::GameMode::SETTINGS_MENU );
 }

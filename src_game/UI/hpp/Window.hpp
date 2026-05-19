@@ -28,6 +28,7 @@ private:
     SDL_Renderer* renderer = nullptr;
 
     std::unordered_map< std::string, Menu* > menus;
+    Menu* current_menu;
 
     std::unordered_map<std::string, SDL_Cursor* > Cursors;
     std::string current_cursor_name;
@@ -133,11 +134,17 @@ public:
     void SetMenu( const std::string& name, Menu* menu_to_set );
 
     /**
+     * @brief Set current menu that is being drawn
+     * @param name Menu name
+     */
+    void SetCurrentMenu( const std::string& name);
+
+    /**
      * @brief Return a pointer a menu based on a given name
      * @param name Name of the menu to give
      * @return Menu*
      */
-    Menu* GetMenu( const std::string& name );
+    Menu* GetCurrentMenu() const;
 
 };
 

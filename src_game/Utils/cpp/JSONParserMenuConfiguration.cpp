@@ -46,14 +46,6 @@ std::string JSONParser::menu_configuration::GetCmd() {
     return config_file["cmd"];
 }
 
-int JSONParser::menu_configuration::GetTabIndentSubdirectory() {
-    if ( !config_file.contains("tab_indent_subdirectory") ) {
-        THROW_FILE_MALFORMED( config_file_path + "\n => tab_indent_subdirectory");
-    }
-
-    return config_file["tab_indent_subdirectory"];
-}
-
 int JSONParser::menu_configuration::GetDirectoryTextureSize() {
     if ( !config_file.contains("texture_size_directory") ) {
         THROW_FILE_MALFORMED( config_file_path + "\t=> texture_size_directory");

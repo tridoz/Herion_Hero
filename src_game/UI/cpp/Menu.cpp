@@ -16,7 +16,6 @@ Menu::Menu() {
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu );
 	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
-	buttons_functions.emplace("OPEN_TEXTURE_SELECTION_MENU", ButtonsFunctions::OpenTextureSelectionMenu);
 	buttons_functions.emplace( "OPEN_LEVEL_EDITOR", ButtonsFunctions::OpenLevelEditor );
 	buttons_functions.emplace( "OPEN_ANIMATION_EDITOR", ButtonsFunctions::OpenAnimationEditor );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );

@@ -82,7 +82,6 @@ Window::Window(const std::string &title, int width, int height) {
         return;
     }
 
-
     this->width = width;
     this->height = height;
 
@@ -201,8 +200,12 @@ void Window::SetMenu(const std::string &name, Menu *menu_to_set) {
     menus.emplace( name, menu_to_set );
 }
 
-Menu* Window::GetMenu(const std::string &name) {
-    return menus.at(name);
+void Window::SetCurrentMenu(const std::string &name) {
+    this->current_menu = menus.at(name);
+}
+
+Menu* Window::GetCurrentMenu() const {
+    return this->current_menu;
 }
 
 bool Window::IsOpen() const {
@@ -210,9 +213,11 @@ bool Window::IsOpen() const {
 }
 
 void Window::Hide() {
+    SDL_HideWindow(window);
     this->is_open = false;
 }
 
 void Window::Show() {
+    SDL_ShowWindow(window);
     this->is_open = true;
 }
