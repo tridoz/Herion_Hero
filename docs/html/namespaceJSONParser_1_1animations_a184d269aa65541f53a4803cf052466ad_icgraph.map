@@ -1,0 +1,5 @@
+<map id="JSONParser::animations::GetAnimationNumbers" name="JSONParser::animations::GetAnimationNumbers">
+<area shape="rect" id="Node000001" title="Get how manu animations there are." alt="" coords="222,5,400,50"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#ae3f4e407f274c6136e86c88aa7511ff0" title="Load animation based on a .json configuration file." alt="" coords="5,14,174,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,28,174,30,174,25,209,27"/>
+</map>

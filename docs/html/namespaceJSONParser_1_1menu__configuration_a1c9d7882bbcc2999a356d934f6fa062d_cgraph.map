@@ -1,0 +1,5 @@
+<map id="JSONParser::menu_configuration::SetConfigFile" name="JSONParser::menu_configuration::SetConfigFile">
+<area shape="rect" id="Node000001" title="Set the .json file to parse." alt="" coords="5,5,238,50"/>
+<area shape="rect" id="Node000002" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="286,14,473,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,25,272,28,267,28,238,30"/>
+</map>

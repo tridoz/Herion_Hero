@@ -26,15 +26,45 @@ private:
 public:
 	Animation();
 
+	/**
+	 * @brief Add a frame to the animation
+	 * @param new_texture Frame to add
+	 */
 	void AddFrameTexture( Texture* new_texture );
 
+	/**
+	 * @brief Return the current animation frame
+	 * @return Texture*
+	 */
 	Texture* GetCurrentFrameTexture() const;
 
+	/**
+	 * @brief Update the current frame
+	 */
 	void Update();
+
+	/**
+	 * @brief Set the frame rate for the animation
+	 * @param new_frame_rate
+	 */
 	void SetFrameRate( int new_frame_rate );
+
+	/**
+	 * @brief Set how many frame the animation has
+	 * @param new_frame_number Number of frames
+	 */
 	void SetAnimationFrameNUmber( int new_frame_number );
 
+	/**
+	 * @brief Return the current frame texture height
+	 * @return float
+	 */
 	float GetCurrentFrameTextureHeight() const;
+
+	/**
+	 * @brief Return the current frame texture width
+	 * @return float
+	 */
 	float GetCurrentFrameTextureWidth() const;
 };
 

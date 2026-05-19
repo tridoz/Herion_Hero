@@ -1,0 +1,45 @@
+\doxysection{Tile.\+cpp}
+\hypertarget{Tile_8cpp_source}{}\label{Tile_8cpp_source}\index{src\_game/WorldBuilding/cpp/Tile.cpp@{src\_game/WorldBuilding/cpp/Tile.cpp}}
+\doxymbox{\hyperlink{Tile_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 17/11/2025.}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Tile_8hpp}{../hpp/Tile.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00007}\doxymbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{00007}}\ \doxymbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile::Tile}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00008}00008\ \ \ \ \ \doxymbox{\hyperlink{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2}{isWalkable}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00009}00009\ \ \ \ \ \doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}}\ =\ \{0,0,0,0\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00012}\doxymbox{\hyperlink{classTile_a98634abbd93fa13d0578d7103202d03d}{00012}}\ \doxymbox{\hyperlink{classTile_a98634abbd93fa13d0578d7103202d03d}{Tile::\string~Tile}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00013}00013\ \ \ \ \ \doxymbox{\hyperlink{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2}{isWalkable}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00014}00014\ \ \ \ \ \doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}}\ =\ \{0,0,0,0\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00017}\doxymbox{\hyperlink{classTile_a75702d9761f10cc38f8aa55287e36ae3}{00017}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTile_a75702d9761f10cc38f8aa55287e36ae3}{Tile::SetTexture}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classTexture}{Texture}}*\ new\_texture)\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00018}00018\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTile_ae7373482f8f538f904436009853a675b}{texture}}\ =\ new\_texture;}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00021}\doxymbox{\hyperlink{classTile_a10f7e93a1a611fa88dae9e33a3b70c06}{00021}}\ SDL\_FRect*\ \doxymbox{\hyperlink{classTile_a10f7e93a1a611fa88dae9e33a3b70c06}{Tile::GetRect}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \&\doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00025}\doxymbox{\hyperlink{classTile_a10dffec2aec5c837de1223b8d67ae597}{00025}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTile_a10dffec2aec5c837de1223b8d67ae597}{Tile::Draw}}(SDL\_Renderer*\ renderer)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00026}00026\ \ \ \ \ SDL\_SetTextureBlendMode(\ \doxymbox{\hyperlink{classTile_ae7373482f8f538f904436009853a675b}{texture}}-\/>GetTexture(),\ SDL\_BLENDMODE\_BLEND\ );}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00027}00027\ \ \ \ \ SDL\_RenderTexture(\ renderer,\ \doxymbox{\hyperlink{classTile_ae7373482f8f538f904436009853a675b}{texture}}-\/>GetTexture(),\ \textcolor{keyword}{nullptr},\ \&\doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}}\ );}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00030}\doxymbox{\hyperlink{classTile_a8e4c827ca119d364c50059b02b804903}{00030}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classTile_a8e4c827ca119d364c50059b02b804903}{Tile::IsWalkable}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2}{isWalkable}};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00034}\doxymbox{\hyperlink{classTile_a47313d42887b17acb60733dde55134d5}{00034}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTile_a47313d42887b17acb60733dde55134d5}{Tile::SetRect}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ w,\ \textcolor{keywordtype}{float}\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00035}00035\ \ \ \ \ \doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}}\ =\ \{\ x,y,w,h\ \};}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{Tile_8cpp_source_l00039}00039\ }
+
+\end{DoxyCode}

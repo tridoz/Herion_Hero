@@ -79,8 +79,6 @@ void Menu::LoadCfg(const std::string& cfg_json_filepath) {
 		LoadButtonsMenuTypeConfiguration();
 	} else if ( this->type == "scroll_pane_menu" ) {
 		LoadScrollPaneMenuTypeConfiguration();
-	} else if ( this->type == "show_pane_menu" ) {
-		LoadShowPaneMenuTypeConfiguration();
 	}
 
 }
@@ -430,8 +428,6 @@ void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_
 	}
 
 }
-
-void Menu::LoadShowPaneMenuTypeConfiguration() {}
 
 void Menu::Draw( SDL_Renderer* renderer ) const {
 

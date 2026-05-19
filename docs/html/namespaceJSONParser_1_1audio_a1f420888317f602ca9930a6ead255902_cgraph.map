@@ -1,0 +1,9 @@
+<map id="JSONParser::audio::ToggleMute" name="JSONParser::audio::ToggleMute">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,24,152,68"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#ac8b6378bb5ffa1af9f64821aa3c7f9ea" title="Log that something went wrong." alt="" coords="200,32,314,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,43,187,45,182,46,153,48"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="362,5,513,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,35,349,32,344,33,315,40"/>
+<area shape="rect" id="Node000004" href="$classLogger.html#ad6de808cee6c544b62b7a843a7918a78" title="Return the given string with format code to make it red." alt="" coords="371,57,504,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="315,51,358,60,353,60,314,57"/>
+</map>

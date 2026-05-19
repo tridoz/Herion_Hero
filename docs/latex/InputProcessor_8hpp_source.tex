@@ -1,0 +1,92 @@
+\doxysection{Input\+Processor.\+hpp}
+\hypertarget{InputProcessor_8hpp_source}{}\label{InputProcessor_8hpp_source}\index{src\_game/Utils/hpp/InputProcessor.hpp@{src\_game/Utils/hpp/InputProcessor.hpp}}
+\doxymbox{\hyperlink{InputProcessor_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 16/11/2025.}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ HERION\_HERO\_INPUTINTERPRETER\_HPP}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ HERION\_HERO\_INPUTINTERPRETER\_HPP}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Player_8hpp}{../../Entities/hpp/Player.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{RoomManager_8hpp}{../../WorldBuilding/hpp/RoomManager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Menu_8hpp}{../../UI/hpp/Menu.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Window_8hpp}{../../UI/hpp/Window.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00019}\doxymbox{\hyperlink{InputProcessor_8hpp_a4cb85da769c266ad2f9c53fb1b9930bc}{00019}}\ \textcolor{preprocessor}{\#define\ MAX\_SCANCODES\ 512}}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00021}\doxymbox{\hyperlink{classInputProcessor}{00021}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classInputProcessor_a5ace83d4870187fc84e0185cce4033a3}{InputProcessor}}\ \{}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00022}00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00023}\doxymbox{\hyperlink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{00023}}\ \ \ \ \ \doxymbox{\hyperlink{classPlayer}{Player}}*\ \doxymbox{\hyperlink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{player}}\{\};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00024}\doxymbox{\hyperlink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{00024}}\ \ \ \ \ \doxymbox{\hyperlink{classRoomManager}{RoomManager}}*\ \doxymbox{\hyperlink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{room\_manager}}\{\};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00025}\doxymbox{\hyperlink{classInputProcessor_aa82d73886c268d7df003d907463210a2}{00025}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_aa82d73886c268d7df003d907463210a2}{key\_left\_pressed}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00026}\doxymbox{\hyperlink{classInputProcessor_af41b0f034baae2799af6c359bc67b2de}{00026}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_af41b0f034baae2799af6c359bc67b2de}{key\_right\_pressed}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00028}\doxymbox{\hyperlink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{00028}}\ \ \ \ \ std::unordered\_map\ <\ std::string,\ \ Window*\ >\ \doxymbox{\hyperlink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{window\_tools}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00031}\doxymbox{\hyperlink{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}{00031}}\ \ \ \ \ SDL\_Event\ \textcolor{keyword}{event}\{\};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00032}\doxymbox{\hyperlink{classInputProcessor_a2ba81a12dc86a4565838cf7f458cba04}{00032}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_a2ba81a12dc86a4565838cf7f458cba04}{keys}}[\ \doxymbox{\hyperlink{InputProcessor_8hpp_a4cb85da769c266ad2f9c53fb1b9930bc}{MAX\_SCANCODES}}\ ]\ =\ \{\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00034}\doxymbox{\hyperlink{classInputProcessor_a762052c2ee570c15f78066fb5b531b5a}{00034}}\ \ \ \ \ std::unordered\_map<\ std::string,\ Menu*\ >\ \doxymbox{\hyperlink{classInputProcessor_a762052c2ee570c15f78066fb5b531b5a}{menus}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00036}\doxymbox{\hyperlink{classInputProcessor_a43298f28775634885ea1e4fd2cc700b5}{00036}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_a43298f28775634885ea1e4fd2cc700b5}{running}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00038}\doxymbox{\hyperlink{classInputProcessor_a392c4c0ae50c6dfc4e275aa934e784d3}{00038}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_a392c4c0ae50c6dfc4e275aa934e784d3}{mouse\_left\_pressed}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00039}\doxymbox{\hyperlink{classInputProcessor_ab3b0dfdb3775fa1fd03edba6aaefd903}{00039}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_ab3b0dfdb3775fa1fd03edba6aaefd903}{mouse\_right\_pressed}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa}{process\_key\_down}}(\ \textcolor{keywordtype}{int}\ scancode\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_afbe094d08ae7ebcfdd090bbdef337e93}{process\_key\_up}}(\ \textcolor{keywordtype}{int}\ scancode\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a114b9babc2122939508524b857ea938d}{process\_main\_menu}}(\ \textcolor{keywordtype}{int}\ scancode\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a7043d5a1d71d66c817e741e4040fa13d}{process\_level\_editor}}(\ \textcolor{keywordtype}{int}\ scancode\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a667ebe6fb222f995f63d3ebc0e61a4f2}{process\_in\_game}}(\ \textcolor{keywordtype}{int}\ scancode\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb}{process\_mouse\_left\_pressed}}();}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_af819365fd6c13cd4b51ac36cac92d736}{process\_mouse\_right\_pressed}}();}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00081}\doxymbox{\hyperlink{classInputProcessor_a7e4df1ca53050a6140059d3dd4ceef8a}{00081}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classInputProcessor_a7e4df1ca53050a6140059d3dd4ceef8a}{mouse\_x}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00082}\doxymbox{\hyperlink{classInputProcessor_a33ad159b4d2ec30b01642ecda65fa43a}{00082}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classInputProcessor_a33ad159b4d2ec30b01642ecda65fa43a}{mouse\_y}};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00084}00084\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00085}00085\ \ \ \ \ \doxymbox{\hyperlink{classInputProcessor_a5ace83d4870187fc84e0185cce4033a3}{InputProcessor}}();}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00086}00086\ \ \ \ \ \doxymbox{\hyperlink{classInputProcessor_a8beb9f13c7a23b0cdd941d3c043cd9c2}{\string~InputProcessor}}();}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_abf8314a7889388f29c08389b5dc1183f}{SetEvent}}(\ SDL\_Event\&\ \doxymbox{\hyperlink{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}{event}}\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_afffd0f8224b1c8e7b95abc267b894c4e}{Process}}()\ ;}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00103}00103\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_a826463b8a94eb93900d1c8872698cfa7}{ShouldQuit}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00109}00109\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_af67cb8f7fde349e8ea88d5a3c0630824}{isMouseLeftPressed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00115}00115\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInputProcessor_a75123feb8e65f6bfffa20c6501be6ec1}{isMouseRightPressed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a2d7d3b8b4c3f0eb5daff06a482041d23}{update\_player\_movement}}(\textcolor{keywordtype}{float}\ delta\_time)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a86ef56f07d5a6bcd7375a252dce81ab0}{SetPlayer}}(\ \doxymbox{\hyperlink{classPlayer}{Player}}*\ \doxymbox{\hyperlink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{player}}\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a7b2bf0b166a32622f3d1fb584df599c3}{SetRoomManager}}(\ \doxymbox{\hyperlink{classRoomManager}{RoomManager}}*\ \doxymbox{\hyperlink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{room\_manager}}\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a71b9f63233b22f9ff9b8ec8a7ca6a739}{SetWindowTools}}(\ std::unordered\_map<\ std::string,\ \ Window*\ >\ \doxymbox{\hyperlink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{window\_tools}}\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInputProcessor_a857f03fb8cab9f8bd38ccf814d24e498}{SetMenus}}(\ std::string\ name,\ \doxymbox{\hyperlink{classMenu}{Menu}}*\ menu\ );}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00149}00149\ \};}
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{InputProcessor_8hpp_source_l00152}00152\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//HERION\_HERO\_INPUTINTERPRETER\_HPP}}
+
+\end{DoxyCode}

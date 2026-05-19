@@ -1,0 +1,98 @@
+# ============================================================
+# PROJECT BASIC INFO
+# ============================================================
+
+PROJECT_NAME           = "HerionHero"
+PROJECT_BRIEF          = "C++ SDL3 Game Project"
+PROJECT_VERSION        = 1.0
+
+OUTPUT_DIRECTORY       = docs
+
+# ============================================================
+# INPUT
+# ============================================================
+
+INPUT                  = src_game
+
+FILE_PATTERNS         = *.hpp *.cpp
+
+RECURSIVE             = YES
+
+# ============================================================
+# PARSING
+# ============================================================
+
+# Include tutto (utile se commenti non sono perfetti)
+EXTRACT_ALL           = YES
+EXTRACT_PRIVATE       = YES
+EXTRACT_STATIC        = YES
+EXTRACT_ANON_NSPACES  = YES
+
+# Migliora parsing C++
+IDL_PROPERTY_SUPPORT  = YES
+
+# ============================================================
+# OUTPUT
+# ============================================================
+
+GENERATE_HTML         = YES
+GENERATE_LATEX        = YES
+GENERATE_XML          = NO
+GENERATE_MAN          = NO
+
+HTML_OUTPUT           = html
+
+QUIET                 = NO
+WARNINGS              = YES
+WARN_IF_UNDOCUMENTED  = YES
+WARN_IF_DOC_ERROR     = YES
+
+# ============================================================
+# SOURCE BROWSER
+# ============================================================
+
+SOURCE_BROWSER        = YES
+INLINE_SOURCES        = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION   = YES
+
+# ============================================================
+# DIAGRAMMI (Graphviz)
+# ============================================================
+
+HAVE_DOT              = YES
+DOT_IMAGE_FORMAT      = svg
+
+CLASS_DIAGRAMS        = YES
+UML_LOOK              = YES
+UML_LIMIT_NUM_FIELDS  = 10
+
+CALL_GRAPH            = YES
+CALLER_GRAPH          = YES
+
+COLLABORATION_GRAPH   = YES
+
+DOT_GRAPH_MAX_NODES   = 100
+
+# ============================================================
+# SEARCH
+# ============================================================
+
+SEARCHENGINE          = YES
+
+# ============================================================
+# OUTPUT STYLE
+# ============================================================
+
+GENERATE_TREEVIEW     = YES
+FULL_SIDEBAR          = YES
+
+# ============================================================
+# MISC
+# ============================================================
+
+CASE_SENSE_NAMES      = YES
+JAVADOC_AUTOBRIEF     = YES
+
+SORT_MEMBER_DOCS      = YES
+SORT_BRIEF_DOCS       = YES

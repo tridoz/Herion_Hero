@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['increaseautosavetime_0',['IncreaseAutoSaveTime',['../classButtonsFunctions.html#a2c570820a4ba4725e7e3c1c0d493ba48',1,'ButtonsFunctions']]],
+  ['increasebrightness_1',['IncreaseBrightness',['../classButtonsFunctions.html#a3c2f92ce47c5476a57baaa49323b6b64',1,'ButtonsFunctions']]],
+  ['increasedifficulty_2',['IncreaseDifficulty',['../classButtonsFunctions.html#afb2baeaad68ac64e3db5a2cb9fd31508',1,'ButtonsFunctions']]],
+  ['increaseeffectsvolume_3',['IncreaseEffectsVolume',['../classButtonsFunctions.html#a4253ecb1827b40b3a566317fecd7f974',1,'ButtonsFunctions']]],
+  ['increasefpslimit_4',['IncreaseFPSLimit',['../namespaceJSONParser_1_1graphics.html#a0c5f2468466c8f0dace761776a496912',1,'JSONParser::graphics']]],
+  ['increaseframelimit_5',['IncreaseFrameLimit',['../classButtonsFunctions.html#ae72a952f17eaa24ff784df9b84bd89c2',1,'ButtonsFunctions']]],
+  ['increasegeneralaudio_6',['IncreaseGeneralAudio',['../classButtonsFunctions.html#a0f725248859c3d1042284d1b39f87479',1,'ButtonsFunctions']]],
+  ['increasemastervolume_7',['IncreaseMasterVolume',['../namespaceJSONParser_1_1audio.html#a804e545a487ef040f75b72d59934eb62',1,'JSONParser::audio']]],
+  ['increasemusicvolume_8',['IncreaseMusicVolume',['../classButtonsFunctions.html#a656390a74e0020859ba9718f76c78450',1,'ButtonsFunctions::IncreaseMusicVolume()'],['../namespaceJSONParser_1_1audio.html#a192f5ecaa6a7400284f310352c77ffea',1,'JSONParser::audio::IncreaseMusicVolume()']]],
+  ['increaseresolution_9',['IncreaseResolution',['../classButtonsFunctions.html#a2717429c721c61a434dfe33a344f2d61',1,'ButtonsFunctions::IncreaseResolution()'],['../namespaceJSONParser_1_1graphics.html#a4ac645383683eb18951645a178ae6c64',1,'JSONParser::graphics::IncreaseResolution()']]],
+  ['increasesfxvolume_10',['IncreaseSFXVolume',['../namespaceJSONParser_1_1audio.html#a01f3eddea290ad5f7c113407c4aaf967',1,'JSONParser::audio']]],
+  ['inputprocessor_11',['InputProcessor',['../classInputProcessor.html#a5ace83d4870187fc84e0185cce4033a3',1,'InputProcessor']]],
+  ['ismouseleftpressed_12',['isMouseLeftPressed',['../classInputProcessor.html#af67cb8f7fde349e8ea88d5a3c0630824',1,'InputProcessor']]],
+  ['ismouserightpressed_13',['isMouseRightPressed',['../classInputProcessor.html#a75123feb8e65f6bfffa20c6501be6ec1',1,'InputProcessor']]],
+  ['isopen_14',['IsOpen',['../classWindow.html#ad735ec09123e1633186b3bbcfcb8365d',1,'Window']]],
+  ['isspecial_15',['isspecial',['../classMenu.html#a35c051d11a6e82ba9cff0215aac903ed',1,'Menu']]],
+  ['iswalkable_16',['IsWalkable',['../classTile.html#a8e4c827ca119d364c50059b02b804903',1,'Tile']]]
+];

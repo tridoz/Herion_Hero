@@ -13,7 +13,6 @@ const std::string Logger::GREEN = "\033[32m";
 const std::string Logger::MAGENTA = "\033[35m";
 const std::string Logger::CLEAR = "\033[0m";
 
-bool Logger::http_logging_enabled = false;
 bool Logger::file_logging_enabled = false;
 bool Logger::stdout_logging_enabled = false;
 
@@ -138,18 +137,6 @@ void Logger::EnableSTDOUTLogging() {
 
 void Logger::DisableSTDOUTLogging() {
     stdout_logging_enabled = false;
-}
-
-
-void Logger::EnableHTTPLogging() {
-    auto& client = TcpClient::GetInstance();
-    client.Init();
-    client.ConnectAll( std::getenv("SERVER_IP") );
-    http_logging_enabled = true;
-}
-
-void Logger::DisableHTTPLogging() {
-    http_logging_enabled = false;
 }
 
 void Logger::ClearTempLoggingFiles() {

@@ -1,0 +1,36 @@
+<map id="JSONParser::graphics::GetHeight" name="JSONParser::graphics::GetHeight">
+<area shape="rect" id="Node000001" title="Function to get the height of the screen." alt="" coords="740,246,898,291"/>
+<area shape="rect" id="Node000002" href="$classRoom.html#a9ed265181375e0180b9f5f6465e41f1f" title="Draw the axis for each tile (used only in Level Editor mode)." alt="" coords="498,5,627,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="805,230,789,189,765,138,733,89,713,67,691,48,660,32,627,24,626,19,662,27,694,44,717,63,737,86,770,136,794,187,810,232"/>
+<area shape="rect" id="Node000003" href="$classRoomManager.html#ae0c3b21f6b4ed5da9980579546f316cb" title="Generated the room for the Level Editor." alt="" coords="432,57,692,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="799,232,781,201,757,164,726,129,691,100,668,88,667,83,694,96,730,125,761,161,785,198,804,234"/>
+<area shape="rect" id="Node000004" href="$classRoomManager.html#a1a300768d12f554c90ca741390d676b2" title="Generate a room in a given direction." alt="" coords="451,109,673,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="789,234,746,191,720,169,691,151,666,140,666,135,694,146,723,165,750,187,794,234"/>
+<area shape="rect" id="Node000009" href="$classRoomManager.html#a14af538fbb5d35cdd8896b92c5c4a49d" title="Return the Y cell cordinate in which the player spawn." alt="" coords="446,161,678,206"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="748,240,691,220,654,209,654,203,693,215,754,240"/>
+<area shape="rect" id="Node000010" href="$classMenu.html#a865ce66eae83e0c1ef18aec2794a2ddc" title="Return the text for DYNAMIC_TEXT type in che menu configuration .json files or &quot;error&quot;." alt="" coords="504,229,620,257"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="722,260,621,251,620,246,727,259"/>
+<area shape="rect" id="Node000013" href="$classMenu.html#a09bd630ceb9e1b6356f9788567cc5fcf" title="Load the menu if it is a scroll pane menu." alt="" coords="178,289,378,334"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="723,278,379,306,378,301,727,274"/>
+<area shape="rect" id="Node000014" href="$classWindow.html#a42024a5e1b43988a373f016e04a6d23c" title="Resize the Window." alt="" coords="500,331,624,358"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="745,296,693,315,625,333,624,328,692,310,740,297"/>
+<area shape="rect" id="Node000015" href="$classRoomManager.html#a44b7436bff5c83a02b24c44126f57545" title="Resize the Level Editor room." alt="" coords="440,383,684,410"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="788,301,745,340,694,372,660,385,658,380,691,367,742,336,783,303"/>
+<area shape="rect" id="Node000016" href="$classRoomManager.html#a2fb9b1d4d70710eb6c38f1e18aceef7a" title="Resize the current room." alt="" coords="460,435,665,462"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="800,303,757,367,728,398,694,424,666,437,664,432,691,420,724,394,753,364,796,306"/>
+<area shape="rect" id="Node000017" href="$classWindow.html#afbbf6fabca06597e070b5a9488d7f8aa" title=" " alt="" coords="496,487,629,514"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="808,304,791,347,767,393,735,438,694,476,663,492,630,500,629,495,661,487,691,472,731,435,763,390,787,344,804,307"/>
+<area shape="rect" id="Node000005" href="$classRoomManager.html#a7ea2e68d618617a00a3640dc96c3a58c" title="Generate a room in the down direction if not present and set to current_room to it." alt="" coords="188,8,368,36"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="445,104,431,99,415,87,406,74,397,62,383,51,357,39,355,34,385,46,401,58,410,71,419,83,433,94,450,103"/>
+<area shape="rect" id="Node000006" href="$classRoomManager.html#ac9d2c260ac1d6beb105c9a522e9cd89e" title="Generate a room in the left direction if not present and set to current_room to it." alt="" coords="194,60,362,88"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="461,107,362,91,361,86,466,105"/>
+<area shape="rect" id="Node000007" href="$classRoomManager.html#a2c6ebc2fdf995e2ae8884db8e027ffed" title="Generate a room in the right direction if not present and set to current_room to it." alt="" coords="190,112,366,140"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="433,126,367,128,366,122,438,123"/>
+<area shape="rect" id="Node000008" href="$classRoomManager.html#a117d404dfefa5259fe30f7fe16a91ade" title="Generate a room in the up direction if not present and set to current_room to it." alt="" coords="198,164,358,192"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="469,142,354,166,352,161,474,139"/>
+<area shape="rect" id="Node000011" href="$classMenu.html#a7bb9b117f29324f4e112b756cd17b706" title="Load the menu if it is a button menu." alt="" coords="172,220,384,264"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="486,244,385,245,384,240,491,242"/>
+<area shape="rect" id="Node000012" href="$classMenu.html#aa3023f7d7f43137acb4a17b74f81224c" title="Load the menu based on the path of a given .json file." alt="" coords="5,263,124,290"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="154,263,125,269,123,265,158,260"/>
+<area shape="poly" id="edge13_Node000013_Node000012" title=" " alt="" coords="160,294,125,289,123,284,165,291"/>
+</map>

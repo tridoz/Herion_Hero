@@ -1,0 +1,5 @@
+<map id="Button::DrawWithOffset" name="Button::DrawWithOffset">
+<area shape="rect" id="Node000001" title="Draw the Button shifted of an offset and only if in certain coordinates." alt="" coords="5,5,182,33"/>
+<area shape="rect" id="Node000002" href="$classTexture.html#a1481e2e0c45dc7bc7777ec2825b66670" title="Return the SDL_Texture field." alt="" coords="230,5,378,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,17,217,19,212,19,182,22"/>
+</map>

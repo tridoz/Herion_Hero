@@ -1,0 +1,1050 @@
+\doxysection{Player Class Reference}
+\hypertarget{classPlayer}{}\label{classPlayer}\index{Player@{Player}}
+
+
+{\ttfamily \+\#include $<$Player.\+hpp$>$}
+
+
+
+Collaboration diagram for Player:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classPlayer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} \{ \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca83c9f5692281bf59471b13dfddb3af91}{WEST}}
+, \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca45ac78bf3d4882ac520f4e7fb08d55c5}{EAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em Direction in which the player can be facing. \end{DoxyCompactList}\item 
+enum class \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} \{ \newline
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292daa16d505f03a4b6f35486f65f6a61317e}{MAIN\+\_\+\+MENU}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da1e8650358b792aa7982a1c95b0821d82}{SETTINGS\+\_\+\+MENU}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da7a34b3b426f61a72665f1faba0794e43}{PAUSE\+\_\+\+MENU}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da9a3a323c5ad8b09d19bbdfcaef02740d}{EDITOR\+\_\+\+MENU}}
+, \newline
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da733e008b14bc4839a889a1c929a0a950}{ROOM\+\_\+\+SELECTION}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da8261e73036afd126e39c4e29f1993cc4}{TEXTURE\+\_\+\+SELECTION}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da4698850447aa09571776addcb6a2911b}{EDITOR}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da2d0e661f07d63b0a21dba6a05b28bbd1}{INVENTORY\+\_\+\+MENU}}
+, \newline
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da173db681331c8438d6850ead4978e6d3}{LEVEL\+\_\+\+EDITOR}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da55ac05b1995348fd3001c13bfc2d2c21}{ANIMATION\+\_\+\+EDITOR}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292da1315b693a1d5d4bbeb52bbfa9c23e49b}{IN\+\_\+\+GAME}}
+, \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292daa42b2fb0e720a080e79a92f4ca97d927}{EXIT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Game Mode in which the player can be. \end{DoxyCompactList}\item 
+enum class \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} \{ \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9aa5daf7f2ebbba4975d61dab1c40188c7}{IDLE}}
+, \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9a855520d2a5b0b1a64b939e7e30889e2a}{RUN}}
+, \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9abf5ddcfbfeb1c3affd54efad7069aac9}{DEATH}}
+, \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9ac6ddd0f72ff2fd344693b9ca8d483871}{ATTACK}}
+ \}
+\begin{DoxyCompactList}\small\item\em States in which the player can be. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classPlayer_a6dfdb22d584e8d089bf66829b6f2b5cf}{Draw}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer)
+\begin{DoxyCompactList}\small\item\em Draw the player. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} \doxymbox{\hyperlink{classPlayer_a44ad33a6be88a2e22370bff8823e51dc}{Get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Return the current \doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} \doxymbox{\hyperlink{classPlayer_a8ea2db4677fe925d4fe7f3215f30a065}{Get\+Game\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Return the current \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} \doxymbox{\hyperlink{classPlayer_a1fd099a4c502223bb3cfc5fe4faff7a2}{Get\+Player\+State}} () const
+\begin{DoxyCompactList}\small\item\em Return the current \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} \doxymbox{\hyperlink{classPlayer_a3227b44b8914113ee9d0169b7da45d75}{Get\+Previous\+Game\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Return the revious \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} \doxymbox{\hyperlink{classPlayer_addddf38849fa553cbd2bde722ebfcbda}{Get\+Previous\+State}} () const
+\begin{DoxyCompactList}\small\item\em Return the previous \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_ae3f4e407f274c6136e86c88aa7511ff0}{Load\+Animation}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Load animation based on a .json configuration file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_aa90ddac7abdea2d2842035acd5be3d31}{Move}} (\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} \doxymbox{\hyperlink{classPlayer_a13a4a68be58ff6bf57324745d3f4faed}{direction}}, float delta\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Move the player in a direction by a certain amount based on delta time. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_affe0cc3cb714f6deb4e62f0c0d3f1fd8}{Player}} ()
+\item 
+void \doxymbox{\hyperlink{classPlayer_a3490c96a65a7e4b1782a1a7713f60742}{Resize}} ()
+\begin{DoxyCompactList}\small\item\em Resize the Textures. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_a2e205524a0393cfb425fbcd37f646b24}{Set\+Game\+Mode}} (const \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} new\+\_\+game\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Set the new \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_a1b982afb54f14fdb91597d1138c72798}{Set\+Player\+Direction}} (const \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} new\+\_\+direction)
+\begin{DoxyCompactList}\small\item\em Set the new \doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_aeb9e1a30e33af58cd4e2f193a0b23bee}{Set\+Player\+State}} (const \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} new\+\_\+player\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Set the new \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_a999b786973d86340153601f7d42e0a69}{Set\+Texture\+Manager}} (\doxymbox{\hyperlink{classTextureManager}{Texture\+Manager}} \texorpdfstring{$\ast$}{*}new\+\_\+texture\+\_\+manager)
+\begin{DoxyCompactList}\small\item\em Setthe \doxylink{classTextureManager}{Texture\+Manager} to load the textures. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_a34e1199c4d60662d8218fc7b9317001a}{Spawn}} (int spawn\+\_\+x, int spawn\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Set the coordinate of the player in a certai npoint. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classPlayer_a05b60cac1922c5be5c1be16baffa4497}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update the \doxylink{classPlayer}{Player}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}{\texorpdfstring{$\sim$}{\string~}\+Player}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+FRect \doxymbox{\hyperlink{classPlayer_a6e91a6a9855928d5fbebb1db9f14392b}{player\+\_\+rect}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classPlayer_acf4de9d1df609f28bf00037e71098465}{Update\+Animation\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Update animation frame if needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classAnimation}{Animation}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classPlayer_a89528226f4c891e8436c1015a2ba8cc7}{animations}}
+\item 
+\doxymbox{\hyperlink{classAnimation}{Animation}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classPlayer_a519d37c0a9dc044bc3d8d080abc5ab03}{current\+\_\+animation}}
+\item 
+\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} \doxymbox{\hyperlink{classPlayer_a13a4a68be58ff6bf57324745d3f4faed}{direction}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_aab4cfd4c5eced02b5303acf9887e4c74}{fixed\+\_\+height}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a373633d8c7a54a5958d6bae879c6d5a5}{fixed\+\_\+pos\+\_\+x}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_affe2d4de5d88b41b25aba1bb47ab77a9}{fixed\+\_\+pos\+\_\+y}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_ad724207bb72a662addb1d0f65a5cbae9}{fixed\+\_\+width}}
+\item 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} \doxymbox{\hyperlink{classPlayer_a4434b410c83c6dd8db79774502b57e23}{mode}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a0ce65375e3b3c3e664ab6998fd9116c7}{movement\+\_\+angle}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a7c7f7f45a1d592b06a2fe6078de3959d}{next\+\_\+x}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_ad6ee7a5f648395801af1b6d47dbdbe13}{next\+\_\+y}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a268683833ea010bbe32e8e75d6ab127e}{pos\+\_\+x}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_ac2c883cdbf3e87e1a56aa74605253eee}{pos\+\_\+y}}
+\item 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} \doxymbox{\hyperlink{classPlayer_a327553764bbb8705b875747982bcfcbc}{previous\+Game\+Mode}}
+\item 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} \doxymbox{\hyperlink{classPlayer_a51d28316139af0639c5829f3ac25d3c5}{previous\+State}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a358b7578dfbe6718c9b9da204d62a039}{scale}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a770942101eff683b030edde9f730d537}{speed}}
+\item 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} \doxymbox{\hyperlink{classPlayer_afb60fdad921bce05783ef2709e849c27}{state}}
+\item 
+\doxymbox{\hyperlink{classTextureManager}{Texture\+Manager}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classPlayer_a46b0ac4ed3d16e1a8ac7132a20488fb7}{texture\+\_\+manager}}
+\item 
+float \doxymbox{\hyperlink{classPlayer_a2e7f0a44016562cb6d1822dfc063651a}{velocity\+\_\+x}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00010}{10}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{classPlayer_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}\index{Player@{Player}!FacingDirection@{FacingDirection}}
+\index{FacingDirection@{FacingDirection}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{FacingDirection}{FacingDirection}}
+{\footnotesize\ttfamily \label{classPlayer_a0b69b98ff384782ce58cf1814600cb3c} 
+enum class \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Player::\+\+Facing\+Direction}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Direction in which the player can be facing. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WEST@{WEST}!Player@{Player}}
+\index{Player@{Player}!WEST@{WEST}}
+}\Hypertarget{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca83c9f5692281bf59471b13dfddb3af91}\label{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca83c9f5692281bf59471b13dfddb3af91} 
+WEST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EAST@{EAST}!Player@{Player}}
+\index{Player@{Player}!EAST@{EAST}}
+}\Hypertarget{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca45ac78bf3d4882ac520f4e7fb08d55c5}\label{classPlayer_a0b69b98ff384782ce58cf1814600cb3ca45ac78bf3d4882ac520f4e7fb08d55c5} 
+EAST&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00047}{47}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292d}\index{Player@{Player}!GameMode@{GameMode}}
+\index{GameMode@{GameMode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GameMode}{GameMode}}
+{\footnotesize\ttfamily \label{classPlayer_a72e63c4dee307c57567fe40a08bb292d} 
+enum class \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Player::\+\+Game\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Game Mode in which the player can be. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAIN\_MENU@{MAIN\_MENU}!Player@{Player}}
+\index{Player@{Player}!MAIN\_MENU@{MAIN\_MENU}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292daa16d505f03a4b6f35486f65f6a61317e}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292daa16d505f03a4b6f35486f65f6a61317e} 
+MAIN\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SETTINGS\_MENU@{SETTINGS\_MENU}!Player@{Player}}
+\index{Player@{Player}!SETTINGS\_MENU@{SETTINGS\_MENU}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da1e8650358b792aa7982a1c95b0821d82}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da1e8650358b792aa7982a1c95b0821d82} 
+SETTINGS\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PAUSE\_MENU@{PAUSE\_MENU}!Player@{Player}}
+\index{Player@{Player}!PAUSE\_MENU@{PAUSE\_MENU}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da7a34b3b426f61a72665f1faba0794e43}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da7a34b3b426f61a72665f1faba0794e43} 
+PAUSE\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EDITOR\_MENU@{EDITOR\_MENU}!Player@{Player}}
+\index{Player@{Player}!EDITOR\_MENU@{EDITOR\_MENU}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da9a3a323c5ad8b09d19bbdfcaef02740d}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da9a3a323c5ad8b09d19bbdfcaef02740d} 
+EDITOR\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROOM\_SELECTION@{ROOM\_SELECTION}!Player@{Player}}
+\index{Player@{Player}!ROOM\_SELECTION@{ROOM\_SELECTION}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da733e008b14bc4839a889a1c929a0a950}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da733e008b14bc4839a889a1c929a0a950} 
+ROOM\+\_\+\+SELECTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEXTURE\_SELECTION@{TEXTURE\_SELECTION}!Player@{Player}}
+\index{Player@{Player}!TEXTURE\_SELECTION@{TEXTURE\_SELECTION}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da8261e73036afd126e39c4e29f1993cc4}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da8261e73036afd126e39c4e29f1993cc4} 
+TEXTURE\+\_\+\+SELECTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EDITOR@{EDITOR}!Player@{Player}}
+\index{Player@{Player}!EDITOR@{EDITOR}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da4698850447aa09571776addcb6a2911b}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da4698850447aa09571776addcb6a2911b} 
+EDITOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVENTORY\_MENU@{INVENTORY\_MENU}!Player@{Player}}
+\index{Player@{Player}!INVENTORY\_MENU@{INVENTORY\_MENU}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da2d0e661f07d63b0a21dba6a05b28bbd1}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da2d0e661f07d63b0a21dba6a05b28bbd1} 
+INVENTORY\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL\_EDITOR@{LEVEL\_EDITOR}!Player@{Player}}
+\index{Player@{Player}!LEVEL\_EDITOR@{LEVEL\_EDITOR}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da173db681331c8438d6850ead4978e6d3}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da173db681331c8438d6850ead4978e6d3} 
+LEVEL\+\_\+\+EDITOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANIMATION\_EDITOR@{ANIMATION\_EDITOR}!Player@{Player}}
+\index{Player@{Player}!ANIMATION\_EDITOR@{ANIMATION\_EDITOR}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da55ac05b1995348fd3001c13bfc2d2c21}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da55ac05b1995348fd3001c13bfc2d2c21} 
+ANIMATION\+\_\+\+EDITOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IN\_GAME@{IN\_GAME}!Player@{Player}}
+\index{Player@{Player}!IN\_GAME@{IN\_GAME}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292da1315b693a1d5d4bbeb52bbfa9c23e49b}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292da1315b693a1d5d4bbeb52bbfa9c23e49b} 
+IN\+\_\+\+GAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!Player@{Player}}
+\index{Player@{Player}!EXIT@{EXIT}}
+}\Hypertarget{classPlayer_a72e63c4dee307c57567fe40a08bb292daa42b2fb0e720a080e79a92f4ca97d927}\label{classPlayer_a72e63c4dee307c57567fe40a08bb292daa42b2fb0e720a080e79a92f4ca97d927} 
+EXIT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00017}{17}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a07fe57ec176032714d7d6de076b06ec9}\index{Player@{Player}!PlayerState@{PlayerState}}
+\index{PlayerState@{PlayerState}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{PlayerState}{PlayerState}}
+{\footnotesize\ttfamily \label{classPlayer_a07fe57ec176032714d7d6de076b06ec9} 
+enum class \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player::\+\+Player\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+States in which the player can be. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!Player@{Player}}
+\index{Player@{Player}!IDLE@{IDLE}}
+}\Hypertarget{classPlayer_a07fe57ec176032714d7d6de076b06ec9aa5daf7f2ebbba4975d61dab1c40188c7}\label{classPlayer_a07fe57ec176032714d7d6de076b06ec9aa5daf7f2ebbba4975d61dab1c40188c7} 
+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RUN@{RUN}!Player@{Player}}
+\index{Player@{Player}!RUN@{RUN}}
+}\Hypertarget{classPlayer_a07fe57ec176032714d7d6de076b06ec9a855520d2a5b0b1a64b939e7e30889e2a}\label{classPlayer_a07fe57ec176032714d7d6de076b06ec9a855520d2a5b0b1a64b939e7e30889e2a} 
+RUN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEATH@{DEATH}!Player@{Player}}
+\index{Player@{Player}!DEATH@{DEATH}}
+}\Hypertarget{classPlayer_a07fe57ec176032714d7d6de076b06ec9abf5ddcfbfeb1c3affd54efad7069aac9}\label{classPlayer_a07fe57ec176032714d7d6de076b06ec9abf5ddcfbfeb1c3affd54efad7069aac9} 
+DEATH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTACK@{ATTACK}!Player@{Player}}
+\index{Player@{Player}!ATTACK@{ATTACK}}
+}\Hypertarget{classPlayer_a07fe57ec176032714d7d6de076b06ec9ac6ddd0f72ff2fd344693b9ca8d483871}\label{classPlayer_a07fe57ec176032714d7d6de076b06ec9ac6ddd0f72ff2fd344693b9ca8d483871} 
+ATTACK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00036}{36}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classPlayer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPlayer_affe0cc3cb714f6deb4e62f0c0d3f1fd8}\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily \label{classPlayer_affe0cc3cb714f6deb4e62f0c0d3f1fd8} 
+Player::\+\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00171}{animations}}, \doxymbox{\hyperlink{Player_8hpp_source_l00172}{current\+\_\+animation}}, \doxymbox{\hyperlink{Player_8hpp_source_l00154}{direction}}, \doxymbox{\hyperlink{Player_8hpp_source_l00049}{EAST}}, \doxymbox{\hyperlink{Player_8hpp_source_l00166}{fixed\+\_\+pos\+\_\+x}}, \doxymbox{\hyperlink{Player_8hpp_source_l00166}{fixed\+\_\+pos\+\_\+y}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{JSONParser::\+graphics::\+\+Get\+Scale()}}, \doxymbox{\hyperlink{Player_8hpp_source_l00037}{IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00018}{MAIN\+\_\+\+MENU}}, \doxymbox{\hyperlink{Player_8hpp_source_l00153}{mode}}, \doxymbox{\hyperlink{Player_8hpp_source_l00057}{player\+\_\+rect}}, \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+x}}, \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+y}}, \doxymbox{\hyperlink{Player_8hpp_source_l00168}{scale}}, \doxymbox{\hyperlink{Player_8hpp_source_l00164}{speed}}, \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00163}{velocity\+\_\+x}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlayer_affe0cc3cb714f6deb4e62f0c0d3f1fd8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}\index{Player@{Player}!````~Player@{\texorpdfstring{$\sim$}{\string~}Player}}
+\index{````~Player@{\texorpdfstring{$\sim$}{\string~}Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Player()}{\string~Player()}}
+{\footnotesize\ttfamily \label{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062} 
+Player::\+\texorpdfstring{$\sim$}{\string~}\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00042}{42}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00037}{IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00018}{MAIN\+\_\+\+MENU}}, \doxymbox{\hyperlink{Player_8hpp_source_l00153}{mode}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classPlayer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPlayer_a6dfdb22d584e8d089bf66829b6f2b5cf}\index{Player@{Player}!Draw@{Draw}}
+\index{Draw@{Draw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{classPlayer_a6dfdb22d584e8d089bf66829b6f2b5cf} 
+void Player::\+\+Draw (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption})}
+
+
+
+Draw the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer needed to draw the player \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00145}{145}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00172}{current\+\_\+animation}}, \doxymbox{\hyperlink{Player_8hpp_source_l00057}{player\+\_\+rect}}, \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+x}}, \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+y}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00168}{scale}}.
+
+\Hypertarget{classPlayer_a44ad33a6be88a2e22370bff8823e51dc}\index{Player@{Player}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily \label{classPlayer_a44ad33a6be88a2e22370bff8823e51dc} 
+\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Player::\+\+Facing\+Direction}} Player::\+\+Get\+Direction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current \doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00154}{direction}}.
+
+\Hypertarget{classPlayer_a8ea2db4677fe925d4fe7f3215f30a065}\index{Player@{Player}!GetGameMode@{GetGameMode}}
+\index{GetGameMode@{GetGameMode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GetGameMode()}{GetGameMode()}}
+{\footnotesize\ttfamily \label{classPlayer_a8ea2db4677fe925d4fe7f3215f30a065} 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Player::\+\+Game\+Mode}} Player::\+\+Get\+Game\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00047}{47}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00153}{mode}}.
+
+\Hypertarget{classPlayer_a1fd099a4c502223bb3cfc5fe4faff7a2}\index{Player@{Player}!GetPlayerState@{GetPlayerState}}
+\index{GetPlayerState@{GetPlayerState}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GetPlayerState()}{GetPlayerState()}}
+{\footnotesize\ttfamily \label{classPlayer_a1fd099a4c502223bb3cfc5fe4faff7a2} 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player::\+\+Player\+State}} Player::\+\+Get\+Player\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00051}{51}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}.
+
+\Hypertarget{classPlayer_a3227b44b8914113ee9d0169b7da45d75}\index{Player@{Player}!GetPreviousGameMode@{GetPreviousGameMode}}
+\index{GetPreviousGameMode@{GetPreviousGameMode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GetPreviousGameMode()}{GetPreviousGameMode()}}
+{\footnotesize\ttfamily \label{classPlayer_a3227b44b8914113ee9d0169b7da45d75} 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Player::\+\+Game\+Mode}} Player::\+\+Get\+Previous\+Game\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the revious \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. 
+
+\begin{DoxyReturn}{Returns}
+Game\+Mdoe 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00063}{63}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00157}{previous\+Game\+Mode}}.
+
+\Hypertarget{classPlayer_addddf38849fa553cbd2bde722ebfcbda}\index{Player@{Player}!GetPreviousState@{GetPreviousState}}
+\index{GetPreviousState@{GetPreviousState}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{GetPreviousState()}{GetPreviousState()}}
+{\footnotesize\ttfamily \label{classPlayer_addddf38849fa553cbd2bde722ebfcbda} 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player::\+\+Player\+State}} Player::\+\+Get\+Previous\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the previous \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. 
+
+\begin{DoxyReturn}{Returns}
+player\+State 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00059}{59}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00156}{previous\+State}}.
+
+\Hypertarget{classPlayer_ae3f4e407f274c6136e86c88aa7511ff0}\index{Player@{Player}!LoadAnimation@{LoadAnimation}}
+\index{LoadAnimation@{LoadAnimation}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{LoadAnimation()}{LoadAnimation()}}
+{\footnotesize\ttfamily \label{classPlayer_ae3f4e407f274c6136e86c88aa7511ff0} 
+void Player::\+\+Load\+Animation (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Load animation based on a .json configuration file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Path to the .json configuration file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00119}{119}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00171}{animations}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00252}{JSONParser::\+animations::\+\+Animation\+Elements\+Fields::\+frame\+\_\+number}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00253}{JSONParser::\+animations::\+\+Animation\+Elements\+Fields::\+frame\+\_\+to\+\_\+load}}, \doxymbox{\hyperlink{JSONParserAnimations_8cpp_source_l00029}{JSONParser::\+animations::\+\+Get\+Animation\+Elements\+Fields()}}, \doxymbox{\hyperlink{JSONParserAnimations_8cpp_source_l00021}{JSONParser::\+animations::\+\+Get\+Animation\+Numbers()}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00251}{JSONParser::\+animations::\+\+Animation\+Elements\+Fields::\+name}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00250}{JSONParser::\+animations::\+\+Animation\+Elements\+Fields::\+path}}, \doxymbox{\hyperlink{JSONParserAnimations_8cpp_source_l00007}{JSONParser::\+animations::\+\+Set\+Config\+File()}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00170}{texture\+\_\+manager}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlayer_ae3f4e407f274c6136e86c88aa7511ff0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_aa90ddac7abdea2d2842035acd5be3d31}\index{Player@{Player}!Move@{Move}}
+\index{Move@{Move}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily \label{classPlayer_aa90ddac7abdea2d2842035acd5be3d31} 
+void Player::\+\+Move (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}}}]{direction}{, }\item[{float}]{delta\+\_\+time}{}\end{DoxyParamCaption})}
+
+
+
+Move the player in a direction by a certain amount based on delta time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classPlayer_a13a4a68be58ff6bf57324745d3f4faed}{direction}} & Direction in which to move \\
+\hline
+{\em delta\+\_\+time} & Time from one frame to the other needed to calculate how much the player move \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00204}{204}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00154}{direction}}, \doxymbox{\hyperlink{Player_8hpp_source_l00049}{EAST}}, \doxymbox{\hyperlink{Player_8hpp_source_l00037}{IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+x}}, \doxymbox{\hyperlink{Player_8hpp_source_l00038}{RUN}}, \doxymbox{\hyperlink{Player_8cpp_source_l00078}{Set\+Player\+Direction()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00067}{Set\+Player\+State()}}, \doxymbox{\hyperlink{Player_8hpp_source_l00164}{speed}}, \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00048}{WEST}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classPlayer_aa90ddac7abdea2d2842035acd5be3d31_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_a3490c96a65a7e4b1782a1a7713f60742}\index{Player@{Player}!Resize@{Resize}}
+\index{Resize@{Resize}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{classPlayer_a3490c96a65a7e4b1782a1a7713f60742} 
+void Player::\+\+Resize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resize the Textures. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00235}{235}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{JSONParser::\+graphics::\+\+Get\+Scale()}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00168}{scale}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlayer_a3490c96a65a7e4b1782a1a7713f60742_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_a2e205524a0393cfb425fbcd37f646b24}\index{Player@{Player}!SetGameMode@{SetGameMode}}
+\index{SetGameMode@{SetGameMode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{SetGameMode()}{SetGameMode()}}
+{\footnotesize\ttfamily \label{classPlayer_a2e205524a0393cfb425fbcd37f646b24} 
+void Player::\+\+Set\+Game\+Mode (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}}}]{new\+\_\+game\+\_\+mode}{}\end{DoxyParamCaption})}
+
+
+
+Set the new \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+game\+\_\+mode} & New \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00073}{73}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00153}{mode}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00157}{previous\+Game\+Mode}}.
+
+\Hypertarget{classPlayer_a1b982afb54f14fdb91597d1138c72798}\index{Player@{Player}!SetPlayerDirection@{SetPlayerDirection}}
+\index{SetPlayerDirection@{SetPlayerDirection}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{SetPlayerDirection()}{SetPlayerDirection()}}
+{\footnotesize\ttfamily \label{classPlayer_a1b982afb54f14fdb91597d1138c72798} 
+void Player::\+\+Set\+Player\+Direction (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}}}]{new\+\_\+direction}{}\end{DoxyParamCaption})}
+
+
+
+Set the new \doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+direction} & New \doxylink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00078}{78}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00171}{animations}}, \doxymbox{\hyperlink{Player_8hpp_source_l00172}{current\+\_\+animation}}, \doxymbox{\hyperlink{Player_8hpp_source_l00154}{direction}}, \doxymbox{\hyperlink{Player_8hpp_source_l00049}{EAST}}, \doxymbox{\hyperlink{Player_8hpp_source_l00037}{IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00038}{RUN}}, \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00048}{WEST}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classPlayer_a1b982afb54f14fdb91597d1138c72798_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_aeb9e1a30e33af58cd4e2f193a0b23bee}\index{Player@{Player}!SetPlayerState@{SetPlayerState}}
+\index{SetPlayerState@{SetPlayerState}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{SetPlayerState()}{SetPlayerState()}}
+{\footnotesize\ttfamily \label{classPlayer_aeb9e1a30e33af58cd4e2f193a0b23bee} 
+void Player::\+\+Set\+Player\+State (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}}}]{new\+\_\+player\+\_\+state}{}\end{DoxyParamCaption})}
+
+
+
+Set the new \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+player\+\_\+state} & New \doxylink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00067}{67}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00156}{previous\+State}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classPlayer_aeb9e1a30e33af58cd4e2f193a0b23bee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_a999b786973d86340153601f7d42e0a69}\index{Player@{Player}!SetTextureManager@{SetTextureManager}}
+\index{SetTextureManager@{SetTextureManager}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{SetTextureManager()}{SetTextureManager()}}
+{\footnotesize\ttfamily \label{classPlayer_a999b786973d86340153601f7d42e0a69} 
+void Player::\+\+Set\+Texture\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classTextureManager}{Texture\+Manager}} \texorpdfstring{$\ast$}{*}}]{new\+\_\+texture\+\_\+manager}{}\end{DoxyParamCaption})}
+
+
+
+Setthe \doxylink{classTextureManager}{Texture\+Manager} to load the textures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+texture\+\_\+manager} & New \doxylink{classTextureManager}{Texture\+Manager} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00115}{115}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00170}{texture\+\_\+manager}}.
+
+\Hypertarget{classPlayer_a34e1199c4d60662d8218fc7b9317001a}\index{Player@{Player}!Spawn@{Spawn}}
+\index{Spawn@{Spawn}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Spawn()}{Spawn()}}
+{\footnotesize\ttfamily \label{classPlayer_a34e1199c4d60662d8218fc7b9317001a} 
+void Player::\+\+Spawn (\begin{DoxyParamCaption}\item[{int}]{spawn\+\_\+x}{, }\item[{int}]{spawn\+\_\+y}{}\end{DoxyParamCaption})}
+
+
+
+Set the coordinate of the player in a certai npoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spawn\+\_\+x} & Coordinate X of spawn \\
+\hline
+{\em spawn\+\_\+y} & Coordiante Y of spawn \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00246}{246}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+x}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00159}{pos\+\_\+y}}.
+
+\Hypertarget{classPlayer_a05b60cac1922c5be5c1be16baffa4497}\index{Player@{Player}!Update@{Update}}
+\index{Update@{Update}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classPlayer_a05b60cac1922c5be5c1be16baffa4497} 
+void Player::\+\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Update the \doxylink{classPlayer}{Player}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00160}{160}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8cpp_source_l00165}{Update\+Animation\+Frame()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlayer_a05b60cac1922c5be5c1be16baffa4497_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPlayer_acf4de9d1df609f28bf00037e71098465}\index{Player@{Player}!UpdateAnimationFrame@{UpdateAnimationFrame}}
+\index{UpdateAnimationFrame@{UpdateAnimationFrame}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{UpdateAnimationFrame()}{UpdateAnimationFrame()}}
+{\footnotesize\ttfamily \label{classPlayer_acf4de9d1df609f28bf00037e71098465} 
+void Player::\+\+Update\+Animation\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Update animation frame if needed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8cpp_source_l00165}{165}} of file \doxymbox{\hyperlink{Player_8cpp_source}{Player.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00171}{animations}}, \doxymbox{\hyperlink{Player_8hpp_source_l00172}{current\+\_\+animation}}, \doxymbox{\hyperlink{Player_8hpp_source_l00154}{direction}}, \doxymbox{\hyperlink{Player_8hpp_source_l00049}{EAST}}, \doxymbox{\hyperlink{Player_8hpp_source_l00037}{IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00038}{RUN}}, \doxymbox{\hyperlink{Player_8hpp_source_l00152}{state}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00048}{WEST}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00160}{Update()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlayer_acf4de9d1df609f28bf00037e71098465_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classPlayer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPlayer_a89528226f4c891e8436c1015a2ba8cc7}\index{Player@{Player}!animations@{animations}}
+\index{animations@{animations}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{animations}{animations}}
+{\footnotesize\ttfamily \label{classPlayer_a89528226f4c891e8436c1015a2ba8cc7} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classAnimation}{Animation}}\texorpdfstring{$\ast$}{*} $>$ Player::\+animations\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00171}{171}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00119}{Load\+Animation()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00078}{Set\+Player\+Direction()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00165}{Update\+Animation\+Frame()}}.
+
+\Hypertarget{classPlayer_a519d37c0a9dc044bc3d8d080abc5ab03}\index{Player@{Player}!current\_animation@{current\_animation}}
+\index{current\_animation@{current\_animation}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{current\_animation}{current\_animation}}
+{\footnotesize\ttfamily \label{classPlayer_a519d37c0a9dc044bc3d8d080abc5ab03} 
+\doxymbox{\hyperlink{classAnimation}{Animation}}\texorpdfstring{$\ast$}{*} Player::\+current\+\_\+animation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00172}{172}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00145}{Draw()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00078}{Set\+Player\+Direction()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00165}{Update\+Animation\+Frame()}}.
+
+\Hypertarget{classPlayer_a13a4a68be58ff6bf57324745d3f4faed}\index{Player@{Player}!direction@{direction}}
+\index{direction@{direction}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \label{classPlayer_a13a4a68be58ff6bf57324745d3f4faed} 
+\doxymbox{\hyperlink{classPlayer_a0b69b98ff384782ce58cf1814600cb3c}{Facing\+Direction}} Player::\+direction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00154}{154}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00055}{Get\+Direction()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00078}{Set\+Player\+Direction()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00165}{Update\+Animation\+Frame()}}.
+
+\Hypertarget{classPlayer_aab4cfd4c5eced02b5303acf9887e4c74}\index{Player@{Player}!fixed\_height@{fixed\_height}}
+\index{fixed\_height@{fixed\_height}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{fixed\_height}{fixed\_height}}
+{\footnotesize\ttfamily \label{classPlayer_aab4cfd4c5eced02b5303acf9887e4c74} 
+float Player::\+fixed\+\_\+height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00167}{167}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a373633d8c7a54a5958d6bae879c6d5a5}\index{Player@{Player}!fixed\_pos\_x@{fixed\_pos\_x}}
+\index{fixed\_pos\_x@{fixed\_pos\_x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{fixed\_pos\_x}{fixed\_pos\_x}}
+{\footnotesize\ttfamily \label{classPlayer_a373633d8c7a54a5958d6bae879c6d5a5} 
+float Player::\+fixed\+\_\+pos\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00166}{166}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}.
+
+\Hypertarget{classPlayer_affe2d4de5d88b41b25aba1bb47ab77a9}\index{Player@{Player}!fixed\_pos\_y@{fixed\_pos\_y}}
+\index{fixed\_pos\_y@{fixed\_pos\_y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{fixed\_pos\_y}{fixed\_pos\_y}}
+{\footnotesize\ttfamily \label{classPlayer_affe2d4de5d88b41b25aba1bb47ab77a9} 
+float Player::\+fixed\+\_\+pos\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00166}{166}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}.
+
+\Hypertarget{classPlayer_ad724207bb72a662addb1d0f65a5cbae9}\index{Player@{Player}!fixed\_width@{fixed\_width}}
+\index{fixed\_width@{fixed\_width}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{fixed\_width}{fixed\_width}}
+{\footnotesize\ttfamily \label{classPlayer_ad724207bb72a662addb1d0f65a5cbae9} 
+float Player::\+fixed\+\_\+width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00167}{167}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a4434b410c83c6dd8db79774502b57e23}\index{Player@{Player}!mode@{mode}}
+\index{mode@{mode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{classPlayer_a4434b410c83c6dd8db79774502b57e23} 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} Player::\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00153}{153}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00047}{Get\+Game\+Mode()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00073}{Set\+Game\+Mode()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00042}{\texorpdfstring{$\sim$}{\string~}\+Player()}}.
+
+\Hypertarget{classPlayer_a0ce65375e3b3c3e664ab6998fd9116c7}\index{Player@{Player}!movement\_angle@{movement\_angle}}
+\index{movement\_angle@{movement\_angle}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{movement\_angle}{movement\_angle}}
+{\footnotesize\ttfamily \label{classPlayer_a0ce65375e3b3c3e664ab6998fd9116c7} 
+float Player::\+movement\+\_\+angle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00161}{161}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a7c7f7f45a1d592b06a2fe6078de3959d}\index{Player@{Player}!next\_x@{next\_x}}
+\index{next\_x@{next\_x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{next\_x}{next\_x}}
+{\footnotesize\ttfamily \label{classPlayer_a7c7f7f45a1d592b06a2fe6078de3959d} 
+float Player::\+next\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00160}{160}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_ad6ee7a5f648395801af1b6d47dbdbe13}\index{Player@{Player}!next\_y@{next\_y}}
+\index{next\_y@{next\_y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{next\_y}{next\_y}}
+{\footnotesize\ttfamily \label{classPlayer_ad6ee7a5f648395801af1b6d47dbdbe13} 
+float Player::\+next\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00160}{160}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+\Hypertarget{classPlayer_a6e91a6a9855928d5fbebb1db9f14392b}\index{Player@{Player}!player\_rect@{player\_rect}}
+\index{player\_rect@{player\_rect}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{player\_rect}{player\_rect}}
+{\footnotesize\ttfamily \label{classPlayer_a6e91a6a9855928d5fbebb1db9f14392b} 
+SDL\+\_\+\+FRect Player::\+player\+\_\+rect}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00057}{57}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00145}{Draw()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}.
+
+\Hypertarget{classPlayer_a268683833ea010bbe32e8e75d6ab127e}\index{Player@{Player}!pos\_x@{pos\_x}}
+\index{pos\_x@{pos\_x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{pos\_x}{pos\_x}}
+{\footnotesize\ttfamily \label{classPlayer_a268683833ea010bbe32e8e75d6ab127e} 
+float Player::\+pos\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00159}{159}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00145}{Draw()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00246}{Spawn()}}.
+
+\Hypertarget{classPlayer_ac2c883cdbf3e87e1a56aa74605253eee}\index{Player@{Player}!pos\_y@{pos\_y}}
+\index{pos\_y@{pos\_y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{pos\_y}{pos\_y}}
+{\footnotesize\ttfamily \label{classPlayer_ac2c883cdbf3e87e1a56aa74605253eee} 
+float Player::\+pos\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00159}{159}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00145}{Draw()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00246}{Spawn()}}.
+
+\Hypertarget{classPlayer_a327553764bbb8705b875747982bcfcbc}\index{Player@{Player}!previousGameMode@{previousGameMode}}
+\index{previousGameMode@{previousGameMode}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{previousGameMode}{previousGameMode}}
+{\footnotesize\ttfamily \label{classPlayer_a327553764bbb8705b875747982bcfcbc} 
+\doxymbox{\hyperlink{classPlayer_a72e63c4dee307c57567fe40a08bb292d}{Game\+Mode}} Player::\+previous\+Game\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00157}{157}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00063}{Get\+Previous\+Game\+Mode()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00073}{Set\+Game\+Mode()}}.
+
+\Hypertarget{classPlayer_a51d28316139af0639c5829f3ac25d3c5}\index{Player@{Player}!previousState@{previousState}}
+\index{previousState@{previousState}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{previousState}{previousState}}
+{\footnotesize\ttfamily \label{classPlayer_a51d28316139af0639c5829f3ac25d3c5} 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} Player::\+previous\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00156}{156}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00059}{Get\+Previous\+State()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00067}{Set\+Player\+State()}}.
+
+\Hypertarget{classPlayer_a358b7578dfbe6718c9b9da204d62a039}\index{Player@{Player}!scale@{scale}}
+\index{scale@{scale}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \label{classPlayer_a358b7578dfbe6718c9b9da204d62a039} 
+float Player::\+scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00168}{168}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00145}{Draw()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00235}{Resize()}}.
+
+\Hypertarget{classPlayer_a770942101eff683b030edde9f730d537}\index{Player@{Player}!speed@{speed}}
+\index{speed@{speed}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{classPlayer_a770942101eff683b030edde9f730d537} 
+float Player::\+speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00164}{164}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}.
+
+\Hypertarget{classPlayer_afb60fdad921bce05783ef2709e849c27}\index{Player@{Player}!state@{state}}
+\index{state@{state}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{classPlayer_afb60fdad921bce05783ef2709e849c27} 
+\doxymbox{\hyperlink{classPlayer_a07fe57ec176032714d7d6de076b06ec9}{Player\+State}} Player::\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00152}{152}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00051}{Get\+Player\+State()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00204}{Move()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00078}{Set\+Player\+Direction()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00067}{Set\+Player\+State()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00165}{Update\+Animation\+Frame()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00042}{\texorpdfstring{$\sim$}{\string~}\+Player()}}.
+
+\Hypertarget{classPlayer_a46b0ac4ed3d16e1a8ac7132a20488fb7}\index{Player@{Player}!texture\_manager@{texture\_manager}}
+\index{texture\_manager@{texture\_manager}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{texture\_manager}{texture\_manager}}
+{\footnotesize\ttfamily \label{classPlayer_a46b0ac4ed3d16e1a8ac7132a20488fb7} 
+\doxymbox{\hyperlink{classTextureManager}{Texture\+Manager}}\texorpdfstring{$\ast$}{*} Player::\+texture\+\_\+manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00170}{170}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00119}{Load\+Animation()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00115}{Set\+Texture\+Manager()}}.
+
+\Hypertarget{classPlayer_a2e7f0a44016562cb6d1822dfc063651a}\index{Player@{Player}!velocity\_x@{velocity\_x}}
+\index{velocity\_x@{velocity\_x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{velocity\_x}{velocity\_x}}
+{\footnotesize\ttfamily \label{classPlayer_a2e7f0a44016562cb6d1822dfc063651a} 
+float Player::\+velocity\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Player_8hpp_source_l00163}{163}} of file \doxymbox{\hyperlink{Player_8hpp_source}{Player.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Entities/\+hpp/\+\doxymbox{\hyperlink{Player_8hpp}{Player.\+hpp}}\item 
+src\+\_\+game/\+\+Entities/\+cpp/\+\doxymbox{\hyperlink{Player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

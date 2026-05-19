@@ -1,0 +1,5 @@
+<map id="Menu::LoadButtonsMenuTypeConfiguration" name="Menu::LoadButtonsMenuTypeConfiguration">
+<area shape="rect" id="Node000001" title="Load the menu if it is a button menu." alt="" coords="172,5,384,50"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#aa3023f7d7f43137acb4a17b74f81224c" title="Load the menu based on the path of a given .json file." alt="" coords="5,14,124,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,28,124,30,124,25,159,27"/>
+</map>

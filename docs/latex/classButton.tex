@@ -1,0 +1,338 @@
+\doxysection{Button Class Reference}
+\hypertarget{classButton}{}\label{classButton}\index{Button@{Button}}
+
+
+{\ttfamily \+\#include $<$Button.\+hpp$>$}
+
+
+
+Collaboration diagram for Button:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classButton__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classButton_a3b36df1ae23c58aedb9e15a713159459}{Button}} ()
+\item 
+void \doxymbox{\hyperlink{classButton_a187d91a5d156c3508dbca0b9b2f58f7b}{Click}} () const
+\begin{DoxyCompactList}\small\item\em Execute the function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classButton_a032515a631b966c6809a009bf48f1f10}{Draw}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer) const
+\begin{DoxyCompactList}\small\item\em Draw the \doxylink{classButton}{Button} with its coordinates. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classButton_aec7f955fe3f03adfec7fffcb270f592b}{Draw\+With\+Offset}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, const float offset\+\_\+y, const float offset\+\_\+x) const
+\begin{DoxyCompactList}\small\item\em Draw the \doxylink{classButton}{Button} shifted of an offset and only if in certain coordinates. \end{DoxyCompactList}\item 
+std::\+vector$<$ SDL\+\_\+\+FRect $>$ \doxymbox{\hyperlink{classButton_a6a79519f25d7a2b74b844c114fcddcd7}{Get\+Rects}} () const
+\begin{DoxyCompactList}\small\item\em Return the \doxylink{classButton}{Button}\textquotesingle{}s rects. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classButton_adce659a3e88b54d9aa8eea73b8c0cf7d}{Set\+On\+Click}} (std::\+function$<$ void()$>$ action)
+\begin{DoxyCompactList}\small\item\em Set the "{}action listenere function"{} for the button. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classButton_ad8ba4b6031f5aadf9b6c92b8d4b18384}{Set\+Rects}} (std::\+vector$<$ SDL\+\_\+\+FRect $>$ \doxymbox{\hyperlink{classButton_a5ae99c8c28bcecee9ce7717106c51c0a}{rects}})
+\begin{DoxyCompactList}\small\item\em Set the SDL\+\_\+\+FRects of the \doxylink{classButton}{Button}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classButton_a59b7f1491a05aadf714650d34ea696b3}{Set\+Textures}} (std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classButton_a7746b3817f5c9eec54c669dfe7a860f4}{textures}})
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{classTexture}{Texture} of the \doxylink{classButton}{Button}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+function$<$ void()$>$ \doxymbox{\hyperlink{classButton_a30b76ab312dc7f66e67596ae20540ec2}{on\+Click}}
+\item 
+std::\+vector$<$ SDL\+\_\+\+FRect $>$ \doxymbox{\hyperlink{classButton_a5ae99c8c28bcecee9ce7717106c51c0a}{rects}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classButton_a7746b3817f5c9eec54c669dfe7a860f4}{textures}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8hpp_source_l00016}{16}} of file \doxymbox{\hyperlink{Button_8hpp_source}{Button.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classButton_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classButton_a3b36df1ae23c58aedb9e15a713159459}\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily \label{classButton_a3b36df1ae23c58aedb9e15a713159459} 
+Button::\+\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00021}{rects}}, and \doxymbox{\hyperlink{Button_8hpp_source_l00020}{textures}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classButton_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classButton_a187d91a5d156c3508dbca0b9b2f58f7b}\index{Button@{Button}!Click@{Click}}
+\index{Click@{Click}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Click()}{Click()}}
+{\footnotesize\ttfamily \label{classButton_a187d91a5d156c3508dbca0b9b2f58f7b} 
+void Button::\+\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Execute the function. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00018}{on\+Click}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{Input\+Processor::\+process\+\_\+mouse\+\_\+left\+\_\+pressed()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton_a187d91a5d156c3508dbca0b9b2f58f7b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classButton_a032515a631b966c6809a009bf48f1f10}\index{Button@{Button}!Draw@{Draw}}
+\index{Draw@{Draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{classButton_a032515a631b966c6809a009bf48f1f10} 
+void Button::\+\+Draw (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption}) const}
+
+
+
+Draw the \doxylink{classButton}{Button} with its coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & renderer needed to draw \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00029}{29}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00021}{rects}}, and \doxymbox{\hyperlink{Button_8hpp_source_l00020}{textures}}.
+
+\Hypertarget{classButton_aec7f955fe3f03adfec7fffcb270f592b}\index{Button@{Button}!DrawWithOffset@{DrawWithOffset}}
+\index{DrawWithOffset@{DrawWithOffset}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{DrawWithOffset()}{DrawWithOffset()}}
+{\footnotesize\ttfamily \label{classButton_aec7f955fe3f03adfec7fffcb270f592b} 
+void Button::\+\+Draw\+With\+Offset (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{, }\item[{const float}]{offset\+\_\+y}{, }\item[{const float}]{offset\+\_\+x}{}\end{DoxyParamCaption}) const}
+
+
+
+Draw the \doxylink{classButton}{Button} shifted of an offset and only if in certain coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer needed to draw \\
+\hline
+{\em offset\+\_\+y} & Offset Y to add to the coordinates \\
+\hline
+{\em offset\+\_\+x} & Offset X to add to the coodinates \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00038}{38}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Texture_8cpp_source_l00041}{Texture::\+\+Get\+Texture()}}, \doxymbox{\hyperlink{Button_8hpp_source_l00021}{rects}}, and \doxymbox{\hyperlink{Button_8hpp_source_l00020}{textures}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton_aec7f955fe3f03adfec7fffcb270f592b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classButton_a6a79519f25d7a2b74b844c114fcddcd7}\index{Button@{Button}!GetRects@{GetRects}}
+\index{GetRects@{GetRects}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{GetRects()}{GetRects()}}
+{\footnotesize\ttfamily \label{classButton_a6a79519f25d7a2b74b844c114fcddcd7} 
+std::\+vector$<$ SDL\+\_\+\+FRect $>$ Button::\+\+Get\+Rects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the \doxylink{classButton}{Button}\textquotesingle{}s rects. 
+
+\begin{DoxyReturn}{Returns}
+std::\+vector \texorpdfstring{$<$}{<} SDL\+\_\+\+FRect \texorpdfstring{$>$}{>} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00021}{rects}}.
+
+\Hypertarget{classButton_adce659a3e88b54d9aa8eea73b8c0cf7d}\index{Button@{Button}!SetOnClick@{SetOnClick}}
+\index{SetOnClick@{SetOnClick}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{SetOnClick()}{SetOnClick()}}
+{\footnotesize\ttfamily \label{classButton_adce659a3e88b54d9aa8eea73b8c0cf7d} 
+void Button::\+\+Set\+On\+Click (\begin{DoxyParamCaption}\item[{std::\+function$<$ void()$>$}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Set the "{}action listenere function"{} for the button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Function to execute when button clicked \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00009}{9}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00018}{on\+Click}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Menu_8cpp_source_l00086}{Menu::\+\+Load\+Buttons\+Menu\+Type\+Configuration()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton_adce659a3e88b54d9aa8eea73b8c0cf7d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classButton_ad8ba4b6031f5aadf9b6c92b8d4b18384}\index{Button@{Button}!SetRects@{SetRects}}
+\index{SetRects@{SetRects}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{SetRects()}{SetRects()}}
+{\footnotesize\ttfamily \label{classButton_ad8ba4b6031f5aadf9b6c92b8d4b18384} 
+void Button::\+\+Set\+Rects (\begin{DoxyParamCaption}\item[{std::\+vector$<$ SDL\+\_\+\+FRect $>$}]{rects}{}\end{DoxyParamCaption})}
+
+
+
+Set the SDL\+\_\+\+FRects of the \doxylink{classButton}{Button}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classButton_a5ae99c8c28bcecee9ce7717106c51c0a}{rects}} & SDL\+\_\+\+FRects to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00021}{rects}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Menu_8cpp_source_l00086}{Menu::\+\+Load\+Buttons\+Menu\+Type\+Configuration()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton_ad8ba4b6031f5aadf9b6c92b8d4b18384_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classButton_a59b7f1491a05aadf714650d34ea696b3}\index{Button@{Button}!SetTextures@{SetTextures}}
+\index{SetTextures@{SetTextures}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{SetTextures()}{SetTextures()}}
+{\footnotesize\ttfamily \label{classButton_a59b7f1491a05aadf714650d34ea696b3} 
+void Button::\+\+Set\+Textures (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} $>$}]{textures}{}\end{DoxyParamCaption})}
+
+
+
+Set the \doxylink{classTexture}{Texture} of the \doxylink{classButton}{Button}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classButton_a7746b3817f5c9eec54c669dfe7a860f4}{textures}} & Textures to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Button_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Button_8cpp_source}{Button.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8hpp_source_l00020}{textures}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Menu_8cpp_source_l00086}{Menu::\+\+Load\+Buttons\+Menu\+Type\+Configuration()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classButton_a59b7f1491a05aadf714650d34ea696b3_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classButton_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classButton_a30b76ab312dc7f66e67596ae20540ec2}\index{Button@{Button}!onClick@{onClick}}
+\index{onClick@{onClick}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{onClick}{onClick}}
+{\footnotesize\ttfamily \label{classButton_a30b76ab312dc7f66e67596ae20540ec2} 
+std::\+function$<$void()$>$ Button::\+on\+Click\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Button_8hpp_source_l00018}{18}} of file \doxymbox{\hyperlink{Button_8hpp_source}{Button.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Button_8cpp_source_l00013}{Click()}}, and \doxymbox{\hyperlink{Button_8cpp_source_l00009}{Set\+On\+Click()}}.
+
+\Hypertarget{classButton_a5ae99c8c28bcecee9ce7717106c51c0a}\index{Button@{Button}!rects@{rects}}
+\index{rects@{rects}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{rects}{rects}}
+{\footnotesize\ttfamily \label{classButton_a5ae99c8c28bcecee9ce7717106c51c0a} 
+std::\+vector$<$ SDL\+\_\+\+FRect $>$ Button::\+rects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Button_8hpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Button_8hpp_source}{Button.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{classButton_a3b36df1ae23c58aedb9e15a713159459}{Button()}}, \doxymbox{\hyperlink{Button_8cpp_source_l00029}{Draw()}}, \doxymbox{\hyperlink{Button_8cpp_source_l00038}{Draw\+With\+Offset()}}, \doxymbox{\hyperlink{Button_8cpp_source_l00055}{Get\+Rects()}}, and \doxymbox{\hyperlink{Button_8cpp_source_l00025}{Set\+Rects()}}.
+
+\Hypertarget{classButton_a7746b3817f5c9eec54c669dfe7a860f4}\index{Button@{Button}!textures@{textures}}
+\index{textures@{textures}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily \label{classButton_a7746b3817f5c9eec54c669dfe7a860f4} 
+std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}}\texorpdfstring{$\ast$}{*} $>$ Button::\+textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Button_8hpp_source_l00020}{20}} of file \doxymbox{\hyperlink{Button_8hpp_source}{Button.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{classButton_a3b36df1ae23c58aedb9e15a713159459}{Button()}}, \doxymbox{\hyperlink{Button_8cpp_source_l00029}{Draw()}}, \doxymbox{\hyperlink{Button_8cpp_source_l00038}{Draw\+With\+Offset()}}, and \doxymbox{\hyperlink{Button_8cpp_source_l00021}{Set\+Textures()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+UI/\+hpp/\+\doxymbox{\hyperlink{Button_8hpp}{Button.\+hpp}}\item 
+src\+\_\+game/\+\+UI/\+cpp/\+\doxymbox{\hyperlink{Button_8cpp}{Button.\+cpp}}\end{DoxyCompactItemize}

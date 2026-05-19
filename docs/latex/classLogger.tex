@@ -1,0 +1,525 @@
+\doxysection{Logger Class Reference}
+\hypertarget{classLogger}{}\label{classLogger}\index{Logger@{Logger}}
+
+
+{\ttfamily \+\#include $<$Logger.\+hpp$>$}
+
+
+
+Collaboration diagram for Logger:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classLogger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{classLogger_a1a4c8453982752cbf9ee493c0ca1692d}{Clear\+Temp\+Logging\+Files}} ()
+\begin{DoxyCompactList}\small\item\em Clear temporary logging fils. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_a5ae47d7085cbf0c5fd258dc0c062f784}{Disable\+FILELogging}} ()
+\begin{DoxyCompactList}\small\item\em Disable logging on logs file. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_ad7319a62eab592d15a2e7f7e94e77257}{Disable\+STDOUTLogging}} ()
+\begin{DoxyCompactList}\small\item\em Disable logging on the stdout. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_ab9ebc303ae0be73a6ccb4e9a70e4803f}{Enable\+FILELogging}} ()
+\begin{DoxyCompactList}\small\item\em Enable logging on logs file. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_ad30632e1e80f89d1838520d7321530e5}{Enable\+STDOUTLogging}} ()
+\begin{DoxyCompactList}\small\item\em Enable logging on the stdout. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_ac8b6378bb5ffa1af9f64821aa3c7f9ea}{Log\+Err}} (std::\+time\+\_\+t log\+\_\+time, const std::\+string \&type, const std::\+string \&class\+\_\+name, const std::\+string \&function\+\_\+name, const std::\+string \&log\+\_\+message)
+\begin{DoxyCompactList}\small\item\em Log that something went wrong. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_a03e8a1a6d0b42b211d55fd63107a11ce}{Log\+Ok}} (std::\+time\+\_\+t log\+\_\+time, const std::\+string \&type, const std::\+string \&class\+\_\+name, const std::\+string \&function\+\_\+name, const std::\+string \&log\+\_\+message)
+\begin{DoxyCompactList}\small\item\em Log that something went all right. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classLogger_a310b0f32c0fec8ff8cb5686f077cce67}{Log\+Stack\+Trace}} (std::\+time\+\_\+t log\+\_\+time, const std::\+vector$<$ std::\+string $>$ \&stack\+\_\+trace)
+\begin{DoxyCompactList}\small\item\em Log all the Exception Stack Trace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+string \doxymbox{\hyperlink{classLogger_abfbabf8d80ae90f870d9814c8559ed3a}{Format\+Time}} (std::\+time\+\_\+t time\+\_\+to\+\_\+format)
+\begin{DoxyCompactList}\small\item\em Return a string time formatted as YY:\+\+MM:\+DD hh:\+mm:\+:\+ss. \end{DoxyCompactList}\item 
+static std::\+string \doxymbox{\hyperlink{classLogger_a3d377d001c0dd3e47372d281326e529c}{Make\+Green}} (const std::\+string \&message)
+\begin{DoxyCompactList}\small\item\em Return the given string with format code to make it green. \end{DoxyCompactList}\item 
+static std::\+string \doxymbox{\hyperlink{classLogger_a513876da4d2dd787c33ed8f6c44dab30}{Make\+Magenta}} (const std::\+string \&message)
+\begin{DoxyCompactList}\small\item\em Return the given string with format code to make it magenta. \end{DoxyCompactList}\item 
+static std::\+string \doxymbox{\hyperlink{classLogger_ad6de808cee6c544b62b7a843a7918a78}{Make\+Red}} (const std::\+string \&message)
+\begin{DoxyCompactList}\small\item\em Return the given string with format code to make it red. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std::\+string \doxymbox{\hyperlink{classLogger_a9f530cdcb18818d3d0360f855c4531ed}{CLEAR}} = "{}\textbackslash{}033\+[0m"{}
+\item 
+static bool \doxymbox{\hyperlink{classLogger_af7d4ede7e40a483d8909755fed06e091}{file\+\_\+logging\+\_\+enabled}} = false
+\item 
+static const std::\+string \doxymbox{\hyperlink{classLogger_aece641522d01021cd2bd695ed3f05033}{GREEN}} = "{}\textbackslash{}033\+[32m"{}
+\item 
+static const std::\+string \doxymbox{\hyperlink{classLogger_a2eb5873a99755ef7d6eba2c7cb550f22}{MAGENTA}} = "{}\textbackslash{}033\+[35m"{}
+\item 
+static const std::\+string \doxymbox{\hyperlink{classLogger_adf30d5405249830a6892a9b5d6000fce}{RED}} = "{}\textbackslash{}033\+[31m"{}
+\item 
+static bool \doxymbox{\hyperlink{classLogger_a97b7d24a4d878e9c177dc23d426a4421}{stdout\+\_\+logging\+\_\+enabled}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00019}{19}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classLogger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLogger_a1a4c8453982752cbf9ee493c0ca1692d}\index{Logger@{Logger}!ClearTempLoggingFiles@{ClearTempLoggingFiles}}
+\index{ClearTempLoggingFiles@{ClearTempLoggingFiles}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{ClearTempLoggingFiles()}{ClearTempLoggingFiles()}}
+{\footnotesize\ttfamily \label{classLogger_a1a4c8453982752cbf9ee493c0ca1692d} 
+void Logger::\+\+Clear\+Temp\+Logging\+Files (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Clear temporary logging fils. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00142}{142}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+\Hypertarget{classLogger_a5ae47d7085cbf0c5fd258dc0c062f784}\index{Logger@{Logger}!DisableFILELogging@{DisableFILELogging}}
+\index{DisableFILELogging@{DisableFILELogging}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{DisableFILELogging()}{DisableFILELogging()}}
+{\footnotesize\ttfamily \label{classLogger_a5ae47d7085cbf0c5fd258dc0c062f784} 
+void Logger::\+\+Disable\+FILELogging (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Disable logging on logs file. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00129}{129}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00027}{file\+\_\+logging\+\_\+enabled}}.
+
+\Hypertarget{classLogger_ad7319a62eab592d15a2e7f7e94e77257}\index{Logger@{Logger}!DisableSTDOUTLogging@{DisableSTDOUTLogging}}
+\index{DisableSTDOUTLogging@{DisableSTDOUTLogging}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{DisableSTDOUTLogging()}{DisableSTDOUTLogging()}}
+{\footnotesize\ttfamily \label{classLogger_ad7319a62eab592d15a2e7f7e94e77257} 
+void Logger::\+\+Disable\+STDOUTLogging (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Disable logging on the stdout. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00138}{138}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00028}{stdout\+\_\+logging\+\_\+enabled}}.
+
+\Hypertarget{classLogger_ab9ebc303ae0be73a6ccb4e9a70e4803f}\index{Logger@{Logger}!EnableFILELogging@{EnableFILELogging}}
+\index{EnableFILELogging@{EnableFILELogging}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{EnableFILELogging()}{EnableFILELogging()}}
+{\footnotesize\ttfamily \label{classLogger_ab9ebc303ae0be73a6ccb4e9a70e4803f} 
+void Logger::\+\+Enable\+FILELogging (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enable logging on logs file. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00125}{125}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00027}{file\+\_\+logging\+\_\+enabled}}.
+
+\Hypertarget{classLogger_ad30632e1e80f89d1838520d7321530e5}\index{Logger@{Logger}!EnableSTDOUTLogging@{EnableSTDOUTLogging}}
+\index{EnableSTDOUTLogging@{EnableSTDOUTLogging}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{EnableSTDOUTLogging()}{EnableSTDOUTLogging()}}
+{\footnotesize\ttfamily \label{classLogger_ad30632e1e80f89d1838520d7321530e5} 
+void Logger::\+\+Enable\+STDOUTLogging (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enable logging on the stdout. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00134}{134}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00028}{stdout\+\_\+logging\+\_\+enabled}}.
+
+\Hypertarget{classLogger_abfbabf8d80ae90f870d9814c8559ed3a}\index{Logger@{Logger}!FormatTime@{FormatTime}}
+\index{FormatTime@{FormatTime}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{FormatTime()}{FormatTime()}}
+{\footnotesize\ttfamily \label{classLogger_abfbabf8d80ae90f870d9814c8559ed3a} 
+std::\+string Logger::\+\+Format\+Time (\begin{DoxyParamCaption}\item[{std::\+time\+\_\+t}]{time\+\_\+to\+\_\+format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Return a string time formatted as YY:\+\+MM:\+DD hh:\+mm:\+:\+ss. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+to\+\_\+format} & Time that needs to be formatted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Log\+Err()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00049}{Log\+Ok()}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00110}{Log\+Stack\+Trace()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_abfbabf8d80ae90f870d9814c8559ed3a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_ac8b6378bb5ffa1af9f64821aa3c7f9ea}\index{Logger@{Logger}!LogErr@{LogErr}}
+\index{LogErr@{LogErr}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{LogErr()}{LogErr()}}
+{\footnotesize\ttfamily \label{classLogger_ac8b6378bb5ffa1af9f64821aa3c7f9ea} 
+void Logger::\+\+Log\+Err (\begin{DoxyParamCaption}\item[{std::\+time\+\_\+t}]{log\+\_\+time}{, }\item[{const std::\+string \&}]{type}{, }\item[{const std::\+string \&}]{class\+\_\+name}{, }\item[{const std::\+string \&}]{function\+\_\+name}{, }\item[{const std::\+string \&}]{log\+\_\+message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Log that something went wrong. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+\_\+time} & Time of the log \\
+\hline
+{\em type} & Type of the thing that went wrong \\
+\hline
+{\em class\+\_\+name} & Class name where the log is being made \\
+\hline
+{\em function\+\_\+name} & Function name where the log is being made \\
+\hline
+{\em log\+\_\+message} & Log message \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{81}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00027}{file\+\_\+logging\+\_\+enabled}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00021}{Format\+Time()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00037}{Make\+Red()}}, and \doxymbox{\hyperlink{Logger_8hpp_source_l00028}{stdout\+\_\+logging\+\_\+enabled}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00066}{JSONParser::\+audio::\+\+Decrease\+Master\+Volume()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00182}{JSONParser::\+audio::\+\+Decrease\+Music\+Volume()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00298}{JSONParser::\+audio::\+\+Decrease\+SFXVolume()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00008}{JSONParser::\+audio::\+\+Increase\+Master\+Volume()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00124}{JSONParser::\+audio::\+\+Increase\+Music\+Volume()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00240}{JSONParser::\+audio::\+\+Increase\+SFXVolume()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00024}{Sound\+Board::\+\+Load\+Sound()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00040}{Sound\+Board::\+\+Play\+Sound()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00004}{Sound\+Board::\+\+Sound\+Board()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00065}{Sound\+Board::\+\+Stop\+Sound()}}, \doxymbox{\hyperlink{JSonParserAudio_8cpp_source_l00356}{JSONParser::\+audio::\+\+Toggle\+Mute()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window::\+\+Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window::\+\+Window()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{classLogger_ac8b6378bb5ffa1af9f64821aa3c7f9ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLogger_ac8b6378bb5ffa1af9f64821aa3c7f9ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a03e8a1a6d0b42b211d55fd63107a11ce}\index{Logger@{Logger}!LogOk@{LogOk}}
+\index{LogOk@{LogOk}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{LogOk()}{LogOk()}}
+{\footnotesize\ttfamily \label{classLogger_a03e8a1a6d0b42b211d55fd63107a11ce} 
+void Logger::\+\+Log\+Ok (\begin{DoxyParamCaption}\item[{std::\+time\+\_\+t}]{log\+\_\+time}{, }\item[{const std::\+string \&}]{type}{, }\item[{const std::\+string \&}]{class\+\_\+name}{, }\item[{const std::\+string \&}]{function\+\_\+name}{, }\item[{const std::\+string \&}]{log\+\_\+message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Log that something went all right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+\_\+time} & Time of the log \\
+\hline
+{\em type} & Type of the thing that went all right \\
+\hline
+{\em class\+\_\+name} & Class name where the log is being made \\
+\hline
+{\em function\+\_\+name} & Function name where the log is being made \\
+\hline
+{\em log\+\_\+message} & Log message \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00049}{49}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00027}{file\+\_\+logging\+\_\+enabled}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00021}{Format\+Time()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00041}{Make\+Green()}}, and \doxymbox{\hyperlink{Logger_8hpp_source_l00028}{stdout\+\_\+logging\+\_\+enabled}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{classLogger_a03e8a1a6d0b42b211d55fd63107a11ce_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a310b0f32c0fec8ff8cb5686f077cce67}\index{Logger@{Logger}!LogStackTrace@{LogStackTrace}}
+\index{LogStackTrace@{LogStackTrace}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{LogStackTrace()}{LogStackTrace()}}
+{\footnotesize\ttfamily \label{classLogger_a310b0f32c0fec8ff8cb5686f077cce67} 
+void Logger::\+\+Log\+Stack\+Trace (\begin{DoxyParamCaption}\item[{std::\+time\+\_\+t}]{log\+\_\+time}{, }\item[{const std::\+vector$<$ std::\+string $>$ \&}]{stack\+\_\+trace}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Log all the Exception Stack Trace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+\_\+time} & Time of the log \\
+\hline
+{\em stack\+\_\+trace} & Stack trace object to log \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00110}{110}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8cpp_source_l00021}{Format\+Time()}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00045}{Make\+Magenta()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_a310b0f32c0fec8ff8cb5686f077cce67_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a3d377d001c0dd3e47372d281326e529c}\index{Logger@{Logger}!MakeGreen@{MakeGreen}}
+\index{MakeGreen@{MakeGreen}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{MakeGreen()}{MakeGreen()}}
+{\footnotesize\ttfamily \label{classLogger_a3d377d001c0dd3e47372d281326e529c} 
+std::\+string Logger::\+\+Make\+Green (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Return the given string with format code to make it green. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & String to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00041}{41}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00024}{CLEAR}}, and \doxymbox{\hyperlink{Logger_8hpp_source_l00023}{GREEN}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00049}{Log\+Ok()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classLogger_a3d377d001c0dd3e47372d281326e529c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a513876da4d2dd787c33ed8f6c44dab30}\index{Logger@{Logger}!MakeMagenta@{MakeMagenta}}
+\index{MakeMagenta@{MakeMagenta}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{MakeMagenta()}{MakeMagenta()}}
+{\footnotesize\ttfamily \label{classLogger_a513876da4d2dd787c33ed8f6c44dab30} 
+std::\+string Logger::\+\+Make\+Magenta (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Return the given string with format code to make it magenta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & String to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00045}{45}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00024}{CLEAR}}, and \doxymbox{\hyperlink{Logger_8hpp_source_l00025}{MAGENTA}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00110}{Log\+Stack\+Trace()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_a513876da4d2dd787c33ed8f6c44dab30_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_ad6de808cee6c544b62b7a843a7918a78}\index{Logger@{Logger}!MakeRed@{MakeRed}}
+\index{MakeRed@{MakeRed}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{MakeRed()}{MakeRed()}}
+{\footnotesize\ttfamily \label{classLogger_ad6de808cee6c544b62b7a843a7918a78} 
+std::\+string Logger::\+\+Make\+Red (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Return the given string with format code to make it red. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & String to modify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8cpp_source_l00037}{37}} of file \doxymbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8hpp_source_l00024}{CLEAR}}, and \doxymbox{\hyperlink{Logger_8hpp_source_l00022}{RED}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Log\+Err()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_ad6de808cee6c544b62b7a843a7918a78_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classLogger_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLogger_a9f530cdcb18818d3d0360f855c4531ed}\index{Logger@{Logger}!CLEAR@{CLEAR}}
+\index{CLEAR@{CLEAR}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{CLEAR}{CLEAR}}
+{\footnotesize\ttfamily \label{classLogger_a9f530cdcb18818d3d0360f855c4531ed} 
+const std::\+string Logger::\+\+CLEAR = "{}\textbackslash{}033\+[0m"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00024}{24}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00041}{Make\+Green()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00045}{Make\+Magenta()}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00037}{Make\+Red()}}.
+
+\Hypertarget{classLogger_af7d4ede7e40a483d8909755fed06e091}\index{Logger@{Logger}!file\_logging\_enabled@{file\_logging\_enabled}}
+\index{file\_logging\_enabled@{file\_logging\_enabled}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{file\_logging\_enabled}{file\_logging\_enabled}}
+{\footnotesize\ttfamily \label{classLogger_af7d4ede7e40a483d8909755fed06e091} 
+bool Logger::\+file\+\_\+logging\+\_\+enabled = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00027}{27}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00129}{Disable\+FILELogging()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00125}{Enable\+FILELogging()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Log\+Err()}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00049}{Log\+Ok()}}.
+
+\Hypertarget{classLogger_aece641522d01021cd2bd695ed3f05033}\index{Logger@{Logger}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \label{classLogger_aece641522d01021cd2bd695ed3f05033} 
+const std::\+string Logger::\+\+GREEN = "{}\textbackslash{}033\+[32m"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00023}{23}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00041}{Make\+Green()}}.
+
+\Hypertarget{classLogger_a2eb5873a99755ef7d6eba2c7cb550f22}\index{Logger@{Logger}!MAGENTA@{MAGENTA}}
+\index{MAGENTA@{MAGENTA}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{MAGENTA}{MAGENTA}}
+{\footnotesize\ttfamily \label{classLogger_a2eb5873a99755ef7d6eba2c7cb550f22} 
+const std::\+string Logger::\+\+MAGENTA = "{}\textbackslash{}033\+[35m"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00025}{25}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00045}{Make\+Magenta()}}.
+
+\Hypertarget{classLogger_adf30d5405249830a6892a9b5d6000fce}\index{Logger@{Logger}!RED@{RED}}
+\index{RED@{RED}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{classLogger_adf30d5405249830a6892a9b5d6000fce} 
+const std::\+string Logger::\+\+RED = "{}\textbackslash{}033\+[31m"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00022}{22}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00037}{Make\+Red()}}.
+
+\Hypertarget{classLogger_a97b7d24a4d878e9c177dc23d426a4421}\index{Logger@{Logger}!stdout\_logging\_enabled@{stdout\_logging\_enabled}}
+\index{stdout\_logging\_enabled@{stdout\_logging\_enabled}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{stdout\_logging\_enabled}{stdout\_logging\_enabled}}
+{\footnotesize\ttfamily \label{classLogger_a97b7d24a4d878e9c177dc23d426a4421} 
+bool Logger::\+stdout\+\_\+logging\+\_\+enabled = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Logger_8hpp_source_l00028}{28}} of file \doxymbox{\hyperlink{Logger_8hpp_source}{Logger.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Logger_8cpp_source_l00138}{Disable\+STDOUTLogging()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00134}{Enable\+STDOUTLogging()}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Log\+Err()}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00049}{Log\+Ok()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Utils/\+hpp/\+\doxymbox{\hyperlink{Logger_8hpp}{Logger.\+hpp}}\item 
+src\+\_\+game/\+\+Utils/\+cpp/\+\doxymbox{\hyperlink{Logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}

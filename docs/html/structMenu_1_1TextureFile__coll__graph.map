@@ -1,0 +1,5 @@
+<map id="Menu::TextureFile" name="Menu::TextureFile">
+<area shape="rect" id="Node000001" title="Informations about a File." alt="" coords="16,352,141,446"/>
+<area shape="rect" id="Node000002" href="$classTexture.html" title=" " alt="" coords="5,5,152,279"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,276,81,335,76,335,78,281"/>
+</map>

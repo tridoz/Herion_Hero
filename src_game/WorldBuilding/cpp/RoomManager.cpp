@@ -104,15 +104,12 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
 
 }
 
-void RoomManager::GenerateRoom(  Direction dir ) {
-
+void RoomManager::GenerateRoom(  DIRECTION dir ) {
 
     std::vector<std::vector<Tile*> > tiles;
 
-
     const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
     const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
-
 
     std::ifstream map_file;
 
@@ -183,22 +180,23 @@ void RoomManager::GenerateRoom(  Direction dir ) {
         current_room = spawn_room;
     }else {
         switch ( dir ) {
-            case DIR_UP:
+
+            case DIRECTION::DIR_UP:
                 current_room -> up = newRoom;
                 current_room -> up -> down = current_room;
                 break;
 
-            case DIR_LEFT:
+            case DIRECTION::DIR_LEFT:
                 current_room -> left = newRoom;
                 current_room -> left -> right = current_room;
                 break;
 
-            case DIR_DOWN:
+            case DIRECTION::DIR_DOWN:
                 current_room -> down = newRoom;
                 current_room -> down -> up = current_room;
                 break;
 
-            case DIR_RIGHT:
+            case DIRECTION::DIR_RIGHT:
                 current_room -> right = newRoom;
                 current_room -> right -> left = current_room;
                 break;
@@ -216,7 +214,7 @@ Room* RoomManager::GetCurrentRoom() const {
 void RoomManager::GoLeft() {
 
     if ( current_room->left == nullptr ) {
-        GenerateRoom( DIR_LEFT);
+        GenerateRoom( DIRECTION::DIR_LEFT);
     }
 
     current_room = current_room->left;
@@ -224,7 +222,7 @@ void RoomManager::GoLeft() {
 
 void RoomManager::GoRight() {
     if ( current_room->right == nullptr ) {
-        GenerateRoom( DIR_RIGHT);
+        GenerateRoom( DIRECTION::DIR_RIGHT);
     }
 
     current_room = current_room->right;
@@ -233,7 +231,7 @@ void RoomManager::GoRight() {
 void RoomManager::GoUp() {
 
     if ( current_room->up == nullptr ) {
-        GenerateRoom( DIR_UP);
+        GenerateRoom( DIRECTION::DIR_UP);
     }
 
     current_room = current_room->up;
@@ -241,7 +239,7 @@ void RoomManager::GoUp() {
 
 void RoomManager::GoDown() {
     if ( current_room->down == nullptr ) {
-        GenerateRoom( DIR_DOWN);
+        GenerateRoom( DIRECTION::DIR_DOWN);
     }
 
     current_room = current_room->down;

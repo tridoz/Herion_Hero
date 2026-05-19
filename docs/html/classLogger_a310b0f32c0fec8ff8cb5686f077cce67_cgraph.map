@@ -1,0 +1,7 @@
+<map id="Logger::LogStackTrace" name="Logger::LogStackTrace">
+<area shape="rect" id="Node000001" title="Log all the Exception Stack Trace." alt="" coords="5,32,173,60"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="228,5,379,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,33,215,30,209,31,173,38"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#a513876da4d2dd787c33ed8f6c44dab30" title="Return the given string with format code to make it magenta." alt="" coords="221,57,386,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,53,208,59,202,60,173,58"/>
+</map>

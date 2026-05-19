@@ -1,0 +1,11 @@
+<map id="Player::LoadAnimation" name="Player::LoadAnimation">
+<area shape="rect" id="Node000001" title="Load animation based on a .json configuration file." alt="" coords="5,83,174,111"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1animations.html#a015d350482cdbbc0de56ea82b5a14d29" title="Return the fields of that animation." alt="" coords="222,5,439,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,80,238,53,233,57,141,85"/>
+<area shape="rect" id="Node000003" href="$namespaceJSONParser_1_1animations.html#a184d269aa65541f53a4803cf052466ad" title="Get how manu animations there are." alt="" coords="241,75,420,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,94,228,96,223,98,175,100"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1animations.html#a43cf63fa140010a14dab29ea24f4b50a" title="Set the .json file to parse." alt="" coords="243,144,418,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,109,238,138,233,140,140,114"/>
+<area shape="rect" id="Node000005" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="487,152,674,180"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="419,164,474,166,469,166,419,169"/>
+</map>

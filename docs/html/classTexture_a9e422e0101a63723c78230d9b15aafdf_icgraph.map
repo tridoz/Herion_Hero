@@ -1,0 +1,5 @@
+<map id="Texture::TextureCreated" name="Texture::TextureCreated">
+<area shape="rect" id="Node000001" title="Return true or false ba on if the texture was successfully created or not." alt="" coords="274,5,450,33"/>
+<area shape="rect" id="Node000002" href="$classTextureManager.html#a434fc6f9e176bbf2cb31dde51df58cd8" title="Load all the textures in an std::unordered_map&lt;std::string, Textured&gt; based of a ...." alt="" coords="5,5,226,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,19,226,22,226,17,261,19"/>
+</map>

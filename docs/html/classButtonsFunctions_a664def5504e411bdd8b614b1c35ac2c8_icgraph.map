@@ -1,0 +1,5 @@
+<map id="ButtonsFunctions::OpenSettings" name="ButtonsFunctions::OpenSettings">
+<area shape="rect" id="Node000001" title="Set the Player::GameMode to SETTINGS_MENU." alt="" coords="155,5,383,33"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#ad466dd83355124a6ed958430450bfe94" title=" " alt="" coords="5,5,107,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,19,107,22,107,17,142,19"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Menu::CheckCollision" name="Menu::CheckCollision">
+<area shape="rect" id="Node000001" title="Check if the mouse coordinates when it&#39;s clicked overlap a button." alt="" coords="241,5,402,33"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#af78779c5460be5c6fcdf2695db895100" title="Return the button at given coordinates if there is one." alt="" coords="5,5,193,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,19,193,22,193,17,228,19"/>
+</map>

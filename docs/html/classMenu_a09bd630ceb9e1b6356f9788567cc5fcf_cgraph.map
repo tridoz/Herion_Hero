@@ -1,0 +1,37 @@
+<map id="Menu::LoadScrollPaneMenuTypeConfiguration" name="Menu::LoadScrollPaneMenuTypeConfiguration">
+<area shape="rect" id="Node000001" title="Load the menu if it is a scroll pane menu." alt="" coords="5,432,206,477"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#adde221c0ab8ba661d1ee34b5d2270d8d" title="Create the Texture for the Directories and Files." alt="" coords="261,195,478,223"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,430,173,357,211,313,252,274,287,248,326,228,322,232,290,253,255,278,214,317,177,360,124,433"/>
+<area shape="rect" id="Node000009" href="$classMenu.html#a650540b684e46ae0115be6d47f4c33ee" title="Create the sbudirectory system of the given directory." alt="" coords="268,311,472,339"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="130,430,184,388,217,366,253,348,272,342,268,346,255,353,220,371,187,392,134,434"/>
+<area shape="rect" id="Node000011" href="$namespaceJSONParser_1_1menu__configuration.html#aaa1e33fa4ae8d2f0d4060843bb871d32" title="Return the path to the background image." alt="" coords="254,363,486,407"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="192,429,269,410,265,413,195,434"/>
+<area shape="rect" id="Node000012" href="$namespaceJSONParser_1_1menu__configuration.html#af6fd55eba707558376e878b364a5c485" title="Return the command to execute." alt="" coords="254,432,486,477"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="205,452,240,453,236,456,207,457"/>
+<area shape="rect" id="Node000013" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="291,501,448,546"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="193,475,279,498,274,500,194,480"/>
+<area shape="rect" id="Node000015" href="$namespaceJSONParser_1_1graphics.html#a127c3fac1f8f2c0396b567279bcd8f57" title="Return the scale for the current resolution." alt="" coords="291,571,448,615"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="134,474,189,516,255,556,279,568,274,568,252,561,186,520,133,480"/>
+<area shape="rect" id="Node000016" href="$namespaceJSONParser_1_1graphics.html#a99e24a77c8d8c99343f4d47e85feff05" title="Function to get the width of the screen." alt="" coords="291,640,448,685"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="121,475,174,550,212,590,255,625,280,640,274,640,252,630,208,594,170,553,119,480"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="325,195,318,186,323,176,341,171,370,169,401,171,419,179,414,181,400,176,370,174,342,176,327,181,323,186,330,194"/>
+<area shape="rect" id="Node000003" href="$namespaceJSONParser_1_1menu__configuration.html#aa692faa2d71682a0740608c65e7e0bfb" title="Get the Texture size for the directory row." alt="" coords="534,5,766,50"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="381,193,442,129,485,92,533,60,547,55,543,58,535,65,488,96,445,133,385,196"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1menu__configuration.html#ae51e66d83978170453d603da214fd4fe" title="Get the Texture size for the file row." alt="" coords="534,75,766,119"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="397,192,459,162,533,129,555,123,551,126,535,134,461,166,400,197"/>
+<area shape="rect" id="Node000005" href="$classMenu.html#a76986784f4382a866f37a767d772cca8" title="Return the name of the special character." alt="" coords="540,143,760,171"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="447,192,559,173,554,176,450,197"/>
+<area shape="rect" id="Node000006" href="$classMenu.html#a35c051d11a6e82ba9cff0215aac903ed" title="Check if a given cahr is special (in this list)." alt="" coords="589,195,711,223"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="478,206,576,208,571,210,480,212"/>
+<area shape="rect" id="Node000007" href="$classText.html#aa8bbb1eb82dcf077ced15ca149a28c96" title="Set the SDL_FRects of the Text." alt="" coords="594,247,707,275"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="448,221,581,247,576,249,449,226"/>
+<area shape="rect" id="Node000008" href="$classText.html#a3a59a1dbc6d01a2df0c9deea701c7f36" title="Set the Texture of the Text." alt="" coords="584,299,716,327"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="397,221,460,252,535,284,572,296,566,297,533,289,457,257,397,226"/>
+<area shape="poly" id="edge10_Node000009_Node000009" title=" " alt="" coords="325,311,318,302,323,292,341,287,370,285,401,287,419,295,414,296,400,292,370,290,342,292,327,297,323,302,330,311"/>
+<area shape="rect" id="Node000010" href="$classCMD.html#ae9aa41884291132d680ec7dac421e9e0" title=" " alt="" coords="572,351,728,379"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="471,337,559,351,554,353,472,342"/>
+<area shape="rect" id="Node000014" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="556,579,744,607"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="449,540,579,575,574,575,449,546"/>
+<area shape="poly" id="edge17_Node000015_Node000014" title=" " alt="" coords="449,590,543,593,538,593,449,596"/>
+<area shape="poly" id="edge19_Node000016_Node000014" title=" " alt="" coords="448,640,574,611,579,611,449,646"/>
+</map>

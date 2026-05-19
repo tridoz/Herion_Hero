@@ -1,0 +1,228 @@
+\doxysection{Texture\+Manager Class Reference}
+\hypertarget{classTextureManager}{}\label{classTextureManager}\index{TextureManager@{TextureManager}}
+
+
+{\ttfamily \+\#include $<$Texture\+Manager.\+hpp$>$}
+
+
+
+Collaboration diagram for Texture\+Manager:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classTextureManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classTextureManager_a3873f1ea996ce68c1dc46cf98a976a01}{Get\+Texture}} (const std::\+string \&texture\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Return a pointer to the \doxylink{classTexture}{Texture} based on the name given. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classTextureManager_a434fc6f9e176bbf2cb31dde51df58cd8}{Load\+Textures}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Load all the textures in an std::\+unordered\+\_\+map$<$std::\+string, Textured$>$ based of a .txt file with all the textures path written in it. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classTextureManager_a7255216fc3ca16e6747c16a8b190e8ec}{Set\+Renderer}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}new\+\_\+renderer)
+\begin{DoxyCompactList}\small\item\em Set the SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classTextureManager_ad76abb178b37cedf4514eb0154349935}{Texture\+Manager}} ()
+\item 
+\doxymbox{\hyperlink{classTextureManager_a001d6d74674961db79987e3222682576}{\texorpdfstring{$\sim$}{\string~}\+Texture\+Manager}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std::\+string \doxymbox{\hyperlink{classTextureManager_a1cc805d2f43214f016058755105f409b}{base\+\_\+path}} = "{}../\+"{}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classTextureManager_afead0b8b321844b1e1c5f08c609d6d70}{renderer}}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classTexture}{Texture}} $>$ \doxymbox{\hyperlink{classTextureManager_ac7689fdb5cc3b71e0a7b3e956683e076}{textures}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8hpp_source_l00017}{17}} of file \doxymbox{\hyperlink{TextureManager_8hpp_source}{Texture\+Manager.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classTextureManager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTextureManager_ad76abb178b37cedf4514eb0154349935}\index{TextureManager@{TextureManager}!TextureManager@{TextureManager}}
+\index{TextureManager@{TextureManager}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{TextureManager()}{TextureManager()}}
+{\footnotesize\ttfamily \label{classTextureManager_ad76abb178b37cedf4514eb0154349935} 
+Texture\+Manager::\+\+Texture\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8cpp_source_l00008}{8}} of file \doxymbox{\hyperlink{TextureManager_8cpp_source}{Texture\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{TextureManager_8hpp_source_l00020}{renderer}}, and \doxymbox{\hyperlink{TextureManager_8hpp_source_l00022}{textures}}.
+
+\Hypertarget{classTextureManager_a001d6d74674961db79987e3222682576}\index{TextureManager@{TextureManager}!````~TextureManager@{\texorpdfstring{$\sim$}{\string~}TextureManager}}
+\index{````~TextureManager@{\texorpdfstring{$\sim$}{\string~}TextureManager}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TextureManager()}{\string~TextureManager()}}
+{\footnotesize\ttfamily \label{classTextureManager_a001d6d74674961db79987e3222682576} 
+Texture\+Manager::\+\texorpdfstring{$\sim$}{\string~}\+Texture\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{TextureManager_8cpp_source}{Texture\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{TextureManager_8hpp_source_l00022}{textures}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classTextureManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTextureManager_a3873f1ea996ce68c1dc46cf98a976a01}\index{TextureManager@{TextureManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{classTextureManager_a3873f1ea996ce68c1dc46cf98a976a01} 
+\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} Texture\+Manager::\+\+Get\+Texture (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{texture\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Return a pointer to the \doxylink{classTexture}{Texture} based on the name given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+name} & The name of the texture to return. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Herion\+Hexception::\+\+File::\+\+File\+Not\+Found} & if the texture doesn\textquotesingle{}t exists. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+Texture\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{TextureManager_8cpp_source}{Texture\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{TextureManager_8hpp_source_l00022}{textures}}.
+
+\Hypertarget{classTextureManager_a434fc6f9e176bbf2cb31dde51df58cd8}\index{TextureManager@{TextureManager}!LoadTextures@{LoadTextures}}
+\index{LoadTextures@{LoadTextures}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{LoadTextures()}{LoadTextures()}}
+{\footnotesize\ttfamily \label{classTextureManager_a434fc6f9e176bbf2cb31dde51df58cd8} 
+void Texture\+Manager::\+\+Load\+Textures (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Load all the textures in an std::\+unordered\+\_\+map$<$std::\+string, Textured$>$ based of a .txt file with all the textures path written in it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The filepath to the loader file. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Herion\+Exception::\+\+File::\+\+File\+Exception} & if the loader file opening failed. \\
+\hline
+{\em Herion\+Exception::\+\+File::\+\+File\+Not\+Found\+Exception} & if the texture file wasn\textquotesingle{}t found. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8cpp_source_l00023}{23}} of file \doxymbox{\hyperlink{TextureManager_8cpp_source}{Texture\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{TextureManager_8hpp_source_l00023}{base\+\_\+path}}, \doxymbox{\hyperlink{Texture_8cpp_source_l00023}{Texture::\+\+Create\+Texture()}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, \doxymbox{\hyperlink{TextureManager_8hpp_source_l00020}{renderer}}, \doxymbox{\hyperlink{Texture_8cpp_source_l00037}{Texture::\+\+Texture\+Created()}}, and \doxymbox{\hyperlink{TextureManager_8hpp_source_l00022}{textures}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTextureManager_a434fc6f9e176bbf2cb31dde51df58cd8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTextureManager_a7255216fc3ca16e6747c16a8b190e8ec}\index{TextureManager@{TextureManager}!SetRenderer@{SetRenderer}}
+\index{SetRenderer@{SetRenderer}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{SetRenderer()}{SetRenderer()}}
+{\footnotesize\ttfamily \label{classTextureManager_a7255216fc3ca16e6747c16a8b190e8ec} 
+void Texture\+Manager::\+\+Set\+Renderer (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{new\+\_\+renderer}{}\end{DoxyParamCaption})}
+
+
+
+Set the SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+renderer} & The renderer to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8cpp_source_l00019}{19}} of file \doxymbox{\hyperlink{TextureManager_8cpp_source}{Texture\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{TextureManager_8hpp_source_l00020}{renderer}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classTextureManager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTextureManager_a1cc805d2f43214f016058755105f409b}\index{TextureManager@{TextureManager}!base\_path@{base\_path}}
+\index{base\_path@{base\_path}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{base\_path}{base\_path}}
+{\footnotesize\ttfamily \label{classTextureManager_a1cc805d2f43214f016058755105f409b} 
+const std::\+string Texture\+Manager::\+base\+\_\+path = "{}../\+"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8hpp_source_l00023}{23}} of file \doxymbox{\hyperlink{TextureManager_8hpp_source}{Texture\+Manager.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{TextureManager_8cpp_source_l00023}{Load\+Textures()}}.
+
+\Hypertarget{classTextureManager_afead0b8b321844b1e1c5f08c609d6d70}\index{TextureManager@{TextureManager}!renderer@{renderer}}
+\index{renderer@{renderer}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily \label{classTextureManager_afead0b8b321844b1e1c5f08c609d6d70} 
+SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Texture\+Manager::\+renderer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8hpp_source_l00020}{20}} of file \doxymbox{\hyperlink{TextureManager_8hpp_source}{Texture\+Manager.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{TextureManager_8cpp_source_l00023}{Load\+Textures()}}, \doxymbox{\hyperlink{TextureManager_8cpp_source_l00019}{Set\+Renderer()}}, and \doxymbox{\hyperlink{TextureManager_8cpp_source_l00008}{Texture\+Manager()}}.
+
+\Hypertarget{classTextureManager_ac7689fdb5cc3b71e0a7b3e956683e076}\index{TextureManager@{TextureManager}!textures@{textures}}
+\index{textures@{textures}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily \label{classTextureManager_ac7689fdb5cc3b71e0a7b3e956683e076} 
+std::\+unordered\+\_\+map$<$std::\+string, \doxymbox{\hyperlink{classTexture}{Texture}}$>$ Texture\+Manager::\+textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{TextureManager_8hpp_source_l00022}{22}} of file \doxymbox{\hyperlink{TextureManager_8hpp_source}{Texture\+Manager.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{TextureManager_8cpp_source_l00055}{Get\+Texture()}}, \doxymbox{\hyperlink{TextureManager_8cpp_source_l00023}{Load\+Textures()}}, \doxymbox{\hyperlink{TextureManager_8cpp_source_l00008}{Texture\+Manager()}}, and \doxymbox{\hyperlink{TextureManager_8cpp_source_l00013}{\texorpdfstring{$\sim$}{\string~}\+Texture\+Manager()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Textures/\+hpp/\+\doxymbox{\hyperlink{TextureManager_8hpp}{Texture\+Manager.\+hpp}}\item 
+src\+\_\+game/\+\+Textures/\+cpp/\+\doxymbox{\hyperlink{TextureManager_8cpp}{Texture\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,83 @@
+<map id="Menu::LoadCfg" name="Menu::LoadCfg">
+<area shape="rect" id="Node000001" title="Load the menu based on the path of a given .json file." alt="" coords="5,529,124,556"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1menu__configuration.html#a9f88902114e60990d134270c13e930bd" title="Return the menu type." alt="" coords="172,416,404,461"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,527,122,498,170,471,189,464,185,469,173,475,125,503,86,530"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#a7bb9b117f29324f4e112b756cd17b706" title="Load the menu if it is a button menu." alt="" coords="182,555,394,599"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,549,168,556,164,560,125,554"/>
+<area shape="rect" id="Node000027" href="$classMenu.html#a09bd630ceb9e1b6356f9788567cc5fcf" title="Load the menu if it is a scroll pane menu." alt="" coords="188,1245,388,1290"/>
+<area shape="poly" id="edge29_Node000001_Node000027" title=" " alt="" coords="72,555,278,1230,273,1231,68,558"/>
+<area shape="rect" id="Node000034" href="$namespaceJSONParser_1_1menu__configuration.html#a1c9d7882bbcc2999a356d934f6fa062d" title="Set the .json file to parse." alt="" coords="172,485,404,530"/>
+<area shape="poly" id="edge46_Node000001_Node000034" title=" " alt="" coords="122,531,158,526,154,530,126,535"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1menu__configuration.html#aaa1e33fa4ae8d2f0d4060843bb871d32" title="Return the path to the background image." alt="" coords="452,1147,684,1191"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="289,597,295,697,302,764,315,840,335,918,364,996,403,1069,427,1102,454,1133,457,1137,452,1137,450,1136,423,1105,398,1071,359,998,330,920,309,841,297,765,289,697,288,603"/>
+<area shape="rect" id="Node000005" href="$namespaceJSONParser_1_1menu__configuration.html#ac1a8b283cd22b3aa8ca83466b558565d" title="Get the ButtonYOffset for the Button menu type." alt="" coords="452,365,684,410"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="386,553,402,540,414,526,421,512,425,482,430,451,437,436,450,420,457,417,454,421,454,424,442,438,435,453,431,483,426,513,419,529,406,544,390,556"/>
+<area shape="rect" id="Node000006" href="$namespaceJSONParser_1_1menu__configuration.html#ab123a40b6a5e1285465aa51223e7c501" title="Get the CenterPieceOffset for the Button menu type." alt="" coords="452,435,684,479"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="377,552,403,540,417,530,426,519,436,508,451,496,478,484,474,488,453,501,439,511,430,522,420,534,405,545,381,556"/>
+<area shape="rect" id="Node000007" href="$classMenu.html#a76986784f4382a866f37a767d772cca8" title="Return the name of the special character." alt="" coords="739,1050,958,1078"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="290,597,298,684,306,741,320,803,340,867,369,928,406,984,428,1009,454,1031,472,1041,498,1049,566,1060,645,1065,726,1068,721,1069,644,1070,565,1066,497,1055,470,1046,450,1035,425,1013,402,988,364,931,335,869,315,805,301,742,293,685,289,603"/>
+<area shape="rect" id="Node000008" href="$namespaceJSONParser_1_1menu__configuration.html#ab136de557cdb3c260be49c7907db7520" title="Get the number of rows for the Button Menu type." alt="" coords="452,555,684,599"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="393,575,438,576,434,579,396,579"/>
+<area shape="rect" id="Node000009" href="$namespaceJSONParser_1_1menu__configuration.html#aca8df2249afc2cd1b6f783f41e8f7736" title="Get the RowButtonXOffset for the Button menu type." alt="" coords="452,624,684,669"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="380,598,463,618,458,621,382,602"/>
+<area shape="rect" id="Node000010" href="$namespaceJSONParser_1_1menu__configuration.html#a6c8db0691574ce653e1f09ff5a911802" title="Get the fields of the element for the Button menu type." alt="" coords="452,693,684,738"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="318,597,380,638,453,679,470,687,465,688,451,683,377,643,320,602"/>
+<area shape="rect" id="Node000011" href="$namespaceJSONParser_1_1menu__configuration.html#a336aa7a0a775a036eb9bcce52f4eb42f" title="Get the number of elements in a row for the Button menu type." alt="" coords="452,763,684,807"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="304,597,365,672,407,713,453,748,464,755,459,756,451,753,403,717,361,676,305,602"/>
+<area shape="rect" id="Node000012" href="$namespaceJSONParser_1_1menu__configuration.html#adedb028a6adba692afab938ee66c5a35" title="Get the RowStartingX for the Button menu type." alt="" coords="452,832,684,877"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="298,597,322,645,355,704,399,765,425,793,454,818,461,824,456,825,450,822,421,797,395,769,350,707,317,647,298,603"/>
+<area shape="rect" id="Node000013" href="$namespaceJSONParser_1_1graphics.html#a127c3fac1f8f2c0396b567279bcd8f57" title="Return the scale for the current resolution." alt="" coords="490,1216,647,1261"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="292,597,313,724,347,905,369,999,395,1084,423,1155,438,1182,454,1202,478,1221,472,1221,450,1206,434,1185,418,1157,390,1086,364,1000,342,906,308,725,292,602"/>
+<area shape="rect" id="Node000015" href="$namespaceJSONParser_1_1menu__configuration.html#a4dc2f09e72af1f0f5670277837366da6" title="Get the StartY for the Button menu type." alt="" coords="452,901,684,946"/>
+<area shape="poly" id="edge14_Node000003_Node000015" title=" " alt="" coords="295,597,314,657,345,735,366,776,391,817,420,854,454,887,460,893,455,893,450,891,416,858,387,820,361,779,340,737,309,659,294,602"/>
+<area shape="rect" id="Node000016" href="$classMenu.html#a865ce66eae83e0c1ef18aec2794a2ddc" title="Return the text for DYNAMIC_TEXT type in che menu configuration .json files or &quot;error&quot;." alt="" coords="510,1095,626,1123"/>
+<area shape="poly" id="edge15_Node000003_Node000016" title=" " alt="" coords="290,597,298,688,307,749,321,816,341,886,369,955,406,1019,454,1075,473,1089,498,1100,493,1101,471,1094,450,1079,402,1022,364,957,336,888,316,817,302,750,293,689,289,602"/>
+<area shape="rect" id="Node000020" href="$classTexture.html#a1481e2e0c45dc7bc7777ec2825b66670" title="Return the SDL_Texture field." alt="" coords="494,58,642,86"/>
+<area shape="poly" id="edge22_Node000003_Node000020" title=" " alt="" coords="389,553,402,541,422,513,435,485,442,457,444,429,438,374,424,319,410,264,404,209,407,181,415,153,429,125,450,97,463,85,481,78,477,82,466,90,454,100,433,128,420,155,412,182,409,209,415,263,429,318,443,373,449,429,447,458,440,486,426,515,406,544,394,556"/>
+<area shape="rect" id="Node000021" href="$classMenu.html#a35c051d11a6e82ba9cff0215aac903ed" title="Check if a given cahr is special (in this list)." alt="" coords="787,317,910,344"/>
+<area shape="poly" id="edge23_Node000003_Node000021" title=" " alt="" coords="388,553,402,541,415,522,424,504,431,467,428,430,420,392,413,355,412,319,422,283,434,266,450,250,471,235,494,224,543,213,594,214,646,225,696,243,742,264,817,307,812,309,740,269,694,248,645,230,594,220,543,218,496,229,474,239,454,254,438,270,427,286,417,319,418,355,426,391,433,429,437,467,429,506,420,525,406,544,393,556"/>
+<area shape="rect" id="Node000022" href="$classButton.html#adce659a3e88b54d9aa8eea73b8c0cf7d" title="Set the &quot;action listenere function&quot; for the button." alt="" coords="496,110,640,138"/>
+<area shape="poly" id="edge24_Node000003_Node000022" title=" " alt="" coords="389,553,402,541,420,516,431,491,438,467,440,443,435,394,424,346,412,297,408,248,411,223,418,198,431,173,450,149,464,137,483,129,480,133,467,141,454,152,436,176,423,200,416,224,414,248,418,296,429,344,441,393,445,443,443,468,436,493,424,519,406,544,393,556"/>
+<area shape="rect" id="Node000023" href="$classButton.html#ad8ba4b6031f5aadf9b6c92b8d4b18384" title="Set the SDL_FRects of the Button." alt="" coords="504,162,633,190"/>
+<area shape="poly" id="edge25_Node000003_Node000023" title=" " alt="" coords="389,552,402,541,417,520,428,499,436,458,433,417,425,375,416,333,414,291,423,249,434,227,450,206,467,192,490,182,487,186,470,196,454,210,438,230,428,251,419,292,422,333,430,374,439,416,442,458,433,501,422,522,406,544,393,556"/>
+<area shape="rect" id="Node000024" href="$classText.html#aa8bbb1eb82dcf077ced15ca149a28c96" title="Set the SDL_FRects of the Text." alt="" coords="792,473,905,500"/>
+<area shape="poly" id="edge26_Node000003_Node000024" title=" " alt="" coords="387,553,402,541,418,517,425,493,425,469,422,444,420,420,421,396,430,372,450,351,480,331,508,319,535,313,563,314,619,327,685,351,729,372,769,401,802,431,829,460,823,461,799,435,765,405,726,377,683,355,618,332,562,319,536,319,510,324,483,336,454,355,435,375,427,397,425,420,427,444,430,469,430,494,423,520,406,544,392,556"/>
+<area shape="rect" id="Node000025" href="$classButton.html#a59b7f1491a05aadf714650d34ea696b3" title="Set the Texture of the Button." alt="" coords="494,263,642,291"/>
+<area shape="poly" id="edge27_Node000003_Node000025" title=" " alt="" coords="388,553,402,541,421,512,429,483,429,455,425,426,421,396,421,367,430,337,450,307,481,288,478,292,454,311,435,339,427,368,427,396,430,425,434,454,434,484,426,514,406,544,392,556"/>
+<area shape="rect" id="Node000026" href="$classText.html#a3a59a1dbc6d01a2df0c9deea701c7f36" title="Set the Texture of the Text." alt="" coords="782,683,915,711"/>
+<area shape="poly" id="edge28_Node000003_Node000026" title=" " alt="" coords="379,552,452,540,571,521,622,522,652,528,685,540,732,566,773,600,807,637,832,671,827,670,803,640,769,604,729,570,683,545,650,533,622,527,571,527,452,545,382,556"/>
+<area shape="rect" id="Node000014" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="1013,1213,1200,1240"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="647,1234,1000,1228,995,1230,648,1239"/>
+<area shape="rect" id="Node000017" href="$namespaceJSONParser_1_1graphics.html#a8a5ede217d39301d2d149fb6f76a9593" title="Return the current FPS limit." alt="" coords="770,1127,927,1171"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="626,1115,757,1135,752,1136,627,1120"/>
+<area shape="rect" id="Node000018" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="770,1264,927,1309"/>
+<area shape="poly" id="edge18_Node000016_Node000018" title=" " alt="" coords="626,1112,657,1120,686,1132,702,1143,712,1155,734,1182,812,1254,807,1254,730,1186,708,1158,698,1147,683,1137,655,1125,626,1117"/>
+<area shape="rect" id="Node000019" href="$namespaceJSONParser_1_1graphics.html#a99e24a77c8d8c99343f4d47e85feff05" title="Function to get the width of the screen." alt="" coords="770,1391,927,1435"/>
+<area shape="poly" id="edge20_Node000016_Node000019" title=" " alt="" coords="626,1106,658,1115,686,1132,708,1163,717,1194,717,1225,712,1256,708,1286,707,1316,715,1347,734,1377,759,1397,753,1396,730,1380,710,1349,702,1317,702,1286,707,1255,711,1224,711,1195,703,1165,682,1136,656,1119,626,1112"/>
+<area shape="poly" id="edge17_Node000017_Node000014" title=" " alt="" coords="926,1169,1046,1207,1040,1208,926,1175"/>
+<area shape="poly" id="edge19_Node000018_Node000014" title=" " alt="" coords="927,1265,1032,1244,1026,1245,928,1271"/>
+<area shape="poly" id="edge21_Node000019_Node000014" title=" " alt="" coords="927,1393,963,1376,1001,1348,1035,1314,1085,1254,1090,1252,1039,1318,1005,1352,966,1381,928,1398"/>
+<area shape="poly" id="edge41_Node000027_Node000004" title=" " alt="" coords="343,1242,451,1201,476,1195,471,1198,453,1206,345,1247"/>
+<area shape="poly" id="edge44_Node000027_Node000013" title=" " alt="" coords="388,1255,477,1247,472,1249,389,1260"/>
+<area shape="poly" id="edge43_Node000027_Node000018" title=" " alt="" coords="388,1268,756,1281,752,1285,388,1274"/>
+<area shape="poly" id="edge45_Node000027_Node000019" title=" " alt="" coords="300,1288,323,1330,356,1380,400,1429,425,1449,453,1465,495,1480,539,1488,584,1488,629,1484,714,1465,783,1442,788,1441,716,1470,630,1489,584,1494,539,1493,494,1485,451,1470,422,1453,396,1432,352,1383,319,1333,298,1293"/>
+<area shape="rect" id="Node000028" href="$classMenu.html#adde221c0ab8ba661d1ee34b5d2270d8d" title="Create the Texture for the Directories and Files." alt="" coords="460,994,677,1022"/>
+<area shape="poly" id="edge30_Node000027_Node000028" title=" " alt="" coords="304,1243,365,1168,406,1124,450,1082,489,1052,531,1028,526,1031,492,1056,454,1086,410,1127,369,1172,308,1247"/>
+<area shape="rect" id="Node000031" href="$classMenu.html#a650540b684e46ae0115be6d47f4c33ee" title="Create the sbudirectory system of the given directory." alt="" coords="466,1359,670,1387"/>
+<area shape="poly" id="edge38_Node000027_Node000031" title=" " alt="" coords="350,1288,518,1353,513,1354,349,1293"/>
+<area shape="rect" id="Node000033" href="$namespaceJSONParser_1_1menu__configuration.html#af6fd55eba707558376e878b364a5c485" title="Return the command to execute." alt="" coords="452,1411,684,1455"/>
+<area shape="poly" id="edge42_Node000027_Node000033" title=" " alt="" coords="312,1288,374,1342,412,1371,453,1396,467,1405,462,1404,451,1401,409,1375,370,1346,311,1293"/>
+<area shape="poly" id="edge34_Node000028_Node000007" title=" " alt="" coords="641,1020,763,1046,758,1047,642,1025"/>
+<area shape="poly" id="edge35_Node000028_Node000021" title=" " alt="" coords="633,991,661,977,682,957,693,938,701,915,711,857,714,788,714,714,713,569,718,508,730,460,747,428,770,399,819,352,816,356,774,402,752,431,735,462,723,508,718,569,719,714,719,789,716,857,706,916,698,940,686,960,664,981,636,995"/>
+<area shape="poly" id="edge36_Node000028_Node000024" title=" " alt="" coords="631,991,659,977,682,957,705,921,716,887,720,855,719,822,714,753,718,714,730,671,751,624,776,580,825,514,828,510,780,583,756,627,735,673,723,715,720,753,724,822,725,855,722,888,710,923,686,960,662,982,634,996"/>
+<area shape="poly" id="edge37_Node000028_Node000026" title=" " alt="" coords="619,991,652,976,683,956,718,914,759,850,831,727,834,723,764,852,722,917,686,960,655,981,622,996"/>
+<area shape="poly" id="edge31_Node000028_Node000028" title=" " alt="" coords="520,993,513,985,519,975,538,969,568,967,602,970,621,978,615,979,600,975,568,973,539,975,522,979,518,985,526,993"/>
+<area shape="rect" id="Node000029" href="$namespaceJSONParser_1_1menu__configuration.html#aa692faa2d71682a0740608c65e7e0bfb" title="Get the Texture size for the directory row." alt="" coords="732,912,965,957"/>
+<area shape="poly" id="edge32_Node000028_Node000029" title=" " alt="" coords="623,991,748,960,743,963,625,996"/>
+<area shape="rect" id="Node000030" href="$namespaceJSONParser_1_1menu__configuration.html#ae51e66d83978170453d603da214fd4fe" title="Get the Texture size for the file row." alt="" coords="732,981,965,1026"/>
+<area shape="poly" id="edge33_Node000028_Node000030" title=" " alt="" coords="676,1004,720,1005,715,1006,678,1009"/>
+<area shape="poly" id="edge39_Node000031_Node000031" title=" " alt="" coords="520,1358,513,1350,519,1340,538,1335,568,1333,602,1335,621,1344,615,1344,600,1340,568,1338,539,1340,522,1345,518,1350,526,1359"/>
+<area shape="rect" id="Node000032" href="$classCMD.html#ae9aa41884291132d680ec7dac421e9e0" title=" " alt="" coords="770,1339,927,1367"/>
+<area shape="poly" id="edge40_Node000031_Node000032" title=" " alt="" coords="670,1363,757,1359,752,1360,670,1368"/>
+<area shape="poly" id="edge47_Node000034_Node000014" title=" " alt="" coords="389,483,402,471,411,456,418,436,425,384,425,323,422,256,419,190,420,129,429,79,438,59,450,44,479,23,506,10,534,4,561,4,619,18,685,44,785,89,823,114,856,141,885,172,912,209,967,304,983,339,997,383,1024,492,1046,621,1065,759,1092,1022,1106,1198,1101,1196,1087,1022,1060,760,1041,622,1019,493,992,385,978,341,962,306,907,212,881,175,852,145,820,118,782,94,683,49,617,23,561,9,534,9,508,15,482,27,454,48,443,62,435,81,426,130,424,190,427,256,430,323,430,385,423,437,416,458,406,475,393,486"/>
+</map>

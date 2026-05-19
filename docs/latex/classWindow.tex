@@ -1,0 +1,673 @@
+\doxysection{Window Class Reference}
+\hypertarget{classWindow}{}\label{classWindow}\index{Window@{Window}}
+
+
+{\ttfamily \+\#include $<$Window.\+hpp$>$}
+
+
+
+Collaboration diagram for Window:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classWindow__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classWindow_ae6590e1a46ca20be663567a023f3842e}{Clear}} () const
+\begin{DoxyCompactList}\small\item\em Clear the renderer. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Cursor \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_aa1a07b3e3add93596f19181dbb881279}{Get\+Cursor}} ()
+\begin{DoxyCompactList}\small\item\em Return a pointer to the current cursor. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classWindow_a2196b5ae099037272cc85b223e80bd6d}{Get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Return the \doxylink{classWindow}{Window}\textquotesingle{}s height. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_ab70c4ba24cc2e38fc1fd4a8c58daf8e6}{Get\+Menu}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Return a pointer a menu based on a given name. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_aba61805867afeb4529ff77516d59d9a7}{Get\+Renderer}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the \doxylink{classWindow}{Window}\textquotesingle{}s renderer. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classWindow_a451bdfeab37afce97712f23f5c2492aa}{Get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Return the \doxylink{classWindow}{Window}\textquotesingle{}s width. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_a2ca7b95660dc942a07fec03e4ee4cbfa}{Get\+Window}} () const
+\begin{DoxyCompactList}\small\item\em Return a pointer to the \doxylink{classWindow}{Window}\textquotesingle{}s window. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_af05f1c89263175897f4504fd47e01081}{Hide}} ()
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{classWindow}{Window} as "{}to hide"{}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classWindow_ad735ec09123e1633186b3bbcfcb8365d}{Is\+Open}} () const
+\begin{DoxyCompactList}\small\item\em Return if the \doxylink{classWindow}{Window} is being shown or not. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_aa4dba55a7fd86d0b57b358ef0be01fdd}{Load\+Cursors}} (const std::\+string \&cursor\+\_\+filepath)
+\begin{DoxyCompactList}\small\item\em Load all the cursors from a given file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_aa23c4aa350f8e5f6faeaff966a8ab875}{Present}} () const
+\begin{DoxyCompactList}\small\item\em Renderer the content of the \doxylink{classWindow}{Window}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_a42024a5e1b43988a373f016e04a6d23c}{Resize}} ()
+\begin{DoxyCompactList}\small\item\em Resize the \doxylink{classWindow}{Window}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_a913781bbb626a4c8ac9cfb9d19f39896}{Set\+Color}} (\doxymbox{\hyperlink{structCOLORS_1_1Color}{COLORS::\+\+Color}}) const
+\begin{DoxyCompactList}\small\item\em Set the color used to draw. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_ae29ee62679e0a479344727242435b2c4}{Set\+Cursor}} (const std::\+string \&cursor\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Set a new cursor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_a488f3fabe841a018a277dddf061e5d26}{Set\+Menu}} (const std::\+string \&name, \doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*}menu\+\_\+to\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Set a new menu inside the std::\+unordered\+\_\+map \texorpdfstring{$<$}{<} std::\+string, Menu\texorpdfstring{$\ast$}{*} \texorpdfstring{$>$}{>} menus fields. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_ae206b80ce3037d0b4d43ae80df9482f7}{Show}} ()
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{classWindow}{Window} as "{}to show"{}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classWindow_ae390c89d410bcd2cc2470d0167c6bcfd}{Sleep}} () const
+\begin{DoxyCompactList}\small\item\em Wait a certain amount of time. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classWindow_a74e6087da23d3c24e9fac0245e5ec92c}{Window}} ()
+\item 
+\doxymbox{\hyperlink{classWindow_afbbf6fabca06597e070b5a9488d7f8aa}{Window}} (const std::\+string \&title)
+\item 
+\doxymbox{\hyperlink{classWindow_aa75e2e442088a062e3f7751e0f33a63d}{Window}} (const std::\+string \&title, int \doxymbox{\hyperlink{classWindow_af5b1c436782cc9752d386493fbc5dc8c}{width}}, int \doxymbox{\hyperlink{classWindow_af0ac1732ca6b79a6f6b78aa344140514}{height}})
+\item 
+\doxymbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6}{\texorpdfstring{$\sim$}{\string~}\+Window}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{classWindow_a73a100964a556ae731b31ea2ae8c1320}{current\+\_\+cursor\+\_\+name}}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, SDL\+\_\+\+Cursor \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classWindow_a291feee7b739fa86e56bfac89214a547}{Cursors}}
+\item 
+int \doxymbox{\hyperlink{classWindow_aa0f39396d037c411323af3b256fb72e6}{flags}}
+\item 
+int \doxymbox{\hyperlink{classWindow_af0ac1732ca6b79a6f6b78aa344140514}{height}}
+\item 
+int \doxymbox{\hyperlink{classWindow_a07d68d1fc9b7300b084b3d15a05a7eb6}{is\+\_\+open}}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classWindow_aec025fc24df111474c8e8b7abb3dd59d}{menus}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_a2b52309ef359b6392454a3bb57398b5d}{renderer}} = nullptr
+\item 
+int \doxymbox{\hyperlink{classWindow_af5b1c436782cc9752d386493fbc5dc8c}{width}}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820}{window}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classWindow_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classWindow_a74e6087da23d3c24e9fac0245e5ec92c}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classWindow_a74e6087da23d3c24e9fac0245e5ec92c} 
+Window::\+\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+\Hypertarget{classWindow_afbbf6fabca06597e070b5a9488d7f8aa}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classWindow_afbbf6fabca06597e070b5a9488d7f8aa} 
+Window::\+\+Window (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{title}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00025}{flags}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00149}{JSONParser::\+graphics::\+\+Get\+Height()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00122}{JSONParser::\+graphics::\+\+Get\+Width()}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{height}}, \doxymbox{\hyperlink{Window_8hpp_source_l00026}{is\+\_\+open}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}, \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{width}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWindow_afbbf6fabca06597e070b5a9488d7f8aa_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classWindow_aa75e2e442088a062e3f7751e0f33a63d}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classWindow_aa75e2e442088a062e3f7751e0f33a63d} 
+Window::\+\+Window (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{title}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00071}{71}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00025}{flags}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{height}}, \doxymbox{\hyperlink{Window_8hpp_source_l00026}{is\+\_\+open}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}, \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{width}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWindow_aa75e2e442088a062e3f7751e0f33a63d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classWindow_a245d821e6016fa1f6970ccbbedd635f6}\index{Window@{Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily \label{classWindow_a245d821e6016fa1f6970ccbbedd635f6} 
+Window::\+\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00015}{15}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classWindow_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWindow_ae6590e1a46ca20be663567a023f3842e}\index{Window@{Window}!Clear@{Clear}}
+\index{Clear@{Clear}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{classWindow_ae6590e1a46ca20be663567a023f3842e} 
+void Window::\+\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Clear the renderer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00128}{128}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}.
+
+\Hypertarget{classWindow_aa1a07b3e3add93596f19181dbb881279}\index{Window@{Window}!GetCursor@{GetCursor}}
+\index{GetCursor@{GetCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetCursor()}{GetCursor()}}
+{\footnotesize\ttfamily \label{classWindow_aa1a07b3e3add93596f19181dbb881279} 
+SDL\+\_\+\+Cursor \texorpdfstring{$\ast$}{*} Window::\+\+Get\+Cursor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return a pointer to the current cursor. 
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Cursor\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00196}{196}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00033}{current\+\_\+cursor\+\_\+name}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00032}{Cursors}}.
+
+\Hypertarget{classWindow_a2196b5ae099037272cc85b223e80bd6d}\index{Window@{Window}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{classWindow_a2196b5ae099037272cc85b223e80bd6d} 
+int Window::\+\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return the \doxylink{classWindow}{Window}\textquotesingle{}s height. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00162}{162}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00035}{height}}.
+
+\Hypertarget{classWindow_ab70c4ba24cc2e38fc1fd4a8c58daf8e6}\index{Window@{Window}!GetMenu@{GetMenu}}
+\index{GetMenu@{GetMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetMenu()}{GetMenu()}}
+{\footnotesize\ttfamily \label{classWindow_ab70c4ba24cc2e38fc1fd4a8c58daf8e6} 
+\doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*} Window::\+\+Get\+Menu (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Return a pointer a menu based on a given name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the menu to give \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Menu\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00204}{204}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00030}{menus}}.
+
+\Hypertarget{classWindow_aba61805867afeb4529ff77516d59d9a7}\index{Window@{Window}!GetRenderer@{GetRenderer}}
+\index{GetRenderer@{GetRenderer}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetRenderer()}{GetRenderer()}}
+{\footnotesize\ttfamily \label{classWindow_aba61805867afeb4529ff77516d59d9a7} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} Window::\+\+Get\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return a pointer to the \doxylink{classWindow}{Window}\textquotesingle{}s renderer. 
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00120}{120}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}.
+
+\Hypertarget{classWindow_a451bdfeab37afce97712f23f5c2492aa}\index{Window@{Window}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{classWindow_a451bdfeab37afce97712f23f5c2492aa} 
+int Window::\+\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return the \doxylink{classWindow}{Window}\textquotesingle{}s width. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00158}{158}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00035}{width}}.
+
+\Hypertarget{classWindow_a2ca7b95660dc942a07fec03e4ee4cbfa}\index{Window@{Window}!GetWindow@{GetWindow}}
+\index{GetWindow@{GetWindow}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetWindow()}{GetWindow()}}
+{\footnotesize\ttfamily \label{classWindow_a2ca7b95660dc942a07fec03e4ee4cbfa} 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} Window::\+\+Get\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return a pointer to the \doxylink{classWindow}{Window}\textquotesingle{}s window. 
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00124}{124}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+\Hypertarget{classWindow_af05f1c89263175897f4504fd47e01081}\index{Window@{Window}!Hide@{Hide}}
+\index{Hide@{Hide}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily \label{classWindow_af05f1c89263175897f4504fd47e01081} 
+void Window::\+\+Hide (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Set the \doxylink{classWindow}{Window} as "{}to hide"{}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00212}{212}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00026}{is\+\_\+open}}.
+
+\Hypertarget{classWindow_ad735ec09123e1633186b3bbcfcb8365d}\index{Window@{Window}!IsOpen@{IsOpen}}
+\index{IsOpen@{IsOpen}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{IsOpen()}{IsOpen()}}
+{\footnotesize\ttfamily \label{classWindow_ad735ec09123e1633186b3bbcfcb8365d} 
+bool Window::\+\+Is\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return if the \doxylink{classWindow}{Window} is being shown or not. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00208}{208}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00026}{is\+\_\+open}}.
+
+\Hypertarget{classWindow_aa4dba55a7fd86d0b57b358ef0be01fdd}\index{Window@{Window}!LoadCursors@{LoadCursors}}
+\index{LoadCursors@{LoadCursors}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{LoadCursors()}{LoadCursors()}}
+{\footnotesize\ttfamily \label{classWindow_aa4dba55a7fd86d0b57b358ef0be01fdd} 
+void Window::\+\+Load\+Cursors (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{cursor\+\_\+filepath}{}\end{DoxyParamCaption})}
+
+
+
+Load all the cursors from a given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor\+\_\+filepath} & Filepath to the .txt file containing all the cursors path \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00170}{170}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00032}{Cursors}}.
+
+\Hypertarget{classWindow_aa23c4aa350f8e5f6faeaff966a8ab875}\index{Window@{Window}!Present@{Present}}
+\index{Present@{Present}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Present()}{Present()}}
+{\footnotesize\ttfamily \label{classWindow_aa23c4aa350f8e5f6faeaff966a8ab875} 
+void Window::\+\+Present (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Renderer the content of the \doxylink{classWindow}{Window}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00136}{136}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}.
+
+\Hypertarget{classWindow_a42024a5e1b43988a373f016e04a6d23c}\index{Window@{Window}!Resize@{Resize}}
+\index{Resize@{Resize}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{classWindow_a42024a5e1b43988a373f016e04a6d23c} 
+void Window::\+\+Resize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resize the \doxylink{classWindow}{Window}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00140}{140}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00324}{JSONParser::\+graphics::\+\+Changes\+Applied()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00149}{JSONParser::\+graphics::\+\+Get\+Height()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00122}{JSONParser::\+graphics::\+\+Get\+Width()}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{height}}, \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}, \doxymbox{\hyperlink{Window_8hpp_source_l00035}{width}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00027}{window}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWindow_a42024a5e1b43988a373f016e04a6d23c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classWindow_a913781bbb626a4c8ac9cfb9d19f39896}\index{Window@{Window}!SetColor@{SetColor}}
+\index{SetColor@{SetColor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{SetColor()}{SetColor()}}
+{\footnotesize\ttfamily \label{classWindow_a913781bbb626a4c8ac9cfb9d19f39896} 
+void Window::\+\+Set\+Color (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCOLORS_1_1Color}{COLORS::\+\+Color}}}]{color}{}\end{DoxyParamCaption}) const}
+
+
+
+Set the color used to draw. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00132}{132}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{COLORS_8hpp_source_l00017}{COLORS::\+\+Color::\+a}}, \doxymbox{\hyperlink{COLORS_8hpp_source_l00016}{COLORS::\+\+Color::\+b}}, \doxymbox{\hyperlink{COLORS_8hpp_source_l00015}{COLORS::\+\+Color::\+g}}, \doxymbox{\hyperlink{COLORS_8hpp_source_l00014}{COLORS::\+\+Color::\+r}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00028}{renderer}}.
+
+\Hypertarget{classWindow_ae29ee62679e0a479344727242435b2c4}\index{Window@{Window}!SetCursor@{SetCursor}}
+\index{SetCursor@{SetCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{SetCursor()}{SetCursor()}}
+{\footnotesize\ttfamily \label{classWindow_ae29ee62679e0a479344727242435b2c4} 
+void Window::\+\+Set\+Cursor (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{cursor\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Set a new cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor\+\_\+name} & Name of the cursor to set as current \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00191}{191}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00033}{current\+\_\+cursor\+\_\+name}}, and \doxymbox{\hyperlink{Window_8hpp_source_l00032}{Cursors}}.
+
+\Hypertarget{classWindow_a488f3fabe841a018a277dddf061e5d26}\index{Window@{Window}!SetMenu@{SetMenu}}
+\index{SetMenu@{SetMenu}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{SetMenu()}{SetMenu()}}
+{\footnotesize\ttfamily \label{classWindow_a488f3fabe841a018a277dddf061e5d26} 
+void Window::\+\+Set\+Menu (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{\doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*}}]{menu\+\_\+to\+\_\+set}{}\end{DoxyParamCaption})}
+
+
+
+Set a new menu inside the std::\+unordered\+\_\+map \texorpdfstring{$<$}{<} std::\+string, Menu\texorpdfstring{$\ast$}{*} \texorpdfstring{$>$}{>} menus fields. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the new menu \\
+\hline
+{\em menu\+\_\+to\+\_\+set} & Pointer to the new menu \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00200}{200}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00030}{menus}}.
+
+\Hypertarget{classWindow_ae206b80ce3037d0b4d43ae80df9482f7}\index{Window@{Window}!Show@{Show}}
+\index{Show@{Show}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{classWindow_ae206b80ce3037d0b4d43ae80df9482f7} 
+void Window::\+\+Show (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Set the \doxylink{classWindow}{Window} as "{}to show"{}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00216}{216}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Window_8hpp_source_l00026}{is\+\_\+open}}.
+
+\Hypertarget{classWindow_ae390c89d410bcd2cc2470d0167c6bcfd}\index{Window@{Window}!Sleep@{Sleep}}
+\index{Sleep@{Sleep}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Sleep()}{Sleep()}}
+{\footnotesize\ttfamily \label{classWindow_ae390c89d410bcd2cc2470d0167c6bcfd} 
+void Window::\+\+Sleep (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Wait a certain amount of time. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8cpp_source_l00166}{166}} of file \doxymbox{\hyperlink{Window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00298}{JSONParser::\+graphics::\+\+Get\+Frame\+Rate()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWindow_ae390c89d410bcd2cc2470d0167c6bcfd_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classWindow_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classWindow_a73a100964a556ae731b31ea2ae8c1320}\index{Window@{Window}!current\_cursor\_name@{current\_cursor\_name}}
+\index{current\_cursor\_name@{current\_cursor\_name}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{current\_cursor\_name}{current\_cursor\_name}}
+{\footnotesize\ttfamily \label{classWindow_a73a100964a556ae731b31ea2ae8c1320} 
+std::\+string Window::\+current\+\_\+cursor\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00033}{33}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00196}{Get\+Cursor()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00191}{Set\+Cursor()}}.
+
+\Hypertarget{classWindow_a291feee7b739fa86e56bfac89214a547}\index{Window@{Window}!Cursors@{Cursors}}
+\index{Cursors@{Cursors}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Cursors}{Cursors}}
+{\footnotesize\ttfamily \label{classWindow_a291feee7b739fa86e56bfac89214a547} 
+std::\+unordered\+\_\+map$<$std::\+string, SDL\+\_\+\+Cursor\texorpdfstring{$\ast$}{*} $>$ Window::\+\+Cursors\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00032}{32}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00196}{Get\+Cursor()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00170}{Load\+Cursors()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00191}{Set\+Cursor()}}.
+
+\Hypertarget{classWindow_aa0f39396d037c411323af3b256fb72e6}\index{Window@{Window}!flags@{flags}}
+\index{flags@{flags}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \label{classWindow_aa0f39396d037c411323af3b256fb72e6} 
+int Window::\+flags\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00025}{25}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}.
+
+\Hypertarget{classWindow_af0ac1732ca6b79a6f6b78aa344140514}\index{Window@{Window}!height@{height}}
+\index{height@{height}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{classWindow_af0ac1732ca6b79a6f6b78aa344140514} 
+int Window::\+height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00035}{35}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00162}{Get\+Height()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Resize()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}.
+
+\Hypertarget{classWindow_a07d68d1fc9b7300b084b3d15a05a7eb6}\index{Window@{Window}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{is\_open}{is\_open}}
+{\footnotesize\ttfamily \label{classWindow_a07d68d1fc9b7300b084b3d15a05a7eb6} 
+int Window::\+is\+\_\+open\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00026}{26}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00212}{Hide()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00208}{Is\+Open()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00216}{Show()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}.
+
+\Hypertarget{classWindow_aec025fc24df111474c8e8b7abb3dd59d}\index{Window@{Window}!menus@{menus}}
+\index{menus@{menus}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{menus}{menus}}
+{\footnotesize\ttfamily \label{classWindow_aec025fc24df111474c8e8b7abb3dd59d} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classMenu}{Menu}}\texorpdfstring{$\ast$}{*} $>$ Window::\+menus\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00030}{30}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00204}{Get\+Menu()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00200}{Set\+Menu()}}.
+
+\Hypertarget{classWindow_a2b52309ef359b6392454a3bb57398b5d}\index{Window@{Window}!renderer@{renderer}}
+\index{renderer@{renderer}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily \label{classWindow_a2b52309ef359b6392454a3bb57398b5d} 
+SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Window::\+renderer = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00028}{28}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00128}{Clear()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00120}{Get\+Renderer()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00136}{Present()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Resize()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00132}{Set\+Color()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00010}{Window()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00015}{\texorpdfstring{$\sim$}{\string~}\+Window()}}.
+
+\Hypertarget{classWindow_af5b1c436782cc9752d386493fbc5dc8c}\index{Window@{Window}!width@{width}}
+\index{width@{width}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{classWindow_af5b1c436782cc9752d386493fbc5dc8c} 
+int Window::\+width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00035}{35}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00158}{Get\+Width()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Resize()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}.
+
+\Hypertarget{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820}\index{Window@{Window}!window@{window}}
+\index{window@{window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \label{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820} 
+SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Window::\+window = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Window_8hpp_source_l00027}{27}} of file \doxymbox{\hyperlink{Window_8hpp_source}{Window.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00124}{Get\+Window()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Resize()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00010}{Window()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00071}{Window()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00015}{\texorpdfstring{$\sim$}{\string~}\+Window()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+UI/\+hpp/\+\doxymbox{\hyperlink{Window_8hpp}{Window.\+hpp}}\item 
+src\+\_\+game/\+\+UI/\+cpp/\+\doxymbox{\hyperlink{Window_8cpp}{Window.\+cpp}}\end{DoxyCompactItemize}

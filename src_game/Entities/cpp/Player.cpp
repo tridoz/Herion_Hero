@@ -157,19 +157,18 @@ void Player::Draw( SDL_Renderer* renderer ) {
 
 }
 
-void Player::Update( SDL_Renderer* renderer ) {
+void Player::Update() {
 
-	UpdateAnimationFrame( renderer ) ;
+	UpdateAnimationFrame() ;
 }
 
-void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
+void Player::UpdateAnimationFrame() {
 	Animation* crt = current_animation;
 
 	Animation* toSet = nullptr;
 
 	if ( state == PlayerState::RUN ) {
 		switch ( direction ) {
-
 
 			case FacingDirection::WEST:
 				toSet = animations.at( "RUN_LEFT" );
@@ -180,13 +179,6 @@ void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
 				break;
 
 		}
-
-
-		if ( crt != toSet ) {
-			current_animation = toSet;
-		}
-
-		current_animation->Update();
 
 	} else if ( state == PlayerState::IDLE ) {
 		switch ( direction ) {
@@ -200,14 +192,13 @@ void Player::UpdateAnimationFrame( SDL_Renderer* renderer ) {
 				break;
 
 		}
-
-		if ( crt != toSet ) {
-			current_animation = toSet;
-		}
-
-		current_animation->Update();
-
 	}
+
+	if ( crt != toSet ) {
+		current_animation = toSet;
+	}
+
+	current_animation->Update();
 }
 
 void Player::Move(FacingDirection direction, float delta_time) {
@@ -241,8 +232,6 @@ void Player::Move(FacingDirection direction, float delta_time) {
 	}
 }
 
-
-
 void Player::Resize() {
 
 	try {
@@ -255,7 +244,6 @@ void Player::Resize() {
 }
 
 void Player::Spawn(const int spawn_x, const int spawn_y) {
-
 	this->pos_x = spawn_x;
 	this->pos_y = spawn_y;
 

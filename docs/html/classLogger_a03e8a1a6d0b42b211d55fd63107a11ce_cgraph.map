@@ -1,0 +1,7 @@
+<map id="Logger::LogOk" name="Logger::LogOk">
+<area shape="rect" id="Node000001" title="Log that something went all right." alt="" coords="5,32,120,60"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="168,5,319,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,35,155,32,150,33,121,40"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#a3d377d001c0dd3e47372d281326e529c" title="Return the given string with format code to make it green." alt="" coords="170,57,317,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,51,157,58,151,59,120,57"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="RoomManager::GetPlayerSpawnCellY" name="RoomManager::GetPlayerSpawnCellY">
+<area shape="rect" id="Node000001" title="Return the Y cell cordinate in which the player spawn." alt="" coords="5,5,237,50"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="285,5,442,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,25,272,28,266,28,237,30"/>
+<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="490,14,677,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,25,477,28,472,28,443,30"/>
+</map>

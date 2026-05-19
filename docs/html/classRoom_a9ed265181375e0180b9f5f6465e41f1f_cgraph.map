@@ -1,0 +1,10 @@
+<map id="Room::DrawAxis" name="Room::DrawAxis">
+<area shape="rect" id="Node000001" title="Draw the axis for each tile (used only in Level Editor mode)." alt="" coords="5,48,135,76"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="183,5,340,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,48,170,44,165,46,136,53"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1graphics.html#a99e24a77c8d8c99343f4d47e85feff05" title="Function to get the width of the screen." alt="" coords="183,75,340,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="135,71,170,80,165,80,135,77"/>
+<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="388,48,575,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,37,377,45,372,46,341,43"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="340,82,372,80,377,79,341,87"/>
+</map>

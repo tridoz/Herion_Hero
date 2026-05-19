@@ -1,0 +1,49 @@
+<map id="Menu::Menu" name="Menu::Menu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,432,107,460"/>
+<area shape="rect" id="Node000002" href="$classButtonsFunctions.html#a1a1032d1c7b9da426b03f272ad2858ec" title="Call JSONParser::graphics::DecreaseFPSLimit();." alt="" coords="178,5,380,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,432,67,355,87,244,116,134,133,90,153,61,166,51,163,56,157,64,138,93,121,135,92,245,72,356,62,432"/>
+<area shape="rect" id="Node000006" href="$classButtonsFunctions.html#a9af47043234a6ae85aab96e04292c198" title="Call JSONParser::graphics::DecreaseResolution();." alt="" coords="178,75,380,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="55,432,58,376,70,295,83,251,100,207,123,166,153,130,166,121,163,126,157,134,127,169,105,209,88,252,76,296,63,377,60,432"/>
+<area shape="rect" id="Node000008" href="$classButtonsFunctions.html#affa75aee517c7a228e638990e87b453d" title="Set the Player::GameMode to EXIT." alt="" coords="177,282,382,310"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="62,431,95,375,122,344,153,319,165,314,162,318,156,323,125,348,100,379,67,433"/>
+<area shape="rect" id="Node000009" href="$classButtonsFunctions.html#ae72a952f17eaa24ff784df9b84bd89c2" title="Call JSONParser::graphics::IncreaseFPSLimit();." alt="" coords="181,144,378,189"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="56,432,63,387,79,324,108,257,128,226,153,199,169,189,166,194,156,203,132,229,112,260,84,326,68,388,61,433"/>
+<area shape="rect" id="Node000011" href="$classButtonsFunctions.html#a2717429c721c61a434dfe33a344f2d61" title="Call JSONParser::graphics::IncreaseResolution();." alt="" coords="181,213,378,258"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="59,431,70,398,88,354,116,308,153,268,169,260,166,264,156,272,120,311,93,356,75,400,64,433"/>
+<area shape="rect" id="Node000013" href="$classButtonsFunctions.html#a0a39a947ac06f33599b55ba13ebb1c06" title="Set the Player::GameMode to ANIMATION_EDITOR." alt="" coords="158,333,400,378"/>
+<area shape="poly" id="edge18_Node000001_Node000013" title=" " alt="" coords="76,430,112,409,154,388,174,381,171,385,156,393,115,413,81,434"/>
+<area shape="rect" id="Node000014" href="$classButtonsFunctions.html#a8bb73ca409358b7d4f8b0db7a54b43f3" title="Set the Player::Gamemode to LEVEL_EDITOR." alt="" coords="155,402,404,430"/>
+<area shape="poly" id="edge19_Node000001_Node000014" title=" " alt="" coords="105,437,161,430,157,434,108,442"/>
+<area shape="rect" id="Node000015" href="$classButtonsFunctions.html#af47aafca5c24c5750b6c9aa3f4ab5bb7" title="Set the Player::Gamemode to LEVEL_EDITOR." alt="" coords="174,453,384,498"/>
+<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="106,451,161,458,157,461,108,455"/>
+<area shape="rect" id="Node000016" href="$classButtonsFunctions.html#a3df23920637e7686cd27aca4a6d7c483" title="Set the Player::GameMode to MAIN_MENU." alt="" coords="158,522,401,550"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="74,458,112,484,156,508,176,516,171,518,154,513,109,489,76,463"/>
+<area shape="rect" id="Node000017" href="$classButtonsFunctions.html#a664def5504e411bdd8b614b1c35ac2c8" title="Set the Player::GameMode to SETTINGS_MENU." alt="" coords="165,574,394,602"/>
+<area shape="poly" id="edge22_Node000001_Node000017" title=" " alt="" coords="65,458,101,509,127,536,156,559,170,567,165,568,153,563,123,540,97,512,65,463"/>
+<area shape="rect" id="Node000018" href="$classButtonsFunctions.html#ac089989e03063124365f6d7ff0dffd73" title="Set the player::GameMode to TEXTURE_SELECTIONS." alt="" coords="168,625,391,670"/>
+<area shape="poly" id="edge23_Node000001_Node000018" title=" " alt="" coords="61,458,75,491,94,532,121,575,156,611,163,617,158,618,153,615,117,578,90,535,70,493,62,463"/>
+<area shape="rect" id="Node000019" href="$classButtonsFunctions.html#a01ba0845d5c554391ca5fe04b0d18b65" title="Set the player::GameMode to Player::GetPreviousGameMode()." alt="" coords="187,695,372,739"/>
+<area shape="poly" id="edge24_Node000001_Node000019" title=" " alt="" coords="59,458,69,503,85,563,113,626,133,655,156,680,176,695,171,696,153,684,129,658,109,629,80,564,64,504,59,463"/>
+<area shape="rect" id="Node000020" href="$classButtonsFunctions.html#ab221d66601a966778d6e3b833722a7d0" title="Set the Player::GameMode to IN_GAME." alt="" coords="174,763,385,791"/>
+<area shape="poly" id="edge25_Node000001_Node000020" title=" " alt="" coords="57,458,63,515,75,594,87,636,104,678,127,717,157,750,163,756,157,756,153,754,123,720,99,680,82,638,70,595,57,516,57,463"/>
+<area shape="rect" id="Node000021" href="$classButtonsFunctions.html#a155a245df1efe22df70d0f7a6cef79dd" title="Unimplemented." alt="" coords="159,815,400,843"/>
+<area shape="poly" id="edge26_Node000001_Node000021" title=" " alt="" coords="59,458,73,532,93,635,122,736,138,775,157,801,162,807,157,806,153,804,134,777,117,738,88,636,68,533,59,463"/>
+<area shape="rect" id="Node000003" href="$namespaceJSONParser_1_1graphics.html#a26877dd0ff2b08961b3c8ccf7b582aa7" title="Function to get decrease the FPS limit." alt="" coords="453,5,610,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="380,25,440,26,435,29,382,30"/>
+<area shape="rect" id="Node000004" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="665,88,852,116"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="601,48,702,82,697,84,602,53"/>
+<area shape="rect" id="Node000005" href="$classFileOpener.html#aac399d677d674099ab75e796361f03fc" title="Open file for output." alt="" coords="659,144,858,172"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="593,48,613,60,629,78,637,94,646,110,661,126,680,138,675,139,658,130,641,113,633,97,624,81,610,64,594,53"/>
+<area shape="rect" id="Node000007" href="$namespaceJSONParser_1_1graphics.html#a1d84b66135ca5f4c190c767a6c17e218" title="Function to decrease the screen resolution." alt="" coords="452,75,611,119"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="380,95,439,96,434,98,382,99"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="610,96,651,99,646,101,612,101"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="611,116,692,139,687,141,612,121"/>
+<area shape="rect" id="Node000010" href="$namespaceJSONParser_1_1graphics.html#a0c5f2468466c8f0dace761776a496912" title="Function to get increase the FPS limit." alt="" coords="453,144,610,189"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="377,164,440,165,435,168,379,169"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="609,142,694,119,690,122,612,146"/>
+<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="610,161,646,161,641,164,612,166"/>
+<area shape="rect" id="Node000012" href="$namespaceJSONParser_1_1graphics.html#a4ac645383683eb18951645a178ae6c64" title="Function to increase the screen resolution." alt="" coords="453,213,610,258"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="377,233,440,234,435,237,379,238"/>
+<area shape="poly" id="edge16_Node000012_Node000004" title=" " alt="" coords="592,211,610,199,624,182,632,165,641,148,658,131,679,121,675,124,661,135,645,151,637,168,629,185,613,203,596,215"/>
+<area shape="poly" id="edge17_Node000012_Node000005" title=" " alt="" coords="598,210,703,176,699,179,601,215"/>
+</map>

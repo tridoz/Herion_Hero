@@ -1,0 +1,45 @@
+\doxysection{Texture\+Manager.\+hpp}
+\hypertarget{TextureManager_8hpp_source}{}\label{TextureManager_8hpp_source}\index{src\_game/Textures/hpp/TextureManager.hpp@{src\_game/Textures/hpp/TextureManager.hpp}}
+\doxymbox{\hyperlink{TextureManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ HERION\_HERO\_TEXTUREMANAGER\_HPP}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ HERION\_HERO\_TEXTUREMANAGER\_HPP}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <SDL3/SDL\_image.h>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <SDL3/SDL\_ttf.h>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Logger_8hpp}{../../Utils/hpp/Logger.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Texture_8hpp}{Texture.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00017}\doxymbox{\hyperlink{classTextureManager}{00017}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classTextureManager_ad76abb178b37cedf4514eb0154349935}{TextureManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00019}00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00020}\doxymbox{\hyperlink{classTextureManager_afead0b8b321844b1e1c5f08c609d6d70}{00020}}\ \ \ \ \ SDL\_Renderer*\ \doxymbox{\hyperlink{classTextureManager_afead0b8b321844b1e1c5f08c609d6d70}{renderer}};}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00022}\doxymbox{\hyperlink{classTextureManager_ac7689fdb5cc3b71e0a7b3e956683e076}{00022}}\ \ \ \ \ std::unordered\_map<std::string,\ Texture>\ \doxymbox{\hyperlink{classTextureManager_ac7689fdb5cc3b71e0a7b3e956683e076}{textures}};}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00023}\doxymbox{\hyperlink{classTextureManager_a1cc805d2f43214f016058755105f409b}{00023}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{classTextureManager_a1cc805d2f43214f016058755105f409b}{base\_path}}\ =\ \textcolor{stringliteral}{"{}../"{}};}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00024}00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{classTextureManager_ad76abb178b37cedf4514eb0154349935}{TextureManager}}();}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00028}00028\ \ \ \ \ \doxymbox{\hyperlink{classTextureManager_a001d6d74674961db79987e3222682576}{\string~TextureManager}}();}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTextureManager_a434fc6f9e176bbf2cb31dde51df58cd8}{LoadTextures}}(\ \textcolor{keyword}{const}\ std::string\&\ filepath\ );}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTextureManager_a7255216fc3ca16e6747c16a8b190e8ec}{SetRenderer}}(\ SDL\_Renderer*\ new\_renderer\ )\ ;}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00051}00051\ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}\ *\doxymbox{\hyperlink{classTextureManager_a3873f1ea996ce68c1dc46cf98a976a01}{GetTexture}}(\textcolor{keyword}{const}\ std::string\ \&texture\_name);}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00053}00053\ \};}
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{TextureManager_8hpp_source_l00056}00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//HERION\_HERO\_TEXTUREMANAGER\_HPP}}
+
+\end{DoxyCode}

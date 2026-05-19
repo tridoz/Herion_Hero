@@ -1,0 +1,83 @@
+\doxysection{Room.\+cpp}
+\hypertarget{Room_8cpp_source}{}\label{Room_8cpp_source}\index{src\_game/WorldBuilding/cpp/Room.cpp@{src\_game/WorldBuilding/cpp/Room.cpp}}
+\doxymbox{\hyperlink{Room_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 17/11/2025.}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Room_8hpp}{../hpp/Room.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{JSONParser_8hpp}{../../Utils/hpp/JSONParser.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00009}\doxymbox{\hyperlink{classRoom_ac6ef93a7d9c3e1d624e025058d5f16ff}{00009}}\ \doxymbox{\hyperlink{classRoom_ac6ef93a7d9c3e1d624e025058d5f16ff}{Room::Room}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00011}\doxymbox{\hyperlink{classRoom_a67d5da09983cc53097807fd43ba5481a}{00011}}\ \doxymbox{\hyperlink{classRoom_a67d5da09983cc53097807fd43ba5481a}{Room::\string~Room}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ std::vector<Tile*>\ \&\ tile\_row\ :\ \doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}})\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classTile}{Tile}}*\ tile\ :\ tile\_row)\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ tile;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}}.clear();}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00023}\doxymbox{\hyperlink{classRoom_ad0675c6a146a8461873444c9a86cde79}{00023}}\ std::vector<\ std::vector<Tile*\ >\ >\ \doxymbox{\hyperlink{classRoom_ad0675c6a146a8461873444c9a86cde79}{Room::GetTiles}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}};}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00027}\doxymbox{\hyperlink{classRoom_ac649946a02d60025f816420fcca0d15f}{00027}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRoom_ac649946a02d60025f816420fcca0d15f}{Room::Draw}}(SDL\_Renderer*\ renderer)\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ std::vector<Tile*>\ \&\ tiles\_row\ :\ \doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}})\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \doxymbox{\hyperlink{classTile}{Tile}}*\ \&\ tile\ :\ tiles\_row)\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ tile-\/>Draw(renderer);}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00037}\doxymbox{\hyperlink{classRoom_a9ed265181375e0180b9f5f6465e41f1f}{00037}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRoom_a9ed265181375e0180b9f5f6465e41f1f}{Room::DrawAxis}}(SDL\_Renderer*\ renderer)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00039}00039\ \ \ \ \ SDL\_SetRenderDrawColor(\ renderer,\ 255,\ 255,\ 255,\ 255\ );}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}{JSONParser::graphics::GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}{JSONParser::graphics::GetHeight}}();}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ horizontal\_tiles\ =\ \doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}}[0].size();}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ vertical\_tiles\ =\ \doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}}.size();}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ tile\_width\ =\ width\ /\ horizontal\_tiles;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ tile\_height\ =\ height\ /\ vertical\_tiles;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i\ <=\ horizontal\_tiles\ ;\ ++i\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ SDL\_RenderLine(\ renderer,\ i*tile\_width,\ 0,\ i*tile\_width,\ height\ );}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i\ <=\ vertical\_tiles\ ;\ ++i\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ SDL\_RenderLine(\ renderer,\ 0,\ i*tile\_height,\ width,\ i*tile\_height\ );}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00060}\doxymbox{\hyperlink{classRoom_ae85cf9da442806a9595edaaaa0a20ee1}{00060}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRoom_ae85cf9da442806a9595edaaaa0a20ee1}{Room::SetTiles}}(\textcolor{keyword}{const}\ std::vector<std::vector<Tile*>>\ \&new\_tiles)\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00061}00061\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classRoom_a49d7817ae7a08e5ae3ede53b2f7ded89}{tiles}}\ =\ new\_tiles;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00064}\doxymbox{\hyperlink{classRoom_a21df74c14bb91d0a4f322c3fead6776c}{00064}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRoom_a21df74c14bb91d0a4f322c3fead6776c}{Room::SetSpawnCoord}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{this}\ -\/>\ \doxymbox{\hyperlink{classRoom_ae6a36a54a643d9c520e63657dc91bd65}{spawn\_x}}\ =\ x;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{this}\ -\/>\ \doxymbox{\hyperlink{classRoom_a8dbcfffd40a9547406bd97d3438f767f}{spawn\_y}}\ =\ y;}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00069}\doxymbox{\hyperlink{classRoom_a02f5daab1398a9b825c14de666dd2dd0}{00069}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classRoom_a02f5daab1398a9b825c14de666dd2dd0}{Room::GetSpawnX}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classRoom_ae6a36a54a643d9c520e63657dc91bd65}{spawn\_x}};}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00073}\doxymbox{\hyperlink{classRoom_ad0a04cb1436d6261e6692e574822586a}{00073}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classRoom_ad0a04cb1436d6261e6692e574822586a}{Room::GetSpawnY}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classRoom_a8dbcfffd40a9547406bd97d3438f767f}{spawn\_y}};}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{Room_8cpp_source_l00077}00077\ }
+
+\end{DoxyCode}

@@ -1,0 +1,51 @@
+\doxysection{Animation.\+hpp}
+\hypertarget{Animation_8hpp_source}{}\label{Animation_8hpp_source}\index{src\_game/Utils/hpp/Animation.hpp@{src\_game/Utils/hpp/Animation.hpp}}
+\doxymbox{\hyperlink{Animation_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ trida\ on\ 11/29/25.}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ HERION\_HERO\_ANIMATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ HERION\_HERO\_ANIMATION\_HPP}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Texture_8hpp}{../../Textures/hpp/Texture.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00012}\doxymbox{\hyperlink{classAnimation}{00012}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}{Animation}}\ \{}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00013}00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00015}\doxymbox{\hyperlink{classAnimation_ae0e6015be0a5c536d7ab4ea98c1ffb22}{00015}}\ \ \ \ \ std::vector\ <\ Texture*\ >\ \doxymbox{\hyperlink{classAnimation_ae0e6015be0a5c536d7ab4ea98c1ffb22}{animation\_textures}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00017}\doxymbox{\hyperlink{classAnimation_ac3b8fe9c720109591524b0031943c3f8}{00017}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classAnimation_ac3b8fe9c720109591524b0031943c3f8}{frame\_rate}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00018}\doxymbox{\hyperlink{classAnimation_aa2d5701f3a119ce61e4cabab011d2d59}{00018}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classAnimation_aa2d5701f3a119ce61e4cabab011d2d59}{frame\_number}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00019}\doxymbox{\hyperlink{classAnimation_a1b9c9a4243f5d219c874b8c5f8256633}{00019}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classAnimation_a1b9c9a4243f5d219c874b8c5f8256633}{current\_animation\_frame}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00020}\doxymbox{\hyperlink{classAnimation_a010f0f21649149de5af002ea3c7c1e5c}{00020}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classAnimation_a010f0f21649149de5af002ea3c7c1e5c}{how\_often\_frame\_update}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00021}\doxymbox{\hyperlink{classAnimation_abd02addbf0bccab88d2f677647f9d732}{00021}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classAnimation_abd02addbf0bccab88d2f677647f9d732}{frame\_duration}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00023}\doxymbox{\hyperlink{classAnimation_a10163bfb63aade9b2bca3465a75914e0}{00023}}\ \ \ \ \ time\_t\ \doxymbox{\hyperlink{classAnimation_a10163bfb63aade9b2bca3465a75914e0}{last\_update\_time}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00024}\doxymbox{\hyperlink{classAnimation_aa8cbd715c2f62724ce7e9c85d7083178}{00024}}\ \ \ \ \ time\_t\ \doxymbox{\hyperlink{classAnimation_aa8cbd715c2f62724ce7e9c85d7083178}{current\_time}};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00026}00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00027}00027\ \ \ \ \ \doxymbox{\hyperlink{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}{Animation}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAnimation_a1f7da555574e27fb1c5d368e5db2c050}{AddFrameTexture}}(\ \doxymbox{\hyperlink{classTexture}{Texture}}*\ new\_texture\ );}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00039}00039\ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ \doxymbox{\hyperlink{classAnimation_aca5a912ad1279bac92ca2f1694a6389b}{GetCurrentFrameTexture}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAnimation_a0c6a4e940db84d4a6246fcb3ae773402}{Update}}();}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAnimation_a94722bfba3dc118d5213a43c18f236db}{SetFrameRate}}(\ \textcolor{keywordtype}{int}\ new\_frame\_rate\ );}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAnimation_afbfd162c2d292261195c7a0f3ed6e504}{SetAnimationFrameNUmber}}(\ \textcolor{keywordtype}{int}\ new\_frame\_number\ );}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classAnimation_ac3f2744d29ce7d7d829dbfbadbaf69f7}{GetCurrentFrameTextureHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{classAnimation_a7aa92e36a7a69ceaef33c33f09dc4634}{GetCurrentFrameTextureWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00069}00069\ \};}
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{Animation_8hpp_source_l00072}00072\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//HERION\_HERO\_ANIMATION\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,803 @@
+\doxysection{Input\+Processor Class Reference}
+\hypertarget{classInputProcessor}{}\label{classInputProcessor}\index{InputProcessor@{InputProcessor}}
+
+
+{\ttfamily \+\#include $<$Input\+Processor.\+hpp$>$}
+
+
+
+Collaboration diagram for Input\+Processor:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classInputProcessor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classInputProcessor_a5ace83d4870187fc84e0185cce4033a3}{Input\+Processor}} ()
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_af67cb8f7fde349e8ea88d5a3c0630824}{is\+Mouse\+Left\+Pressed}} () const
+\begin{DoxyCompactList}\small\item\em Return if the mouse left button is pressed. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classInputProcessor_a75123feb8e65f6bfffa20c6501be6ec1}{is\+Mouse\+Right\+Pressed}} () const
+\begin{DoxyCompactList}\small\item\em Return if the mouse right mutton is pressed. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_afffd0f8224b1c8e7b95abc267b894c4e}{Process}} ()
+\begin{DoxyCompactList}\small\item\em Process events. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_abf8314a7889388f29c08389b5dc1183f}{Set\+Event}} (SDL\+\_\+\+Event \&\doxymbox{\hyperlink{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}{event}})
+\begin{DoxyCompactList}\small\item\em Set the SDL\+\_\+\+Event that needs to be checked. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a857f03fb8cab9f8bd38ccf814d24e498}{Set\+Menus}} (std::\+string name, \doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*}menu)
+\begin{DoxyCompactList}\small\item\em Set a new menu to make changes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a86ef56f07d5a6bcd7375a252dce81ab0}{Set\+Player}} (\doxymbox{\hyperlink{classPlayer}{Player}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{player}})
+\begin{DoxyCompactList}\small\item\em Set player to make changes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a7b2bf0b166a32622f3d1fb584df599c3}{Set\+Room\+Manager}} (\doxymbox{\hyperlink{classRoomManager}{Room\+Manager}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{room\+\_\+manager}})
+\begin{DoxyCompactList}\small\item\em Set room\+\_\+manager to make changes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a71b9f63233b22f9ff9b8ec8a7ca6a739}{Set\+Window\+Tools}} (std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classWindow}{Window}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{window\+\_\+tools}})
+\begin{DoxyCompactList}\small\item\em Set window\+\_\+tools to make changes. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classInputProcessor_a826463b8a94eb93900d1c8872698cfa7}{Should\+Quit}} () const
+\begin{DoxyCompactList}\small\item\em Return if the program should close and terminate. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a2d7d3b8b4c3f0eb5daff06a482041d23}{update\+\_\+player\+\_\+movement}} (float delta\+\_\+time) const
+\begin{DoxyCompactList}\small\item\em Update the player position based on input and delta time. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classInputProcessor_a8beb9f13c7a23b0cdd941d3c043cd9c2}{\texorpdfstring{$\sim$}{\string~}\+Input\+Processor}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classInputProcessor_a667ebe6fb222f995f63d3ebc0e61a4f2}{process\+\_\+in\+\_\+game}} (int scancode)
+\begin{DoxyCompactList}\small\item\em Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292da1315b693a1d5d4bbeb52bbfa9c23e49b}{Player::\+\+Game\+Mode::\+\+IN\+\_\+\+GAME}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa}{process\+\_\+key\+\_\+down}} (int scancode)
+\begin{DoxyCompactList}\small\item\em Process a key down event of a given key. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_afbe094d08ae7ebcfdd090bbdef337e93}{process\+\_\+key\+\_\+up}} (int scancode)
+\begin{DoxyCompactList}\small\item\em Process a key up event of a given key. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a7043d5a1d71d66c817e741e4040fa13d}{process\+\_\+level\+\_\+editor}} (int scancode)
+\begin{DoxyCompactList}\small\item\em Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292da173db681331c8438d6850ead4978e6d3}{Player::\+\+Game\+Mode::\+\+LEVEL\+\_\+\+EDITOR}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a114b9babc2122939508524b857ea938d}{process\+\_\+main\+\_\+menu}} (int scancode)
+\begin{DoxyCompactList}\small\item\em Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292daa16d505f03a4b6f35486f65f6a61317e}{Player::\+\+Game\+Mode::\+\+MAIN\+\_\+\+MENU}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb}{process\+\_\+mouse\+\_\+left\+\_\+pressed}} ()
+\begin{DoxyCompactList}\small\item\em Process the event of a mouse left click. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInputProcessor_af819365fd6c13cd4b51ac36cac92d736}{process\+\_\+mouse\+\_\+right\+\_\+pressed}} ()
+\begin{DoxyCompactList}\small\item\em Process the event of a mouse right click. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Event \doxymbox{\hyperlink{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}{event}} \{\}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_aa82d73886c268d7df003d907463210a2}{key\+\_\+left\+\_\+pressed}}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_af41b0f034baae2799af6c359bc67b2de}{key\+\_\+right\+\_\+pressed}}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_a2ba81a12dc86a4565838cf7f458cba04}{keys}} \+[\doxymbox{\hyperlink{InputProcessor_8hpp_a4cb85da769c266ad2f9c53fb1b9930bc}{MAX\+\_\+\+SCANCODES}}]\+ = \{ false \}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classInputProcessor_a762052c2ee570c15f78066fb5b531b5a}{menus}}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_a392c4c0ae50c6dfc4e275aa934e784d3}{mouse\+\_\+left\+\_\+pressed}}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_ab3b0dfdb3775fa1fd03edba6aaefd903}{mouse\+\_\+right\+\_\+pressed}}
+\item 
+float \doxymbox{\hyperlink{classInputProcessor_a7e4df1ca53050a6140059d3dd4ceef8a}{mouse\+\_\+x}}
+\item 
+float \doxymbox{\hyperlink{classInputProcessor_a33ad159b4d2ec30b01642ecda65fa43a}{mouse\+\_\+y}}
+\item 
+\doxymbox{\hyperlink{classPlayer}{Player}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{player}} \{\}
+\item 
+\doxymbox{\hyperlink{classRoomManager}{Room\+Manager}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{room\+\_\+manager}} \{\}
+\item 
+bool \doxymbox{\hyperlink{classInputProcessor_a43298f28775634885ea1e4fd2cc700b5}{running}}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classWindow}{Window}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{window\+\_\+tools}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00021}{21}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classInputProcessor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classInputProcessor_a5ace83d4870187fc84e0185cce4033a3}\index{InputProcessor@{InputProcessor}!InputProcessor@{InputProcessor}}
+\index{InputProcessor@{InputProcessor}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{InputProcessor()}{InputProcessor()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a5ace83d4870187fc84e0185cce4033a3} 
+Input\+Processor::\+\+Input\+Processor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{5}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00025}{key\+\_\+left\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00026}{key\+\_\+right\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00038}{mouse\+\_\+left\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00039}{mouse\+\_\+right\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00081}{mouse\+\_\+x}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00082}{mouse\+\_\+y}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00024}{room\+\_\+manager}}, and \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{running}}.
+
+\Hypertarget{classInputProcessor_a8beb9f13c7a23b0cdd941d3c043cd9c2}\index{InputProcessor@{InputProcessor}!````~InputProcessor@{\texorpdfstring{$\sim$}{\string~}InputProcessor}}
+\index{````~InputProcessor@{\texorpdfstring{$\sim$}{\string~}InputProcessor}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}InputProcessor()}{\string~InputProcessor()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a8beb9f13c7a23b0cdd941d3c043cd9c2} 
+Input\+Processor::\+\texorpdfstring{$\sim$}{\string~}\+Input\+Processor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00018}{18}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{running}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classInputProcessor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInputProcessor_af67cb8f7fde349e8ea88d5a3c0630824}\index{InputProcessor@{InputProcessor}!isMouseLeftPressed@{isMouseLeftPressed}}
+\index{isMouseLeftPressed@{isMouseLeftPressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{isMouseLeftPressed()}{isMouseLeftPressed()}}
+{\footnotesize\ttfamily \label{classInputProcessor_af67cb8f7fde349e8ea88d5a3c0630824} 
+bool Input\+Processor::\+is\+Mouse\+Left\+Pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return if the mouse left button is pressed. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00213}{213}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00038}{mouse\+\_\+left\+\_\+pressed}}.
+
+\Hypertarget{classInputProcessor_a75123feb8e65f6bfffa20c6501be6ec1}\index{InputProcessor@{InputProcessor}!isMouseRightPressed@{isMouseRightPressed}}
+\index{isMouseRightPressed@{isMouseRightPressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{isMouseRightPressed()}{isMouseRightPressed()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a75123feb8e65f6bfffa20c6501be6ec1} 
+bool Input\+Processor::\+is\+Mouse\+Right\+Pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return if the mouse right mutton is pressed. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00217}{217}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00039}{mouse\+\_\+right\+\_\+pressed}}.
+
+\Hypertarget{classInputProcessor_afffd0f8224b1c8e7b95abc267b894c4e}\index{InputProcessor@{InputProcessor}!Process@{Process}}
+\index{Process@{Process}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily \label{classInputProcessor_afffd0f8224b1c8e7b95abc267b894c4e} 
+void Input\+Processor::\+\+Process (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Process events. 
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{163}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00031}{event}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00032}{keys}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00019}{MAX\+\_\+\+SCANCODES}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00034}{menus}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{process\+\_\+key\+\_\+down()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00107}{process\+\_\+key\+\_\+up()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{process\+\_\+mouse\+\_\+left\+\_\+pressed()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00158}{process\+\_\+mouse\+\_\+right\+\_\+pressed()}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{running}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00023}{Player::\+\+TEXTURE\+\_\+\+SELECTION}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_afffd0f8224b1c8e7b95abc267b894c4e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_a667ebe6fb222f995f63d3ebc0e61a4f2}\index{InputProcessor@{InputProcessor}!process\_in\_game@{process\_in\_game}}
+\index{process\_in\_game@{process\_in\_game}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_in\_game()}{process\_in\_game()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a667ebe6fb222f995f63d3ebc0e61a4f2} 
+void Input\+Processor::\+process\+\_\+in\+\_\+game (\begin{DoxyParamCaption}\item[{int}]{scancode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292da1315b693a1d5d4bbeb52bbfa9c23e49b}{Player::\+\+Game\+Mode::\+\+IN\+\_\+\+GAME}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Code of the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{47}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00025}{key\+\_\+left\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00026}{key\+\_\+right\+\_\+pressed}}, \doxymbox{\hyperlink{Player_8hpp_source_l00020}{Player::\+\+PAUSE\+\_\+\+MENU}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, and \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00024}{room\+\_\+manager}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{process\+\_\+key\+\_\+down()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a667ebe6fb222f995f63d3ebc0e61a4f2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa}\index{InputProcessor@{InputProcessor}!process\_key\_down@{process\_key\_down}}
+\index{process\_key\_down@{process\_key\_down}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_key\_down()}{process\_key\_down()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa} 
+void Input\+Processor::\+process\+\_\+key\+\_\+down (\begin{DoxyParamCaption}\item[{int}]{scancode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process a key down event of a given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Code of the pressed key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{87}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00028}{Player::\+\+IN\+\_\+\+GAME}}, \doxymbox{\hyperlink{Player_8hpp_source_l00026}{Player::\+\+LEVEL\+\_\+\+EDITOR}}, \doxymbox{\hyperlink{Player_8hpp_source_l00018}{Player::\+\+MAIN\+\_\+\+MENU}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{process\+\_\+in\+\_\+game()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00081}{process\+\_\+level\+\_\+editor()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00042}{process\+\_\+main\+\_\+menu()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a12190caea01d0023b4e44b20a3d70dfa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_afbe094d08ae7ebcfdd090bbdef337e93}\index{InputProcessor@{InputProcessor}!process\_key\_up@{process\_key\_up}}
+\index{process\_key\_up@{process\_key\_up}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_key\_up()}{process\_key\_up()}}
+{\footnotesize\ttfamily \label{classInputProcessor_afbe094d08ae7ebcfdd090bbdef337e93} 
+void Input\+Processor::\+process\+\_\+key\+\_\+up (\begin{DoxyParamCaption}\item[{int}]{scancode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process a key up event of a given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Code of the released key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00107}{107}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00028}{Player::\+\+IN\+\_\+\+GAME}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00025}{key\+\_\+left\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00026}{key\+\_\+right\+\_\+pressed}}, and \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_afbe094d08ae7ebcfdd090bbdef337e93_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_a7043d5a1d71d66c817e741e4040fa13d}\index{InputProcessor@{InputProcessor}!process\_level\_editor@{process\_level\_editor}}
+\index{process\_level\_editor@{process\_level\_editor}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_level\_editor()}{process\_level\_editor()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a7043d5a1d71d66c817e741e4040fa13d} 
+void Input\+Processor::\+process\+\_\+level\+\_\+editor (\begin{DoxyParamCaption}\item[{int}]{scancode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292da173db681331c8438d6850ead4978e6d3}{Player::\+\+Game\+Mode::\+\+LEVEL\+\_\+\+EDITOR}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Code of the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00081}{81}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00021}{Player::\+\+EDITOR\+\_\+\+MENU}}, and \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{process\+\_\+key\+\_\+down()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a7043d5a1d71d66c817e741e4040fa13d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_a114b9babc2122939508524b857ea938d}\index{InputProcessor@{InputProcessor}!process\_main\_menu@{process\_main\_menu}}
+\index{process\_main\_menu@{process\_main\_menu}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_main\_menu()}{process\_main\_menu()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a114b9babc2122939508524b857ea938d} 
+void Input\+Processor::\+process\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{int}]{scancode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process event of a given key in the \doxylink{classPlayer_a72e63c4dee307c57567fe40a08bb292daa16d505f03a4b6f35486f65f6a61317e}{Player::\+\+Game\+Mode::\+\+MAIN\+\_\+\+MENU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Code of the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00042}{42}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{running}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{process\+\_\+key\+\_\+down()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a114b9babc2122939508524b857ea938d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb}\index{InputProcessor@{InputProcessor}!process\_mouse\_left\_pressed@{process\_mouse\_left\_pressed}}
+\index{process\_mouse\_left\_pressed@{process\_mouse\_left\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_mouse\_left\_pressed()}{process\_mouse\_left\_pressed()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb} 
+void Input\+Processor::\+process\+\_\+mouse\+\_\+left\+\_\+pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process the event of a mouse left click. 
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{125}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Button_8cpp_source_l00013}{Button::\+\+Click()}}, \doxymbox{\hyperlink{Player_8hpp_source_l00021}{Player::\+\+EDITOR\+\_\+\+MENU}}, \doxymbox{\hyperlink{Player_8hpp_source_l00018}{Player::\+\+MAIN\+\_\+\+MENU}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00034}{menus}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00081}{mouse\+\_\+x}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00082}{mouse\+\_\+y}}, \doxymbox{\hyperlink{Player_8hpp_source_l00020}{Player::\+\+PAUSE\+\_\+\+MENU}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00019}{Player::\+\+SETTINGS\+\_\+\+MENU}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_a79d7ee2b2851026dac7891dc28fb8afb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_af819365fd6c13cd4b51ac36cac92d736}\index{InputProcessor@{InputProcessor}!process\_mouse\_right\_pressed@{process\_mouse\_right\_pressed}}
+\index{process\_mouse\_right\_pressed@{process\_mouse\_right\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{process\_mouse\_right\_pressed()}{process\_mouse\_right\_pressed()}}
+{\footnotesize\ttfamily \label{classInputProcessor_af819365fd6c13cd4b51ac36cac92d736} 
+void Input\+Processor::\+process\+\_\+mouse\+\_\+right\+\_\+pressed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process the event of a mouse right click. 
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00158}{158}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInputProcessor_af819365fd6c13cd4b51ac36cac92d736_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classInputProcessor_abf8314a7889388f29c08389b5dc1183f}\index{InputProcessor@{InputProcessor}!SetEvent@{SetEvent}}
+\index{SetEvent@{SetEvent}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{SetEvent()}{SetEvent()}}
+{\footnotesize\ttfamily \label{classInputProcessor_abf8314a7889388f29c08389b5dc1183f} 
+void Input\+Processor::\+\+Set\+Event (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Set the SDL\+\_\+\+Event that needs to be checked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}{event}} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00022}{22}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00031}{event}}.
+
+\Hypertarget{classInputProcessor_a857f03fb8cab9f8bd38ccf814d24e498}\index{InputProcessor@{InputProcessor}!SetMenus@{SetMenus}}
+\index{SetMenus@{SetMenus}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{SetMenus()}{SetMenus()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a857f03fb8cab9f8bd38ccf814d24e498} 
+void Input\+Processor::\+\+Set\+Menus (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{\doxymbox{\hyperlink{classMenu}{Menu}} \texorpdfstring{$\ast$}{*}}]{menu}{}\end{DoxyParamCaption})}
+
+
+
+Set a new menu to make changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \doxylink{classMenu}{Menu} name \\
+\hline
+{\em menu} & \doxylink{classMenu}{Menu} pointer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00034}{34}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00034}{menus}}.
+
+\Hypertarget{classInputProcessor_a86ef56f07d5a6bcd7375a252dce81ab0}\index{InputProcessor@{InputProcessor}!SetPlayer@{SetPlayer}}
+\index{SetPlayer@{SetPlayer}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{SetPlayer()}{SetPlayer()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a86ef56f07d5a6bcd7375a252dce81ab0} 
+void Input\+Processor::\+\+Set\+Player (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classPlayer}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Set player to make changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}{player}} & Pointer to player \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00026}{26}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}.
+
+\Hypertarget{classInputProcessor_a7b2bf0b166a32622f3d1fb584df599c3}\index{InputProcessor@{InputProcessor}!SetRoomManager@{SetRoomManager}}
+\index{SetRoomManager@{SetRoomManager}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{SetRoomManager()}{SetRoomManager()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a7b2bf0b166a32622f3d1fb584df599c3} 
+void Input\+Processor::\+\+Set\+Room\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classRoomManager}{Room\+Manager}} \texorpdfstring{$\ast$}{*}}]{room\+\_\+manager}{}\end{DoxyParamCaption})}
+
+
+
+Set room\+\_\+manager to make changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}{room\+\_\+manager}} & Pointer to room\+\_\+manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00030}{30}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00024}{room\+\_\+manager}}.
+
+\Hypertarget{classInputProcessor_a71b9f63233b22f9ff9b8ec8a7ca6a739}\index{InputProcessor@{InputProcessor}!SetWindowTools@{SetWindowTools}}
+\index{SetWindowTools@{SetWindowTools}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{SetWindowTools()}{SetWindowTools()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a71b9f63233b22f9ff9b8ec8a7ca6a739} 
+void Input\+Processor::\+\+Set\+Window\+Tools (\begin{DoxyParamCaption}\item[{std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classWindow}{Window}} \texorpdfstring{$\ast$}{*} $>$}]{window\+\_\+tools}{}\end{DoxyParamCaption})}
+
+
+
+Set window\+\_\+tools to make changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}{window\+\_\+tools}} & window\+\_\+tools to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00038}{38}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00028}{window\+\_\+tools}}.
+
+\Hypertarget{classInputProcessor_a826463b8a94eb93900d1c8872698cfa7}\index{InputProcessor@{InputProcessor}!ShouldQuit@{ShouldQuit}}
+\index{ShouldQuit@{ShouldQuit}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{ShouldQuit()}{ShouldQuit()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a826463b8a94eb93900d1c8872698cfa7} 
+bool Input\+Processor::\+\+Should\+Quit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return if the program should close and terminate. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00209}{209}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{running}}.
+
+\Hypertarget{classInputProcessor_a2d7d3b8b4c3f0eb5daff06a482041d23}\index{InputProcessor@{InputProcessor}!update\_player\_movement@{update\_player\_movement}}
+\index{update\_player\_movement@{update\_player\_movement}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{update\_player\_movement()}{update\_player\_movement()}}
+{\footnotesize\ttfamily \label{classInputProcessor_a2d7d3b8b4c3f0eb5daff06a482041d23} 
+void Input\+Processor::\+update\+\_\+player\+\_\+movement (\begin{DoxyParamCaption}\item[{float}]{delta\+\_\+time}{}\end{DoxyParamCaption}) const}
+
+
+
+Update the player position based on input and delta time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+\_\+time} & Time elapsed beetween each frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00221}{221}} of file \doxymbox{\hyperlink{InputProcessor_8cpp_source}{Input\+Processor.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Player_8hpp_source_l00049}{Player::\+\+EAST}}, \doxymbox{\hyperlink{Player_8hpp_source_l00037}{Player::\+\+IDLE}}, \doxymbox{\hyperlink{Player_8hpp_source_l00028}{Player::\+\+IN\+\_\+\+GAME}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00025}{key\+\_\+left\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00026}{key\+\_\+right\+\_\+pressed}}, \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{player}}, and \doxymbox{\hyperlink{Player_8hpp_source_l00048}{Player::\+\+WEST}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classInputProcessor_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69}\index{InputProcessor@{InputProcessor}!event@{event}}
+\index{event@{event}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{event}{event}}
+{\footnotesize\ttfamily \label{classInputProcessor_a3a0e6f652359eab6041a58c1caa98b69} 
+SDL\+\_\+\+Event Input\+Processor::\+event \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00031}{31}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00022}{Set\+Event()}}.
+
+\Hypertarget{classInputProcessor_aa82d73886c268d7df003d907463210a2}\index{InputProcessor@{InputProcessor}!key\_left\_pressed@{key\_left\_pressed}}
+\index{key\_left\_pressed@{key\_left\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{key\_left\_pressed}{key\_left\_pressed}}
+{\footnotesize\ttfamily \label{classInputProcessor_aa82d73886c268d7df003d907463210a2} 
+bool Input\+Processor::\+key\+\_\+left\+\_\+pressed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00025}{25}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{process\+\_\+in\+\_\+game()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00107}{process\+\_\+key\+\_\+up()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00221}{update\+\_\+player\+\_\+movement()}}.
+
+\Hypertarget{classInputProcessor_af41b0f034baae2799af6c359bc67b2de}\index{InputProcessor@{InputProcessor}!key\_right\_pressed@{key\_right\_pressed}}
+\index{key\_right\_pressed@{key\_right\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{key\_right\_pressed}{key\_right\_pressed}}
+{\footnotesize\ttfamily \label{classInputProcessor_af41b0f034baae2799af6c359bc67b2de} 
+bool Input\+Processor::\+key\+\_\+right\+\_\+pressed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00026}{26}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{process\+\_\+in\+\_\+game()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00107}{process\+\_\+key\+\_\+up()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00221}{update\+\_\+player\+\_\+movement()}}.
+
+\Hypertarget{classInputProcessor_a2ba81a12dc86a4565838cf7f458cba04}\index{InputProcessor@{InputProcessor}!keys@{keys}}
+\index{keys@{keys}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{keys}{keys}}
+{\footnotesize\ttfamily \label{classInputProcessor_a2ba81a12dc86a4565838cf7f458cba04} 
+bool Input\+Processor::\+keys\+[\doxymbox{\hyperlink{InputProcessor_8hpp_a4cb85da769c266ad2f9c53fb1b9930bc}{MAX\+\_\+\+SCANCODES}}]\+ = \{ false \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00032}{32}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}.
+
+\Hypertarget{classInputProcessor_a762052c2ee570c15f78066fb5b531b5a}\index{InputProcessor@{InputProcessor}!menus@{menus}}
+\index{menus@{menus}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{menus}{menus}}
+{\footnotesize\ttfamily \label{classInputProcessor_a762052c2ee570c15f78066fb5b531b5a} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classMenu}{Menu}}\texorpdfstring{$\ast$}{*} $>$ Input\+Processor::\+menus\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00034}{34}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{process\+\_\+mouse\+\_\+left\+\_\+pressed()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00034}{Set\+Menus()}}.
+
+\Hypertarget{classInputProcessor_a392c4c0ae50c6dfc4e275aa934e784d3}\index{InputProcessor@{InputProcessor}!mouse\_left\_pressed@{mouse\_left\_pressed}}
+\index{mouse\_left\_pressed@{mouse\_left\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{mouse\_left\_pressed}{mouse\_left\_pressed}}
+{\footnotesize\ttfamily \label{classInputProcessor_a392c4c0ae50c6dfc4e275aa934e784d3} 
+bool Input\+Processor::\+mouse\+\_\+left\+\_\+pressed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00038}{38}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00213}{is\+Mouse\+Left\+Pressed()}}.
+
+\Hypertarget{classInputProcessor_ab3b0dfdb3775fa1fd03edba6aaefd903}\index{InputProcessor@{InputProcessor}!mouse\_right\_pressed@{mouse\_right\_pressed}}
+\index{mouse\_right\_pressed@{mouse\_right\_pressed}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{mouse\_right\_pressed}{mouse\_right\_pressed}}
+{\footnotesize\ttfamily \label{classInputProcessor_ab3b0dfdb3775fa1fd03edba6aaefd903} 
+bool Input\+Processor::\+mouse\+\_\+right\+\_\+pressed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00039}{39}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00217}{is\+Mouse\+Right\+Pressed()}}.
+
+\Hypertarget{classInputProcessor_a7e4df1ca53050a6140059d3dd4ceef8a}\index{InputProcessor@{InputProcessor}!mouse\_x@{mouse\_x}}
+\index{mouse\_x@{mouse\_x}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{mouse\_x}{mouse\_x}}
+{\footnotesize\ttfamily \label{classInputProcessor_a7e4df1ca53050a6140059d3dd4ceef8a} 
+float Input\+Processor::\+mouse\+\_\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00081}{81}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{process\+\_\+mouse\+\_\+left\+\_\+pressed()}}.
+
+\Hypertarget{classInputProcessor_a33ad159b4d2ec30b01642ecda65fa43a}\index{InputProcessor@{InputProcessor}!mouse\_y@{mouse\_y}}
+\index{mouse\_y@{mouse\_y}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{mouse\_y}{mouse\_y}}
+{\footnotesize\ttfamily \label{classInputProcessor_a33ad159b4d2ec30b01642ecda65fa43a} 
+float Input\+Processor::\+mouse\+\_\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00082}{82}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{process\+\_\+mouse\+\_\+left\+\_\+pressed()}}.
+
+\Hypertarget{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2}\index{InputProcessor@{InputProcessor}!player@{player}}
+\index{player@{player}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \label{classInputProcessor_afac69ccdf06cf512d2beec285032c7c2} 
+\doxymbox{\hyperlink{classPlayer}{Player}}\texorpdfstring{$\ast$}{*} Input\+Processor::\+player \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00023}{23}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{process\+\_\+in\+\_\+game()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00087}{process\+\_\+key\+\_\+down()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00107}{process\+\_\+key\+\_\+up()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00081}{process\+\_\+level\+\_\+editor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00125}{process\+\_\+mouse\+\_\+left\+\_\+pressed()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00026}{Set\+Player()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00221}{update\+\_\+player\+\_\+movement()}}.
+
+\Hypertarget{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c}\index{InputProcessor@{InputProcessor}!room\_manager@{room\_manager}}
+\index{room\_manager@{room\_manager}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{room\_manager}{room\_manager}}
+{\footnotesize\ttfamily \label{classInputProcessor_ab8e77ae00fda3d3c0d8b5562498adc2c} 
+\doxymbox{\hyperlink{classRoomManager}{Room\+Manager}}\texorpdfstring{$\ast$}{*} Input\+Processor::\+room\+\_\+manager \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00024}{24}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00047}{process\+\_\+in\+\_\+game()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00030}{Set\+Room\+Manager()}}.
+
+\Hypertarget{classInputProcessor_a43298f28775634885ea1e4fd2cc700b5}\index{InputProcessor@{InputProcessor}!running@{running}}
+\index{running@{running}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily \label{classInputProcessor_a43298f28775634885ea1e4fd2cc700b5} 
+bool Input\+Processor::\+running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00036}{36}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00005}{Input\+Processor()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00163}{Process()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00042}{process\+\_\+main\+\_\+menu()}}, \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00209}{Should\+Quit()}}, and \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00018}{\texorpdfstring{$\sim$}{\string~}\+Input\+Processor()}}.
+
+\Hypertarget{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769}\index{InputProcessor@{InputProcessor}!window\_tools@{window\_tools}}
+\index{window\_tools@{window\_tools}!InputProcessor@{InputProcessor}}
+\doxysubsubsection{\texorpdfstring{window\_tools}{window\_tools}}
+{\footnotesize\ttfamily \label{classInputProcessor_a3732f96f588934b7c0c9fb310b94f769} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{classWindow}{Window}}\texorpdfstring{$\ast$}{*} $>$ Input\+Processor::\+window\+\_\+tools\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{InputProcessor_8hpp_source_l00028}{28}} of file \doxymbox{\hyperlink{InputProcessor_8hpp_source}{Input\+Processor.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{InputProcessor_8cpp_source_l00038}{Set\+Window\+Tools()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Utils/\+hpp/\+\doxymbox{\hyperlink{InputProcessor_8hpp}{Input\+Processor.\+hpp}}\item 
+src\+\_\+game/\+\+Utils/\+cpp/\+\doxymbox{\hyperlink{InputProcessor_8cpp}{Input\+Processor.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,143 @@
+\doxysection{src\+\_\+game/\+\+Utils/\+hpp/\+\+JSONParser.hpp File Reference}
+\hypertarget{JSONParser_8hpp}{}\label{JSONParser_8hpp}\index{src\_game/Utils/hpp/JSONParser.hpp@{src\_game/Utils/hpp/JSONParser.hpp}}
+{\ttfamily \+\#include "{}../\+../\+../\+headers\+\_\+only\+\_\+dependencies/\+json.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}../\+../\+\+Exceptions/\+hpp/\+\+Herion\+File\+Exception.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}File\+Opener.\+hpp"{}}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include "{}Logger.\+hpp"{}}\newline
+Include dependency graph for JSONParser.\+hpp:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{JSONParser_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{JSONParser_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structJSONParser_1_1animations_1_1AnimationElementsFields}{JSONParser::\+animations::\+\+Animation\+Elements\+Fields}}
+\begin{DoxyCompactList}\small\item\em Fields of the elements in the .json configuration file. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields}{JSONParser::\+menu\+\_\+configuration::\+\+Row\+Element\+Fields}}
+\begin{DoxyCompactList}\small\item\em Struct to save the Element fields in the \doxylink{classButton}{Button} type menu configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser}{JSONParser}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1animations}{JSONParser::\+animations}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1audio}{JSONParser::\+audio}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1controls}{JSONParser::\+controls}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1gameplay}{JSONParser::\+gameplay}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics}{JSONParser::\+graphics}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration}{JSONParser::\+menu\+\_\+configuration}}
+\item 
+namespace \doxymbox{\hyperlink{namespaceJSONParser_1_1ui}{JSONParser::\+ui}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac321efa25b1da69df01f8c4b0415fe49}{JSONParser::\+graphics::\+\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Return if the resolution has changed. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac0d8ca4f3c7e9ac737dddce7ea921a6b}{JSONParser::\+graphics::\+\+Changes\+Applied}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7}{JSONParser::\+graphics::\+\+Decrease\+FPSLimit}} ()
+\begin{DoxyCompactList}\small\item\em Function to get decrease the FPS limit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a9d3f2f249ff5bb1039cc083e95f7ec9b}{JSONParser::\+audio::\+\+Decrease\+Master\+Volume}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a95436964ff73dd39e4dee459da37c6ff}{JSONParser::\+audio::\+\+Decrease\+Music\+Volume}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218}{JSONParser::\+graphics::\+\+Decrease\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Function to decrease the screen resolution. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_af2c1b31dfde4c474e333ce23caa8f41c}{JSONParser::\+audio::\+\+Decrease\+SFXVolume}} ()
+\item 
+\doxymbox{\hyperlink{structJSONParser_1_1animations_1_1AnimationElementsFields}{Animation\+Elements\+Fields}} \doxymbox{\hyperlink{namespaceJSONParser_1_1animations_a015d350482cdbbc0de56ea82b5a14d29}{JSONParser::\+animations::\+\+Get\+Animation\+Elements\+Fields}} (int num\+\_\+animation)
+\begin{DoxyCompactList}\small\item\em Return the fields of that animation. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1animations_a184d269aa65541f53a4803cf052466ad}{JSONParser::\+animations::\+\+Get\+Animation\+Numbers}} ()
+\begin{DoxyCompactList}\small\item\em Get how manu animations there are. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aaa1e33fa4ae8d2f0d4060843bb871d32}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Background\+Image\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Return the path to the background image. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ac1a8b283cd22b3aa8ca83466b558565d}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Button\+YOffset}} ()
+\begin{DoxyCompactList}\small\item\em Get the Button\+YOffset for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ab123a40b6a5e1285465aa51223e7c501}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Center\+Piece\+Offset}} ()
+\begin{DoxyCompactList}\small\item\em Get the Center\+Piece\+Offset for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_af6fd55eba707558376e878b364a5c485}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Cmd}} ()
+\begin{DoxyCompactList}\small\item\em Return the command to execute. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aa692faa2d71682a0740608c65e7e0bfb}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Directory\+Texture\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{classTexture}{Texture} size for the directory row. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ae51e66d83978170453d603da214fd4fe}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+File\+Texture\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{classTexture}{Texture} size for the file row. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593}{JSONParser::\+graphics::\+\+Get\+Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Return the current FPS limit. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}{JSONParser::\+graphics::\+\+Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the height of the screen. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a9f88902114e60990d134270c13e930bd}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Menu\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Return the menu type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ab136de557cdb3c260be49c7907db7520}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Num\+Rows}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of rows for the \doxylink{classButton}{Button} \doxylink{classMenu}{Menu} type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aca8df2249afc2cd1b6f783f41e8f7736}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Row\+Button\+XOffset}} (int num\+\_\+row)
+\begin{DoxyCompactList}\small\item\em Get the Row\+Button\+XOffset for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields}{Row\+Element\+Fields}} \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a6c8db0691574ce653e1f09ff5a911802}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Row\+Element\+Fields}} (int num\+\_\+row, int num\+\_\+element)
+\begin{DoxyCompactList}\small\item\em Get the fields of the element for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a336aa7a0a775a036eb9bcce52f4eb42f}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Row\+Num\+Elements}} (int num\+\_\+row)
+\begin{DoxyCompactList}\small\item\em Get the number of elements in a row for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_adedb028a6adba692afab938ee66c5a35}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+Row\+StartingX}} (int num\+\_\+row)
+\begin{DoxyCompactList}\small\item\em Get the Row\+StartingX for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57}{JSONParser::\+graphics::\+\+Get\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Return the scale for the current resolution. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a4dc2f09e72af1f0f5670277837366da6}{JSONParser::\+menu\+\_\+configuration::\+\+Get\+StartY}} ()
+\begin{DoxyCompactList}\small\item\em Get the StartY for the \doxylink{classButton}{Button} menu type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}{JSONParser::\+graphics::\+\+Get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the width of the screen. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912}{JSONParser::\+graphics::\+\+Increase\+FPSLimit}} ()
+\begin{DoxyCompactList}\small\item\em Function to get increase the FPS limit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a804e545a487ef040f75b72d59934eb62}{JSONParser::\+audio::\+\+Increase\+Master\+Volume}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a192f5ecaa6a7400284f310352c77ffea}{JSONParser::\+audio::\+\+Increase\+Music\+Volume}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64}{JSONParser::\+graphics::\+\+Increase\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Function to increase the screen resolution. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a01f3eddea290ad5f7c113407c4aaf967}{JSONParser::\+audio::\+\+Increase\+SFXVolume}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1animations_a43cf63fa140010a14dab29ea24f4b50a}{JSONParser::\+animations::\+\+Set\+Config\+File}} (const std::\+string \&config\+\_\+file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Set the .json file to parse. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a1c9d7882bbcc2999a356d934f6fa062d}{JSONParser::\+menu\+\_\+configuration::\+\+Set\+Config\+File}} (const std::\+string \&\doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a2d0526fb6129292b30c24af092e30a1c}{config\+\_\+file\+\_\+path}})
+\begin{DoxyCompactList}\small\item\em Set the .json file to parse. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_a1f420888317f602ca9930a6ead255902}{JSONParser::\+audio::\+\+Toggle\+Mute}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const std::\+vector$<$ int $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_af3043874351e933ab123a88a5bf67410}{JSONParser::\+graphics::\+allowed\+FPS}} = \{10, 15, 20, 30, 45, 60, 120, 180, 240, 360, 500\}
+\item 
+nlohmann::\+json \doxymbox{\hyperlink{namespaceJSONParser_1_1animations_a4c3747310f8aa8b75b84395153dc7259}{JSONParser::\+animations::\+animation\+\_\+file}}
+\item 
+std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1animations_a53e5e1572b6b4748403c41d65cd8a044}{JSONParser::\+animations::\+animation\+\_\+file\+\_\+path}}
+\item 
+bool \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a16d196980530f5e5accc6ac31345e389}{JSONParser::\+graphics::\+changed}} = false
+\item 
+nlohmann::\+json \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a3b54430124fcf9129f51eea8b59309e1}{JSONParser::\+menu\+\_\+configuration::\+config\+\_\+file}}
+\item 
+std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a2d0526fb6129292b30c24af092e30a1c}{JSONParser::\+menu\+\_\+configuration::\+config\+\_\+file\+\_\+path}}
+\item 
+const std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1audio_aeaf717bcb1deab5582001e62d01763d3}{JSONParser::\+audio::\+json\+\_\+audio\+\_\+file\+\_\+path}} = "{}../\+settings/\+audio.\+json"{}
+\item 
+const std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a363edfa11c530ec188ea62f2a847d53d}{JSONParser::\+graphics::\+json\+\_\+graphics\+\_\+file\+\_\+path}} = "{}../\+settings/\+graphics.\+json"{}
+\item 
+const std::\+vector$<$ std::\+pair$<$ int, int $>$ $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ab219667cf63edca5d4cd35c29e654fda}{JSONParser::\+graphics::\+resolutions}}
+\begin{DoxyCompactList}\small\item\em Data\+Structure for all the possible resolutions. \end{DoxyCompactList}\item 
+const std::\+vector$<$ float $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac0cb7160142f7f4947f95ad52cb68296}{JSONParser::\+graphics::\+texture\+\_\+scales}}
+\begin{DoxyCompactList}\small\item\em Data\+Structure for all the scale based on the resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}

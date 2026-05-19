@@ -1,0 +1,210 @@
+\doxysection{Sound\+Board Class Reference}
+\hypertarget{classSoundBoard}{}\label{classSoundBoard}\index{SoundBoard@{SoundBoard}}
+
+
+{\ttfamily \+\#include $<$Sound\+Board.\+hpp$>$}
+
+
+
+Collaboration diagram for Sound\+Board:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classSoundBoard__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classSoundBoard_a7b5a3fa628bc1643d9a66212436784b4}{Load\+Sound}} (const std::\+string \&id, const std::\+string \&filepath)
+\item 
+void \doxymbox{\hyperlink{classSoundBoard_afda83b4e39bbbf9858b76230fc8d66b5}{Play\+Sound}} (const std::\+string \&id)
+\item 
+\doxymbox{\hyperlink{classSoundBoard_aece129689fc8e25f2148971f6f5f8737}{Sound\+Board}} ()
+\item 
+void \doxymbox{\hyperlink{classSoundBoard_a18669ec1cb133d1f1b9521c9abe8bc04}{Stop\+All}} ()
+\item 
+void \doxymbox{\hyperlink{classSoundBoard_aa8a8fd2363527e5b11506406fa6966ec}{Stop\+Sound}} (const std::\+string \&id)
+\item 
+\doxymbox{\hyperlink{classSoundBoard_ac7526fc719db723873bc4d1c7f635912}{\texorpdfstring{$\sim$}{\string~}\+Sound\+Board}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ma\+\_\+engine \doxymbox{\hyperlink{classSoundBoard_a9aa7235307926793b450ebe3dfe39ec8}{engine}} \{\}
+\item 
+std::\+unordered\+\_\+map$<$ std::\+string, ma\+\_\+sound $>$ \doxymbox{\hyperlink{classSoundBoard_a744ab51f2c42bc8dd6ae5459d3e02adf}{sounds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00016}{16}} of file \doxymbox{\hyperlink{SoundBoard_8hpp_source}{Sound\+Board.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classSoundBoard_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSoundBoard_aece129689fc8e25f2148971f6f5f8737}\index{SoundBoard@{SoundBoard}!SoundBoard@{SoundBoard}}
+\index{SoundBoard@{SoundBoard}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{SoundBoard()}{SoundBoard()}}
+{\footnotesize\ttfamily \label{classSoundBoard_aece129689fc8e25f2148971f6f5f8737} 
+Sound\+Board::\+\+Sound\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00004}{4}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00019}{engine}}, and \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSoundBoard_aece129689fc8e25f2148971f6f5f8737_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classSoundBoard_ac7526fc719db723873bc4d1c7f635912}\index{SoundBoard@{SoundBoard}!````~SoundBoard@{\texorpdfstring{$\sim$}{\string~}SoundBoard}}
+\index{````~SoundBoard@{\texorpdfstring{$\sim$}{\string~}SoundBoard}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SoundBoard()}{\string~SoundBoard()}}
+{\footnotesize\ttfamily \label{classSoundBoard_ac7526fc719db723873bc4d1c7f635912} 
+Sound\+Board::\+\texorpdfstring{$\sim$}{\string~}\+Sound\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00019}{engine}}, and \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{sounds}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classSoundBoard_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSoundBoard_a7b5a3fa628bc1643d9a66212436784b4}\index{SoundBoard@{SoundBoard}!LoadSound@{LoadSound}}
+\index{LoadSound@{LoadSound}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{LoadSound()}{LoadSound()}}
+{\footnotesize\ttfamily \label{classSoundBoard_a7b5a3fa628bc1643d9a66212436784b4} 
+void Sound\+Board::\+\+Load\+Sound (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{id}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00019}{engine}}, \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}, and \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{sounds}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSoundBoard_a7b5a3fa628bc1643d9a66212436784b4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classSoundBoard_afda83b4e39bbbf9858b76230fc8d66b5}\index{SoundBoard@{SoundBoard}!PlaySound@{PlaySound}}
+\index{PlaySound@{PlaySound}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{PlaySound()}{PlaySound()}}
+{\footnotesize\ttfamily \label{classSoundBoard_afda83b4e39bbbf9858b76230fc8d66b5} 
+void Sound\+Board::\+\+Play\+Sound (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00040}{40}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}, and \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{sounds}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSoundBoard_afda83b4e39bbbf9858b76230fc8d66b5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classSoundBoard_a18669ec1cb133d1f1b9521c9abe8bc04}\index{SoundBoard@{SoundBoard}!StopAll@{StopAll}}
+\index{StopAll@{StopAll}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{StopAll()}{StopAll()}}
+{\footnotesize\ttfamily \label{classSoundBoard_a18669ec1cb133d1f1b9521c9abe8bc04} 
+void Sound\+Board::\+\+Stop\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00083}{83}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{sounds}}.
+
+\Hypertarget{classSoundBoard_aa8a8fd2363527e5b11506406fa6966ec}\index{SoundBoard@{SoundBoard}!StopSound@{StopSound}}
+\index{StopSound@{StopSound}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{StopSound()}{StopSound()}}
+{\footnotesize\ttfamily \label{classSoundBoard_aa8a8fd2363527e5b11506406fa6966ec} 
+void Sound\+Board::\+\+Stop\+Sound (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00065}{65}} of file \doxymbox{\hyperlink{SoundBoard_8cpp_source}{Sound\+Board.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Logger_8cpp_source_l00081}{Logger::\+\+Log\+Err()}}, and \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{sounds}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSoundBoard_aa8a8fd2363527e5b11506406fa6966ec_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classSoundBoard_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSoundBoard_a9aa7235307926793b450ebe3dfe39ec8}\index{SoundBoard@{SoundBoard}!engine@{engine}}
+\index{engine@{engine}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily \label{classSoundBoard_a9aa7235307926793b450ebe3dfe39ec8} 
+ma\+\_\+engine Sound\+Board::\+engine \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00019}{19}} of file \doxymbox{\hyperlink{SoundBoard_8hpp_source}{Sound\+Board.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00024}{Load\+Sound()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00004}{Sound\+Board()}}, and \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00016}{\texorpdfstring{$\sim$}{\string~}\+Sound\+Board()}}.
+
+\Hypertarget{classSoundBoard_a744ab51f2c42bc8dd6ae5459d3e02adf}\index{SoundBoard@{SoundBoard}!sounds@{sounds}}
+\index{sounds@{sounds}!SoundBoard@{SoundBoard}}
+\doxysubsubsection{\texorpdfstring{sounds}{sounds}}
+{\footnotesize\ttfamily \label{classSoundBoard_a744ab51f2c42bc8dd6ae5459d3e02adf} 
+std::\+unordered\+\_\+map$<$std::\+string, ma\+\_\+sound$>$ Sound\+Board::\+sounds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{SoundBoard_8hpp_source_l00020}{20}} of file \doxymbox{\hyperlink{SoundBoard_8hpp_source}{Sound\+Board.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00024}{Load\+Sound()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00040}{Play\+Sound()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00083}{Stop\+All()}}, \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00065}{Stop\+Sound()}}, and \doxymbox{\hyperlink{SoundBoard_8cpp_source_l00016}{\texorpdfstring{$\sim$}{\string~}\+Sound\+Board()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Sound/\+hpp/\+\doxymbox{\hyperlink{SoundBoard_8hpp}{Sound\+Board.\+hpp}}\item 
+src\+\_\+game/\+\+Sound/\+cpp/\+\doxymbox{\hyperlink{SoundBoard_8cpp}{Sound\+Board.\+cpp}}\end{DoxyCompactItemize}

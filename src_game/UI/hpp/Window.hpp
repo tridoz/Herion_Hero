@@ -42,29 +42,101 @@ public:
 
     ~Window();
 
+    /**
+     * @brief Return a pointer to the Window's renderer
+     * @return SDL_Renderer*
+     */
     [[nodiscard]] SDL_Renderer* GetRenderer() const;
+
+    /**
+     * @brief Return a pointer to the Window's window
+     * @return SDL_Window*
+     */
     [[nodiscard]] SDL_Window* GetWindow() const;
 
+    /**
+     * @brief Clear the renderer
+     */
     void Clear() const;
+
+    /**
+     * @brief Set the color used to draw
+     */
     void SetColor( COLORS::Color ) const;
+
+    /**
+     * @brief Renderer the content of the Window
+     */
     void Present() const ;
+
+    /**
+     * @brief Resize the Window
+     */
     void Resize();
 
+    /**
+     * @brief Return the Window's width
+     * @return int
+     */
     [[nodiscard]] int GetWidth() const;
+
+    /**
+     * @brief Return the Window's height
+     * @return int
+     */
     [[nodiscard]] int GetHeight() const;
 
-
+    /**
+     * @brief Wait a certain amount of time
+     */
     void Sleep() const;
-    void LoadCursors(const std::string &);
 
-    void SetCursor( const std::string& );
+    /**
+     * @brief Load all the cursors from a given file
+     * @param cursor_filepath Filepath to the .txt file containing all the cursors path
+     */
+    void LoadCursors(const std::string & cursor_filepath);
+
+    /**
+     * @brief Set a new cursor
+     * @param cursor_name Name of the cursor to set as current
+     */
+    void SetCursor( const std::string& cursor_name);
+
+    /**
+     * @brief Return a pointer to the current cursor
+     * @return SDL_Cursor*
+     */
     SDL_Cursor* GetCursor();
 
+    /**
+     * @brief Return if the Window is being shown or not
+     * @return bool
+     */
     bool IsOpen() const;
+
+    /**
+     * @brief Set the Window as "to show"
+     */
     void Show();
+
+    /**
+     * @brief Set the Window as "to hide"
+     */
     void Hide();
 
+    /**
+     * @brief Set a new menu inside the std::unordered_map < std::string, Menu* > menus fields
+     * @param name Name of the new menu
+     * @param menu_to_set Pointer to the new menu
+     */
     void SetMenu( const std::string& name, Menu* menu_to_set );
+
+    /**
+     * @brief Return a pointer a menu based on a given name
+     * @param name Name of the menu to give
+     * @return Menu*
+     */
     Menu* GetMenu( const std::string& name );
 
 };

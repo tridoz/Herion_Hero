@@ -1,0 +1,5 @@
+<map id="Tile" name="Tile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="24,352,133,580"/>
+<area shape="rect" id="Node000002" href="$classTexture.html" title=" " alt="" coords="5,5,152,279"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,276,81,335,76,335,78,281"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="JSONParser::menu_configuration::GetBackgroundImagePath" name="JSONParser::menu_configuration::GetBackgroundImagePath">
+<area shape="rect" id="Node000001" title="Return the path to the background image." alt="" coords="432,40,664,85"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#a7bb9b117f29324f4e112b756cd17b706" title="Load the menu if it is a button menu." alt="" coords="172,5,384,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="414,46,385,44,384,39,419,45"/>
+<area shape="rect" id="Node000004" href="$classMenu.html#a09bd630ceb9e1b6356f9788567cc5fcf" title="Load the menu if it is a scroll pane menu." alt="" coords="178,75,378,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="419,79,379,87,378,82,414,80"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#aa3023f7d7f43137acb4a17b74f81224c" title="Load the menu based on the path of a given .json file." alt="" coords="5,48,124,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,48,125,55,123,50,159,46"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="160,79,124,75,124,69,165,78"/>
+</map>

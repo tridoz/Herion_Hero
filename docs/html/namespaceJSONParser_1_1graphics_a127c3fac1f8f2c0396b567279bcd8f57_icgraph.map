@@ -1,0 +1,14 @@
+<map id="JSONParser::graphics::GetScale" name="JSONParser::graphics::GetScale">
+<area shape="rect" id="Node000001" title="Return the scale for the current resolution." alt="" coords="432,105,589,150"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#a7bb9b117f29324f4e112b756cd17b706" title="Load the menu if it is a button menu." alt="" coords="172,5,384,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="454,98,383,65,354,53,354,48,385,60,459,97"/>
+<area shape="rect" id="Node000004" href="$classMenu.html#a09bd630ceb9e1b6356f9788567cc5fcf" title="Load the menu if it is a scroll pane menu." alt="" coords="178,75,378,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="414,116,379,113,379,108,419,115"/>
+<area shape="rect" id="Node000005" href="$classPlayer.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8" title=" " alt="" coords="222,143,334,171"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="414,140,335,153,334,147,419,139"/>
+<area shape="rect" id="Node000006" href="$classPlayer.html#a3490c96a65a7e4b1782a1a7713f60742" title="Resize the Textures." alt="" coords="221,195,334,223"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="451,156,385,185,336,199,335,194,383,180,446,157"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#aa3023f7d7f43137acb4a17b74f81224c" title="Load the menu based on the path of a given .json file." alt="" coords="5,48,124,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,49,125,55,123,50,159,46"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="160,79,124,74,123,69,165,77"/>
+</map>

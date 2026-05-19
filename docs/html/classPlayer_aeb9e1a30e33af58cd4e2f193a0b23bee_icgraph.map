@@ -1,0 +1,5 @@
+<map id="Player::SetPlayerState" name="Player::SetPlayerState">
+<area shape="rect" id="Node000001" title="Set the new PlayerState." alt="" coords="160,5,326,33"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#aa90ddac7abdea2d2842035acd5be3d31" title="Move the player in a direction by a certain amount based on delta time." alt="" coords="5,5,112,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,19,112,22,112,17,147,19"/>
+</map>

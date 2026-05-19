@@ -1,0 +1,61 @@
+\doxysection{Texture.\+cpp}
+\hypertarget{Texture_8cpp_source}{}\label{Texture_8cpp_source}\index{src\_game/Textures/cpp/Texture.cpp@{src\_game/Textures/cpp/Texture.cpp}}
+\doxymbox{\hyperlink{Texture_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 17/11/2025.}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Texture_8hpp}{../hpp/Texture.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{HerionFileException_8hpp}{../../Exceptions/hpp/HerionFileException.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{TextureManager_8hpp}{../hpp/TextureManager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00010}\doxymbox{\hyperlink{classTexture_a6c275e3f186675ff6ed73ccf970e552f}{00010}}\ \doxymbox{\hyperlink{classTexture_a6c275e3f186675ff6ed73ccf970e552f}{Texture::Texture}}()\ \ \{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00011}00011\ \ \ \ \ \doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00012}00012\ \ \ \ \ \doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00013}00013\ \ \ \ \ \doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00016}\doxymbox{\hyperlink{classTexture_a09c4bcb7462f64c1d20fa69dba3cee8a}{00016}}\ \doxymbox{\hyperlink{classTexture_a09c4bcb7462f64c1d20fa69dba3cee8a}{Texture::\string~Texture}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00023}\doxymbox{\hyperlink{classTexture_afa688f7281976344f3635b57f3c4df1c}{00023}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTexture_afa688f7281976344f3635b57f3c4df1c}{Texture::CreateTexture}}(\ SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ std::string\&\ texture\_to\_create\_name\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00025}00025\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}\ =\ \doxymbox{\hyperlink{classTexture_a481f3060b13b7de3b88e07dcbe490963}{base\_path}}\ +\ texture\_to\_create\_name;}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00027}00027\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}}\ =\ IMG\_LoadTexture(\ renderer,\ this-\/>\doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}.c\_str()\ );}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !this-\/>\doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ THROW\_FILE\_NOT\_FOUND(\ this-\/>\doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}\ );}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00037}\doxymbox{\hyperlink{classTexture_a9e422e0101a63723c78230d9b15aafdf}{00037}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classTexture_a9e422e0101a63723c78230d9b15aafdf}{Texture::TextureCreated}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00041}\doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{00041}}\ SDL\_Texture*\ \doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{Texture::GetTexture}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00045}\doxymbox{\hyperlink{classTexture_a61d835211bbce7ff9d3cb631166e8c93}{00045}}\ std::string\ \doxymbox{\hyperlink{classTexture_a61d835211bbce7ff9d3cb631166e8c93}{Texture::GetTextureName}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00050}\doxymbox{\hyperlink{classTexture_af7623538e91f79b2ac8e140f556b40f0}{00050}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classTexture_af7623538e91f79b2ac8e140f556b40f0}{Texture::operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classTexture_a6c275e3f186675ff6ed73ccf970e552f}{Texture}}\&\ other)\ \{}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00051}00051\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}}\ =\ other.\doxymbox{\hyperlink{classTexture_a174cab7a9826412faa6f00236684aaa3}{texture}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00052}00052\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}}\ =\ other.\doxymbox{\hyperlink{classTexture_af0a4e49a9a4a6cdf566e999180298647}{texture\_name}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00053}00053\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}}\ =\ other.\doxymbox{\hyperlink{classTexture_a9373413cd4baefb4247d7695c3eb182a}{texture\_created}};}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{Texture_8cpp_source_l00055}00055\ }
+
+\end{DoxyCode}

@@ -1,0 +1,9 @@
+<map id="ButtonsFunctions::DecreaseFrameLimit" name="ButtonsFunctions::DecreaseFrameLimit">
+<area shape="rect" id="Node000001" title="Call JSONParser::graphics::DecreaseFPSLimit();." alt="" coords="5,24,208,68"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a26877dd0ff2b08961b3c8ccf7b582aa7" title="Function to get decrease the FPS limit." alt="" coords="256,24,413,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,43,243,46,237,46,208,48"/>
+<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="466,5,654,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="413,34,449,32,454,32,413,39"/>
+<area shape="rect" id="Node000004" href="$classFileOpener.html#aac399d677d674099ab75e796361f03fc" title="Open file for output." alt="" coords="461,57,659,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="413,52,448,58,443,58,413,57"/>
+</map>

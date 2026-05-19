@@ -1,0 +1,107 @@
+\doxysection{File\+Opener Class Reference}
+\hypertarget{classFileOpener}{}\label{classFileOpener}\index{FileOpener@{FileOpener}}
+
+
+{\ttfamily \+\#include $<$File\+Opener.\+hpp$>$}
+
+
+
+Collaboration diagram for File\+Opener:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{classFileOpener__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{classFileOpener_a543e6848e7626c8531b454f2d3a97c24}{Open\+File\+Input}} (std::\+ifstream \&in, const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Open file for input. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{classFileOpener_aac399d677d674099ab75e796361f03fc}{Open\+File\+Output}} (std::\+ofstream \&out, const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Open file for output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{FileOpener_8hpp_source_l00012}{12}} of file \doxymbox{\hyperlink{FileOpener_8hpp_source}{File\+Opener.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classFileOpener_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFileOpener_a543e6848e7626c8531b454f2d3a97c24}\index{FileOpener@{FileOpener}!OpenFileInput@{OpenFileInput}}
+\index{OpenFileInput@{OpenFileInput}!FileOpener@{FileOpener}}
+\doxysubsubsection{\texorpdfstring{OpenFileInput()}{OpenFileInput()}}
+{\footnotesize\ttfamily \label{classFileOpener_a543e6848e7626c8531b454f2d3a97c24} 
+void File\+Opener::\+\+Open\+File\+Input (\begin{DoxyParamCaption}\item[{std::\+ifstream \&}]{in}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Open file for input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & std::\+ifstream\& reference to open \\
+\hline
+{\em filepath} & Filepath of the file to open \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{FileOpener_8cpp_source}{File\+Opener.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{JSONParser::\+graphics::\+\+Decrease\+FPSLimit()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{JSONParser::\+graphics::\+\+Decrease\+Resolution()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00040}{Room\+Manager::\+\+Generate\+Editor\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00107}{Room\+Manager::\+\+Generate\+Room()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00298}{JSONParser::\+graphics::\+\+Get\+Frame\+Rate()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00149}{JSONParser::\+graphics::\+\+Get\+Height()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{JSONParser::\+graphics::\+\+Get\+Scale()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00122}{JSONParser::\+graphics::\+\+Get\+Width()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{JSONParser::\+graphics::\+\+Increase\+FPSLimit()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{JSONParser::\+graphics::\+\+Increase\+Resolution()}}, \doxymbox{\hyperlink{TextureManager_8cpp_source_l00023}{Texture\+Manager::\+\+Load\+Textures()}}, \doxymbox{\hyperlink{JSONParserAnimations_8cpp_source_l00007}{JSONParser::\+animations::\+\+Set\+Config\+File()}}, and \doxymbox{\hyperlink{JSONParserMenuConfiguration_8cpp_source_l00008}{JSONParser::\+menu\+\_\+configuration::\+\+Set\+Config\+File()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFileOpener_a543e6848e7626c8531b454f2d3a97c24_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classFileOpener_aac399d677d674099ab75e796361f03fc}\index{FileOpener@{FileOpener}!OpenFileOutput@{OpenFileOutput}}
+\index{OpenFileOutput@{OpenFileOutput}!FileOpener@{FileOpener}}
+\doxysubsubsection{\texorpdfstring{OpenFileOutput()}{OpenFileOutput()}}
+{\footnotesize\ttfamily \label{classFileOpener_aac399d677d674099ab75e796361f03fc} 
+void File\+Opener::\+\+Open\+File\+Output (\begin{DoxyParamCaption}\item[{std::\+ofstream \&}]{out}{, }\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Open file for output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & std::\+ofstream reference to open \\
+\hline
+{\em filepath} & Filepath of the file to open \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{FileOpener_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{FileOpener_8cpp_source}{File\+Opener.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{JSONParser::\+graphics::\+\+Decrease\+FPSLimit()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{JSONParser::\+graphics::\+\+Decrease\+Resolution()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{JSONParser::\+graphics::\+\+Increase\+FPSLimit()}}, and \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{JSONParser::\+graphics::\+\+Increase\+Resolution()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFileOpener_aac399d677d674099ab75e796361f03fc_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Utils/\+hpp/\+\doxymbox{\hyperlink{FileOpener_8hpp}{File\+Opener.\+hpp}}\item 
+src\+\_\+game/\+\+Utils/\+cpp/\+\doxymbox{\hyperlink{FileOpener_8cpp}{File\+Opener.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,16 @@
+<map id="Window::Window" name="Window::Window">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,83,139,111"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="187,5,344,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,80,189,54,185,58,114,85"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1graphics.html#a99e24a77c8d8c99343f4d47e85feff05" title="Function to get the width of the screen." alt="" coords="187,75,344,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="138,94,174,96,169,98,140,100"/>
+<area shape="rect" id="Node000005" href="$classLogger.html#ac8b6378bb5ffa1af9f64821aa3c7f9ea" title="Log that something went wrong." alt="" coords="208,143,322,171"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="119,109,206,137,201,139,119,114"/>
+<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="392,38,579,66"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,34,379,39,374,40,345,39"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="344,78,402,69,397,70,345,83"/>
+<area shape="rect" id="Node000006" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="410,112,561,140"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="322,146,392,139,397,139,323,152"/>
+<area shape="rect" id="Node000007" href="$classLogger.html#ad6de808cee6c544b62b7a843a7918a78" title="Return the given string with format code to make it red." alt="" coords="419,164,552,192"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="323,160,406,170,401,170,323,165"/>
+</map>

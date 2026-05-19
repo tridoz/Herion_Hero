@@ -1,0 +1,562 @@
+\doxysection{Menu.\+cpp}
+\hypertarget{Menu_8cpp_source}{}\label{Menu_8cpp_source}\index{src\_game/UI/cpp/Menu.cpp@{src\_game/UI/cpp/Menu.cpp}}
+\doxymbox{\hyperlink{Menu_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ trida\ on\ 11/19/25.}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{Menu_8hpp}{../hpp/Menu.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{JSONParser_8hpp}{../../Utils/hpp/JSONParser.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{TextureManager_8hpp}{../../Textures/hpp/TextureManager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00011}\doxymbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{00011}}\ \doxymbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu::Menu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00013}00013\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.clear();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00014}00014\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\textcolor{stringliteral}{"{}START\_GAME"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_ab221d66601a966778d6e3b833722a7d0}{ButtonsFunctions::StartGame}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00015}00015\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}START\_NEW\_GAME"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a155a245df1efe22df70d0f7a6cef79dd}{ButtonsFunctions::StartNewGame}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00016}00016\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}OPEN\_MAIN\_MENU"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a3df23920637e7686cd27aca4a6d7c483}{ButtonsFunctions::OpenMainMenu}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\textcolor{stringliteral}{"{}OPEN\_EDITOR\_MENU"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a8bb73ca409358b7d4f8b0db7a54b43f3}{ButtonsFunctions::OpenEditorMenu}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}OPEN\_SETTINGS\_MENU"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a664def5504e411bdd8b614b1c35ac2c8}{ButtonsFunctions::OpenSettings}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\textcolor{stringliteral}{"{}OPEN\_TEXTURE\_SELECTION\_MENU"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_ac089989e03063124365f6d7ff0dffd73}{ButtonsFunctions::OpenTextureSelectionMenu}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00020}00020\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}OPEN\_LEVEL\_EDITOR"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_af47aafca5c24c5750b6c9aa3f4ab5bb7}{ButtonsFunctions::OpenLevelEditor}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00021}00021\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}OPEN\_ANIMATION\_EDITOR"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a0a39a947ac06f33599b55ba13ebb1c06}{ButtonsFunctions::OpenAnimationEditor}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00022}00022\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}EXIT\_GAME"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_affa75aee517c7a228e638990e87b453d}{ButtonsFunctions::EndGame}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}RETURN\_PREVIOUS\_GAME\_MODE"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a01ba0845d5c554391ca5fe04b0d18b65}{ButtonsFunctions::ReturnPreviousState}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}DECREASE\_RESOLUTION"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a9af47043234a6ae85aab96e04292c198}{ButtonsFunctions::DecreaseResolution}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00025}00025\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}INCREASE\_RESOLUTION"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a2717429c721c61a434dfe33a344f2d61}{ButtonsFunctions::IncreaseResolution}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}DECREASE\_FRAME\_RATE"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_a1a1032d1c7b9da426b03f272ad2858ec}{ButtonsFunctions::DecreaseFrameLimit}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00027}00027\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.emplace(\ \textcolor{stringliteral}{"{}INCREASE\_FRAME\_RATE"{}},\ \doxymbox{\hyperlink{classButtonsFunctions_ae72a952f17eaa24ff784df9b84bd89c2}{ButtonsFunctions::IncreaseFrameLimit}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00031}\doxymbox{\hyperlink{classMenu_a831387f51358cfb88cd018e1777bc980}{00031}}\ \doxymbox{\hyperlink{classMenu_a831387f51358cfb88cd018e1777bc980}{Menu::\string~Menu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\ button\ :\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ button.second;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00037}\doxymbox{\hyperlink{classMenu_a220642e82ca018dd13ffc1a0f5024829}{00037}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a220642e82ca018dd13ffc1a0f5024829}{Menu::SetDimension}}(\textcolor{keywordtype}{float}\ w,\ \textcolor{keywordtype}{float}\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a7c6c81fb5baa8d1196e25af153e2d97a}{background\_rect}}\ =\ \{\ 0,\ 0,\ w,\ h\ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00041}\doxymbox{\hyperlink{classMenu_a4a7e63588f0b8a8738a7e54472addcb0}{00041}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a4a7e63588f0b8a8738a7e54472addcb0}{Menu::SetTextureManager}}(\ \doxymbox{\hyperlink{classTextureManager}{TextureManager}}*\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00042}00042\ \ \ \ \ this-\/>texture\_manager\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00045}\doxymbox{\hyperlink{classMenu_a4c7883d701995d51b8cb269d1e1db215}{00045}}\ std::vector<\ std::string\ >\ \doxymbox{\hyperlink{classMenu_a4c7883d701995d51b8cb269d1e1db215}{Menu::split}}(\ \textcolor{keyword}{const}\ std::string\ \&str\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00046}00046\ \ \ \ \ std::vector<\ std::string\ >\ tokens;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00047}00047\ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00048}00048\ \ \ \ \ std::string\ token;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ ss\ >>\ token\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ tokens.push\_back(token);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ tokens;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00055}\doxymbox{\hyperlink{classMenu_a5a159c018aa522d642dae780d4771861}{00055}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a5a159c018aa522d642dae780d4771861}{Menu::Rescale}}(SDL\_FRect*\ rect)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00056}00056\ \ \ \ \ rect-\/>x\ *=\ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00057}00057\ \ \ \ \ rect-\/>y\ *=\ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00058}00058\ \ \ \ \ rect-\/>w\ *=\ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00059}00059\ \ \ \ \ rect-\/>h\ *=\ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00062}\doxymbox{\hyperlink{classMenu_aa3023f7d7f43137acb4a17b74f81224c}{00062}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_aa3023f7d7f43137acb4a17b74f81224c}{Menu::LoadCfg}}(\textcolor{keyword}{const}\ std::string\&\ cfg\_json\_filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a1c9d7882bbcc2999a356d934f6fa062d}{JSONParser::menu\_configuration::SetConfigFile}}(cfg\_json\_filepath);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00066}00066\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileException\ \&ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_a82de92ff951ae50514df9deced176e9e}{type}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a9f88902114e60990d134270c13e930bd}{JSONParser::menu\_configuration::GetMenuType}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00073}00073\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileMalformedException\&\ ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ this-\/>\doxymbox{\hyperlink{classMenu_a82de92ff951ae50514df9deced176e9e}{type}}\ ==\ \textcolor{stringliteral}{"{}button\_menu"{}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a7bb9b117f29324f4e112b756cd17b706}{LoadButtonsMenuTypeConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00080}00080\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ this-\/>\doxymbox{\hyperlink{classMenu_a82de92ff951ae50514df9deced176e9e}{type}}\ ==\ \textcolor{stringliteral}{"{}scroll\_pane\_menu"{}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a09bd630ceb9e1b6356f9788567cc5fcf}{LoadScrollPaneMenuTypeConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00086}\doxymbox{\hyperlink{classMenu_a7bb9b117f29324f4e112b756cd17b706}{00086}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a7bb9b117f29324f4e112b756cd17b706}{Menu::LoadButtonsMenuTypeConfiguration}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57}{JSONParser::graphics::GetScale}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_aec93f3327b7741f965109cbaf7ecf959}{filepath}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aaa1e33fa4ae8d2f0d4060843bb871d32}{JSONParser::menu\_configuration::GetBackgroundImagePath}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_ac2f434ddf367bb736235664d7d924c76}{start\_y}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a4dc2f09e72af1f0f5670277837366da6}{JSONParser::menu\_configuration::GetStartY}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_a768bc8cf28963aff9598e4374034f41e}{button\_y\_offset}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ac1a8b283cd22b3aa8ca83466b558565d}{JSONParser::menu\_configuration::GetButtonYOffset}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_aadcd0409be7f85ff440dbbac77c4fac5}{center\_piece\_offset}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ab123a40b6a5e1285465aa51223e7c501}{JSONParser::menu\_configuration::GetCenterPieceOffset}}()\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00095}00095\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileMalformedException\&\ ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_aa54d7e9c64d129e437ec53042dafe5e4}{background}}\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(this-\/>\doxymbox{\hyperlink{classMenu_aec93f3327b7741f965109cbaf7ecf959}{filepath}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00102}00102\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileException\&\ ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ab136de557cdb3c260be49c7907db7520}{JSONParser::menu\_configuration::GetNumRows}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{float}\ current\_y\ =\ \doxymbox{\hyperlink{classMenu_ac2f434ddf367bb736235664d7d924c76}{start\_y}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00110}00110\ \ \ \ \ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.clear();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00111}00111\ \ \ \ \ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.clear();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\_number\ =\ 0;\ row\_number\ <\ num\_rows;\ row\_number++)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ starting\_x\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_adedb028a6adba692afab938ee66c5a35}{JSONParser::menu\_configuration::GetRowStartingX}}(row\_number)\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ button\_x\_offset\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aca8df2249afc2cd1b6f783f41e8f7736}{JSONParser::menu\_configuration::GetRowButtonXOffset}}(row\_number);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_elements\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a336aa7a0a775a036eb9bcce52f4eb42f}{JSONParser::menu\_configuration::GetRowNumElements}}(row\_number);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cumulative\_x\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(starting\_x);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ row\_height\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ element\_number\ =\ 0;\ element\_number\ <\ num\_elements;\ element\_number++)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields}{JSONParser::menu\_configuration::RowElementFields}}\ menu\_element\_characteristic\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_a6c8db0691574ce653e1f09ff5a911802}{JSONParser::menu\_configuration::GetRowElementFields}}(row\_number,\ element\_number);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ text\ =\ (menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a53875610b0d565d5a4a5a57789cb8fb1}{type}}\ ==\ \textcolor{stringliteral}{"{}DYNAMIC\_TEXT"{}})\ ?\ \doxymbox{\hyperlink{classMenu_a865ce66eae83e0c1ef18aec2794a2ddc}{GetText}}(menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_abfccc898e2c6b151e0c1c1e1b2d6e712}{text}})\ :\ menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_abfccc898e2c6b151e0c1c1e1b2d6e712}{text}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<SDL\_FRect>\ rects;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Texture*>\ textures;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ left\_texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ center\_texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ right\_texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ left\_texture\ \ \ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Ui/Buttons/ButtonLeft2.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center\_texture\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Ui/Buttons/ButtonCenter2.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ right\_texture\ \ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Ui/Buttons/ButtonRight2.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileNotFoundException\ \&ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ left\_w,\ left\_h,\ center\_w,\ center\_h,\ right\_w,\ right\_h;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_GetTextureSize(left\_texture-\/>\doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{GetTexture}}(),\ \&left\_w,\ \&left\_h);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_GetTextureSize(center\_texture-\/>\doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{GetTexture}}(),\ \&center\_w,\ \&center\_h);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_GetTextureSize(right\_texture-\/>\doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{GetTexture}}(),\ \&right\_w,\ \&right\_h);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ left\_rect\ =\ \{\ cumulative\_x,\ current\_y,\ left\_w\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}},\ left\_h\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(left\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(left\_texture);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ char\_w\ =\ 20.0f\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ text\_total\_w\ =\ text.size()\ *\ char\_w;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ center\_rect\ =\ \{\ cumulative\_x\ +\ left\_rect.w,}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\_y\ +\ \doxymbox{\hyperlink{classMenu_aadcd0409be7f85ff440dbbac77c4fac5}{center\_piece\_offset}},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text\_total\_w,}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center\_h\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(center\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(center\_texture);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ right\_rect\ =\ \{\ center\_rect.x\ +\ center\_rect.w,\ current\_y,\ right\_w\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}},\ right\_h\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(right\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(right\_texture);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ char\_x\ =\ center\_rect.x;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ c\ :\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ char\_tex\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isupper(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Game/UppercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::islower(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Game/LowercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::isdigit(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Game/Numbers/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classMenu_a35c051d11a6e82ba9cff0215aac903ed}{isspecial}}(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Game/SpecialCharacters/"{}}\ +\ \doxymbox{\hyperlink{classMenu_a76986784f4382a866f37a767d772cca8}{GetNameOfSpecialChar}}(c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ isspace(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Game/SpecialCharacters/space.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileNotFoundException\ \&ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cw,\ ch;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_GetTextureSize(char\_tex-\/>\doxymbox{\hyperlink{classTexture_a1481e2e0c45dc7bc7777ec2825b66670}{GetTexture}}(),\ \&cw,\ \&ch);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ char\_rect\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_x\ +\ (char\_w\ -\/\ cw\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}})\ /\ 2.0f,}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center\_rect.y\ +\ (center\_rect.h\ -\/\ ch\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}})\ /\ 2.0f,}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cw\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ch\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(char\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(char\_tex);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_x\ +=\ char\_w;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ row\_height\ =\ std::max(\{\ row\_height,\ left\_rect.h,\ center\_rect.h,\ right\_rect.h\ \});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a53875610b0d565d5a4a5a57789cb8fb1}{type}}\ ==\ \textcolor{stringliteral}{"{}BUTTON"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classButton}{Button}}*\ btn\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classButton}{Button}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ btn-\/>\doxymbox{\hyperlink{classButton_ad8ba4b6031f5aadf9b6c92b8d4b18384}{SetRects}}(rects);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ btn-\/>\doxymbox{\hyperlink{classButton_a59b7f1491a05aadf714650d34ea696b3}{SetTextures}}(textures);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.contains(menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a54e34d955a33eebaf3016ee251cb28a5}{action}}.value()\ )\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ THROW\_FILE\_NOT\_FOUND(\ menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a54e34d955a33eebaf3016ee251cb28a5}{action}}.value()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ btn-\/>\doxymbox{\hyperlink{classButton_adce659a3e88b54d9aa8eea73b8c0cf7d}{SetOnClick}}(\doxymbox{\hyperlink{classMenu_a186d5e37d9c76291a777cda2aacd84ee}{buttons\_functions}}.at(menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a54e34d955a33eebaf3016ee251cb28a5}{action}}.value()));}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.emplace(menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_adf8b36581a1c1cbb27a00f71684a0e1e}{id}},\ btn);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_a53875610b0d565d5a4a5a57789cb8fb1}{type}}.contains(\textcolor{stringliteral}{"{}TEXT"{}})\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classText}{Text}}*\ txt\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classText}{Text}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_aa8bbb1eb82dcf077ced15ca149a28c96}{SetRects}}(rects);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_a3a59a1dbc6d01a2df0c9deea701c7f36}{SetTextures}}(textures);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.emplace(menu\_element\_characteristic.\doxymbox{\hyperlink{structJSONParser_1_1menu__configuration_1_1RowElementFields_adf8b36581a1c1cbb27a00f71684a0e1e}{id}},\ txt);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ cumulative\_x\ +=\ left\_rect.w\ +\ center\_rect.w\ +\ right\_rect.w\ +\ button\_x\_offset;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ current\_y\ +=\ row\_height\ +\ \doxymbox{\hyperlink{classMenu_a768bc8cf28963aff9598e4374034f41e}{button\_y\_offset}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00236}00236\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00238}\doxymbox{\hyperlink{classMenu_a09bd630ceb9e1b6356f9788567cc5fcf}{00238}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a09bd630ceb9e1b6356f9788567cc5fcf}{Menu::LoadScrollPaneMenuTypeConfiguration}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00240}00240\ \ \ \ \ std::string\ cmd;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00242}00242\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_aa54d7e9c64d129e437ec53042dafe5e4}{background}}\ =\ this-\/>\doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aaa1e33fa4ae8d2f0d4060843bb871d32}{JSONParser::menu\_configuration::GetBackgroundImagePath}}()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}{JSONParser::graphics::GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00244}00244\ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}{JSONParser::graphics::GetHeight}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00246}00246\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_a7c6c81fb5baa8d1196e25af153e2d97a}{background\_rect}}\ =\ \{0,\ 0,\ w,\ h\};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57}{JSONParser::graphics::GetScale}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ cmd\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_af6fd55eba707558376e878b364a5c485}{JSONParser::menu\_configuration::GetCmd}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00251}00251\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (HerionException::File::FileMalformedException\ \&ex)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00254}00254\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00256}00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ cmd\ ==\ \textcolor{stringliteral}{"{}select\_all\_directory"{}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ std::string\ base\_directory\ =\ \textcolor{stringliteral}{"{}../Assets/"{}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a650540b684e46ae0115be6d47f4c33ee}{CreateSubDirectories}}(\ this-\/>\doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}},\ base\_directory,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.clear();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.clear();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_adde221c0ab8ba661d1ee34b5d2270d8d}{CreateButtonsAndTexts}}(\ this-\/>\doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00266}\doxymbox{\hyperlink{classMenu_adde221c0ab8ba661d1ee34b5d2270d8d}{00266}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_adde221c0ab8ba661d1ee34b5d2270d8d}{Menu::CreateButtonsAndTexts}}(\ \doxymbox{\hyperlink{structMenu_1_1Directory}{Directory}}*\&\ dir)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ texture\_size\_file\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_ae51e66d83978170453d603da214fd4fe}{JSONParser::menu\_configuration::GetFileTextureSize}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ texture\_size\_directory\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1menu__configuration_aa692faa2d71682a0740608c65e7e0bfb}{JSONParser::menu\_configuration::GetDirectoryTextureSize}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00270}00270\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ diff\ =\ texture\_size\_directory\ -\/\ texture\_size\_file;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00272}00272\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_a73ee48209743f4b85a09d0bc6946787a}{SubDirectory}}.size()\ ==\ 0\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DRAW\ FILES}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\ [name,\ path,\ texture]\ :\ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_a062423a5267eecc018e58b581e819086}{Files}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depth\ =\ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_ac7b2e260a4ff1be50e0055958a40fa3f}{depth}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ previous\_element\_already\_drawn\ =\ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.size()\ +\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.size();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ right\_path\ =\ path.substr(3,\ path.size()-\/3\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Texture*>\ textures;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<SDL\_FRect>\ rects;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ file\_txt\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(right\_path);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ file\_rect\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (texture\_size\_directory*depth)\ +\ (texture\_size\_directory*2)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (previous\_element\_already\_drawn*texture\_size\_directory\ +\ texture\_size\_directory*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}*previous\_element\_already\_drawn)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ )}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(file\_txt);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(file\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i<name.size()\ ;\ i++\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ name[i];}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ char\_tex\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isupper(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/UppercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::islower(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/LowercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::isdigit(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/Numbers/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classMenu_a35c051d11a6e82ba9cff0215aac903ed}{isspecial}}(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/SpecialCharacters/"{}}\ +\ \doxymbox{\hyperlink{classMenu_a76986784f4382a866f37a767d772cca8}{GetNameOfSpecialChar}}(c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ isspace(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/SpecialCharacters/space.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileNotFoundException\ \&ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ char\_rect\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (depth*texture\_size\_file)\ +\ (texture\_size\_file*(i+2)\ +\ texture\_size\_file\ )\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (previous\_element\_already\_drawn*texture\_size\_file\ +\ texture\_size\_file*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}*previous\_element\_already\_drawn\ +\ diff*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}*previous\_element\_already\_drawn)\ \ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_file*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_file*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ )}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(char\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(char\_tex);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classText}{Text}}*\ txt\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classText}{Text}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_aa8bbb1eb82dcf077ced15ca149a28c96}{SetRects}}(rects);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_a3a59a1dbc6d01a2df0c9deea701c7f36}{SetTextures}}(textures);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.emplace(\ right\_path,\ txt\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00337}00337\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{auto}\&\ [name,\ dir]\ :\ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_a73ee48209743f4b85a09d0bc6946787a}{SubDirectory}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depth\ =\ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_ac7b2e260a4ff1be50e0055958a40fa3f}{depth}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ path\ =\ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_a1481a05b5621d7012ae9f32e39febf83}{path}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ previous\_element\_already\_drawn\ =\ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.size()\ +\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.size();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ std::vector<Texture*>\ textures;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ std::vector<SDL\_FRect>\ rects;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ folder\_txt\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Ui/Editor/Folder.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ SDL\_FRect\ folder\_rect\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (texture\_size\_directory*depth)\ +\ (texture\_size\_directory)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (previous\_element\_already\_drawn*texture\_size\_directory\ +\ texture\_size\_directory*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}*previous\_element\_already\_drawn)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ )}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ textures.push\_back(folder\_txt);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ rects.push\_back(folder\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DRAWING}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i<name.size()\ ;\ i++\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ name[i];}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classTexture}{Texture}}*\ char\_tex\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isupper(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/UppercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::islower(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/LowercaseLetters/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::isdigit(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/Numbers/"{}}\ +\ std::string(1,\ c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classMenu_a35c051d11a6e82ba9cff0215aac903ed}{isspecial}}(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/SpecialCharacters/"{}}\ +\ \doxymbox{\hyperlink{classMenu_a76986784f4382a866f37a767d772cca8}{GetNameOfSpecialChar}}(c)\ +\ \textcolor{stringliteral}{"{}.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ isspace(c))}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ char\_tex\ =\ \doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\textcolor{stringliteral}{"{}Assets/Font/Editor/SpecialCharacters/space.png"{}});}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\ HerionException::File::FileNotFoundException\ \&ex\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.UpdateStackTrace(\ GET\_CONTEXT()\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FRect\ char\_rect\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (texture\_size\_directory*depth)\ +\ (texture\_size\_directory*(i+1)\ +\ texture\_size\_directory)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ (previous\_element\_already\_drawn*texture\_size\_directory\ +\ texture\_size\_directory*\doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}*previous\_element\_already\_drawn)\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ ),}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\ texture\_size\_directory\ *\ \doxymbox{\hyperlink{classMenu_ac70ed06a6b300283e1bb23db96fad62b}{scale}}\ )}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ rects.push\_back(char\_rect);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ textures.push\_back(char\_tex);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classText}{Text}}*\ txt\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classText}{Text}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_aa8bbb1eb82dcf077ced15ca149a28c96}{SetRects}}(rects);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ txt-\/>\doxymbox{\hyperlink{classText_a3a59a1dbc6d01a2df0c9deea701c7f36}{SetTextures}}(textures);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}.emplace(\ path,\ txt);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_adde221c0ab8ba661d1ee34b5d2270d8d}{CreateButtonsAndTexts}}(\ dir\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00400}00400\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00402}00402\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00404}\doxymbox{\hyperlink{classMenu_a650540b684e46ae0115be6d47f4c33ee}{00404}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a650540b684e46ae0115be6d47f4c33ee}{Menu::CreateSubDirectories}}(\ \doxymbox{\hyperlink{structMenu_1_1Directory}{Directory}}*\&\ \doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}},\ \textcolor{keyword}{const}\ std::string\&\ base\_directory,\ \textcolor{keywordtype}{int}\ depth\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00406}00406\ \ \ \ \ std::vector\ <\ std::string\ >\ cmd\_output\ =\ \doxymbox{\hyperlink{classCMD_ae9aa41884291132d680ec7dac421e9e0}{CMD::multiline\_exec}}(\ \textcolor{stringliteral}{"{}ls\ "{}}\ +\ base\_directory\ +\ \textcolor{stringliteral}{"{}\ |\ grep\ -\/v\ '\string^Font\$'\ "{}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00408}00408\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}}\ ==\ \textcolor{keyword}{nullptr}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}}\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{structMenu_1_1Directory}{Directory}}(\ depth,\ \{\},\ \{\}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00410}00410\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00412}00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ cmd\_output.size()\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00414}00414\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00416}00416\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ output\_line\ :\ cmd\_output\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structMenu_1_1Directory}{Directory}}*\ dir\ =\ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{structMenu_1_1Directory}{Directory}}(\ depth+1,\ \{\},\ \{\},\ \{\}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !output\_line.contains(\textcolor{stringliteral}{"{}.png"{}})\ \&\&\ !output\_line.contains(\textcolor{stringliteral}{"{}.txt"{}})\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}}-\/>SubDirectory.emplace(\ std::make\_pair(output\_line,\ dir)\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ dir-\/>\doxymbox{\hyperlink{structMenu_1_1Directory_a1481a05b5621d7012ae9f32e39febf83}{path}}\ =\ base\_directory\ +\ output\_line\ +\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_a650540b684e46ae0115be6d47f4c33ee}{CreateSubDirectories}}(\ dir,\ base\_directory\ +\ output\_line\ +\ \textcolor{stringliteral}{"{}/"{}},\ depth+1\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ output\_line.contains(\textcolor{stringliteral}{"{}.png"{}})\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ file\_name\ =\ base\_directory\ +\ output\_line;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ file\_name\ =\ file\_name.substr(3,file\_name.size()-\/3);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classMenu_aaa3b0b443531a3c8cd4169ea064fe59e}{directory}}-\/>Files.emplace\_back(\ output\_line,\ base\_directory\ +\ output\_line\ ,\ this-\/>\doxymbox{\hyperlink{classMenu_a8f6da4ceb3d0df759805033ea9e7c9a9}{texture\_manager}}-\/>GetTexture(\ file\_name\ )\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00428}00428\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00430}00430\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00432}\doxymbox{\hyperlink{classMenu_abed1b52f49b94cf3c3ab339e2deb8aeb}{00432}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_abed1b52f49b94cf3c3ab339e2deb8aeb}{Menu::Draw}}(\ SDL\_Renderer*\ renderer\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00434}00434\ \ \ \ \ SDL\_SetTextureBlendMode(\ this-\/>\doxymbox{\hyperlink{classMenu_aa54d7e9c64d129e437ec53042dafe5e4}{background}}-\/>GetTexture()\ ,\ SDL\_BLENDMODE\_BLEND\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00435}00435\ \ \ \ \ SDL\_RenderTexture(\ renderer,\ this-\/>\doxymbox{\hyperlink{classMenu_aa54d7e9c64d129e437ec53042dafe5e4}{background}}-\/>GetTexture(),\ \textcolor{keyword}{nullptr},\ \&\doxymbox{\hyperlink{classMenu_a7c6c81fb5baa8d1196e25af153e2d97a}{background\_rect}}\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00437}00437\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ btn]\ :\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ this-\/>\doxymbox{\hyperlink{classMenu_a82de92ff951ae50514df9deced176e9e}{type}}\ ==\ \textcolor{stringliteral}{"{}scroll\_pane\_menu"{}})}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ btn-\/>DrawWithOffset(\ renderer,\ \doxymbox{\hyperlink{classMenu_a6ac9ddc5d4d2feba5bff9e131bce22eb}{mouse\_offset}},\ 0\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ btn-\/>Draw(\ renderer\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00443}00443\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00445}00445\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ txt]\ :\ \doxymbox{\hyperlink{classMenu_a2815a761365269073671bca0fb3cc61e}{texts}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ this-\/>\doxymbox{\hyperlink{classMenu_a82de92ff951ae50514df9deced176e9e}{type}}\ ==\ \textcolor{stringliteral}{"{}scroll\_pane\_menu"{}})}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>DrawWithOffset(\ renderer,\ \doxymbox{\hyperlink{classMenu_a6ac9ddc5d4d2feba5bff9e131bce22eb}{mouse\_offset}},\ 0\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ txt-\/>Draw(\ renderer\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00450}00450\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00452}00452\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00454}\doxymbox{\hyperlink{classMenu_ade315a1395f8745b519ecf6481c0f117}{00454}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_ade315a1395f8745b519ecf6481c0f117}{Menu::SetMouseOffset}}(\ \textcolor{keywordtype}{float}\ diff\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00455}00455\ \ \ \ \ this-\/>\doxymbox{\hyperlink{classMenu_a6ac9ddc5d4d2feba5bff9e131bce22eb}{mouse\_offset}}\ +=\ diff*4;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00456}00456\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00458}\doxymbox{\hyperlink{classMenu_a865ce66eae83e0c1ef18aec2794a2ddc}{00458}}\ std::string\ \doxymbox{\hyperlink{classMenu_a865ce66eae83e0c1ef18aec2794a2ddc}{Menu::GetText}}(\ \textcolor{keyword}{const}\ std::string\&\ text\_type\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00459}00459\ \ \ \ \ std::string\ text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00461}00461\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ text\_type\ ==\ \textcolor{stringliteral}{"{}RESOLUTION\_ASPECT"{}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}{JSONParser::graphics::GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}{JSONParser::graphics::GetHeight}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ text\ =\ std::to\_string(width)\ +\ \textcolor{stringliteral}{"{}x"{}}\ +\ std::to\_string(height);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00467}00467\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ text\_type\ ==\ \textcolor{stringliteral}{"{}FRAME\_RATE"{}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ frame\_rate\ =\ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593}{JSONParser::graphics::GetFrameRate}}();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ text\ =\ std::to\_string(frame\_rate);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00470}00470\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ text\ =\ \textcolor{stringliteral}{"{}error"{}};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00472}00472\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00474}00474\ \ \ \ \ \textcolor{keywordflow}{return}\ text;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00475}00475\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00477}\doxymbox{\hyperlink{classMenu_a35c051d11a6e82ba9cff0215aac903ed}{00477}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classMenu_a35c051d11a6e82ba9cff0215aac903ed}{Menu::isspecial}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ c)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00479}00479\ \ \ \ \ std::vector<char>\ special\_characters\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \textcolor{charliteral}{'+'},\ \textcolor{charliteral}{'-\/'},\ \textcolor{charliteral}{'*'},\ \textcolor{charliteral}{'/'},\ \textcolor{charliteral}{'\%'},\ \textcolor{charliteral}{'\&'},\ \textcolor{charliteral}{'|'},\ \textcolor{charliteral}{'\string^'},\ \textcolor{charliteral}{'!'},\ \textcolor{charliteral}{'='},\ \textcolor{charliteral}{'<'},\ \textcolor{charliteral}{'>'},\ \textcolor{charliteral}{'?'},\ \textcolor{charliteral}{'\string~'},\ \textcolor{charliteral}{'@'},\ \textcolor{charliteral}{'\#'},\ \textcolor{charliteral}{'\$'},\ \textcolor{charliteral}{'\_'},\textcolor{charliteral}{'.'}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00481}00481\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00483}00483\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(special\_characters.begin(),\ special\_characters.end(),\ c)\ !=\ special\_characters.end();}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00484}00484\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00485}00485\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00486}\doxymbox{\hyperlink{classMenu_a76986784f4382a866f37a767d772cca8}{00486}}\ std::string\ \doxymbox{\hyperlink{classMenu_a76986784f4382a866f37a767d772cca8}{Menu::GetNameOfSpecialChar}}(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ c\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00488}00488\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::unordered\_map<char,\ std::string>\ charNames\ =\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'+'},\ \textcolor{stringliteral}{"{}plus"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'-\/'},\ \textcolor{stringliteral}{"{}minus"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'*'},\ \textcolor{stringliteral}{"{}asterisk"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'/'},\ \textcolor{stringliteral}{"{}slash"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\%'},\ \textcolor{stringliteral}{"{}percent"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\&'},\ \textcolor{stringliteral}{"{}ampersand"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'|'},\ \textcolor{stringliteral}{"{}pipe"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\string^'},\ \textcolor{stringliteral}{"{}caret"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'!'},\ \textcolor{stringliteral}{"{}exclamation"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'='},\ \textcolor{stringliteral}{"{}equals"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'<'},\ \textcolor{stringliteral}{"{}less\_than"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'>'},\ \textcolor{stringliteral}{"{}greater\_than"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'?'},\ \textcolor{stringliteral}{"{}question"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\string~'},\ \textcolor{stringliteral}{"{}tilde"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'@'},\ \textcolor{stringliteral}{"{}at"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\#'},\ \textcolor{stringliteral}{"{}hash"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\$'},\ \textcolor{stringliteral}{"{}dollar"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'\_'},\ \textcolor{stringliteral}{"{}underscore"{}}\},}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \{\textcolor{charliteral}{'.'},\ \textcolor{stringliteral}{"{}dot"{}}\}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00508}00508\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00509}00509\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00510}00510\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ charNames.find(c);}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00511}00511\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ charNames.end())\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;\ \ \textcolor{comment}{//\ Restituisce\ il\ nome\ se\ trovato}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00513}00513\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown"{}};\ \ \ \textcolor{comment}{//\ Restituisce\ "{}Unknown"{}\ se\ non\ è\ un\ carattere\ speciale}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00515}00515\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00516}00516\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00517}00517\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00518}\doxymbox{\hyperlink{classMenu_ad60f678a1aa370790a759d3024925d67}{00518}}\ \doxymbox{\hyperlink{classButton}{Button}}*\ \doxymbox{\hyperlink{classMenu_ad60f678a1aa370790a759d3024925d67}{Menu::GetButton}}(\ \textcolor{keyword}{const}\ std::string\&\ action\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00519}00519\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}.at(\ action\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00520}00520\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00521}00521\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00522}\doxymbox{\hyperlink{classMenu_a7f1b6e9b43ce480f47442e96218bc39b}{00522}}\ std::vector\ <\ Button*\ >\ \doxymbox{\hyperlink{classMenu_a7f1b6e9b43ce480f47442e96218bc39b}{Menu::GetButtons}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00523}00523\ \ \ \ \ std::vector\ <\ Button*\ >\ vec\_buttons;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00524}00524\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ std::pair<\ std::string,\ Button*>\ pair\ :\ this-\/>\doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ vec\_buttons.push\_back(\ pair.second\ );}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00526}00526\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00527}00527\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00528}00528\ \ \ \ \ \textcolor{keywordflow}{return}\ vec\_buttons;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00529}00529\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00531}\doxymbox{\hyperlink{classMenu_a2af3a20fe2d5f9e465a2908e16c0f659}{00531}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classMenu_a2af3a20fe2d5f9e465a2908e16c0f659}{Menu::CheckCollision}}(\ std::vector<SDL\_FRect\ >\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}},\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00532}00532\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ SDL\_FRect\ button\ :\ \doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ x\ >=\ button.x\ \&\&}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ x\ <=\ button.x\ +\ button.w\ \&\&}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ y\ >=\ button.y\ \&\&}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ y\ <=\ button.y\ +\ button.h}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00541}00541\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00542}00542\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00543}00543\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00545}\doxymbox{\hyperlink{classMenu_af78779c5460be5c6fcdf2695db895100}{00545}}\ \doxymbox{\hyperlink{classButton}{Button}}*\ \doxymbox{\hyperlink{classMenu_af78779c5460be5c6fcdf2695db895100}{Menu::GetCollisionButton}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keyword}{const}\ std::pair<\ std::string,\ Button*\ >\ pair\ :\ this-\/>\doxymbox{\hyperlink{classMenu_ab40b75f030c406542c6280867f4351b0}{buttons}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \doxymbox{\hyperlink{classMenu_a2af3a20fe2d5f9e465a2908e16c0f659}{CheckCollision}}(pair.second-\/>GetRects(),\ x,\ y)\ )\ \{}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pair.second;}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00550}00550\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00553}00553\ \}}
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{Menu_8cpp_source_l00556}00556\ }
+
+\end{DoxyCode}

@@ -24,22 +24,48 @@ private:
     static const std::string CLEAR;
     static const std::string MAGENTA;
 
-    static bool http_logging_enabled;
     static bool file_logging_enabled;
     static bool stdout_logging_enabled;
 
-
+    /**
+     * @brief Return the given string with format code to make it red
+     * @param message String to modify
+     * @return std::string
+     */
     static std::string MakeRed( const std::string& message );
+
+    /**
+     * @brief Return the given string with format code to make it green
+     * @param message String to modify
+     * @return std::string
+     */
     static std::string MakeGreen( const std::string& message );
+
+    /**
+     * @brief Return the given string with format code to make it magenta
+     * @param message String to modify
+     * @return std::string
+     */
     static std::string MakeMagenta( const std::string& message );
 
-
+    /**
+     * @brief Return a string time formatted as YY:MM:DD hh:mm::ss
+     * @param time_to_format Time that needs to be formatted
+     * @return std::string
+     */
     static std::string FormatTime( std::time_t time_to_format);
 
 
 
 public:
-
+    /**
+     * @brief Log that something went all right
+     * @param log_time Time of the log
+     * @param type Type of the thing that went all right
+     * @param class_name Class name where the log is being made
+     * @param function_name Function name where the log is being made
+     * @param log_message Log message
+     */
     static void LogOk(
         std::time_t log_time,
         const std::string& type,
@@ -48,6 +74,14 @@ public:
         const std::string& log_message
         );
 
+    /**
+     * @brief Log that something went wrong
+     * @param log_time Time of the log
+     * @param type Type of the thing that went wrong
+     * @param class_name Class name where the log is being made
+     * @param function_name Function name where the log is being made
+     * @param log_message Log message
+     */
     static void LogErr(
         std::time_t log_time,
         const std::string& type,
@@ -56,20 +90,39 @@ public:
         const std::string& log_message
         );
 
+    /**
+     * @brief Log all the Exception Stack Trace
+     * @param log_time Time of the log
+     * @param stack_trace Stack trace object to log
+     */
     static void LogStackTrace(
         std::time_t log_time,
         const std::vector< std::string >& stack_trace
         );
 
-    static void EnableHTTPLogging();
+    /**
+     * @brief Enable logging on the stdout
+     */
     static void EnableSTDOUTLogging();
-    static void EnableFILELogging();
 
-    static void DisableHTTPLogging();
+    /**
+     * @brief Disable logging on the stdout
+     */
+    static void DisableSTDOUTLogging();
 
+    /**
+     * @brief Clear temporary logging fils
+     */
     static void ClearTempLoggingFiles();
 
-    static void DisableSTDOUTLogging();
+    /**
+     * @brief Enable logging on logs file
+     */
+    static void EnableFILELogging();
+
+    /**
+     * @brief Disable logging on logs file
+     */
     static void DisableFILELogging();
 
 };

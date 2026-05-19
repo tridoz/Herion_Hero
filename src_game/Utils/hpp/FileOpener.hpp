@@ -12,7 +12,18 @@
 class FileOpener {
 
 public:
+	/**
+	 * @brief Open file for input
+	 * @param in std::ifstream& reference to open
+	 * @param filepath Filepath of the file to open
+	 */
 	static void OpenFileInput( std::ifstream& in, const std::string& filepath);
+
+	/**
+	 * @brief Open file for output
+	 * @param out std::ofstream reference to open
+	 * @param filepath Filepath of the file to open
+	 */
 	static void OpenFileOutput( std::ofstream& out, const std::string& filepath);
 
 };

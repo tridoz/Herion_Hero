@@ -1,0 +1,284 @@
+\doxysection{Tile Class Reference}
+\hypertarget{classTile}{}\label{classTile}\index{Tile@{Tile}}
+
+
+{\ttfamily \+\#include $<$Tile.\+hpp$>$}
+
+
+
+Collaboration diagram for Tile:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classTile__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classTile_a10dffec2aec5c837de1223b8d67ae597}{Draw}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer) const
+\begin{DoxyCompactList}\small\item\em Draw the tile. \end{DoxyCompactList}\item 
+SDL\+\_\+\+FRect \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classTile_a10f7e93a1a611fa88dae9e33a3b70c06}{Get\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Return the \doxylink{classTile}{Tile} rect. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classTile_a8e4c827ca119d364c50059b02b804903}{Is\+Walkable}} () const
+\begin{DoxyCompactList}\small\item\em Return of the tile is walkable. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classTile_a47313d42887b17acb60733dde55134d5}{Set\+Rect}} (float x, float y, float w, float h)
+\begin{DoxyCompactList}\small\item\em Set the tile rect. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classTile_a75702d9761f10cc38f8aa55287e36ae3}{Set\+Texture}} (const \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*}new\+\_\+texture)
+\begin{DoxyCompactList}\small\item\em Set the tile \doxylink{classTexture}{Texture}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}{Tile}} ()
+\item 
+\doxymbox{\hyperlink{classTile_a98634abbd93fa13d0578d7103202d03d}{\texorpdfstring{$\sim$}{\string~}\+Tile}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2}{is\+Walkable}}
+\item 
+SDL\+\_\+\+FRect \doxymbox{\hyperlink{classTile_a68043c68a65fb285310d90108dc57ee5}{rect}} \{\}
+\item 
+const \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classTile_ae7373482f8f538f904436009853a675b}{texture}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8hpp_source_l00009}{9}} of file \doxymbox{\hyperlink{Tile_8hpp_source}{Tile.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classTile_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTile_aeeb5593bb6b75aae2edfcccbc84ab378}\index{Tile@{Tile}!Tile@{Tile}}
+\index{Tile@{Tile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{Tile()}{Tile()}}
+{\footnotesize\ttfamily \label{classTile_aeeb5593bb6b75aae2edfcccbc84ab378} 
+Tile::\+\+Tile (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00012}{is\+Walkable}}, and \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{rect}}.
+
+\Hypertarget{classTile_a98634abbd93fa13d0578d7103202d03d}\index{Tile@{Tile}!````~Tile@{\texorpdfstring{$\sim$}{\string~}Tile}}
+\index{````~Tile@{\texorpdfstring{$\sim$}{\string~}Tile}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Tile()}{\string~Tile()}}
+{\footnotesize\ttfamily \label{classTile_a98634abbd93fa13d0578d7103202d03d} 
+Tile::\+\texorpdfstring{$\sim$}{\string~}\+Tile (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00012}{is\+Walkable}}, and \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{rect}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classTile_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTile_a10dffec2aec5c837de1223b8d67ae597}\index{Tile@{Tile}!Draw@{Draw}}
+\index{Draw@{Draw}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{classTile_a10dffec2aec5c837de1223b8d67ae597} 
+void Tile::\+\+Draw (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption}) const}
+
+
+
+Draw the tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Renderer needed to draw the tile \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{rect}}, and \doxymbox{\hyperlink{Tile_8hpp_source_l00011}{texture}}.
+
+\Hypertarget{classTile_a10f7e93a1a611fa88dae9e33a3b70c06}\index{Tile@{Tile}!GetRect@{GetRect}}
+\index{GetRect@{GetRect}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{GetRect()}{GetRect()}}
+{\footnotesize\ttfamily \label{classTile_a10f7e93a1a611fa88dae9e33a3b70c06} 
+SDL\+\_\+\+FRect \texorpdfstring{$\ast$}{*} Tile::\+\+Get\+Rect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return the \doxylink{classTile}{Tile} rect. 
+
+\begin{DoxyReturn}{Returns}
+SDL\+\_\+\+FRect\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{rect}}.
+
+\Hypertarget{classTile_a8e4c827ca119d364c50059b02b804903}\index{Tile@{Tile}!IsWalkable@{IsWalkable}}
+\index{IsWalkable@{IsWalkable}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{IsWalkable()}{IsWalkable()}}
+{\footnotesize\ttfamily \label{classTile_a8e4c827ca119d364c50059b02b804903} 
+bool Tile::\+\+Is\+Walkable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Return of the tile is walkable. 
+
+\begin{DoxyNote}{Note}
+Unesed 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00030}{30}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00012}{is\+Walkable}}.
+
+\Hypertarget{classTile_a47313d42887b17acb60733dde55134d5}\index{Tile@{Tile}!SetRect@{SetRect}}
+\index{SetRect@{SetRect}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{SetRect()}{SetRect()}}
+{\footnotesize\ttfamily \label{classTile_a47313d42887b17acb60733dde55134d5} 
+void Tile::\+\+Set\+Rect (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{w}{, }\item[{float}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Set the tile rect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordinate x of the rect \\
+\hline
+{\em y} & Coordinate y of the rect \\
+\hline
+{\em w} & Width of the rect \\
+\hline
+{\em h} & Height of the rect \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00034}{34}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{rect}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{RoomManager_8cpp_source_l00040}{Room\+Manager::\+\+Generate\+Editor\+Room()}}, and \doxymbox{\hyperlink{RoomManager_8cpp_source_l00107}{Room\+Manager::\+\+Generate\+Room()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTile_a47313d42887b17acb60733dde55134d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classTile_a75702d9761f10cc38f8aa55287e36ae3}\index{Tile@{Tile}!SetTexture@{SetTexture}}
+\index{SetTexture@{SetTexture}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{SetTexture()}{SetTexture()}}
+{\footnotesize\ttfamily \label{classTile_a75702d9761f10cc38f8aa55287e36ae3} 
+void Tile::\+\+Set\+Texture (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*}}]{new\+\_\+texture}{}\end{DoxyParamCaption})}
+
+
+
+Set the tile \doxylink{classTexture}{Texture}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+texture} & \doxylink{classTexture}{Texture} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8cpp_source_l00017}{17}} of file \doxymbox{\hyperlink{Tile_8cpp_source}{Tile.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Tile_8hpp_source_l00011}{texture}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{RoomManager_8cpp_source_l00040}{Room\+Manager::\+\+Generate\+Editor\+Room()}}, and \doxymbox{\hyperlink{RoomManager_8cpp_source_l00107}{Room\+Manager::\+\+Generate\+Room()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTile_a75702d9761f10cc38f8aa55287e36ae3_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classTile_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2}\index{Tile@{Tile}!isWalkable@{isWalkable}}
+\index{isWalkable@{isWalkable}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{isWalkable}{isWalkable}}
+{\footnotesize\ttfamily \label{classTile_a96b4f7cb0e8ea2d4a6bb77b83cd5fce2} 
+bool Tile::\+is\+Walkable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8hpp_source_l00012}{12}} of file \doxymbox{\hyperlink{Tile_8hpp_source}{Tile.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Tile_8cpp_source_l00030}{Is\+Walkable()}}, \doxymbox{\hyperlink{Tile_8cpp_source_l00007}{Tile()}}, and \doxymbox{\hyperlink{Tile_8cpp_source_l00012}{\texorpdfstring{$\sim$}{\string~}\+Tile()}}.
+
+\Hypertarget{classTile_a68043c68a65fb285310d90108dc57ee5}\index{Tile@{Tile}!rect@{rect}}
+\index{rect@{rect}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily \label{classTile_a68043c68a65fb285310d90108dc57ee5} 
+SDL\+\_\+\+FRect Tile::\+rect \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8hpp_source_l00013}{13}} of file \doxymbox{\hyperlink{Tile_8hpp_source}{Tile.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Tile_8cpp_source_l00025}{Draw()}}, \doxymbox{\hyperlink{Tile_8cpp_source_l00021}{Get\+Rect()}}, \doxymbox{\hyperlink{Tile_8cpp_source_l00034}{Set\+Rect()}}, \doxymbox{\hyperlink{Tile_8cpp_source_l00007}{Tile()}}, and \doxymbox{\hyperlink{Tile_8cpp_source_l00012}{\texorpdfstring{$\sim$}{\string~}\+Tile()}}.
+
+\Hypertarget{classTile_ae7373482f8f538f904436009853a675b}\index{Tile@{Tile}!texture@{texture}}
+\index{texture@{texture}!Tile@{Tile}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily \label{classTile_ae7373482f8f538f904436009853a675b} 
+const \doxymbox{\hyperlink{classTexture}{Texture}}\texorpdfstring{$\ast$}{*} Tile::\+texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Tile_8hpp_source_l00011}{11}} of file \doxymbox{\hyperlink{Tile_8hpp_source}{Tile.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Tile_8cpp_source_l00025}{Draw()}}, and \doxymbox{\hyperlink{Tile_8cpp_source_l00017}{Set\+Texture()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+World\+Building/\+hpp/\+\doxymbox{\hyperlink{Tile_8hpp}{Tile.\+hpp}}\item 
+src\+\_\+game/\+\+World\+Building/\+cpp/\+\doxymbox{\hyperlink{Tile_8cpp}{Tile.\+cpp}}\end{DoxyCompactItemize}

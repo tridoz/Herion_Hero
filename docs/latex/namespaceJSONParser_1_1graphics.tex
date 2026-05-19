@@ -1,0 +1,520 @@
+\doxysection{JSONParser::\+graphics Namespace Reference}
+\hypertarget{namespaceJSONParser_1_1graphics}{}\label{namespaceJSONParser_1_1graphics}\index{JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac321efa25b1da69df01f8c4b0415fe49}{Changed}} ()
+\begin{DoxyCompactList}\small\item\em Return if the resolution has changed. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac0d8ca4f3c7e9ac737dddce7ea921a6b}{Changes\+Applied}} ()
+\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7}{Decrease\+FPSLimit}} ()
+\begin{DoxyCompactList}\small\item\em Function to get decrease the FPS limit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218}{Decrease\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Function to decrease the screen resolution. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593}{Get\+Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Return the current FPS limit. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}{Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the height of the screen. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57}{Get\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Return the scale for the current resolution. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}{Get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the width of the screen. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912}{Increase\+FPSLimit}} ()
+\begin{DoxyCompactList}\small\item\em Function to get increase the FPS limit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64}{Increase\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Function to increase the screen resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const std::\+vector$<$ int $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_af3043874351e933ab123a88a5bf67410}{allowed\+FPS}} = \{10, 15, 20, 30, 45, 60, 120, 180, 240, 360, 500\}
+\item 
+bool \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a16d196980530f5e5accc6ac31345e389}{changed}} = false
+\item 
+const std::\+string \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_a363edfa11c530ec188ea62f2a847d53d}{json\+\_\+graphics\+\_\+file\+\_\+path}} = "{}../\+settings/\+graphics.\+json"{}
+\item 
+const std::\+vector$<$ std::\+pair$<$ int, int $>$ $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ab219667cf63edca5d4cd35c29e654fda}{resolutions}}
+\begin{DoxyCompactList}\small\item\em Data\+Structure for all the possible resolutions. \end{DoxyCompactList}\item 
+const std::\+vector$<$ float $>$ \doxymbox{\hyperlink{namespaceJSONParser_1_1graphics_ac0cb7160142f7f4947f95ad52cb68296}{texture\+\_\+scales}}
+\begin{DoxyCompactList}\small\item\em Data\+Structure for all the scale based on the resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceJSONParser_1_1graphics_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceJSONParser_1_1graphics_ac321efa25b1da69df01f8c4b0415fe49}\index{JSONParser::graphics@{JSONParser::graphics}!Changed@{Changed}}
+\index{Changed@{Changed}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{Changed()}{Changed()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_ac321efa25b1da69df01f8c4b0415fe49} 
+bool JSONParser::\+graphics::\+\+Changed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return if the resolution has changed. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00320}{320}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}.
+
+\Hypertarget{namespaceJSONParser_1_1graphics_ac0d8ca4f3c7e9ac737dddce7ea921a6b}\index{JSONParser::graphics@{JSONParser::graphics}!ChangesApplied@{ChangesApplied}}
+\index{ChangesApplied@{ChangesApplied}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{ChangesApplied()}{ChangesApplied()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_ac0d8ca4f3c7e9ac737dddce7ea921a6b} 
+void JSONParser::\+graphics::\+\+Changes\+Applied (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Set the fact that changes have been successfully applied 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00324}{324}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Window::\+\+Resize()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{namespaceJSONParser_1_1graphics_ac0d8ca4f3c7e9ac737dddce7ea921a6b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7}\index{JSONParser::graphics@{JSONParser::graphics}!DecreaseFPSLimit@{DecreaseFPSLimit}}
+\index{DecreaseFPSLimit@{DecreaseFPSLimit}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{DecreaseFPSLimit()}{DecreaseFPSLimit()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7} 
+void JSONParser::\+graphics::\+\+Decrease\+FPSLimit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get decrease the FPS limit. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{256}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00043}{allowed\+FPS}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, and \doxymbox{\hyperlink{FileOpener_8cpp_source_l00025}{File\+Opener::\+\+Open\+File\+Output()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{ButtonsFunctions_8cpp_source_l00079}{Buttons\+Functions::\+\+Decrease\+Frame\+Limit()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a26877dd0ff2b08961b3c8ccf7b582aa7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218}\index{JSONParser::graphics@{JSONParser::graphics}!DecreaseResolution@{DecreaseResolution}}
+\index{DecreaseResolution@{DecreaseResolution}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{DecreaseResolution()}{DecreaseResolution()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218} 
+void JSONParser::\+graphics::\+\+Decrease\+Resolution (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to decrease the screen resolution. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{66}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00025}{File\+Opener::\+\+Open\+File\+Output()}}, and \doxymbox{\hyperlink{JSONParser_8hpp_source_l00050}{resolutions}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{ButtonsFunctions_8cpp_source_l00070}{Buttons\+Functions::\+\+Decrease\+Resolution()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a1d84b66135ca5f4c190c767a6c17e218_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593}\index{JSONParser::graphics@{JSONParser::graphics}!GetFrameRate@{GetFrameRate}}
+\index{GetFrameRate@{GetFrameRate}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{GetFrameRate()}{GetFrameRate()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593} 
+int JSONParser::\+graphics::\+\+Get\+Frame\+Rate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return the current FPS limit. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00298}{298}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, and \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Menu_8cpp_source_l00458}{Menu::\+\+Get\+Text()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00166}{Window::\+\+Sleep()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a8a5ede217d39301d2d149fb6f76a9593_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723}\index{JSONParser::graphics@{JSONParser::graphics}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723} 
+int JSONParser::\+graphics::\+\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get the height of the screen. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00149}{149}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, and \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Room_8cpp_source_l00037}{Room::\+\+Draw\+Axis()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00040}{Room\+Manager::\+\+Generate\+Editor\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00107}{Room\+Manager::\+\+Generate\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00317}{Room\+Manager::\+\+Get\+Player\+Spawn\+Cell\+Y()}}, \doxymbox{\hyperlink{Menu_8cpp_source_l00458}{Menu::\+\+Get\+Text()}}, \doxymbox{\hyperlink{Menu_8cpp_source_l00238}{Menu::\+\+Load\+Scroll\+Pane\+Menu\+Type\+Configuration()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Window::\+\+Resize()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00272}{Room\+Manager::\+\+Resize\+Editor\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00248}{Room\+Manager::\+\+Resize\+Room()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window::\+\+Window()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a426767a2c7d0ef5411317b044043f723_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57}\index{JSONParser::graphics@{JSONParser::graphics}!GetScale@{GetScale}}
+\index{GetScale@{GetScale}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{GetScale()}{GetScale()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57} 
+float JSONParser::\+graphics::\+\+Get\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Return the scale for the current resolution. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{174}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00050}{resolutions}}, and \doxymbox{\hyperlink{JSONParser_8hpp_source_l00064}{texture\+\_\+scales}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Menu_8cpp_source_l00086}{Menu::\+\+Load\+Buttons\+Menu\+Type\+Configuration()}}, \doxymbox{\hyperlink{Menu_8cpp_source_l00238}{Menu::\+\+Load\+Scroll\+Pane\+Menu\+Type\+Configuration()}}, \doxymbox{\hyperlink{Player_8cpp_source_l00011}{Player::\+\+Player()}}, and \doxymbox{\hyperlink{Player_8cpp_source_l00235}{Player::\+\+Resize()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a127c3fac1f8f2c0396b567279bcd8f57_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05}\index{JSONParser::graphics@{JSONParser::graphics}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05} 
+int JSONParser::\+graphics::\+\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get the width of the screen. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00122}{122}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, and \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Room_8cpp_source_l00037}{Room::\+\+Draw\+Axis()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00040}{Room\+Manager::\+\+Generate\+Editor\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00107}{Room\+Manager::\+\+Generate\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00313}{Room\+Manager::\+\+Get\+Player\+Spawn\+Cell\+X()}}, \doxymbox{\hyperlink{Menu_8cpp_source_l00458}{Menu::\+\+Get\+Text()}}, \doxymbox{\hyperlink{Menu_8cpp_source_l00238}{Menu::\+\+Load\+Scroll\+Pane\+Menu\+Type\+Configuration()}}, \doxymbox{\hyperlink{Window_8cpp_source_l00140}{Window::\+\+Resize()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00272}{Room\+Manager::\+\+Resize\+Editor\+Room()}}, \doxymbox{\hyperlink{RoomManager_8cpp_source_l00248}{Room\+Manager::\+\+Resize\+Room()}}, and \doxymbox{\hyperlink{Window_8cpp_source_l00020}{Window::\+\+Window()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a99e24a77c8d8c99343f4d47e85feff05_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912}\index{JSONParser::graphics@{JSONParser::graphics}!IncreaseFPSLimit@{IncreaseFPSLimit}}
+\index{IncreaseFPSLimit@{IncreaseFPSLimit}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{IncreaseFPSLimit()}{IncreaseFPSLimit()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912} 
+void JSONParser::\+graphics::\+\+Increase\+FPSLimit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to get increase the FPS limit. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{212}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00043}{allowed\+FPS}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, and \doxymbox{\hyperlink{FileOpener_8cpp_source_l00025}{File\+Opener::\+\+Open\+File\+Output()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{ButtonsFunctions_8cpp_source_l00076}{Buttons\+Functions::\+\+Increase\+Frame\+Limit()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a0c5f2468466c8f0dace761776a496912_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64}\index{JSONParser::graphics@{JSONParser::graphics}!IncreaseResolution@{IncreaseResolution}}
+\index{IncreaseResolution@{IncreaseResolution}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{IncreaseResolution()}{IncreaseResolution()}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64} 
+void JSONParser::\+graphics::\+\+Increase\+Resolution (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function to increase the screen resolution. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source}{JSONParser\+Graphics.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{changed}}, \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{json\+\_\+graphics\+\_\+file\+\_\+path}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00010}{File\+Opener::\+\+Open\+File\+Input()}}, \doxymbox{\hyperlink{FileOpener_8cpp_source_l00025}{File\+Opener::\+\+Open\+File\+Output()}}, and \doxymbox{\hyperlink{JSONParser_8hpp_source_l00050}{resolutions}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{ButtonsFunctions_8cpp_source_l00067}{Buttons\+Functions::\+\+Increase\+Resolution()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceJSONParser_1_1graphics_a4ac645383683eb18951645a178ae6c64_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{namespaceJSONParser_1_1graphics_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceJSONParser_1_1graphics_af3043874351e933ab123a88a5bf67410}\index{JSONParser::graphics@{JSONParser::graphics}!allowedFPS@{allowedFPS}}
+\index{allowedFPS@{allowedFPS}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{allowedFPS}{allowedFPS}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_af3043874351e933ab123a88a5bf67410} 
+const std::\+vector$<$int$>$ JSONParser::\+graphics::\+allowed\+FPS = \{10, 15, 20, 30, 45, 60, 120, 180, 240, 360, 500\}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParser_8hpp_source_l00043}{43}} of file \doxymbox{\hyperlink{JSONParser_8hpp_source}{JSONParser.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{Decrease\+FPSLimit()}}, and \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{Increase\+FPSLimit()}}.
+
+\Hypertarget{namespaceJSONParser_1_1graphics_a16d196980530f5e5accc6ac31345e389}\index{JSONParser::graphics@{JSONParser::graphics}!changed@{changed}}
+\index{changed@{changed}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{changed}{changed}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a16d196980530f5e5accc6ac31345e389} 
+bool JSONParser::\+graphics::\+changed = false\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParser_8hpp_source_l00045}{45}} of file \doxymbox{\hyperlink{JSONParser_8hpp_source}{JSONParser.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00320}{Changed()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00324}{Changes\+Applied()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{Decrease\+FPSLimit()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{Decrease\+Resolution()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{Increase\+FPSLimit()}}, and \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{Increase\+Resolution()}}.
+
+\Hypertarget{namespaceJSONParser_1_1graphics_a363edfa11c530ec188ea62f2a847d53d}\index{JSONParser::graphics@{JSONParser::graphics}!json\_graphics\_file\_path@{json\_graphics\_file\_path}}
+\index{json\_graphics\_file\_path@{json\_graphics\_file\_path}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{json\_graphics\_file\_path}{json\_graphics\_file\_path}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_a363edfa11c530ec188ea62f2a847d53d} 
+const std::\+string JSONParser::\+graphics::\+json\+\_\+graphics\+\_\+file\+\_\+path = "{}../\+settings/\+graphics.\+json"{}\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParser_8hpp_source_l00044}{44}} of file \doxymbox{\hyperlink{JSONParser_8hpp_source}{JSONParser.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00256}{Decrease\+FPSLimit()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{Decrease\+Resolution()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00298}{Get\+Frame\+Rate()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00149}{Get\+Height()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{Get\+Scale()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00122}{Get\+Width()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00212}{Increase\+FPSLimit()}}, and \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{Increase\+Resolution()}}.
+
+\Hypertarget{namespaceJSONParser_1_1graphics_ab219667cf63edca5d4cd35c29e654fda}\index{JSONParser::graphics@{JSONParser::graphics}!resolutions@{resolutions}}
+\index{resolutions@{resolutions}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{resolutions}{resolutions}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_ab219667cf63edca5d4cd35c29e654fda} 
+const std::\+vector$<$ std::\+pair $<$int, int $>$ $>$ JSONParser::\+graphics::\+resolutions\hspace{0.3cm}{\ttfamily [inline]}}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 640,\ 360\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 854,\ 480\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 960,\ 540\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 1280,\ 720\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 1600,\ 900\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 1920,\ 1080\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 2560,\ 1440\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{\ 3840,\ 2160\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Data\+Structure for all the possible resolutions. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParser_8hpp_source_l00050}{50}} of file \doxymbox{\hyperlink{JSONParser_8hpp_source}{JSONParser.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00066}{Decrease\+Resolution()}}, \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{Get\+Scale()}}, and \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00010}{Increase\+Resolution()}}.
+
+\Hypertarget{namespaceJSONParser_1_1graphics_ac0cb7160142f7f4947f95ad52cb68296}\index{JSONParser::graphics@{JSONParser::graphics}!texture\_scales@{texture\_scales}}
+\index{texture\_scales@{texture\_scales}!JSONParser::graphics@{JSONParser::graphics}}
+\doxysubsubsection{\texorpdfstring{texture\_scales}{texture\_scales}}
+{\footnotesize\ttfamily \label{namespaceJSONParser_1_1graphics_ac0cb7160142f7f4947f95ad52cb68296} 
+const std::\+vector$<$float$>$ JSONParser::\+graphics::\+texture\+\_\+scales\hspace{0.3cm}{\ttfamily [inline]}}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.25,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.333,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.375,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.5,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.625,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.75,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 1.0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 1.5}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Data\+Structure for all the scale based on the resolution. 
+
+
+
+Definition at line \doxymbox{\hyperlink{JSONParser_8hpp_source_l00064}{64}} of file \doxymbox{\hyperlink{JSONParser_8hpp_source}{JSONParser.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{JSONParserGraphics_8cpp_source_l00174}{Get\+Scale()}}.
+

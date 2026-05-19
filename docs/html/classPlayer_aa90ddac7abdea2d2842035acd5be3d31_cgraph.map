@@ -1,0 +1,7 @@
+<map id="Player::Move" name="Player::Move">
+<area shape="rect" id="Node000001" title="Move the player in a direction by a certain amount based on delta time." alt="" coords="5,32,112,60"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#a1b982afb54f14fdb91597d1138c72798" title="Set the new FacingDirection." alt="" coords="160,5,351,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,36,147,33,142,35,112,41"/>
+<area shape="rect" id="Node000003" href="$classPlayer.html#aeb9e1a30e33af58cd4e2f193a0b23bee" title="Set the new PlayerState." alt="" coords="172,57,338,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,50,160,58,154,59,112,55"/>
+</map>

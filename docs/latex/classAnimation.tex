@@ -1,0 +1,354 @@
+\doxysection{Animation Class Reference}
+\hypertarget{classAnimation}{}\label{classAnimation}\index{Animation@{Animation}}
+
+
+{\ttfamily \+\#include $<$Animation.\+hpp$>$}
+
+
+
+Collaboration diagram for Animation:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classAnimation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classAnimation_a1f7da555574e27fb1c5d368e5db2c050}{Add\+Frame\+Texture}} (\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*}new\+\_\+texture)
+\begin{DoxyCompactList}\small\item\em Add a frame to the animation. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}{Animation}} ()
+\item 
+\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classAnimation_aca5a912ad1279bac92ca2f1694a6389b}{Get\+Current\+Frame\+Texture}} () const
+\begin{DoxyCompactList}\small\item\em Return the current animation frame. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classAnimation_ac3f2744d29ce7d7d829dbfbadbaf69f7}{Get\+Current\+Frame\+Texture\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Return the current frame texture height. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{classAnimation_a7aa92e36a7a69ceaef33c33f09dc4634}{Get\+Current\+Frame\+Texture\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Return the current frame texture width. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAnimation_afbfd162c2d292261195c7a0f3ed6e504}{Set\+Animation\+Frame\+NUmber}} (int new\+\_\+frame\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Set how many frame the animation has. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAnimation_a94722bfba3dc118d5213a43c18f236db}{Set\+Frame\+Rate}} (int new\+\_\+frame\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Set the frame rate for the animation. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAnimation_a0c6a4e940db84d4a6246fcb3ae773402}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update the current frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classAnimation_ae0e6015be0a5c536d7ab4ea98c1ffb22}{animation\+\_\+textures}}
+\item 
+int \doxymbox{\hyperlink{classAnimation_a1b9c9a4243f5d219c874b8c5f8256633}{current\+\_\+animation\+\_\+frame}}
+\item 
+time\+\_\+t \doxymbox{\hyperlink{classAnimation_aa8cbd715c2f62724ce7e9c85d7083178}{current\+\_\+time}}
+\item 
+float \doxymbox{\hyperlink{classAnimation_abd02addbf0bccab88d2f677647f9d732}{frame\+\_\+duration}}
+\item 
+int \doxymbox{\hyperlink{classAnimation_aa2d5701f3a119ce61e4cabab011d2d59}{frame\+\_\+number}}
+\item 
+int \doxymbox{\hyperlink{classAnimation_ac3b8fe9c720109591524b0031943c3f8}{frame\+\_\+rate}}
+\item 
+float \doxymbox{\hyperlink{classAnimation_a010f0f21649149de5af002ea3c7c1e5c}{how\+\_\+often\+\_\+frame\+\_\+update}}
+\item 
+time\+\_\+t \doxymbox{\hyperlink{classAnimation_a10163bfb63aade9b2bca3465a75914e0}{last\+\_\+update\+\_\+time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00012}{12}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classAnimation_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAnimation_a83f0a16cef7117f187ad596de38dd9d6}\index{Animation@{Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Animation()}{Animation()}}
+{\footnotesize\ttfamily \label{classAnimation_a83f0a16cef7117f187ad596de38dd9d6} 
+Animation::\+\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{current\+\_\+animation\+\_\+frame}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00023}{last\+\_\+update\+\_\+time}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classAnimation_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAnimation_a1f7da555574e27fb1c5d368e5db2c050}\index{Animation@{Animation}!AddFrameTexture@{AddFrameTexture}}
+\index{AddFrameTexture@{AddFrameTexture}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{AddFrameTexture()}{AddFrameTexture()}}
+{\footnotesize\ttfamily \label{classAnimation_a1f7da555574e27fb1c5d368e5db2c050} 
+void Animation::\+\+Add\+Frame\+Texture (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*}}]{new\+\_\+texture}{}\end{DoxyParamCaption})}
+
+
+
+Add a frame to the animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+texture} & Frame to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{animation\+\_\+textures}}.
+
+\Hypertarget{classAnimation_aca5a912ad1279bac92ca2f1694a6389b}\index{Animation@{Animation}!GetCurrentFrameTexture@{GetCurrentFrameTexture}}
+\index{GetCurrentFrameTexture@{GetCurrentFrameTexture}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{GetCurrentFrameTexture()}{GetCurrentFrameTexture()}}
+{\footnotesize\ttfamily \label{classAnimation_aca5a912ad1279bac92ca2f1694a6389b} 
+\doxymbox{\hyperlink{classTexture}{Texture}} \texorpdfstring{$\ast$}{*} Animation::\+\+Get\+Current\+Frame\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current animation frame. 
+
+\begin{DoxyReturn}{Returns}
+Texture\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{animation\+\_\+textures}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{current\+\_\+animation\+\_\+frame}}.
+
+\Hypertarget{classAnimation_ac3f2744d29ce7d7d829dbfbadbaf69f7}\index{Animation@{Animation}!GetCurrentFrameTextureHeight@{GetCurrentFrameTextureHeight}}
+\index{GetCurrentFrameTextureHeight@{GetCurrentFrameTextureHeight}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{GetCurrentFrameTextureHeight()}{GetCurrentFrameTextureHeight()}}
+{\footnotesize\ttfamily \label{classAnimation_ac3f2744d29ce7d7d829dbfbadbaf69f7} 
+float Animation::\+\+Get\+Current\+Frame\+Texture\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current frame texture height. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00038}{38}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{animation\+\_\+textures}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{current\+\_\+animation\+\_\+frame}}.
+
+\Hypertarget{classAnimation_a7aa92e36a7a69ceaef33c33f09dc4634}\index{Animation@{Animation}!GetCurrentFrameTextureWidth@{GetCurrentFrameTextureWidth}}
+\index{GetCurrentFrameTextureWidth@{GetCurrentFrameTextureWidth}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{GetCurrentFrameTextureWidth()}{GetCurrentFrameTextureWidth()}}
+{\footnotesize\ttfamily \label{classAnimation_a7aa92e36a7a69ceaef33c33f09dc4634} 
+float Animation::\+\+Get\+Current\+Frame\+Texture\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Return the current frame texture width. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00044}{44}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{animation\+\_\+textures}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{current\+\_\+animation\+\_\+frame}}.
+
+\Hypertarget{classAnimation_afbfd162c2d292261195c7a0f3ed6e504}\index{Animation@{Animation}!SetAnimationFrameNUmber@{SetAnimationFrameNUmber}}
+\index{SetAnimationFrameNUmber@{SetAnimationFrameNUmber}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{SetAnimationFrameNUmber()}{SetAnimationFrameNUmber()}}
+{\footnotesize\ttfamily \label{classAnimation_afbfd162c2d292261195c7a0f3ed6e504} 
+void Animation::\+\+Set\+Animation\+Frame\+NUmber (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+frame\+\_\+number}{}\end{DoxyParamCaption})}
+
+
+
+Set how many frame the animation has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+frame\+\_\+number} & Number of frames \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00034}{34}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00018}{frame\+\_\+number}}.
+
+\Hypertarget{classAnimation_a94722bfba3dc118d5213a43c18f236db}\index{Animation@{Animation}!SetFrameRate@{SetFrameRate}}
+\index{SetFrameRate@{SetFrameRate}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{SetFrameRate()}{SetFrameRate()}}
+{\footnotesize\ttfamily \label{classAnimation_a94722bfba3dc118d5213a43c18f236db} 
+void Animation::\+\+Set\+Frame\+Rate (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+frame\+\_\+rate}{}\end{DoxyParamCaption})}
+
+
+
+Set the frame rate for the animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+frame\+\_\+rate} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00029}{29}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00017}{frame\+\_\+rate}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00020}{how\+\_\+often\+\_\+frame\+\_\+update}}.
+
+\Hypertarget{classAnimation_a0c6a4e940db84d4a6246fcb3ae773402}\index{Animation@{Animation}!Update@{Update}}
+\index{Update@{Update}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classAnimation_a0c6a4e940db84d4a6246fcb3ae773402} 
+void Animation::\+\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Update the current frame. 
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{Animation_8cpp_source}{Animation.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{animation\+\_\+textures}}, \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{current\+\_\+animation\+\_\+frame}}, \doxymbox{\hyperlink{Animation_8hpp_source_l00024}{current\+\_\+time}}, \doxymbox{\hyperlink{Animation_8hpp_source_l00020}{how\+\_\+often\+\_\+frame\+\_\+update}}, and \doxymbox{\hyperlink{Animation_8hpp_source_l00023}{last\+\_\+update\+\_\+time}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classAnimation_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classAnimation_ae0e6015be0a5c536d7ab4ea98c1ffb22}\index{Animation@{Animation}!animation\_textures@{animation\_textures}}
+\index{animation\_textures@{animation\_textures}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{animation\_textures}{animation\_textures}}
+{\footnotesize\ttfamily \label{classAnimation_ae0e6015be0a5c536d7ab4ea98c1ffb22} 
+std::\+vector$<$ \doxymbox{\hyperlink{classTexture}{Texture}}\texorpdfstring{$\ast$}{*} $>$ Animation::\+animation\+\_\+textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00015}{15}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00012}{Add\+Frame\+Texture()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00016}{Get\+Current\+Frame\+Texture()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00038}{Get\+Current\+Frame\+Texture\+Height()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00044}{Get\+Current\+Frame\+Texture\+Width()}}, and \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{Update()}}.
+
+\Hypertarget{classAnimation_a1b9c9a4243f5d219c874b8c5f8256633}\index{Animation@{Animation}!current\_animation\_frame@{current\_animation\_frame}}
+\index{current\_animation\_frame@{current\_animation\_frame}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{current\_animation\_frame}{current\_animation\_frame}}
+{\footnotesize\ttfamily \label{classAnimation_a1b9c9a4243f5d219c874b8c5f8256633} 
+int Animation::\+current\+\_\+animation\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00019}{19}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00007}{Animation()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00016}{Get\+Current\+Frame\+Texture()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00038}{Get\+Current\+Frame\+Texture\+Height()}}, \doxymbox{\hyperlink{Animation_8cpp_source_l00044}{Get\+Current\+Frame\+Texture\+Width()}}, and \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{Update()}}.
+
+\Hypertarget{classAnimation_aa8cbd715c2f62724ce7e9c85d7083178}\index{Animation@{Animation}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily \label{classAnimation_aa8cbd715c2f62724ce7e9c85d7083178} 
+time\+\_\+t Animation::\+current\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00024}{24}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{Update()}}.
+
+\Hypertarget{classAnimation_abd02addbf0bccab88d2f677647f9d732}\index{Animation@{Animation}!frame\_duration@{frame\_duration}}
+\index{frame\_duration@{frame\_duration}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{frame\_duration}{frame\_duration}}
+{\footnotesize\ttfamily \label{classAnimation_abd02addbf0bccab88d2f677647f9d732} 
+float Animation::\+frame\+\_\+duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00021}{21}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+\Hypertarget{classAnimation_aa2d5701f3a119ce61e4cabab011d2d59}\index{Animation@{Animation}!frame\_number@{frame\_number}}
+\index{frame\_number@{frame\_number}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{frame\_number}{frame\_number}}
+{\footnotesize\ttfamily \label{classAnimation_aa2d5701f3a119ce61e4cabab011d2d59} 
+int Animation::\+frame\+\_\+number\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00018}{18}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00034}{Set\+Animation\+Frame\+NUmber()}}.
+
+\Hypertarget{classAnimation_ac3b8fe9c720109591524b0031943c3f8}\index{Animation@{Animation}!frame\_rate@{frame\_rate}}
+\index{frame\_rate@{frame\_rate}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{frame\_rate}{frame\_rate}}
+{\footnotesize\ttfamily \label{classAnimation_ac3b8fe9c720109591524b0031943c3f8} 
+int Animation::\+frame\+\_\+rate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00017}{17}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00029}{Set\+Frame\+Rate()}}.
+
+\Hypertarget{classAnimation_a010f0f21649149de5af002ea3c7c1e5c}\index{Animation@{Animation}!how\_often\_frame\_update@{how\_often\_frame\_update}}
+\index{how\_often\_frame\_update@{how\_often\_frame\_update}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{how\_often\_frame\_update}{how\_often\_frame\_update}}
+{\footnotesize\ttfamily \label{classAnimation_a010f0f21649149de5af002ea3c7c1e5c} 
+float Animation::\+how\+\_\+often\+\_\+frame\+\_\+update\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00020}{20}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00029}{Set\+Frame\+Rate()}}, and \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{Update()}}.
+
+\Hypertarget{classAnimation_a10163bfb63aade9b2bca3465a75914e0}\index{Animation@{Animation}!last\_update\_time@{last\_update\_time}}
+\index{last\_update\_time@{last\_update\_time}!Animation@{Animation}}
+\doxysubsubsection{\texorpdfstring{last\_update\_time}{last\_update\_time}}
+{\footnotesize\ttfamily \label{classAnimation_a10163bfb63aade9b2bca3465a75914e0} 
+time\+\_\+t Animation::\+last\+\_\+update\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{Animation_8hpp_source_l00023}{23}} of file \doxymbox{\hyperlink{Animation_8hpp_source}{Animation.\+hpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{Animation_8cpp_source_l00007}{Animation()}}, and \doxymbox{\hyperlink{Animation_8cpp_source_l00020}{Update()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src\+\_\+game/\+\+Utils/\+hpp/\+\doxymbox{\hyperlink{Animation_8hpp}{Animation.\+hpp}}\item 
+src\+\_\+game/\+\+Utils/\+cpp/\+\doxymbox{\hyperlink{Animation_8cpp}{Animation.\+cpp}}\end{DoxyCompactItemize}

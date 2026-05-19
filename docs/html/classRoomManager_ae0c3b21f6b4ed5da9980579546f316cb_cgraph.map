@@ -1,0 +1,19 @@
+<map id="RoomManager::GenerateEditorRoom" name="RoomManager::GenerateEditorRoom">
+<area shape="rect" id="Node000001" title="Generated the room for the Level Editor." alt="" coords="5,194,266,222"/>
+<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a426767a2c7d0ef5411317b044043f723" title="Function to get the height of the screen." alt="" coords="320,5,477,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,192,219,134,312,67,336,56,331,59,315,71,222,138,154,195"/>
+<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="531,74,718,102"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="155,191,223,149,267,128,313,110,364,98,416,90,518,85,513,87,417,95,365,103,314,116,269,133,225,154,158,195"/>
+<area shape="rect" id="Node000004" href="$namespaceJSONParser_1_1graphics.html#a99e24a77c8d8c99343f4d47e85feff05" title="Function to get the width of the screen." alt="" coords="320,125,477,170"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,191,307,167,303,171,200,196"/>
+<area shape="rect" id="Node000005" href="$classTile.html#a47313d42887b17acb60733dde55134d5" title="Set the tile rect." alt="" coords="347,194,450,222"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="266,205,335,207,330,209,267,210"/>
+<area shape="rect" id="Node000006" href="$classRoom.html#a21df74c14bb91d0a4f322c3fead6776c" title="Set the spawn coordinates of the room." alt="" coords="314,246,483,274"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="209,219,312,241,307,243,209,225"/>
+<area shape="rect" id="Node000007" href="$classTile.html#a75702d9761f10cc38f8aa55287e36ae3" title="Set the tile Texture." alt="" coords="338,298,459,326"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="168,219,315,283,337,292,332,292,313,287,167,225"/>
+<area shape="rect" id="Node000008" href="$classRoom.html#ae85cf9da442806a9595edaaaa0a20ee1" title="Set the tiles to draw after generating them in RoomManager::GenerateRoom." alt="" coords="339,350,458,378"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="153,220,222,275,267,307,315,335,332,344,326,344,312,339,264,311,218,279,152,225"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="477,46,557,69,552,70,477,51"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="476,124,557,105,552,107,478,129"/>
+</map>

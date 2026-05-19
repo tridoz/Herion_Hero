@@ -1,0 +1,7 @@
+<map id="JSONParser::graphics::IncreaseResolution" name="JSONParser::graphics::IncreaseResolution">
+<area shape="rect" id="Node000001" title="Function to increase the screen resolution." alt="" coords="399,5,556,50"/>
+<area shape="rect" id="Node000002" href="$classButtonsFunctions.html#a2717429c721c61a434dfe33a344f2d61" title="Call JSONParser::graphics::IncreaseResolution();." alt="" coords="155,5,351,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,28,351,30,351,25,386,28"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#ad466dd83355124a6ed958430450bfe94" title=" " alt="" coords="5,14,107,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,28,107,30,107,25,142,27"/>
+</map>

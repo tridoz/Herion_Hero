@@ -1,0 +1,5 @@
+<map id="Logger::MakeMagenta" name="Logger::MakeMagenta">
+<area shape="rect" id="Node000001" title="Return the given string with format code to make it magenta." alt="" coords="221,5,386,33"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#a310b0f32c0fec8ff8cb5686f077cce67" title="Log all the Exception Stack Trace." alt="" coords="5,5,173,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,19,173,22,173,17,208,19"/>
+</map>

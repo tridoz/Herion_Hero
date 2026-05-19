@@ -1,0 +1,5 @@
+<map id="Logger::MakeGreen" name="Logger::MakeGreen">
+<area shape="rect" id="Node000001" title="Return the given string with format code to make it green." alt="" coords="168,5,315,33"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#a03e8a1a6d0b42b211d55fd63107a11ce" title="Log that something went all right." alt="" coords="5,5,120,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,19,120,22,120,17,155,19"/>
+</map>
