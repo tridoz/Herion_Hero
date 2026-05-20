@@ -14,6 +14,8 @@
 #include "../../Entities/hpp/Player.hpp"
 #include "../../WorldBuilding/hpp/RoomManager.hpp"
 #include "../../UI/hpp/Menu.hpp"
+#include "../../UI/hpp/ButtonMenu.hpp"
+#include "../../UI/hpp/ScrollPaneMenu.hpp"
 #include "../../UI/hpp/Window.hpp"
 
 #define MAX_SCANCODES 512

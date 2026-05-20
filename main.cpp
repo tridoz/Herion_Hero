@@ -14,6 +14,8 @@
 #include <unistd.h>
 
 #include "src_game/Exceptions/hpp/HerionFileException.hpp"
+#include "src_game/UI/hpp/ButtonMenu.hpp"
+#include "src_game/UI/hpp/ScrollPaneMenu.hpp"
 #include "src_game/WorldBuilding/hpp/EditorRoom.hpp"
 
 
@@ -104,14 +106,14 @@ int main ( int argc, char* argv[] ) {
 
     Player player;
 
-    Menu main_menu;
-    Menu settings_menu;
-    Menu pause_menu;
-    Menu editor_menu;
+    ButtonMenu main_menu;
+    ButtonMenu settings_menu;
+    ButtonMenu pause_menu;
+    ButtonMenu editor_menu;
 
-    Menu texture_selection_menu;
+    ScrollPaneMenu texture_selection_menu;
 
-    Menu action_selection_menu;
+    ButtonMenu action_selection_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
@@ -177,13 +179,14 @@ int main ( int argc, char* argv[] ) {
     action_selection_menu.SetDimension( static_cast<float>( editors_windows.at("ACTION_SELECTION")->GetWidth() ) , static_cast<float>(editors_windows.at("ACTION_SELECTION")->GetHeight() ) );
 
     try {
-        main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
-        settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
-        pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
-        editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
 
-        texture_selection_menu.LoadCfg("configs/menus/level_editors_windows/directory_texture_selection.json");
-        action_selection_menu.LoadCfg("configs/menus/level_editors_windows/action_selection.json");
+        main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
+        settings_menu.LoadConfiguration( "configs/menus/main_window/settings_menu.json" );
+        pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
+        editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
+
+        texture_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/directory_texture_selection.json");
+        action_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/action_selection.json");
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -223,7 +226,6 @@ int main ( int argc, char* argv[] ) {
     SDL_Event event;
 
     Uint32 last_frame_time = SDL_GetTicks();
-    bool running = true;
 
     game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/base_plane_textures.hhmap" );
 
@@ -247,10 +249,10 @@ int main ( int argc, char* argv[] ) {
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
             try {
-                main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
-                settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
-                pause_menu.LoadCfg( "configs/menus/main_window/pause_menu.json" );
-                editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
+                main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
+                settings_menu.LoadConfiguration( "configs/menus/main_window/settings_menu.json" );
+                pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
+                editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );

@@ -67,6 +67,10 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/WorldBuilding/hpp/ForegroundElement.hpp
         src_game/WorldBuilding/cpp/BackgroundElement.cpp
         src_game/WorldBuilding/hpp/BackgroundElement.hpp
+        src_game/UI/cpp/ButtonMenu.cpp
+        src_game/UI/hpp/ButtonMenu.hpp
+        src_game/UI/cpp/ScrollPaneMenu.cpp
+        src_game/UI/hpp/ScrollPaneMenu.hpp
 
 )
 

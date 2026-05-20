@@ -199,7 +199,7 @@ void InputProcessor::process_mouse_left_pressed() {
 
             if ( win->IsOpen() ) {
 
-                btn = win->GetCurrentMenu()->GetCollisionButtonWithOffset(mouse_x , mouse_y);
+                btn = win->GetCurrentMenu()->GetCollisionButton(mouse_x , mouse_y);
 
                 if ( btn != nullptr ) {
                     std::string str = btn->ClickReturn();
