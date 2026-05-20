@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 #include "src_game/Exceptions/hpp/HerionFileException.hpp"
+#include "src_game/WorldBuilding/hpp/EditorRoom.hpp"
 
 
 #ifdef _WIN32
@@ -97,7 +98,8 @@ int main ( int argc, char* argv[] ) {
     TextureManager texture_selection_texture_manager;
 
     RoomManager game_room_manager;
-    Room editor_room;
+
+    EditorRoom editor_room;
 
     Player player;
 

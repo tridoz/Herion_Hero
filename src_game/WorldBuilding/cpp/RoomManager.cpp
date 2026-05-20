@@ -8,6 +8,8 @@
 
 #include "../../Utils/hpp/JSONParser.hpp"
 
+class EditorRoom;
+
 RoomManager::RoomManager() {
     spawn_room = nullptr;
     current_room = nullptr;
@@ -37,7 +39,7 @@ RoomManager::~RoomManager() {
     current_room = nullptr;
 }
 
-void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) {
+void RoomManager::GenerateEditorRoom( EditorRoom* room, const std::string& map_path ) {
 
     std::vector< std::vector <Tile* > > tiles;
     const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;

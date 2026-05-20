@@ -23,7 +23,7 @@ private:
     Player* player{};
     RoomManager* room_manager{};
     std::unordered_map < std::string, TextureManager* > texture_managers;
-    Room* editor_room;
+    EditorRoom* editor_room;
 
     bool key_left_pressed;
     bool key_right_pressed;
@@ -148,7 +148,7 @@ public:
      */
     void SetMenus( std::string name, Menu* menu );
     void SetTextureManager( std::string, TextureManager* texture_manager );
-    void SetEditorRoom( Room* room );
+    void SetEditorRoom(EditorRoom *room);
 
 };
 

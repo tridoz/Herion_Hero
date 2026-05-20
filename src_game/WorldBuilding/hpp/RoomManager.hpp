@@ -8,6 +8,7 @@
 
 #include <random>
 
+#include "EditorRoom.hpp"
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Exceptions//hpp/HerionFileException.hpp"
 #include "Tile.hpp"
@@ -99,7 +100,7 @@ public:
      * @param room Pointer to the Level Editor room
      * @param map_path Path to the map_file of the Level Editor room
      */
-    void GenerateEditorRoom(Room* room, const std::string& map_path );
+    void GenerateEditorRoom(EditorRoom *room, const std::string &map_path);
 
     /**
      * @brief Resize the current room

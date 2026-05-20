@@ -39,7 +39,7 @@ void InputProcessor::SetTextureManager(std::string name, TextureManager *texture
     texture_managers.emplace( name, texture_manager );
 }
 
-void InputProcessor::SetEditorRoom(Room *room) {
+void InputProcessor::SetEditorRoom(EditorRoom *room) {
     this->editor_room = room;
 }
 

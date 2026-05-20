@@ -12,15 +12,15 @@
 
 class Room {
 
-private:
+protected:
     std::vector< std::vector<Tile* > > tiles;
-    Texture* current_editor_texture;
 
     std::vector < std::string > output_file;
     std::string filepath;
 
     int horizontal_tiles, vertical_tiles;
     int spawn_x, spawn_y;
+
 public:
     Room();
     ~Room();
@@ -47,7 +47,7 @@ public:
      * @brief Draw the axis for each tile (used only in Level Editor mode)
      * @param renderer Renderer needed to draw the axis
      */
-    void DrawAxis( SDL_Renderer* renderer ) const;
+
 
     /**
      * @brief Set the spawn coordinates of the room
@@ -68,17 +68,14 @@ public:
      */
     int GetSpawnY() const;
 
-    void SetCurrentEditorTexture( Texture* texture );
-    Texture* GetCurrentEditorTexture();
-
-    void ModifyOneTile( Texture* txt, int col, int row );
 
     int GetHorizontalTiles();
     int GetVerticalTiles();
 
-    void AppendToFile( const std::string& row );
     void SetFilepath( const std::string& filepath );
-    void SaveNewEditConfiguration();
+
+
+
 
 };
 
