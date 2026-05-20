@@ -97,7 +97,7 @@ void Menu::LoadButtonsMenuTypeConfiguration() {
 	}
 
 	try {
-		this->background = texture_manager->GetTexture(this->filepath );
+		this->background = texture_manager->GetTextureByName(this->filepath );
 	} catch ( HerionException::File::FileException& ex ) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
 		throw;
@@ -130,9 +130,9 @@ void Menu::LoadButtonsMenuTypeConfiguration() {
         	Texture* right_texture = nullptr;
 
         	try {
-        		left_texture   = texture_manager->GetTexture("Assets/Ui/Buttons/ButtonLeft2.png");
-        		center_texture = texture_manager->GetTexture("Assets/Ui/Buttons/ButtonCenter2.png");
-        		right_texture  = texture_manager->GetTexture("Assets/Ui/Buttons/ButtonRight2.png");
+        		left_texture   = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonLeft2.png");
+        		center_texture = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonCenter2.png");
+        		right_texture  = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonRight2.png");
         	} catch ( HerionException::File::FileNotFoundException &ex ) {
 				ex.UpdateStackTrace( GET_CONTEXT() );
         		throw;
@@ -171,15 +171,15 @@ void Menu::LoadButtonsMenuTypeConfiguration() {
             	try {
 
             		if (std::isupper(c))
-            			char_tex = texture_manager->GetTexture("Assets/Font/Game/UppercaseLetters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/UppercaseLetters/" + std::string(1, c) + ".png");
             		else if (std::islower(c))
-            			char_tex = texture_manager->GetTexture("Assets/Font/Game/LowercaseLetters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/LowercaseLetters/" + std::string(1, c) + ".png");
             		else if (std::isdigit(c))
-            			char_tex = texture_manager->GetTexture("Assets/Font/Game/Numbers/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/Numbers/" + std::string(1, c) + ".png");
             		else if (isspecial(c))
-            			char_tex = texture_manager->GetTexture("Assets/Font/Game/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
             		else if ( isspace(c))
-            			char_tex = texture_manager->GetTexture("Assets/Font/Game/SpecialCharacters/space.png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/SpecialCharacters/space.png");
 
             	} catch ( HerionException::File::FileNotFoundException &ex ) {
             		ex.UpdateStackTrace( GET_CONTEXT() );
@@ -238,7 +238,7 @@ void Menu::LoadScrollPaneMenuTypeConfiguration() {
 
 	std::string cmd;
 
-	this->background = this->texture_manager->GetTexture(JSONParser::menu_configuration::GetBackgroundImagePath() );
+	this->background = this->texture_manager->GetTextureByName(JSONParser::menu_configuration::GetBackgroundImagePath() );
 	float w = JSONParser::graphics::GetWidth();
 	float h = JSONParser::graphics::GetHeight();
 
@@ -281,7 +281,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
 
-			Texture* file_txt = texture_manager->GetTexture(right_path);
+			Texture* file_txt = texture_manager->GetTextureByName(right_path);
 			SDL_FRect file_rect = {
 				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
@@ -299,15 +299,15 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 				try {
 
 					if (std::isupper(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png");
 					else if (std::islower(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png");
 					else if (std::isdigit(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
+						char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
 					else if (isspecial(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
+						char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
 					else if ( isspace(c))
-						char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/space.png");
+						char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/space.png");
 
 				} catch ( HerionException::File::FileNotFoundException &ex ) {
 					ex.UpdateStackTrace( GET_CONTEXT() );
@@ -348,7 +348,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 		std::vector<Texture*> textures;
 		std::vector<SDL_FRect> rects;
 
-		Texture* folder_txt = texture_manager->GetTexture("Assets/Ui/Editor/Folder.png");
+		Texture* folder_txt = texture_manager->GetTextureByName("Assets/Ui/Editor/Folder.png");
 		SDL_FRect folder_rect = {
 			static_cast<float>( (texture_size_directory*depth)  ),
 			static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
@@ -368,15 +368,15 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 			try {
 
 				if (std::isupper(c))
-					char_tex = texture_manager->GetTexture("Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png");
+					char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png");
 				else if (std::islower(c))
-					char_tex = texture_manager->GetTexture("Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png");
+					char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png");
 				else if (std::isdigit(c))
-					char_tex = texture_manager->GetTexture("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
+					char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
 				else if (isspecial(c))
-					char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
+					char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
 				else if ( isspace(c))
-					char_tex = texture_manager->GetTexture("Assets/Font/Editor/SpecialCharacters/space.png");
+					char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/space.png");
 
 			} catch ( HerionException::File::FileNotFoundException &ex ) {
 				ex.UpdateStackTrace( GET_CONTEXT() );
@@ -427,7 +427,7 @@ void Menu::CreateSubDirectories( Directory*& directory, const std::string& base_
 		} else if ( output_line.contains(".png") ) {
 			std::string file_name = base_directory + output_line;
 			file_name = file_name.substr(3,file_name.size()-3);
-			directory->Files.emplace_back( output_line, base_directory + output_line , this->texture_manager->GetTexture( file_name ) );
+			directory->Files.emplace_back( output_line, base_directory + output_line , this->texture_manager->GetTextureByName( file_name ) );
 		}
 
 	}

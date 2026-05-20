@@ -35,8 +35,8 @@ void Tile::SetRect(float x, float y, float w, float h) {
     rect = { x,y,w,h };
 }
 
-void Tile::SetCode(std::string new_code) {
-    this->code = new_code;
+std::string Tile::GetCode() const {
+    return texture->GetCode();
 }
 
 

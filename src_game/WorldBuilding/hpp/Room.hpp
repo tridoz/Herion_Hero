@@ -16,6 +16,9 @@ private:
     std::vector< std::vector<Tile* > > tiles;
     Texture* current_editor_texture;
 
+    std::vector < std::string > output_file;
+    std::string filepath;
+
     int horizontal_tiles, vertical_tiles;
     int spawn_x, spawn_y;
 public:
@@ -72,6 +75,10 @@ public:
 
     int GetHorizontalTiles();
     int GetVerticalTiles();
+
+    void AppendToFile( const std::string& row );
+    void SetFilepath( const std::string& filepath );
+    void SaveNewEditConfiguration();
 
 };
 

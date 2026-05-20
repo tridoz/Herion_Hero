@@ -20,6 +20,7 @@ private:
     SDL_Renderer* renderer;
 
     std::unordered_map<std::string, Texture > textures;
+    std::unordered_map< std::string, std::string > codes;
     const std::string base_path = "../";
 public:
 
@@ -48,7 +49,8 @@ public:
      * @throws HerionHexception::File::FileNotFound if the texture doesn't exists.
      * @return Texture*
      */
-    Texture *GetTexture(const std::string &texture_name);
+    Texture* GetTextureByName(const std::string &texture_name);
+    Texture* GetTextureByCode(const std::string &texture_code);
 
 };
 

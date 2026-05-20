@@ -89,3 +89,35 @@ int Room::GetVerticalTiles() {
     return vertical_tiles;
 }
 
+void Room::AppendToFile(const std::string &row) {
+    output_file.push_back( row );
+}
+
+void Room::SetFilepath(const std::string &filepath) {
+    this->filepath = filepath;
+}
+
+void Room::SaveNewEditConfiguration() {
+    for ( const auto& row : tiles ) {
+        std::string str_row;
+        for ( const auto& tile : row ) {
+            str_row += tile->GetCode() + " ";
+        }
+        AppendToFile( str_row );
+    }
+
+    std::ofstream output_file_stream;
+
+    try {
+        FileOpener::OpenFileOutput( output_file_stream, filepath );
+    } catch ( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    for ( const auto& line : output_file ) {
+        output_file_stream << line << std::endl;
+    }
+
+}
+

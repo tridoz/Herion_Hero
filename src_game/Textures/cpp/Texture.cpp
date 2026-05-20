@@ -53,3 +53,11 @@ void Texture::operator=(const Texture& other) {
     this->texture_created = other.texture_created;
 }
 
+void Texture::SetCode( const std::string& code ) {
+    this->code = code;
+}
+
+std::string Texture::GetCode() const {
+    return code;
+}
+

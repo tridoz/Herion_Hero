@@ -105,6 +105,12 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
         }
 
+        case SDL_SCANCODE_S:
+            editor_room->SaveNewEditConfiguration();
+            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/map.hhmap" );
+            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE );
+            break;
+
         case SDL_SCANCODE_P:
             break;
     }
@@ -187,7 +193,7 @@ void InputProcessor::process_mouse_left_pressed() {
                 if ( btn != nullptr ) {
                     std::string str = btn->ClickReturn();
                     TextureManager* mng = texture_managers.at("MAIN");
-                    Texture* txt = mng->GetTexture(str);
+                    Texture* txt = mng->GetTextureByName(str);
                     editor_room->SetCurrentEditorTexture( txt );
                     win->Hide();
                 }

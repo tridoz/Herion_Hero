@@ -52,6 +52,8 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
         throw;
     }
 
+    room->SetFilepath( map_path );
+
     std::string line;
     int y = 0;
 
@@ -63,6 +65,7 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
         int x = 0;
 
         if (line.starts_with("#") || line.empty() ) {
+            room->AppendToFile( line );
             continue;
         }
 
@@ -73,23 +76,15 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
             ss >> y;
             ss >> x;
             room->SetSpawnCoord( x, y );
+            room->AppendToFile( line );
             continue;
         }
 
         while (ss >> cell) {
 
             Tile* tile = new Tile();
-            std::string texture_path;
 
-            if (cell == "FB") {
-                texture_path = "Assets/WorldBuilding/Floor/BaseFloor.png";
-            } else if (cell == "CB") {
-                texture_path = "Assets/WorldBuilding/Ceiling/BaseCeiling.png";
-            } else if (cell == ".") {
-                texture_path = "Assets/WorldBuilding/Background/Nothing.png";
-            }
-
-            tile->SetTexture(textureManager->GetTexture(texture_path));
+            tile->SetTexture(textureManager->GetTextureByCode( cell ));
             tile->SetRect(x * w, y * h, w, h);
             row.push_back(tile);
 
@@ -150,19 +145,9 @@ void RoomManager::GenerateRoom(  DIRECTION dir ) {
         while (ss >> cell) {
 
             Tile* tile = new Tile();
-            std::string texture_path;
 
-            if (cell == "FB") {
-                texture_path = "Assets/WorldBuilding/Floor/BaseFloor.png";
-            } else if (cell == "CB") {
-                texture_path = "Assets/WorldBuilding/Ceiling/BaseCeiling.png";
-            } else if (cell == ".") {
-                texture_path = "Assets/WorldBuilding/Background/Nothing.png";
-            }
-
-            tile->SetTexture(textureManager->GetTexture(texture_path));
+            tile->SetTexture(textureManager->GetTextureByCode( cell ) );
             tile->SetRect(x * w, y * h, w, h);
-            tile->SetCode( cell );
             row.push_back(tile);
 
             x++;

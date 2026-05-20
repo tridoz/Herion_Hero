@@ -18,6 +18,7 @@ private:
     std::string texture_name;
     const std::string base_path = "../";
     bool texture_created;
+    std::string code;
 
 public:
 
@@ -55,6 +56,9 @@ public:
      * @return SDL_Texture*
      */
     [[nodiscard]] SDL_Texture* GetTexture() const;
+
+    void SetCode( const std::string& code );
+    std::string GetCode() const;
 
 };
 

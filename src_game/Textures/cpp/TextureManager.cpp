@@ -32,13 +32,23 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
     }
 
     std::string texture_name;
+    std::string texture_code;
+    std::string line;
 
-    while ( (std::getline(texture_file, texture_name)) ) {
-        if ( texture_name.empty() ) continue;
+    while ( (std::getline(texture_file, line)) ) {
+        if ( line.empty() ) continue;
+
+        size_t pos = line.find(';');
+
+        texture_name = line.substr( 0, pos );
+        texture_code = line.substr( pos + 1 );
+
+        codes.emplace( texture_code, texture_name );
 
         Texture texture;
         try {
             texture.CreateTexture( renderer, texture_name );
+            texture.SetCode( texture_code );
         } catch ( HerionException::File::FileNotFoundException& ex ) {
             ex.UpdateStackTrace( GET_CONTEXT() );
             throw;
@@ -52,12 +62,22 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
 
 }
 
-Texture *TextureManager::GetTexture(const std::string &texture_name) {
+Texture *TextureManager::GetTextureByName(const std::string &texture_name) {
 
     if ( !textures.contains( texture_name) ) {
         THROW_FILE_NOT_FOUND( texture_name );
     }
 
     return &textures.at( texture_name );
+
+}
+
+Texture *TextureManager::GetTextureByCode(const std::string &texture_code) {
+
+    if ( !codes.contains( texture_code) ) {
+        THROW_FILE_NOT_FOUND( texture_code );
+    }
+
+    return &textures.at( codes.at( texture_code ) );
 
 }

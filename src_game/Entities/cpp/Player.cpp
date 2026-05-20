@@ -135,7 +135,7 @@ void Player::LoadAnimation( const std::string &filepath ) {
 		animations.at( animation_name )->SetAnimationFrameNUmber( animation_characteristics.frame_to_load );
 
 		for ( int j = 0 ; j<animation_characteristics.frame_to_load ; j++ ) {
-			Texture* texture = texture_manager->GetTexture( animation_characteristics.path + "frame" + std::to_string(j) + ".png" );
+			Texture* texture = texture_manager->GetTextureByName( animation_characteristics.path + "frame" + std::to_string(j) + ".png" );
 			animations.at(animation_name)->AddFrameTexture( texture );
 		}
 	}
