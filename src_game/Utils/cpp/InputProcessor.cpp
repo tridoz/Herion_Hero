@@ -87,6 +87,7 @@ void InputProcessor::process_in_game( int scancode ) {
 }
 
 void InputProcessor::process_level_editor(int scancode) {
+
     switch ( scancode ) {
         case SDL_SCANCODE_ESCAPE:
             this->player->SetGameMode( Player::GameMode::EDITOR_MENU ) ;
@@ -96,19 +97,29 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
 
         case SDL_SCANCODE_T: {
-            Window* win = this->window_tools.at("TEXTURE_SELECTION");
-            if ( win->IsOpen() ) {
-                win->Hide();
+            Window* texture_window = this->window_tools.at("TEXTURE_SELECTION");
+            if ( texture_window->IsOpen() ) {
+                texture_window->Hide();
             } else {
-                win->Show();
+                texture_window->Show();
+            }
+            break;
+        }
+
+        case SDL_SCANCODE_A: {
+            Window* action_window = this->window_tools.at("ACTION_SELECTION");
+            if ( action_window->IsOpen() ) {
+                action_window->Hide();
+            } else {
+                action_window->Show();
             }
             break;
         }
 
         case SDL_SCANCODE_S:
             editor_room->SaveNewEditConfiguration();
-            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/map.hhmap" );
-            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/map.hhmap" );
+            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/base_plane_textures.hhmap" );
+            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/base_plane_textures.hhmap" );
             break;
 
         case SDL_SCANCODE_P:

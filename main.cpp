@@ -96,6 +96,7 @@ int main ( int argc, char* argv[] ) {
 
     TextureManager main_texture_manager;
     TextureManager texture_selection_texture_manager;
+    TextureManager action_selection_texture_manager;
 
     RoomManager game_room_manager;
 
@@ -132,10 +133,14 @@ int main ( int argc, char* argv[] ) {
 
     main_texture_manager.SetRenderer( window.GetRenderer() );
     texture_selection_texture_manager.SetRenderer( editors_windows.at("TEXTURE_SELECTION")->GetRenderer() );
+    action_selection_texture_manager.SetRenderer( editors_windows.at("ACTION_SELECTION")->GetRenderer() );
 
     try {
+
         main_texture_manager.LoadTextures("Assets/all_textures.txt");
         texture_selection_texture_manager.LoadTextures("Assets/all_textures.txt");
+        action_selection_texture_manager.LoadTextures("Assets/all_textures.txt");
+
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -146,7 +151,7 @@ int main ( int argc, char* argv[] ) {
     game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
-        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/map.hhmap") ;
+        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/base_plane_textures.hhmap") ;
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -168,6 +173,9 @@ int main ( int argc, char* argv[] ) {
     texture_selection_menu.SetTextureManager( &texture_selection_texture_manager );
     texture_selection_menu.SetDimension( static_cast<float>( editors_windows.at("TEXTURE_SELECTION")->GetWidth()), static_cast<float>(editors_windows.at("TEXTURE_SELECTION")->GetHeight()) );
 
+    action_selection_menu.SetTextureManager( &action_selection_texture_manager );
+    action_selection_menu.SetDimension( static_cast<float>( editors_windows.at("ACTION_SELECTION")->GetWidth() ) , static_cast<float>(editors_windows.at("ACTION_SELECTION")->GetHeight() ) );
+
     try {
         main_menu.LoadCfg( "configs/menus/main_window/main_menu.json");
         settings_menu.LoadCfg( "configs/menus/main_window/settings_menu.json" );
@@ -175,6 +183,7 @@ int main ( int argc, char* argv[] ) {
         editor_menu.LoadCfg( "configs/menus/main_window/editor_menu.json" );
 
         texture_selection_menu.LoadCfg("configs/menus/level_editors_windows/directory_texture_selection.json");
+        action_selection_menu.LoadCfg("configs/menus/level_editors_windows/action_selection.json");
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -187,9 +196,12 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("PAUSE_MENU", &pause_menu );
     processor.SetMenus("EDITOR_MENU", &editor_menu );
     processor.SetMenus("TEXTURE_SELECTIONS", &texture_selection_menu );
+    processor.SetMenus("ACTION_SELECTION", &action_selection_menu );
 
     processor.SetTextureManager("MAIN", &main_texture_manager );
     processor.SetTextureManager("EDITOR", &texture_selection_texture_manager);
+    processor.SetTextureManager("ACTION", &action_selection_texture_manager);
+
     processor.SetEditorRoom( &editor_room );
 
     processor.SetWindowTools( editors_windows );
@@ -213,7 +225,7 @@ int main ( int argc, char* argv[] ) {
     Uint32 last_frame_time = SDL_GetTicks();
     bool running = true;
 
-    game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/map.hhmap" );
+    game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/base_plane_textures.hhmap" );
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 

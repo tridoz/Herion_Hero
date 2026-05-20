@@ -35,10 +35,8 @@ Texture *EditorRoom::GetCurrentEditorTexture() {
 }
 
 void EditorRoom::AppendToFile(const std::string &row) {
-    output_file.push_back( row );
+    base_plan_output_file.push_back( row );
 }
-
-
 
 void EditorRoom::SaveNewEditConfiguration() {
     for ( const auto& row : tiles ) {
@@ -58,7 +56,7 @@ void EditorRoom::SaveNewEditConfiguration() {
         throw;
     }
 
-    for ( const auto& line : output_file ) {
+    for ( const auto& line : base_plan_output_file ) {
         output_file_stream << line << std::endl;
     }
 

@@ -15,7 +15,6 @@ class Room {
 protected:
     std::vector< std::vector<Tile* > > tiles;
 
-    std::vector < std::string > output_file;
     std::string filepath;
 
     int horizontal_tiles, vertical_tiles;

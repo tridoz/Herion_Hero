@@ -9,7 +9,7 @@
 class Tile {
 private:
     const Texture *texture;
-    bool isWalkable;
+    bool hasHitbox;
     SDL_FRect rect{};
 
 public:
@@ -49,7 +49,7 @@ public:
      * @note Unesed
      * @return bool
      */
-    [[nodiscard]] bool IsWalkable() const;
+    [[nodiscard]] bool HasHitbox() const;
 
     std::string GetCode() const;
 

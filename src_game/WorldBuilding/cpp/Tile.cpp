@@ -5,12 +5,12 @@
 #include "../hpp/Tile.hpp"
 
 Tile::Tile() {
-    isWalkable = false;
+    hasHitbox = false;
     rect = {0,0,0,0 };
 }
 
 Tile::~Tile() {
-    isWalkable = false;
+    hasHitbox = false;
     rect = {0,0,0,0 };
 }
 
@@ -27,8 +27,8 @@ void Tile::Draw(SDL_Renderer* renderer) const {
     SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
 }
 
-bool Tile::IsWalkable() const {
-    return isWalkable;
+bool Tile::HasHitbox() const {
+    return hasHitbox;
 }
 
 void Tile::SetRect(float x, float y, float w, float h) {

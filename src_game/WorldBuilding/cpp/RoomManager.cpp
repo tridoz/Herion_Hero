@@ -202,7 +202,7 @@ Room* RoomManager::GetCurrentRoom() const {
 void RoomManager::GoLeft() {
 
     if ( current_room->left == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_LEFT, "../maps/room1/map.hhmap" );
+        GenerateRoom( DIRECTION::DIR_LEFT, "../maps/room1/base_plane_textures.hhmap" );
     }
 
     current_room = current_room->left;
@@ -210,7 +210,7 @@ void RoomManager::GoLeft() {
 
 void RoomManager::GoRight() {
     if ( current_room->right == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_RIGHT, "../maps/room1/map.hhmap");
+        GenerateRoom( DIRECTION::DIR_RIGHT, "../maps/room1/base_plane_textures.hhmap");
     }
 
     current_room = current_room->right;
@@ -219,7 +219,7 @@ void RoomManager::GoRight() {
 void RoomManager::GoUp() {
 
     if ( current_room->up == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_UP, "../maps/room1/map.hhmap");
+        GenerateRoom( DIRECTION::DIR_UP, "../maps/room1/base_plane_textures.hhmap");
     }
 
     current_room = current_room->up;
@@ -227,7 +227,7 @@ void RoomManager::GoUp() {
 
 void RoomManager::GoDown() {
     if ( current_room->down == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_DOWN, "../maps/room1/map.hhmap");
+        GenerateRoom( DIRECTION::DIR_DOWN, "../maps/room1/base_plane_textures.hhmap");
     }
 
     current_room = current_room->down;

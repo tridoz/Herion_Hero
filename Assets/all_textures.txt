@@ -28,9 +28,9 @@ Assets/Backgrounds/SettingsMenu.png;AB_SM
 Assets/Backgrounds/PauseMenu.png;AB_PM
 Assets/Backgrounds/Black.png;AB_B
 
-Assets/WorldBuilding/Ceiling/BaseCeiling.png;AWBC_BC
-Assets/WorldBuilding/Floor/BaseFloor.png;AWBF_BF
-Assets/WorldBuilding/Background/Nothing.png;AWBB_N
+Assets/WorldBuilding/BasePlan/Ceiling/BaseCeiling.png;AWBBC_BC
+Assets/WorldBuilding/BasePlan/Floor/BaseFloor.png;AWBBF_BF
+Assets/WorldBuilding/BasePlan/Background/Nothing.png;AWBBB_N
 
 Assets/Font/Game/SpecialCharacters/space.png;AFGSC_S
 

@@ -30,7 +30,6 @@ private:
 
     std::unordered_map < std::string,  Window* > window_tools;
 
-
     SDL_Event event{};
     bool keys[ MAX_SCANCODES ] = { false };
 
