@@ -58,27 +58,6 @@ void Menu::Rescale(SDL_FRect* rect) {
     rect->h *= this->scale;
 }
 
-void Menu::Draw( SDL_Renderer* renderer ) const {
-
-	SDL_SetTextureBlendMode( this->background->GetTexture() , SDL_BLENDMODE_BLEND );
-	SDL_RenderTexture( renderer, this->background->GetTexture(), nullptr, &background_rect );
-
-	for ( const auto& [key, btn] : buttons ) {
-		if ( this->type == "scroll_pane_menu")
-			btn->DrawWithOffset( renderer, mouse_offset, 0 );
-		else
-			btn->Draw( renderer );
-
-	}
-
-	for ( const auto& [key, txt] : texts ) {
-		if ( this->type == "scroll_pane_menu")
-			txt->DrawWithOffset( renderer, mouse_offset, 0 );
-		else
-			txt->Draw( renderer );
-	}
-
-}
 
 
 std::string Menu::GetText( const std::string& text_type ) {
@@ -169,7 +148,7 @@ bool Menu::CheckCollision( std::vector<SDL_FRect > buttons, float x, float y) {
 }
 
 void Menu::SetMouseOffset(float diff) {
-	this->mouse_offset += diff;
+	this->mouse_offset += diff*10;
 }
 
 

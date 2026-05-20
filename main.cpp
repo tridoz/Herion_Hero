@@ -261,6 +261,7 @@ int main ( int argc, char* argv[] ) {
 
             game_room_manager.ResizeRoom();
             game_room_manager.ResizeEditorRoom( &editor_room );
+
             player.Resize();
 
         }
@@ -297,7 +298,9 @@ int main ( int argc, char* argv[] ) {
 
             case Player::GameMode::LEVEL_EDITOR:
                 editor_room.Draw( window.GetRenderer() );
-                editor_room.DrawAxis( window.GetRenderer() );
+                if ( editor_room.ShouldDrawAxis() ) {
+                    editor_room.DrawAxis( window.GetRenderer() );
+                }
 
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {
                     if ( editor_win->IsOpen() ) {

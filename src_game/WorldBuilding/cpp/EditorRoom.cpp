@@ -61,3 +61,11 @@ void EditorRoom::SaveNewEditConfiguration() {
     }
 
 }
+
+void EditorRoom::ToggleAxis() {
+    draw_axis = !draw_axis;
+}
+
+bool EditorRoom::ShouldDrawAxis() const {
+    return draw_axis;
+}

@@ -12,7 +12,7 @@ class ScrollPaneMenu : public Menu{
 private:
     /**
  * @struct TextureFile
- * @brief Informations about a File
+ * @brief Information about a File
  */
     struct TextureFile {
         /// name of the file
@@ -52,6 +52,7 @@ private:
 public:
     bool CheckCollision( std::vector< SDL_FRect >, float x, float y );
     void LoadConfiguration( const std::string& cfg_json_filepath );
+    void Draw( SDL_Renderer* renderer ) const;
 
     Button* GetCollisionButton( float x, float y );
 

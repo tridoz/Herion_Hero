@@ -14,6 +14,8 @@ class EditorRoom : public Room {
 private:
     Texture* current_editor_texture;
 
+    bool draw_axis;
+
     std::vector < std::string > base_plan_output_file;
     std::vector < std::string > foreground_output_file;
     std::vector < std::string > background_output_file;
@@ -32,6 +34,8 @@ public:
 
     void AppendToFile( const std::string& row );
     void SaveNewEditConfiguration();
+    void ToggleAxis();
+    bool ShouldDrawAxis() const;
 
 };
     

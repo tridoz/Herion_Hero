@@ -186,3 +186,17 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
 
 
 }
+
+void ButtonMenu::Draw( SDL_Renderer* renderer ) const {
+
+	SDL_SetRenderDrawBlendMode( renderer, SDL_BLENDMODE_BLEND );
+	SDL_RenderTexture( renderer, background->GetTexture(), nullptr, &background_rect );
+
+	for ( const auto& [id, button] : buttons ) {
+		button->Draw( renderer );
+	}
+
+	for ( const auto& [id, text] : texts ) {
+		text->Draw( renderer );
+	}
+}

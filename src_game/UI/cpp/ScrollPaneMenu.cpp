@@ -65,6 +65,20 @@ Button* ScrollPaneMenu::GetCollisionButton( float x, float y ) {
 	return nullptr;
 }
 
+void ScrollPaneMenu::Draw(SDL_Renderer *renderer) const{
+
+	SDL_SetRenderDrawBlendMode( renderer, SDL_BLENDMODE_BLEND );
+	SDL_RenderTexture( renderer, background->GetTexture(), nullptr, &background_rect );
+
+	for ( const auto& [id, button] : buttons ) {
+		button->DrawWithOffset( renderer, mouse_offset, 0);
+	}
+
+	for ( const auto& [id, text] : texts ) {
+		text->DrawWithOffset( renderer, mouse_offset, 0);
+	}
+}
+
 void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 
 	const int texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();

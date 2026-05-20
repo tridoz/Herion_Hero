@@ -73,7 +73,7 @@ public:
 	 * @brief Draw the elements on the given renderer
 	 * @param renderer The renderer used to draw
 	 */
-	void Draw( SDL_Renderer* renderer) const ;
+
 
 	/**
 	 * @brief Get the Button based on a given action
@@ -89,6 +89,7 @@ public:
 	std::vector < Button* > GetButtons() const;
 
 	virtual Button* GetCollisionButton( float x, float y ) = 0;
+	virtual void Draw( SDL_Renderer* renderer) const = 0 ;
 	void SetMouseOffset( float diff );
 
 };

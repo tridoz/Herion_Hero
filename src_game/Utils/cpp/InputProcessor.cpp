@@ -116,6 +116,10 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
         }
 
+        case SDL_SCANCODE_G:
+            editor_room->ToggleAxis();
+            break;
+
         case SDL_SCANCODE_S:
             editor_room->SaveNewEditConfiguration();
             room_manager->GenerateEditorRoom( editor_room, "../maps/room1/base_plane_textures.hhmap" );
