@@ -108,7 +108,7 @@ void InputProcessor::process_level_editor(int scancode) {
         case SDL_SCANCODE_S:
             editor_room->SaveNewEditConfiguration();
             room_manager->GenerateEditorRoom( editor_room, "../maps/room1/map.hhmap" );
-            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE );
+            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/map.hhmap" );
             break;
 
         case SDL_SCANCODE_P:

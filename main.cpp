@@ -108,6 +108,8 @@ int main ( int argc, char* argv[] ) {
 
     Menu texture_selection_menu;
 
+    Menu action_selection_menu;
+
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
@@ -120,6 +122,9 @@ int main ( int argc, char* argv[] ) {
 
     editors_windows.at("TEXTURE_SELECTION")->SetMenu("TEXTURE_SELECTION", &texture_selection_menu );
     editors_windows.at("TEXTURE_SELECTION")->SetCurrentMenu("TEXTURE_SELECTION");
+
+    editors_windows.at("ACTION_SELECTION")->SetMenu("ACTION_SELECTION", &action_selection_menu );
+    editors_windows.at("ACTION_SELECTION")->SetCurrentMenu("ACTION_SELECTION");
 
     window.LoadCursors( "Assets/all_cursors.txt");
 
@@ -139,7 +144,7 @@ int main ( int argc, char* argv[] ) {
     game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
-        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE) ;
+        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/map.hhmap") ;
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );

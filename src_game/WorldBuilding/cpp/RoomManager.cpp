@@ -99,7 +99,7 @@ void RoomManager::GenerateEditorRoom( Room* room, const std::string& map_path ) 
 
 }
 
-void RoomManager::GenerateRoom(  DIRECTION dir ) {
+void RoomManager::GenerateRoom(  DIRECTION dir, const std::string& map_path ) {
 
     std::vector<std::vector<Tile*> > tiles;
 
@@ -112,11 +112,13 @@ void RoomManager::GenerateRoom(  DIRECTION dir ) {
     newRoom->room = new Room();
 
     try {
-        FileOpener::OpenFileInput( map_file, "../maps/room1/map.hhmap" );
+        FileOpener::OpenFileInput( map_file, map_path );
     } catch (HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT()   );
         throw;
     }
+
+   newRoom->room->SetFilepath( map_path );
 
     std::string line;
     int y = 0;
@@ -198,7 +200,7 @@ Room* RoomManager::GetCurrentRoom() const {
 void RoomManager::GoLeft() {
 
     if ( current_room->left == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_LEFT);
+        GenerateRoom( DIRECTION::DIR_LEFT, "../maps/room1/map.hhmap" );
     }
 
     current_room = current_room->left;
@@ -206,7 +208,7 @@ void RoomManager::GoLeft() {
 
 void RoomManager::GoRight() {
     if ( current_room->right == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_RIGHT);
+        GenerateRoom( DIRECTION::DIR_RIGHT, "../maps/room1/map.hhmap");
     }
 
     current_room = current_room->right;
@@ -215,7 +217,7 @@ void RoomManager::GoRight() {
 void RoomManager::GoUp() {
 
     if ( current_room->up == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_UP);
+        GenerateRoom( DIRECTION::DIR_UP, "../maps/room1/map.hhmap");
     }
 
     current_room = current_room->up;
@@ -223,7 +225,7 @@ void RoomManager::GoUp() {
 
 void RoomManager::GoDown() {
     if ( current_room->down == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_DOWN);
+        GenerateRoom( DIRECTION::DIR_DOWN, "../maps/room1/map.hhmap");
     }
 
     current_room = current_room->down;

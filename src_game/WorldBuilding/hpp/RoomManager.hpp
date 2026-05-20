@@ -90,8 +90,9 @@ public:
     /**
      * @brief Generate a room in a given direction
      * @param dir Direction in which the room needs to be generated
+     * @param map_path Path of the map file used to generate the room
      */
-    void GenerateRoom(DIRECTION dir);
+    void GenerateRoom(DIRECTION dir, const std::string& map_path );
 
     /**
      * @brief Generated the room for the Level Editor
