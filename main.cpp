@@ -181,6 +181,10 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus("EDITOR_MENU", &editor_menu );
     processor.SetMenus("TEXTURE_SELECTIONS", &texture_selection_menu );
 
+    processor.SetTextureManager("MAIN", &main_texture_manager );
+    processor.SetTextureManager("EDITOR", &texture_selection_texture_manager);
+    processor.SetEditorRoom( &editor_room );
+
     processor.SetWindowTools( editors_windows );
 
     processor.SetPlayer( &player );

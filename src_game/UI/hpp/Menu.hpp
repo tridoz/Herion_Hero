@@ -95,6 +95,10 @@ private:
 	 */
 	bool CheckCollision(std::vector<SDL_FRect> buttons, float x, float y);
 
+	bool CheckCollisionWithOffset( std::vector<SDL_FRect> buttons, float x, float y);
+
+	bool CheckCollisionWithinRange (std::vector<SDL_FRect> buttons, float x, float y);
+
 	/**
 	 * @brief Rescale a SDL_FRect based on this->scale
 	 * @param rect Rectangle to rescale based
@@ -202,6 +206,10 @@ public:
 	 * @return Button* | nullptr
 	 */
 	Button* GetCollisionButton ( float x, float y );
+
+	Button* GetCollisionButtonWithOffset( float x, float y );
+
+	Button* GetCollisionButtonWithingRange( float x, float y );
 
 };
 

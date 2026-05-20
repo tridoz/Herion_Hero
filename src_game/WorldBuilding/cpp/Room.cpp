@@ -41,9 +41,6 @@ void Room::DrawAxis(SDL_Renderer* renderer) const {
     const int width = JSONParser::graphics::GetWidth();
     const int height = JSONParser::graphics::GetHeight();
 
-    const int horizontal_tiles = tiles[0].size();
-    const int vertical_tiles = tiles.size();
-
     const float tile_width = width / horizontal_tiles;
     const float tile_height = height / vertical_tiles;
 
@@ -59,6 +56,8 @@ void Room::DrawAxis(SDL_Renderer* renderer) const {
 
 void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
     this->tiles = new_tiles;
+    this->horizontal_tiles = this->tiles[0].size();
+    this->vertical_tiles =  this->tiles.size();
 }
 
 void Room::SetSpawnCoord(int x, int y) {
@@ -74,4 +73,19 @@ int Room::GetSpawnY() const {
     return spawn_y;
 }
 
+Texture *Room::GetCurrentEditorTexture() {
+    return current_editor_texture;
+}
+
+void Room::SetCurrentEditorTexture(Texture *texture) {
+    this->current_editor_texture = texture;
+}
+
+int Room::GetHorizontalTiles() {
+    return horizontal_tiles;
+}
+
+int Room::GetVerticalTiles() {
+    return vertical_tiles;
+}
 

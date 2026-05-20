@@ -283,7 +283,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 
 			Texture* file_txt = texture_manager->GetTexture(right_path);
 			SDL_FRect file_rect = {
-				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*2) ),
+				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
 				static_cast<float>( texture_size_directory * scale ),
 				static_cast<float>( texture_size_directory * scale )
@@ -315,7 +315,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 				}
 
 				SDL_FRect char_rect = {
-					static_cast<float>( (depth*texture_size_file) + (texture_size_file*(i+2) + texture_size_file ) ),
+					static_cast<float>( (depth*texture_size_file) + (texture_size_file*(i+2)  ) ),
 					static_cast<float>( (previous_element_already_drawn*texture_size_file + texture_size_file*scale*previous_element_already_drawn + diff*scale*previous_element_already_drawn)  ),
 					static_cast<float>( texture_size_file*scale ),
 					static_cast<float>( texture_size_file*scale )
@@ -324,10 +324,16 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 				textures.push_back(char_tex);
 			}
 
-			Text* txt = new Text();
-			txt->SetRects(rects);
-			txt->SetTextures(textures);
-			texts.emplace( right_path, txt );
+			Button* btn = new Button();
+			btn->SetText(right_path);
+
+			btn->SetOnClickReturn([btn]() {
+				return btn->GetText();
+			});
+
+			btn->SetRects(rects);
+			btn->SetTextures(textures);
+			buttons.emplace( right_path, btn );
 
 		}
 		return;
@@ -344,7 +350,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 
 		Texture* folder_txt = texture_manager->GetTexture("Assets/Ui/Editor/Folder.png");
 		SDL_FRect folder_rect = {
-			static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
+			static_cast<float>( (texture_size_directory*depth)  ),
 			static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
 			static_cast<float>( texture_size_directory * scale ),
 			static_cast<float>( texture_size_directory * scale )
@@ -378,7 +384,7 @@ void Menu::CreateButtonsAndTexts( Directory*& dir) {
 			}
 
 			SDL_FRect char_rect = {
-				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*(i+1) + texture_size_directory) ),
+				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory*(i+1) ) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
 				static_cast<float>( texture_size_directory * scale ),
 				static_cast<float>( texture_size_directory * scale )
@@ -451,7 +457,7 @@ void Menu::Draw( SDL_Renderer* renderer ) const {
 }
 
 void Menu::SetMouseOffset( float diff ) {
-	this->mouse_offset += diff*4;
+	this->mouse_offset += diff*8;
 }
 
 std::string Menu::GetText( const std::string& text_type ) {
@@ -541,15 +547,72 @@ bool Menu::CheckCollision( std::vector<SDL_FRect > buttons, float x, float y) {
 	return false;
 }
 
+bool Menu::CheckCollisionWithOffset( std::vector<SDL_FRect > buttons, float x, float y) {
+	for ( SDL_FRect button : buttons ) {
+		button.y += mouse_offset;
+		if (
+			x >= button.x &&
+			x <= button.x + button.w &&
+			y >= button.y &&
+			y <= button.y + button.h
+		) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Menu::CheckCollisionWithinRange(std::vector<SDL_FRect> buttons, float x, float y) {
+	for ( SDL_FRect button : buttons ) {
+		if (
+			x >= button.x &&
+			x <= button.x + button.w &&
+			y >= button.y &&
+			y <= button.y + button.h &&
+			x >= 0 &&
+			x <= background_rect.w;
+			y >= 0 &&
+			y <= background_rect.h
+		) {
+			return true;
+		}
+	}
+	return false;
+}
+
 Button* Menu::GetCollisionButton(float x, float y) {
-	for ( const std::pair< std::string, Button* > pair : this->buttons ) {
-		if ( CheckCollision(pair.second->GetRects(), x, y) ) {
-			return pair.second;
+	for ( const auto& [id, btn] : this->buttons ) {
+		if ( CheckCollision(btn->GetRects(), x, y ) ) {
+			return btn;
 		}
 	}
 
 	return nullptr;
 }
+
+Button* Menu::GetCollisionButtonWithOffset( float x, float y ) {
+	for ( const auto& [id, btn] : this->buttons ) {
+		if ( CheckCollisionWithOffset(btn->GetRects(), x, y ) ) {
+			return btn;
+		}
+	}
+
+	return nullptr;
+}
+
+Button* Menu::GetCollisionButtonWithingRange( float x, float y) {
+	for ( const auto& [id, btn] : this->buttons ) {
+		if ( CheckCollisionWithinRange(btn->GetRects(), x, y) ) {
+			return btn;
+		}
+	}
+
+	return nullptr;
+}
+
+
+
+
 
 
 

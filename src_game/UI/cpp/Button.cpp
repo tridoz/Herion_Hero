@@ -7,15 +7,26 @@
 Button::Button()  = default;
 
 void Button::SetOnClick(std::function<void()> action) {
-    this->onClick = action;
+    this->OnClick = action;
+}
+
+void Button::SetOnClickReturn( std::function<std::string()> action ) {
+    this->OnClickReturn = action;
 }
 
 void Button::Click() const {
 
-    if ( onClick ) {
-        onClick();
+    if ( OnClick ) {
+        OnClick();
     }
 
+}
+
+std::string Button::ClickReturn() const {
+    if ( OnClickReturn ) {
+        return OnClickReturn();
+    }
+    return {};
 }
 
 void Button::SetTextures(std::vector<Texture* > textures) {
@@ -43,7 +54,7 @@ void Button::DrawWithOffset( SDL_Renderer* renderer, const float offset_y, const
         rect.x += offset_x;
         rect.y += offset_y;
 
-        if ( rect.y >= 0 && rect.y <= 600 ) {
+        if ( rect.y >= 0 && rect.y <= 300 ) {
             SDL_SetTextureBlendMode( texture->GetTexture(), SDL_BLENDMODE_BLEND );
             SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
         }
@@ -54,5 +65,13 @@ void Button::DrawWithOffset( SDL_Renderer* renderer, const float offset_y, const
 
 std::vector< SDL_FRect > Button::GetRects() const {
     return rects;
+}
+
+void Button::SetText(const std::string &text_to_set) {
+    this->text = text_to_set;
+}
+
+std::string Button::GetText() const {
+    return text;
 }
 

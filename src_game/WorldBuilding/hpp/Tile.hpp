@@ -9,6 +9,7 @@
 class Tile {
 private:
     const Texture *texture;
+    std::string code;
     bool isWalkable;
     SDL_FRect rect{};
 
@@ -50,6 +51,8 @@ public:
      * @return bool
      */
     [[nodiscard]] bool IsWalkable() const;
+
+    void SetCode( std::string new_code );
 
 };
 

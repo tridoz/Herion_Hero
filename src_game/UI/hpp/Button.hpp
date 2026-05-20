@@ -15,10 +15,13 @@
 
 class Button {
 private:
-    std::function<void()> onClick;
+    std::function<void()> OnClick;
+    std::function<std::string()> OnClickReturn;
 
     std::vector< Texture* > textures;
     std::vector< SDL_FRect > rects ;
+
+    std::string text;
 
 public:
 
@@ -30,10 +33,13 @@ public:
      */
     void SetOnClick(std::function<void()> action);
 
+    void SetOnClickReturn( std::function<std::string()> action );
+
     /**
      * @brief Execute the function
      */
     void Click() const;
+    std::string ClickReturn() const;
 
     /**
      * @brief Set the Texture of the Button
@@ -66,6 +72,10 @@ public:
      * @return std::vector < SDL_FRect >
      */
     std::vector< SDL_FRect > GetRects() const;
+
+    void SetText( const std::string& text_to_set );
+
+    std::string GetText() const ;
 };
 
 

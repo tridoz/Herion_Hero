@@ -162,6 +162,7 @@ void RoomManager::GenerateRoom(  DIRECTION dir ) {
 
             tile->SetTexture(textureManager->GetTexture(texture_path));
             tile->SetRect(x * w, y * h, w, h);
+            tile->SetCode( cell );
             row.push_back(tile);
 
             x++;
@@ -171,9 +172,7 @@ void RoomManager::GenerateRoom(  DIRECTION dir ) {
 
     }
 
-
     newRoom->room->SetTiles( tiles );
-
 
     if ( spawn_room == nullptr ) {
         spawn_room = newRoom;

@@ -35,6 +35,14 @@ void InputProcessor::SetMenus(std::string name, Menu* menu) {
     menus.emplace(name, menu);
 }
 
+void InputProcessor::SetTextureManager(std::string name, TextureManager *texture_manager) {
+    texture_managers.emplace( name, texture_manager );
+}
+
+void InputProcessor::SetEditorRoom(Room *room) {
+    this->editor_room = room;
+}
+
 void InputProcessor::SetWindowTools( std::unordered_map< std::string,  Window* > window_tools ) {
     this->window_tools = window_tools;
 }
@@ -101,7 +109,6 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
     }
 }
-
 
 void InputProcessor::process_key_down(int scancode) {
 
@@ -170,14 +177,36 @@ void InputProcessor::process_mouse_left_pressed() {
             if (btn != nullptr) btn->Click();
             break;
 
-    }
+        case Player::GameMode::LEVEL_EDITOR: {
+            Window* win = window_tools.at("TEXTURE_SELECTION");
+
+            if ( win->IsOpen() ) {
+
+                btn = win->GetCurrentMenu()->GetCollisionButtonWithOffset(mouse_x , mouse_y);
+
+                if ( btn != nullptr ) {
+                    std::string str = btn->ClickReturn();
+                    TextureManager* mng = texture_managers.at("MAIN");
+                    Texture* txt = mng->GetTexture(str);
+                    editor_room->SetCurrentEditorTexture( txt );
+                    win->Hide();
+                }
+
+            } else {
+                int cell_x = static_cast<int>(mouse_x) / ( JSONParser::graphics::GetWidth() / editor_room->GetHorizontalTiles() );
+                int cell_y = static_cast<int>(mouse_y) / ( JSONParser::graphics::GetHeight() / editor_room->GetVerticalTiles() );
+                editor_room->GetTiles()[cell_y][cell_x]->SetTexture( editor_room->GetCurrentEditorTexture() );
+            }
+            break;
+
+        }
+   }
 
 }
 
 void InputProcessor::process_mouse_right_pressed() {
     // Non implementato
 }
-
 
 void InputProcessor::Process() {
     switch (this->event.type) {

@@ -14,6 +14,9 @@ class Room {
 
 private:
     std::vector< std::vector<Tile* > > tiles;
+    Texture* current_editor_texture;
+
+    int horizontal_tiles, vertical_tiles;
     int spawn_x, spawn_y;
 public:
     Room();
@@ -62,6 +65,13 @@ public:
      */
     int GetSpawnY() const;
 
+    void SetCurrentEditorTexture( Texture* texture );
+    Texture* GetCurrentEditorTexture();
+
+    void ModifyOneTile( Texture* txt, int col, int row );
+
+    int GetHorizontalTiles();
+    int GetVerticalTiles();
 
 };
 
