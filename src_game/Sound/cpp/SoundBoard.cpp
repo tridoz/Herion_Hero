@@ -1,6 +1,7 @@
 #include "../hpp/SoundBoard.hpp"
 #include <iostream>
 
+
 SoundBoard::SoundBoard() {
     if (ma_engine_init(NULL, &engine) != MA_SUCCESS) {
         Logger::LogErr(
@@ -34,7 +35,6 @@ void SoundBoard::LoadSound(const std::string& id, const std::string& filepath) {
         return;
     }
     sounds[id] = sound;
-    return;
 }
 
 void SoundBoard::PlaySound(const std::string &id) {
