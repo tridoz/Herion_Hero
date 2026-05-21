@@ -105,6 +105,10 @@ void InputProcessor::process_level_editor(int scancode) {
 
         case SDL_SCANCODE_T: {
             Window* texture_window = this->window_tools.at("TEXTURE_SELECTION");
+            for ( const auto& [name, window] : window_tools ) {
+                if ( name != "TEXTURE_SELECTION")
+                    window->Hide();
+            }
             if ( texture_window->IsOpen() ) {
                 texture_window->Hide();
             } else {
@@ -115,6 +119,10 @@ void InputProcessor::process_level_editor(int scancode) {
 
         case SDL_SCANCODE_A: {
             Window* action_window = this->window_tools.at("ACTION_SELECTION");
+            for ( const auto& [name, window] : window_tools ) {
+                if ( name != "ACTION_SELECTION")
+                    window->Hide();
+            }
             if ( action_window->IsOpen() ) {
                 action_window->Hide();
             } else {
@@ -127,10 +135,14 @@ void InputProcessor::process_level_editor(int scancode) {
             editor_room->ToggleAxis();
             break;
 
+        case SDL_SCANCODE_H:
+            editor_room->ToggleHitboxes();
+            break;
+
         case SDL_SCANCODE_S:
             editor_room->SaveNewEditConfiguration();
-            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/base_plane_textures.hhmap" );
-            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/base_plane_textures.hhmap" );
+            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/" );
+            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/" );
             break;
 
         case SDL_SCANCODE_P:
@@ -206,25 +218,50 @@ void InputProcessor::process_mouse_left_pressed() {
             break;
 
         case Player::GameMode::LEVEL_EDITOR: {
-            Window* win = window_tools.at("TEXTURE_SELECTION");
 
-            if ( win->IsOpen() ) {
+            int cell_x = static_cast<int>(mouse_x) / ( JSONParser::graphics::GetWidth() / editor_room->GetHorizontalTiles() );
+            int cell_y = static_cast<int>(mouse_y) / ( JSONParser::graphics::GetHeight() / editor_room->GetVerticalTiles() );
 
-                btn = win->GetCurrentMenu()->GetCollisionButton(mouse_x , mouse_y);
+            for ( const auto& [name, window] : window_tools ) {
+                if ( name == "TEXTURE_SELECTION" ) {
 
-                if ( btn != nullptr ) {
-                    std::string str = btn->ClickReturn();
-                    TextureManager* mng = texture_managers.at("MAIN");
-                    Texture* txt = mng->GetTextureByName(str);
-                    editor_room->SetCurrentEditorTexture( txt );
-                    win->Hide();
+                    if ( window->IsOpen() ) {
+                        btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x , mouse_y);
+                        if ( btn != nullptr ) {
+                            std::string str = btn->ClickReturn();
+                            TextureManager* mng = texture_managers.at("MAIN");
+                            Texture* txt = mng->GetTextureByName(str);
+                            editor_room->SetCurrentEditorTexture( txt );
+                        }
+
+                    }
+
+                } else if ( name  == "ACTION_SELECTION") {
+                    if ( window->IsOpen() ) {
+                        btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x , mouse_y);
+                        if ( btn != nullptr ) {
+                            std::string str = btn->ClickReturn();
+                            editor_room->SetAction( str );
+                        }
+                    }
                 }
-
-            } else {
-                int cell_x = static_cast<int>(mouse_x) / ( JSONParser::graphics::GetWidth() / editor_room->GetHorizontalTiles() );
-                int cell_y = static_cast<int>(mouse_y) / ( JSONParser::graphics::GetHeight() / editor_room->GetVerticalTiles() );
-                editor_room->GetTiles()[cell_y][cell_x]->SetTexture( editor_room->GetCurrentEditorTexture() );
             }
+
+            if ( AllWindowsClosed() ) {
+                std::string action = editor_room->GetAction();
+                if ( action == "add_texture" ) {
+
+                    if ( editor_room->GetCurrentEditorTexture() != nullptr ) {
+                        editor_room->GetTiles()[cell_y][cell_x]->SetTexture( editor_room->GetCurrentEditorTexture() );
+                    }
+
+                } else if ( action == "change_hitbox" ){
+                    bool hitbox = editor_room->GetTiles()[cell_y][cell_x]->HasHitbox();
+                    editor_room->GetTiles()[cell_y][cell_x]->SetHitbox( !hitbox );
+                    editor_room->UpdateHitbox(cell_x, cell_y);
+                }
+            }
+
             break;
 
         }
@@ -305,5 +342,14 @@ void InputProcessor::update_player_movement(float delta_time) const {
     else
         player->SetPlayerState(Player::PlayerState::IDLE);
 
+}
+
+bool InputProcessor::AllWindowsClosed() {
+    for ( const auto& [name, window] : window_tools ) {
+        if ( window->IsOpen() ) {
+            return false;
+        }
+    }
+    return true;
 }
 

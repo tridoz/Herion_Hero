@@ -45,10 +45,15 @@ void RoomManager::GenerateEditorRoom( EditorRoom* room, const std::string& map_p
     const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
     const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
 
+    std::string map_filepath = map_path + "base_plane_textures.hhmap";
+    std::string hitboxes_filepath = map_path + "hitboxes.hhmap";
+
     std::ifstream map_file;
+    std::ifstream hitbox_file;
 
     try {
-        FileOpener::OpenFileInput( map_file, map_path );
+        FileOpener::OpenFileInput( map_file, map_filepath );
+        FileOpener::OpenFileInput( hitbox_file, hitboxes_filepath );
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         throw;
@@ -56,38 +61,50 @@ void RoomManager::GenerateEditorRoom( EditorRoom* room, const std::string& map_p
 
     room->SetFilepath( map_path );
 
-    std::string line;
+    std::string base_plane_line;
+    std::string hitbox_line;
     int y = 0;
 
-    while (std::getline(map_file, line)) {
-        std::stringstream ss(line);
-        std::string cell;
+    while (std::getline(map_file, base_plane_line)) {
+
+
+        std::stringstream base_plan_ss(base_plane_line);
+
+
+        std::string base_plane_cell;
+        std::string hitbox_cell;
 
         std::vector<Tile*> row;
         int x = 0;
 
-        if (line.starts_with("#") || line.empty() ) {
-            room->AppendToFile( line );
+        if (base_plane_line.starts_with("#") || base_plane_line.empty() ) {
+            room->AppendToFile( base_plane_line, room->GetBasePlaneVector() );
             continue;
         }
 
-        if ( line.starts_with('?') ) {
+        if ( base_plane_line.starts_with('?') ) {
             char a;
             int x, y;
-            ss >> a;
-            ss >> y;
-            ss >> x;
+            base_plan_ss >> a;
+            base_plan_ss >> y;
+            base_plan_ss >> x;
             room->SetSpawnCoord( x, y );
-            room->AppendToFile( line );
+            room->AppendToFile( base_plane_line, room->GetBasePlaneVector() );
             continue;
         }
 
-        while (ss >> cell) {
+        std::getline( hitbox_file, hitbox_line );
+        std::stringstream hitbox_ss(hitbox_line);
+
+        while (base_plan_ss >> base_plane_cell) {
+            hitbox_ss >> hitbox_cell;
 
             Tile* tile = new Tile();
 
-            tile->SetTexture(textureManager->GetTextureByCode( cell ));
+            tile->SetTexture(textureManager->GetTextureByCode( base_plane_cell ));
             tile->SetRect(x * w, y * h, w, h);
+            bool hitbox = std::atoi(hitbox_cell.c_str() ) ;
+            tile->SetHitbox( hitbox  );
             row.push_back(tile);
 
             x++;
@@ -98,6 +115,7 @@ void RoomManager::GenerateEditorRoom( EditorRoom* room, const std::string& map_p
     }
 
     room->SetTiles( tiles );
+    room->SetHitboxes();
 
 }
 
@@ -113,8 +131,10 @@ void RoomManager::GenerateRoom(  DIRECTION dir, const std::string& map_path ) {
     Node* newRoom = new Node();
     newRoom->room = new Room();
 
+    std::string map_filepath = map_path + "base_plane_textures.hhmap";
+
     try {
-        FileOpener::OpenFileInput( map_file, map_path );
+        FileOpener::OpenFileInput( map_file, map_filepath );
     } catch (HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT()   );
         throw;
@@ -202,7 +222,7 @@ Room* RoomManager::GetCurrentRoom() const {
 void RoomManager::GoLeft() {
 
     if ( current_room->left == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_LEFT, "../maps/room1/base_plane_textures.hhmap" );
+        GenerateRoom( DIRECTION::DIR_LEFT, "../maps/room1/" );
     }
 
     current_room = current_room->left;
@@ -210,7 +230,7 @@ void RoomManager::GoLeft() {
 
 void RoomManager::GoRight() {
     if ( current_room->right == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_RIGHT, "../maps/room1/base_plane_textures.hhmap");
+        GenerateRoom( DIRECTION::DIR_RIGHT, "../maps/room1/");
     }
 
     current_room = current_room->right;
@@ -219,7 +239,7 @@ void RoomManager::GoRight() {
 void RoomManager::GoUp() {
 
     if ( current_room->up == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_UP, "../maps/room1/base_plane_textures.hhmap");
+        GenerateRoom( DIRECTION::DIR_UP, "../maps/room1/");
     }
 
     current_room = current_room->up;
@@ -227,7 +247,7 @@ void RoomManager::GoUp() {
 
 void RoomManager::GoDown() {
     if ( current_room->down == nullptr ) {
-        GenerateRoom( DIRECTION::DIR_DOWN, "../maps/room1/base_plane_textures.hhmap");
+        GenerateRoom( DIRECTION::DIR_DOWN, "../maps/room1/");
     }
 
     current_room = current_room->down;

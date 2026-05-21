@@ -153,7 +153,7 @@ int main ( int argc, char* argv[] ) {
     game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
 
     try {
-        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/base_plane_textures.hhmap") ;
+        game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/") ;
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -227,7 +227,7 @@ int main ( int argc, char* argv[] ) {
 
     Uint32 last_frame_time = SDL_GetTicks();
 
-    game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/base_plane_textures.hhmap" );
+    game_room_manager.GenerateEditorRoom( &editor_room, "../maps/room1/" );
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
@@ -300,6 +300,10 @@ int main ( int argc, char* argv[] ) {
                 editor_room.Draw( window.GetRenderer() );
                 if ( editor_room.ShouldDrawAxis() ) {
                     editor_room.DrawAxis( window.GetRenderer() );
+                }
+
+                if ( editor_room.ShouldDrawHitboxes() ) {
+                    editor_room.DrawHitboxes( window.GetRenderer() );
                 }
 
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {

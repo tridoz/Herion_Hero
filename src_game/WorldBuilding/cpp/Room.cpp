@@ -40,6 +40,9 @@ void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
     this->tiles = new_tiles;
     this->horizontal_tiles = this->tiles[0].size();
     this->vertical_tiles =  this->tiles.size();
+
+    this->tile_width = width / horizontal_tiles;
+    this->tile_height = height / vertical_tiles;
 }
 
 void Room::SetSpawnCoord(int x, int y) {
@@ -54,8 +57,6 @@ int Room::GetSpawnX() const {
 int Room::GetSpawnY() const {
     return spawn_y;
 }
-
-
 
 
 int Room::GetHorizontalTiles() {

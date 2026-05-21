@@ -145,6 +145,7 @@ namespace JSONParser {
             std::string type;
             std::string text;
             std::optional<std::string> action;
+            std::optional< std::string > return_value;
             std::string id;
         };
 

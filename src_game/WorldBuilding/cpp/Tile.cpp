@@ -27,6 +27,10 @@ void Tile::Draw(SDL_Renderer* renderer) const {
     SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
 }
 
+void Tile::SetHitbox(bool hitbox) {
+    this->hasHitbox = hitbox;
+}
+
 bool Tile::HasHitbox() const {
     return hasHitbox;
 }

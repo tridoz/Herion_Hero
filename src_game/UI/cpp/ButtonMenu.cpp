@@ -166,11 +166,21 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
                 btn->SetRects(rects);
                 btn->SetTextures(textures);
 
-            	if ( !buttons_functions.contains(menu_element_characteristic.action.value() ) ) {
-            		THROW_FILE_NOT_FOUND( menu_element_characteristic.action.value() );
+
+            	if ( menu_element_characteristic.action.value() == "RETURN_VALUE" ) {
+            		btn->SetText( menu_element_characteristic.return_value.value() );
+            		btn->SetOnClickReturn( [btn] {
+            			return btn->GetText();
+            		} );
+
+            	} else {
+            		if ( !buttons_functions.contains(menu_element_characteristic.action.value() ) ) {
+            			THROW_FILE_NOT_FOUND( menu_element_characteristic.action.value() );
+            		}
+
+            		btn->SetOnClick(buttons_functions.at(menu_element_characteristic.action.value()));
             	}
 
-                btn->SetOnClick(buttons_functions.at(menu_element_characteristic.action.value()));
                 buttons.emplace(menu_element_characteristic.id, btn);
 
             } else if ( menu_element_characteristic.type.contains("TEXT") ) {

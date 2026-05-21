@@ -82,6 +82,8 @@ private:
      */
     void process_mouse_right_pressed();
 
+    bool AllWindowsClosed();
+
     float mouse_x;
     float mouse_y;
 

@@ -6,12 +6,10 @@
 
 EditorRoom::EditorRoom() {
     this->draw_axis = true;
-
+    this->draw_hitboxes = false;
     this->width = JSONParser::graphics::GetWidth();
     this->height = JSONParser::graphics::GetHeight();
-
-    this->tile_width = width / horizontal_tiles;
-    this->tile_height = height / vertical_tiles;
+    this->current_editor_texture = nullptr;
 }
 
 void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
@@ -28,6 +26,43 @@ void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
 
 }
 
+void EditorRoom::SetHitboxes() {
+
+    for (size_t j = 0; j < tiles.size(); ++j) {
+        std::vector < bool > row;
+        for (size_t i = 0; i < tiles[j].size(); ++i) {
+            bool hitbox = tiles[j][i]->HasHitbox();
+            row.push_back(hitbox);
+        }
+        hitboxes.push_back(row);
+    }
+
+}
+
+void EditorRoom::UpdateHitbox(int cell_x, int cell_y) {
+    this->hitboxes[cell_y][cell_x] = !this->hitboxes[cell_y][cell_x];
+}
+
+void EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const {
+    for (size_t j = 0; j < hitboxes.size(); ++j) {
+        for (size_t i = 0; i < hitboxes[j].size(); ++i) {
+            bool hitbox = hitboxes[j][i];
+
+            if (hitbox) {
+                SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+
+                SDL_FRect rect;
+                rect.x = i * tile_width;
+                rect.y = j * tile_height;
+                rect.w = tile_width;
+                rect.h = tile_height;
+
+                SDL_RenderRect(renderer, &rect);
+            }
+        }
+    }
+}
+
 void EditorRoom::SetCurrentEditorTexture(Texture *texture) {
     this->current_editor_texture = texture;
 }
@@ -36,8 +71,8 @@ Texture *EditorRoom::GetCurrentEditorTexture() {
     return current_editor_texture;
 }
 
-void EditorRoom::AppendToFile(const std::string &row) {
-    base_plan_output_file.push_back( row );
+void EditorRoom::AppendToFile(const std::string &row, std::vector<std::string>& vect ) {
+    vect.push_back( row );
 }
 
 void EditorRoom::SaveNewEditConfiguration() {
@@ -46,20 +81,34 @@ void EditorRoom::SaveNewEditConfiguration() {
         for ( const auto& tile : row ) {
             str_row += tile->GetCode() + " ";
         }
-        AppendToFile( str_row );
+        AppendToFile( str_row, this->base_plan_output_file );
     }
 
-    std::ofstream output_file_stream;
+    for ( const auto& row : hitboxes ) {
+        std::string str_row;
+        for ( bool hitbox : row ) {
+            str_row += std::to_string( hitbox ) + " ";
+        }
+        AppendToFile( str_row, this->hitboxes_output_file );
+    }
+
+    std::ofstream base_place_output_file_stream;
+    std::ofstream hitbox_output_file_stream;
 
     try {
-        FileOpener::OpenFileOutput( output_file_stream, filepath );
+        FileOpener::OpenFileOutput( base_place_output_file_stream, filepath + "base_plane_textures.hhmap" );
+        FileOpener::OpenFileOutput( hitbox_output_file_stream, filepath + "hitboxes.hhmap" );
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         throw;
     }
 
     for ( const auto& line : base_plan_output_file ) {
-        output_file_stream << line << std::endl;
+        base_place_output_file_stream << line << std::endl;
+    }
+
+    for ( const auto& line : hitboxes_output_file ) {
+        hitbox_output_file_stream << line << std::endl;
     }
 
 }
@@ -71,3 +120,37 @@ void EditorRoom::ToggleAxis() {
 bool EditorRoom::ShouldDrawAxis() const {
     return draw_axis;
 }
+
+void EditorRoom::ToggleHitboxes() {
+    draw_hitboxes = !draw_hitboxes;
+}
+
+bool EditorRoom::ShouldDrawHitboxes() const {
+    return draw_hitboxes;
+}
+
+void EditorRoom::SetAction(const std::string &action) {
+    this->action = action;
+}
+
+std::string EditorRoom::GetAction() const {
+    return this->action;
+}
+
+std::vector<std::string> &EditorRoom::GetBackgroundVector() {
+    return this->background_output_file;
+}
+
+std::vector<std::string> &EditorRoom::GetForegroundVector() {
+    return this->foreground_output_file;
+}
+
+std::vector<std::string> &EditorRoom::GetBasePlaneVector() {
+    return this->base_plan_output_file;
+}
+
+
+
+
+
+

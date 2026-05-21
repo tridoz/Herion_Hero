@@ -179,6 +179,10 @@ JSONParser::menu_configuration::GetRowElementFields(int num_row, int num_element
     if (element.contains("action")) {
         result.action = element.at("action").get<std::string>();
     }
+    
+    if ( element.contains("return_value") ) {
+        result.return_value = element.at("return_value").get<std::string>();
+    }
 
     return result;
 

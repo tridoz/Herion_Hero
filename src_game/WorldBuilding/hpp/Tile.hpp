@@ -38,11 +38,14 @@ public:
      */
     void Draw( SDL_Renderer* renderer ) const;
 
+    void SetHitbox( bool hitbox );
     /**
      * @brief Return the Tile rect
      * @return SDL_FRect*
      */
     SDL_FRect* GetRect();
+
+
 
     /**
      * @brief Return of the tile is walkable

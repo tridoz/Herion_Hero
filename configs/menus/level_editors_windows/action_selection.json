@@ -15,8 +15,22 @@
         {
           "type" : "BUTTON",
           "text": "Add texture",
-          "action": "OPEN_MAIN_MENU",
+          "return_value" : "add_texture",
+          "action": "RETURN_VALUE",
           "id": "button_for_selecting_action_of_texture_adding"
+        }
+      ]
+    },
+    {
+      "starting_x" : 5,
+      "button_x_offset" : 10,
+      "elements" : [
+        {
+          "type" : "BUTTON",
+          "text": "Change hitbox",
+          "return_value" : "change_hitbox",
+          "action": "RETURN_VALUE",
+          "id": "button_for_selecting_action_of_hitbox_changing"
         }
       ]
     }

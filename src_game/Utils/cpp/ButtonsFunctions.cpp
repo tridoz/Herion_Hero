@@ -56,6 +56,7 @@ void ButtonsFunctions::OpenSettings() {
 void ButtonsFunctions::CloseSettings() {
     player->SetGameMode( player->GetPreviousGameMode() );
 }
+
 void ButtonsFunctions::ReturnPreviousState() {
     player->SetGameMode( player->GetPreviousGameMode() );
 }

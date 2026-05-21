@@ -33,7 +33,7 @@ void ScrollPaneMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
     }
 
     if ( cmd == "select_all_directory" ) {
-        std::string base_directory = "../Assets/";
+        std::string base_directory = "../Assets/WorldBuilding/";
         CreateSubDirectories( this->directory, base_directory, 0 );
         this->buttons.clear();
         this->texts.clear();

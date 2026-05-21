@@ -75,26 +75,6 @@ public:
      */
     static void ReturnPreviousState();
 
-    // EDITOR ACTION
-    /**
-     * @brief Unimplemented
-     */
-    static void PlaceTexture();
-
-    /**
-     * @brief Unimplemented
-     */
-    static void RemoveTexture();
-
-    /**
-     * @brief Unimplemented
-     */
-    static void LoadRoom();
-
-    /**
-     * @brief Unimplemented
-     */
-    static void LoadTexture();
 
     //GRAPHICS SETTINGS
     /**

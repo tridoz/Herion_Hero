@@ -19,6 +19,7 @@ protected:
 
     int horizontal_tiles, vertical_tiles;
     int width, height;
+    float tile_width, tile_height;
     int spawn_x, spawn_y;
 
 public:
