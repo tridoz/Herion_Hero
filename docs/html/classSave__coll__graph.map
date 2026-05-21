@@ -1,9 +1,0 @@
-<map id="Save" name="Save">
-<area shape="rect" id="Node000001" title=" " alt="" coords="117,1100,266,1284"/>
-<area shape="rect" id="Node000002" href="$classPlayer.html" title=" " alt="" coords="95,463,287,1027"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,1024,194,1084,189,1082,190,1029"/>
-<area shape="rect" id="Node000003" href="$classTextureManager.html" title=" " alt="" coords="5,95,158,301"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="102,298,134,446,129,447,102,304"/>
-<area shape="rect" id="Node000004" href="$classAnimation.html" title=" " alt="" coords="182,5,422,390"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="271,387,263,440,262,447,256,446,258,439,269,393"/>
-</map>

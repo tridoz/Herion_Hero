@@ -1,7 +1,0 @@
-<map id="Button::Click" name="Button::Click">
-<area shape="rect" id="Node000001" title="Execute the function." alt="" coords="452,14,556,42"/>
-<area shape="rect" id="Node000002" href="$classInputProcessor.html#a79d7ee2b2851026dac7891dc28fb8afb" title="Process the event of a mouse left click." alt="" coords="229,5,404,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="434,28,405,30,404,25,439,28"/>
-<area shape="rect" id="Node000003" href="$classInputProcessor.html#afffd0f8224b1c8e7b95abc267b894c4e" title="Process events." alt="" coords="5,14,181,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="211,28,181,30,181,25,216,27"/>
-</map>

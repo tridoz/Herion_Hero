@@ -1,9 +1,0 @@
-<map id="TextureManager::LoadTextures" name="TextureManager::LoadTextures">
-<area shape="rect" id="Node000001" title="Load all the textures in an std::unordered_map&lt;std::string, Textured&gt; based of a ...." alt="" coords="5,57,226,85"/>
-<area shape="rect" id="Node000002" href="$classTexture.html#afa688f7281976344f3635b57f3c4df1c" title="Create a texture based on the given path." alt="" coords="283,5,452,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,54,284,36,279,38,187,59"/>
-<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="274,57,461,85"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,69,261,71,255,72,226,74"/>
-<area shape="rect" id="Node000004" href="$classTexture.html#a9e422e0101a63723c78230d9b15aafdf" title="Return true or false ba on if the texture was successfully created or not." alt="" coords="279,109,456,137"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,83,284,105,279,106,186,88"/>
-</map>

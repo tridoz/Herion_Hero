@@ -1,7 +1,0 @@
-<map id="JSONParser::graphics::DecreaseFPSLimit" name="JSONParser::graphics::DecreaseFPSLimit">
-<area shape="rect" id="Node000001" title="Function to get decrease the FPS limit." alt="" coords="405,5,562,50"/>
-<area shape="rect" id="Node000002" href="$classButtonsFunctions.html#a1a1032d1c7b9da426b03f272ad2858ec" title="Call JSONParser::graphics::DecreaseFPSLimit();." alt="" coords="155,5,357,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,28,358,30,357,25,392,28"/>
-<area shape="rect" id="Node000003" href="$classMenu.html#ad466dd83355124a6ed958430450bfe94" title=" " alt="" coords="5,14,107,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,28,107,30,107,25,142,27"/>
-</map>

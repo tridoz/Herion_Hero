@@ -1,5 +1,0 @@
-<map id="ButtonsFunctions::ReturnPreviousState" name="ButtonsFunctions::ReturnPreviousState">
-<area shape="rect" id="Node000001" title="Set the player::GameMode to Player::GetPreviousGameMode()." alt="" coords="155,5,339,50"/>
-<area shape="rect" id="Node000002" href="$classMenu.html#ad466dd83355124a6ed958430450bfe94" title=" " alt="" coords="5,14,107,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,28,107,30,107,25,142,27"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="ButtonsFunctions::DecreaseResolution" name="ButtonsFunctions::DecreaseResolution">
-<area shape="rect" id="Node000001" title="Call JSONParser::graphics::DecreaseResolution();." alt="" coords="5,24,208,68"/>
-<area shape="rect" id="Node000002" href="$namespaceJSONParser_1_1graphics.html#a1d84b66135ca5f4c190c767a6c17e218" title="Function to decrease the screen resolution." alt="" coords="256,24,415,68"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,43,242,46,237,46,208,48"/>
-<area shape="rect" id="Node000003" href="$classFileOpener.html#a543e6848e7626c8531b454f2d3a97c24" title="Open file for input." alt="" coords="468,5,656,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="415,34,450,32,456,32,415,39"/>
-<area shape="rect" id="Node000004" href="$classFileOpener.html#aac399d677d674099ab75e796361f03fc" title="Open file for output." alt="" coords="463,57,661,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="415,52,450,58,445,58,415,57"/>
-</map>

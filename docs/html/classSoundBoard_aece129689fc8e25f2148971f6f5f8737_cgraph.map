@@ -1,9 +1,0 @@
-<map id="SoundBoard::SoundBoard" name="SoundBoard::SoundBoard">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,32,191,60"/>
-<area shape="rect" id="Node000002" href="$classLogger.html#ac8b6378bb5ffa1af9f64821aa3c7f9ea" title="Log that something went wrong." alt="" coords="239,32,353,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,43,226,46,220,46,191,48"/>
-<area shape="rect" id="Node000003" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="401,5,552,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="353,35,383,33,388,32,354,40"/>
-<area shape="rect" id="Node000004" href="$classLogger.html#ad6de808cee6c544b62b7a843a7918a78" title="Return the given string with format code to make it red." alt="" coords="410,57,543,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="354,51,397,60,392,60,353,57"/>
-</map>

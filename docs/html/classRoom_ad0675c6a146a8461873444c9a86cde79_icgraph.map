@@ -1,5 +1,0 @@
-<map id="Room::GetTiles" name="Room::GetTiles">
-<area shape="rect" id="Node000001" title="Return the tiles." alt="" coords="297,5,417,33"/>
-<area shape="rect" id="Node000002" href="$classRoomManager.html#a44b7436bff5c83a02b24c44126f57545" title="Resize the Level Editor room." alt="" coords="5,5,249,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,19,249,22,249,17,284,19"/>
-</map>

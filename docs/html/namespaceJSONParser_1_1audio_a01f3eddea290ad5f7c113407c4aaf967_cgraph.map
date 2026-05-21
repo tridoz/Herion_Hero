@@ -1,9 +1,0 @@
-<map id="JSONParser::audio::IncreaseSFXVolume" name="JSONParser::audio::IncreaseSFXVolume">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,24,157,68"/>
-<area shape="rect" id="Node000002" href="$classLogger.html#ac8b6378bb5ffa1af9f64821aa3c7f9ea" title="Log that something went wrong." alt="" coords="205,32,319,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,43,192,45,186,46,157,48"/>
-<area shape="rect" id="Node000003" href="$classLogger.html#abfbabf8d80ae90f870d9814c8559ed3a" title="Return a string time formatted as YY:MM:DD hh:mm::ss." alt="" coords="367,5,518,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,35,354,32,349,33,320,40"/>
-<area shape="rect" id="Node000004" href="$classLogger.html#ad6de808cee6c544b62b7a843a7918a78" title="Return the given string with format code to make it red." alt="" coords="376,57,509,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="320,51,363,60,358,60,319,57"/>
-</map>

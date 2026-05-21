@@ -1,5 +1,0 @@
-<map id="Text::DrawWithOffset" name="Text::DrawWithOffset">
-<area shape="rect" id="Node000001" title="Draw the Text shifted of an offset and only if in certain coordinates." alt="" coords="5,5,166,33"/>
-<area shape="rect" id="Node000002" href="$classTexture.html#a1481e2e0c45dc7bc7777ec2825b66670" title="Return the SDL_Texture field." alt="" coords="214,5,362,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,17,201,19,195,19,166,22"/>
-</map>

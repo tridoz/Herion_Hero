@@ -1,5 +1,0 @@
-<map id="Player::Update" name="Player::Update">
-<area shape="rect" id="Node000001" title="Update the Player." alt="" coords="5,5,123,33"/>
-<area shape="rect" id="Node000002" href="$classPlayer.html#acf4de9d1df609f28bf00037e71098465" title="Update animation frame if needed." alt="" coords="171,5,396,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,17,158,19,152,19,123,22"/>
-</map>
