@@ -71,7 +71,6 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/UI/hpp/ButtonMenu.hpp
         src_game/UI/cpp/ScrollPaneMenu.cpp
         src_game/UI/hpp/ScrollPaneMenu.hpp
-
 )
 
 if(WIN32)
@@ -95,5 +94,6 @@ elseif(UNIX)
             "${SDL3_DIR}/lib/Linux/libSDL3.so"
             "${SDL3_DIR}/lib/Linux/libSDL3_image.so"
             "${SDL3_DIR}/lib/Linux/libSDL3_ttf.so"
+            "${SDL3_DIR}/lib/Linux/libSDL3_mixer.so"
     )
 endif()

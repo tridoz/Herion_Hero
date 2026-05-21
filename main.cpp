@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 #include "src_game/Exceptions/hpp/HerionFileException.hpp"
+#include "src_game/Sound/hpp/SoundBoard.hpp"
 #include "src_game/UI/hpp/ButtonMenu.hpp"
 #include "src_game/UI/hpp/ScrollPaneMenu.hpp"
 #include "src_game/WorldBuilding/hpp/EditorRoom.hpp"
@@ -80,6 +81,13 @@ int LoadEnv() {
 int main ( int argc, char* argv[] ) {
 
     LoadEnv();
+
+
+    //  SoundBoard sound_board;
+    // sound_board.LoadSound("prova", "../sounds/prova.mp3");
+    //
+    // sound_board.PlaySound("prova");
+
 
     //Logger::EnableHTTPLogging();
 

@@ -7,32 +7,29 @@
 
 #define MINIAUDIO_IMPLEMENTATION
 
-#include "../../headers_only_dependencies/miniaudio.h"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_mixer.h>
+
 #include "../../Utils/hpp/Logger.hpp"
 
 #include <string>
 #include <unordered_map>
 
 class SoundBoard {
+    MIX_Mixer *mixer;
+    MIX_Track *track;
 
-private:
-    ma_engine engine{};
-    std::unordered_map<std::string, ma_sound> sounds;
 
+    std::unordered_map< std::string, MIX_Audio* > sounds;
 public:
     SoundBoard();
-    ~SoundBoard();
 
-    void LoadSound(const std::string& id, const std::string& filepath);
-
+    void LoadSound(const std::string& id, const std::string& filepath );
     void PlaySound(const std::string& id);
-
-    void StopSound(const std::string &id);
-
-    void StopAll();
-
 
 };
 
 #endif // SOUNDBOARD_HPP
+
+
 
