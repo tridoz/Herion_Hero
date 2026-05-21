@@ -27,6 +27,8 @@ protected:
 	float mouse_offset;
 	const std::string base_path = "../";
 	float scale;
+	float char_wdith;
+
 
 	SDL_FRect background_rect;
 
@@ -37,6 +39,8 @@ protected:
 
 	std::string filepath;
 	std::string type;
+	std::string font_style;
+
 
 	void Rescale( SDL_FRect* rect );
 

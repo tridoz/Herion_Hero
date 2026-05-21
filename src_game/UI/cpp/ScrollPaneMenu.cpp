@@ -40,7 +40,7 @@ void ScrollPaneMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
     }
 }
 
-bool ScrollPaneMenu::CheckCollision( std::vector<SDL_FRect > buttons, float x, float y) {
+bool ScrollPaneMenu::CheckCollision(const std::vector<SDL_FRect > buttons, float x, float y) {
     for ( SDL_FRect button : buttons ) {
         button.y += mouse_offset;
         if (

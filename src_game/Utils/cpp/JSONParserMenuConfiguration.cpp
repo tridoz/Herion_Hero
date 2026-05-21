@@ -38,6 +38,30 @@ std::string JSONParser::menu_configuration::GetMenuType() {
     return config_file["menu_type"];
 }
 
+float JSONParser::menu_configuration::GetCharWidth() {
+    if ( !config_file.contains("char_width") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> char_width");
+    }
+
+    return config_file["char_width"];
+}
+
+std::string JSONParser::menu_configuration::GetButtonStyle() {
+    if ( !config_file.contains("button_style") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> button_style");
+    }
+
+    return config_file["button_style"];
+}
+
+std::string JSONParser::menu_configuration::GetFontStyle() {
+    if ( !config_file.contains("font_style") ) {
+        THROW_FILE_MALFORMED( config_file_path + "\t=> font_style");
+    }
+
+    return config_file["font_style"];
+}
+
 std::string JSONParser::menu_configuration::GetCmd() {
     if ( !config_file.contains("cmd") ) {
         THROW_FILE_MALFORMED( config_file_path + "\t=> cmd");

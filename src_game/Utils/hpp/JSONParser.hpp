@@ -166,6 +166,12 @@ namespace JSONParser {
          */
         std::string GetMenuType();
 
+        std::string GetButtonStyle();
+
+        std::string GetFontStyle();
+
+        float GetCharWidth();
+
         /**
          * @brief Return the command to execute
          * @return std::string

@@ -4,6 +4,9 @@
   "button_y_offset" : 12,
   "center_piece_offset" : 8,
   "menu_type": "button_menu",
+  "button_style" : "Game",
+  "font_style" : "Game",
+  "char_width" : 22.0,
   "rows": [
     {
       "starting_x": 500,

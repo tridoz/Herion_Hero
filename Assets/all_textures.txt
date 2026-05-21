@@ -6,13 +6,13 @@ Assets/Ui/Boxes/ItemDescription.png;AUB_I
 Assets/Ui/Boxes/TextAvatar.png;AUB_TA
 Assets/Ui/Boxes/Text.png;AUB_T
 
-Assets/Ui/Buttons/ButtonLeft.png;AUB_BL
-Assets/Ui/Buttons/ButtonCenter.png;AUB_BC
-Assets/Ui/Buttons/ButtonRight.png;AUB_BR
+Assets/Ui/Buttons/Game/ButtonLeft.png;AUBG_BL
+Assets/Ui/Buttons/Game/ButtonCenter.png;AUBG_BC
+Assets/Ui/Buttons/Game/ButtonRight.png;AUBG_BR
 
-Assets/Ui/Buttons/ButtonLeft2.png;AUB_BL2
-Assets/Ui/Buttons/ButtonCenter2.png;AUB_BC2
-Assets/Ui/Buttons/ButtonRight2.png;AUB_BR2
+Assets/Ui/Buttons/Editor/ButtonLeft.png;AUBE_BL
+Assets/Ui/Buttons/Editor/ButtonCenter.png;AUBE_BC
+Assets/Ui/Buttons/Editor/ButtonRight.png;AUBE_BR
 
 Assets/Ui/Icons/Apply.png;AUI_A
 Assets/Ui/Icons/Close.png;AUI_C

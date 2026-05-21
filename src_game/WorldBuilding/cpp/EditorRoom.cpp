@@ -4,7 +4,9 @@
 
 #include "../hpp/EditorRoom.hpp"
 
-EditorRoom::EditorRoom() {}
+EditorRoom::EditorRoom() {
+    this->draw_axis = true;
+}
 
 void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
 

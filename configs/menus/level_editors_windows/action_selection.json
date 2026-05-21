@@ -1,9 +1,12 @@
 {
   "background_path" : "Assets/Backgrounds/Black.png",
-  "start_y" : 5,
-  "button_y_offset" : 12,
-  "center_piece_offset" : 8,
+  "start_y" : 0,
+  "button_y_offset" : 0,
+  "center_piece_offset" : 0,
   "menu_type": "button_menu",
+  "button_style" : "Editor",
+  "font_style" : "Editor",
+  "char_width" : 40.0,
   "rows" : [
     {
       "starting_x" : 5,
@@ -11,7 +14,7 @@
       "elements" : [
         {
           "type" : "BUTTON",
-          "text": "AddTexture",
+          "text": "Add texture",
           "action": "OPEN_MAIN_MENU",
           "id": "button_for_selecting_action_of_texture_adding"
         }

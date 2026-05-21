@@ -29,7 +29,9 @@ Button* ButtonMenu::GetCollisionButton(float x, float y) {
 }
 
 void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
+
 	this->filepath = cfg_json_filepath;
+
 	try {
 		JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
 	} catch ( HerionException::File::FileException &ex ) {
@@ -40,10 +42,12 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
 	try {
 		this->scale = JSONParser::graphics::GetScale();
 		this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
-
+		this->button_style = JSONParser::menu_configuration::GetButtonStyle();
+		this->font_style = JSONParser::menu_configuration::GetFontStyle();
 		this->start_y = JSONParser::menu_configuration::GetStartY();
 		this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
 		this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale;
+		this->char_wdith = JSONParser::menu_configuration::GetCharWidth();
 	} catch ( HerionException::File::FileMalformedException& ex ) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
 		throw;
@@ -83,9 +87,9 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
         	Texture* right_texture = nullptr;
 
         	try {
-        		left_texture   = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonLeft2.png");
-        		center_texture = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonCenter2.png");
-        		right_texture  = texture_manager->GetTextureByName("Assets/Ui/Buttons/ButtonRight2.png");
+        		left_texture   = texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonLeft.png");
+        		center_texture = texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonCenter.png");
+        		right_texture  = texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonRight.png");
         	} catch ( HerionException::File::FileNotFoundException &ex ) {
 				ex.UpdateStackTrace( GET_CONTEXT() );
         		throw;
@@ -101,7 +105,7 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
             rects.push_back(left_rect);
             textures.push_back(left_texture);
 
-            float char_w = 20.0f * scale;
+            float char_w = this->char_wdith * this->scale;
             float text_total_w = text.size() * char_w;
 
             SDL_FRect center_rect = { cumulative_x + left_rect.w,
@@ -124,15 +128,15 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
             	try {
 
             		if (std::isupper(c))
-            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/UppercaseLetters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/" + this->font_style + "/UppercaseLetters/" + std::string(1, c) + ".png");
             		else if (std::islower(c))
-            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/LowercaseLetters/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/" + this->font_style + "/LowercaseLetters/" + std::string(1, c) + ".png");
             		else if (std::isdigit(c))
-            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/Numbers/" + std::string(1, c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/" + this->font_style + "/Numbers/" + std::string(1, c) + ".png");
             		else if (isspecial(c))
-            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/" + this->font_style + "/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png");
             		else if ( isspace(c))
-            			char_tex = texture_manager->GetTextureByName("Assets/Font/Game/SpecialCharacters/space.png");
+            			char_tex = texture_manager->GetTextureByName("Assets/Font/" + this->font_style + "/SpecialCharacters/space.png");
 
             	} catch ( HerionException::File::FileNotFoundException &ex ) {
             		ex.UpdateStackTrace( GET_CONTEXT() );
