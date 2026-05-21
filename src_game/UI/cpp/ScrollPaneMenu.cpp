@@ -17,7 +17,8 @@ void ScrollPaneMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
 
     std::string cmd;
 
-    this->background = this->texture_manager->GetTextureByName(JSONParser::menu_configuration::GetBackgroundImagePath() );
+	this->background_filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
+    this->background = this->texture_manager->GetTextureByName( this->background_filepath );
     float w = JSONParser::graphics::GetWidth();
     float h = JSONParser::graphics::GetHeight();
 

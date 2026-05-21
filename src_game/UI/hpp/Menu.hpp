@@ -27,8 +27,7 @@ protected:
 	float mouse_offset;
 	const std::string base_path = "../";
 	float scale;
-	float char_wdith;
-
+	float char_width;
 
 	SDL_FRect background_rect;
 
@@ -38,6 +37,7 @@ protected:
 	std::unordered_map< std::string, Text*> texts;
 
 	std::string filepath;
+	std::string background_filepath;
 	std::string type;
 	std::string font_style;
 
@@ -51,7 +51,6 @@ protected:
 	std::string GetNameOfSpecialChar( const char c );
 	std::vector< std::string > split( const std::string &str );
 
-	virtual void LoadConfiguration( const std::string& filepath ) = 0;
 	virtual bool CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) = 0;
 
 
@@ -93,9 +92,10 @@ public:
 	std::vector < Button* > GetButtons() const;
 
 	virtual Button* GetCollisionButton( float x, float y ) = 0;
+	virtual void LoadConfiguration( const std::string& filepath ) = 0;
 	virtual void Draw( SDL_Renderer* renderer) const = 0 ;
 	void SetMouseOffset( float diff );
-
+	void ReloadConfiguration();
 };
 
 

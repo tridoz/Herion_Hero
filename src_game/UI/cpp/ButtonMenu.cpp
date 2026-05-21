@@ -41,20 +41,20 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
 
 	try {
 		this->scale = JSONParser::graphics::GetScale();
-		this->filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
+		this->background_filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
 		this->button_style = JSONParser::menu_configuration::GetButtonStyle();
 		this->font_style = JSONParser::menu_configuration::GetFontStyle();
 		this->start_y = JSONParser::menu_configuration::GetStartY();
 		this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
 		this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale;
-		this->char_wdith = JSONParser::menu_configuration::GetCharWidth();
+		this->char_width = JSONParser::menu_configuration::GetCharWidth();
 	} catch ( HerionException::File::FileMalformedException& ex ) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
 		throw;
 	}
 
 	try {
-		this->background = texture_manager->GetTextureByName(this->filepath );
+		this->background = texture_manager->GetTextureByName(this->background_filepath );
 	} catch ( HerionException::File::FileException& ex ) {
 		ex.UpdateStackTrace( GET_CONTEXT() );
 		throw;
@@ -105,7 +105,7 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
             rects.push_back(left_rect);
             textures.push_back(left_texture);
 
-            float char_w = this->char_wdith * this->scale;
+            float char_w = this->char_width * this->scale;
             float text_total_w = text.size() * char_w;
 
             SDL_FRect center_rect = { cumulative_x + left_rect.w,

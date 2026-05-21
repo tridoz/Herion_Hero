@@ -96,6 +96,13 @@ void InputProcessor::process_level_editor(int scancode) {
             }
             break;
 
+        case SDL_SCANCODE_R: {
+            for ( const auto& [name, window] : window_tools ) {
+                window->GetCurrentMenu()->ReloadConfiguration();
+            }
+            break;
+        }
+
         case SDL_SCANCODE_T: {
             Window* texture_window = this->window_tools.at("TEXTURE_SELECTION");
             if ( texture_window->IsOpen() ) {

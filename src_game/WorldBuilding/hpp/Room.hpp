@@ -18,6 +18,7 @@ protected:
     std::string filepath;
 
     int horizontal_tiles, vertical_tiles;
+    int width, height;
     int spawn_x, spawn_y;
 
 public:

@@ -6,17 +6,17 @@
 
 EditorRoom::EditorRoom() {
     this->draw_axis = true;
+
+    this->width = JSONParser::graphics::GetWidth();
+    this->height = JSONParser::graphics::GetHeight();
+
+    this->tile_width = width / horizontal_tiles;
+    this->tile_height = height / vertical_tiles;
 }
 
 void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
 
     SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );
-
-    const int width = JSONParser::graphics::GetWidth();
-    const int height = JSONParser::graphics::GetHeight();
-
-    const float tile_width = width / horizontal_tiles;
-    const float tile_height = height / vertical_tiles;
 
     for ( int i = 0 ; i <= horizontal_tiles ; ++i ) {
         SDL_RenderLine( renderer, i*tile_width, 0, i*tile_width, height );

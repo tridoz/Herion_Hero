@@ -151,6 +151,10 @@ void Menu::SetMouseOffset(float diff) {
 	this->mouse_offset += diff*10;
 }
 
+void Menu::ReloadConfiguration() {
+	this->LoadConfiguration( this->filepath );
+}
+
 
 
 

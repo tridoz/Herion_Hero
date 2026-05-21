@@ -14,6 +14,8 @@ class EditorRoom : public Room {
 private:
     Texture* current_editor_texture;
 
+    float tile_width, tile_height;
+
     bool draw_axis;
 
     std::vector < std::string > base_plan_output_file;
