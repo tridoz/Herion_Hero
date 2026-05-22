@@ -49,18 +49,18 @@ void ButtonsFunctions::OpenAnimationEditor() {
 void ButtonsFunctions::OpenEditorMenu() {
     player->SetGameMode( Player::GameMode::EDITOR_MENU );
 }
-
-void ButtonsFunctions::OpenSettings() {
-    player->SetGameMode( Player::GameMode::SETTINGS_MENU );
+void ButtonsFunctions::OpenGeneralSettingsMenu() {
+    player->SetGameMode( Player::GameMode::GENERAL_SETTINGS_MENU );
 }
-void ButtonsFunctions::CloseSettings() {
-    player->SetGameMode( player->GetPreviousGameMode() );
+void ButtonsFunctions::OpenGraphicsSettingsMenu() {
+    player->SetGameMode( Player::GameMode::GRAPHICS_SETTINGS_MENU );
 }
-
+void ButtonsFunctions::OpenAudioSettingsMenu() {
+    player->SetGameMode( Player::GameMode::AUDIO_SETTINGS_MENU );
+}
 void ButtonsFunctions::ReturnPreviousState() {
     player->SetGameMode( player->GetPreviousGameMode() );
 }
-
 
 //GRAPHICS SETTINGS
 void ButtonsFunctions::IncreaseResolution() {

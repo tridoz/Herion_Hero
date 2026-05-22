@@ -202,10 +202,22 @@ void InputProcessor::process_mouse_left_pressed() {
             if (btn != nullptr) btn->Click();
             break;
 
-        case Player::GameMode::SETTINGS_MENU:
-            btn = menus.at("SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+        case Player::GameMode::GENERAL_SETTINGS_MENU:
+            btn = menus.at("GENERAL_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
+
+        case Player::GameMode::GRAPHICS_SETTINGS_MENU:
+            btn = menus.at("GRAPHICS_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            if (btn != nullptr) btn->Click();
+            break;
+
+        case Player::GameMode::AUDIO_SETTINGS_MENU: {
+            Menu* men = menus.at("AUDIO_SETTINGS_MENU");
+            btn = men->GetCollisionButton(mouse_x, mouse_y);
+            if (btn != nullptr) btn->Click();
+            break;
+        }
 
         case Player::GameMode::PAUSE_MENU:
             btn = menus.at("PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);

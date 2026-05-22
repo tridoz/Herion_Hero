@@ -19,9 +19,10 @@ class SoundBoard {
     MIX_Mixer *mixer;
     MIX_Track *track;
 
-
     std::unordered_map< std::string, MIX_Audio* > sounds;
+
 public:
+
     SoundBoard();
 
     void LoadSound(const std::string& id, const std::string& filepath );

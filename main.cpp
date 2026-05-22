@@ -25,6 +25,8 @@
 #endif
 
 
+// cloc src_game
+
 int LoadEnv() {
 
     std::string base_path = "../";
@@ -115,13 +117,16 @@ int main ( int argc, char* argv[] ) {
     Player player;
 
     ButtonMenu main_menu;
-    ButtonMenu settings_menu;
+    ButtonMenu general_settings_menu;
+    ButtonMenu graphics_settings_menu;
+    ButtonMenu audio_settings_menu;
+
     ButtonMenu pause_menu;
     ButtonMenu editor_menu;
 
-    ScrollPaneMenu texture_selection_menu;
-
     ButtonMenu action_selection_menu;
+
+    ScrollPaneMenu texture_selection_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
@@ -129,9 +134,13 @@ int main ( int argc, char* argv[] ) {
     ButtonsFunctions::SetPlayer( &player );
 
     window.SetMenu( "MAIN_MENU", &main_menu );
-    window.SetMenu( "SETTINGS_MENU", &settings_menu );
+
+    window.SetMenu( "GENERAL_SETTINGS_MENU", &general_settings_menu );
     window.SetMenu( "PAUSE_MENU", &pause_menu );
     window.SetMenu( "EDITOR_MENU", &editor_menu );
+
+    window.SetMenu( "GRAPHICS_SETTINGS_MENU", &graphics_settings_menu );
+    window.SetMenu("AUDIO_SETTINGS_MENU", &audio_settings_menu );
 
     editors_windows.at("TEXTURE_SELECTION")->SetMenu("TEXTURE_SELECTION", &texture_selection_menu );
     editors_windows.at("TEXTURE_SELECTION")->SetCurrentMenu("TEXTURE_SELECTION");
@@ -171,8 +180,14 @@ int main ( int argc, char* argv[] ) {
     main_menu.SetTextureManager( &main_texture_manager );
     main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
-    settings_menu.SetTextureManager( &main_texture_manager );
-    settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    general_settings_menu.SetTextureManager( &main_texture_manager );
+    general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
+    graphics_settings_menu.SetTextureManager( &main_texture_manager );
+    graphics_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+
+    audio_settings_menu.SetTextureManager( &main_texture_manager );
+    audio_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
     pause_menu.SetTextureManager( &main_texture_manager );
     pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
@@ -189,7 +204,11 @@ int main ( int argc, char* argv[] ) {
     try {
 
         main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
-        settings_menu.LoadConfiguration( "configs/menus/main_window/settings_menu.json" );
+
+        general_settings_menu.LoadConfiguration( "configs/menus/main_window/general_settings_menu.json" );
+        graphics_settings_menu.LoadConfiguration("configs/menus/main_window/graphics_settings_menu.json" );
+        audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json" );
+
         pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
         editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
 
@@ -203,7 +222,9 @@ int main ( int argc, char* argv[] ) {
     }
 
     processor.SetMenus("MAIN_MENU", &main_menu );
-    processor.SetMenus("SETTINGS_MENU", &settings_menu );
+    processor.SetMenus("GENERAL_SETTINGS_MENU", &general_settings_menu );
+    processor.SetMenus("GRAPHICS_SETTINGS_MENU", &graphics_settings_menu );
+    processor.SetMenus("AUDIO_SETTINGS_MENU", &audio_settings_menu );
     processor.SetMenus("PAUSE_MENU", &pause_menu );
     processor.SetMenus("EDITOR_MENU", &editor_menu );
     processor.SetMenus("TEXTURE_SELECTIONS", &texture_selection_menu );
@@ -252,13 +273,13 @@ int main ( int argc, char* argv[] ) {
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
             try {
                 main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
-                settings_menu.LoadConfiguration( "configs/menus/main_window/settings_menu.json" );
+                general_settings_menu.LoadConfiguration( "configs/menus/main_window/general_settings_menu.json" );
                 pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
                 editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
             } catch ( HerionException::File::FileException &ex ) {
@@ -289,8 +310,18 @@ int main ( int argc, char* argv[] ) {
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
-            case Player::GameMode::SETTINGS_MENU:
-                window.SetCurrentMenu("SETTINGS_MENU");
+            case Player::GameMode::GENERAL_SETTINGS_MENU:
+                window.SetCurrentMenu("GENERAL_SETTINGS_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                break;
+
+            case Player::GameMode::GRAPHICS_SETTINGS_MENU:
+                window.SetCurrentMenu("GRAPHICS_SETTINGS_MENU");
+                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                break;
+
+            case Player::GameMode::AUDIO_SETTINGS_MENU:
+                window.SetCurrentMenu("AUDIO_SETTINGS_MENU");
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 

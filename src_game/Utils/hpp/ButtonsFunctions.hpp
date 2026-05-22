@@ -43,7 +43,11 @@ public:
     /**
      * @brief Set the Player::GameMode to SETTINGS_MENU
      */
-    static void OpenSettings();
+    static void OpenGeneralSettingsMenu();
+
+    static void OpenGraphicsSettingsMenu();
+
+    static void OpenAudioSettingsMenu();
 
     /**
      * @brief Set the Player::Gamemode to LEVEL_EDITOR
@@ -65,10 +69,6 @@ public:
      */
     static void OpenAnimationEditor();
 
-    /**
-     * @brief Set the player::GameMode to Player::GetPreviousGameMode()
-     */
-    static void CloseSettings();
 
     /**
      * @brief Set the player::GameMode to Player::GetPreviousGameMode()

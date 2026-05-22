@@ -9,13 +9,14 @@
 
 
 Menu::Menu() {
-
 	buttons_functions.clear();
 	buttons_functions.emplace("START_GAME", ButtonsFunctions::StartGame );
 	buttons_functions.emplace( "START_NEW_GAME", ButtonsFunctions::StartNewGame );
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu );
-	buttons_functions.emplace( "OPEN_SETTINGS_MENU", ButtonsFunctions::OpenSettings );
+	buttons_functions.emplace( "OPEN_GENERAL_SETTINGS_MENU", ButtonsFunctions::OpenGeneralSettingsMenu );
+	buttons_functions.emplace("OPEN_GRAPHICS_SETTINGS_MENU", ButtonsFunctions::OpenGraphicsSettingsMenu );
+	buttons_functions.emplace("OPEN_AUDIO_SETTINGS_MENU", ButtonsFunctions::OpenAudioSettingsMenu );
 	buttons_functions.emplace( "OPEN_LEVEL_EDITOR", ButtonsFunctions::OpenLevelEditor );
 	buttons_functions.emplace( "OPEN_ANIMATION_EDITOR", ButtonsFunctions::OpenAnimationEditor );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
@@ -24,7 +25,6 @@ Menu::Menu() {
 	buttons_functions.emplace( "INCREASE_RESOLUTION", ButtonsFunctions::IncreaseResolution );
 	buttons_functions.emplace( "DECREASE_FRAME_RATE", ButtonsFunctions::DecreaseFrameLimit );
 	buttons_functions.emplace( "INCREASE_FRAME_RATE", ButtonsFunctions::IncreaseFrameLimit );
-
 }
 
 Menu::~Menu() {

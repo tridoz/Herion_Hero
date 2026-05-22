@@ -50,7 +50,7 @@
         {
           "type" : "BUTTON",
           "text" : "Settings",
-          "action" : "OPEN_SETTINGS_MENU",
+          "action" : "OPEN_GENERAL_SETTINGS_MENU",
           "id" : "button_for_opening_settings_menu"
         }
       ]
