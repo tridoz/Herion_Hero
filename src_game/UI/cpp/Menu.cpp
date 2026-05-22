@@ -12,6 +12,7 @@ Menu::Menu() {
 	buttons_functions.clear();
 	buttons_functions.emplace("START_GAME", ButtonsFunctions::StartGame );
 	buttons_functions.emplace( "START_NEW_GAME", ButtonsFunctions::StartNewGame );
+
 	buttons_functions.emplace( "OPEN_MAIN_MENU", ButtonsFunctions::OpenMainMenu );
 	buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu );
 	buttons_functions.emplace( "OPEN_GENERAL_SETTINGS_MENU", ButtonsFunctions::OpenGeneralSettingsMenu );
@@ -21,10 +22,16 @@ Menu::Menu() {
 	buttons_functions.emplace( "OPEN_ANIMATION_EDITOR", ButtonsFunctions::OpenAnimationEditor );
 	buttons_functions.emplace( "EXIT_GAME", ButtonsFunctions::EndGame );
 	buttons_functions.emplace( "RETURN_PREVIOUS_GAME_MODE", ButtonsFunctions::ReturnPreviousState );
+
 	buttons_functions.emplace( "DECREASE_RESOLUTION", ButtonsFunctions::DecreaseResolution );
 	buttons_functions.emplace( "INCREASE_RESOLUTION", ButtonsFunctions::IncreaseResolution );
+
 	buttons_functions.emplace( "DECREASE_FRAME_RATE", ButtonsFunctions::DecreaseFrameLimit );
 	buttons_functions.emplace( "INCREASE_FRAME_RATE", ButtonsFunctions::IncreaseFrameLimit );
+
+	buttons_functions.emplace("DECREASE_MASTER_VOLUME", ButtonsFunctions::DecreaseMasterVolume );
+	buttons_functions.emplace("INCREASE_MASTER_VOLUME", ButtonsFunctions::IncreaseMasterVolume );
+
 }
 
 Menu::~Menu() {
@@ -59,7 +66,6 @@ void Menu::Rescale(SDL_FRect* rect) {
 }
 
 
-
 std::string Menu::GetText( const std::string& text_type ) {
 	std::string text = "";
 
@@ -72,8 +78,8 @@ std::string Menu::GetText( const std::string& text_type ) {
 	} else if ( text_type == "FRAME_RATE" ) {
 		const int frame_rate = JSONParser::graphics::GetFrameRate();
 		text = std::to_string(frame_rate);
-	}else {
-		text = "error";
+	}else if ( text_type == "MASTER_VOLUME"){
+		text = std::to_string( JSONParser::audio::GetMasterVolume() );
 	}
 
 	return text;

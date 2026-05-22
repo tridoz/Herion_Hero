@@ -6,6 +6,7 @@
 
 //AUDIO
 void JSONParser::audio::IncreaseMasterVolume() {
+
     std::ifstream audio_file_input(json_audio_file_path, std::ios::in );
     if ( !audio_file_input.is_open() ) {
         Logger::LogErr(
@@ -24,7 +25,7 @@ void JSONParser::audio::IncreaseMasterVolume() {
     double master_volume;
 
     if ( json_audio.contains("master_volume") ) {
-        master_volume = json_audio["masterVolume"].get<double>();
+        master_volume = json_audio["master_volume"].get<double>();
     } else {
         Logger::LogErr(
             std::time(nullptr),
@@ -60,7 +61,7 @@ void JSONParser::audio::IncreaseMasterVolume() {
 
     audio_file_output << json_audio.dump(4);
     audio_file_output.close();
-
+    changed = true;
 }
 
 void JSONParser::audio::DecreaseMasterVolume() {
@@ -82,7 +83,7 @@ void JSONParser::audio::DecreaseMasterVolume() {
     double master_volume;
 
     if ( json_audio.contains("master_volume") ) {
-        master_volume = json_audio["masterVolume"].get<double>();
+        master_volume = json_audio["master_volume"].get<double>();
     } else {
         Logger::LogErr(
             std::time(nullptr),
@@ -94,7 +95,7 @@ void JSONParser::audio::DecreaseMasterVolume() {
         return;
     }
 
-    master_volume -- ;
+    master_volume-- ;
 
     if ( master_volume < 0 ) {
         master_volume = 0;
@@ -118,6 +119,7 @@ void JSONParser::audio::DecreaseMasterVolume() {
 
     audio_file_output << json_audio.dump(4);
     audio_file_output.close();
+    changed = true;
 
 }
 
@@ -408,3 +410,31 @@ void JSONParser::audio::ToggleMute() {
 
 }
 
+float JSONParser::audio::GetMasterVolume() {
+    std::ifstream audio_file;
+
+    try {
+      FileOpener::OpenFileInput( audio_file, json_audio_file_path );
+    } catch ( HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    nlohmann::json json_audio;
+    audio_file >> json_audio;
+    audio_file.close();
+
+    if ( !json_audio.contains("master_volume") ) {
+        THROW_FILE_MALFORMED( json_audio_file_path + "\t=> master_volume");
+    }
+
+    return json_audio["master_volume"].get<float>();
+}
+
+bool JSONParser::audio::Changed() {
+    return changed;
+}
+
+void JSONParser::audio::ChangesApplied() {
+    changed = false;
+}

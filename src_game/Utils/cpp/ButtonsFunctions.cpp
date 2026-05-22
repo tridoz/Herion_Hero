@@ -23,11 +23,8 @@ Texture* ButtonsFunctions::GetTexture() {
     return texture;
 }
 
-//EDITOR ACTION
 
-
-
-//CHANGE GAMEMODE
+//CHANGE GAME MODE
 void ButtonsFunctions::StartGame() {
     player->SetGameMode( Player::GameMode::IN_GAME );
 }
@@ -83,4 +80,12 @@ void ButtonsFunctions::IncreaseBrightness() {
 }
 void ButtonsFunctions::DecreaseBrightness() {
 
+}
+
+//AUDIO SETTINGS
+void ButtonsFunctions::IncreaseMasterVolume() {
+    JSONParser::audio::IncreaseMasterVolume();
+}
+void ButtonsFunctions::DecreaseMasterVolume() {
+    JSONParser::audio::DecreaseMasterVolume();
 }

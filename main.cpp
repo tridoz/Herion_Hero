@@ -85,13 +85,8 @@ int main ( int argc, char* argv[] ) {
     LoadEnv();
 
 
-    //  SoundBoard sound_board;
-    // sound_board.LoadSound("prova", "../sounds/prova.mp3");
-    //
-    // sound_board.PlaySound("prova");
-
-
-    //Logger::EnableHTTPLogging();
+    SoundBoard::Init();
+    SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
 
     Logger::EnableFILELogging();
     Logger::EnableSTDOUTLogging();
@@ -270,18 +265,29 @@ int main ( int argc, char* argv[] ) {
         }
 
         if ( JSONParser::graphics::Changed() ) {
+
             window.Resize();
 
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            graphics_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            audio_settings_menu.SetTextureManager( &main_texture_manager );
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
             try {
                 main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
+
                 general_settings_menu.LoadConfiguration( "configs/menus/main_window/general_settings_menu.json" );
+                graphics_settings_menu.LoadConfiguration("configs/menus/main_window/graphics_settings_menu.json" );
+                audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json" );
+
                 pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
                 editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
+
+                texture_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/directory_texture_selection.json");
+                action_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/action_selection.json");
+
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -293,6 +299,20 @@ int main ( int argc, char* argv[] ) {
 
             player.Resize();
 
+        }
+
+        if ( JSONParser::audio::Changed() ) {
+
+            JSONParser::audio::ChangesApplied();
+
+            try{
+                audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json");
+
+            } catch ( HerionException::File::FileException& ex ) {
+                ex.UpdateStackTrace( GET_CONTEXT() );
+                Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+                return -1;
+            }
         }
 
         window.SetColor( COLORS::BLACK );

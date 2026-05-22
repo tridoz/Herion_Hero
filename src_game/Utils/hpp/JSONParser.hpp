@@ -17,6 +17,7 @@ namespace JSONParser {
 
     namespace audio {
         inline const std::string json_audio_file_path = "../settings/audio.json";
+        inline bool changed = false;
 
         void IncreaseMasterVolume();
         void DecreaseMasterVolume();
@@ -28,6 +29,11 @@ namespace JSONParser {
         void DecreaseSFXVolume();
 
         void ToggleMute();
+
+        float GetMasterVolume();
+
+        bool Changed();
+        void ChangesApplied();
     }
 
     namespace controls {

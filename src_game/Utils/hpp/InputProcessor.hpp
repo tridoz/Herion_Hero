@@ -16,6 +16,7 @@
 #include "../../UI/hpp/Menu.hpp"
 #include "../../UI/hpp/ButtonMenu.hpp"
 #include "../../UI/hpp/ScrollPaneMenu.hpp"
+#include "../../Sound/hpp/SoundBoard.hpp"
 #include "../../UI/hpp/Window.hpp"
 
 #define MAX_SCANCODES 512

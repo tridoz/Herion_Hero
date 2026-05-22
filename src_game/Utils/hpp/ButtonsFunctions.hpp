@@ -114,15 +114,8 @@ public:
 
     //AUDIO SETTINGS
 
-    /**
-     * Unimplemented
-     */
-    static void IncreaseGeneralAudio();
-
-    /**
-     * Unimplemented
-     */
-    static void DecreaseGeneralAudio();
+    static void IncreaseMasterVolume();
+    static void DecreaseMasterVolume();
 
     /**
      * Unimplemented

@@ -213,8 +213,7 @@ void InputProcessor::process_mouse_left_pressed() {
             break;
 
         case Player::GameMode::AUDIO_SETTINGS_MENU: {
-            Menu* men = menus.at("AUDIO_SETTINGS_MENU");
-            btn = men->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at("AUDIO_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
         }
@@ -244,6 +243,7 @@ void InputProcessor::process_mouse_left_pressed() {
                             TextureManager* mng = texture_managers.at("MAIN");
                             Texture* txt = mng->GetTextureByName(str);
                             editor_room->SetCurrentEditorTexture( txt );
+                            SoundBoard::PlaySound("prova");
                         }
 
                     }
@@ -254,6 +254,7 @@ void InputProcessor::process_mouse_left_pressed() {
                         if ( btn != nullptr ) {
                             std::string str = btn->ClickReturn();
                             editor_room->SetAction( str );
+                            SoundBoard::PlaySound("prova");
                         }
                     }
                 }
