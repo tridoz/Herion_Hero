@@ -84,15 +84,15 @@ int LoadEnv() {
 
 int main ( int argc, char* argv[] ) {
 
-//    LoadEnv();
-//    prova();
+    //    LoadEnv();
+    //    prova();
 
     SoundBoard::Init();
     SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
 
-    Logger::EnableFILELogging();
+    //Logger::EnableFILELogging();
+    //Logger::ClearTempLoggingFiles();
     Logger::EnableSTDOUTLogging();
-    Logger::ClearTempLoggingFiles();
 
     Window window(  "HERION HERO");
 
