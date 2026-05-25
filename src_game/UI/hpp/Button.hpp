@@ -12,7 +12,6 @@
 #include "../../Utils/hpp/Logger.hpp"
 
 
-
 class Button {
 private:
     std::function<void()> OnClick;

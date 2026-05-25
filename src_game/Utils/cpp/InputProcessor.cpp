@@ -1,6 +1,7 @@
 #include "../hpp/InputProcessor.hpp"
 #include <iostream>
 #include "../hpp/JSONParser.hpp"
+#include "../hpp/STRINGS.hpp"
 
 InputProcessor::InputProcessor() {
     this->player = nullptr;
@@ -13,6 +14,7 @@ InputProcessor::InputProcessor() {
     this->mouse_y = 0;
     this->key_left_pressed = false;
     this->key_right_pressed = false;
+    this->editor_room = nullptr;
 }
 
 InputProcessor::~InputProcessor() {
@@ -198,33 +200,34 @@ void InputProcessor::process_mouse_left_pressed() {
             break;
 
         case Player::GameMode::MAIN_MENU:
-            btn = menus.at("MAIN_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::main_menu_name )->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 
         case Player::GameMode::GENERAL_SETTINGS_MENU:
-            btn = menus.at("GENERAL_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::general_settings_menu_name )->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 
         case Player::GameMode::GRAPHICS_SETTINGS_MENU:
-            btn = menus.at("GRAPHICS_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::graphics_settings_menu_name )->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 
         case Player::GameMode::AUDIO_SETTINGS_MENU: {
-            btn = menus.at("AUDIO_SETTINGS_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
         }
 
         case Player::GameMode::PAUSE_MENU:
-            btn = menus.at("PAUSE_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::pause_menu_name )->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 
+
         case Player::GameMode::EDITOR_MENU:
-            btn = menus.at("EDITOR_MENU")->GetCollisionButton(mouse_x, mouse_y);
+            btn = menus.at(Strings::Menus::Main_Window::Names::editor_menu_name)->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
 

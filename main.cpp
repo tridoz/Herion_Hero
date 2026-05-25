@@ -1,5 +1,6 @@
 #include "src_game/UI/hpp/Window.hpp"
 #include "src_game/Utils/hpp/Logger.hpp"
+#include "src_game/Utils/hpp/STRINGS.hpp"
 #include "src_game/Utils/hpp/InputProcessor.hpp"
 #include "src_game/Textures/hpp/TextureManager.hpp"
 #include "src_game/WorldBuilding/hpp/RoomManager.hpp"
@@ -80,10 +81,11 @@ int LoadEnv() {
     return 1;
 }
 
+
 int main ( int argc, char* argv[] ) {
 
-    LoadEnv();
-
+//    LoadEnv();
+//    prova();
 
     SoundBoard::Init();
     SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
@@ -128,14 +130,14 @@ int main ( int argc, char* argv[] ) {
 
     ButtonsFunctions::SetPlayer( &player );
 
-    window.SetMenu( "MAIN_MENU", &main_menu );
+    window.SetMenu( Strings::Menus::Main_Window::Names::main_menu_name, &main_menu );
 
-    window.SetMenu( "GENERAL_SETTINGS_MENU", &general_settings_menu );
-    window.SetMenu( "PAUSE_MENU", &pause_menu );
-    window.SetMenu( "EDITOR_MENU", &editor_menu );
+    window.SetMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name, &general_settings_menu );
+    window.SetMenu( Strings::Menus::Main_Window::Names::pause_menu_name, &pause_menu );
+    window.SetMenu( Strings::Menus::Main_Window::Names::editor_menu_name, &editor_menu );
 
-    window.SetMenu( "GRAPHICS_SETTINGS_MENU", &graphics_settings_menu );
-    window.SetMenu("AUDIO_SETTINGS_MENU", &audio_settings_menu );
+    window.SetMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name, &graphics_settings_menu );
+    window.SetMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name, &audio_settings_menu );
 
     editors_windows.at("TEXTURE_SELECTION")->SetMenu("TEXTURE_SELECTION", &texture_selection_menu );
     editors_windows.at("TEXTURE_SELECTION")->SetCurrentMenu("TEXTURE_SELECTION");
@@ -143,7 +145,7 @@ int main ( int argc, char* argv[] ) {
     editors_windows.at("ACTION_SELECTION")->SetMenu("ACTION_SELECTION", &action_selection_menu );
     editors_windows.at("ACTION_SELECTION")->SetCurrentMenu("ACTION_SELECTION");
 
-    window.LoadCursors( "Assets/all_cursors.txt");
+    //window.LoadCursors( Strings::Textures::Cursors::all_cursors_path );
 
     main_texture_manager.SetRenderer( window.GetRenderer() );
     texture_selection_texture_manager.SetRenderer( editors_windows.at("TEXTURE_SELECTION")->GetRenderer() );
@@ -151,9 +153,9 @@ int main ( int argc, char* argv[] ) {
 
     try {
 
-        main_texture_manager.LoadTextures("Assets/all_textures.txt");
-        texture_selection_texture_manager.LoadTextures("Assets/all_textures.txt");
-        action_selection_texture_manager.LoadTextures("Assets/all_textures.txt");
+        main_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
+        texture_selection_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
+        action_selection_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -198,17 +200,17 @@ int main ( int argc, char* argv[] ) {
 
     try {
 
-        main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
+        main_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::main_menu_config_path );
 
-        general_settings_menu.LoadConfiguration( "configs/menus/main_window/general_settings_menu.json" );
-        graphics_settings_menu.LoadConfiguration("configs/menus/main_window/graphics_settings_menu.json" );
-        audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json" );
+        general_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::general_settings_menu_config_path );
+        graphics_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::graphics_settings_menu_config_path );
+        audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path );
 
-        pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
-        editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
+        pause_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::pause_menu_config_path );
+        editor_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::editor_menu_config_path );
 
-        texture_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/directory_texture_selection.json");
-        action_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/action_selection.json");
+        texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path );
+        action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path );
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -216,18 +218,18 @@ int main ( int argc, char* argv[] ) {
         return -1;
     }
 
-    processor.SetMenus("MAIN_MENU", &main_menu );
-    processor.SetMenus("GENERAL_SETTINGS_MENU", &general_settings_menu );
-    processor.SetMenus("GRAPHICS_SETTINGS_MENU", &graphics_settings_menu );
-    processor.SetMenus("AUDIO_SETTINGS_MENU", &audio_settings_menu );
-    processor.SetMenus("PAUSE_MENU", &pause_menu );
-    processor.SetMenus("EDITOR_MENU", &editor_menu );
-    processor.SetMenus("TEXTURE_SELECTIONS", &texture_selection_menu );
-    processor.SetMenus("ACTION_SELECTION", &action_selection_menu );
+    processor.SetMenus(Strings::Menus::Main_Window::Names::main_menu_name, &main_menu );
+    processor.SetMenus(Strings::Menus::Main_Window::Names::general_settings_menu_name, &general_settings_menu );
+    processor.SetMenus( Strings::Menus::Main_Window::Names::graphics_settings_menu_name, &graphics_settings_menu );
+    processor.SetMenus( Strings::Menus::Main_Window::Names::audio_settings_menu_name, &audio_settings_menu );
+    processor.SetMenus(Strings::Menus::Main_Window::Names::pause_menu_name, &pause_menu );
+    processor.SetMenus(Strings::Menus::Main_Window::Names::editor_menu_name, &editor_menu );
+    processor.SetMenus(Strings::Menus::Level_Editors_Window::Names::texture_selection_menu_name, &texture_selection_menu );
+    processor.SetMenus(Strings::Menus::Level_Editors_Window::Names::action_selection_menu_name, &action_selection_menu );
 
-    processor.SetTextureManager("MAIN", &main_texture_manager );
-    processor.SetTextureManager("EDITOR", &texture_selection_texture_manager);
-    processor.SetTextureManager("ACTION", &action_selection_texture_manager);
+    processor.SetTextureManager(Strings::TextureManagers::Names::main_texture_manager_name, &main_texture_manager );
+    processor.SetTextureManager(Strings::TextureManagers::Names::texture_selection_menu_name, &texture_selection_texture_manager);
+    processor.SetTextureManager(Strings::TextureManagers::Names::action_selection_menu_name, &action_selection_texture_manager);
 
     processor.SetEditorRoom( &editor_room );
 
@@ -240,7 +242,7 @@ int main ( int argc, char* argv[] ) {
     player.SetTextureManager( &main_texture_manager );
 
     try {
-        player.LoadAnimation( "configs/animations/player.json");
+        player.LoadAnimation( Strings::Animations::Player::Paths::animation_config_file_path );
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
@@ -276,17 +278,17 @@ int main ( int argc, char* argv[] ) {
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 
             try {
-                main_menu.LoadConfiguration( "configs/menus/main_window/main_menu.json");
+                main_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::main_menu_config_path );
 
-                general_settings_menu.LoadConfiguration( "configs/menus/main_window/general_settings_menu.json" );
-                graphics_settings_menu.LoadConfiguration("configs/menus/main_window/graphics_settings_menu.json" );
-                audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json" );
+                general_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::general_settings_menu_config_path );
+                graphics_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::graphics_settings_menu_config_path );
+                audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path );
 
-                pause_menu.LoadConfiguration( "configs/menus/main_window/pause_menu.json" );
-                editor_menu.LoadConfiguration( "configs/menus/main_window/editor_menu.json" );
+                pause_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::pause_menu_config_path );
+                editor_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::editor_menu_config_path );
 
-                texture_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/directory_texture_selection.json");
-                action_selection_menu.LoadConfiguration("configs/menus/level_editors_windows/action_selection.json");
+                texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path );
+                action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path );
 
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
@@ -306,13 +308,13 @@ int main ( int argc, char* argv[] ) {
             JSONParser::audio::ChangesApplied();
 
             try{
-                audio_settings_menu.LoadConfiguration("configs/menus/main_window/audio_settings_menu.json");
-
+                audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path);
             } catch ( HerionException::File::FileException& ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
                 return -1;
             }
+
         }
 
         window.SetColor( COLORS::BLACK );
@@ -326,32 +328,32 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::MAIN_MENU:
-                window.SetCurrentMenu("MAIN_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::main_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::GENERAL_SETTINGS_MENU:
-                window.SetCurrentMenu("GENERAL_SETTINGS_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::GRAPHICS_SETTINGS_MENU:
-                window.SetCurrentMenu("GRAPHICS_SETTINGS_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::AUDIO_SETTINGS_MENU:
-                window.SetCurrentMenu("AUDIO_SETTINGS_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::audio_settings_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::PAUSE_MENU:
-                window.SetCurrentMenu("PAUSE_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::pause_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                window.SetCurrentMenu("EDITOR_MENU");
+                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::editor_menu_name );
                 window.GetCurrentMenu()->Draw( window.GetRenderer() );
                 break;
 

@@ -12,11 +12,12 @@
 #include <fstream>
 
 #include "Logger.hpp"
+#include "STRINGS.hpp"
 
 namespace JSONParser {
 
     namespace audio {
-        inline const std::string json_audio_file_path = "../settings/audio.json";
+        inline const std::string json_audio_file_path = Strings::Settings::Paths::json_audio_settings_file_path;
         inline bool changed = false;
 
         void IncreaseMasterVolume();
@@ -47,7 +48,7 @@ namespace JSONParser {
     namespace graphics {
 
         static inline const std::vector<int> allowedFPS = {10, 15, 20, 30, 45, 60, 120, 180, 240, 360, 500};
-        inline const std::string json_graphics_file_path = "../settings/graphics.json";
+        inline const std::string json_graphics_file_path = Strings::Settings::Paths::json_graphics_settings_file_path;
         inline bool changed = false;
 
         /**

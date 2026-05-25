@@ -32,12 +32,11 @@
           "type": "BUTTON",
           "text": "Plus",
           "action": "INCREASE_MASTER_VOLUME",
-          "id": "button_decrease_master_resolution"
+          "id": "button_increase_master_volume"
         }
       ]
-    },
-    {
-      "starting_x" : 750,
+    },{
+      "starting_x" : 1000,
       "button_x_offset" : 0,
       "elements": [
         {

@@ -41,6 +41,7 @@ void ButtonMenu::LoadConfiguration( const std::string &cfg_json_filepath ) {
 
 	try {
 		this->scale = JSONParser::graphics::GetScale();
+		this->type = JSONParser::menu_configuration::GetMenuType();
 		this->background_filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
 		this->button_style = JSONParser::menu_configuration::GetButtonStyle();
 		this->font_style = JSONParser::menu_configuration::GetFontStyle();
