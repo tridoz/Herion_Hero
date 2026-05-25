@@ -173,8 +173,11 @@ JSONParser::menu_configuration::GetRowElementFields(int num_row, int num_element
 
     RowElementFields result;
     result.type = element.at("type").get<std::string>();
-    result.text = element.at("text").get<std::string>();
     result.id = element.at("id").get<std::string>();
+
+    if ( element.contains("text") ) {
+        result.text = element.at("text").get<std::string>();
+    }
 
     if (element.contains("action")) {
         result.action = element.at("action").get<std::string>();
@@ -182,6 +185,26 @@ JSONParser::menu_configuration::GetRowElementFields(int num_row, int num_element
     
     if ( element.contains("return_value") ) {
         result.return_value = element.at("return_value").get<std::string>();
+    }
+
+    if ( element.contains("max_value") ) {
+        result.max_value = element.at("max_value").get<float>();
+    }
+
+    if ( element.contains("min_value") ) {
+        result.min_value = element.at("min_value").get<float>();
+    }
+
+    if ( element.contains("step") ) {
+        result.step = element.at("step").get<float>();
+    }
+
+    if ( element.contains("length") ) {
+        result.length = element.at("length").get<float>();
+    }
+
+    if ( element.contains("slider_bar_offset") ) {
+        result.slider_bar_offset = element.at("slider_bar_offset").get<float>();
     }
 
     return result;

@@ -14,6 +14,7 @@
 #include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../../Textures/hpp/Texture.hpp"
 #include "Button.hpp"
+#include "SliderSelector.hpp"
 #include "Text.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "../../Utils/hpp/CMD.hpp"
@@ -28,6 +29,7 @@ protected:
 	const std::string base_path = "../";
 	float scale;
 	float char_width;
+	std::string button_style;
 
 	SDL_FRect background_rect;
 
@@ -35,6 +37,7 @@ protected:
 
 	std::unordered_map< std::string, Button*> buttons;
 	std::unordered_map< std::string, Text*> texts;
+	std::unordered_map < std::string, SliderSelector* > slider_selectors;
 
 	std::string filepath;
 	std::string background_filepath;

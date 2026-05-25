@@ -1,6 +1,7 @@
 Assets/Ui/Bars/Coins.png;AUB_C
 Assets/Ui/Bars/HealthManaStamina.png;AUB_HMS
 Assets/Ui/Bars/Hotbar.png;AUB_H
+Assets/Ui/Bars/SliderBar.png;AUB_SB
 
 Assets/Ui/Boxes/ItemDescription.png;AUB_I
 Assets/Ui/Boxes/TextAvatar.png;AUB_TA
@@ -9,6 +10,7 @@ Assets/Ui/Boxes/Text.png;AUB_T
 Assets/Ui/Buttons/Game/ButtonLeft.png;AUBG_BL
 Assets/Ui/Buttons/Game/ButtonCenter.png;AUBG_BC
 Assets/Ui/Buttons/Game/ButtonRight.png;AUBG_BR
+Assets/Ui/Buttons/Game/SliderButton.png;AUBG_SB
 
 Assets/Ui/Buttons/Editor/ButtonLeft.png;AUBE_BL
 Assets/Ui/Buttons/Editor/ButtonCenter.png;AUBE_BC

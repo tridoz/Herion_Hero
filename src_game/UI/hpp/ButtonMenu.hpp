@@ -13,7 +13,11 @@ private:
     float start_y;
     float button_y_offset;
     float center_piece_offset;
-    std::string button_style;
+
+    void LoadButton();
+    void LoadStaticText();
+    void LoadDynamicText();
+    void LoadSliderSelector();
 
 public:
     bool CheckCollision( std::vector< SDL_FRect >, float x, float y );

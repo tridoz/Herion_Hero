@@ -16,8 +16,11 @@ private:
     std::vector < Texture* > textures;
     std::vector < SDL_FRect > rects;
 
-    Texture* slider_texture;
-    SDL_FRect slider_rect;
+    Texture* slider_button_texture;
+    SDL_FRect slider_button_rect;
+
+    Texture* slider_bar_texture;
+    SDL_FRect slider_bar_rect;
 
     int max_value;
     int min_value;
@@ -30,6 +33,19 @@ private:
 public:
     SliderSelector();
 
+    void SetTextures( std::vector < Texture* > textures );
+    void SetRects( std::vector < SDL_FRect > rects );
+
+    void SetSliderButtonTexture( Texture* slider_texture );
+    void SetSliderButtonRect( SDL_FRect slider_rect );
+
+    void SetSliderBarTexture( Texture* slider_bar_texture );
+    void SetSliderBarRect( SDL_FRect slider_rect );
+
+    void SetMaxMinStep( const float max, const float min, const float step );
+    void SetXValues( const float max, const float min );
+
+    void Draw( SDL_Renderer* renderer );
 
 
 

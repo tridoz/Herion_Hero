@@ -9,7 +9,7 @@
   "char_width" : 22.0,
   "rows": [
     {
-      "starting_x": 500,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -27,6 +27,14 @@
           "text": "Minus",
           "action": "DECREASE_MASTER_VOLUME",
           "id": "button_decrease_master_volume"
+        }, {
+          "type" : "SLIDER_SELECTOR",
+          "max_value" : 100,
+          "min_value" : 0,
+          "step" : 1,
+          "slider_bar_offset" : 30,
+          "length": 500,
+          "id" : "slider_selector_for_master_volume"
         },
         {
           "type": "BUTTON",

@@ -150,10 +150,17 @@ namespace JSONParser {
          */
         struct RowElementFields {
             std::string type;
-            std::string text;
-            std::optional<std::string> action;
-            std::optional< std::string > return_value;
             std::string id;
+
+            std::optional < std::string > text;
+            std::optional < std::string > action;
+            std::optional < std::string > return_value;
+            std::optional < float > max_value;
+            std::optional < float > min_value;
+            std::optional < float > step;
+            std::optional < float > length;
+            std::optional < float > slider_bar_offset;
+
         };
 
         /**

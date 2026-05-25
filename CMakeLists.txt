@@ -75,8 +75,6 @@ add_executable(Herion_Hero ${SRC_FILES}
         src_game/UI/hpp/SliderSelector.hpp
         src_game/Utils/cpp/STRINGS.cpp
         src_game/Utils/hpp/STRINGS.hpp
-        src_game/UI/SliderSelectorMenu.cpp
-        src_game/UI/SliderSelectorMenu.hpp
 )
 
 if(WIN32)
