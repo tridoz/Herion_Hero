@@ -57,3 +57,6 @@ void SliderSelector::Draw(SDL_Renderer *renderer) {
     SDL_RenderTexture( renderer, this->slider_button_texture->GetTexture(), nullptr, &slider_button_rect );
 }
 
+SDL_FRect SliderSelector::GetSliderButtonRect() {
+    return this->slider_button_rect;
+}

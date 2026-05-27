@@ -193,6 +193,7 @@ void InputProcessor::process_key_up(const int scancode)  {
 void InputProcessor::process_mouse_left_pressed() {
     SDL_GetMouseState(&mouse_x, &mouse_y);
     Button* btn;
+    SliderSelector* slider;
 
     switch (player->GetGameMode()) {
 
@@ -217,6 +218,7 @@ void InputProcessor::process_mouse_left_pressed() {
         case Player::GameMode::AUDIO_SETTINGS_MENU: {
             btn = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
+
             break;
         }
 
@@ -324,7 +326,7 @@ void InputProcessor::Process() {
 
             if ( window_tools.at("TEXTURE_SELECTION")->IsOpen() ) {
                 for ( const auto& [name, menu] : menus ) {
-                    menu->SetMouseOffset( event.wheel.y);
+                    menu->SetMouseOffset( event.wheel.y );
                 }
             }
     

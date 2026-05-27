@@ -28,6 +28,23 @@ Button *ButtonMenu::GetCollisionButton(float x, float y) {
     return nullptr;
 }
 
+SliderSelector *ButtonMenu::GetSliderSelector(float x, float y) {
+    
+    for ( const auto& [name, slider] : slider_selectors) {
+        SDL_FRect rect = slider->GetSliderButtonRect();
+
+        if (
+            x >= x &&
+            x <= x + rect.w &&
+            y >= rect.y &&
+            y <= rect.y + rect.h
+        ) {
+            return slider;
+        }
+    }
+
+    return nullptr;
+}
 
 void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
     this->filepath = cfg_json_filepath;

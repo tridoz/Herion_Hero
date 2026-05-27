@@ -14,15 +14,12 @@ private:
     float button_y_offset;
     float center_piece_offset;
 
-    void LoadButton();
-    void LoadStaticText();
-    void LoadDynamicText();
-    void LoadSliderSelector();
 
 public:
     bool CheckCollision( std::vector< SDL_FRect >, float x, float y );
     void LoadConfiguration( const std::string& filepath );
     Button* GetCollisionButton( float x, float y );
+    SliderSelector* GetSliderSelector( float x, float y );
     void Draw(SDL_Renderer *renderer) const;
 
 };

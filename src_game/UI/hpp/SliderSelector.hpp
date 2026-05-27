@@ -45,6 +45,9 @@ public:
     void SetMaxMinStep( const float max, const float min, const float step );
     void SetXValues( const float max, const float min );
 
+    SDL_FRect GetSliderButtonRect();
+
+    void Update();
     void Draw( SDL_Renderer* renderer );
 
 
