@@ -273,7 +273,7 @@ int main ( int argc, char* argv[] ) {
             main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             graphics_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            audio_settings_menu.SetTextureManager( &main_texture_manager );
+            audio_settings_menu.SetDimension(  static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
             editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
 

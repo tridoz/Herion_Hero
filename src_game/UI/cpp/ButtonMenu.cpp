@@ -66,6 +66,7 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
 
     buttons.clear();
     texts.clear();
+    slider_selectors.clear();
 
     for (int row_number = 0; row_number < num_rows; row_number++) {
         const int starting_x = JSONParser::menu_configuration::GetRowStartingX(row_number) * scale;
@@ -219,16 +220,15 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                     txt->SetRects(rects);
                     txt->SetTextures(textures);
                     texts.emplace(menu_element_characteristic.id, txt);
-                } else {
                 }
+
             } else {
                 SliderSelector *slider = new SliderSelector();
 
-                Texture *slider_bar_text = texture_manager->GetTextureByName("Assets/Ui/Bars/SliderBar.png");
-
+                Texture *slider_bar_txt = texture_manager->GetTextureByName("Assets/Ui/Bars/SliderBar.png");
 
                 float srw, srh;
-                SDL_GetTextureSize(slider_bar_text->GetTexture(), &srw, &srh);
+                SDL_GetTextureSize(slider_bar_txt->GetTexture(), &srw, &srh);
                 SDL_FRect slider_bar_rect = {
                     center_rect.x,
                     center_rect.y + (menu_element_characteristic.slider_bar_offset.value() * scale),
@@ -237,18 +237,18 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                 };
 
                 slider->SetSliderBarRect(slider_bar_rect);
-                slider->SetSliderBarTexture(slider_bar_text);
+                slider->SetSliderBarTexture(slider_bar_txt);
 
                 Texture *slider_button_txt = texture_manager->GetTextureByName(
                     "Assets/Ui/Buttons/Game/SliderButton.png");
 
                 SDL_GetTextureSize(slider_button_txt->GetTexture(), &srw, &srh);
-                float volume_percentage = JSONParser::audio::GetMasterVolume();
-                float bar_percentage = text_total_w / 100 * volume_percentage;
+                const float volume_percentage = JSONParser::audio::GetMasterVolume();
+                const float bar_percentage = text_total_w / 100 * volume_percentage;
 
-                float x = center_rect.x + bar_percentage ;
+                const float x = center_rect.x + bar_percentage ;
 
-                SDL_FRect slider_button_rect = {
+                const SDL_FRect slider_button_rect = {
                     x - (left_rect.w*scale/2),
                     slider_bar_rect.y + (slider_bar_rect.h / 2.0f) - (center_rect.h*scale / 2.0f),
                     left_rect.w * scale,

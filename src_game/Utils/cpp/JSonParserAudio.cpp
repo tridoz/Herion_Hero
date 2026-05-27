@@ -62,6 +62,7 @@ void JSONParser::audio::IncreaseMasterVolume() {
     audio_file_output << json_audio.dump(4);
     audio_file_output.close();
     changed = true;
+
 }
 
 void JSONParser::audio::DecreaseMasterVolume() {
