@@ -7,6 +7,8 @@
 
 #include <SDL3/SDL.h>
 
+#include <vector>
+
 #include "../../Textures/hpp/Texture.hpp"
 #include "../../Utils/hpp/Logger.hpp"
 
@@ -42,13 +44,13 @@ public:
     void SetSliderBarTexture( Texture* slider_bar_texture );
     void SetSliderBarRect( SDL_FRect slider_rect );
 
-    void SetMaxMinStep( const float max, const float min, const float step );
-    void SetXValues( const float max, const float min );
+    void SetMaxMinStep( float max, float min, float step );
+    void SetXValues( float max, float min );
 
-    SDL_FRect GetSliderButtonRect();
+    [[nodiscard]] SDL_FRect GetSliderButtonRect() const;
 
     void Update();
-    void Draw( SDL_Renderer* renderer );
+    void Draw( SDL_Renderer* renderer ) const;
 
 
 

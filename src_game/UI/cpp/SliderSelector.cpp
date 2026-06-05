@@ -1,7 +1,7 @@
 //
 // Created by tridoz on 22/05/26.
 //
-
+ 
 #include "../hpp/SliderSelector.hpp"
 
 SliderSelector::SliderSelector() {
@@ -43,8 +43,7 @@ void SliderSelector::SetXValues( const float max, const float min) {
     this->max_value_x = max;
     this->min_value_x = min;
 }
-
-void SliderSelector::Draw(SDL_Renderer *renderer) {
+void SliderSelector::Draw(SDL_Renderer *renderer) const {
     for ( int i = 0 ; i < this->textures.size(); i++ ) {
         SDL_SetTextureBlendMode( textures[i]->GetTexture(), SDL_BLENDMODE_BLEND );
         SDL_RenderTexture( renderer, textures[i]->GetTexture(), nullptr, &rects[i] );
@@ -57,6 +56,10 @@ void SliderSelector::Draw(SDL_Renderer *renderer) {
     SDL_RenderTexture( renderer, this->slider_button_texture->GetTexture(), nullptr, &slider_button_rect );
 }
 
-SDL_FRect SliderSelector::GetSliderButtonRect() {
+SDL_FRect SliderSelector::GetSliderButtonRect() const {
     return this->slider_button_rect;
+}
+
+void SliderSelector::Update() {
+
 }
