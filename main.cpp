@@ -33,7 +33,14 @@ int LoadEnv() {
     std::string base_path = "../";
     std::string path =  ".env";
 
-    std::ifstream file(base_path + path);
+    std::ifstream file;
+
+    try {
+        FileOpener::OpenFileInput( file, base_path  + path );
+    } catch( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
 
     if ( !file.is_open() ) {
         Logger::LogErr(
@@ -395,4 +402,3 @@ int main ( int argc, char* argv[] ) {
     }
 
 }
-
