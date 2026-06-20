@@ -28,6 +28,12 @@ file(GLOB_RECURSE SRC_FILES
 
 add_executable(Herion_Hero ${SRC_FILES})
 
+if (MSVC)
+    target_compile_options(Herion_Hero PRIVATE /w)
+else()
+    target_compile_options(Herion_Hero PRIVATE -w)
+endif()
+
 if(WIN32)
 
     target_link_libraries(Herion_Hero PRIVATE
