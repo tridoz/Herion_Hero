@@ -25,7 +25,7 @@ void TextureManager::LoadTextures( const std::string& filepath ) {
     std::ifstream texture_file;
 
     try {
-        FileOpener::OpenFileInput( texture_file, base_path + filepath );
+        FileOpener::OpenFileInput( texture_file, filepath );
     } catch ( HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
         throw;

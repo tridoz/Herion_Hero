@@ -6,7 +6,7 @@
 
 void JSONParser::animations::SetConfigFile(const std::string &filename) {
 	std::ifstream json_file;
-	animation_file_path = "../" + filename;
+	animation_file_path = filename;
 	try {
 		FileOpener::OpenFileInput( json_file, animation_file_path);
 	} catch ( HerionException::File::FileException& ex ) {

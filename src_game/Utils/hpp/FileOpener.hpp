@@ -8,16 +8,23 @@
 
 #include "Logger.hpp"
 #include "../../Exceptions/hpp/HerionFileException.hpp"
+#include <fstream>
 
 class FileOpener {
+private:
+
+    static std::string base_path;
 
 public:
-	/**
+
+
+    /**
 	 * @brief Open file for input
 	 * @param in std::ifstream& reference to open
 	 * @param filepath Filepath of the file to open
 	 */
 	static void OpenFileInput( std::ifstream& in, const std::string& filepath);
+
 
 	/**
 	 * @brief Open file for output

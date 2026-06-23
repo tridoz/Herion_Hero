@@ -6,7 +6,7 @@
 
 
 void JSONParser::menu_configuration::SetConfigFile(const std::string& filename) {
-    config_file_path = "../" + filename;
+    config_file_path = filename;
     std::ifstream json_file;
 
     try {
@@ -182,7 +182,7 @@ JSONParser::menu_configuration::GetRowElementFields(int num_row, int num_element
     if (element.contains("action")) {
         result.action = element.at("action").get<std::string>();
     }
-    
+
     if ( element.contains("return_value") ) {
         result.return_value = element.at("return_value").get<std::string>();
     }
@@ -210,13 +210,3 @@ JSONParser::menu_configuration::GetRowElementFields(int num_row, int num_element
     return result;
 
 }
-
-
-
-
-
-
-
-
-
-

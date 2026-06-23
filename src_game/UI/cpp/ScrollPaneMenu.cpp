@@ -33,7 +33,7 @@ void ScrollPaneMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
     }
 
     if ( cmd == "select_all_directory" ) {
-        std::string base_directory = "../Assets/WorldBuilding/";
+        std::string base_directory = "Assets/WorldBuilding/";
         CreateSubDirectories( this->directory, base_directory, 0 );
         this->buttons.clear();
         this->texts.clear();
@@ -94,12 +94,11 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 			const int depth = dir->depth;
 			const int previous_element_already_drawn = texts.size() + buttons.size();
 
-			std::string right_path = path.substr(3, path.size()-3 );
 
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
 
-			Texture* file_txt = texture_manager->GetTextureByName(right_path);
+			Texture* file_txt = texture_manager->GetTextureByName(path );
 			SDL_FRect file_rect = {
 				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
@@ -143,7 +142,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 			}
 
 			Button* btn = new Button();
-			btn->SetText(right_path);
+			btn->SetText(path);
 
 			btn->SetOnClickReturn([btn]() {
 				return btn->GetText();
@@ -151,7 +150,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 
 			btn->SetRects(rects);
 			btn->SetTextures(textures);
-			buttons.emplace( right_path, btn );
+			buttons.emplace( path, btn );
 
 		}
 		return;
@@ -244,12 +243,9 @@ void ScrollPaneMenu::CreateSubDirectories( Directory*& directory, const std::str
 			CreateSubDirectories( dir, base_directory + output_line + "/", depth+1 );
 		} else if ( output_line.contains(".png") ) {
 			std::string file_name = base_directory + output_line;
-			file_name = file_name.substr(3,file_name.size()-3);
 			directory->Files.emplace_back( output_line, base_directory + output_line , this->texture_manager->GetTextureByName( file_name ) );
 		}
 
 	}
 
 }
-
-

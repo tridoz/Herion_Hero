@@ -9,7 +9,7 @@
 namespace Strings {
 
     namespace Sounds::Paths{
-        const std::string all_sounds_path = "../sounds/";
+        const std::string all_sounds_path = "sounds/";
     };
 
     namespace Textures::Paths{
@@ -70,8 +70,8 @@ namespace Strings {
     }
 
     namespace Settings::Paths {
-        const std::string json_audio_settings_file_path = "../settings/audio.json";
-        const std::string json_graphics_settings_file_path = "../settings/graphics.json";
+        const std::string json_audio_settings_file_path = "settings/audio.json";
+        const std::string json_graphics_settings_file_path = "settings/graphics.json";
     }
 
 };

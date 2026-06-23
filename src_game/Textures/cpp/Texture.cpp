@@ -22,7 +22,7 @@ Texture::~Texture() {
 
 void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_to_create_name ) {
 
-    this->texture_name = base_path + texture_to_create_name;
+    this->texture_name = texture_to_create_name;
 
     this->texture = IMG_LoadTexture( renderer, this->texture_name.c_str() );
 
@@ -60,4 +60,3 @@ void Texture::SetCode( const std::string& code ) {
 std::string Texture::GetCode() const {
     return code;
 }
-
