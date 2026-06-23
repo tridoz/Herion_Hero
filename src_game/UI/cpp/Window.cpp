@@ -6,6 +6,7 @@
 
 #include "../../../headers_only_dependencies/miniaudio.h"
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "HerionFileException.hpp"
 
 Window::Window() {
     this->window = nullptr;
@@ -33,8 +34,13 @@ Window::Window( const std::string& title) {
     }
 
 
-    this->width = JSONParser::graphics::GetWidth();
-    this->height = JSONParser::graphics::GetHeight();
+    try {
+        this->width = JSONParser::graphics::GetWidth();
+        this->height = JSONParser::graphics::GetHeight();
+    } catch( HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
 
     this->window = SDL_CreateWindow(title.c_str(), this->width, this->height, this->flags );
 

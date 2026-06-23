@@ -101,7 +101,15 @@ int main ( int argc, char* argv[] ) {
     //Logger::ClearTempLoggingFiles();
     Logger::EnableSTDOUTLogging();
 
-    Window window(  "HERION HERO");
+    Window* window;
+
+    try {
+        window = new Window("Herion Hero");
+    } catch( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
+        return -1;
+    }
 
     std::unordered_map < std::string,  Window* > editors_windows = {
           { "TEXTURE_SELECTION", new Window("Texture selection", 500, 300) },
@@ -137,14 +145,14 @@ int main ( int argc, char* argv[] ) {
 
     ButtonsFunctions::SetPlayer( &player );
 
-    window.SetMenu( Strings::Menus::Main_Window::Names::main_menu_name, &main_menu );
+    window->SetMenu( Strings::Menus::Main_Window::Names::main_menu_name, &main_menu );
 
-    window.SetMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name, &general_settings_menu );
-    window.SetMenu( Strings::Menus::Main_Window::Names::pause_menu_name, &pause_menu );
-    window.SetMenu( Strings::Menus::Main_Window::Names::editor_menu_name, &editor_menu );
+    window->SetMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name, &general_settings_menu );
+    window->SetMenu( Strings::Menus::Main_Window::Names::pause_menu_name, &pause_menu );
+    window->SetMenu( Strings::Menus::Main_Window::Names::editor_menu_name, &editor_menu );
 
-    window.SetMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name, &graphics_settings_menu );
-    window.SetMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name, &audio_settings_menu );
+    window->SetMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name, &graphics_settings_menu );
+    window->SetMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name, &audio_settings_menu );
 
     editors_windows.at("TEXTURE_SELECTION")->SetMenu("TEXTURE_SELECTION", &texture_selection_menu );
     editors_windows.at("TEXTURE_SELECTION")->SetCurrentMenu("TEXTURE_SELECTION");
@@ -154,7 +162,7 @@ int main ( int argc, char* argv[] ) {
 
     //window.LoadCursors( Strings::Textures::Cursors::all_cursors_path );
 
-    main_texture_manager.SetRenderer( window.GetRenderer() );
+    main_texture_manager.SetRenderer( window->GetRenderer() );
     texture_selection_texture_manager.SetRenderer( editors_windows.at("TEXTURE_SELECTION")->GetRenderer() );
     action_selection_texture_manager.SetRenderer( editors_windows.at("ACTION_SELECTION")->GetRenderer() );
 
@@ -171,7 +179,7 @@ int main ( int argc, char* argv[] ) {
     }
 
     game_room_manager.SetTextureManager( &main_texture_manager );
-    game_room_manager.SetDimensions( window.GetWidth(), window.GetHeight(), 32, 18 );
+    game_room_manager.SetDimensions( window->GetWidth(), window->GetHeight(), 32, 18 );
 
     try {
         game_room_manager.GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/") ;
@@ -182,22 +190,22 @@ int main ( int argc, char* argv[] ) {
     }
 
     main_menu.SetTextureManager( &main_texture_manager );
-    main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    main_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     general_settings_menu.SetTextureManager( &main_texture_manager );
-    general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    general_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     graphics_settings_menu.SetTextureManager( &main_texture_manager );
-    graphics_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    graphics_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     audio_settings_menu.SetTextureManager( &main_texture_manager );
-    audio_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    audio_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     pause_menu.SetTextureManager( &main_texture_manager );
-    pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    pause_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     editor_menu.SetTextureManager( &main_texture_manager );
-    editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+    editor_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
     texture_selection_menu.SetTextureManager( &texture_selection_texture_manager );
     texture_selection_menu.SetDimension( static_cast<float>( editors_windows.at("TEXTURE_SELECTION")->GetWidth()), static_cast<float>(editors_windows.at("TEXTURE_SELECTION")->GetHeight()) );
@@ -275,14 +283,14 @@ int main ( int argc, char* argv[] ) {
 
         if ( JSONParser::graphics::Changed() ) {
 
-            window.Resize();
+            window->Resize();
 
-            main_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            general_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            graphics_settings_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            audio_settings_menu.SetDimension(  static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            pause_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
-            editor_menu.SetDimension( static_cast<float>(window.GetWidth()), static_cast<float>(window.GetHeight()) );
+            main_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            general_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            graphics_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            audio_settings_menu.SetDimension(  static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            pause_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            editor_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
 
             try {
                 main_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::main_menu_config_path );
@@ -324,8 +332,8 @@ int main ( int argc, char* argv[] ) {
 
         }
 
-        window.SetColor( COLORS::BLACK );
-        window.Clear();
+        window->SetColor( COLORS::BLACK );
+        window->Clear();
 
         game_mode = player.GetGameMode();
 
@@ -335,43 +343,43 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::MAIN_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::main_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::main_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::GENERAL_SETTINGS_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::GRAPHICS_SETTINGS_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::AUDIO_SETTINGS_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::audio_settings_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::audio_settings_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::PAUSE_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::pause_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::pause_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                window.SetCurrentMenu( Strings::Menus::Main_Window::Names::editor_menu_name );
-                window.GetCurrentMenu()->Draw( window.GetRenderer() );
+                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::editor_menu_name );
+                window->GetCurrentMenu()->Draw( window->GetRenderer() );
                 break;
 
             case Player::GameMode::LEVEL_EDITOR:
-                editor_room.Draw( window.GetRenderer() );
+                editor_room.Draw( window->GetRenderer() );
                 if ( editor_room.ShouldDrawAxis() ) {
-                    editor_room.DrawAxis( window.GetRenderer() );
+                    editor_room.DrawAxis( window->GetRenderer() );
                 }
 
                 if ( editor_room.ShouldDrawHitboxes() ) {
-                    editor_room.DrawHitboxes( window.GetRenderer() );
+                    editor_room.DrawHitboxes( window->GetRenderer() );
                 }
 
                 for ( const auto [editor_win_name, editor_win] : editors_windows ) {
@@ -387,17 +395,17 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::IN_GAME:
-                game_room_manager.DrawCurrentRoom( window.GetRenderer() );
+                game_room_manager.DrawCurrentRoom( window->GetRenderer() );
                 player.Update();
 
                 processor.update_player_movement( deltaTime );
-                player.Draw( window.GetRenderer() );
+                player.Draw( window->GetRenderer() );
                 break;
 
         }
 
-        window.Present();
-        window.Sleep();
+        window->Present();
+        window->Sleep();
 
     }
 
