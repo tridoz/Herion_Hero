@@ -27,7 +27,11 @@ void Texture::CreateTexture( SDL_Renderer* renderer, const std::string& texture_
     this->texture = IMG_LoadTexture( renderer, this->texture_name.c_str() );
 
     if ( !this->texture ) {
-        THROW_FILE_NOT_FOUND( this->texture_name );
+        this->texture = IMG_LoadTexture( renderer, ("../" + this->texture_name).c_str() );
+    }
+
+    if ( !this->texture ) {
+        THROW_FILE_NOT_FOUND( (this->texture_name + " nor ../" + this->texture_name) );
     }
 
     texture_created = true;
