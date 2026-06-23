@@ -4,65 +4,26 @@
 
 #include "../hpp/CMD.hpp"
 
-std::string CMD::exec( const std::string& command ) {
-    std::array< char, 128> buffer;
-    std::string result;
-
-    FILE* pipe = popen(command.c_str(), "r");
-
-    if ( pipe == nullptr ) {
-        return "";
-    }
-
-    while ( fgets( buffer.data(), buffer.size(), pipe ) != nullptr ) {
-        result += buffer.data();
-    }
-
-    return result;
-}
-
+#include <filesystem>
 #include <vector>
 #include <string>
 #include <array>
 #include <cstdio>
 
-std::vector<std::string> CMD::multiline_exec(const std::string& command) {
-    std::array<char, 128> buffer;
-    std::string result;
 
-    FILE* pipe = popen(command.c_str(), "r");
-    if (pipe == nullptr) {
-        return {};
+
+std::vector<std::string> CMD::get_files_and_directories_names( const std::string& path) {
+    std::vector<std::string> result;
+
+    if( !std::filesystem::exists(path) || !std::filesystem::is_directory(path) ) {
+        return result;
     }
 
-    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
-        result += buffer.data();
+    for( const auto& entry : std::filesystem::directory_iterator(path) ) {
+        result.push_back( entry.path().filename().string() );
     }
 
-    pclose(pipe);
 
-    std::vector<std::string> lines;
-    std::string current;
-
-    for (char c : result) {
-        if (c == '\n') {
-            if (!current.empty() && current.back() == '\r')
-                current.pop_back(); // remove \r (Windows-style)
-
-            lines.push_back(current);
-            current.clear();
-        } else {
-            current += c;
-        }
-    }
-
-    // ultima linea (se non termina con \n)
-    if (!current.empty()) {
-        if (!current.empty() && current.back() == '\r')
-            current.pop_back();
-
-        lines.push_back(current);
-    }
-
-    return lines;
+    std::cout << "\n\n";
+    return result;
 }

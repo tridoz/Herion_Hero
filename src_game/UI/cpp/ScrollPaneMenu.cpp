@@ -225,7 +225,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 
 void ScrollPaneMenu::CreateSubDirectories( Directory*& directory, const std::string& base_directory, int depth ) {
 
-	std::vector < std::string > cmd_output = CMD::multiline_exec( "ls " + base_directory + " | grep -v '^Font$' " );
+	std::vector < std::string > cmd_output = CMD::get_files_and_directories_names( base_directory);
 
 	if ( directory == nullptr ) {
 		directory = new Directory( depth, {}, {} );

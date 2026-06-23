@@ -5,6 +5,8 @@
 #ifndef HERION_HERO_CMD_HPP
 #define HERION_HERO_CMD_HPP
 
+#include "Logger.hpp"
+
 #include <vector>
 #include <string>
 #include <array>
@@ -12,8 +14,7 @@
 class CMD {
 public:
 
-    static std::vector<std::string> multiline_exec( const std::string& command );
-    static std::string exec( const std::string& command );
+    static std::vector<std::string> get_files_and_directories_names( const std::string& path );
 
 };
 
