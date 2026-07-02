@@ -6,6 +6,7 @@
 #define HERION_HERO_LOGGER_HPP
 
 
+#include "Reflector.hpp"
 #include <string>
 #include <ctime>
 #include <iostream>
@@ -97,6 +98,11 @@ public:
         std::time_t log_time,
         const std::vector< std::string >& stack_trace
         );
+
+    template<typename T>
+    static void debug_reflection_print( const T& obj, int indent_level ) {
+        std::cout << struct_to_string(obj, indent_level) << std::endl;
+    }
 
     /**
      * @brief Enable logging on the stdout

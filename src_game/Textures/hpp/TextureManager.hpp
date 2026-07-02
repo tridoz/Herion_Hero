@@ -11,6 +11,7 @@
 #include <unordered_map>
 
 #include "../../Utils/hpp/Logger.hpp"
+#include "../../Utils/hpp/Reflector.hpp"
 #include "Texture.hpp"
 
 
@@ -51,6 +52,14 @@ public:
      */
     Texture* GetTextureByName(const std::string &texture_name);
     Texture* GetTextureByCode(const std::string &texture_code);
+
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<TextureManager, SDL_Renderer*>{"renderer", &TextureManager::renderer}
+            //Field<TextureManager, std::unordered_map<std::string, Texture>>{"textures", &TextureManager::textures},
+            //Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}
+        );
+    }
 
 };
 

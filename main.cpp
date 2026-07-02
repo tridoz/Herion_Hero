@@ -1,3 +1,4 @@
+#include "Reflector.hpp"
 #include "src_game/UI/hpp/Window.hpp"
 #include "src_game/Utils/hpp/Logger.hpp"
 #include "src_game/Utils/hpp/STRINGS.hpp"
@@ -262,6 +263,10 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
+    Logger::debug_reflection_print( texture_selection_texture_manager, 0 );
+
+
+
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
         Uint32 current_time = SDL_GetTicks();
@@ -400,5 +405,6 @@ int main ( int argc, char* argv[] ) {
         window->Sleep();
 
     }
+
 
 }
