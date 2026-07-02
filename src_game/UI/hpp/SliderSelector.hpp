@@ -8,6 +8,7 @@
 #include <SDL3/SDL.h>
 
 #include <vector>
+#include <thread>
 
 #include "../../Textures/hpp/Texture.hpp"
 #include "../../Utils/hpp/Logger.hpp"
@@ -17,6 +18,10 @@ private:
 
     std::vector < Texture* > textures;
     std::vector < SDL_FRect > rects;
+
+    bool is_updating;
+
+    float offsetX, offsetY;
 
     Texture* slider_button_texture;
     SDL_FRect slider_button_rect;
@@ -34,6 +39,7 @@ private:
 
 public:
     SliderSelector();
+    ~SliderSelector();
 
     void SetTextures( std::vector < Texture* > textures );
     void SetRects( std::vector < SDL_FRect > rects );
@@ -47,11 +53,25 @@ public:
     void SetMaxMinStep( float max, float min, float step );
     void SetXValues( float max, float min );
 
-    [[nodiscard]] SDL_FRect GetSliderButtonRect() const;
+    [[nodiscard]] SDL_FRect* GetSliderButtonRect( float mouse_x, float mouse_y );
 
-    void Update();
+    void StartUpdating();
+    void StopUpdating();
+
+
     void Draw( SDL_Renderer* renderer ) const;
 
+    bool IsUpdating() const;
+
+    void SetOffsetX( float offsetX );
+    void SetOffsetY( float offsetY );
+
+    float GetMaxX() const;
+
+    float GetMinX() const;
+
+    float GetOffsetX() const;
+    float GetOffsetY() const;
 
 
 };

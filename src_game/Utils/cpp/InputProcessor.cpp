@@ -2,14 +2,17 @@
 #include <iostream>
 #include "../hpp/JSONParser.hpp"
 #include "../hpp/STRINGS.hpp"
+#include "Player.hpp"
+#include "SDL3/SDL_events.h"
+#include "SliderSelector.hpp"
 
 InputProcessor::InputProcessor() {
     this->player = nullptr;
     this->room_manager = nullptr;
     this->event = {0};
     this->running = true;
-    this->mouse_left_pressed = false;
     this->mouse_right_pressed = false;
+    this->mouse_left_pressed = false;
     this->mouse_x = 0;
     this->mouse_y = 0;
     this->key_left_pressed = false;
@@ -191,6 +194,8 @@ void InputProcessor::process_key_up(const int scancode)  {
 }
 
 void InputProcessor::process_mouse_left_pressed() {
+    this->mouse_left_pressed = true;
+
     SDL_GetMouseState(&mouse_x, &mouse_y);
     Button* btn;
     SliderSelector* slider;
@@ -218,6 +223,18 @@ void InputProcessor::process_mouse_left_pressed() {
         case Player::GameMode::AUDIO_SETTINGS_MENU: {
             btn = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
+
+            ButtonMenu* bm = static_cast<ButtonMenu *>(menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name));
+            SliderSelector* slider = bm->GetSliderSelector(mouse_x, mouse_y);
+            if( slider != nullptr ) {
+                active_slider = slider;
+                SDL_FRect* rect = slider->GetSliderButtonRect(mouse_x, mouse_y);
+                if( rect == nullptr ) return;
+                slider->SetOffsetX( mouse_x );
+                slider->SetOffsetY( mouse_y );
+                slider->StartUpdating();
+
+            }
 
             break;
         }
@@ -287,6 +304,40 @@ void InputProcessor::process_mouse_left_pressed() {
 
 }
 
+void InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) {
+
+    if (!active_slider) return;
+    if (!active_slider->IsUpdating()) return;
+
+    SDL_FRect* rect = active_slider->GetSliderButtonRect(mouse_x, mouse_y);
+    if (!rect) return;
+
+    float minX, maxX;
+    std::tie( minX, maxX ) = std::make_tuple( active_slider->GetMinX(), active_slider->GetMaxX() );
+
+    const float t = (mouse_x - minX) / (maxX - minX);
+    float const value = std::clamp(t, 0.0f, 1.0f);
+
+    rect->x = minX + value * (maxX - minX);
+}
+
+void InputProcessor::process_mouse_left_lifted() {
+    mouse_left_pressed = false;
+    Button* btn;
+    SliderSelector* slider;
+
+    switch( player->GetGameMode() ) {
+        case Player::GameMode::AUDIO_SETTINGS_MENU:
+            slider = ((ButtonMenu*)menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name))->GetSliderSelector(mouse_x, mouse_y);
+            if( slider != nullptr ) slider->StopUpdating();
+            break;
+    }
+}
+
+void InputProcessor::process_mouse_right_lifted() {
+    //TODO
+}
+
 void InputProcessor::process_mouse_right_pressed() {
     // Non implementato
 }
@@ -320,6 +371,17 @@ void InputProcessor::Process() {
             break;
 
         case SDL_EVENT_MOUSE_BUTTON_UP:
+            if( event.button.button == SDL_BUTTON_LEFT) {
+                process_mouse_left_lifted();
+            } else if (event.button.button == SDL_BUTTON_RIGHT) {
+                process_mouse_right_lifted();
+            }
+            break;
+
+        case SDL_EVENT_MOUSE_MOTION:
+            if( mouse_left_pressed ) {
+                process_mouse_motion(event.motion.x, event.motion.y);
+            }
             break;
 
         case SDL_EVENT_MOUSE_WHEEL:
@@ -329,7 +391,7 @@ void InputProcessor::Process() {
                     menu->SetMouseOffset( event.wheel.y );
                 }
             }
-    
+
             break;
 
         default:
@@ -370,4 +432,3 @@ bool InputProcessor::AllWindowsClosed() {
     }
     return true;
 }
-

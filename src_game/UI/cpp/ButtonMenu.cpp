@@ -28,16 +28,18 @@ Button *ButtonMenu::GetCollisionButton(float x, float y) {
     return nullptr;
 }
 
-SliderSelector *ButtonMenu::GetSliderSelector(float x, float y) {
-    
-    for ( const auto& [name, slider] : slider_selectors) {
-        SDL_FRect rect = slider->GetSliderButtonRect();
+SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
+
+    for (const auto& [name, slider] : slider_selectors) {
+
+        SDL_FRect* rect = slider->GetSliderButtonRect(x, y);
+        if (!rect) continue;
 
         if (
-            x >= x &&
-            x <= x + rect.w &&
-            y >= rect.y &&
-            y <= rect.y + rect.h
+            x >= rect->x &&
+            x <= rect->x + rect->w &&
+            y >= rect->y &&
+            y <= rect->y + rect->h
         ) {
             return slider;
         }

@@ -7,9 +7,6 @@
 #include <filesystem>
 #include <vector>
 #include <string>
-#include <array>
-#include <cstdio>
-
 
 
 std::vector<std::string> CMD::get_files_and_directories_names( const std::string& path) {
@@ -24,6 +21,5 @@ std::vector<std::string> CMD::get_files_and_directories_names( const std::string
     }
 
 
-    std::cout << "\n\n";
     return result;
 }

@@ -25,6 +25,8 @@ class InputProcessor {
 private:
     Player* player{};
     RoomManager* room_manager{};
+    SliderSelector* active_slider{};
+
     std::unordered_map < std::string, TextureManager* > texture_managers;
     EditorRoom* editor_room{};
 
@@ -78,10 +80,16 @@ private:
      */
     void process_mouse_left_pressed();
 
+    void process_mouse_left_lifted();
+
+    void process_mouse_motion( float x, float y );
+
     /**
      * @brief Process the event of a mouse right click
      */
     void process_mouse_right_pressed();
+
+    void process_mouse_right_lifted();
 
     bool AllWindowsClosed();
 

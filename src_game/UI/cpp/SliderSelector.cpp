@@ -1,7 +1,7 @@
 //
 // Created by tridoz on 22/05/26.
 //
- 
+
 #include "../hpp/SliderSelector.hpp"
 
 SliderSelector::SliderSelector() {
@@ -14,35 +14,48 @@ SliderSelector::SliderSelector() {
     this->max_value_x = 0;
     this->min_value_x = 0;
     this->step = 0;
+    this->is_updating = false;
+}
+
+SliderSelector::~SliderSelector() {
+    StopUpdating();
 }
 
 void SliderSelector::SetRects(std::vector<SDL_FRect> rects) {
     this->rects = rects;
 }
+
 void SliderSelector::SetSliderButtonRect( SDL_FRect slider_rect ) {
     this->slider_button_rect = slider_rect;
 }
+
 void SliderSelector::SetSliderButtonTexture( Texture* slider_texture ) {
     this->slider_button_texture = slider_texture;
 }
+
 void SliderSelector::SetSliderBarRect(SDL_FRect slider_rect) {
     this->slider_bar_rect = slider_rect;
 }
+
 void SliderSelector::SetSliderBarTexture(Texture *slider_bar_texture) {
     this->slider_bar_texture = slider_bar_texture;
 }
+
 void SliderSelector::SetTextures(std::vector<Texture *> textures) {
     this->textures = textures;
 }
+
 void SliderSelector::SetMaxMinStep( const float max, const float min, const float step ) {
     this->max_value = max;
     this->min_value = min;
     this->step = step;
 }
+
 void SliderSelector::SetXValues( const float max, const float min) {
     this->max_value_x = max;
     this->min_value_x = min;
 }
+
 void SliderSelector::Draw(SDL_Renderer *renderer) const {
     for ( int i = 0 ; i < this->textures.size(); i++ ) {
         SDL_SetTextureBlendMode( textures[i]->GetTexture(), SDL_BLENDMODE_BLEND );
@@ -56,10 +69,53 @@ void SliderSelector::Draw(SDL_Renderer *renderer) const {
     SDL_RenderTexture( renderer, this->slider_button_texture->GetTexture(), nullptr, &slider_button_rect );
 }
 
-SDL_FRect SliderSelector::GetSliderButtonRect() const {
-    return this->slider_button_rect;
+SDL_FRect* SliderSelector::GetSliderButtonRect( float mouse_x, float mouse_y ) {
+    if(
+        mouse_x < slider_button_rect.x ||
+        mouse_x > slider_button_rect.x + slider_button_rect.w ||
+        mouse_y < slider_button_rect.y ||
+        mouse_y > slider_button_rect.y + slider_button_rect.h
+    ) {
+        return &this->slider_button_rect;
+    }
+
+    return nullptr;
 }
 
-void SliderSelector::Update() {
+void SliderSelector::StartUpdating() {
+    is_updating = true;
+}
 
+
+
+void SliderSelector::StopUpdating() {
+    this->is_updating = false;
+}
+
+bool SliderSelector::IsUpdating() const {
+    return this->is_updating;
+}
+
+void SliderSelector::SetOffsetX( float offsetX ) {
+    this->offsetX = offsetX - slider_button_rect.x;
+}
+
+void SliderSelector::SetOffsetY( float offsetY ) {
+    this->offsetY = offsetY - slider_button_rect.y;
+}
+
+float SliderSelector::GetMaxX() const {
+    return this->max_value;
+}
+
+float SliderSelector::GetMinX() const {
+    return this->min_value;
+}
+
+float SliderSelector::GetOffsetX() const {
+    return this->offsetX;
+}
+
+float SliderSelector::GetOffsetY() const {
+    return this->offsetY;
 }

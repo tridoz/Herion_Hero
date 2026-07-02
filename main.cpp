@@ -20,13 +20,9 @@
 #include "src_game/UI/hpp/ScrollPaneMenu.hpp"
 #include "src_game/WorldBuilding/hpp/EditorRoom.hpp"
 
-
 #ifdef _WIN32
     #include <stdlib.h>
 #endif
-
-
-// cloc src_game
 
 int LoadEnv() {
 
@@ -88,17 +84,13 @@ int LoadEnv() {
     return 1;
 }
 
-
 int main ( int argc, char* argv[] ) {
 
-    //    LoadEnv();
-    //    prova();
+    //LoadEnv();
 
     SoundBoard::Init();
     SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
 
-    //Logger::EnableFILELogging();
-    //Logger::ClearTempLoggingFiles();
     Logger::EnableSTDOUTLogging();
 
     Window* window;

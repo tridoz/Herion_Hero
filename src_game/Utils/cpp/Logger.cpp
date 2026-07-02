@@ -132,6 +132,3 @@ void Logger::ClearTempLoggingFiles() {
     std::ofstream output_temp_ok("../logs/Herion_Hero_Ok_temp.log", std::ios::out );
     std::ofstream output_temp_err("../logs/Herion_Hero_Err_temp.log", std::ios::out );
 }
-
-
-
