@@ -273,8 +273,12 @@ int main ( int argc, char* argv[] ) {
         {"f", 5},
     };
 
+    auto ew = editors_windows.at("TEXTURE_SELECTION");
 
-    Logger::debug_reflection_print( main_texture_manager , 0);
+    // for( const auto &[key, value] : editors_windows ) {
+    //     Logger::debug_reflection_print( editors_windows.at(key) , 0);
+    // }
+    Logger::debug_reflection_print( ew , 0);
 
 /*
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
