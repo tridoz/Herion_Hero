@@ -1,4 +1,4 @@
-#include "Reflector.hpp"
+#include "src_game/Utils/hpp/Reflector.hpp"
 #include "src_game/UI/hpp/Window.hpp"
 #include "src_game/Utils/hpp/Logger.hpp"
 #include "src_game/Utils/hpp/STRINGS.hpp"
@@ -13,6 +13,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <type_traits>
 #include <unistd.h>
 
 #include "src_game/Exceptions/hpp/HerionFileException.hpp"
@@ -263,10 +264,14 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
+
+    Logger::debug_reflection_print( *window , 0);
+
+
+/*
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
-        Uint32 current_time = SDL_GetTicks();
-        float deltaTime = (current_time - last_frame_time) / 1000.0f;
+        Uint32 current_time = SDL_GetTicks(); float deltaTime = (current_time - last_frame_time) / 1000.0f;
         last_frame_time = current_time;
 
         while ( SDL_PollEvent( &event ) ) {
@@ -401,6 +406,6 @@ int main ( int argc, char* argv[] ) {
         window->Sleep();
 
     }
-
+*/
 
 }

@@ -70,6 +70,11 @@ Window::Window( const std::string& title) {
         return;
     }
 
+    this->menus = std::unordered_map< std::string, Menu* >();
+    this->current_menu = nullptr;
+    this->Cursors = std::unordered_map<std::string, SDL_Cursor* >();
+    this->current_cursor_name = "";
+
     is_open = true;
 
 }

@@ -5,6 +5,10 @@ project(Herion_Hero)
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(-g -O0)
+endif()
+
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
 
 include_directories(
@@ -22,7 +26,6 @@ include_directories(
 
 file(GLOB_RECURSE SRC_FILES
         "${CMAKE_SOURCE_DIR}/src_game/**/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src_TCP/**/*.cpp"
         "${CMAKE_SOURCE_DIR}/main.cpp"
 )
 

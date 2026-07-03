@@ -23,6 +23,7 @@ private:
     std::unordered_map<std::string, Texture > textures;
     std::unordered_map< std::string, std::string > codes;
     const std::string base_path = "../";
+
 public:
 
     TextureManager();
@@ -57,8 +58,7 @@ public:
         return std::make_tuple(
             Field<TextureManager, SDL_Renderer*>{"renderer", &TextureManager::renderer},
             Field<TextureManager, std::unordered_map<std::string, Texture>>{"textures", &TextureManager::textures},
-            Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}
-        );
+            Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}        );
     }
 
 };
