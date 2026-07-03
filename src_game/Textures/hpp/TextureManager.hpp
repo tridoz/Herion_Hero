@@ -55,9 +55,9 @@ public:
 
     static constexpr auto reflect_members() {
         return std::make_tuple(
-            Field<TextureManager, SDL_Renderer*>{"renderer", &TextureManager::renderer}
-            //Field<TextureManager, std::unordered_map<std::string, Texture>>{"textures", &TextureManager::textures},
-            //Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}
+            Field<TextureManager, SDL_Renderer*>{"renderer", &TextureManager::renderer},
+            Field<TextureManager, std::unordered_map<std::string, Texture>>{"textures", &TextureManager::textures},
+            Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}
         );
     }
 

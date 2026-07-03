@@ -75,6 +75,20 @@ public:
 
     void SetFilepath( const std::string& filepath );
 
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<Room, std::string>{"filepath", &Room::filepath},
+            Field<Room, int>{"horizontal_tiles", &Room::horizontal_tiles},
+            Field<Room, int>{"vertical_tiles", &Room::vertical_tiles},
+            Field<Room, int>{"width", &Room::width},
+            Field<Room, int>{"height", &Room::height},
+            Field<Room, float>{"tile_width", &Room::tile_width},
+            Field<Room, float>{"tile_height", &Room::tile_height},
+            Field<Room, int>{"spawn_x", &Room::spawn_x},
+            Field<Room, int>{"spawn_y", &Room::spawn_y}
+        );
+    }
+
 
 
 

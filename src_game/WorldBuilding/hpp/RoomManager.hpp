@@ -157,6 +157,20 @@ public:
      */
     void DrawCurrentRoom( SDL_Renderer* renderer) const;
 
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<RoomManager, TextureManager*>{"textureManager", &RoomManager::textureManager},
+            Field<RoomManager, Node*>{"spawn_room", &RoomManager::spawn_room},
+            Field<RoomManager, Node*>{"current_room", &RoomManager::current_room},
+            Field<RoomManager, int>{"screen_width", &RoomManager::screen_width},
+            Field<RoomManager, int>{"screen_height", &RoomManager::screen_height},
+            Field<RoomManager, int>{"horizontal_tiles", &RoomManager::horizontal_tiles},
+            Field<RoomManager, int>{"vertical_tiles", &RoomManager::vertical_tiles},
+            Field<RoomManager, int>{"player_spawn_cell_y", &RoomManager::player_spawn_cell_y},
+            Field<RoomManager, int>{"player_spawn_cell_x", &RoomManager::player_spawn_cell_x}
+        );
+    }
+
 };
 
 

@@ -146,6 +146,21 @@ public:
      */
     Menu* GetCurrentMenu() const;
 
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<Window, int>{"flags", &Window::flags},
+            Field<Window, int>{"is_open", &Window::is_open},
+            Field<Window, SDL_Window*>{"window", &Window::window},
+            Field<Window, SDL_Renderer*>{"renderer", &Window::renderer},
+            Field<Window, std::unordered_map<std::string, Menu*>>{"menus", &Window::menus},
+            Field<Window, Menu*>{"current_menu", &Window::current_menu},
+            Field<Window, std::unordered_map<std::string, SDL_Cursor*>>{"Cursors", &Window::Cursors},
+            Field<Window, std::string>{"current_cursor_name", &Window::current_cursor_name},
+            Field<Window, int>{"width", &Window::width},
+            Field<Window, int>{"height", &Window::height}
+        );
+    }
+
 };
 
 

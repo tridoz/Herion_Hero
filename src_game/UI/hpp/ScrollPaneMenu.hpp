@@ -11,9 +11,9 @@ class ScrollPaneMenu : public Menu{
 
 private:
     /**
- * @struct TextureFile
- * @brief Information about a File
- */
+    * @struct TextureFile
+    * @brief Information about a File
+    */
     struct TextureFile {
         /// name of the file
         std::string name;
@@ -21,6 +21,14 @@ private:
         std::string path;
         /// texture of the file
         Texture* texture;
+
+        static constexpr auto reflect_members() {
+            return std::make_tuple(
+                Field<TextureFile, std::string>{ "name", &TextureFile::name },
+                Field<TextureFile, std::string>{ "path", &TextureFile::path },
+                Field<TextureFile, Texture*>{ "texture", &TextureFile::texture }
+            );
+        }
     };
 
     /**
@@ -42,6 +50,15 @@ private:
         /// vector for all the current folder Files
         std::vector<TextureFile> Files;
 
+        static constexpr auto reflect_members() {
+            return std::make_tuple(
+                Field<Directory, int>{ "depth", &Directory::depth },
+                Field<Directory, std::string>{ "path", &Directory::path },
+                Field<Directory, std::unordered_map<std::string, Directory*>>{ "SubDirectory", &Directory::SubDirectory },
+                Field<Directory, std::vector<TextureFile>>{ "Files", &Directory::Files }
+            );
+        }
+
     };
 
     Directory* directory;
@@ -56,6 +73,15 @@ public:
 
     Button* GetCollisionButton( float x, float y );
 
+    static constexpr auto reflect_members() {
+        return concat_tuple(
+            Menu::reflect_members(),
+            std::make_tuple(
+                Field<ScrollPaneMenu, Directory*>{ "directory", &ScrollPaneMenu::directory }
+
+            )
+        );
+    }
 
 };
 

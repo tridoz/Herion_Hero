@@ -75,6 +75,16 @@ public:
     void SetText( const std::string& text_to_set );
 
     std::string GetText() const ;
+
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<Button, std::function<void()>>{ "OnClick", &Button::OnClick },
+            Field<Button, std::function<std::string()>>{ "OnClickReturn", &Button::OnClickReturn },
+            Field<Button, std::vector<Texture*>>{ "textures", &Button::textures },
+            Field<Button, std::vector<SDL_FRect>>{ "rects", &Button::rects },
+            Field<Button, std::string>{ "text", &Button::text }
+        );
+    }
 };
 
 

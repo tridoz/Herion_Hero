@@ -7,6 +7,7 @@
 
 #include "BackgroundElement.hpp"
 #include "ForegroundElement.hpp"
+#include "Reflector.hpp"
 #include "Room.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
 
@@ -57,8 +58,28 @@ public:
     std::vector < std::string >& GetForegroundVector();
     std::vector < std::string >& GetBackgroundVector();
 
+    static constexpr auto reflect_members() {
+
+        return concat_tuple(
+            Room::reflect_members(),
+            std::make_tuple(
+                Field<EditorRoom, Texture*>{"current_editor_texture", &EditorRoom::current_editor_texture},
+                Field<EditorRoom, bool>{"draw_axis", &EditorRoom::draw_axis},
+                Field<EditorRoom, bool>{"draw_hitboxes", &EditorRoom::draw_hitboxes},
+                Field<EditorRoom, std::vector<std::vector<bool>>>{"hitboxes", &EditorRoom::hitboxes},
+                Field<EditorRoom, std::string>{"action", &EditorRoom::action},
+                Field<EditorRoom, std::vector<std::string>>{"base_plan_output_file", &EditorRoom::base_plan_output_file},
+                Field<EditorRoom, std::vector<std::string>>{"foreground_output_file", &EditorRoom::foreground_output_file},
+                Field<EditorRoom, std::vector<std::string>>{"background_output_file", &EditorRoom::background_output_file},
+                Field<EditorRoom, std::vector<std::string>>{"hitboxes_output_file", &EditorRoom::hitboxes_output_file},
+                Field<EditorRoom, std::vector<ForegroundElement*>>{"foreground_elements", &EditorRoom::foreground_elements},
+                Field<EditorRoom, std::vector<BackgroundElement*>>{"background_elements", &EditorRoom::background_elements}
+            )
+        );
+    }
+
 };
-    
+
 #define SDL_FRECT_TOSTRING(rect) \
     ( \
     std::to_string((rect).x)  +  ";" + \

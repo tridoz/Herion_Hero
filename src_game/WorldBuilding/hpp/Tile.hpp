@@ -56,6 +56,14 @@ public:
 
     std::string GetCode() const;
 
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<Tile, const Texture *>{"texture", &Tile::texture},
+            Field<Tile, bool>{"hasHitbox", &Tile::hasHitbox},
+            Field<Tile, SDL_FRect>{"rect", &Tile::rect}
+        );
+    }
+
 };
 
 

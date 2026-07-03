@@ -60,6 +60,14 @@ public:
     void SetCode( const std::string& code );
     std::string GetCode() const;
 
+    static constexpr auto reflect_members() {
+        return std::tuple{
+            Field<Texture, std::string>{"texture_name", &Texture::texture_name},
+            Field<Texture, bool>{"texture_created", &Texture::texture_created},
+            Field<Texture, std::string>{"code", &Texture::code},
+        };
+    }
+
 };
 
 

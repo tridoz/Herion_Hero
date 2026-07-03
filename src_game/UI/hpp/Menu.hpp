@@ -99,6 +99,26 @@ public:
 	virtual void Draw( SDL_Renderer* renderer) const = 0 ;
 	void SetMouseOffset( float diff );
 	void ReloadConfiguration();
+
+	static constexpr auto reflect_members() {
+		return std::make_tuple(
+		    Field<Menu, TextureManager*>{ "texture_manager", &Menu::texture_manager },
+		    Field<Menu, Texture*>{ "background", &Menu::background },
+		    Field<Menu, float>{ "mouse_offset", &Menu::mouse_offset },
+		    Field<Menu, float>{ "scale", &Menu::scale },
+		    Field<Menu, float>{ "char_width", &Menu::char_width },
+		    Field<Menu, std::string>{ "button_style", &Menu::button_style },
+		    Field<Menu, SDL_FRect>{ "background_rect", &Menu::background_rect },
+		    Field<Menu, std::unordered_map< std::string, std::function<void () > > >{ "buttons_functions", &Menu::buttons_functions },
+		    Field<Menu, std::unordered_map< std::string, Button* > >{ "buttons", &Menu::buttons },
+		    Field<Menu, std::unordered_map< std::string, Text* > >{ "texts", &Menu::texts },
+		    Field<Menu, std::unordered_map< std::string, SliderSelector* > >{ "slider_selectors", &Menu::slider_selectors },
+		    Field<Menu, std::string>{ "filepath", &Menu::filepath },
+		    Field<Menu, std::string>{ "background_filepath", &Menu::background_filepath },
+		    Field<Menu, std::string>{ "type", &Menu::type },
+		    Field<Menu, std::string>{ "font_style", &Menu::font_style }
+		);
+	}
 };
 
 

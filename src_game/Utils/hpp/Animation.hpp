@@ -66,6 +66,19 @@ public:
 	 * @return float
 	 */
 	float GetCurrentFrameTextureWidth() const;
+
+	static constexpr auto reflect_members() {
+		return std::tuple{
+			Field<Animation, std::vector<Texture*>>{"animation_textures", &Animation::animation_textures},
+			Field<Animation, int>{"frame_rate", &Animation::frame_rate},
+			Field<Animation, int>{"frame_number", &Animation::frame_number},
+			Field<Animation, int>{"current_animation_frame", &Animation::current_animation_frame},
+			Field<Animation, float>{"how_often_frame_update", &Animation::how_often_frame_update},
+			Field<Animation, float>{"frame_duration", &Animation::frame_duration},
+			Field<Animation, time_t>{"last_update_time", &Animation::last_update_time},
+			Field<Animation, time_t>{"current_time", &Animation::current_time},
+		};
+	}
 };
 
 

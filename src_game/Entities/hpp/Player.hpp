@@ -7,6 +7,9 @@
 #include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../../Utils/hpp/FileOpener.hpp"
 
+#include "../../Utils/hpp/Logger.hpp"
+#include "../../Utils/hpp/Reflector.hpp"
+
 class TextureManager;
 
 class Player {
@@ -149,6 +152,31 @@ public:
 	 */
 	void Spawn( int spawn_x, int spawn_y );
 
+	static constexpr auto reflect_members() {
+		return std::make_tuple(
+			Field<Player, PlayerState>{ "state", &Player::state },
+			Field<Player, GameMode>{ "mode", &Player::mode },
+			Field<Player, FacingDirection>{ "direction", &Player::direction },
+			Field<Player, PlayerState>{ "previousState", &Player::previousState },
+			Field<Player, GameMode>{ "previousGameMode", &Player::previousGameMode },
+			Field<Player, float>{ "pos_x", &Player::pos_x },
+			Field<Player, float>{ "pos_y", &Player::pos_y },
+			Field<Player, float>{ "next_x", &Player::next_x },
+			Field<Player, float>{ "next_y", &Player::next_y },
+			Field<Player, float>{ "movement_angle", &Player::movement_angle },
+			Field<Player, float>{ "velocity_x", &Player::velocity_x },
+			Field<Player, float>{ "speed", &Player::speed },
+			Field<Player, float>{ "fixed_pos_x", &Player::fixed_pos_x },
+			Field<Player, float>{ "fixed_pos_y", &Player::fixed_pos_y },
+			Field<Player, float>{ "fixed_width", &Player::fixed_width },
+			Field<Player, float>{ "fixed_height", &Player::fixed_height },
+			Field<Player, float>{ "scale", &Player::scale },
+			Field<Player, TextureManager*>{ "texture_manager", &Player::texture_manager },
+			Field<Player, std::unordered_map<std::string, Animation*> >{ "animations", &Player::animations },
+			Field<Player, Animation*>{ "current_animation", &Player::current_animation }
+		);
+	}
+
 
 private:
 
@@ -178,6 +206,8 @@ private:
 	 * @brief Update animation frame if needed
 	 */
 	void UpdateAnimationFrame();
+
+
 
 };
 

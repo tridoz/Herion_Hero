@@ -18,6 +18,7 @@
 #include "../../UI/hpp/ScrollPaneMenu.hpp"
 #include "../../Sound/hpp/SoundBoard.hpp"
 #include "../../UI/hpp/Window.hpp"
+#include "EditorRoom.hpp"
 
 #define MAX_SCANCODES 512
 
@@ -161,6 +162,25 @@ public:
     void SetMenus( std::string name, Menu* menu );
     void SetTextureManager( std::string, TextureManager* texture_manager );
     void SetEditorRoom(EditorRoom *room);
+
+    static constexpr auto reflect_members() {
+        return std::make_tuple(
+            Field<InputProcessor, Player*>{"player", &InputProcessor::player},
+            Field<InputProcessor, RoomManager*>{"room_manager", &InputProcessor::room_manager},
+            Field<InputProcessor, SliderSelector*>{"active_slider", &InputProcessor::active_slider},
+            Field<InputProcessor, std::unordered_map<std::string, TextureManager*> >{"texture_managers", &InputProcessor::texture_managers},
+            Field<InputProcessor, EditorRoom*>{"editor_room", &InputProcessor::editor_room},
+            Field<InputProcessor, bool>{"key_left_pressed", &InputProcessor::key_left_pressed},
+            Field<InputProcessor, bool>{"key_right_pressed", &InputProcessor::key_right_pressed},
+            Field<InputProcessor, std::unordered_map< std::string,  Window* > >{"window_tools", &InputProcessor::window_tools},
+            Field<InputProcessor, SDL_Event>{"event", &InputProcessor::event},
+            Field<InputProcessor, bool[512]>{"keys", &InputProcessor::keys},
+            Field<InputProcessor, std::unordered_map<std::string, Menu* > >{"menus", &InputProcessor::menus},
+            Field<InputProcessor, bool>{"running", &InputProcessor::running},
+            Field<InputProcessor, bool >{"mouse_left_pressed", &InputProcessor::mouse_left_pressed},
+            Field<InputProcessor, bool>{"mouse_right_pressed", &InputProcessor::mouse_right_pressed}
+        );
+    }
 
 };
 

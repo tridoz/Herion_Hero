@@ -1,9 +1,3 @@
-#!/bin/bash
-
-set -e
-
-if [ ! -d build ]; then
-    cmake -S . -B build
-fi
-
+rm -rf build
+cmake -S . -B build
 cmake --build build -j8
