@@ -274,8 +274,7 @@ int main ( int argc, char* argv[] ) {
     };
 
 
-    Logger::debug_reflection_print( window , 0);
-
+    Logger::debug_reflection_print( main_texture_manager , 0);
 
 /*
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
@@ -416,5 +415,4 @@ int main ( int argc, char* argv[] ) {
 
     }
 */
-
 }

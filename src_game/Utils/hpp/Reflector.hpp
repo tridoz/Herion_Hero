@@ -20,6 +20,26 @@ inline std::string red(const std::string& s) {
     return "\033[31m" + s + "\033[0m";
 }
 
+inline std::string yellow(const std::string& s) {
+    return "\033[33m" + s + "\033[0m";
+}
+
+inline std::string green(const std::string& s) {
+    return "\033[32m" + s + "\033[0m";
+}
+
+inline std::string cyan(const std::string& s) {
+    return "\033[36m" + s + "\033[0m";
+}
+
+inline std::string magenta(const std::string& s) {
+    return "\033[35m" + s + "\033[0m";
+}
+
+
+
+
+
 // ================= FIELD =================
 template<typename C, typename M>
 struct Field {
@@ -114,12 +134,12 @@ std::string value_to_string(const T& v, int indent_level) {
         std::string out = "[\n";
 
         for (const auto& e : v) {
-            out += indent(indent_level + 1)
-                + value_to_string(e, indent_level + 1)
+            out +=
+                value_to_string(e, indent_level + 1)
                 + "\n";
         }
 
-        out += indent(indent_level) + "]";
+        out += indent(indent_level - 1) + "]";
         return out;
     }
 
@@ -128,13 +148,14 @@ std::string value_to_string(const T& v, int indent_level) {
 
         std::string out = "[\n";
 
+
         for (const auto& e : v) {
-            out += indent(indent_level + 1)
-                + value_to_string(e, indent_level + 1)
+            out +=
+                value_to_string(e, indent_level + 1)
                 + "\n";
         }
 
-        out += indent(indent_level) + "]";
+        out += indent(indent_level - 1) + "]";
         return out;
     }
 
@@ -144,14 +165,29 @@ std::string value_to_string(const T& v, int indent_level) {
         std::string out = "{\n";
 
         for (const auto& [k, val] : v) {
-            out += indent(indent_level + 1)
-                + value_to_string(k, indent_level + 1)
-                + " : "
-                + value_to_string(val, indent_level + 1)
-                + "\n";
+            auto value = value_to_string(val, indent_level);
+
+            if (value.find('\n') != std::string::npos) {
+                out += indent(indent_level)
+                    + magenta(value_to_string(k, indent_level + 1))
+                    + " : ";
+
+                // rimuove l'indent iniziale della prima riga
+                auto pos = value.find_first_not_of(' ');
+                out += value.substr(pos);
+
+                out += "\n";
+            }
+            else {
+                out += indent(indent_level)
+                    + magenta(value_to_string(k, indent_level + 1))
+                    + " : "
+                    + value
+                    + "\n";
+            }
         }
 
-        out += indent(indent_level) + "}";
+        out += indent(indent_level - 1) + "}";
         return out;
     }
 
@@ -163,9 +199,9 @@ std::string value_to_string(const T& v, int indent_level) {
     // ---------- FALLBACK SAFE ----------
     else {
         if constexpr (has_reflect_members<T>::value) {
-            return struct_to_string(v, indent_level);
+            return struct_to_string(v, indent_level  );
         } else {
-            return "[opaque type]";
+            return std::string(indent(indent_level) + "[opaque type: ") + type_name<T>() + "]";
         }
     }
 }
@@ -205,11 +241,12 @@ std::string struct_to_string(const T& obj, int indent_level) {
     std::string out;
 
     // 🔥 STRUCT HEADER (pulito, niente caos)
-    out += indent(indent_level)
+    int header_indent = std::max(0, indent_level - 1);
+
+    out += indent(header_indent)
         + type_name<BaseT>()
         + (std::is_pointer_v<RawT> ? "*" : "")
         + " {\n";
-
     // ---------- SAFE REFLECTION ----------
     if constexpr (!has_reflect_members<BaseT>::value) {
 
@@ -225,16 +262,32 @@ std::string struct_to_string(const T& obj, int indent_level) {
 
             ((out +=
                 indent(indent_level + 1)
-                // 🔥 FIELD NAME
-                + std::string(f.name)
+
+                // 🔥 ADDRESS DEL CAMPO
+                + [&]() {
+                    const void* addr = &(ptr->*(f.ptr));
+                    std::ostringstream oss;
+                    oss << addr;
+                    return yellow(oss.str());
+                }()
+
                 + " -> "
-                // 🔥 FIELD TYPE (QUESTA È LA PARTE CHE VOLEVI)
-                + type_name<std::remove_cvref_t<
+
+                // FIELD NAME
+                + cyan(std::string(f.name))
+
+                + " -> "
+
+                // FIELD TYPE
+                + green(type_name<std::remove_cvref_t<
                     decltype(ptr->*(f.ptr))
-                >>()
+                >>())
+
                 + " = "
-                // 🔥 FIELD VALUE
+
+                // VALUE
                 + value_to_string(ptr->*(f.ptr), indent_level + 2)
+
                 + "\n"
             ), ...);
 
