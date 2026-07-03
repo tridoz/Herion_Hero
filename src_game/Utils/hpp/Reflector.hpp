@@ -8,6 +8,7 @@
 #include <map>
 #include <unordered_map>
 #include <sstream>
+#include <utility>
 
 // ================= INDENT =================
 inline std::string indent(int n) {
@@ -34,14 +35,21 @@ std::string type_name() {
     auto start = s.find("T = ");
     if (start == std::string::npos) return "unknown";
     start += 4;
+    // fine naturale del template info
     auto end = s.find(']', start);
-    return s.substr(start, end - start);
+    std::string type = s.substr(start, end - start);
+    // 🔥 TAGLIO TUTTO DOPO ';'
+    auto semi = type.find(';');
+    if (semi != std::string::npos)
+        type = type.substr(0, semi);
+
+    return type;
 #else
     return "unknown";
 #endif
 }
 
-// ================= STL DETECTORS =================
+// ================= STL TRAITS =================
 template<typename T> struct is_vector : std::false_type {};
 template<typename T, typename A>
 struct is_vector<std::vector<T, A>> : std::true_type {};
@@ -66,26 +74,26 @@ struct has_reflect_members<T, std::void_t<decltype(T::reflect_members())>>
 
 // ================= FORWARD DECL =================
 template<typename T>
-std::string struct_to_string(const T& obj, int indent_level);
+std::string value_to_string(const T& v, int indent_level);
 
 template<typename T>
-std::string value_to_string(const T& v, int indent_level);
+std::string struct_to_string(const T& obj, int indent_level);
 
 // ================= VALUE TO STRING =================
 template<typename T>
 std::string value_to_string(const T& v, int indent_level) {
 
-    // ================= ARITHMETIC =================
+    // ---------- ARITHMETIC ----------
     if constexpr (std::is_arithmetic_v<T>) {
         return std::to_string(v);
     }
 
-    // ================= STRING =================
+    // ---------- STRING ----------
     else if constexpr (std::is_same_v<T, std::string>) {
-        return v;
+        return "\"" + v + "\"";
     }
 
-    // ================= POINTER =================
+    // ---------- POINTER ----------
     else if constexpr (std::is_pointer_v<T>) {
 
         if (!v)
@@ -96,18 +104,18 @@ std::string value_to_string(const T& v, int indent_level) {
         if constexpr (has_reflect_members<P>::value) {
             return struct_to_string(*v, indent_level);
         } else {
-            return std::string("[opaque pointer: ") + type_name<P>() + "]";
+            return std::string("[ptr ") + type_name<P>() + "]";
         }
     }
 
-    // ================= VECTOR / LIST =================
-    else if constexpr (is_vector<T>::value || is_list<T>::value) {
+    // ---------- VECTOR ----------
+    else if constexpr (is_vector<T>::value) {
 
         std::string out = "[\n";
 
         for (const auto& e : v) {
-            out +=
-                value_to_string(e, indent_level + 1)
+            out += indent(indent_level + 1)
+                + value_to_string(e, indent_level + 1)
                 + "\n";
         }
 
@@ -115,7 +123,22 @@ std::string value_to_string(const T& v, int indent_level) {
         return out;
     }
 
-    // ================= MAP =================
+    // ---------- LIST ----------
+    else if constexpr (is_list<T>::value) {
+
+        std::string out = "[\n";
+
+        for (const auto& e : v) {
+            out += indent(indent_level + 1)
+                + value_to_string(e, indent_level + 1)
+                + "\n";
+        }
+
+        out += indent(indent_level) + "]";
+        return out;
+    }
+
+    // ---------- MAP ----------
     else if constexpr (is_map<T>::value) {
 
         std::string out = "{\n";
@@ -132,14 +155,18 @@ std::string value_to_string(const T& v, int indent_level) {
         return out;
     }
 
-    // ================= ENUM =================
+    // ---------- ENUM ----------
     else if constexpr (std::is_enum_v<T>) {
         return std::to_string(static_cast<std::underlying_type_t<T>>(v));
     }
 
-    // ================= STRUCT =================
+    // ---------- FALLBACK SAFE ----------
     else {
-        return struct_to_string(v, indent_level);
+        if constexpr (has_reflect_members<T>::value) {
+            return struct_to_string(v, indent_level);
+        } else {
+            return "[opaque type]";
+        }
     }
 }
 
@@ -147,19 +174,16 @@ std::string value_to_string(const T& v, int indent_level) {
 template<typename T>
 std::string struct_to_string(const T& obj, int indent_level) {
 
-    using RawT   = std::remove_cvref_t<T>;
-    using BaseT  = std::remove_pointer_t<RawT>;
+    using RawT = std::remove_cvref_t<T>;
 
-    std::string out;
+    const RawT* ptr = nullptr;
 
-    const BaseT* ptr = nullptr;
-
-    // ================= POINTER HANDLING =================
+    // ---------- POINTER HANDLING ----------
     if constexpr (std::is_pointer_v<RawT>) {
 
         if (!obj) {
             return indent(indent_level)
-                + type_name<BaseT>() + "* {\n"
+                + type_name<std::remove_pointer_t<RawT>>() + "* {\n"
                 + indent(indent_level + 1)
                 + red("nullptr")
                 + "\n"
@@ -172,19 +196,28 @@ std::string struct_to_string(const T& obj, int indent_level) {
         ptr = &obj;
     }
 
-    // safety guard
     if (!ptr) {
-        return indent(indent_level)
-            + red("INVALID POINTER") + "\n";
+        return red("INVALID POINTER");
     }
 
+    using BaseT = std::remove_pointer_t<RawT>;
+
+    std::string out;
+
+    // 🔥 STRUCT HEADER (pulito, niente caos)
     out += indent(indent_level)
         + type_name<BaseT>()
         + (std::is_pointer_v<RawT> ? "*" : "")
         + " {\n";
 
-    // ================= REFLECTION =================
-    if constexpr (has_reflect_members<BaseT>::value) {
+    // ---------- SAFE REFLECTION ----------
+    if constexpr (!has_reflect_members<BaseT>::value) {
+
+        out += indent(indent_level + 1)
+            + red("no reflection available")
+            + "\n";
+
+    } else {
 
         auto fields = BaseT::reflect_members();
 
@@ -192,29 +225,25 @@ std::string struct_to_string(const T& obj, int indent_level) {
 
             ((out +=
                 indent(indent_level + 1)
+                // 🔥 FIELD NAME
                 + std::string(f.name)
-                + " : "
-                + type_name<std::remove_reference_t<
-                    decltype(std::declval<BaseT>().*(f.ptr))
+                + " -> "
+                // 🔥 FIELD TYPE (QUESTA È LA PARTE CHE VOLEVI)
+                + type_name<std::remove_cvref_t<
+                    decltype(ptr->*(f.ptr))
                 >>()
                 + " = "
+                // 🔥 FIELD VALUE
                 + value_to_string(ptr->*(f.ptr), indent_level + 2)
                 + "\n"
             ), ...);
 
         }, fields);
-
-    } else {
-
-        out += indent(indent_level + 1)
-            + red("reflect_members_not_implemented!!!")
-            + "\n";
     }
 
     out += indent(indent_level) + "}";
     return out;
 }
-
 // ================= UTILITY =================
 template<typename... Ts>
 auto concat_tuple(Ts&&... ts) {

@@ -264,8 +264,17 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
+    std::unordered_map < std::string, int > prova = {
+        {"a", 0},
+        {"b", 1},
+        {"c", 2},
+        {"d", 3},
+        {"e", 4},
+        {"f", 5},
+    };
 
-    Logger::debug_reflection_print( *window , 0);
+
+    Logger::debug_reflection_print( window , 0);
 
 
 /*

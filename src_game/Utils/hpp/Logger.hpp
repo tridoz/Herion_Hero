@@ -101,8 +101,9 @@ public:
 
     template<typename T>
     static void debug_reflection_print( const T& obj, int indent_level ) {
-        std::cout << struct_to_string(obj, indent_level) << std::endl;
+        std::cout << value_to_string(obj, indent_level) << std::endl;
     }
+
 
     /**
      * @brief Enable logging on the stdout
