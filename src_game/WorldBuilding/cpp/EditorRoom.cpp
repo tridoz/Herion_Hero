@@ -76,6 +76,8 @@ void EditorRoom::AppendToFile(const std::string &row, std::vector<std::string>& 
 }
 
 void EditorRoom::SaveNewEditConfiguration() {
+
+
     for ( const auto& row : tiles ) {
         std::string str_row;
         for ( const auto& tile : row ) {
@@ -110,6 +112,9 @@ void EditorRoom::SaveNewEditConfiguration() {
     for ( const auto& line : hitboxes_output_file ) {
         hitbox_output_file_stream << line << std::endl;
     }
+
+    this->base_plan_output_file.erase( base_plan_output_file.begin() + 2 , base_plan_output_file.end()  );
+    this->hitboxes_output_file.clear();
 
 }
 
@@ -148,9 +153,3 @@ std::vector<std::string> &EditorRoom::GetForegroundVector() {
 std::vector<std::string> &EditorRoom::GetBasePlaneVector() {
     return this->base_plan_output_file;
 }
-
-
-
-
-
-

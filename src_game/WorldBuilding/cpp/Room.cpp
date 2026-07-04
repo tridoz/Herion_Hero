@@ -5,6 +5,8 @@
 #include "../hpp/Room.hpp"
 
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "SDL3/SDL_oldnames.h"
+#include "SDL3/SDL_rect.h"
 
 Room::Room() {}
 
@@ -33,8 +35,6 @@ void Room::Draw(SDL_Renderer* renderer) {
     }
 
 }
-
-
 
 void Room::SetTiles(const std::vector<std::vector<Tile*>> &new_tiles) {
     this->tiles = new_tiles;
@@ -71,5 +71,91 @@ void Room::SetFilepath(const std::string &filepath) {
     this->filepath = filepath;
 }
 
+void Room::CheckPlayerCollision(Player* player)
+{
+    player->SetOnGround(false);
 
+    float& px = player->GetPosX();
+    float& py = player->GetPosY();
 
+    float& vx = player->GetVelocityX();
+    float& vy = player->GetVelocityY();
+
+    SDL_FRect rect = player->player_rect;
+
+    bool grounded = false;
+
+    float bestPenX = 0.0f;
+    float bestPenY = 0.0f;
+    float bestAbsPen = 0.0f;
+    bool resolved = false;
+
+    for (auto& row : tiles)
+    {
+        for (Tile* t : row)
+        {
+            if (!t->HasHitbox())
+                continue;
+
+            SDL_FRect* b = t->GetRect();
+
+            if (rect.x + rect.w <= b->x || rect.x >= b->x + b->w ||
+                rect.y + rect.h <= b->y || rect.y >= b->y + b->h)
+                continue;
+
+            float overlapLeft   = (rect.x + rect.w) - b->x;
+            float overlapRight  = (b->x + b->w) - rect.x;
+            float overlapTop    = (rect.y + rect.h) - b->y;
+            float overlapBottom = (b->y + b->h) - rect.y;
+
+            // scegli asse più piccolo
+            if (std::min(overlapLeft, overlapRight) < std::min(overlapTop, overlapBottom))
+            {
+                float pen = (overlapLeft < overlapRight) ? -overlapLeft : overlapRight;
+
+                if (!resolved || std::abs(pen) > std::abs(bestAbsPen))
+                {
+                    bestAbsPen = pen;
+                    bestPenX = pen;
+                    bestPenY = 0.0f;
+                    resolved = true;
+                }
+            }
+            else
+            {
+                float pen = (overlapTop < overlapBottom) ? -overlapTop : overlapBottom;
+
+                if (!resolved || std::abs(pen) > std::abs(bestAbsPen))
+                {
+                    bestAbsPen = pen;
+                    bestPenX = 0.0f;
+                    bestPenY = pen;
+                    resolved = true;
+                }
+            }
+        }
+    }
+
+    // applica UNA sola correzione
+    if (bestPenX != 0.0f)
+    {
+        px += bestPenX;
+        vx = 0.0f;
+
+        if (bestPenX > 0)
+            player->SetAttachedToWallLeft(true);
+        else
+            player->SetAttachedToWallRight(true);
+    }
+
+    if (bestPenY != 0.0f)
+    {
+        py += bestPenY;
+        vy = 0.0f;
+
+        if (bestPenY < 0)
+            grounded = true;
+    }
+
+    player->SetOnGround(grounded);
+}

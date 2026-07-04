@@ -1,25 +1,52 @@
 {
-  "animations" : [
+  "animations": [
     {
-      "path" : "Assets/Entities/Player/Idle/Left/",
-      "frame_number" : 8,
-      "frame_to_load" : 4,
-      "name" : "IDLE_LEFT"
-    },{
-      "path" : "Assets/Entities/Player/Idle/Right/",
-      "frame_number" : 8,
-      "frame_to_load" : 4,
-      "name" : "IDLE_RIGHT"
-    },{
-      "path" : "Assets/Entities/Player/Run/Left/",
-      "frame_number" : 8,
-      "frame_to_load" : 2,
-      "name" : "RUN_LEFT"
-    },{
-      "path" : "Assets/Entities/Player/Run/Right/",
-      "frame_number" : 8,
-      "frame_to_load" : 2,
-      "name" : "RUN_RIGHT"
+      "path": "Assets/Entities/Player/Idle/Left/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "IDLE_LEFT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Right/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "IDLE_RIGHT"
+    },
+    {
+      "path": "Assets/Entities/Player/Run/Left/",
+      "frame_number": 8,
+      "frame_to_load": 2,
+      "name": "RUN_LEFT"
+    },
+    {
+      "path": "Assets/Entities/Player/Run/Right/",
+      "frame_number": 8,
+      "frame_to_load": 2,
+      "name": "RUN_RIGHT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Left/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "JUMP_LEFT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Right/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "JUMP_RIGHT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Left/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "FALL_LEFT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Right/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "FALL_RIGHT"
     }
   ]
 }

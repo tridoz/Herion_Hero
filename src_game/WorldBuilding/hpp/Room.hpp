@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Tile.hpp"
+#include "../../Entities/hpp/Player.hpp"
 
 
 class Room {
@@ -75,8 +76,11 @@ public:
 
     void SetFilepath( const std::string& filepath );
 
+    void CheckPlayerCollision( Player* player );
+
     static constexpr auto reflect_members() {
         return std::make_tuple(
+            Field<Room, std::vector<std::vector<Tile*>>>{"tiles", &Room::tiles},
             Field<Room, std::string>{"filepath", &Room::filepath},
             Field<Room, int>{"horizontal_tiles", &Room::horizontal_tiles},
             Field<Room, int>{"vertical_tiles", &Room::vertical_tiles},

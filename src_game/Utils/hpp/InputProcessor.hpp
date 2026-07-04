@@ -33,6 +33,7 @@ private:
 
     bool key_left_pressed;
     bool key_right_pressed;
+    bool space_pressed;
 
     std::unordered_map < std::string,  Window* > window_tools;
 
@@ -134,7 +135,7 @@ public:
      * @brief Update the player position based on input and delta time
      * @param delta_time Time elapsed beetween each frame
      */
-    void update_player_movement(float delta_time) const;
+    void update_player_movement(float delta_time);
 
     /**
      * @brief Set player to make changes

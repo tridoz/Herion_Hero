@@ -6,11 +6,12 @@
 
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "SDL3/SDL_camera.h"
 
 
 Player::Player() {
 
-	this->mode = GameMode::MAIN_MENU;
+	this->mode = GameMode::IN_GAME;
 	this->state = PlayerState::IDLE;
 	this->direction = FacingDirection::EAST;
 
@@ -34,6 +35,13 @@ Player::Player() {
 
 	animations.emplace("RUN_LEFT", new Animation() );
 	animations.emplace("RUN_RIGHT", new Animation() );
+
+	animations.emplace( "JUMP_LEFT", new Animation() );
+	animations.emplace( "JUMP_RIGHT", new Animation() );
+
+	animations.emplace("FALL_LEFT", new Animation() );
+	animations.emplace("FALL_RIGHT", new Animation() );
+
 
 	current_animation = animations.at("IDLE_RIGHT");
 
@@ -91,6 +99,13 @@ void Player::SetPlayerDirection( const FacingDirection new_direction) {
 		case PlayerState::RUN:
 			str_state = "RUN_";
 			break;
+
+		case PlayerState::JUMP:
+			str_state = "JUMP_";
+			break;
+
+		case PlayerState::FALLING:
+			str_state = "FALL_";
 
 	}
 
@@ -157,79 +172,210 @@ void Player::Draw( SDL_Renderer* renderer ) {
 
 }
 
-void Player::Update() {
-
+void Player::Update(float delta_time ) {
+    UpdatePhysics( delta_time );
 	UpdateAnimationFrame() ;
 }
 
-void Player::UpdateAnimationFrame() {
-	Animation* crt = current_animation;
+void Player::UpdatePhysics(float dt)
+{
+    // =====================================================
+    // WALL CLING MODE
+    // =====================================================
+    if ((attached_to_wall_left || attached_to_wall_right))
+    {
 
-	Animation* toSet = nullptr;
+        if ( is_jumping ) {
+            switch( this->direction ) {
+                case Player::FacingDirection::WEST:
+                    velocity_y += gravity * dt;
+                    pos_y += velocity_y * dt;
 
-	if ( state == PlayerState::RUN ) {
-		switch ( direction ) {
+                    if (velocity_y < 0.0f)
+                    {
+                        is_jumping = true;
+                        is_falling = false;
 
-			case FacingDirection::WEST:
-				toSet = animations.at( "RUN_LEFT" );
-			break;
+                        if (state != PlayerState::JUMP) {
+                            SetPlayerDirection(FacingDirection::EAST);
+                            SetPlayerState(PlayerState::JUMP);
+                        }
+                    }
+                    else
+                    {
+                        is_jumping = false;
+                        is_falling = true;
 
-			case FacingDirection::EAST:
-				toSet = animations.at( "RUN_RIGHT" );
-				break;
+                        if (state != PlayerState::FALLING) {
+                            SetPlayerState(PlayerState::FALLING);
+                        }
+                    }
 
-		}
+                    break;
 
-	} else if ( state == PlayerState::IDLE ) {
-		switch ( direction ) {
+                case Player::FacingDirection::EAST:
+                    velocity_y += gravity * dt;
+                    pos_y += velocity_y * dt;
 
-			case FacingDirection::WEST:
-				toSet = animations.at( "IDLE_LEFT" );
-				break;
+                    if (velocity_y < 0.0f)
+                    {
+                        is_jumping = true;
+                        is_falling = false;
 
-			case FacingDirection::EAST:
-				toSet = animations.at( "IDLE_RIGHT" );
-				break;
+                        if (state != PlayerState::JUMP) {
+                            SetPlayerDirection(FacingDirection::WEST);
+                            SetPlayerState(PlayerState::JUMP);
+                        }
+                    }
+                    else
+                    {
+                        is_jumping = false;
+                        is_falling = true;
 
-		}
-	}
+                        if (state != PlayerState::FALLING) {
+                            SetPlayerState(PlayerState::FALLING);
+                        }
+                    }
 
-	if ( crt != toSet ) {
-		current_animation = toSet;
-	}
+                    break;
+            }
 
-	current_animation->Update();
+            attached_to_wall_left = false;
+            attached_to_wall_right = false;
+
+        } else {
+            velocity_y = 0;
+            is_jumping = false;
+            is_falling = false;
+        }
+        return;
+    }
+
+    // =====================================================
+    // NORMAL AIR PHYSICS
+    // =====================================================
+    if (!on_ground)
+    {
+        velocity_y += gravity * dt;
+        pos_y += velocity_y * dt;
+
+        if (velocity_y < 0.0f)
+        {
+            is_jumping = true;
+            is_falling = false;
+
+            if (state != PlayerState::JUMP)
+                SetPlayerState(PlayerState::JUMP);
+        }
+        else
+        {
+            is_jumping = false;
+            is_falling = true;
+
+            if (state != PlayerState::FALLING)
+                SetPlayerState(PlayerState::FALLING);
+        }
+    }
+    else
+    {
+        velocity_y = 0.0f;
+        is_jumping = false;
+        is_falling = false;
+    }
 }
 
-void Player::Move(FacingDirection direction, float delta_time) {
+void Player::UpdateAnimationFrame()
+{
+    Animation* crt = current_animation;
+    Animation* toSet = nullptr;
 
-	const float distance = speed * delta_time;
+    switch (state)
+    {
+        case PlayerState::RUN:
+        {
+            if (direction == FacingDirection::WEST)
+                toSet = animations.at("RUN_LEFT");
+            else
+                toSet = animations.at("RUN_RIGHT");
+            break;
+        }
 
-	bool is_moving = false;
+        case PlayerState::IDLE:
+        {
+            if (direction == FacingDirection::WEST)
+                toSet = animations.at("IDLE_LEFT");
+            else
+                toSet = animations.at("IDLE_RIGHT");
+            break;
+        }
 
-	if (direction == FacingDirection::WEST) {
-		pos_x -= distance;
-		is_moving = true;
+        case PlayerState::JUMP:
+        {
+            if (direction == FacingDirection::WEST)
+                toSet = animations.at("JUMP_LEFT");
+            else
+                toSet = animations.at("JUMP_RIGHT");
+            break;
+        }
 
-		if (this->direction != FacingDirection::WEST)
-			SetPlayerDirection(FacingDirection::WEST);
-	}
+        case PlayerState::FALLING:
+        {
+            if (direction == FacingDirection::WEST)
+                toSet = animations.at("FALL_LEFT");
+            else
+                toSet = animations.at("FALL_RIGHT");
+            break;
+        }
+    }
 
-	else if (direction == FacingDirection::EAST) {
-		pos_x += distance;
-		is_moving = true;
+    if (crt != toSet)
+        current_animation = toSet;
 
-		if (this->direction != FacingDirection::EAST)
-			SetPlayerDirection(FacingDirection::EAST);
-	}
+    current_animation->Update();
+}
 
-	if (is_moving) {
-		if (state != PlayerState::RUN)
-			SetPlayerState(PlayerState::RUN);
-	} else {
-		if (state != PlayerState::IDLE)
-			SetPlayerState(PlayerState::IDLE);
-	}
+void Player::Move(FacingDirection dir, float dt)
+{
+    const float distance = speed * dt;
+
+    bool is_moving = false;
+
+    if (dir == FacingDirection::WEST)
+    {
+        if (!attached_to_wall_left)
+        {
+            pos_x -= distance;
+            is_moving = true;
+        }
+
+        attached_to_wall_right = false;
+        SetPlayerDirection(FacingDirection::WEST);
+    }
+    else if (dir == FacingDirection::EAST)
+    {
+        if (!attached_to_wall_right)
+        {
+            pos_x += distance;
+            is_moving = true;
+        }
+
+        attached_to_wall_left = false;
+        SetPlayerDirection(FacingDirection::EAST);
+    }
+
+    if (on_ground)
+    {
+        if (is_moving)
+        {
+            if (state != PlayerState::RUN)
+                SetPlayerState(PlayerState::RUN);
+        }
+        else
+        {
+            if (state != PlayerState::IDLE)
+                SetPlayerState(PlayerState::IDLE);
+        }
+    }
 }
 
 void Player::Resize() {
@@ -248,8 +394,93 @@ void Player::Spawn(const int spawn_x, const int spawn_y) {
 	this->pos_y = spawn_y;
 
 }
+void Player::Jump()
+{
+    // WALL JUMP
+    if ((attached_to_wall_left || attached_to_wall_right))
+    {
+        velocity_y = jump_force;
+
+        on_ground = false;
+        is_jumping = true;
+        is_falling = false;
+
+        return;
+    }
 
 
 
+    // NORMAL JUMP
+    if (on_ground)
+    {
+        velocity_y = jump_force;
+
+        on_ground = false;
+        is_jumping = true;
+        is_falling = false;
+    }
+
+}
+
+[[nodiscard]] bool Player::IsJumping() const {
+	return is_jumping;
+}
+
+[[nodiscard]] bool Player::IsFalling() const {
+	return is_falling;
+}
+
+[[nodiscard]] bool Player::OnGround() const {
+	return on_ground;
+}
+
+void Player::SetOnGround(bool on_ground) {
+	this->on_ground = on_ground;
+}
+
+float Player::GetVelocityY() const {
+    return this->velocity_y;
+}
+
+void Player::SetPositionY(float y) {
+    this->pos_y = y;
+}
+
+void Player::SetVelocityY(float y) {
+    this->velocity_y = y;
+}
+
+float& Player::GetPosX() { return pos_x; }
+float& Player::GetPosY() { return pos_y; }
+
+float& Player::GetVelocityX() { return velocity_x; }
+float& Player::GetVelocityY() { return velocity_y; }
+
+void Player::SetAttachedToWallLeft( bool attached ) {
+    this->attached_to_wall_left = attached;
+}
+
+void Player::SetAttachedToWallRight( bool attached ) {
+    this->attached_to_wall_right = attached;
+}
+
+void Player::reset() {
+    this->state = PlayerState::IDLE;
+	this->direction = FacingDirection::EAST;
 
 
+
+	this->velocity_x = 0.0f;
+	this->speed = 500;
+
+	this->player_rect.w = 30;
+	this->player_rect.h = 60;
+
+	this->player_rect = {pos_x, pos_y, pos_x, pos_y};
+
+	this->fixed_pos_x = this->pos_x;
+	this->fixed_pos_y = this->pos_y;
+
+	this->scale = JSONParser::graphics::GetScale();
+	this->velocity_y = 0;
+}

@@ -127,14 +127,17 @@ void RoomManager::GenerateRoom(  DIRECTION dir, const std::string& map_path ) {
     const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
 
     std::ifstream map_file;
+    std::ifstream hitboxes_file;
 
     Node* newRoom = new Node();
     newRoom->room = new Room();
 
     std::string map_filepath = map_path + "base_plane_textures.hhmap";
+    std::string hitboxes_filepath = map_path + "hitboxes.hhmap";
 
     try {
         FileOpener::OpenFileInput( map_file, map_filepath );
+        FileOpener::OpenFileInput( hitboxes_file, hitboxes_filepath );
     } catch (HerionException::File::FileException& ex ) {
         ex.UpdateStackTrace( GET_CONTEXT()   );
         throw;
@@ -142,36 +145,45 @@ void RoomManager::GenerateRoom(  DIRECTION dir, const std::string& map_path ) {
 
    newRoom->room->SetFilepath( map_path );
 
-    std::string line;
+    std::string base_line;
+    std::string hitboxes_line;
     int y = 0;
 
-    while (std::getline(map_file, line)) {
-        std::stringstream ss(line);
+    while (std::getline(map_file, base_line)) {
+        std::stringstream base_ss(base_line);
         std::string cell;
 
         std::vector<Tile*> row;
         int x = 0;
 
-        if (line.starts_with("#") || line.empty() ) {
+        if (base_line.starts_with("#") || base_line.empty() ) {
             continue;
         }
 
-        if ( line.starts_with('?') ) {
+
+
+        if ( base_line.starts_with('?') ) {
             char a;
             int x, y;
-            ss >> a;
-            ss >> y;
-            ss >> x;
+            base_ss >> a;
+            base_ss >> y;
+            base_ss >> x;
             newRoom->room->SetSpawnCoord( x, y );
             continue;
         }
 
-        while (ss >> cell) {
+        std::getline( hitboxes_file, hitboxes_line );
+        std::stringstream hitboxes_ss(hitboxes_line);
+
+        while (base_ss >> cell) {
+            bool hitbox;
+            hitboxes_ss >> hitbox;
 
             Tile* tile = new Tile();
 
             tile->SetTexture(textureManager->GetTextureByCode( cell ) );
             tile->SetRect(x * w, y * h, w, h);
+            tile->SetHitbox(hitbox);
             row.push_back(tile);
 
             x++;
@@ -207,6 +219,10 @@ void RoomManager::GenerateRoom(  DIRECTION dir, const std::string& map_path ) {
             case DIRECTION::DIR_RIGHT:
                 current_room -> right = newRoom;
                 current_room -> right -> left = current_room;
+                break;
+
+            case DIRECTION::DIR_NONE:
+                current_room = newRoom;
                 break;
 
         }

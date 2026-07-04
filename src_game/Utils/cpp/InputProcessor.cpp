@@ -1,9 +1,11 @@
 #include "../hpp/InputProcessor.hpp"
+#include "../../Exceptions/hpp/HerionFileException.hpp"
 #include <iostream>
 #include "../hpp/JSONParser.hpp"
 #include "../hpp/STRINGS.hpp"
 #include "Player.hpp"
 #include "SDL3/SDL_events.h"
+#include "SDL3/SDL_video.h"
 #include "SliderSelector.hpp"
 
 InputProcessor::InputProcessor() {
@@ -81,12 +83,23 @@ void InputProcessor::process_in_game( int scancode ) {
 
         case SDL_SCANCODE_D:
             key_right_pressed = true;
-
             break;
+
+            case SDL_SCANCODE_R:
+                room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "maps/room1/" );
+                player->Spawn( room_manager->GetPlayerSpawnCellX() , room_manager->GetPlayerSpawnCellY()  );
+                player->reset();
+                break;
 
         case SDL_SCANCODE_A:
             key_left_pressed = true;
             break;
+
+        case SDL_SCANCODE_SPACE :
+        case SDL_SCANCODE_W:
+            space_pressed = true;
+            break;
+
     }
 
 }
@@ -145,9 +158,14 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
 
         case SDL_SCANCODE_S:
-            editor_room->SaveNewEditConfiguration();
-            room_manager->GenerateEditorRoom( editor_room, "../maps/room1/" );
-            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "../maps/room1/" );
+            try {
+                editor_room->SaveNewEditConfiguration();
+            } catch ( HerionException::File::FileException& e ) {
+                e.UpdateStackTrace( GET_CONTEXT());
+                throw e;
+            }
+            room_manager->GenerateEditorRoom( editor_room, "maps/room1/" );
+            room_manager->GenerateRoom( RoomManager::DIRECTION::DIR_NONE, "maps/room1/" );
             break;
 
         case SDL_SCANCODE_P:
@@ -189,7 +207,8 @@ void InputProcessor::process_key_up(const int scancode)  {
             if (game_mode == Player::GameMode::IN_GAME) {
                 key_left_pressed = false;
             }
-        break;
+            break;
+
     }
 }
 
@@ -411,7 +430,11 @@ bool InputProcessor::isMouseRightPressed() const {
     return this->mouse_right_pressed;
 }
 
-void InputProcessor::update_player_movement(float delta_time) const {
+void InputProcessor::update_player_movement(float delta_time) {
+
+    room_manager->GetCurrentRoom()->CheckPlayerCollision(player);
+
+
     if (player->GetGameMode() != Player::GameMode::IN_GAME)
         return;
 
@@ -419,8 +442,18 @@ void InputProcessor::update_player_movement(float delta_time) const {
         player->Move(Player::FacingDirection::WEST, delta_time);
     else if (key_right_pressed)
         player->Move(Player::FacingDirection::EAST, delta_time);
+
+    if(space_pressed) {
+        player->Jump();
+        player->SetOnGround(false);
+        space_pressed = false;
+    }
     else
         player->SetPlayerState(Player::PlayerState::IDLE);
+
+
+
+
 
 }
 

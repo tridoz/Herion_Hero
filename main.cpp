@@ -264,56 +264,51 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
-    std::unordered_map < std::string, int > prova = {
-        {"a", 0},
-        {"b", 1},
-        {"c", 2},
-        {"d", 3},
-        {"e", 4},
-        {"f", 5},
-    };
+    //Logger::debug_reflection_print( game_room_manager.GetCurrentRoom(), 0 );
 
-    auto ew = editors_windows.at("TEXTURE_SELECTION");
-
-    // for( const auto &[key, value] : editors_windows ) {
-    //     Logger::debug_reflection_print( editors_windows.at(key) , 0);
-    // }
-    Logger::debug_reflection_print( ew , 0);
-
-/*
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
-        Uint32 current_time = SDL_GetTicks(); float deltaTime = (current_time - last_frame_time) / 1000.0f;
+        Uint32 current_time = SDL_GetTicks();
+        float deltaTime = (current_time - last_frame_time) / 1000.0f;
         last_frame_time = current_time;
+
+        // 🔥 FIX IMPORTANTE: evita valori instabili
+        deltaTime = std::clamp(deltaTime, 0.0f, 0.033f);
 
         while ( SDL_PollEvent( &event ) ) {
             processor.SetEvent( event );
-            processor.Process();
+            try {
+                processor.Process();
+            } catch ( HerionException::File::FileException& e ) {
+                e.UpdateStackTrace( GET_CONTEXT() );
+                Logger::LogStackTrace( std::time(nullptr), e.GetStackTrace() );
+                return 0;
+            }
         }
 
         if ( JSONParser::graphics::Changed() ) {
 
             window->Resize();
 
-            main_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
-            general_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
-            graphics_settings_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
-            audio_settings_menu.SetDimension(  static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
-            pause_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
-            editor_menu.SetDimension( static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()) );
+            main_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
+            general_settings_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
+            graphics_settings_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
+            audio_settings_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
+            pause_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
+            editor_menu.SetDimension(static_cast<float>(window->GetWidth()), static_cast<float>(window->GetHeight()));
 
             try {
-                main_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::main_menu_config_path );
+                main_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::main_menu_config_path);
 
-                general_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::general_settings_menu_config_path );
-                graphics_settings_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::graphics_settings_menu_config_path );
-                audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path );
+                general_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::general_settings_menu_config_path);
+                graphics_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::graphics_settings_menu_config_path);
+                audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path);
 
-                pause_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::pause_menu_config_path );
-                editor_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::editor_menu_config_path );
+                pause_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::pause_menu_config_path);
+                editor_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::editor_menu_config_path);
 
-                texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path );
-                action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path );
+                texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path);
+                action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path);
 
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
@@ -322,27 +317,25 @@ int main ( int argc, char* argv[] ) {
             }
 
             game_room_manager.ResizeRoom();
-            game_room_manager.ResizeEditorRoom( &editor_room );
+            game_room_manager.ResizeEditorRoom(&editor_room);
 
             player.Resize();
-
         }
 
         if ( JSONParser::audio::Changed() ) {
 
             JSONParser::audio::ChangesApplied();
 
-            try{
+            try {
                 audio_settings_menu.LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path);
             } catch ( HerionException::File::FileException& ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );
                 Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
                 return -1;
             }
-
         }
 
-        window->SetColor( COLORS::BLACK );
+        window->SetColor(COLORS::BLACK);
         window->Clear();
 
         game_mode = player.GetGameMode();
@@ -353,70 +346,66 @@ int main ( int argc, char* argv[] ) {
                 break;
 
             case Player::GameMode::MAIN_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::main_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::main_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::GENERAL_SETTINGS_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::general_settings_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::general_settings_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::GRAPHICS_SETTINGS_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::graphics_settings_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::graphics_settings_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::AUDIO_SETTINGS_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::audio_settings_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::PAUSE_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::pause_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::pause_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::EDITOR_MENU:
-                window->SetCurrentMenu( Strings::Menus::Main_Window::Names::editor_menu_name );
-                window->GetCurrentMenu()->Draw( window->GetRenderer() );
+                window->SetCurrentMenu(Strings::Menus::Main_Window::Names::editor_menu_name);
+                window->GetCurrentMenu()->Draw(window->GetRenderer());
                 break;
 
             case Player::GameMode::LEVEL_EDITOR:
-                editor_room.Draw( window->GetRenderer() );
-                if ( editor_room.ShouldDrawAxis() ) {
-                    editor_room.DrawAxis( window->GetRenderer() );
-                }
+                editor_room.Draw(window->GetRenderer());
 
-                if ( editor_room.ShouldDrawHitboxes() ) {
-                    editor_room.DrawHitboxes( window->GetRenderer() );
-                }
+                if ( editor_room.ShouldDrawAxis() )
+                    editor_room.DrawAxis(window->GetRenderer());
 
-                for ( const auto [editor_win_name, editor_win] : editors_windows ) {
+                if ( editor_room.ShouldDrawHitboxes() )
+                    editor_room.DrawHitboxes(window->GetRenderer());
+
+                for ( const auto& [editor_win_name, editor_win] : editors_windows ) {
                     if ( editor_win->IsOpen() ) {
-                        editor_win->SetColor( COLORS::BLACK );
+                        editor_win->SetColor(COLORS::BLACK);
                         editor_win->Clear();
                         editor_win->GetCurrentMenu()->Draw(editor_win->GetRenderer());
                         editor_win->Present();
                         editor_win->Sleep();
                     }
                 }
-
                 break;
 
             case Player::GameMode::IN_GAME:
-                game_room_manager.DrawCurrentRoom( window->GetRenderer() );
-                player.Update();
+                game_room_manager.DrawCurrentRoom(window->GetRenderer());
 
-                processor.update_player_movement( deltaTime );
-                player.Draw( window->GetRenderer() );
+                processor.update_player_movement(deltaTime);
+                player.Update(deltaTime);
+                player.Draw(window->GetRenderer());
                 break;
-
         }
 
         window->Present();
         window->Sleep();
-
     }
-*/
+
 }

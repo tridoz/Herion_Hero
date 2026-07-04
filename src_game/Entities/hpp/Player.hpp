@@ -43,8 +43,12 @@ public:
 		IDLE,
 		RUN,
 		DEATH,
-		ATTACK
+		ATTACK,
+		JUMP,
+		FALLING
 	};
+
+
 
 	/**
 	 * @enum FacingDirection
@@ -124,8 +128,9 @@ public:
 
 	/**
 	 * @brief Update the Player
+	 * @param delta_time Time from one frame to the other needed to calculate how much the player move
 	 */
-	void Update();
+	void Update(float delta_time);
 
 	/**
 	 * @brief Draw the player
@@ -139,7 +144,9 @@ public:
 	 * @param delta_time Time from one frame to the other needed to calculate how much the player move
 	 */
 	void Move(FacingDirection direction, float delta_time);
+	void UpdatePhysics(float delta_time);
 
+	void Jump();
 	/**
 	 * @brief Resize the Textures
 	 */
@@ -151,6 +158,28 @@ public:
 	 * @param spawn_y Coordiante Y of spawn
 	 */
 	void Spawn( int spawn_x, int spawn_y );
+
+	void reset();
+
+	void SetOnGround( bool on_ground );
+
+	float GetVelocityY() const ;
+	void SetPositionY( float y );
+	void SetVelocityY( float y );
+
+	void SetAttachedToWallRight( bool attached );
+	void SetAttachedToWallLeft( bool attached );
+
+	float& GetPosX();
+    float& GetPosY();
+
+    float& GetVelocityX();
+    float& GetVelocityY();
+
+
+	[[no_discard]] bool IsJumping() const;
+	[[no_discard]] bool IsFalling() const;
+	[[no_discard]] bool OnGround() const;
 
 	static constexpr auto reflect_members() {
 		return std::make_tuple(
@@ -171,6 +200,9 @@ public:
 			Field<Player, float>{ "fixed_width", &Player::fixed_width },
 			Field<Player, float>{ "fixed_height", &Player::fixed_height },
 			Field<Player, float>{ "scale", &Player::scale },
+			Field<Player, bool>{ "is_jumping", &Player::is_jumping },
+			Field<Player, bool>{ "is_falling", &Player::is_falling },
+			Field<Player, bool>{ "on_ground", &Player::on_ground },
 			Field<Player, TextureManager*>{ "texture_manager", &Player::texture_manager },
 			Field<Player, std::unordered_map<std::string, Animation*> >{ "animations", &Player::animations },
 			Field<Player, Animation*>{ "current_animation", &Player::current_animation }
@@ -198,6 +230,17 @@ private:
 	float fixed_width, fixed_height;
 	float scale;
 
+	bool is_jumping;
+	bool is_falling;
+
+	bool attached_to_wall_left = false;
+	bool attached_to_wall_right = false;
+
+	float velocity_y = 0.0f;
+    float gravity = 1800.0f;
+    float jump_force = -800.0f;
+    bool on_ground = true;
+
 	TextureManager* texture_manager;
 	std::unordered_map< std::string, Animation* > animations;
 	Animation* current_animation;
@@ -206,6 +249,8 @@ private:
 	 * @brief Update animation frame if needed
 	 */
 	void UpdateAnimationFrame();
+
+
 
 
 
