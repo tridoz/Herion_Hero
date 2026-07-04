@@ -42,6 +42,8 @@ Player::Player() {
 	animations.emplace("FALL_LEFT", new Animation() );
 	animations.emplace("FALL_RIGHT", new Animation() );
 
+	animations.emplace("WALL_LEFT", new Animation() );
+	animations.emplace("WALL_RIGHT", new Animation() );
 
 	current_animation = animations.at("IDLE_RIGHT");
 

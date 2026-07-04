@@ -47,6 +47,18 @@
       "frame_number": 8,
       "frame_to_load": 4,
       "name": "FALL_RIGHT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Left/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "WALL_LEFT"
+    },
+    {
+      "path": "Assets/Entities/Player/Idle/Right/",
+      "frame_number": 8,
+      "frame_to_load": 4,
+      "name": "WALL_RIGHT"
     }
   ]
 }
