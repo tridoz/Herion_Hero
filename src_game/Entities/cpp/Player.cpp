@@ -11,7 +11,7 @@
 
 Player::Player() {
 
-	this->mode = GameMode::IN_GAME;
+	this->mode = GameMode::MAIN_MENU;
 	this->state = PlayerState::IDLE;
 	this->direction = FacingDirection::EAST;
 
@@ -378,6 +378,7 @@ void Player::Move(FacingDirection dir, float dt)
                 SetPlayerState(PlayerState::IDLE);
         }
     }
+
 }
 
 void Player::Resize() {

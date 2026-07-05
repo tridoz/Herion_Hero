@@ -448,10 +448,6 @@ void InputProcessor::update_player_movement(float delta_time) {
         player->SetOnGround(false);
         space_pressed = false;
     }
-    else
-        player->SetPlayerState(Player::PlayerState::IDLE);
-
-
 
 
 
