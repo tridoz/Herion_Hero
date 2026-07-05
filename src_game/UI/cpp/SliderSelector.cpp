@@ -62,10 +62,15 @@ void SliderSelector::SetToSet( std::string to_set) {
 }
 
 void SliderSelector::SaveVolume() {
-    if( to_set == "MASTER_VOLUME") {
-        int start = this->slider_button_rect.x + this->slider_button_rect.w/2 - this->rects[1].x;
+    int start = this->slider_button_rect.x + this->slider_button_rect.w/2 - this->rects[1].x;
+
+    if( to_set == "MASTER_VOLUME")
         JSONParser::audio::SetMasterVolume( std::clamp(start/5, 0, 100) );
-    }
+    else if (to_set == "MUSIC_VOLUME")
+        JSONParser::audio::SetMusicVolume( std::clamp(start/5, 0, 100) );
+    else if( to_set == "SFX_VOLUME")
+        JSONParser::audio::SetSFXVolume( std::clamp(start/5, 0, 100) );
+
 }
 
 void SliderSelector::SetLength( float lenght ) {

@@ -255,7 +255,15 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                     "Assets/Ui/Buttons/Game/SliderButton.png");
 
                 SDL_GetTextureSize(slider_button_txt->GetTexture(), &srw, &srh);
-                const float volume_percentage = JSONParser::audio::GetMasterVolume();
+                const std::string value_to_set = menu_element_characteristic.value_to_set.value();
+                float volume_percentage = 0;
+                if( value_to_set == "MASTER_VOLUME")
+                    volume_percentage = JSONParser::audio::GetMasterVolume();
+                else if( value_to_set == "MUSIC_VOLUME")
+                    volume_percentage = JSONParser::audio::GetMusicVolume();
+                else if( value_to_set == "SFX_VOLUME")
+                    volume_percentage = JSONParser::audio::GetSFXVolume();
+
                 const float bar_percentage = text_total_w / 100 * volume_percentage;
 
                 const float x = center_rect.x + bar_percentage ;
@@ -285,9 +293,10 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                 if( menu_element_characteristic.action.value() == "SETTER" )
                     if( menu_element_characteristic.value_to_set.value() == "MASTER_VOLUME")
                         slider->SetToSet("MASTER_VOLUME");
-
-
-
+                    else if( menu_element_characteristic.value_to_set.value() == "MUSIC_VOLUME")
+                        slider->SetToSet("MUSIC_VOLUME");
+                    else if (menu_element_characteristic.value_to_set.value() == "SFX_VOLUME")
+                        slider->SetToSet("SFX_VOLUME");
             }
 
             cumulative_x += left_rect.w + center_rect.w + right_rect.w + button_x_offset;

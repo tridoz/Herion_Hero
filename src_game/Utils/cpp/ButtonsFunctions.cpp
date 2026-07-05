@@ -82,13 +82,30 @@ void ButtonsFunctions::DecreaseBrightness() {
 
 }
 
+
+//AUDIO SETTINGS
 void ButtonsFunctions::SetMasterVolume(int volume) {
     JSONParser::audio::SetMasterVolume( volume );
 }
-//AUDIO SETTINGS
 void ButtonsFunctions::IncreaseMasterVolume() {
     JSONParser::audio::IncreaseMasterVolume();
 }
 void ButtonsFunctions::DecreaseMasterVolume() {
     JSONParser::audio::DecreaseMasterVolume();
+}
+
+void ButtonsFunctions::IncreaseMusicVolume() {
+    JSONParser::audio::IncreaseMusicVolume();
+}
+void ButtonsFunctions::DecreaseMusicVolume() {
+    JSONParser::audio::DecreaseMusicVolume();
+}
+
+
+
+void ButtonsFunctions::IncreaseSFXVolume() {
+    JSONParser::audio::IncreaseSFXVolume();
+}
+void ButtonsFunctions::DecreaseSFXVolume() {
+    JSONParser::audio::DecreaseSFXVolume();
 }

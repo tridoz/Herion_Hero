@@ -48,6 +48,84 @@
       ]
     },
     {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
+        {
+          "type": "STATIC_TEXT",
+          "text": "Music Volume",
+          "id": "static_text_display_music_volume_label"
+        },
+        {
+          "type": "DYNAMIC_TEXT",
+          "text": "MUSIC_VOLUME",
+          "id": "dynamic_text_music_volume_value"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Minus",
+          "action": "DECREASE_MUSIC_VOLUME",
+          "id": "button_decrease_music_volume"
+        },
+        {
+          "type": "SLIDER_SELECTOR",
+          "max_value": 100,
+          "min_value": 0,
+          "step": 1,
+          "slider_bar_offset": 30,
+          "length": 500,
+          "id": "slider_selector_for_music_volume",
+          "action": "SETTER",
+          "value_to_set": "MUSIC_VOLUME"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Plus",
+          "action": "INCREASE_MUSIC_VOLUME",
+          "id": "button_increase_music_volume"
+        }
+      ]
+    },
+    {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
+        {
+          "type": "STATIC_TEXT",
+          "text": "SFX Volume",
+          "id": "static_text_display_sfx_volume_label"
+        },
+        {
+          "type": "DYNAMIC_TEXT",
+          "text": "SFX_VOLUME",
+          "id": "dynamic_text_sfx_volume_value"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Minus",
+          "action": "DECREASE_SFX_VOLUME",
+          "id": "button_decrease_sfx_volume"
+        },
+        {
+          "type": "SLIDER_SELECTOR",
+          "max_value": 100,
+          "min_value": 0,
+          "step": 1,
+          "slider_bar_offset": 30,
+          "length": 500,
+          "id": "slider_selector_for_sfx_volume",
+          "action": "SETTER",
+          "value_to_set": "SFX_VOLUME"
+        },
+        {
+          "type": "BUTTON",
+          "text": "Plus",
+          "action": "INCREASE_SFX_VOLUME",
+          "id": "button_increase_sfx_volume"
+        }
+      ]
+    },
+    {
       "starting_x": 1000,
       "button_x_offset": 0,
       "elements": [

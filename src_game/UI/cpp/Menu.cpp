@@ -6,6 +6,8 @@
 
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "../../Textures/hpp/TextureManager.hpp"
+#include "ButtonsFunctions.hpp"
+#include <string>
 
 
 Menu::Menu() {
@@ -31,6 +33,12 @@ Menu::Menu() {
 
 	buttons_functions.emplace("DECREASE_MASTER_VOLUME", ButtonsFunctions::DecreaseMasterVolume );
 	buttons_functions.emplace("INCREASE_MASTER_VOLUME", ButtonsFunctions::IncreaseMasterVolume );
+
+	buttons_functions.emplace("DECREASE_MUSIC_VOLUME", ButtonsFunctions::DecreaseMusicVolume );
+	buttons_functions.emplace("INCREASE_MUSIC_VOLUME", ButtonsFunctions::IncreaseMusicVolume );
+
+	buttons_functions.emplace("DECREASE_SFX_VOLUME", ButtonsFunctions::DecreaseSFXVolume );
+	buttons_functions.emplace("INCREASE_SFX_VOLUME", ButtonsFunctions::IncreaseSFXVolume );
 
 }
 
@@ -80,6 +88,10 @@ std::string Menu::GetText( const std::string& text_type ) {
 		text = std::to_string(frame_rate);
 	}else if ( text_type == "MASTER_VOLUME"){
 		text = std::to_string( JSONParser::audio::GetMasterVolume() );
+	} else if ( text_type == "MUSIC_VOLUME") {
+	    text = std::to_string( JSONParser::audio::GetMusicVolume() );
+	} else if ( text_type == "SFX_VOLUME") {
+	    text = std::to_string( JSONParser::audio::GetSFXVolume() );
 	}
 
 	return text;
@@ -160,10 +172,3 @@ void Menu::SetMouseOffset(float diff) {
 void Menu::ReloadConfiguration() {
 	this->LoadConfiguration( this->filepath );
 }
-
-
-
-
-
-
-

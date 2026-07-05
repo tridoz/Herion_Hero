@@ -115,31 +115,16 @@ public:
     //AUDIO SETTINGS
     //
     static void SetMasterVolume(int volume);
-
     static void IncreaseMasterVolume();
-
-
     static void DecreaseMasterVolume();
 
-    /**
-     * Unimplemented
-     */
+    static void SetMusicVolume( int volume );
     static void IncreaseMusicVolume();
-
-    /**
-     * Unimplemented
-     */
     static void DecreaseMusicVolume();
 
-    /**
-     * Unimplemented
-     */
-    static void IncreaseEffectsVolume();
-
-    /**
-     * Unimplemented
-     */
-    static void DecreaseEffectsVolume();
+    static void SetSFXVolume( int volume );
+    static void IncreaseSFXVolume();
+    static void DecreaseSFXVolume();
 
     /**
      * Unimplemented

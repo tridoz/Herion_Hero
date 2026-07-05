@@ -24,15 +24,19 @@ namespace JSONParser {
         void IncreaseMasterVolume();
         void DecreaseMasterVolume();
 
+        void SetMusicVolume( int volume );
         void IncreaseMusicVolume();
         void DecreaseMusicVolume();
 
+        void SetSFXVolume( int volume );
         void IncreaseSFXVolume();
         void DecreaseSFXVolume();
 
         void ToggleMute();
 
         float GetMasterVolume();
+        float GetMusicVolume();
+        float GetSFXVolume();
 
         bool Changed();
         void ChangesApplied();
