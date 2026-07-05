@@ -3,6 +3,9 @@
 //
 
 #include "../hpp/SliderSelector.hpp"
+#include "ButtonsFunctions.hpp"
+#include "JSONParser.hpp"
+#include <functional>
 
 SliderSelector::SliderSelector() {
     this->textures.clear();
@@ -49,6 +52,24 @@ void SliderSelector::SetMaxMinStep( const float max, const float min, const floa
     this->max_value = max;
     this->min_value = min;
     this->step = step;
+
+    SetXValues(  this->rects[2].x, this->rects[0].x + this->rects[0].w  );
+
+}
+
+void SliderSelector::SetToSet( std::string to_set) {
+    this->to_set = to_set;
+}
+
+void SliderSelector::SaveVolume() {
+    if( to_set == "MASTER_VOLUME") {
+        int start = this->slider_button_rect.x + this->slider_button_rect.w/2 - this->rects[1].x;
+        JSONParser::audio::SetMasterVolume( std::clamp(start/5, 0, 100) );
+    }
+}
+
+void SliderSelector::SetLength( float lenght ) {
+    this->length = lenght;
 }
 
 void SliderSelector::SetXValues( const float max, const float min) {
@@ -71,10 +92,10 @@ void SliderSelector::Draw(SDL_Renderer *renderer) const {
 
 SDL_FRect* SliderSelector::GetSliderButtonRect( float mouse_x, float mouse_y ) {
     if(
-        mouse_x < slider_button_rect.x ||
-        mouse_x > slider_button_rect.x + slider_button_rect.w ||
-        mouse_y < slider_button_rect.y ||
-        mouse_y > slider_button_rect.y + slider_button_rect.h
+        mouse_x > slider_button_rect.x &&
+        mouse_x < slider_button_rect.x + slider_button_rect.w &&
+        mouse_y > slider_button_rect.y &&
+        mouse_y < slider_button_rect.y + slider_button_rect.h
     ) {
         return &this->slider_button_rect;
     }
@@ -87,7 +108,6 @@ void SliderSelector::StartUpdating() {
 }
 
 
-
 void SliderSelector::StopUpdating() {
     this->is_updating = false;
 }
@@ -97,7 +117,9 @@ bool SliderSelector::IsUpdating() const {
 }
 
 void SliderSelector::SetOffsetX( float offsetX ) {
-    this->offsetX = offsetX - slider_button_rect.x;
+    if( offsetX < this->max_value_x && offsetX > this->min_value_x ) {
+        this->slider_button_rect.x = offsetX - slider_button_rect.w/2;
+    }
 }
 
 void SliderSelector::SetOffsetY( float offsetY ) {

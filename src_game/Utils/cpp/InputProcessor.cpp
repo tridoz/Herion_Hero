@@ -245,13 +245,18 @@ void InputProcessor::process_mouse_left_pressed() {
 
             ButtonMenu* bm = static_cast<ButtonMenu *>(menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name));
             SliderSelector* slider = bm->GetSliderSelector(mouse_x, mouse_y);
+
+            //Logger::debug_reflection_print( slider, 0 );
             if( slider != nullptr ) {
+                // active_slider = slider;
+                // SDL_FRect* rect = slider->GetSliderButtonRect(mouse_x, mouse_y);
+                // if( rect == nullptr ) return;
+                // slider->SetOffsetX( mouse_x );
+                // slider->SetOffsetY( mouse_y );
+                // slider->StartUpdating();
+                //
                 active_slider = slider;
-                SDL_FRect* rect = slider->GetSliderButtonRect(mouse_x, mouse_y);
-                if( rect == nullptr ) return;
-                slider->SetOffsetX( mouse_x );
-                slider->SetOffsetY( mouse_y );
-                slider->StartUpdating();
+                active_slider->StartUpdating();
 
             }
 
@@ -262,7 +267,6 @@ void InputProcessor::process_mouse_left_pressed() {
             btn = menus.at(Strings::Menus::Main_Window::Names::pause_menu_name )->GetCollisionButton(mouse_x, mouse_y);
             if (btn != nullptr) btn->Click();
             break;
-
 
         case Player::GameMode::EDITOR_MENU:
             btn = menus.at(Strings::Menus::Main_Window::Names::editor_menu_name)->GetCollisionButton(mouse_x, mouse_y);
@@ -325,30 +329,27 @@ void InputProcessor::process_mouse_left_pressed() {
 
 void InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) {
 
-    if (!active_slider) return;
-    if (!active_slider->IsUpdating()) return;
+    if( active_slider == nullptr  )
+        return;
 
-    SDL_FRect* rect = active_slider->GetSliderButtonRect(mouse_x, mouse_y);
-    if (!rect) return;
+    if( !active_slider->IsUpdating() )
+        return;
 
-    float minX, maxX;
-    std::tie( minX, maxX ) = std::make_tuple( active_slider->GetMinX(), active_slider->GetMaxX() );
+    active_slider->SetOffsetX( mouse_x );
 
-    const float t = (mouse_x - minX) / (maxX - minX);
-    float const value = std::clamp(t, 0.0f, 1.0f);
-
-    rect->x = minX + value * (maxX - minX);
 }
 
 void InputProcessor::process_mouse_left_lifted() {
     mouse_left_pressed = false;
     Button* btn;
-    SliderSelector* slider;
 
     switch( player->GetGameMode() ) {
         case Player::GameMode::AUDIO_SETTINGS_MENU:
-            slider = ((ButtonMenu*)menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name))->GetSliderSelector(mouse_x, mouse_y);
-            if( slider != nullptr ) slider->StopUpdating();
+            if( active_slider != nullptr && active_slider->IsUpdating() ) {
+                active_slider->StopUpdating();
+                active_slider->SaveVolume();
+                active_slider = nullptr;
+            }
             break;
     }
 }

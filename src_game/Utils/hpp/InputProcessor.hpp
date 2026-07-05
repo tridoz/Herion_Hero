@@ -23,6 +23,7 @@
 #define MAX_SCANCODES 512
 
 class InputProcessor {
+
 private:
     Player* player{};
     RoomManager* room_manager{};

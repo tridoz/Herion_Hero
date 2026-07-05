@@ -113,8 +113,12 @@ public:
     static void DecreaseBrightness();
 
     //AUDIO SETTINGS
+    //
+    static void SetMasterVolume(int volume);
 
     static void IncreaseMasterVolume();
+
+
     static void DecreaseMasterVolume();
 
     /**

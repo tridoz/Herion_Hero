@@ -20,6 +20,7 @@ namespace JSONParser {
         inline const std::string json_audio_file_path = Strings::Settings::Paths::json_audio_settings_file_path;
         inline bool changed = false;
 
+        void SetMasterVolume( int volume );
         void IncreaseMasterVolume();
         void DecreaseMasterVolume();
 
@@ -154,6 +155,7 @@ namespace JSONParser {
 
             std::optional < std::string > text;
             std::optional < std::string > action;
+            std::optional < std::string > value_to_set;
             std::optional < std::string > return_value;
             std::optional < float > max_value;
             std::optional < float > min_value;

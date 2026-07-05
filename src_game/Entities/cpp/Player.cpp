@@ -15,8 +15,6 @@ Player::Player() {
 	this->state = PlayerState::IDLE;
 	this->direction = FacingDirection::EAST;
 
-
-
 	this->velocity_x = 0.0f;
 	this->speed = 500;
 

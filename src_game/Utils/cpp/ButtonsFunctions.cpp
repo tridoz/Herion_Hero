@@ -82,6 +82,9 @@ void ButtonsFunctions::DecreaseBrightness() {
 
 }
 
+void ButtonsFunctions::SetMasterVolume(int volume) {
+    JSONParser::audio::SetMasterVolume( volume );
+}
 //AUDIO SETTINGS
 void ButtonsFunctions::IncreaseMasterVolume() {
     JSONParser::audio::IncreaseMasterVolume();

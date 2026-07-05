@@ -5,6 +5,54 @@
 #include "../hpp/JSONParser.hpp"
 
 //AUDIO
+//
+
+void JSONParser::audio::SetMasterVolume( int volume ) {
+    std::ifstream audio_file_input(json_audio_file_path, std::ios::in );
+    if ( !audio_file_input.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "OPENING",
+            "JSONParser::audio",
+            "IncreaseMasterVolume",
+            "Error while opening file [" + json_audio_file_path + "] for input : " + strerror(errno)
+            );
+        return;
+    }
+
+    nlohmann::json json_audio;
+    audio_file_input >> json_audio;
+
+
+    if(volume > 100 ) {
+        volume = 100;
+    }
+
+    if( volume < 0) {
+        volume = 0;
+    }
+
+
+    json_audio["master_volume"] = volume;
+
+    audio_file_input.close();
+
+    std::ofstream audio_file_output( json_audio_file_path , std::ios::out );
+    if ( !audio_file_output.is_open() ) {
+        Logger::LogErr(
+            std::time(nullptr),
+            "PARSING",
+            "JSONParser::audio",
+            "IncreaseMasterVolume",
+            "Error while parsing file [" + json_audio_file_path + "] for output : " + strerror( errno )
+            );
+        return;
+    }
+
+    audio_file_output << json_audio.dump(4);
+    audio_file_output.close();
+    changed = true;
+}
 void JSONParser::audio::IncreaseMasterVolume() {
 
     std::ifstream audio_file_input(json_audio_file_path, std::ios::in );

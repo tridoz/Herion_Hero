@@ -264,7 +264,6 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
-    //Logger::debug_reflection_print( game_room_manager.GetCurrentRoom(), 0 );
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 

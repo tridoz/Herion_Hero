@@ -3,6 +3,7 @@
 //
 
 #include "../hpp/ButtonMenu.hpp"
+#include "JSONParser.hpp"
 
 bool ButtonMenu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) {
     for (SDL_FRect button: buttons) {
@@ -33,16 +34,9 @@ SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
     for (const auto& [name, slider] : slider_selectors) {
 
         SDL_FRect* rect = slider->GetSliderButtonRect(x, y);
-        if (!rect) continue;
+        if ( rect == nullptr ) continue;
 
-        if (
-            x >= rect->x &&
-            x <= rect->x + rect->w &&
-            y >= rect->y &&
-            y <= rect->y + rect->h
-        ) {
-            return slider;
-        }
+        return slider;
     }
 
     return nullptr;
@@ -219,7 +213,6 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                     btn->SetRects(rects);
                     btn->SetTextures(textures);
 
-
                     if (menu_element_characteristic.action.value() == "RETURN_VALUE") {
                         btn->SetText(menu_element_characteristic.return_value.value());
                         btn->SetOnClickReturn([btn] {
@@ -274,13 +267,27 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                     center_rect.h * scale
                 };
 
-                slider->SetSliderButtonRect(slider_button_rect);
-                slider->SetSliderButtonTexture(slider_button_txt);
+
 
                 slider->SetTextures(textures);
                 slider->SetRects(rects);
 
+                slider->SetLength( menu_element_characteristic.length.value() );
+                slider->SetMaxMinStep(menu_element_characteristic.max_value.value(), menu_element_characteristic.min_value.value(), menu_element_characteristic.step.value() );
+                slider->SetSliderButtonRect(slider_button_rect);
+                slider->SetSliderButtonTexture(slider_button_txt);
+
                 slider_selectors.emplace(menu_element_characteristic.id, slider);
+
+                if( !menu_element_characteristic.action.has_value() )
+                    continue;
+
+                if( menu_element_characteristic.action.value() == "SETTER" )
+                    if( menu_element_characteristic.value_to_set.value() == "MASTER_VOLUME")
+                        slider->SetToSet("MASTER_VOLUME");
+
+
+
             }
 
             cumulative_x += left_rect.w + center_rect.w + right_rect.w + button_x_offset;

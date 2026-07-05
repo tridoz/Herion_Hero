@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <thread>
+#include<functional>
 
 #include "../../Textures/hpp/Texture.hpp"
 #include "../../Utils/hpp/Logger.hpp"
@@ -18,6 +19,8 @@ private:
 
     std::vector < Texture* > textures;
     std::vector < SDL_FRect > rects;
+
+    std::string to_set;
 
     bool is_updating;
 
@@ -36,6 +39,7 @@ private:
     float min_value_x;
 
     float step;
+    float length;
 
 public:
     SliderSelector();
@@ -58,7 +62,6 @@ public:
     void StartUpdating();
     void StopUpdating();
 
-
     void Draw( SDL_Renderer* renderer ) const;
 
     bool IsUpdating() const;
@@ -66,12 +69,37 @@ public:
     void SetOffsetX( float offsetX );
     void SetOffsetY( float offsetY );
 
+    void SetLength( float lenght );
+
+    void SaveVolume();
+
+    void SetToSet(std::string to_set);
+
     float GetMaxX() const;
 
     float GetMinX() const;
 
     float GetOffsetX() const;
     float GetOffsetY() const;
+
+    static constexpr auto reflect_members() {
+        return std::make_tuple (
+          Field<SliderSelector, std::vector<Texture*> > {"textures", &SliderSelector::textures},
+          Field<SliderSelector, std::vector<SDL_FRect> > {"rects", &SliderSelector::rects},
+          Field<SliderSelector, bool> {"is_updating", &SliderSelector::is_updating},
+          Field<SliderSelector, float>{"offsetX", &SliderSelector::offsetX},
+          Field<SliderSelector, float>{"offsetY", &SliderSelector::offsetY},
+          Field<SliderSelector, Texture*>{"slider_button_texture", &SliderSelector::slider_button_texture},
+          Field<SliderSelector, SDL_FRect>{"slider_button_rect", &SliderSelector::slider_button_rect},
+          Field<SliderSelector, Texture*>{"slider_bar_texture", &SliderSelector::slider_bar_texture},
+          Field<SliderSelector, SDL_FRect>{"slider_bar_rect", &SliderSelector::slider_bar_rect},
+          Field<SliderSelector, int>{"max_value", &SliderSelector::max_value},
+          Field<SliderSelector, int>{"min_value", &SliderSelector::min_value},
+          Field<SliderSelector, float>{"max_value_x", &SliderSelector::max_value_x},
+          Field<SliderSelector, float>{"min_value_x", &SliderSelector::min_value_x},
+          Field<SliderSelector, float>{"step", &SliderSelector::step}
+        );
+    }
 
 
 };
