@@ -7,6 +7,7 @@
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "SDL3/SDL_camera.h"
+#include <type_traits>
 
 
 Player::Player() {
@@ -269,6 +270,7 @@ void Player::UpdatePhysics(float dt)
         }
         else
         {
+            std::cout << "iniziato a cadere";
             is_jumping = false;
             is_falling = true;
 
@@ -281,11 +283,11 @@ void Player::UpdatePhysics(float dt)
         velocity_y = 0.0f;
         is_jumping = false;
         is_falling = false;
+        std::cout << "smesso di cadere\n";
     }
 }
 
-void Player::UpdateAnimationFrame()
-{
+void Player::UpdateAnimationFrame() {
     Animation* crt = current_animation;
     Animation* toSet = nullptr;
 
@@ -334,9 +336,9 @@ void Player::UpdateAnimationFrame()
     current_animation->Update();
 }
 
-void Player::Move(FacingDirection dir, float dt)
-{
-    const float distance = speed * dt;
+void Player::Move(FacingDirection dir, float dt) {
+
+    const float distance = (on_ground)? speed  * dt : speed*0.75*dt;
 
     bool is_moving = false;
 

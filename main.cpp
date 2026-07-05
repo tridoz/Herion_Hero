@@ -89,7 +89,7 @@ int LoadEnv() {
 int main ( int argc, char* argv[] ) {
 
     //LoadEnv();
-
+    //find src_game \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} + | sort -n
     SoundBoard::Init();
     SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
 
