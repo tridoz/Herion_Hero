@@ -1,36 +1,49 @@
 {
-  "background_path" : "Assets/Backgrounds/Black.png",
-  "start_y" : 0,
-  "button_y_offset" : 0,
-  "center_piece_offset" : 0,
+  "background_path": "Assets/Backgrounds/Black.png",
+  "start_y": 0,
+  "button_y_offset": 0,
+  "center_piece_offset": 0,
   "menu_type": "button_menu",
-  "button_style" : "Editor",
-  "font_style" : "Editor",
-  "char_width" : 40.0,
-  "rows" : [
+  "button_style": "Editor",
+  "font_style": "Editor",
+  "char_width": 40.0,
+  "rows": [
     {
-      "starting_x" : 5,
-      "button_x_offset" : 10,
-      "elements" : [
+      "starting_x": 5,
+      "button_x_offset": 10,
+      "elements": [
         {
-          "type" : "BUTTON",
+          "type": "BUTTON",
           "text": "Add texture",
-          "return_value" : "add_texture",
+          "return_value": "add_texture",
           "action": "RETURN_VALUE",
           "id": "button_for_selecting_action_of_texture_adding"
         }
       ]
     },
     {
-      "starting_x" : 5,
-      "button_x_offset" : 10,
-      "elements" : [
+      "starting_x": 5,
+      "button_x_offset": 10,
+      "elements": [
         {
-          "type" : "BUTTON",
+          "type": "BUTTON",
           "text": "Change hitbox",
-          "return_value" : "change_hitbox",
+          "return_value": "change_hitbox",
           "action": "RETURN_VALUE",
           "id": "button_for_selecting_action_of_hitbox_changing"
+        }
+      ]
+    },
+    {
+      "starting_x": 5,
+      "button_x_offset": 10,
+      "elements": [
+        {
+          "type": "BUTTON",
+          "text": "Add Entity",
+          "return_value": "add_entity",
+          "action": "RETURN_VALUE",
+          "id": "button_for_adding_entities_changing"
         }
       ]
     }

@@ -9,6 +9,7 @@
 
 #include "../../Utils/hpp/Logger.hpp"
 #include "../../Utils/hpp/Reflector.hpp"
+#include "JSONParser.hpp"
 
 class TextureManager;
 
@@ -175,6 +176,8 @@ public:
 
     float& GetVelocityX();
     float& GetVelocityY();
+
+    void ParseEntityProperties( const struct JSONParser::entities::EntityProperties prop );
 
 
 	[[no_discard]] bool IsJumping() const;

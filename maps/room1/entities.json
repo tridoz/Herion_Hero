@@ -1,0 +1,20 @@
+{
+  "entities": [
+    {
+      "type": "player",
+      "animations_file_path": "configs/animations/player.json",
+      "stats": {
+        "hp": 0,
+        "mana": 0,
+        "stamina": 0
+      },
+      "position": {
+        "plane": "normal_plane",
+        "coordinates": {
+          "x": 500,
+          "y": 500
+        }
+      }
+    }
+  ]
+}

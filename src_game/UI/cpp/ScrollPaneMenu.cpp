@@ -38,7 +38,14 @@ void ScrollPaneMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
         this->buttons.clear();
         this->texts.clear();
         CreateButtonsAndTexts( this->directory );
+    } else if( cmd == "select_all_entities" ) {
+        std::string base_directory = "src_game/Entities/cpp/";
+        CreateSubDirectories( this->directory, base_directory, 0);
+        this->button_style.clear();
+        this->texts.clear();
+        CreateButtonsAndTexts( this->directory );
     }
+
 }
 
 bool ScrollPaneMenu::CheckCollision(const std::vector<SDL_FRect > buttons, float x, float y) {
@@ -98,7 +105,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
 
-			Texture* file_txt = texture_manager->GetTextureByName(path );
+			Texture* file_txt = texture_manager->GetTextureByName( path );
 			SDL_FRect file_rect = {
 				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),

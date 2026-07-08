@@ -21,11 +21,10 @@ include_directories(
         "${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/hpp"
         "${CMAKE_SOURCE_DIR}/src_game/Sound/hpp"
         "${CMAKE_SOURCE_DIR}/src_game/Exceptions/hpp"
-        "${CMAKE_SOURCE_DIR}/src_TCP/hpp"
 )
 
 file(GLOB_RECURSE SRC_FILES
-        "${CMAKE_SOURCE_DIR}/src_game/**/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src_game/*.cpp"
         "${CMAKE_SOURCE_DIR}/main.cpp"
 )
 

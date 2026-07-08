@@ -48,11 +48,13 @@ namespace Strings {
 
                 const std::string texture_selection_menu_config_path = editor_window_general_path + "directory_texture_selection.json";
                 const std::string action_selection_menu_config_path = editor_window_general_path + "action_selection.json";
+                const std::string entity_selection_menu_config_path = editor_window_general_path + "entity_selection_menu.json";
             }
 
             namespace Names {
                 const std::string texture_selection_menu_name = "TEXTURE_SELECTIONS";
                 const std::string action_selection_menu_name = "ACTION_SELECTION";
+                const std::string entity_selection_menu_name = "ENTITY_SELECTION";
             }
         }
 
@@ -63,6 +65,7 @@ namespace Strings {
         constexpr std::string main_texture_manager_name = "MAIN";
         constexpr std::string texture_selection_menu_name = "EDITOR";
         constexpr std::string action_selection_menu_name = "ACTION";
+        constexpr std::string entity_seleciton_menu_name = "ENTITY";
     }
 
     namespace Animations::Player::Paths {

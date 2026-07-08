@@ -149,6 +149,20 @@ void InputProcessor::process_level_editor(int scancode) {
             break;
         }
 
+        case SDL_SCANCODE_E: {
+            Window* entity_window = this->window_tools.at("ENTITY_SELECTION");
+            for ( const auto& [name, window] : window_tools ) {
+                if ( name != "ENTITY_SELECTION")
+                    window->Hide();
+            }
+            if ( entity_window->IsOpen() ) {
+                entity_window->Hide();
+            } else {
+                entity_window->Show();
+            }
+            break;
+        }
+
         case SDL_SCANCODE_G:
             editor_room->ToggleAxis();
             break;
@@ -288,7 +302,6 @@ void InputProcessor::process_mouse_left_pressed() {
                             TextureManager* mng = texture_managers.at("MAIN");
                             Texture* txt = mng->GetTextureByName(str);
                             editor_room->SetCurrentEditorTexture( txt );
-                            SoundBoard::PlaySound("prova");
                         }
 
                     }
@@ -299,7 +312,14 @@ void InputProcessor::process_mouse_left_pressed() {
                         if ( btn != nullptr ) {
                             std::string str = btn->ClickReturn();
                             editor_room->SetAction( str );
-                            SoundBoard::PlaySound("prova");
+                        }
+                    }
+                } else if ( name == "ENTITY_SELECTION") {
+                    if( window->IsOpen() ) {
+                        btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x, mouse_y);
+                        if( btn != nullptr ) {
+                            std::string str = btn->ClickReturn();
+
                         }
                     }
                 }
@@ -317,6 +337,8 @@ void InputProcessor::process_mouse_left_pressed() {
                     bool hitbox = editor_room->GetTiles()[cell_y][cell_x]->HasHitbox();
                     editor_room->GetTiles()[cell_y][cell_x]->SetHitbox( !hitbox );
                     editor_room->UpdateHitbox(cell_x, cell_y);
+                } else if( action == "place_entity" ) {
+
                 }
             }
 

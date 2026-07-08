@@ -1,3 +1,4 @@
+#include "JSONParser.hpp"
 #include "src_game/Utils/hpp/Reflector.hpp"
 #include "src_game/UI/hpp/Window.hpp"
 #include "src_game/Utils/hpp/Logger.hpp"
@@ -106,8 +107,9 @@ int main ( int argc, char* argv[] ) {
     }
 
     std::unordered_map < std::string,  Window* > editors_windows = {
-          { "TEXTURE_SELECTION", new Window("Texture selection", 500, 300) },
-        { "ACTION_SELECTION", new Window("Action selection", 500, 300) }
+        { "TEXTURE_SELECTION", new Window("Texture selection", 500, 300) },
+        { "ACTION_SELECTION", new Window("Action selection", 500, 300) },
+        { "ENTITY_SELECTION", new Window("Entity selection", 500, 300)}
     };
 
     InputProcessor processor;
@@ -115,6 +117,7 @@ int main ( int argc, char* argv[] ) {
     TextureManager main_texture_manager;
     TextureManager texture_selection_texture_manager;
     TextureManager action_selection_texture_manager;
+    TextureManager entity_selection_texture_manager;
 
     RoomManager game_room_manager;
 
@@ -133,11 +136,16 @@ int main ( int argc, char* argv[] ) {
     ButtonMenu action_selection_menu;
 
     ScrollPaneMenu texture_selection_menu;
+    ScrollPaneMenu entity_selection_menu;
 
     Player::PlayerState player_state;
     Player::GameMode game_mode;
 
     ButtonsFunctions::SetPlayer( &player );
+
+    std::vector<struct JSONParser::entities::EntityProperties> prop = JSONParser::entities::GetEntityProperties( "maps/room1/entities.json" );
+
+
 
     window->SetMenu( Strings::Menus::Main_Window::Names::main_menu_name, &main_menu );
 
@@ -154,17 +162,21 @@ int main ( int argc, char* argv[] ) {
     editors_windows.at("ACTION_SELECTION")->SetMenu("ACTION_SELECTION", &action_selection_menu );
     editors_windows.at("ACTION_SELECTION")->SetCurrentMenu("ACTION_SELECTION");
 
+    editors_windows.at("ENTITY_SELECTION")->SetMenu("ENTITY_SELECTION", &entity_selection_menu);
+    editors_windows.at("ENTITY_SELECTION")->SetCurrentMenu("ENTITY_SELECTION");
+
     //window.LoadCursors( Strings::Textures::Cursors::all_cursors_path );
 
     main_texture_manager.SetRenderer( window->GetRenderer() );
     texture_selection_texture_manager.SetRenderer( editors_windows.at("TEXTURE_SELECTION")->GetRenderer() );
     action_selection_texture_manager.SetRenderer( editors_windows.at("ACTION_SELECTION")->GetRenderer() );
-
+    entity_selection_texture_manager.SetRenderer( editors_windows.at("ENTITY_SELECTION")->GetRenderer() );
     try {
 
         main_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
         texture_selection_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
         action_selection_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
+        entity_selection_texture_manager.LoadTextures(Strings::Textures::Paths::all_textures_path );
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -207,6 +219,9 @@ int main ( int argc, char* argv[] ) {
     action_selection_menu.SetTextureManager( &action_selection_texture_manager );
     action_selection_menu.SetDimension( static_cast<float>( editors_windows.at("ACTION_SELECTION")->GetWidth() ) , static_cast<float>(editors_windows.at("ACTION_SELECTION")->GetHeight() ) );
 
+    entity_selection_menu.SetTextureManager( &entity_selection_texture_manager );
+    action_selection_menu.SetDimension(  static_cast<float>( editors_windows.at("ENTITY_SELECTION")->GetWidth() ) , static_cast<float>(editors_windows.at("ENTITY_SELECTION")->GetHeight() ) );
+
     try {
 
         main_menu.LoadConfiguration( Strings::Menus::Main_Window::Paths::main_menu_config_path );
@@ -220,6 +235,7 @@ int main ( int argc, char* argv[] ) {
 
         texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path );
         action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path );
+        entity_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::entity_selection_menu_config_path );
 
     } catch ( HerionException::File::FileException &ex ) {
         ex.UpdateStackTrace( GET_CONTEXT() );
@@ -235,10 +251,12 @@ int main ( int argc, char* argv[] ) {
     processor.SetMenus(Strings::Menus::Main_Window::Names::editor_menu_name, &editor_menu );
     processor.SetMenus(Strings::Menus::Level_Editors_Window::Names::texture_selection_menu_name, &texture_selection_menu );
     processor.SetMenus(Strings::Menus::Level_Editors_Window::Names::action_selection_menu_name, &action_selection_menu );
+    processor.SetMenus(Strings::Menus::Level_Editors_Window::Names::entity_selection_menu_name, &entity_selection_menu );
 
     processor.SetTextureManager(Strings::TextureManagers::Names::main_texture_manager_name, &main_texture_manager );
     processor.SetTextureManager(Strings::TextureManagers::Names::texture_selection_menu_name, &texture_selection_texture_manager);
     processor.SetTextureManager(Strings::TextureManagers::Names::action_selection_menu_name, &action_selection_texture_manager);
+    processor.SetTextureManager(Strings::TextureManagers::Names::entity_seleciton_menu_name, &entity_selection_texture_manager );
 
     processor.SetEditorRoom( &editor_room );
 
@@ -247,16 +265,7 @@ int main ( int argc, char* argv[] ) {
     processor.SetPlayer( &player );
     processor.SetRoomManager( &game_room_manager );
 
-    player.Spawn( game_room_manager.GetPlayerSpawnCellX() , game_room_manager.GetPlayerSpawnCellY()  );
     player.SetTextureManager( &main_texture_manager );
-
-    try {
-        player.LoadAnimation( Strings::Animations::Player::Paths::animation_config_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
-        Logger::LogStackTrace( std::time(nullptr), ex.GetStackTrace() );
-        return -1;
-    }
 
     SDL_Event event;
 
@@ -264,6 +273,7 @@ int main ( int argc, char* argv[] ) {
 
     game_room_manager.GenerateEditorRoom( &editor_room, "maps/room1/" );
 
+    player.ParseEntityProperties( prop[0] );
 
     while ( !processor.ShouldQuit() && player.GetGameMode() != Player::GameMode::EXIT ) {
 
@@ -308,6 +318,7 @@ int main ( int argc, char* argv[] ) {
 
                 texture_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path);
                 action_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::action_selection_menu_config_path);
+                entity_selection_menu.LoadConfiguration(Strings::Menus::Level_Editors_Window::Paths::entity_selection_menu_config_path );
 
             } catch ( HerionException::File::FileException &ex ) {
                 ex.UpdateStackTrace( GET_CONTEXT() );

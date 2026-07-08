@@ -10,6 +10,7 @@
 #include "FileOpener.hpp"
 
 #include <fstream>
+#include <string>
 
 #include "Logger.hpp"
 #include "STRINGS.hpp"
@@ -42,13 +43,9 @@ namespace JSONParser {
         void ChangesApplied();
     }
 
-    namespace controls {
+    namespace controls {}
 
-    }
-
-    namespace gameplay {
-
-    }
+    namespace gameplay {}
 
     namespace graphics {
 
@@ -141,9 +138,7 @@ namespace JSONParser {
 
     }
 
-    namespace ui {
-
-    }
+    namespace ui {}
 
     namespace menu_configuration {
         inline nlohmann::json config_file;
@@ -298,6 +293,83 @@ namespace JSONParser {
          * @return AnimationElementsFields
          */
         AnimationElementsFields GetAnimationElementsFields( int num_animation);
+    }
+
+    namespace entities {
+        struct EntityStats {
+            int hp;
+            int mana;
+            int stamina;
+
+            std::string ToString() const {
+                return "{\n"
+                       "  hp: " + std::to_string(hp) + "\n" +
+                       "  mana: " + std::to_string(mana) + "\n" +
+                       "  stamina: " + std::to_string(stamina) + "\n"
+                       "}";
+            }
+        };
+
+
+        struct EntityCoordinates {
+            float x;
+            float y;
+
+            std::string ToString() const {
+                return "{\n"
+                       "  x: " + std::to_string(x) + "\n" +
+                       "  y: " + std::to_string(y) + "\n"
+                       "}";
+            }
+        };
+
+
+        struct EntityPosition {
+            std::string plane;
+            EntityCoordinates coordinates;
+
+            std::string ToString() const {
+                return "{\n"
+                       "  plane: " + plane + "\n"
+                       "  coordinates: " + coordinates.ToString() + "\n"
+                       "}";
+            }
+        };
+
+
+        struct EntityProperties {
+            std::string type;
+            std::string animations_file_path;
+            std::optional<EntityStats> stats;
+            std::optional<EntityPosition> position;
+
+            std::string ToString() const {
+                std::string result =
+                    "EntityProperties {\n"
+                    "  type: " + type + "\n"
+                    "  animations_file_path: " + animations_file_path + "\n";
+
+                if (stats.has_value()) {
+                    result += "  stats: " + stats->ToString() + "\n";
+                } else {
+                    result += "  stats: null\n";
+                }
+
+                if (position.has_value()) {
+                    result += "  position: " + position->ToString() + "\n";
+                } else {
+                    result += "  position: null\n";
+                }
+
+                result += "}";
+
+                return result;
+            }
+        };
+
+        std::vector < struct EntityProperties > GetEntityProperties ( const std::string& filepath );
+
+
     }
 }
 

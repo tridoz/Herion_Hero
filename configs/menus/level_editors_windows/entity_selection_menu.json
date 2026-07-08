@@ -1,0 +1,7 @@
+{
+  "background_path": "Assets/Backgrounds/Black.png",
+  "menu_type": "scroll_pane_menu",
+  "cmd": "select_all_entities",
+  "texture_size_directory": 22,
+  "texture_size_file": 22
+}

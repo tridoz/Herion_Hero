@@ -6,9 +6,8 @@
 
 #include "../../Textures/hpp/TextureManager.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
-#include "SDL3/SDL_camera.h"
-#include <type_traits>
-
+#include "HerionFileException.hpp"
+#include <stdexcept>
 
 Player::Player() {
 
@@ -144,6 +143,7 @@ void Player::LoadAnimation( const std::string &filepath ) {
 	int number_of_animations = JSONParser::animations::GetAnimationNumbers();
 
 	for ( int i = 0 ; i<number_of_animations ; i++ ) {
+
 		JSONParser::animations::AnimationElementsFields animation_characteristics = JSONParser::animations::GetAnimationElementsFields( i );
 		std::string animation_name = animation_characteristics.name;
 
@@ -151,7 +151,8 @@ void Player::LoadAnimation( const std::string &filepath ) {
 		animations.at( animation_name )->SetAnimationFrameNUmber( animation_characteristics.frame_to_load );
 
 		for ( int j = 0 ; j<animation_characteristics.frame_to_load ; j++ ) {
-			Texture* texture = texture_manager->GetTextureByName( animation_characteristics.path + "frame" + std::to_string(j) + ".png" );
+		    std::string texture_name = animation_characteristics.path + "frame" + std::to_string(j) + ".png";
+			Texture* texture = texture_manager->GetTextureByName( texture_name );
 			animations.at(animation_name)->AddFrameTexture( texture );
 		}
 	}
@@ -270,7 +271,6 @@ void Player::UpdatePhysics(float dt)
         }
         else
         {
-            std::cout << "iniziato a cadere";
             is_jumping = false;
             is_falling = true;
 
@@ -283,7 +283,6 @@ void Player::UpdatePhysics(float dt)
         velocity_y = 0.0f;
         is_jumping = false;
         is_falling = false;
-        std::cout << "smesso di cadere\n";
     }
 }
 
@@ -486,4 +485,20 @@ void Player::reset() {
 
 	this->scale = JSONParser::graphics::GetScale();
 	this->velocity_y = 0;
+}
+
+void Player::ParseEntityProperties( const struct JSONParser::entities::EntityProperties prop ){
+    if( prop.type != "player")
+        throw std::runtime_error("FIRST ENTITY IS NOT PLAYER");
+
+    this->pos_x = prop.position->coordinates.x;
+    this->pos_y = prop.position->coordinates.y;
+
+    try {
+	    LoadAnimation( prop.animations_file_path );
+    } catch ( HerionException::File::FileException& ex ) {
+	    ex.UpdateStackTrace( GET_CONTEXT() );
+    	throw;
+    };
+
 }

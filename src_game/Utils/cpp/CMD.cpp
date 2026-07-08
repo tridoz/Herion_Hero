@@ -20,6 +20,5 @@ std::vector<std::string> CMD::get_files_and_directories_names( const std::string
         result.push_back( entry.path().filename().string() );
     }
 
-
     return result;
 }
