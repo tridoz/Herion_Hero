@@ -1,0 +1,9 @@
+{
+  "entities": [
+    {
+      "name": "player",
+      "texture": "Assets/Entities/Player/Idle/Left/frame0.png",
+      "limit": 1
+    }
+  ]
+}

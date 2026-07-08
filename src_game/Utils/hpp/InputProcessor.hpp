@@ -6,6 +6,7 @@
 #define HERION_HERO_INPUTINTERPRETER_HPP
 
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_image.h>
 
 #include <unordered_map>
 #include <string>

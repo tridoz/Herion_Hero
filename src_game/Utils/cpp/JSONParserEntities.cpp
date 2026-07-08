@@ -49,3 +49,43 @@ std::vector< struct JSONParser::entities::EntityProperties> JSONParser::entities
     return properties;
 
 }
+
+std::string JSONParser::entities::GetEntitiTextureFilePath(const std::string &filename, const std::string &entity_name ) {
+    std::ifstream entities_file;
+    try {
+        FileOpener::OpenFileInput( entities_file, filename );
+    } catch( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    nlohmann::json entities_json;
+    entities_file >> entities_json;
+
+    for( const auto& entity : entities_json["entities"] ) {
+        if( entity["name"] == entity_name )
+            return entity["texture"];
+    }
+
+    return "";
+}
+
+int JSONParser::entities::GetEntityLimit(const std::string &filename, const std::string &entity_name ) {
+    std::ifstream entities_file;
+    try {
+        FileOpener::OpenFileInput( entities_file, filename );
+    } catch( HerionException::File::FileException& ex ) {
+        ex.UpdateStackTrace( GET_CONTEXT() );
+        throw;
+    }
+
+    nlohmann::json entities_json;
+    entities_file >> entities_json;
+
+    for( const auto& entity : entities_json["entities"] ) {
+        if( entity["name"] == entity_name )
+            return entity["limit"];
+    }
+
+    return 0;
+}

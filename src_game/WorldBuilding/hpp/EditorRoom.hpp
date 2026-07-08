@@ -10,6 +10,8 @@
 #include "Reflector.hpp"
 #include "Room.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "../../UI/hpp/Button.hpp"
+#include <unordered_map>
 
 class EditorRoom : public Room {
 private:
@@ -19,6 +21,7 @@ private:
     bool draw_hitboxes;
 
     std::vector < std::vector < bool > > hitboxes;
+    std::unordered_map<std::string, std::vector<Button*>> buttons;
 
     std::string action;
     std::string current_entity_to_set;
@@ -55,8 +58,13 @@ public:
     void SetCurrentEntityToSet( const std::string& action );
     std::string GetCurrentEntity() const;
 
+    void AddButton(Button* btn, std::string name);
+    int GetEntitiCount(std::string name);
+
     void SetHitboxes();
     void UpdateHitbox( int cell_x, int cell_y );
+
+    void Draw( SDL_Renderer* renderer );
 
     std::vector < std::string >& GetBasePlaneVector();
     std::vector < std::string >& GetForegroundVector();

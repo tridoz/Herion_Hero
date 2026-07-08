@@ -4,7 +4,6 @@
 
 #include "../hpp/Window.hpp"
 
-#include "../../../headers_only_dependencies/miniaudio.h"
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "HerionFileException.hpp"
 

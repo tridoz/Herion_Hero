@@ -296,6 +296,7 @@ namespace JSONParser {
     }
 
     namespace entities {
+
         struct EntityStats {
             int hp;
             int mana;
@@ -368,8 +369,8 @@ namespace JSONParser {
         };
 
         std::vector < struct EntityProperties > GetEntityProperties ( const std::string& filepath );
-
-
+        std::string GetEntitiTextureFilePath( const std::string& filename, const std::string& entity_name );
+        int GetEntityLimit(const std::string& filepath, const std::string& entity_name );
     }
 }
 

@@ -343,12 +343,35 @@ void InputProcessor::process_mouse_left_pressed() {
                     }
 
                 } else if ( action == "change_hitbox" ){
+
                     bool hitbox = editor_room->GetTiles()[cell_y][cell_x]->HasHitbox();
                     editor_room->GetTiles()[cell_y][cell_x]->SetHitbox( !hitbox );
                     editor_room->UpdateHitbox(cell_x, cell_y);
-                } else if( action == "add_entity" ) {
-                    std::string entity = editor_room->GetCurrentEntity();
 
+                } else if( action == "add_entity" ) {
+
+                    std::string entity = editor_room->GetCurrentEntity();
+                    std::string filepath = JSONParser::entities::GetEntitiTextureFilePath("configs/entities/entities_editor.json", entity);
+                    int limit = JSONParser::entities::GetEntityLimit("configs/entities/entities_editor.json", entity);
+
+                    if( editor_room->GetEntitiCount(entity) >= limit && limit != -1)
+                        return;
+
+                    Texture* txt = this->texture_managers.at("MAIN")->GetTextureByName(filepath);
+
+                    float w, h;
+                    SDL_GetTextureSize(txt->GetTexture(), &w, &h);
+                    SDL_FRect rect {mouse_x, mouse_y, w, h};
+
+                    Button* b = new Button();
+                    b->SetTextures({txt});
+                    b->SetRects({rect});
+                    b->SetText(entity);
+                    b->SetOnClickReturn([b]{
+                            return b->GetText();
+                        });
+
+                    editor_room->AddButton(b, entity);
 
                 }
             }

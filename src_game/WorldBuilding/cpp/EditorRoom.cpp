@@ -63,6 +63,20 @@ void EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const {
     }
 }
 
+void EditorRoom::Draw(SDL_Renderer* r) {
+    for ( std::vector<Tile*> & tiles_row : tiles) {
+        for ( Tile* & tile : tiles_row) {
+            tile->Draw(r);
+        }
+    }
+
+    for( const auto [name, btns] : buttons ) {
+        for( Button* b : btns ) {
+            b->Draw(r);
+        }
+    }
+}
+
 void EditorRoom::SetCurrentEditorTexture(Texture *texture) {
     this->current_editor_texture = texture;
 }
@@ -160,4 +174,17 @@ std::vector<std::string> &EditorRoom::GetForegroundVector() {
 
 std::vector<std::string> &EditorRoom::GetBasePlaneVector() {
     return this->base_plan_output_file;
+}
+
+void EditorRoom::AddButton(Button* btn, std::string name) {
+    if( this->buttons.contains(name) ) {
+        this->buttons.at(name).emplace_back(btn);
+    } else {
+        std::vector<Button*> b{btn};
+        this->buttons.emplace(name, b);
+    }
+}
+
+int EditorRoom::GetEntitiCount(std::string name ) {
+    return this->buttons.contains(name)? buttons.at(name).size(): 0;
 }
