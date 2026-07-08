@@ -21,6 +21,7 @@ private:
     std::vector < std::vector < bool > > hitboxes;
 
     std::string action;
+    std::string current_entity_to_set;
 
     std::vector < std::string > base_plan_output_file;
     std::vector < std::string > foreground_output_file;
@@ -50,6 +51,9 @@ public:
 
     void SetAction( const std::string& action );
     std::string GetAction() const;
+
+    void SetCurrentEntityToSet( const std::string& action );
+    std::string GetCurrentEntity() const;
 
     void SetHitboxes();
     void UpdateHitbox( int cell_x, int cell_y );

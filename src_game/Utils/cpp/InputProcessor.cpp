@@ -1,5 +1,6 @@
 #include "../hpp/InputProcessor.hpp"
 #include "../../Exceptions/hpp/HerionFileException.hpp"
+#include <cctype>
 #include <iostream>
 #include "../hpp/JSONParser.hpp"
 #include "../hpp/STRINGS.hpp"
@@ -297,13 +298,13 @@ void InputProcessor::process_mouse_left_pressed() {
 
                     if ( window->IsOpen() ) {
                         btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x , mouse_y);
+                        Logger::debug_reflection_print( window->GetCurrentMenu() , 0 );
                         if ( btn != nullptr ) {
                             std::string str = btn->ClickReturn();
                             TextureManager* mng = texture_managers.at("MAIN");
                             Texture* txt = mng->GetTextureByName(str);
                             editor_room->SetCurrentEditorTexture( txt );
                         }
-
                     }
 
                 } else if ( name  == "ACTION_SELECTION") {
@@ -314,12 +315,20 @@ void InputProcessor::process_mouse_left_pressed() {
                             editor_room->SetAction( str );
                         }
                     }
+
                 } else if ( name == "ENTITY_SELECTION") {
                     if( window->IsOpen() ) {
                         btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x, mouse_y);
                         if( btn != nullptr ) {
                             std::string str = btn->ClickReturn();
-
+                            str = str.substr( str.find_last_of("/")+1, str.size() );
+                            std::transform(str.begin(), str.end(), str.begin(),
+                                [](unsigned char c)
+                                {
+                                    return std::tolower(c);
+                                });
+                            str = str.substr(0, str.size() - 4);
+                            editor_room->SetCurrentEntityToSet( str );
                         }
                     }
                 }
@@ -337,7 +346,9 @@ void InputProcessor::process_mouse_left_pressed() {
                     bool hitbox = editor_room->GetTiles()[cell_y][cell_x]->HasHitbox();
                     editor_room->GetTiles()[cell_y][cell_x]->SetHitbox( !hitbox );
                     editor_room->UpdateHitbox(cell_x, cell_y);
-                } else if( action == "place_entity" ) {
+                } else if( action == "add_entity" ) {
+                    std::string entity = editor_room->GetCurrentEntity();
+
 
                 }
             }
@@ -428,11 +439,11 @@ void InputProcessor::Process() {
 
         case SDL_EVENT_MOUSE_WHEEL:
 
-            if ( window_tools.at("TEXTURE_SELECTION")->IsOpen() ) {
-                for ( const auto& [name, menu] : menus ) {
-                    menu->SetMouseOffset( event.wheel.y );
-                }
-            }
+            if ( window_tools.at("TEXTURE_SELECTION")->IsOpen() )
+                window_tools.at("TEXUTRE_SELECTION")->GetCurrentMenu()->SetMouseOffset( event.wheel.y);
+
+            else if( window_tools.at("ENTITY_SELECTION")->IsOpen() )
+                window_tools.at("ENTITY_SELECTION")->GetCurrentMenu()->SetMouseOffset( event.wheel.y );
 
             break;
 

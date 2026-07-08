@@ -105,7 +105,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 			std::vector<Texture*> textures;
 			std::vector<SDL_FRect> rects;
 
-			Texture* file_txt = texture_manager->GetTextureByName( path );
+
 			SDL_FRect file_rect = {
 				static_cast<float>( (texture_size_directory*depth) + (texture_size_directory) ),
 				static_cast<float>( (previous_element_already_drawn*texture_size_directory + texture_size_directory*scale*previous_element_already_drawn) ),
@@ -113,7 +113,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts( Directory*& dir) {
 				static_cast<float>( texture_size_directory * scale )
 			};
 
-			textures.push_back(file_txt);
+			textures.push_back(texture);
 			rects.push_back(file_rect);
 
 			for ( int i = 0 ; i<name.size() ; i++ ) {
@@ -243,14 +243,25 @@ void ScrollPaneMenu::CreateSubDirectories( Directory*& directory, const std::str
 	}
 
 	for ( const auto& output_line : cmd_output ) {
-		Directory* dir = new Directory( depth+1, {}, {}, {} );
-		if ( !output_line.contains(".png") && !output_line.contains(".txt") ) {
-			directory->SubDirectory.emplace( std::make_pair(output_line, dir) );
+
+	    Directory* dir = new Directory( depth+1, {}, {}, {} );
+
+		if ( !output_line.contains(".png") && !output_line.contains(".txt") && !output_line.contains(".cpp") ) {
+
+		    directory->SubDirectory.emplace( std::make_pair(output_line, dir) );
 			dir->path = base_directory + output_line + "/";
 			CreateSubDirectories( dir, base_directory + output_line + "/", depth+1 );
-		} else if ( output_line.contains(".png") ) {
-			std::string file_name = base_directory + output_line;
+
+		} else if ( output_line.contains(".png")  ) {
+
+		    std::string file_name = base_directory + output_line;
 			directory->Files.emplace_back( output_line, base_directory + output_line , this->texture_manager->GetTextureByName( file_name ) );
+
+		} else if ( output_line.contains(".cpp") ) {
+		    std::string file_name = base_directory + output_line;
+		    Texture* txt = new Texture();
+			directory->Files.emplace_back( output_line, base_directory+ output_line, txt );
+			;
 		}
 
 	}

@@ -142,6 +142,14 @@ std::string EditorRoom::GetAction() const {
     return this->action;
 }
 
+void EditorRoom::SetCurrentEntityToSet( const std::string& entity ) {
+    this->current_entity_to_set = entity;
+}
+
+std::string EditorRoom::GetCurrentEntity() const {
+    return this->current_entity_to_set;
+}
+
 std::vector<std::string> &EditorRoom::GetBackgroundVector() {
     return this->background_output_file;
 }
