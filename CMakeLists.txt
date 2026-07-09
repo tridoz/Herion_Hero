@@ -14,17 +14,17 @@ set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
 include_directories(
         "${SDL3_DIR}/include"
 
-        "${CMAKE_SOURCE_DIR}/src_game/Utils/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/Entities/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/Textures/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/UI/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/WorldBuilding/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/Sound/hpp"
-        "${CMAKE_SOURCE_DIR}/src_game/Exceptions/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Utils/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Entities/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Textures/hpp"
+        "${CMAKE_SOURCE_DIR}/src/UI/hpp"
+        "${CMAKE_SOURCE_DIR}/src/WorldBuilding/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Sound/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Exceptions/hpp"
 )
 
 file(GLOB_RECURSE SRC_FILES
-        "${CMAKE_SOURCE_DIR}/src_game/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
         "${CMAKE_SOURCE_DIR}/main.cpp"
 )
 

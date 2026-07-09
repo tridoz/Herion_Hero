@@ -19,7 +19,7 @@
 #include "../../UI/hpp/ScrollPaneMenu.hpp"
 #include "../../Sound/hpp/SoundBoard.hpp"
 #include "../../UI/hpp/Window.hpp"
-#include "EditorRoom.hpp"
+#include "../../WorldBuilding/hpp/EditorRoom.hpp"
 
 #define MAX_SCANCODES 512
 
