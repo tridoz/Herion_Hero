@@ -14,6 +14,7 @@ set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
 include_directories(
         "${SDL3_DIR}/include"
 
+        "${CMAKE_SOURCE_DIR}/src/Engine/hpp"
         "${CMAKE_SOURCE_DIR}/src/Utils/hpp"
         "${CMAKE_SOURCE_DIR}/src/Entities/hpp"
         "${CMAKE_SOURCE_DIR}/src/Textures/hpp"
