@@ -19,8 +19,9 @@ int LoadEnv() {
   }
 
   if (!file.is_open()) {
-    Logger::LogErr(std::time(nullptr), "LOADING", "Main", "LoadEnv",
-                   " file: [" + path + "] " + strerror(errno));
+    Logger::LogErr(
+      std::time(nullptr), "LOADING", "Main", "LoadEnv",
+      " file: [" + path + "] " + strerror(errno));
     return 0;
   }
 
@@ -63,12 +64,14 @@ int LoadEnv() {
 int main(int argc, char *argv[]) {
 
   // LoadEnv();
+  
   // find src_game \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} + | sort
   // -n
 
   SoundBoard::Init();
   SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
 
+  
   Logger::EnableSTDOUTLogging();
 
   Engine* e = new Engine();
@@ -83,6 +86,8 @@ int main(int argc, char *argv[]) {
       );
       return -1;
   }
+
+
 
   try {
       e->Run();
