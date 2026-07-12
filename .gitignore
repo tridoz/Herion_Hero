@@ -4,4 +4,5 @@ build/
 settings/
 .idea/
 .env
-.zed/
+.clang-format
+.clang-tidy
