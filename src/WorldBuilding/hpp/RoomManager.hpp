@@ -20,10 +20,6 @@ private:
     int player_spawn_cell_y;
     int player_spawn_cell_x;
 
-    /**
-     * @struct Node
-     * @brief Struct to a multidirectional linked list to resemble a "map"
-     */
     struct Node{
         Room* room = nullptr;
         Node *left = nullptr;
@@ -42,10 +38,7 @@ private:
     int vertical_tiles;
 
 public:
-    /**
-     * @enum ROOM_TYPE
-     * @brief All ROOM_TYPE so the engine knows which texture need to be rendered
-     */
+ 
     enum class ROOM_TYPE{
         ANCIENT_RUINS,
         LAVA,

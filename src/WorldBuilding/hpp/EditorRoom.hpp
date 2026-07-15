@@ -36,6 +36,7 @@ private:
 
 public:
     EditorRoom();
+    ~EditorRoom();
 
     void DrawAxis( SDL_Renderer* renderer ) const;
     void DrawHitboxes( SDL_Renderer* renderer ) const;

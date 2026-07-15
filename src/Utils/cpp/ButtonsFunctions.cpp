@@ -3,6 +3,7 @@
 //
 
 #include "../hpp/ButtonsFunctions.hpp"
+#include "../../Engine/hpp/Engine.hpp"
 
 #include "../hpp/JSONParser.hpp"
 
@@ -10,56 +11,54 @@ Player* ButtonsFunctions::player = nullptr;
 TextureManager* ButtonsFunctions::texture_manager = nullptr;
 Texture* ButtonsFunctions::texture = nullptr;
 
-void ButtonsFunctions::SetPlayer( Player* setter_player ) {
+void ButtonsFunctions::SetPlayer(Player* setter_player) {
     player = setter_player;
 }
-void ButtonsFunctions::SetTextureManager( TextureManager* setter_texture_manager ) {
+void ButtonsFunctions::SetTextureManager(TextureManager* setter_texture_manager) {
     texture_manager = setter_texture_manager;
 }
-void ButtonsFunctions::SetTexture( Texture* setter_texture ) {
+void ButtonsFunctions::SetTexture(Texture* setter_texture) {
     texture = setter_texture;
 }
 Texture* ButtonsFunctions::GetTexture() {
     return texture;
 }
 
-
-//CHANGE GAME MODE
+// CHANGE GAME MODE
 void ButtonsFunctions::StartGame() {
-    player->SetGameMode( Player::GameMode::IN_GAME );
+    Engine::SetGameState(Engine::GameState::IN_GAME);
 }
 void ButtonsFunctions::StartNewGame() {
-
 }
 void ButtonsFunctions::EndGame() {
-    player->SetGameMode( Player::GameMode::EXIT );
+    Engine::SetGameState(Engine::GameState::EXIT);
 }
 void ButtonsFunctions::OpenMainMenu() {
-    player->SetGameMode( Player::GameMode::MAIN_MENU );
+    Engine::SetGameState(Engine::GameState::MAIN_MENU);
 }
 void ButtonsFunctions::OpenLevelEditor() {
-    player->SetGameMode( Player::GameMode::LEVEL_EDITOR );
+    Engine::SetGameState(Engine::GameState::LEVEL_EDITOR);
 }
 void ButtonsFunctions::OpenAnimationEditor() {
-    player->SetGameMode( Player::GameMode::ANIMATION_EDITOR );
+    Engine::SetGameState(Engine::GameState::ANIMATION_EDITOR);
 }
 void ButtonsFunctions::OpenEditorMenu() {
-    player->SetGameMode( Player::GameMode::EDITOR_MENU );
+    Engine::SetGameState(Engine::GameState::EDITOR_MENU);
 }
 void ButtonsFunctions::OpenGeneralSettingsMenu() {
-    player->SetGameMode( Player::GameMode::GENERAL_SETTINGS_MENU );
+    Engine::SetGameState(Engine::GameState::GENERAL_SETTINGS_MENU);
 }
 void ButtonsFunctions::OpenGraphicsSettingsMenu() {
-    player->SetGameMode( Player::GameMode::GRAPHICS_SETTINGS_MENU );
+    Engine::SetGameState(Engine::GameState::GRAPHICS_SETTINGS_MENU);
 }
 void ButtonsFunctions::OpenAudioSettingsMenu() {
-    player->SetGameMode( Player::GameMode::AUDIO_SETTINGS_MENU );
+    Engine::SetGameState(Engine::GameState::AUDIO_SETTINGS_MENU);
 }
 void ButtonsFunctions::ReturnPreviousState() {
-    player->SetGameMode( player->GetPreviousGameMode() );
+    // Engine::SetGameState(Engine::GetPreviousGameState());
 }
 
-//GRAPHICS SETTINGS
+// GRAPHICS SETTINGS
 void ButtonsFunctions::IncreaseResolution() {
     JSONParser::graphics::IncreaseResolution();
 }
@@ -67,7 +66,6 @@ void ButtonsFunctions::DecreaseResolution() {
     JSONParser::graphics::DecreaseResolution();
 }
 void ButtonsFunctions::ChangeWindowMode() {
-
 }
 void ButtonsFunctions::IncreaseFrameLimit() {
     JSONParser::graphics::IncreaseFPSLimit();
@@ -76,16 +74,13 @@ void ButtonsFunctions::DecreaseFrameLimit() {
     JSONParser::graphics::DecreaseFPSLimit();
 }
 void ButtonsFunctions::IncreaseBrightness() {
-
 }
 void ButtonsFunctions::DecreaseBrightness() {
-
 }
 
-
-//AUDIO SETTINGS
+// AUDIO SETTINGS
 void ButtonsFunctions::SetMasterVolume(int volume) {
-    JSONParser::audio::SetMasterVolume( volume );
+    JSONParser::audio::SetMasterVolume(volume);
 }
 void ButtonsFunctions::IncreaseMasterVolume() {
     JSONParser::audio::IncreaseMasterVolume();
@@ -100,8 +95,6 @@ void ButtonsFunctions::IncreaseMusicVolume() {
 void ButtonsFunctions::DecreaseMusicVolume() {
     JSONParser::audio::DecreaseMusicVolume();
 }
-
-
 
 void ButtonsFunctions::IncreaseSFXVolume() {
     JSONParser::audio::IncreaseSFXVolume();

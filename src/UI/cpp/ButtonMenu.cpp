@@ -5,22 +5,20 @@
 #include "../hpp/ButtonMenu.hpp"
 #include "JSONParser.hpp"
 
+ButtonMenu::~ButtonMenu() {
+}
+
 bool ButtonMenu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) {
-    for (SDL_FRect button: buttons) {
-        if (
-            x >= button.x &&
-            x <= button.x + button.w &&
-            y >= button.y &&
-            y <= button.y + button.h
-        ) {
+    for (SDL_FRect button : buttons) {
+        if (x >= button.x && x <= button.x + button.w && y >= button.y && y <= button.y + button.h) {
             return true;
         }
     }
     return false;
 }
 
-Button *ButtonMenu::GetCollisionButton(float x, float y) {
-    for (const auto &[id, btn]: this->buttons) {
+Button* ButtonMenu::GetCollisionButton(float x, float y) {
+    for (const auto& [id, btn] : this->buttons) {
         if (CheckCollision(btn->GetRects(), x, y)) {
             return btn;
         }
@@ -34,7 +32,8 @@ SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
     for (const auto& [name, slider] : slider_selectors) {
 
         SDL_FRect* rect = slider->GetSliderButtonRect(x, y);
-        if ( rect == nullptr ) continue;
+        if (rect == nullptr)
+            continue;
 
         return slider;
     }
@@ -42,12 +41,12 @@ SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
     return nullptr;
 }
 
-void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
+void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
     this->filepath = cfg_json_filepath;
 
     try {
         JSONParser::menu_configuration::SetConfigFile(cfg_json_filepath);
-    } catch (HerionException::File::FileException &ex) {
+    } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
@@ -62,14 +61,14 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
         this->button_y_offset = JSONParser::menu_configuration::GetButtonYOffset();
         this->center_piece_offset = JSONParser::menu_configuration::GetCenterPieceOffset() * scale;
         this->char_width = JSONParser::menu_configuration::GetCharWidth();
-    } catch (HerionException::File::FileMalformedException &ex) {
+    } catch (HerionException::File::FileMalformedException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
     try {
         this->background = texture_manager->GetTextureByName(this->background_filepath);
-    } catch (HerionException::File::FileException &ex) {
+    } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
@@ -91,25 +90,25 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
 
         for (int element_number = 0; element_number < num_elements; element_number++) {
             const JSONParser::menu_configuration::RowElementFields menu_element_characteristic =
-                    JSONParser::menu_configuration::GetRowElementFields(row_number, element_number);
+                JSONParser::menu_configuration::GetRowElementFields(row_number, element_number);
 
             std::string text;
 
             std::vector<SDL_FRect> rects;
-            std::vector<Texture *> textures;
+            std::vector<Texture*> textures;
 
-            Texture *left_texture = nullptr;
-            Texture *center_texture = nullptr;
-            Texture *right_texture = nullptr;
+            Texture* left_texture = nullptr;
+            Texture* center_texture = nullptr;
+            Texture* right_texture = nullptr;
 
             try {
-                left_texture = texture_manager->GetTextureByName(
-                    "Assets/Ui/Buttons/" + this->button_style + "/ButtonLeft.png");
-                center_texture = texture_manager->GetTextureByName(
-                    "Assets/Ui/Buttons/" + this->button_style + "/ButtonCenter.png");
-                right_texture = texture_manager->GetTextureByName(
-                    "Assets/Ui/Buttons/" + this->button_style + "/ButtonRight.png");
-            } catch (HerionException::File::FileNotFoundException &ex) {
+                left_texture =
+                    texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonLeft.png");
+                center_texture =
+                    texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonCenter.png");
+                right_texture =
+                    texture_manager->GetTextureByName("Assets/Ui/Buttons/" + this->button_style + "/ButtonRight.png");
+            } catch (HerionException::File::FileNotFoundException& ex) {
                 ex.UpdateStackTrace(GET_CONTEXT());
                 throw;
             }
@@ -120,12 +119,7 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
             SDL_GetTextureSize(center_texture->GetTexture(), &center_w, &center_h);
             SDL_GetTextureSize(right_texture->GetTexture(), &right_w, &right_h);
 
-            SDL_FRect left_rect = {
-                cumulative_x,
-                current_y,
-                left_w * scale,
-                left_h * scale
-            };
+            SDL_FRect left_rect = {cumulative_x, current_y, left_w * scale, left_h * scale};
 
             rects.push_back(left_rect);
             textures.push_back(left_texture);
@@ -144,21 +138,13 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
             }
 
             SDL_FRect center_rect = {
-                cumulative_x + left_rect.w,
-                current_y + center_piece_offset,
-                text_total_w,
-                center_h * scale
+                cumulative_x + left_rect.w, current_y + center_piece_offset, text_total_w, center_h * scale
             };
 
             rects.push_back(center_rect);
             textures.push_back(center_texture);
 
-            SDL_FRect right_rect = {
-                center_rect.x + center_rect.w,
-                current_y,
-                right_w * scale,
-                right_h * scale
-            };
+            SDL_FRect right_rect = {center_rect.x + center_rect.w, current_y, right_w * scale, right_h * scale};
 
             rects.push_back(right_rect);
             textures.push_back(right_texture);
@@ -166,27 +152,32 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
             float char_x = center_rect.x;
 
             if (menu_element_characteristic.type != "SLIDER_SELECTOR") {
-                for (char c: text) {
-                    Texture *char_tex = nullptr;
+                for (char c : text) {
+                    Texture* char_tex = nullptr;
 
                     try {
                         if (std::isupper(c))
                             char_tex = texture_manager->GetTextureByName(
-                                "Assets/Font/" + this->font_style + "/UppercaseLetters/" + std::string(1, c) + ".png");
+                                "Assets/Font/" + this->font_style + "/UppercaseLetters/" + std::string(1, c) + ".png"
+                            );
                         else if (std::islower(c))
                             char_tex = texture_manager->GetTextureByName(
-                                "Assets/Font/" + this->font_style + "/LowercaseLetters/" + std::string(1, c) + ".png");
+                                "Assets/Font/" + this->font_style + "/LowercaseLetters/" + std::string(1, c) + ".png"
+                            );
                         else if (std::isdigit(c))
                             char_tex = texture_manager->GetTextureByName(
-                                "Assets/Font/" + this->font_style + "/Numbers/" + std::string(1, c) + ".png");
+                                "Assets/Font/" + this->font_style + "/Numbers/" + std::string(1, c) + ".png"
+                            );
                         else if (isspecial(c))
                             char_tex = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/" + GetNameOfSpecialChar(c) +
-                                ".png");
+                                ".png"
+                            );
                         else if (isspace(c))
                             char_tex = texture_manager->GetTextureByName(
-                                "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png");
-                    } catch (HerionException::File::FileNotFoundException &ex) {
+                                "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png"
+                            );
+                    } catch (HerionException::File::FileNotFoundException& ex) {
                         ex.UpdateStackTrace(GET_CONTEXT());
                         throw;
                     }
@@ -209,15 +200,13 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                 row_height = std::max({row_height, left_rect.h, center_rect.h, right_rect.h});
 
                 if (menu_element_characteristic.type == "BUTTON") {
-                    Button *btn = new Button();
+                    Button* btn = new Button();
                     btn->SetRects(rects);
                     btn->SetTextures(textures);
 
                     if (menu_element_characteristic.action.value() == "RETURN_VALUE") {
                         btn->SetText(menu_element_characteristic.return_value.value());
-                        btn->SetOnClickReturn([btn] {
-                            return btn->GetText();
-                        });
+                        btn->SetOnClickReturn([btn] { return btn->GetText(); });
                     } else {
                         if (!buttons_functions.contains(menu_element_characteristic.action.value())) {
                             THROW_FILE_NOT_FOUND(menu_element_characteristic.action.value());
@@ -228,16 +217,16 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
 
                     buttons.emplace(menu_element_characteristic.id, btn);
                 } else if (menu_element_characteristic.type.contains("TEXT")) {
-                    Text *txt = new Text();
+                    Text* txt = new Text();
                     txt->SetRects(rects);
                     txt->SetTextures(textures);
                     texts.emplace(menu_element_characteristic.id, txt);
                 }
 
             } else {
-                SliderSelector *slider = new SliderSelector();
+                SliderSelector* slider = new SliderSelector();
 
-                Texture *slider_bar_txt = texture_manager->GetTextureByName("Assets/Ui/Bars/SliderBar.png");
+                Texture* slider_bar_txt = texture_manager->GetTextureByName("Assets/Ui/Bars/SliderBar.png");
 
                 float srw, srh;
                 SDL_GetTextureSize(slider_bar_txt->GetTexture(), &srw, &srh);
@@ -251,49 +240,51 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
                 slider->SetSliderBarRect(slider_bar_rect);
                 slider->SetSliderBarTexture(slider_bar_txt);
 
-                Texture *slider_button_txt = texture_manager->GetTextureByName(
-                    "Assets/Ui/Buttons/Game/SliderButton.png");
+                Texture* slider_button_txt =
+                    texture_manager->GetTextureByName("Assets/Ui/Buttons/Game/SliderButton.png");
 
                 SDL_GetTextureSize(slider_button_txt->GetTexture(), &srw, &srh);
                 const std::string value_to_set = menu_element_characteristic.value_to_set.value();
                 float volume_percentage = 0;
-                if( value_to_set == "MASTER_VOLUME")
+                if (value_to_set == "MASTER_VOLUME")
                     volume_percentage = JSONParser::audio::GetMasterVolume();
-                else if( value_to_set == "MUSIC_VOLUME")
+                else if (value_to_set == "MUSIC_VOLUME")
                     volume_percentage = JSONParser::audio::GetMusicVolume();
-                else if( value_to_set == "SFX_VOLUME")
+                else if (value_to_set == "SFX_VOLUME")
                     volume_percentage = JSONParser::audio::GetSFXVolume();
 
                 const float bar_percentage = text_total_w / 100 * volume_percentage;
 
-                const float x = center_rect.x + bar_percentage ;
+                const float x = center_rect.x + bar_percentage;
 
                 const SDL_FRect slider_button_rect = {
-                    x - (left_rect.w*scale/2),
-                    slider_bar_rect.y + (slider_bar_rect.h / 2.0f) - (center_rect.h*scale / 2.0f),
+                    x - (left_rect.w * scale / 2),
+                    slider_bar_rect.y + (slider_bar_rect.h / 2.0f) - (center_rect.h * scale / 2.0f),
                     left_rect.w * scale,
                     center_rect.h * scale
                 };
 
-
-
                 slider->SetTextures(textures);
                 slider->SetRects(rects);
 
-                slider->SetLength( menu_element_characteristic.length.value() );
-                slider->SetMaxMinStep(menu_element_characteristic.max_value.value(), menu_element_characteristic.min_value.value(), menu_element_characteristic.step.value() );
+                slider->SetLength(menu_element_characteristic.length.value());
+                slider->SetMaxMinStep(
+                    menu_element_characteristic.max_value.value(),
+                    menu_element_characteristic.min_value.value(),
+                    menu_element_characteristic.step.value()
+                );
                 slider->SetSliderButtonRect(slider_button_rect);
                 slider->SetSliderButtonTexture(slider_button_txt);
 
                 slider_selectors.emplace(menu_element_characteristic.id, slider);
 
-                if( !menu_element_characteristic.action.has_value() )
+                if (!menu_element_characteristic.action.has_value())
                     continue;
 
-                if( menu_element_characteristic.action.value() == "SETTER" )
-                    if( menu_element_characteristic.value_to_set.value() == "MASTER_VOLUME")
+                if (menu_element_characteristic.action.value() == "SETTER")
+                    if (menu_element_characteristic.value_to_set.value() == "MASTER_VOLUME")
                         slider->SetToSet("MASTER_VOLUME");
-                    else if( menu_element_characteristic.value_to_set.value() == "MUSIC_VOLUME")
+                    else if (menu_element_characteristic.value_to_set.value() == "MUSIC_VOLUME")
                         slider->SetToSet("MUSIC_VOLUME");
                     else if (menu_element_characteristic.value_to_set.value() == "SFX_VOLUME")
                         slider->SetToSet("SFX_VOLUME");
@@ -306,19 +297,19 @@ void ButtonMenu::LoadConfiguration(const std::string &cfg_json_filepath) {
     }
 }
 
-void ButtonMenu::Draw(SDL_Renderer *renderer) const {
+void ButtonMenu::Draw(SDL_Renderer* renderer) const {
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(renderer, background->GetTexture(), nullptr, &background_rect);
 
-    for (const auto &[id, button]: buttons) {
+    for (const auto& [id, button] : buttons) {
         button->Draw(renderer);
     }
 
-    for (const auto &[id, text]: texts) {
+    for (const auto& [id, text] : texts) {
         text->Draw(renderer);
     }
 
-    for (const auto &[id, slider]: slider_selectors) {
+    for (const auto& [id, slider] : slider_selectors) {
         slider->Draw(renderer);
     }
 }

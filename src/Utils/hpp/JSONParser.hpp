@@ -21,15 +21,15 @@ namespace JSONParser {
         inline const std::string json_audio_file_path = Strings::Settings::Paths::json_audio_settings_file_path;
         inline bool changed = false;
 
-        void SetMasterVolume( int volume );
+        void SetMasterVolume(int volume);
         void IncreaseMasterVolume();
         void DecreaseMasterVolume();
 
-        void SetMusicVolume( int volume );
+        void SetMusicVolume(int volume);
         void IncreaseMusicVolume();
         void DecreaseMusicVolume();
 
-        void SetSFXVolume( int volume );
+        void SetSFXVolume(int volume);
         void IncreaseSFXVolume();
         void DecreaseSFXVolume();
 
@@ -41,7 +41,7 @@ namespace JSONParser {
 
         bool Changed();
         void ChangesApplied();
-    }
+    } // namespace audio
 
     namespace controls {}
 
@@ -56,30 +56,14 @@ namespace JSONParser {
         /**
          * @brief DataStructure for all the possible resolutions
          */
-        inline const std::vector < std::pair <int, int > > resolutions{
-            { 640, 360},
-            { 854, 480 },
-            { 960, 540 },
-            { 1280, 720 },
-            { 1600, 900 },
-            { 1920, 1080 },
-            { 2560, 1440 },
-            { 3840, 2160 }
+        inline const std::vector<std::pair<int, int>> resolutions{
+            {640, 360}, {854, 480}, {960, 540}, {1280, 720}, {1600, 900}, {1920, 1080}, {2560, 1440}, {3840, 2160}
         };
 
         /**
          * @brief DataStructure for all the scale based on the resolution
          */
-        inline const std::vector<float> texture_scales{
-            0.25,
-            0.333,
-            0.375,
-            0.5,
-            0.625,
-            0.75,
-            1.0,
-            1.5
-        };
+        inline const std::vector<float> texture_scales{0.25, 0.333, 0.375, 0.5, 0.625, 0.75, 1.0, 1.5};
 
         /**
          * @brief Function to increase the screen resolution
@@ -136,7 +120,7 @@ namespace JSONParser {
          */
         int GetFrameRate();
 
-    }
+    } // namespace graphics
 
     namespace ui {}
 
@@ -152,23 +136,22 @@ namespace JSONParser {
             std::string type;
             std::string id;
 
-            std::optional < std::string > text;
-            std::optional < std::string > action;
-            std::optional < std::string > value_to_set;
-            std::optional < std::string > return_value;
-            std::optional < float > max_value;
-            std::optional < float > min_value;
-            std::optional < float > step;
-            std::optional < float > length;
-            std::optional < float > slider_bar_offset;
-
+            std::optional<std::string> text;
+            std::optional<std::string> action;
+            std::optional<std::string> value_to_set;
+            std::optional<std::string> return_value;
+            std::optional<float> max_value;
+            std::optional<float> min_value;
+            std::optional<float> step;
+            std::optional<float> length;
+            std::optional<float> slider_bar_offset;
         };
 
         /**
          * @brief Set the .json file to parse
          * @param config_file_path Path to the .json configuration file
          */
-        void SetConfigFile( const std::string& config_file_path );
+        void SetConfigFile(const std::string& config_file_path);
 
         /**
          * @brief Return the path to the background image
@@ -235,21 +218,21 @@ namespace JSONParser {
          * @param num_row Row muber
          * @return int
          */
-        int GetRowStartingX( int num_row );
+        int GetRowStartingX(int num_row);
 
         /**
          * @brief Get the RowButtonXOffset for the Button menu type
          * @param num_row Row number
          * @return int
          */
-        int GetRowButtonXOffset( int num_row );
+        int GetRowButtonXOffset(int num_row);
 
         /**
          * @brief Get the number of elements in a row for the Button menu type
          * @param num_row Row number
          * @return int
          */
-        int GetRowNumElements( int num_row );
+        int GetRowNumElements(int num_row);
 
         /**
          * @brief Get the fields of the element for the Button menu type
@@ -257,8 +240,8 @@ namespace JSONParser {
          * @param num_element Element number
          * @return RowElementFields
          */
-        RowElementFields GetRowElementFields( int num_row, int num_element );
-    }
+        RowElementFields GetRowElementFields(int num_row, int num_element);
+    } // namespace menu_configuration
 
     namespace animations {
         inline nlohmann::json animation_file;
@@ -279,21 +262,10 @@ namespace JSONParser {
          * @brief Set the .json file to parse
          * @param config_file_path Path to the .json configuration file
          */
-        void SetConfigFile( const std::string& config_file_path );
-
-        /**
-         * @brief Get how manu animations there are
-         * @return
-         */
+        void SetConfigFile(const std::string& config_file_path);
         int GetAnimationNumbers();
-
-        /**
-         * @brief Return the fields of that animation
-         * @param num_animation Animation number
-         * @return AnimationElementsFields
-         */
-        AnimationElementsFields GetAnimationElementsFields( int num_animation);
-    }
+        AnimationElementsFields GetAnimationElementsFields(int num_animation);
+    } // namespace animations
 
     namespace entities {
 
@@ -304,13 +276,13 @@ namespace JSONParser {
 
             std::string ToString() const {
                 return "{\n"
-                       "  hp: " + std::to_string(hp) + "\n" +
-                       "  mana: " + std::to_string(mana) + "\n" +
-                       "  stamina: " + std::to_string(stamina) + "\n"
+                       "  hp: " +
+                       std::to_string(hp) + "\n" + "  mana: " + std::to_string(mana) + "\n" +
+                       "  stamina: " + std::to_string(stamina) +
+                       "\n"
                        "}";
             }
         };
-
 
         struct EntityCoordinates {
             float x;
@@ -318,12 +290,12 @@ namespace JSONParser {
 
             std::string ToString() const {
                 return "{\n"
-                       "  x: " + std::to_string(x) + "\n" +
-                       "  y: " + std::to_string(y) + "\n"
+                       "  x: " +
+                       std::to_string(x) + "\n" + "  y: " + std::to_string(y) +
+                       "\n"
                        "}";
             }
         };
-
 
         struct EntityPosition {
             std::string plane;
@@ -331,12 +303,15 @@ namespace JSONParser {
 
             std::string ToString() const {
                 return "{\n"
-                       "  plane: " + plane + "\n"
-                       "  coordinates: " + coordinates.ToString() + "\n"
+                       "  plane: " +
+                       plane +
+                       "\n"
+                       "  coordinates: " +
+                       coordinates.ToString() +
+                       "\n"
                        "}";
             }
         };
-
 
         struct EntityProperties {
             std::string type;
@@ -345,10 +320,12 @@ namespace JSONParser {
             std::optional<EntityPosition> position;
 
             std::string ToString() const {
-                std::string result =
-                    "EntityProperties {\n"
-                    "  type: " + type + "\n"
-                    "  animations_file_path: " + animations_file_path + "\n";
+                std::string result = "EntityProperties {\n"
+                                     "  type: " +
+                                     type +
+                                     "\n"
+                                     "  animations_file_path: " +
+                                     animations_file_path + "\n";
 
                 if (stats.has_value()) {
                     result += "  stats: " + stats->ToString() + "\n";
@@ -368,11 +345,11 @@ namespace JSONParser {
             }
         };
 
-        std::vector < struct EntityProperties > GetEntityProperties ( const std::string& filepath );
-        std::string GetEntitiTextureFilePath( const std::string& filename, const std::string& entity_name );
-        int GetEntityLimit(const std::string& filepath, const std::string& entity_name );
-    }
-}
+        std::vector<struct EntityProperties> GetEntityProperties(const std::string& filepath);
+        std::string GetEntitiTextureFilePath(const std::string& filename, const std::string& entity_name);
+        int GetEntityLimit(const std::string& filepath, const std::string& entity_name);
+    } // namespace entities
 
+} // namespace JSONParser
 
-#endif //HERION_HERO_JSONPARSERER_HPP
+#endif // HERION_HERO_JSONPARSERER_HPP

@@ -17,6 +17,7 @@ private:
 
 
 public:
+    ~ButtonMenu();
     bool CheckCollision( std::vector< SDL_FRect >, float x, float y );
     void LoadConfiguration( const std::string& filepath );
     Button* GetCollisionButton( float x, float y );

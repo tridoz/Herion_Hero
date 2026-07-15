@@ -12,6 +12,30 @@ EditorRoom::EditorRoom() {
     this->current_editor_texture = nullptr;
 }
 
+EditorRoom::~EditorRoom() {
+    SDL_DestroyTexture(current_editor_texture->GetTexture());
+    delete current_editor_texture;
+    current_editor_texture = nullptr;
+
+    for( auto& [name, btns] : buttons ) {
+        for( Button* b : btns ) {
+            delete b;
+            b = nullptr;
+        }
+    }
+
+    for( ForegroundElement* fe : foreground_elements ) {
+        delete fe;
+        fe = nullptr;
+    }
+
+    for( BackgroundElement* be : background_elements ) {
+        delete be;
+        be = nullptr;
+    }
+    
+}
+
 void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
 
     SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );

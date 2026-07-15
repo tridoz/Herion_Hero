@@ -1,16 +1,17 @@
 #include "../../Textures/hpp/Texture.hpp"
 #include "../../Textures/hpp/TextureManager.hpp"
+#include <cstdint>
 #include <unordered_map>
 
 namespace ECS {
 
-    enum class FacingDirection { RIGHT, LEFT, UP, DOWN };
+    enum class FacingDirection : std::uint8_t { RIGHT, LEFT, UP, DOWN };
 
-    enum class Movements {IDLE, RUN, JUMPING, FALLING };
+    enum class Movements : std::uint8_t { IDLE, RUN, JUMPING, FALLING };
 
-    enum class InteractionState{ USED, UNUSED };
+    enum class InteractionState : std::uint8_t { USED, UNUSED };
 
-    struct Component{};
+    struct Component {};
 
     struct Vector2D {
         float dx = 0;
@@ -20,40 +21,39 @@ namespace ECS {
             return new SDL_FPoint{dx, dy};
         }
 
-        Vector2D operator-(const Vector2D& other ) {
-            return {dx - other.dx , dy - other.dy};
+        Vector2D operator-(const Vector2D& other) {
+            return {dx - other.dx, dy - other.dy};
         }
 
-        Vector2D operator+(const Vector2D& other ) {
-            return {dx + other.dx , dy + other.dy};
+        Vector2D operator+(const Vector2D& other) {
+            return {dx + other.dx, dy + other.dy};
         }
 
-        Vector2D operator*(const float scalar ) {
-            return {dx*scalar, dy*scalar};
+        Vector2D operator*(const float scalar) {
+            return {dx * scalar, dy * scalar};
         }
-        Vector2D operator*(const Vector2D& other ) {
-            return {dx*other.dx, dy*other.dy};
+        Vector2D operator*(const Vector2D& other) {
+            return {dx * other.dx, dy * other.dy};
         }
 
-        void operator-=(const Vector2D& other ) {
+        void operator-=(const Vector2D& other) {
             dx -= other.dx;
             dy -= other.dy;
         }
 
-        void operator+=(const Vector2D& other ) {
+        void operator+=(const Vector2D& other) {
             dx += other.dx;
             dy += other.dy;
         }
 
-        void operator*=(const float scalar ) {
+        void operator*=(const float scalar) {
             dx *= scalar;
             dy *= scalar;
         }
-        void operator*=(const Vector2D& other){
-            dx*=other.dx;
-            dy*=other.dy;
+        void operator*=(const Vector2D& other) {
+            dx *= other.dx;
+            dy *= other.dy;
         }
-
     };
 
     namespace Shapes {
@@ -67,36 +67,34 @@ namespace ECS {
                 return new SDL_FRect{position.dx, position.dy, size.dx, size.dy};
             }
 
-            void Move( const Vector2D& direction ) {
+            void Move(const Vector2D& direction) {
                 position += direction;
             }
-            void Resize( const Vector2D& scale ) {
+            void Resize(const Vector2D& scale) {
                 size *= scale;
             }
-            void Resize( const float scale ) {
+            void Resize(const float scale) {
                 size *= scale;
             }
-
         };
 
         struct FCircle {
             Vector2D position;
             float radius;
 
-            void Move( const Vector2D& direction ) {
+            void Move(const Vector2D& direction) {
                 position += direction;
             }
-            void Resize( const float scale ) {
+            void Resize(const float scale) {
                 radius += scale;
             }
-
         };
 
-    }
+    } // namespace Shapes
 
     struct Transform : public Component {
         struct Vector2D position;
-        struct Vector2D scale {1, 1};
+        struct Vector2D scale;
         float rotation;
         FacingDirection facing_direction = FacingDirection::RIGHT;
     };
@@ -114,7 +112,7 @@ namespace ECS {
     };
 
     struct Interactable : public Component {
-        bool can_interact = true ;
+        bool can_interact = true;
         InteractionState state = InteractionState::UNUSED;
     };
 
@@ -133,8 +131,8 @@ namespace ECS {
     };
 
     struct Sprites : public Component {
-        std::unordered_map < std::string, std::vector<Frame> > animations_frames;
-        std::unordered_map< std::string , std::pair<int, int > > animations_data;
+        std::unordered_map<std::string, std::vector<Frame>> animations_frames;
+        std::unordered_map<std::string, std::pair<int, int>> animations_data;
 
         Frame current_frame;
 
@@ -142,11 +140,11 @@ namespace ECS {
     };
 
     struct Collision {
-        static constexpr bool CollidedRects( Shapes::FRect r1, Shapes::FRect r2 ) {
-            return SDL_HasRectIntersectionFloat( r1.to_sdl(), r2.to_sdl() );
+        static constexpr bool CollidedRects(Shapes::FRect r1, Shapes::FRect r2) {
+            return SDL_HasRectIntersectionFloat(r1.to_sdl(), r2.to_sdl());
         }
-        static constexpr bool CollideRectPoint( Shapes::FRect r, Vector2D point ) {
-            return SDL_PointInRectFloat( point.to_sdl() , r.to_sdl() );
+        static constexpr bool CollideRectPoint(Shapes::FRect r, Vector2D point) {
+            return SDL_PointInRectFloat(point.to_sdl(), r.to_sdl());
         }
         static constexpr bool CollidedCircles(Shapes::FCircle c1, Shapes::FCircle c2) {
             float dx = c1.position.dx - c2.position.dx;
@@ -156,14 +154,8 @@ namespace ECS {
             return distanceSquared <= radiusSum * radiusSum;
         }
         static constexpr bool CollideCircleRect(Shapes::FCircle c, Shapes::FRect r) {
-            float closestX = std::max(
-                r.position.dx,
-                std::min(c.position.dx, r.position.dx + r.size.dx)
-            );
-            float closestY = std::max(
-                r.position.dy,
-                std::min(c.position.dy, r.position.dy + r.size.dy)
-            );
+            float closestX = std::max(r.position.dx, std::min(c.position.dx, r.position.dx + r.size.dx));
+            float closestY = std::max(r.position.dy, std::min(c.position.dy, r.position.dy + r.size.dy));
             float dx = c.position.dx - closestX;
             float dy = c.position.dy - closestY;
             return dx * dx + dy * dy <= c.radius * c.radius;
@@ -176,6 +168,4 @@ namespace ECS {
         }
     };
 
-
-
-}
+} // namespace ECS

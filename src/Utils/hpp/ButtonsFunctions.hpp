@@ -5,20 +5,20 @@
 #ifndef HERION_HERO_BUTTONSFUNCTIONS_HPP
 #define HERION_HERO_BUTTONSFUNCTIONS_HPP
 
+
 #include "../../Entities/hpp/Player.hpp"
 
 class ButtonsFunctions {
 
-private:
+  private:
     static Player* player;
     static TextureManager* texture_manager;
     static Texture* texture;
 
-    static void SetTexture( Texture* texture );
+    static void SetTexture(Texture* texture);
     static Texture* GetTexture();
 
-public:
-
+  public:
     // CHANGE GAMEMODE
     /**
      * @brief Set the Player::GameMode to IN_GAME
@@ -69,14 +69,12 @@ public:
      */
     static void OpenAnimationEditor();
 
-
     /**
      * @brief Set the player::GameMode to Player::GetPreviousGameMode()
      */
     static void ReturnPreviousState();
 
-
-    //GRAPHICS SETTINGS
+    // GRAPHICS SETTINGS
     /**
      * @brief Call JSONParser::graphics::IncreaseResolution();
      */
@@ -112,17 +110,17 @@ public:
      */
     static void DecreaseBrightness();
 
-    //AUDIO SETTINGS
+    // AUDIO SETTINGS
     //
     static void SetMasterVolume(int volume);
     static void IncreaseMasterVolume();
     static void DecreaseMasterVolume();
 
-    static void SetMusicVolume( int volume );
+    static void SetMusicVolume(int volume);
     static void IncreaseMusicVolume();
     static void DecreaseMusicVolume();
 
-    static void SetSFXVolume( int volume );
+    static void SetSFXVolume(int volume);
     static void IncreaseSFXVolume();
     static void DecreaseSFXVolume();
 
@@ -136,7 +134,7 @@ public:
      */
     static void SelectMusicTrack();
 
-    //KEYMAPPING
+    // KEYMAPPING
 
     /**
      * Unimplemented
@@ -148,7 +146,7 @@ public:
      */
     static void ChangeKey();
 
-    //GAME
+    // GAME
 
     /**
      * Unimplemented
@@ -170,7 +168,7 @@ public:
      */
     static void ToggleTutorial();
 
-    //INTERFACE
+    // INTERFACE
 
     /**
      * Unimplemented
@@ -182,7 +180,7 @@ public:
      */
     static void ChangeTheme();
 
-    //SAVE
+    // SAVE
 
     /**
      * Unimplemented
@@ -208,14 +206,13 @@ public:
      * @brief Set the player to do the operations
      * @param player Pointer to the Player
      */
-    static void SetPlayer( Player* player );
+    static void SetPlayer(Player* player);
 
     /**
      * @brief Set the TextureManager to do the operations
      * @param texture_manager Pointer to the Texturemanager
      */
-    static void SetTextureManager( TextureManager* texture_manager );
+    static void SetTextureManager(TextureManager* texture_manager);
 };
 
-
-#endif //HERION_HERO_BUTTONSFUNCTIONS_HPP
+#endif // HERION_HERO_BUTTONSFUNCTIONS_HPP
