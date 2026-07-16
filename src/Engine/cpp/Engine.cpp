@@ -288,11 +288,14 @@ void Engine::Run() {
     Uint32 last_frame_time = SDL_GetTicks();
 
     while (!processor->ShouldQuit() && GetGameState() != Engine::GameState::EXIT) {
+
         Uint32 current_time = SDL_GetTicks();
-        deltaTime = (current_time - last_frame_time) / 1000.0F;
+        deltaTime = static_cast<float>(current_time - last_frame_time) / 1000.0F;
         last_frame_time = current_time;
 
         deltaTime = std::clamp(deltaTime, 0.0F, 0.033F);
+
+        player->SetDeltaTime(deltaTime);
 
         while (SDL_PollEvent(&event)) {
             processor->SetEvent(event);

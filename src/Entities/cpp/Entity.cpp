@@ -96,16 +96,27 @@ void Entity::UpdateFrame() {
     }
 
     std::vector<ECS::Frame*> frames = sprite->animations_frames.at(animation_name + "_" + direction);
+    std::pair<int, int> frame_data = sprite->animations_data.at(animation_name + "_" + direction);
 
-    int index;
+    int frame_number = frame_data.first;
+
+    sprite->last_update += delta_time;
+
+    std::size_t index;
     if (sprite->current_frame == nullptr) {
         index = 0;
+        sprite->current_frame = sprite->animations_frames.at(animation_name + "_" + direction)[index];
+        sprite->last_update = 0;
     } else {
         index = (std::distance(frames.begin(), std::find(frames.begin(), frames.end(), sprite->current_frame)) + 1) %
                 frames.size();
+
+        if (sprite->last_update > (delta_time * static_cast<float>(frame_number))) {
+            sprite->current_frame = sprite->animations_frames.at(animation_name + "_" + direction)[index];
+            sprite->last_update = 0;
+        }
     }
 
-    sprite->current_frame = sprite->animations_frames.at(animation_name + "_" + direction)[index];
     Texture* txt = sprite->current_frame->txt;
 
     float w, h;
@@ -152,4 +163,12 @@ void Entity::LoadSprites(const std::string& filepath) {
     UpdateComponent("sprite", sprites);
 
     Logger::ClearTempLoggingFiles();
+}
+
+void Entity::SetDeltaTime(float delta) {
+    this->delta_time = delta;
+}
+
+float Entity::GetDeltaTime() const {
+    return this->delta_time;
 }

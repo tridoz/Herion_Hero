@@ -323,7 +323,7 @@ void InputProcessor::process_mouse_left_pressed() {
                     btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x, mouse_y);
                     if (btn != nullptr) {
                         std::string str = btn->ClickReturn();
-                        str = str.substr(str.find_last_of("/") + 1, str.size());
+                        str = str.substr(str.find_last_of('/') + 1, str.size());
                         std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) {
                             return std::tolower(c);
                         });
