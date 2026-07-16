@@ -123,6 +123,9 @@ namespace ECS {
 
     struct Frame {
         Texture* txt = nullptr;
+        bool operator==(const Texture* other) {
+            return txt == other;
+        }
     };
 
     struct Rendering : public Component {
@@ -131,10 +134,10 @@ namespace ECS {
     };
 
     struct Sprites : public Component {
-        std::unordered_map<std::string, std::vector<Frame>> animations_frames;
+        std::unordered_map<std::string, std::vector<Frame*>> animations_frames;
         std::unordered_map<std::string, std::pair<int, int>> animations_data;
 
-        Frame current_frame;
+        Frame* current_frame;
 
         Shapes::FRect sprite_rect;
     };

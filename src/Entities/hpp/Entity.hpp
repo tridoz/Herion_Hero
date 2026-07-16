@@ -1,6 +1,8 @@
 #include "../../Utils/hpp/FileOpener.hpp"
 #include "ECS.hpp"
 
+#include <algorithm>
+
 class Entity {
   protected:
     std::unordered_map<std::string, ECS::Component*> componentes;

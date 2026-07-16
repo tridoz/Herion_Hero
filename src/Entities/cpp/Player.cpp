@@ -33,8 +33,8 @@ Player::Player() {
         new ECS::Sprites{
             .animations_frames = {},
             .animations_data = {},
-            .current_frame = {},
-            .sprite_rect = {.size = {.dx = 0, .dy = 0}, .position = {.dx = 0, .dy = 0}}
+            .current_frame = nullptr,
+            .sprite_rect = {.size = {.dx = 0, .dy = 0}, .position = {.dx = 400, .dy = 400}}
         }
     );
 }

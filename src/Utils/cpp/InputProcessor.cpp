@@ -53,7 +53,7 @@ void InputProcessor::SetEditorRoom(EditorRoom* room) {
 }
 
 void InputProcessor::SetWindowTools(std::unordered_map<std::string, Window*> window_tools) {
-    this->window_tools = window_tools;
+    this->window_tools = std::move(window_tools);
 }
 
 void InputProcessor::process_main_menu(int scancode) {
@@ -63,8 +63,10 @@ void InputProcessor::process_main_menu(int scancode) {
 
 void InputProcessor::process_in_game(int scancode) {
     switch (scancode) {
+    default:
+        break;
     case SDL_SCANCODE_ESCAPE:
-        // this->player->SetGameMode(Player::GameMode::PAUSE_MENU);
+        Engine::SetGameState(Engine::GameState::PAUSE_MENU);
         break;
 
     case SDL_SCANCODE_UP:
@@ -107,6 +109,8 @@ void InputProcessor::process_in_game(int scancode) {
 void InputProcessor::process_level_editor(int scancode) {
 
     switch (scancode) {
+    default:
+        break;
     case SDL_SCANCODE_ESCAPE:
         Engine::SetGameState(Engine::GameState::EDITOR_MENU);
         for (auto& [name, win] : window_tools) {
@@ -268,15 +272,7 @@ void InputProcessor::process_mouse_left_pressed() {
             static_cast<ButtonMenu*>(menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name));
         SliderSelector* slider = bm->GetSliderSelector(mouse_x, mouse_y);
 
-        // Logger::debug_reflection_print( slider, 0 );
         if (slider != nullptr) {
-            // active_slider = slider;
-            // SDL_FRect* rect = slider->GetSliderButtonRect(mouse_x, mouse_y);
-            // if( rect == nullptr ) return;
-            // slider->SetOffsetX( mouse_x );
-            // slider->SetOffsetY( mouse_y );
-            // slider->StartUpdating();
-            //
             active_slider = slider;
             active_slider->StartUpdating();
         }
@@ -485,6 +481,48 @@ bool InputProcessor::isMouseRightPressed() const {
 }
 
 void InputProcessor::update_player_movement(float delta_time) {
+
+    ECS::Velocites* vel = static_cast<ECS::Velocites*>(player->GetComponent("velocity"));
+    ECS::MovementState* mvm = static_cast<ECS::MovementState*>(player->GetComponent("movement_state"));
+    ECS::Transform* trs = static_cast<ECS::Transform*>(player->GetComponent("transform"));
+    mvm->is_grounded = true;
+
+    vel->jump = {.dx = 0, .dy = 0};
+
+    if (key_left_pressed) {
+
+        vel->movement = {
+            .dx = (-300 / static_cast<float>(JSONParser::graphics::GetFrameRate())),
+            .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
+        };
+
+        if (mvm->is_grounded)
+            mvm->movement = ECS::Movements::RUN;
+
+        trs->facing_direction = ECS::FacingDirection::LEFT;
+    } else if (key_right_pressed) {
+
+        vel->movement = {
+            .dx = (300 / static_cast<float>(JSONParser::graphics::GetFrameRate())),
+            .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
+        };
+
+        if (mvm->is_grounded)
+            mvm->movement = ECS::Movements::RUN;
+
+        trs->facing_direction = ECS::FacingDirection::RIGHT;
+    } else {
+
+        if (mvm->is_grounded)
+            mvm->movement = ECS::Movements::IDLE;
+        vel->movement = {.dx = 0, .dy = vel->movement.dy};
+    }
+
+    player->UpdateComponent("velocity", vel);
+    player->UpdateComponent("transform", trs);
+    player->UpdateComponent("movement_state", mvm);
+
+    player->Move();
 }
 
 bool InputProcessor::AllWindowsClosed() {
