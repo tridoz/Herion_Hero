@@ -4,28 +4,22 @@
 #include <stdlib.h>
 #endif
 
-void LoadEnv()
-{
+void LoadEnv() {
 
     std::string base_path = "../";
     std::string path = ".env";
 
     std::ifstream file;
 
-    try
-    {
+    try {
         FileOpener::OpenFileInput(file, base_path + path);
-    }
-    catch (HerionException::File::FileException& ex)
-    {
+    } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
-    if (!file.is_open())
-    {
-        Logger::LogErr(std::time(nullptr), "LOADING", "Main", "LoadEnv",
-                       " file: [" + path + "] " + strerror(errno));
+    if (!file.is_open()) {
+        Logger::LogErr(std::time(nullptr), "LOADING", "Main", "LoadEnv", " file: [" + path + "] " + strerror(errno));
         return;
     }
 
@@ -38,17 +32,14 @@ void LoadEnv()
     //     );
 
     std::string line;
-    while (std::getline(file, line))
-    {
-        if (line.empty() || line[0] == '#')
-        {
+    while (std::getline(file, line)) {
+        if (line.empty() || line[0] == '#') {
             continue;
         }
 
         size_t eqPos = line.find('=');
 
-        if (eqPos == std::string::npos)
-        {
+        if (eqPos == std::string::npos) {
             continue;
         }
 
@@ -69,8 +60,7 @@ void LoadEnv()
     file.close();
 }
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
 
     // LoadEnv();
 
@@ -78,29 +68,23 @@ int main(int argc, char* argv[])
     // -n
 
     SoundBoard::Init();
-    SoundBoard::LoadSound("prova", "../sounds/prova.mp3");
+    SoundBoard::LoadSound("test", "../sounds/test.mp3");
 
     Logger::EnableSTDOUTLogging();
 
     Engine* engine = new Engine();
 
-    try
-    {
+    try {
         engine->Init();
-    }
-    catch (HerionException::File::FileException& ex)
-    {
+    } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());
         return -1;
     }
 
-    try
-    {
+    try {
         engine->Run();
-    }
-    catch (HerionException::File::FileException& ex)
-    {
+    } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());
         return -1;
