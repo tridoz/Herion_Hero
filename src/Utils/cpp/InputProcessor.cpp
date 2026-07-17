@@ -482,12 +482,10 @@ bool InputProcessor::isMouseRightPressed() const {
 
 void InputProcessor::update_player_movement(float delta_time) {
 
-    ECS::Velocites* vel = static_cast<ECS::Velocites*>(player->GetComponent("velocity"));
-    ECS::MovementState* mvm = static_cast<ECS::MovementState*>(player->GetComponent("movement_state"));
-    ECS::Transform* trs = static_cast<ECS::Transform*>(player->GetComponent("transform"));
+    ECS::Components::Velocites* vel = static_cast<ECS::Components::Velocites*>(player->GetComponent("velocity"));
+    ECS::Components::MovementState* mvm = static_cast<ECS::Components::MovementState*>(player->GetComponent("movement_state"));
+    ECS::Components::Transform* trs = static_cast<ECS::Components::Transform*>(player->GetComponent("transform"));
     mvm->is_grounded = true;
-
-    vel->jump = {.dx = 0, .dy = 0};
 
     if (key_left_pressed) {
 
@@ -497,9 +495,9 @@ void InputProcessor::update_player_movement(float delta_time) {
         };
 
         if (mvm->is_grounded)
-            mvm->movement = ECS::Movements::RUN;
+            mvm->movement = ECS::states::Movements::RUN;
 
-        trs->facing_direction = ECS::FacingDirection::LEFT;
+        trs->facing_direction = ECS::states::FacingDirection::LEFT;
     } else if (key_right_pressed) {
 
         vel->movement = {
@@ -508,14 +506,21 @@ void InputProcessor::update_player_movement(float delta_time) {
         };
 
         if (mvm->is_grounded)
-            mvm->movement = ECS::Movements::RUN;
+            mvm->movement = ECS::states::Movements::RUN;
 
-        trs->facing_direction = ECS::FacingDirection::RIGHT;
+        trs->facing_direction = ECS::states::FacingDirection::RIGHT;
     } else {
 
         if (mvm->is_grounded)
-            mvm->movement = ECS::Movements::IDLE;
+            mvm->movement = ECS::states::Movements::IDLE;
         vel->movement = {.dx = 0, .dy = vel->movement.dy};
+    }
+
+    if (space_pressed) {
+        mvm->is_grounded = false;
+        mvm->is_jumping = true;
+
+        vel->jump = {.dx = 0, .dy = -300 / static_cast<float>(JSONParser::graphics::GetFrameRate())};
     }
 
     player->UpdateComponent("velocity", vel);

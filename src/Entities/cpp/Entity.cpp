@@ -6,20 +6,20 @@ Entity::Entity() {
     this->componentes.clear();
 }
 
-void Entity::AddComponent(const std::string& name, ECS::Component* cmp) {
+void Entity::AddComponent(const std::string& name, ECS::Components::Component* cmp) {
     if (this->componentes.contains(name))
         return;
 
     this->componentes.emplace(name, cmp);
 }
 
-void Entity::UpdateComponent(const std::string& name, ECS::Component* new_cmp) {
+void Entity::UpdateComponent(const std::string& name, ECS::Components::Component* new_cmp) {
     if (!this->componentes.contains(name))
         return;
     this->componentes[name] = new_cmp;
 }
 
-ECS::Component* Entity::GetComponent(const std::string& name) {
+ECS::Components::Component* Entity::GetComponent(const std::string& name) {
     if (this->componentes.contains(name))
         return this->componentes.at(name);
 
@@ -31,8 +31,8 @@ bool Entity::HasComponent(const std::string& name) {
 }
 
 void Entity::Draw() {
-    ECS::Rendering* rendering = static_cast<ECS::Rendering*>(this->componentes.at("rendering"));
-    ECS::Sprites* sprite = static_cast<ECS::Sprites*>(this->componentes.at("sprite"));
+    ECS::Components::Rendering* rendering = static_cast<ECS::Components::Rendering*>(this->componentes.at("rendering"));
+    ECS::Components::Sprites* sprite = static_cast<ECS::Components::Sprites*>(this->componentes.at("sprite"));
     SDL_SetTextureBlendMode(sprite->current_frame->txt->GetTexture(), SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(
         rendering->renderer, sprite->current_frame->txt->GetTexture(), nullptr, sprite->sprite_rect.to_sdl()
@@ -40,57 +40,68 @@ void Entity::Draw() {
 }
 
 void Entity::Move() {
-    ECS::Sprites* sprite = static_cast<ECS::Sprites*>(componentes.at("sprite"));
-    ECS::Velocites* velocities = static_cast<ECS::Velocites*>(componentes.at("velocity"));
-    ECS::Transform* transform = static_cast<ECS::Transform*>(componentes.at("transform"));
+    ECS::Components::Sprites* sprite = static_cast<ECS::Components::Sprites*>(componentes.at("sprite"));
+    ECS::Components::Velocites* velocities = static_cast<ECS::Components::Velocites*>(componentes.at("velocity"));
+    ECS::Components::Transform* transform = static_cast<ECS::Components::Transform*>(componentes.at("transform"));
+    ECS::Components::MovementState* movements =
+        static_cast<ECS::Components::MovementState*>(componentes.at("movement_state"));
 
     transform->position = transform->position + velocities->movement;
+    transform->position = transform->position + velocities->jump;
+
     sprite->sprite_rect.Move(velocities->movement);
+    sprite->sprite_rect.Move(velocities->jump);
+
+    if (movements->is_jumping) {
+        ECS::Math::ApplyGravity(velocities);
+    }
 
     this->UpdateComponent("sprite", sprite);
+    this->UpdateComponent("velocity", velocities);
 }
 
 void Entity::Resize(const float scale) {
-    ECS::Sprites* sprite = static_cast<ECS::Sprites*>(componentes.at("sprite"));
+    ECS::Components::Sprites* sprite = static_cast<ECS::Components::Sprites*>(componentes.at("sprite"));
     sprite->sprite_rect.Resize(scale);
 }
 
-void Entity::Resize(const ECS::Vector2D& scale) {
-    ECS::Sprites* sprite = static_cast<ECS::Sprites*>(componentes.at("sprite"));
+void Entity::Resize(const ECS::Components::Vector2D& scale) {
+    ECS::Components::Sprites* sprite = static_cast<ECS::Components::Sprites*>(componentes.at("sprite"));
     sprite->sprite_rect.Resize(scale);
 }
 
 void Entity::UpdateFrame() {
-    ECS::Sprites* sprite = static_cast<ECS::Sprites*>(componentes.at("sprite"));
-    ECS::MovementState* movement_state = static_cast<ECS::MovementState*>(componentes.at("movement_state"));
-    ECS::Transform* transform = static_cast<ECS::Transform*>(componentes.at("transform"));
+    ECS::Components::Sprites* sprite = static_cast<ECS::Components::Sprites*>(componentes.at("sprite"));
+    ECS::Components::MovementState* movement_state =
+        static_cast<ECS::Components::MovementState*>(componentes.at("movement_state"));
+    ECS::Components::Transform* transform = static_cast<ECS::Components::Transform*>(componentes.at("transform"));
 
     std::string direction;
     std::string animation_name;
 
     switch (transform->facing_direction) {
-    case ECS::FacingDirection::LEFT:
+    case ECS::states::FacingDirection::LEFT:
         direction = "LEFT";
         break;
-    case ECS::FacingDirection::RIGHT:
+    case ECS::states::FacingDirection::RIGHT:
         direction = "RIGHT";
         break;
     }
 
     switch (movement_state->movement) {
-    case ECS::Movements::IDLE:
+    case ECS::states::Movements::IDLE:
         animation_name = "IDLE";
         break;
 
-    case ECS::Movements::RUN:
+    case ECS::states::Movements::RUN:
         animation_name = "RUN";
         break;
 
-    case ECS::Movements::FALLING:
+    case ECS::states::Movements::FALLING:
         animation_name = "FALL";
         break;
 
-    case ECS::Movements::JUMPING:
+    case ECS::states::Movements::JUMPING:
         animation_name = "JUMP";
         break;
     }
@@ -137,7 +148,7 @@ void Entity::LoadSprites(const std::string& filepath) {
     }
 
     int number_of_animations = JSONParser::animations::GetAnimationNumbers();
-    ECS::Sprites* sprites = static_cast<ECS::Sprites*>(componentes.at("sprite"));
+    ECS::Components::Sprites* sprites = static_cast<ECS::Components::Sprites*>(componentes.at("sprite"));
 
     for (int i = 0; i < number_of_animations; i++) {
 
@@ -150,7 +161,7 @@ void Entity::LoadSprites(const std::string& filepath) {
             std::make_pair(animation_characteristic.frame_number, animation_characteristic.frame_to_load)
         );
         std::vector<ECS::Frame*> frames;
-        ECS::Rendering* rendering = static_cast<ECS::Rendering*>(componentes.at("rendering"));
+        ECS::Components::Rendering* rendering = static_cast<ECS::Components::Rendering*>(componentes.at("rendering"));
 
         for (int j = 0; j < animation_characteristic.frame_to_load; j++) {
             std::string texture_name = animation_characteristic.path + "frame" + std::to_string(j) + ".png";

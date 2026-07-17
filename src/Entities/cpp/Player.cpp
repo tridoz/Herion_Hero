@@ -8,20 +8,22 @@
 Player::Player() {
     this->AddComponent(
         "transform",
-        new ECS::Transform{
+        new ECS::Components::Transform{
             .position = {.dx = 0, .dy = 0},
             .scale = {.dx = 1, .dy = 1},
             .rotation = 0,
-            .facing_direction = ECS::FacingDirection::RIGHT
+            .facing_direction = ECS::states::FacingDirection::RIGHT
         }
     );
 
-    this->AddComponent("velocity", new ECS::Velocites{.jump = {.dx = 0, .dy = 0}, .movement = {.dx = 0, .dy = 0}});
+    this->AddComponent(
+        "velocity", new ECS::Components::Velocites{.jump = {.dx = 0, .dy = 0}, .movement = {.dx = 0, .dy = 0}}
+    );
 
     this->AddComponent(
         "movement_state",
-        new ECS::MovementState{
-            .movement = ECS::Movements::IDLE,
+        new ECS::Components::MovementState{
+            .movement = ECS::states::Movements::IDLE,
             .is_grounded = false,
             .is_attached_wall_left = false,
             .is_attached_wall_right = false
@@ -30,7 +32,7 @@ Player::Player() {
 
     this->AddComponent(
         "sprite",
-        new ECS::Sprites{
+        new ECS::Components::Sprites{
             .animations_frames = {},
             .animations_data = {},
             .last_update = 0,

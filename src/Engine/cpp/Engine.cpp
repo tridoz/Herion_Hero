@@ -62,7 +62,8 @@ Engine::~Engine() {
 
 void Engine::InitPlayer() {
     this->player->AddComponent(
-        "rendering", new ECS::Rendering{.renderer = main_window->GetRenderer(), .manager = main_texture_manager}
+        "rendering",
+        new ECS::Components::Rendering{.renderer = main_window->GetRenderer(), .manager = main_texture_manager}
     );
     this->player->LoadSprites(Strings::Animations::Player::Paths::animation_config_file_path);
     ButtonsFunctions::SetPlayer(player);
