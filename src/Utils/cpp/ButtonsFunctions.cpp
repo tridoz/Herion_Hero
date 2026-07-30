@@ -55,7 +55,7 @@ void ButtonsFunctions::OpenAudioSettingsMenu() {
     Engine::SetGameState(Engine::GameState::AUDIO_SETTINGS_MENU);
 }
 void ButtonsFunctions::ReturnPreviousState() {
-    // Engine::SetGameState(Engine::GetPreviousGameState());
+    Engine::SetGameState(Engine::GetPreviousState());
 }
 
 // GRAPHICS SETTINGS

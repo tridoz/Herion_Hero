@@ -72,9 +72,11 @@ class Engine {
         EXIT
     };
     static GameState state;
+    static GameState previous_state;
 
     static void SetGameState(GameState new_state);
     static GameState GetGameState();
+    static GameState GetPreviousState();
 
     void Init();
 

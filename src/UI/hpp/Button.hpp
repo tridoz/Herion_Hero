@@ -5,87 +5,40 @@
 #ifndef HERION_HERO_BUTTON_HPP
 #define HERION_HERO_BUTTON_HPP
 
-#include <functional>
 #include <SDL3/SDL.h>
+#include <functional>
 
-#include "../../Textures/hpp/Texture.hpp"
+#include "../../Textures/hpp/Renderable.hpp"
 #include "../../Utils/hpp/Logger.hpp"
 
-
 class Button {
-private:
+  private:
     std::function<void()> OnClick;
     std::function<std::string()> OnClickReturn;
 
-    std::vector< Texture* > textures;
-    std::vector< SDL_FRect > rects ;
-
+    std::vector<Renderable*> renderable;
     std::string text;
 
-public:
-
+  public:
     Button();
-
-    /**
-     * @brief Set the "action listenere function" for the button
-     * @param action Function to execute when button clicked
-     */
     void SetOnClick(std::function<void()> action);
-
-    void SetOnClickReturn( std::function<std::string()> action );
-
-    /**
-     * @brief Execute the function
-     */
+    void SetOnClickReturn(std::function<std::string()> action);
     void Click() const;
     std::string ClickReturn() const;
-
-    /**
-     * @brief Set the Texture of the Button
-     * @param textures Textures to set
-     */
-    void SetTextures( std::vector< Texture* > textures );
-
-    /**
-     * @brief Set the SDL_FRects of the Button
-     * @param rects SDL_FRects to set
-     */
-    void SetRects( std::vector< SDL_FRect > rects );
-
-    /**
-     * @brief Draw the Button with its coordinates
-     * @param renderer renderer needed to draw
-     */
-    void Draw( SDL_Renderer* renderer ) const ;
-
-    /**
-     * @brief Draw the Button shifted of an offset and only if in certain coordinates
-     * @param renderer Renderer needed to draw
-     * @param offset_y Offset Y to add to the coordinates
-     * @param offset_x Offset X to add to the coodinates
-     */
-    void DrawWithOffset( SDL_Renderer* renderer, const float offset_y, const float offset_x ) const ;
-
-    /**
-     * @brief Return the Button's rects
-     * @return std::vector < SDL_FRect >
-     */
-    std::vector< SDL_FRect > GetRects() const;
-
-    void SetText( const std::string& text_to_set );
-
-    std::string GetText() const ;
+    void SetRenderables(std::vector<Renderable*> renderables);
+    void Draw(SDL_Renderer* renderer) const;
+    void DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const;
+    std::vector<SDL_FRect> GetRects();
+    void SetText(const std::string& text_to_set);
+    std::string GetText() const;
 
     static constexpr auto reflect_members() {
         return std::make_tuple(
-            Field<Button, std::function<void()>>{ "OnClick", &Button::OnClick },
-            Field<Button, std::function<std::string()>>{ "OnClickReturn", &Button::OnClickReturn },
-            Field<Button, std::vector<Texture*>>{ "textures", &Button::textures },
-            Field<Button, std::vector<SDL_FRect>>{ "rects", &Button::rects },
-            Field<Button, std::string>{ "text", &Button::text }
+            Field<Button, std::function<void()>>{"OnClick", &Button::OnClick},
+            Field<Button, std::function<std::string()>>{"OnClickReturn", &Button::OnClickReturn},
+            Field<Button, std::string>{"text", &Button::text}
         );
     }
 };
 
-
-#endif //HERION_HERO_BUTTON_HPP
+#endif // HERION_HERO_BUTTON_HPP

@@ -2,6 +2,7 @@
 #include "STRINGS.hpp"
 
 Engine::GameState Engine::state = Engine::GameState::MAIN_MENU;
+Engine::GameState Engine::previous_state = Engine::GameState::MAIN_MENU;
 
 Engine::Engine() {
     this->main_window = nullptr;
@@ -414,9 +415,14 @@ void Engine::CheckGameMode() {
 }
 
 void Engine::SetGameState(GameState new_state) {
+    Engine::previous_state = Engine::state;
     Engine::state = new_state;
 }
 
 Engine::GameState Engine::GetGameState() {
     return Engine::state;
+}
+
+Engine::GameState Engine::GetPreviousState() {
+    return Engine::previous_state;
 }

@@ -4,6 +4,7 @@
 
 #include "../hpp/ButtonMenu.hpp"
 #include "JSONParser.hpp"
+#include "SDL3/SDL_events.h"
 
 ButtonMenu::~ButtonMenu() {
 }
@@ -94,8 +95,7 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
 
             std::string text;
 
-            std::vector<SDL_FRect> rects;
-            std::vector<Texture*> textures;
+            std::vector<Renderable*> renderables;
 
             Texture* left_texture = nullptr;
             Texture* center_texture = nullptr;
@@ -119,10 +119,9 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
             SDL_GetTextureSize(center_texture->GetTexture(), &center_w, &center_h);
             SDL_GetTextureSize(right_texture->GetTexture(), &right_w, &right_h);
 
-            SDL_FRect left_rect = {cumulative_x, current_y, left_w * scale, left_h * scale};
+            SDL_FRect left_rect = {.x = cumulative_x, .y = current_y, .w = left_w * scale, .h = left_h * scale};
 
-            rects.push_back(left_rect);
-            textures.push_back(left_texture);
+            renderables.emplace_back(new Renderable(left_texture, new SDL_FRect{left_rect}));
 
             float char_w = this->char_width * this->scale;
 
@@ -138,16 +137,19 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
             }
 
             SDL_FRect center_rect = {
-                cumulative_x + left_rect.w, current_y + center_piece_offset, text_total_w, center_h * scale
+                .x = cumulative_x + left_rect.w,
+                .y = current_y + center_piece_offset,
+                .w = text_total_w,
+                .h = center_h * scale
             };
 
-            rects.push_back(center_rect);
-            textures.push_back(center_texture);
+            renderables.emplace_back(new Renderable(center_texture, new SDL_FRect{center_rect}));
 
-            SDL_FRect right_rect = {center_rect.x + center_rect.w, current_y, right_w * scale, right_h * scale};
+            SDL_FRect right_rect = {
+                .x = center_rect.x + center_rect.w, .y = current_y, .w = right_w * scale, .h = right_h * scale
+            };
 
-            rects.push_back(right_rect);
-            textures.push_back(right_texture);
+            renderables.emplace_back(new Renderable(right_texture, new SDL_FRect{right_rect}));
 
             float char_x = center_rect.x;
 
@@ -186,13 +188,12 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
 
                     SDL_GetTextureSize(char_tex->GetTexture(), &cw, &ch);
                     SDL_FRect char_rect = {
-                        char_x + (char_w - cw * scale) / 2.0f,
-                        center_rect.y + (center_rect.h - ch * scale) / 2.0f,
-                        cw * scale,
-                        ch * scale
+                        .x = char_x + (char_w - cw * scale) / 2.0f,
+                        .y = center_rect.y + (center_rect.h - ch * scale) / 2.0f,
+                        .w = cw * scale,
+                        .h = ch * scale
                     };
-                    rects.push_back(char_rect);
-                    textures.push_back(char_tex);
+                    renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
 
                     char_x += char_w;
                 }
@@ -201,8 +202,7 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
 
                 if (menu_element_characteristic.type == "BUTTON") {
                     Button* btn = new Button();
-                    btn->SetRects(rects);
-                    btn->SetTextures(textures);
+                    btn->SetRenderables(renderables);
 
                     if (menu_element_characteristic.action.value() == "RETURN_VALUE") {
                         btn->SetText(menu_element_characteristic.return_value.value());
@@ -218,8 +218,7 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
                     buttons.emplace(menu_element_characteristic.id, btn);
                 } else if (menu_element_characteristic.type.contains("TEXT")) {
                     Text* txt = new Text();
-                    txt->SetRects(rects);
-                    txt->SetTextures(textures);
+                    txt->SetRenderables(renderables);
                     texts.emplace(menu_element_characteristic.id, txt);
                 }
 
@@ -264,8 +263,7 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
                     center_rect.h * scale
                 };
 
-                slider->SetTextures(textures);
-                slider->SetRects(rects);
+                slider->SetRenderable(renderables);
 
                 slider->SetLength(menu_element_characteristic.length.value());
                 slider->SetMaxMinStep(
