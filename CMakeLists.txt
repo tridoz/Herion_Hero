@@ -19,6 +19,7 @@ include_directories(
         "${SDL3_DIR}/include"
 
         "${CMAKE_SOURCE_DIR}/src/Engine/hpp"
+        "${CMAKE_SOURCE_DIR}/src/Editor/hpp"
         "${CMAKE_SOURCE_DIR}/src/Utils/hpp"
         "${CMAKE_SOURCE_DIR}/src/Entities/hpp"
         "${CMAKE_SOURCE_DIR}/src/Textures/hpp"
@@ -26,9 +27,11 @@ include_directories(
         "${CMAKE_SOURCE_DIR}/src/WorldBuilding/hpp"
         "${CMAKE_SOURCE_DIR}/src/Sound/hpp"
         "${CMAKE_SOURCE_DIR}/src/Exceptions/hpp"
+        "${CMAKE_SOURCE_DIR}/headers_only_dependencies/"
 )
 
 file(GLOB_RECURSE SRC_FILES
+        "${CMAKE_SOURCE_DIR}/headers_only_dependencies/*.cpp"
         "${CMAKE_SOURCE_DIR}/src/*.cpp"
         "${CMAKE_SOURCE_DIR}/main.cpp"
 )

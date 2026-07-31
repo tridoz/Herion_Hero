@@ -404,6 +404,10 @@ void Engine::CheckGameMode() {
         }
         break;
 
+    case Engine::GameState::ANIMATION_EDITOR:
+
+        break;
+
     case Engine::GameState::IN_GAME:
         game_room_manager->DrawCurrentRoom(main_window->GetRenderer());
 

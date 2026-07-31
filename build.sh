@@ -113,8 +113,7 @@ echo -e "${BLUE}Starting compilation...${RESET}"
 
 
 cmake --build build \
-    -j$(nproc) \
-    > /tmp/build.log 2>&1 &
+    -j$(nproc) 
 
 
 PID=$!
@@ -142,14 +141,6 @@ else
     echo
     echo -e "${RED}✘ Build failed!${RESET}"
     echo
-
-    echo -e "${YELLOW}Compiler errors:${RESET}"
-    echo
-
-    grep -E "error:|fatal error:" /tmp/build.log
-
-    echo
-    echo -e "${WHITE}Full log:${RESET} ${CYAN}/tmp/build.log${RESET}"
 
     exit 1
 
