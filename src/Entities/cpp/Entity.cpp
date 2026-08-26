@@ -6,10 +6,6 @@ Entity::Entity() {
     this->componentes.clear();
 }
 
-bool Entity::HasComponent(std::type_index index) {
-    return this->componentes.contains(index);
-}
-
 void Entity::Draw() {
     ECS::Components::Rendering* rendering = GetComponent<ECS::Components::Rendering>();
     ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();

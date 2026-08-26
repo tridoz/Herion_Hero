@@ -36,7 +36,10 @@ class Entity {
         return nullptr;
     }
 
-    bool HasComponent(std::type_index index);
+    template <typename T> bool HasComponent() {
+        std::type_index index(typeid(T));
+        return this->componentes.contains(index);
+    }
     void Draw();
     void UpdateFrame();
     void Move();
