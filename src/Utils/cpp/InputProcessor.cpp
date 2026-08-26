@@ -106,6 +106,17 @@ void InputProcessor::process_in_game(int scancode) {
     }
 }
 
+void InputProcessor::process_animation_editor(int scancode) {
+    switch (scancode) {
+    default:
+        break;
+
+    case SDL_SCANCODE_ESCAPE:
+        Engine::SetGameState(Engine::GameState::EDITOR_MENU);
+        break;
+    }
+}
+
 void InputProcessor::process_level_editor(int scancode) {
 
     switch (scancode) {
@@ -203,6 +214,9 @@ void InputProcessor::process_key_down(int scancode) {
     case Engine::GameState::LEVEL_EDITOR:
         process_level_editor(scancode);
         break;
+
+    case Engine::GameState::ANIMATION_EDITOR:
+        process_animation_editor(scancode);
 
     case Engine::GameState::IN_GAME:
         process_in_game(scancode);

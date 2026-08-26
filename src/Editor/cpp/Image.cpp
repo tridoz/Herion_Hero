@@ -1,12 +1,16 @@
 #include "../hpp/Image.hpp"
 
+#include <iostream>
+
 Image::Image() {
 }
 
 void Image::LoadImage(const std::string& path) {
+
     int width, height, channels;
 
-    unsigned char* pixels = stbi_load(path.c_str(), &width, &height, &channels, 4);
+    unsigned char* pixels = stbi_load(path.c_str(), &width, &height, &channels, 0);
+
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int index = (y * width + x) * 4;

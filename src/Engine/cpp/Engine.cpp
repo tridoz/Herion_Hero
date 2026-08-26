@@ -36,7 +36,7 @@ void Engine::Init() {
     InitPlayer();
 
     img_editor->SetRenderer(main_window->GetRenderer());
-    img_editor->SetImagePath("Assets/Entities/Player/Idle/left/frame0.png");
+    img_editor->SetImagePath("Assets/Entities/Player/Idle/Left/frame0.png");
 }
 
 Engine::~Engine() {

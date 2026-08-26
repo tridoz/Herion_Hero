@@ -14,5 +14,6 @@ void Pixel::SetRect(SDL_FRect* rect) {
 void Pixel::Draw(SDL_Renderer* ren) {
     SDL_SetRenderDrawColor(ren, r, g, b, a);
     SDL_RenderFillRect(ren, rect);
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_SetRenderDrawColor(ren, 0, 0, 0, 0);
 }
