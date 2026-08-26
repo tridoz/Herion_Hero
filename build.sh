@@ -11,13 +11,7 @@ CYAN="\033[1;36m"
 WHITE="\033[1;37m"
 RESET="\033[0m"
 
-
 clear
-
-
-# ==========================
-# Logo
-# ==========================
 
 echo -e "${CYAN}"
 cat << "EOF"
@@ -29,11 +23,6 @@ cat << "EOF"
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
 EOF
 echo -e "${RESET}"
-
-
-# ==========================
-# Spinner
-# ==========================
 
 spinner()
 {
@@ -56,11 +45,6 @@ spinner()
     printf "\r"
 }
 
-
-# ==========================
-# Progress
-# ==========================
-
 progress()
 {
     echo -e "${BLUE}$1${RESET}"
@@ -76,13 +60,7 @@ progress()
 
 START=$(date +%s)
 
-
-# ==========================
-# Configure CMake
-# ==========================
-
 progress "Configuring CMake..."
-
 
 if ! cmake \
     -S . \
@@ -102,15 +80,8 @@ then
 
 fi
 
-
-
-# ==========================
-# Build
-# ==========================
-
 echo
 echo -e "${BLUE}Starting compilation...${RESET}"
-
 
 cmake --build build \
     -j$(nproc) 
@@ -118,13 +89,8 @@ cmake --build build \
 
 PID=$!
 
-
 spinner $PID "Building project..."
 
-
-# ==========================
-# Result
-# ==========================
 
 if wait $PID; then
 

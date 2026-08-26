@@ -2,19 +2,41 @@
 #include "ECS.hpp"
 
 #include <algorithm>
+#include <typeindex>
 
 class Entity {
   protected:
-    std::unordered_map<std::string, ECS::Components::Component*> componentes;
+    std::unordered_map<std::type_index, ECS::Components::Component*> componentes;
     float delta_time;
 
   public:
     Entity();
 
-    void AddComponent(const std::string& name, ECS::Components::Component* cmp);
-    void UpdateComponent(const std::string& name, ECS::Components::Component* new_cmp);
-    ECS::Components::Component* GetComponent(const std::string& name);
-    bool HasComponent(const std::string& name);
+    template <typename T> void AddComponent(ECS::Components::Component* cmp) {
+        std::type_index index(typeid(T));
+        if (this->componentes.contains(index))
+            return;
+
+        this->componentes.emplace(index, cmp);
+    }
+
+    template <typename T> void UpdateComponent(ECS::Components::Component* cmp) {
+        std::type_index index(typeid(T));
+        if (!this->componentes.contains(index))
+            return;
+
+        this->componentes[index] = cmp;
+    }
+
+    template <typename T> T* GetComponent() {
+        std::type_index index = typeid(T);
+        if (this->componentes.contains(index))
+            return static_cast<T*>(this->componentes.at(index));
+
+        return nullptr;
+    }
+
+    bool HasComponent(std::type_index index);
     void Draw();
     void UpdateFrame();
     void Move();

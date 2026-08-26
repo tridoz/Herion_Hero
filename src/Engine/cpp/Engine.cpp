@@ -13,6 +13,7 @@ Engine::Engine() {
     this->entity_selection_texture_manager = new TextureManager();
     this->game_room_manager = new RoomManager();
     this->editor_room = new EditorRoom();
+    this->img_editor = new ImageEditor();
     this->player = new Player();
     this->main_menu = new ButtonMenu();
     this->general_settings_menu = new ButtonMenu();
@@ -33,6 +34,9 @@ void Engine::Init() {
     InitMenus();
     InitInputProcessor();
     InitPlayer();
+
+    img_editor->SetRenderer(main_window->GetRenderer());
+    img_editor->SetImagePath("Assets/Entities/Player/Idle/left/frame0.png");
 }
 
 Engine::~Engine() {
@@ -55,6 +59,7 @@ Engine::~Engine() {
     delete audio_settings_menu;
     delete pause_menu;
     delete editor_menu;
+    delete img_editor;
     delete action_selection_menu;
     delete texture_selection_menu;
     delete entity_selection_menu;
@@ -62,8 +67,7 @@ Engine::~Engine() {
 }
 
 void Engine::InitPlayer() {
-    this->player->AddComponent(
-        "rendering",
+    this->player->AddComponent<ECS::Components::Rendering>(
         new ECS::Components::Rendering{.renderer = main_window->GetRenderer(), .manager = main_texture_manager}
     );
     this->player->LoadSprites(Strings::Animations::Player::Paths::animation_config_file_path);
@@ -405,7 +409,7 @@ void Engine::CheckGameMode() {
         break;
 
     case Engine::GameState::ANIMATION_EDITOR:
-
+        img_editor->DrawImage();
         break;
 
     case Engine::GameState::IN_GAME:

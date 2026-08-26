@@ -1,3 +1,13 @@
+#include "Image.hpp"
 
+class ImageEditor {
+  private:
+    Image* img;
+    SDL_Renderer* renderer;
 
-class ImageEditor {};
+  public:
+    ImageEditor();
+    void SetImagePath(const std::string& path);
+    void SetRenderer(SDL_Renderer* r);
+    void DrawImage();
+};

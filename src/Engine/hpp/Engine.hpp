@@ -1,3 +1,4 @@
+#include "../../Editor/hpp/ImageEditor.hpp"
 #include "../../Entities/hpp/Player.hpp"
 #include "../../Exceptions/hpp/HerionFileException.hpp"
 #include "../../Sound/hpp/SoundBoard.hpp"
@@ -28,6 +29,7 @@ class Engine {
     TextureManager* entity_selection_texture_manager;
     RoomManager* game_room_manager;
     EditorRoom* editor_room;
+    ImageEditor* img_editor;
     Player* player;
 
     ButtonMenu* main_menu;

@@ -1,5 +1,8 @@
 #include "../hpp/Image.hpp"
 
+Image::Image() {
+}
+
 void Image::LoadImage(const std::string& path) {
     int width, height, channels;
 

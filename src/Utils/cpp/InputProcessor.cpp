@@ -360,7 +360,7 @@ void InputProcessor::process_mouse_left_pressed() {
 
                 float w, h;
                 SDL_GetTextureSize(txt->GetTexture(), &w, &h);
-                SDL_FRect rect{.x=mouse_x, .y=mouse_y, .w=w, .h=h};
+                SDL_FRect rect{.x = mouse_x, .y = mouse_y, .w = w, .h = h};
 
                 Button* b = new Button();
                 b->SetRenderables({new Renderable(txt, new SDL_FRect{rect})});
@@ -480,11 +480,9 @@ bool InputProcessor::isMouseRightPressed() const {
 
 void InputProcessor::update_player_movement(float delta_time) {
 
-    ECS::Components::Velocites* vel = static_cast<ECS::Components::Velocites*>(player->GetComponent("velocity"));
-    ECS::Components::MovementState* mvm =
-        static_cast<ECS::Components::MovementState*>(player->GetComponent("movement_state"));
-    ECS::Components::Transform* trs = static_cast<ECS::Components::Transform*>(player->GetComponent("transform"));
-    mvm->is_grounded = true;
+    ECS::Components::Velocites* vel = player->GetComponent<ECS::Components::Velocites>();
+    ECS::Components::MovementState* mvm = player->GetComponent<ECS::Components::MovementState>();
+    ECS::Components::Transform* trs = player->GetComponent<ECS::Components::Transform>();
 
     if (key_left_pressed) {
 
@@ -522,9 +520,9 @@ void InputProcessor::update_player_movement(float delta_time) {
         vel->jump = {.dx = 0, .dy = -300 / static_cast<float>(JSONParser::graphics::GetFrameRate())};
     }
 
-    player->UpdateComponent("velocity", vel);
-    player->UpdateComponent("transform", trs);
-    player->UpdateComponent("movement_state", mvm);
+    player->UpdateComponent<ECS::Components::Velocites>(vel);
+    player->UpdateComponent<ECS::Components::Transform>(trs);
+    player->UpdateComponent<ECS::Components::MovementState>(mvm);
 
     player->Move();
 }
