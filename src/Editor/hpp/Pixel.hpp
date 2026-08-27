@@ -13,7 +13,7 @@ class Pixel {
     SDL_FRect* rect;
 
   public:
-    Pixel(std::uint8_t r, std::uint8_t g, std::uint8_t b, std::uint8_t a);
-    void SetRect(SDL_FRect* rect);
-    void Draw(SDL_Renderer* r);
+    Pixel(std::uint8_t, std::uint8_t, std::uint8_t, std::uint8_t);
+    auto SetRect(SDL_FRect*) -> void;
+    auto Draw(SDL_Renderer*) -> void;
 };

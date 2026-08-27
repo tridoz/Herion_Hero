@@ -11,94 +11,95 @@ Player* ButtonsFunctions::player = nullptr;
 TextureManager* ButtonsFunctions::texture_manager = nullptr;
 Texture* ButtonsFunctions::texture = nullptr;
 
-void ButtonsFunctions::SetPlayer(Player* setter_player) {
+auto ButtonsFunctions::SetPlayer(Player* setter_player) -> void {
     player = setter_player;
 }
-void ButtonsFunctions::SetTextureManager(TextureManager* setter_texture_manager) {
+auto ButtonsFunctions::SetTextureManager(TextureManager* setter_texture_manager) -> void {
     texture_manager = setter_texture_manager;
 }
-void ButtonsFunctions::SetTexture(Texture* setter_texture) {
+auto ButtonsFunctions::SetTexture(Texture* setter_texture) -> void {
     texture = setter_texture;
 }
-Texture* ButtonsFunctions::GetTexture() {
+auto ButtonsFunctions::GetTexture() -> Texture* {
     return texture;
 }
 
 // CHANGE GAME MODE
-void ButtonsFunctions::StartGame() {
+auto ButtonsFunctions::StartGame() -> void {
     Engine::SetGameState(Engine::GameState::IN_GAME);
 }
-void ButtonsFunctions::StartNewGame() {
+auto ButtonsFunctions::StartNewGame() -> void{
 }
-void ButtonsFunctions::EndGame() {
+
+auto ButtonsFunctions::EndGame() -> void {
     Engine::SetGameState(Engine::GameState::EXIT);
 }
-void ButtonsFunctions::OpenMainMenu() {
+auto ButtonsFunctions::OpenMainMenu() -> void {
     Engine::SetGameState(Engine::GameState::MAIN_MENU);
 }
-void ButtonsFunctions::OpenLevelEditor() {
+auto ButtonsFunctions::OpenLevelEditor() -> void {
     Engine::SetGameState(Engine::GameState::LEVEL_EDITOR);
 }
-void ButtonsFunctions::OpenAnimationEditor() {
+auto ButtonsFunctions::OpenAnimationEditor() -> void {
     Engine::SetGameState(Engine::GameState::ANIMATION_EDITOR);
 }
-void ButtonsFunctions::OpenEditorMenu() {
+auto ButtonsFunctions::OpenEditorMenu() -> void {
     Engine::SetGameState(Engine::GameState::EDITOR_MENU);
 }
-void ButtonsFunctions::OpenGeneralSettingsMenu() {
+auto ButtonsFunctions::OpenGeneralSettingsMenu() -> void {
     Engine::SetGameState(Engine::GameState::GENERAL_SETTINGS_MENU);
 }
-void ButtonsFunctions::OpenGraphicsSettingsMenu() {
+auto ButtonsFunctions::OpenGraphicsSettingsMenu() -> void {
     Engine::SetGameState(Engine::GameState::GRAPHICS_SETTINGS_MENU);
 }
-void ButtonsFunctions::OpenAudioSettingsMenu() {
+auto ButtonsFunctions::OpenAudioSettingsMenu() -> void {
     Engine::SetGameState(Engine::GameState::AUDIO_SETTINGS_MENU);
 }
-void ButtonsFunctions::ReturnPreviousState() {
+auto ButtonsFunctions::ReturnPreviousState() -> void {
     Engine::SetGameState(Engine::GetPreviousState());
 }
 
 // GRAPHICS SETTINGS
-void ButtonsFunctions::IncreaseResolution() {
+auto ButtonsFunctions::IncreaseResolution() -> void {
     JSONParser::graphics::IncreaseResolution();
 }
-void ButtonsFunctions::DecreaseResolution() {
+auto ButtonsFunctions::DecreaseResolution() -> void {
     JSONParser::graphics::DecreaseResolution();
 }
-void ButtonsFunctions::ChangeWindowMode() {
+auto ButtonsFunctions::ChangeWindowMode() -> void {
 }
-void ButtonsFunctions::IncreaseFrameLimit() {
+auto ButtonsFunctions::IncreaseFrameLimit() -> void {
     JSONParser::graphics::IncreaseFPSLimit();
 }
-void ButtonsFunctions::DecreaseFrameLimit() {
+auto ButtonsFunctions::DecreaseFrameLimit() -> void {
     JSONParser::graphics::DecreaseFPSLimit();
 }
-void ButtonsFunctions::IncreaseBrightness() {
+auto ButtonsFunctions::IncreaseBrightness() -> void {
 }
-void ButtonsFunctions::DecreaseBrightness() {
+auto ButtonsFunctions::DecreaseBrightness() -> void {
 }
 
 // AUDIO SETTINGS
-void ButtonsFunctions::SetMasterVolume(int volume) {
+auto ButtonsFunctions::SetMasterVolume(int volume) -> void {
     JSONParser::audio::SetMasterVolume(volume);
 }
-void ButtonsFunctions::IncreaseMasterVolume() {
+auto ButtonsFunctions::IncreaseMasterVolume() -> void {
     JSONParser::audio::IncreaseMasterVolume();
 }
-void ButtonsFunctions::DecreaseMasterVolume() {
+auto ButtonsFunctions::DecreaseMasterVolume() -> void {
     JSONParser::audio::DecreaseMasterVolume();
 }
 
-void ButtonsFunctions::IncreaseMusicVolume() {
+auto ButtonsFunctions::IncreaseMusicVolume() -> void {
     JSONParser::audio::IncreaseMusicVolume();
 }
-void ButtonsFunctions::DecreaseMusicVolume() {
+auto ButtonsFunctions::DecreaseMusicVolume() -> void {
     JSONParser::audio::DecreaseMusicVolume();
 }
 
-void ButtonsFunctions::IncreaseSFXVolume() {
+auto ButtonsFunctions::IncreaseSFXVolume() -> void {
     JSONParser::audio::IncreaseSFXVolume();
 }
-void ButtonsFunctions::DecreaseSFXVolume() {
+auto ButtonsFunctions::DecreaseSFXVolume() -> void {
     JSONParser::audio::DecreaseSFXVolume();
 }

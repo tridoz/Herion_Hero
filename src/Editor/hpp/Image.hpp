@@ -12,7 +12,7 @@ class Image {
 
   public:
     Image();
-    void LoadImage(const std::string& path);
-    void DrawImage(SDL_Renderer* r);
-    void SaveImage();
+    auto LoadImage(const std::string&) -> void;
+    auto DrawImage(SDL_Renderer*) -> void;
+    auto SaveImage() -> void;
 };

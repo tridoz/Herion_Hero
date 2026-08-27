@@ -4,14 +4,14 @@ ImageEditor::ImageEditor() {
     img = new Image();
 }
 
-void ImageEditor::SetImagePath(const std::string& path) {
+auto ImageEditor::SetImagePath(const std::string& path) -> void {
     img->LoadImage(path);
 }
 
-void ImageEditor::SetRenderer(SDL_Renderer* r) {
+auto ImageEditor::SetRenderer(SDL_Renderer* r) -> void {
     this->renderer = r;
 }
 
-void ImageEditor::DrawImage() {
+auto ImageEditor::DrawImage() -> void {
     this->img->DrawImage(renderer);
 }

@@ -27,7 +27,7 @@ Engine::Engine() {
     this->processor = new InputProcessor();
 }
 
-void Engine::Init() {
+auto Engine::Init() -> void {
     InitWindows();
     InitTextureManagers();
     InitRoomManager();
@@ -66,7 +66,7 @@ Engine::~Engine() {
     delete processor;
 }
 
-void Engine::InitPlayer() {
+auto Engine::InitPlayer() -> void {
     this->player->AddComponent<ECS::Components::Rendering>(
         new ECS::Components::Rendering{.renderer = main_window->GetRenderer(), .manager = main_texture_manager}
     );
@@ -74,7 +74,7 @@ void Engine::InitPlayer() {
     ButtonsFunctions::SetPlayer(player);
 }
 
-void Engine::InitWindows() {
+auto Engine::InitWindows() -> void {
 
     try {
         this->main_window = new Window("Herion Hero");
@@ -122,7 +122,7 @@ void Engine::InitWindows() {
     entity_selection->SetCurrentMenu("ENTITY_SELECTION");
 }
 
-void Engine::LoadTextureManagers() {
+auto Engine::LoadTextureManagers() -> void {
     try {
         main_texture_manager->LoadTextures(Strings::Textures::Paths::all_textures_path);
         texture_selection_texture_manager->LoadTextures(Strings::Textures::Paths::all_textures_path);
@@ -134,7 +134,7 @@ void Engine::LoadTextureManagers() {
     }
 }
 
-void Engine::InitTextureManagers() {
+auto Engine::InitTextureManagers() -> void {
 
     main_texture_manager->SetRenderer(main_window->GetRenderer());
     texture_selection_texture_manager->SetRenderer(editors_windows.at("TEXTURE_SELECTION")->GetRenderer());
@@ -149,7 +149,7 @@ void Engine::InitTextureManagers() {
     }
 }
 
-void Engine::InitRoomManager() {
+auto Engine::InitRoomManager() -> void {
 
     game_room_manager->SetTextureManager(main_texture_manager);
     game_room_manager->SetDimensions(main_window->GetWidth(), main_window->GetHeight(), 32, 18);
@@ -163,7 +163,7 @@ void Engine::InitRoomManager() {
     }
 }
 
-void Engine::LoadMenusConfigurations() {
+auto Engine::LoadMenusConfigurations() -> void {
     try {
         main_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::main_menu_config_path);
         general_settings_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::general_settings_menu_config_path);
@@ -188,7 +188,7 @@ void Engine::LoadMenusConfigurations() {
     }
 }
 
-void Engine::SetMenusDimensions() {
+auto Engine::SetMenusDimensions() -> void {
     main_menu->SetTextureManager(main_texture_manager);
     main_menu->SetDimension(static_cast<float>(main_window->GetWidth()), static_cast<float>(main_window->GetHeight()));
 
@@ -234,7 +234,7 @@ void Engine::SetMenusDimensions() {
     );
 }
 
-void Engine::InitMenus() {
+auto Engine::InitMenus() -> void {
 
     SetMenusDimensions();
 
@@ -246,7 +246,7 @@ void Engine::InitMenus() {
     }
 }
 
-void Engine::InitInputProcessor() {
+auto Engine::InitInputProcessor() -> void {
     processor->SetMenus(Strings::Menus::Main_Window::Names::main_menu_name, main_menu);
 
     processor->SetMenus(Strings::Menus::Main_Window::Names::general_settings_menu_name, general_settings_menu);
@@ -288,7 +288,7 @@ void Engine::InitInputProcessor() {
     player->SetTextureManager(main_texture_manager);
 }
 
-void Engine::Run() {
+auto Engine::Run() -> void {
 
     SDL_Event event;
     Uint32 last_frame_time = SDL_GetTicks();
@@ -350,7 +350,7 @@ void Engine::Run() {
     }
 }
 
-void Engine::CheckGameMode() {
+auto Engine::CheckGameMode() -> void {
     Engine::GameState game_mode = GetGameState();
 
     switch (game_mode) {
@@ -422,15 +422,15 @@ void Engine::CheckGameMode() {
     }
 }
 
-void Engine::SetGameState(GameState new_state) {
+auto Engine::SetGameState(GameState new_state) -> void {
     Engine::previous_state = Engine::state;
     Engine::state = new_state;
 }
 
-Engine::GameState Engine::GetGameState() {
+auto Engine::GetGameState() -> Engine::GameState {
     return Engine::state;
 }
 
-Engine::GameState Engine::GetPreviousState() {
+auto Engine::GetPreviousState() -> Engine::GameState {
     return Engine::previous_state;
 }

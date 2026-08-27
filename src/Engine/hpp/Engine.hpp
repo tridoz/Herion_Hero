@@ -43,19 +43,19 @@ class Engine {
     ScrollPaneMenu* texture_selection_menu;
     ScrollPaneMenu* entity_selection_menu;
 
-    void LoadMenusConfigurations();
-    void SetMenusDimensions();
+    auto LoadMenusConfigurations() -> void;
+    auto SetMenusDimensions() -> void;
 
-    void LoadTextureManagers();
+    auto LoadTextureManagers() -> void;
 
-    void InitWindows();
-    void InitTextureManagers();
-    void InitRoomManager();
-    void InitMenus();
-    void InitInputProcessor();
-    void InitPlayer();
+    auto InitWindows() -> void;
+    auto InitTextureManagers() -> void;
+    auto InitRoomManager() -> void;
+    auto InitMenus() -> void;
+    auto InitInputProcessor() -> void;
+    auto InitPlayer() -> void;
 
-    void CheckGameMode();
+    auto CheckGameMode() -> void;
 
   public:
     Engine();
@@ -76,11 +76,11 @@ class Engine {
     static GameState state;
     static GameState previous_state;
 
-    static void SetGameState(GameState new_state);
-    static GameState GetGameState();
-    static GameState GetPreviousState();
+    static auto SetGameState(GameState) -> void;
+    static auto GetGameState() -> GameState;
+    static auto GetPreviousState() -> GameState;
 
-    void Init();
+    auto Init() -> void;
 
     void Run();
 };

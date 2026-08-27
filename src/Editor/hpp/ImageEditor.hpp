@@ -7,7 +7,7 @@ class ImageEditor {
 
   public:
     ImageEditor();
-    void SetImagePath(const std::string& path);
-    void SetRenderer(SDL_Renderer* r);
-    void DrawImage();
+    auto SetImagePath(const std::string&) -> void;
+    auto SetRenderer(SDL_Renderer*) -> void;
+    auto DrawImage() -> void;
 };

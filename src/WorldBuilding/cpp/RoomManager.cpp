@@ -44,11 +44,11 @@ RoomManager::~RoomManager() {
     current_room = nullptr;
 }
 
-void RoomManager::GenerateEditorRoom(EditorRoom* room, const std::string& map_path) {
+auto RoomManager::GenerateEditorRoom(EditorRoom* room, const std::string& map_path) -> void {
 
     std::vector<std::vector<Tile*>> tiles;
-    const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
-    const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
+    const float w = static_cast<float>(JSONParser::graphics::GetWidth()) / static_cast<float>(horizontal_tiles);
+    const float h = static_cast<float>(JSONParser::graphics::GetHeight()) / static_cast<float>(vertical_tiles);
 
     std::string map_filepath = map_path + "base_plane_textures.hhmap";
     std::string hitboxes_filepath = map_path + "hitboxes.hhmap";
@@ -105,7 +105,7 @@ void RoomManager::GenerateEditorRoom(EditorRoom* room, const std::string& map_pa
             Tile* tile = new Tile();
 
             tile->SetTexture(textureManager->GetTextureByCode(base_plane_cell));
-            tile->SetRect(x * w, y * h, w, h);
+            tile->SetRect(static_cast<float>(x) * w, static_cast<float>(y) * h, w, h);
             bool hitbox = std::atoi(hitbox_cell.c_str());
             tile->SetHitbox(hitbox);
             row.push_back(tile);
@@ -120,12 +120,12 @@ void RoomManager::GenerateEditorRoom(EditorRoom* room, const std::string& map_pa
     room->SetHitboxes();
 }
 
-void RoomManager::GenerateRoom(DIRECTION dir, const std::string& map_path) {
+auto RoomManager::GenerateRoom(DIRECTION dir, const std::string& map_path) -> void {
 
     std::vector<std::vector<Tile*>> tiles;
 
-    const float w = JSONParser::graphics::GetWidth() / horizontal_tiles;
-    const float h = JSONParser::graphics::GetHeight() / vertical_tiles;
+    const float w = static_cast<float>(JSONParser::graphics::GetWidth()) / static_cast<float>(horizontal_tiles);
+    const float h = static_cast<float>(JSONParser::graphics::GetHeight()) / static_cast<float>(vertical_tiles);
 
     std::ifstream map_file;
     std::ifstream hitboxes_file;
@@ -181,7 +181,7 @@ void RoomManager::GenerateRoom(DIRECTION dir, const std::string& map_path) {
             Tile* tile = new Tile();
 
             tile->SetTexture(textureManager->GetTextureByCode(cell));
-            tile->SetRect(x * w, y * h, w, h);
+            tile->SetRect(static_cast<float>(x) * w, static_cast<float>(y) * h, w, h);
             tile->SetHitbox(hitbox);
             row.push_back(tile);
 
@@ -226,11 +226,11 @@ void RoomManager::GenerateRoom(DIRECTION dir, const std::string& map_path) {
     }
 }
 
-Room* RoomManager::GetCurrentRoom() const {
+auto RoomManager::GetCurrentRoom() const -> Room* {
     return this->current_room->room;
 }
 
-void RoomManager::GoLeft() {
+auto RoomManager::GoLeft() -> void {
 
     if (current_room->left == nullptr) {
         GenerateRoom(DIRECTION::DIR_LEFT, "../maps/room1/");
@@ -239,7 +239,7 @@ void RoomManager::GoLeft() {
     current_room = current_room->left;
 }
 
-void RoomManager::GoRight() {
+auto RoomManager::GoRight() -> void {
     if (current_room->right == nullptr) {
         GenerateRoom(DIRECTION::DIR_RIGHT, "../maps/room1/");
     }
@@ -247,7 +247,7 @@ void RoomManager::GoRight() {
     current_room = current_room->right;
 }
 
-void RoomManager::GoUp() {
+auto RoomManager::GoUp() -> void {
 
     if (current_room->up == nullptr) {
         GenerateRoom(DIRECTION::DIR_UP, "../maps/room1/");
@@ -256,7 +256,7 @@ void RoomManager::GoUp() {
     current_room = current_room->up;
 }
 
-void RoomManager::GoDown() {
+auto RoomManager::GoDown() -> void {
     if (current_room->down == nullptr) {
         GenerateRoom(DIRECTION::DIR_DOWN, "../maps/room1/");
     }
@@ -264,7 +264,7 @@ void RoomManager::GoDown() {
     current_room = current_room->down;
 }
 
-void RoomManager::ResizeRoom() {
+auto RoomManager::ResizeRoom() -> void {
     std::vector<std::vector<Tile*>> tiles = this->current_room->room->GetTiles();
     int w, h;
     try {
@@ -279,15 +279,15 @@ void RoomManager::ResizeRoom() {
         for (int y = 0; y < tiles[x].size(); y++) {
             float newW, newH;
 
-            newW = w / horizontal_tiles;
-            newH = h / vertical_tiles;
+            newW = static_cast<float>(w) / static_cast<float>(horizontal_tiles);
+            newH = static_cast<float>(h) / static_cast<float>(vertical_tiles);
 
-            tiles[x][y]->SetRect(y * newW, x * newH, newW, newH);
+            tiles[x][y]->SetRect(static_cast<float>(y) * newW, static_cast<float>(x) * newH, newW, newH);
         }
     }
 }
 
-void RoomManager::ResizeEditorRoom(Room* room) {
+auto RoomManager::ResizeEditorRoom(Room* room) -> void {
     std::vector<std::vector<Tile*>> tiles = room->GetTiles();
 
     int w, h;
@@ -304,33 +304,33 @@ void RoomManager::ResizeEditorRoom(Room* room) {
         for (int y = 0; y < tiles[x].size(); y++) {
             float newW, newH;
 
-            newW = w / horizontal_tiles;
-            newH = h / vertical_tiles;
+            newW = static_cast<float>(w) / static_cast<float>(horizontal_tiles);
+            newH = static_cast<float>(h) / static_cast<float>(vertical_tiles);
 
-            tiles[x][y]->SetRect(y * newW, x * newH, newW, newH);
+            tiles[x][y]->SetRect(static_cast<float>(y) * newW, static_cast<float>(x) * newH, newW, newH);
         }
     }
 }
 
-void RoomManager::DrawCurrentRoom(SDL_Renderer* renderer) const {
+auto RoomManager::DrawCurrentRoom(SDL_Renderer* renderer) const -> void {
     current_room->room->Draw(renderer);
 }
 
-void RoomManager::SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles) {
+auto RoomManager::SetDimensions(int screen_width, int screen_height, int horizontal_tiles, int vertical_tiles) -> void {
     this->screen_width = screen_width;
     this->screen_height = screen_height;
     this->horizontal_tiles = horizontal_tiles;
     this->vertical_tiles = vertical_tiles;
 }
 
-void RoomManager::SetTextureManager(TextureManager* texture_manager) {
+auto RoomManager::SetTextureManager(TextureManager* texture_manager) -> void {
     this->textureManager = texture_manager;
 }
 
-int RoomManager::GetPlayerSpawnCellX() const {
+auto RoomManager::GetPlayerSpawnCellX() const -> int {
     return this->current_room->room->GetSpawnX() * (JSONParser::graphics::GetWidth() / this->horizontal_tiles);
 }
 
-int RoomManager::GetPlayerSpawnCellY() const {
+auto RoomManager::GetPlayerSpawnCellY() const -> int {
     return this->current_room->room->GetSpawnY() * (JSONParser::graphics::GetHeight() / this->vertical_tiles);
 }

@@ -19,7 +19,7 @@ Texture::~Texture() {
     texture_created = false;
 }
 
-void Texture::CreateTexture(SDL_Renderer* renderer, const std::string& texture_to_create_name) {
+auto Texture::CreateTexture(SDL_Renderer* renderer, const std::string& texture_to_create_name) -> void {
 
     this->texture_name = texture_to_create_name;
 
@@ -36,22 +36,22 @@ void Texture::CreateTexture(SDL_Renderer* renderer, const std::string& texture_t
     texture_created = true;
 }
 
-bool Texture::TextureCreated() const {
+auto Texture::TextureCreated() const -> bool {
     return texture_created;
 }
 
-SDL_Texture* Texture::GetTexture() const {
+auto Texture::GetTexture() const -> SDL_Texture* {
     return texture;
 }
 
-std::string Texture::GetTextureName() const {
+auto Texture::GetTextureName() const -> std::string {
     return texture_name;
 }
 
-void Texture::SetCode(const std::string& code) {
+auto Texture::SetCode(const std::string& code) -> void {
     this->code = code;
 }
 
-std::string Texture::GetCode() const {
+auto Texture::GetCode() const -> std::string {
     return code;
 }

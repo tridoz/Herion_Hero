@@ -6,6 +6,7 @@
 #include "ButtonsFunctions.hpp"
 #include "JSONParser.hpp"
 #include <functional>
+#include <utility>
 
 SliderSelector::SliderSelector() {
     this->slider_button_rect = {};
@@ -22,40 +23,42 @@ SliderSelector::~SliderSelector() {
     StopUpdating();
 }
 
-void SliderSelector::SetSliderButtonRect(SDL_FRect slider_rect) {
+auto SliderSelector::SetSliderButtonRect(SDL_FRect slider_rect) -> void {
     this->slider_button_rect = slider_rect;
 }
 
-void SliderSelector::SetSliderButtonTexture(Texture* slider_texture) {
+auto SliderSelector::SetSliderButtonTexture(Texture* slider_texture) -> void {
     this->slider_button_texture = slider_texture;
 }
 
-void SliderSelector::SetSliderBarRect(SDL_FRect slider_rect) {
+auto SliderSelector::SetSliderBarRect(SDL_FRect slider_rect) -> void {
     this->slider_bar_rect = slider_rect;
 }
 
-void SliderSelector::SetSliderBarTexture(Texture* slider_bar_texture) {
+auto SliderSelector::SetSliderBarTexture(Texture* slider_bar_texture) -> void {
     this->slider_bar_texture = slider_bar_texture;
 }
 
-void SliderSelector::SetRenderable(std::vector<Renderable*> r) {
-    this->renderables = r;
+auto SliderSelector::SetRenderable(std::vector<Renderable*> r) -> void {
+    this->renderables = std::move(r);
 }
 
-void SliderSelector::SetMaxMinStep(const float max, const float min, const float step) {
-    this->max_value = max;
-    this->min_value = min;
-    this->step = step;
+auto SliderSelector::SetMaxMinStep(const float max, const float min, const float step) -> void {
+    this->max_value = static_cast<int>(max);
+    this->min_value = static_cast<int>(min);
+    this->step = static_cast<float>(step);
 
     // SetXValues(  this->rects[2].x, this->rects[0].x + this->rects[0].w  );
 }
 
-void SliderSelector::SetToSet(std::string to_set) {
-    this->to_set = to_set;
+auto SliderSelector::SetToSet(std::string to_set) -> void {
+    this->to_set = std::move(to_set);
 }
 
-void SliderSelector::SaveVolume() {
-    int start = this->slider_button_rect.x + this->slider_button_rect.w / 2 - this->renderables[1]->GetRect()->x;
+auto SliderSelector::SaveVolume() -> void {
+    int start = static_cast<int>(
+        this->slider_button_rect.x + this->slider_button_rect.w / 2 - this->renderables[1]->GetRect()->x
+    );
 
     if (to_set == "MASTER_VOLUME")
         JSONParser::audio::SetMasterVolume(std::clamp(start / 5, 0, 100));
@@ -65,16 +68,16 @@ void SliderSelector::SaveVolume() {
         JSONParser::audio::SetSFXVolume(std::clamp(start / 5, 0, 100));
 }
 
-void SliderSelector::SetLength(float lenght) {
+auto SliderSelector::SetLength(float lenght) -> void {
     this->length = lenght;
 }
 
-void SliderSelector::SetXValues(const float max, const float min) {
+auto SliderSelector::SetXValues(const float max, const float min) -> void {
     this->max_value_x = max;
     this->min_value_x = min;
 }
 
-void SliderSelector::Draw(SDL_Renderer* renderer) const {
+auto SliderSelector::Draw(SDL_Renderer* renderer) const -> void {
     for (int i = 0; i < this->renderables.size(); i++) {
         SDL_SetTextureBlendMode(renderables[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
         SDL_RenderTexture(renderer, renderables[i]->GetTexture()->GetTexture(), nullptr, renderables[i]->GetRect());
@@ -87,7 +90,7 @@ void SliderSelector::Draw(SDL_Renderer* renderer) const {
     SDL_RenderTexture(renderer, this->slider_button_texture->GetTexture(), nullptr, &slider_button_rect);
 }
 
-SDL_FRect* SliderSelector::GetSliderButtonRect(float mouse_x, float mouse_y) {
+auto SliderSelector::GetSliderButtonRect(float mouse_x, float mouse_y) -> SDL_FRect* {
     if (mouse_x > slider_button_rect.x && mouse_x < slider_button_rect.x + slider_button_rect.w &&
         mouse_y > slider_button_rect.y && mouse_y < slider_button_rect.y + slider_button_rect.h) {
         return &this->slider_button_rect;
@@ -96,40 +99,40 @@ SDL_FRect* SliderSelector::GetSliderButtonRect(float mouse_x, float mouse_y) {
     return nullptr;
 }
 
-void SliderSelector::StartUpdating() {
+auto SliderSelector::StartUpdating() -> void {
     is_updating = true;
 }
 
-void SliderSelector::StopUpdating() {
+auto SliderSelector::StopUpdating() -> void {
     this->is_updating = false;
 }
 
-bool SliderSelector::IsUpdating() const {
+auto SliderSelector::IsUpdating() const -> bool {
     return this->is_updating;
 }
 
-void SliderSelector::SetOffsetX(float offsetX) {
+auto SliderSelector::SetOffsetX(float offsetX) -> void {
     if (offsetX < this->max_value_x && offsetX > this->min_value_x) {
         this->slider_button_rect.x = offsetX - slider_button_rect.w / 2;
     }
 }
 
-void SliderSelector::SetOffsetY(float offsetY) {
+auto SliderSelector::SetOffsetY(float offsetY) -> void {
     this->offsetY = offsetY - slider_button_rect.y;
 }
 
-float SliderSelector::GetMaxX() const {
-    return this->max_value;
+auto SliderSelector::GetMaxX() const -> float {
+    return static_cast<float>(this->max_value_x);
 }
 
-float SliderSelector::GetMinX() const {
-    return this->min_value;
+auto SliderSelector::GetMinX() const -> float {
+    return static_cast<float>(this->min_value_x);
 }
 
-float SliderSelector::GetOffsetX() const {
+auto SliderSelector::GetOffsetX() const -> float {
     return this->offsetX;
 }
 
-float SliderSelector::GetOffsetY() const {
+auto SliderSelector::GetOffsetY() const -> float {
     return this->offsetY;
 }

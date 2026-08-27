@@ -7,16 +7,13 @@
 
 #include "Logger.hpp"
 
-#include <vector>
-#include <string>
 #include <array>
+#include <string>
+#include <vector>
 
 class CMD {
-public:
-
-    static std::vector<std::string> get_files_and_directories_names( const std::string& path );
-
+  public:
+    static auto get_files_and_directories_names(const std::string&) -> std::vector<std::string>;
 };
 
-
-#endif //HERION_HERO_CMD_HPP
+#endif // HERION_HERO_CMD_HPP

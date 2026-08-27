@@ -16,20 +16,15 @@
 #include <unordered_map>
 
 class SoundBoard {
-    static MIX_Mixer *mixer;
-    static MIX_Track *track;
+    static MIX_Mixer* mixer;
+    static MIX_Track* track;
 
-    static std::unordered_map< std::string, MIX_Audio* > sounds;
+    static std::unordered_map<std::string, MIX_Audio*> sounds;
 
-public:
-
-    static void Init();
-    static void LoadSound(const std::string& id, const std::string& filepath );
-    static void PlaySound(const std::string& id);
-
+  public:
+    static auto Init() -> void;
+    static auto LoadSound(const std::string&, const std::string&) -> void;
+    static auto PlaySound(const std::string&) -> void;
 };
 
 #endif // SOUNDBOARD_HPP
-
-
-

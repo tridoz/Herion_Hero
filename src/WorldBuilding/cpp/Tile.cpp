@@ -6,42 +6,39 @@
 
 Tile::Tile() {
     hasHitbox = false;
-    rect = {0,0,0,0 };
+    rect = {0, 0, 0, 0};
 }
 
 Tile::~Tile() {
     hasHitbox = false;
-    rect = {0,0,0,0 };
+    rect = {0, 0, 0, 0};
 }
 
-void Tile::SetTexture(const Texture* new_texture) {
+auto Tile::SetTexture(const Texture* new_texture) -> void {
     this->texture = new_texture;
 }
 
-SDL_FRect* Tile::GetRect() {
+auto Tile::GetRect() -> SDL_FRect* {
     return &rect;
 }
 
-void Tile::Draw(SDL_Renderer* renderer) const {
-    SDL_SetTextureBlendMode( texture->GetTexture(), SDL_BLENDMODE_BLEND );
-    SDL_RenderTexture( renderer, texture->GetTexture(), nullptr, &rect );
+auto Tile::Draw(SDL_Renderer* renderer) const -> void {
+    SDL_SetTextureBlendMode(texture->GetTexture(), SDL_BLENDMODE_BLEND);
+    SDL_RenderTexture(renderer, texture->GetTexture(), nullptr, &rect);
 }
 
-void Tile::SetHitbox(bool hitbox) {
+auto Tile::SetHitbox(bool hitbox) -> void {
     this->hasHitbox = hitbox;
 }
 
-bool Tile::HasHitbox() const {
+auto Tile::HasHitbox() const -> bool {
     return hasHitbox;
 }
 
-void Tile::SetRect(float x, float y, float w, float h) {
-    rect = { x,y,w,h };
+auto Tile::SetRect(float x, float y, float w, float h) -> void {
+    rect = {.x = x, .y = y, .w = w, .h = h};
 }
 
-std::string Tile::GetCode() const {
+auto Tile::GetCode() const -> std::string {
     return texture->GetCode();
 }
-
-
-

@@ -9,8 +9,8 @@
 ButtonMenu::~ButtonMenu() {
 }
 
-bool ButtonMenu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) {
-    for (SDL_FRect button : buttons) {
+auto ButtonMenu::CheckCollision(const std::vector<SDL_FRect>& buttons, float x, float y) -> bool {
+    for (const SDL_FRect& button : buttons) {
         if (x >= button.x && x <= button.x + button.w && y >= button.y && y <= button.y + button.h) {
             return true;
         }
@@ -18,7 +18,7 @@ bool ButtonMenu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y
     return false;
 }
 
-Button* ButtonMenu::GetCollisionButton(float x, float y) {
+auto ButtonMenu::GetCollisionButton(float x, float y) -> Button* {
     for (const auto& [id, btn] : this->buttons) {
         if (CheckCollision(btn->GetRects(), x, y)) {
             return btn;
@@ -28,7 +28,7 @@ Button* ButtonMenu::GetCollisionButton(float x, float y) {
     return nullptr;
 }
 
-SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
+auto ButtonMenu::GetSliderSelector(float x, float y) -> SliderSelector* {
 
     for (const auto& [name, slider] : slider_selectors) {
 
@@ -42,7 +42,7 @@ SliderSelector* ButtonMenu::GetSliderSelector(float x, float y) {
     return nullptr;
 }
 
-void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
+auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void {
     this->filepath = cfg_json_filepath;
 
     try {
@@ -82,9 +82,10 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
     slider_selectors.clear();
 
     for (int row_number = 0; row_number < num_rows; row_number++) {
-        const int starting_x = JSONParser::menu_configuration::GetRowStartingX(row_number) * scale;
-        const int button_x_offset = JSONParser::menu_configuration::GetRowButtonXOffset(row_number);
-        const int num_elements = JSONParser::menu_configuration::GetRowNumElements(row_number);
+        const auto starting_x = static_cast<float>(JSONParser::menu_configuration::GetRowStartingX(row_number)) * scale;
+        const auto button_x_offset =
+            static_cast<float>(JSONParser::menu_configuration::GetRowButtonXOffset(row_number));
+        const auto num_elements = static_cast<float>(JSONParser::menu_configuration::GetRowNumElements(row_number));
 
         float cumulative_x = static_cast<float>(starting_x);
         float row_height = 0.0f;
@@ -131,7 +132,7 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
                 text = (menu_element_characteristic.type == "DYNAMIC_TEXT")
                            ? GetText(menu_element_characteristic.text.value())
                            : menu_element_characteristic.text.value();
-                text_total_w = text.size() * char_w;
+                text_total_w = static_cast<float>(text.size()) * (char_w);
             } else {
                 text_total_w = menu_element_characteristic.length.value();
             }
@@ -288,14 +289,14 @@ void ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
                         slider->SetToSet("SFX_VOLUME");
             }
 
-            cumulative_x += left_rect.w + center_rect.w + right_rect.w + button_x_offset;
+            cumulative_x += left_rect.w + center_rect.w + right_rect.w + static_cast<float>(button_x_offset);
         }
 
-        current_y += row_height + button_y_offset;
+        current_y += row_height + static_cast<float>(button_y_offset);
     }
 }
 
-void ButtonMenu::Draw(SDL_Renderer* renderer) const {
+auto ButtonMenu::Draw(SDL_Renderer* renderer) const -> void {
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(renderer, background->GetTexture(), nullptr, &background_rect);
 

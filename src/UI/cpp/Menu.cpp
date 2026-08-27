@@ -36,20 +36,20 @@ Menu::Menu() {
 }
 
 Menu::~Menu() {
-    for (auto button : buttons) {
+    for (const auto& button : buttons) {
         delete button.second;
     }
 }
 
-void Menu::SetDimension(float w, float h) {
+auto Menu::SetDimension(float w, float h) -> void {
     background_rect = {0, 0, w, h};
 }
 
-void Menu::SetTextureManager(TextureManager* texture_manager) {
+auto Menu::SetTextureManager(TextureManager* texture_manager) -> void {
     this->texture_manager = texture_manager;
 }
 
-std::vector<std::string> Menu::split(const std::string& str) {
+auto Menu::split(const std::string& str) -> std::vector<std::string> {
     std::vector<std::string> tokens;
     std::stringstream ss(str);
     std::string token;
@@ -59,14 +59,14 @@ std::vector<std::string> Menu::split(const std::string& str) {
     return tokens;
 }
 
-void Menu::Rescale(SDL_FRect* rect) {
+auto Menu::Rescale(SDL_FRect* rect) -> void {
     rect->x *= this->scale;
     rect->y *= this->scale;
     rect->w *= this->scale;
     rect->h *= this->scale;
 }
 
-std::string Menu::GetText(const std::string& text_type) {
+auto Menu::GetText(const std::string& text_type) -> std::string {
     std::string text = "";
 
     if (text_type == "RESOLUTION_ASPECT") {
@@ -89,7 +89,7 @@ std::string Menu::GetText(const std::string& text_type) {
     return text;
 }
 
-bool Menu::isspecial(const char c) {
+auto Menu::isspecial(const char c) -> bool {
 
     std::vector<char> special_characters = {
         '+', '-', '*', '/', '%', '&', '|', '^', '!', '=', '<', '>', '?', '~', '@', '#', '$', '_', '.'
@@ -98,7 +98,7 @@ bool Menu::isspecial(const char c) {
     return std::find(special_characters.begin(), special_characters.end(), c) != special_characters.end();
 }
 
-std::string Menu::GetNameOfSpecialChar(const char c) {
+auto Menu::GetNameOfSpecialChar(const char c) -> std::string {
 
     static const std::unordered_map<char, std::string> charNames = {
         {'+', "plus"},
@@ -130,20 +130,21 @@ std::string Menu::GetNameOfSpecialChar(const char c) {
     }
 }
 
-Button* Menu::GetButton(const std::string& action) const {
+auto Menu::GetButton(const std::string& action) const -> Button* {
     return buttons.at(action);
 }
 
-std::vector<Button*> Menu::GetButtons() const {
+auto Menu::GetButtons() const -> std::vector<Button*> {
     std::vector<Button*> vec_buttons;
+    vec_buttons.reserve(this->buttons.size());
     for (const std::pair<std::string, Button*> pair : this->buttons) {
-        vec_buttons.push_back(pair.second);
+        vec_buttons.emplace_back(pair.second);
     }
 
     return vec_buttons;
 }
 
-bool Menu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) {
+auto Menu::CheckCollision(const std::vector<SDL_FRect>& buttons, float x, float y) -> bool {
     for (SDL_FRect button : buttons) {
         if (x >= button.x && x <= button.x + button.w && y >= button.y && y <= button.y + button.h) {
             return true;
@@ -152,10 +153,10 @@ bool Menu::CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) {
     return false;
 }
 
-void Menu::SetMouseOffset(float diff) {
+auto Menu::SetMouseOffset(float diff) -> void {
     this->mouse_offset += diff * 10;
 }
 
-void Menu::ReloadConfiguration() {
+auto Menu::ReloadConfiguration() -> void {
     this->LoadConfiguration(this->filepath);
 }

@@ -19,7 +19,7 @@ Player::Player() {
 
     this->AddComponent<ECS::Components::MovementState>(new ECS::Components::MovementState{
         .movement = ECS::states::Movements::IDLE,
-        .is_grounded = false,
+        .is_grounded = true,
         .is_attached_wall_left = false,
         .is_attached_wall_right = false
     });
@@ -39,6 +39,6 @@ Player::~Player() {
     texture_manager = nullptr;
 }
 
-void Player::SetTextureManager(TextureManager* new_texture_manager) {
+auto Player::SetTextureManager(TextureManager* new_texture_manager) -> void {
     this->texture_manager = new_texture_manager;
 }

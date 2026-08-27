@@ -9,8 +9,8 @@ class Renderable {
 
   public:
     Renderable();
-    Renderable(Texture* t, SDL_FRect* r);
+    Renderable(Texture*, SDL_FRect*);
 
-    Texture* GetTexture();
-    SDL_FRect* GetRect();
+    auto GetTexture() -> Texture*;
+    auto GetRect() -> SDL_FRect*;
 };

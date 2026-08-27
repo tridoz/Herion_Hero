@@ -21,20 +21,12 @@ class Texture {
     Texture();
     ~Texture();
 
-    void CreateTexture(SDL_Renderer* renderer, const std::string& texture_to_create_name);
-    [[nodiscard]] bool TextureCreated() const;
-    [[nodiscard]] std::string GetTextureName() const;
-    [[nodiscard]] SDL_Texture* GetTexture() const;
-    void SetCode(const std::string& code);
-    std::string GetCode() const;
-
-    static constexpr auto reflect_members() {
-        return std::tuple{
-            Field<Texture, std::string>{"texture_name", &Texture::texture_name},
-            Field<Texture, bool>{"texture_created", &Texture::texture_created},
-            Field<Texture, std::string>{"code", &Texture::code},
-        };
-    }
+    auto CreateTexture(SDL_Renderer*, const std::string&) -> void;
+    [[nodiscard]] auto TextureCreated() const -> bool;
+    [[nodiscard]] auto GetTextureName() const -> std::string;
+    [[nodiscard]] auto GetTexture() const -> SDL_Texture*;
+    auto SetCode(const std::string&) -> void;
+    [[nodiscard]] auto GetCode() const -> std::string;
 };
 
 #endif // HERION_HERO_TEXTURE_HPP

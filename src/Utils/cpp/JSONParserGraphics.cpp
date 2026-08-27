@@ -2,19 +2,19 @@
 // Created by david on 20/12/2025.
 //
 
+#include <algorithm>
 
 #include "../hpp/JSONParser.hpp"
 
-
-//GRAPHICS
-void JSONParser::graphics::IncreaseResolution() {
+// GRAPHICS
+auto JSONParser::graphics::IncreaseResolution() -> void {
 
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput( graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -23,23 +23,19 @@ void JSONParser::graphics::IncreaseResolution() {
 
     int width = 0, height = 0;
 
-    if (
-        !json_graphics.contains("resolution") &&
-        !json_graphics["resolution"].contains("width") &&
-        !json_graphics["resolution"].contains("height"))
-    {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution, width, height" );
+    if (!json_graphics.contains("resolution") && !json_graphics["resolution"].contains("width") &&
+        !json_graphics["resolution"].contains("height")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution, width, height");
     }
 
     width = json_graphics["resolution"]["width"].get<int>();
     height = json_graphics["resolution"]["height"].get<int>();
 
-    const auto it = std::find(resolutions.begin(), resolutions.end(),
-                        std::make_pair(width, height));
-    int index = (it != resolutions.end()) ? (it - resolutions.begin()) : -1;
+    const auto it = std::ranges::find(resolutions, std::make_pair(width, height));
+    int index = (it != resolutions.end()) ? (static_cast<int>(it - resolutions.begin())) : -1;
 
     if (index < 0 || index == resolutions.size() - 1) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution values don't exists");
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution values don't exists");
     }
 
     int new_width = resolutions[index + 1].first;
@@ -48,13 +44,12 @@ void JSONParser::graphics::IncreaseResolution() {
     json_graphics["resolution"]["width"] = new_width;
     json_graphics["resolution"]["height"] = new_height;
 
-
     std::ofstream graphics_file_output;
 
     try {
-        FileOpener::OpenFileOutput( graphics_file_output, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileOutput(graphics_file_output, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -63,14 +58,14 @@ void JSONParser::graphics::IncreaseResolution() {
     changed = true;
 }
 
-void JSONParser::graphics::DecreaseResolution() {
+auto JSONParser::graphics::DecreaseResolution() -> void {
 
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput( graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -79,23 +74,19 @@ void JSONParser::graphics::DecreaseResolution() {
     graphics_file.close();
 
     int width = 0, height = 0;
-    if (
-        !json_graphics.contains("resolution") &&
-        !json_graphics["resolution"].contains("width") &&
-        !json_graphics["resolution"].contains("height"))
-    {
-            THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution, width, height" );
+    if (!json_graphics.contains("resolution") && !json_graphics["resolution"].contains("width") &&
+        !json_graphics["resolution"].contains("height")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution, width, height");
     }
 
     width = json_graphics["resolution"]["width"].get<int>();
     height = json_graphics["resolution"]["height"].get<int>();
 
-    const auto it = std::find(resolutions.begin(), resolutions.end(),
-                              std::make_pair(width, height));
-    int index = (it != resolutions.end()) ? (it - resolutions.begin()) : -1;
+    const auto it = std::ranges::find(resolutions, std::make_pair(width, height));
+    int index = (it != resolutions.end()) ? (static_cast<int>(it - resolutions.begin())) : -1;
 
     if (index <= 0) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution values don't exists");
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution values don't exists");
     }
 
     int new_width = resolutions[index - 1].first;
@@ -107,26 +98,25 @@ void JSONParser::graphics::DecreaseResolution() {
     std::ofstream graphics_file_output;
 
     try {
-        FileOpener::OpenFileOutput( graphics_file_output, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileOutput(graphics_file_output, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
     graphics_file_output << json_graphics.dump(4);
     graphics_file_output.close();
     changed = true;
-
 }
 
-int JSONParser::graphics::GetWidth() {
+auto JSONParser::graphics::GetWidth() -> int {
 
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -134,25 +124,20 @@ int JSONParser::graphics::GetWidth() {
     graphics_file >> json_graphics;
     graphics_file.close();
 
-    if (
-        !json_graphics.contains("resolution") &&
-        !json_graphics["resolution"].contains("width")
-        )
-    {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution, width");
+    if (!json_graphics.contains("resolution") && !json_graphics["resolution"].contains("width")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution, width");
     }
 
-     return json_graphics["resolution"]["width"].get<int>();
-
+    return json_graphics["resolution"]["width"].get<int>();
 }
 
-int JSONParser::graphics::GetHeight() {
+auto JSONParser::graphics::GetHeight() -> int {
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -160,25 +145,21 @@ int JSONParser::graphics::GetHeight() {
     graphics_file >> json_graphics;
     graphics_file.close();
 
-    if (
-        !json_graphics.contains("resolution") &&
-        !json_graphics["resolution"].contains("height"))
-    {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution, height");
+    if (!json_graphics.contains("resolution") && !json_graphics["resolution"].contains("height")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution, height");
     }
 
     return json_graphics["resolution"]["height"].get<int>();
-
 }
 
-float JSONParser::graphics::GetScale() {
+auto JSONParser::graphics::GetScale() -> float {
 
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -186,36 +167,31 @@ float JSONParser::graphics::GetScale() {
     graphics_file >> json_graphics;
 
     int width = 0, height = 0;
-    if (
-        !json_graphics.contains("resolution") &&
-        !json_graphics["resolution"].contains("width") &&
-        !json_graphics["resolution"].contains("height"))
-    {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution, width, height");
+    if (!json_graphics.contains("resolution") && !json_graphics["resolution"].contains("width") &&
+        !json_graphics["resolution"].contains("height")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution, width, height");
     }
 
     width = json_graphics["resolution"]["width"].get<int>();
     height = json_graphics["resolution"]["height"].get<int>();
 
-    const auto it = std::find(resolutions.begin(), resolutions.end(),
-                        std::make_pair(width, height));
-    int index = (it != resolutions.end()) ? (it - resolutions.begin()) : -1;
+    const auto it = std::ranges::find(resolutions, std::make_pair(width, height));
+    int index = (it != resolutions.end()) ? (static_cast<int>(it - resolutions.begin())) : -1;
 
     if (index < 0 || index > resolutions.size() - 1) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> resolution values don't exists");
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> resolution values don't exists");
     }
 
     return texture_scales[index];
-
 }
 
-void JSONParser::graphics::IncreaseFPSLimit() {
+auto JSONParser::graphics::IncreaseFPSLimit() -> void {
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -226,14 +202,13 @@ void JSONParser::graphics::IncreaseFPSLimit() {
     int frame_rate = 0;
 
     if (!json_graphics.contains("frame_rate")) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> frame_rate");
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> frame_rate");
     }
 
     frame_rate = json_graphics["frame_rate"].get<int>();
 
-
     auto it = std::upper_bound(allowedFPS.begin(), allowedFPS.end(), frame_rate);
-    if (it != allowedFPS.end() ) {
+    if (it != allowedFPS.end()) {
         frame_rate = *it;
     }
 
@@ -242,9 +217,9 @@ void JSONParser::graphics::IncreaseFPSLimit() {
     std::ofstream graphics_file_output;
 
     try {
-        FileOpener::OpenFileOutput( graphics_file_output, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileOutput(graphics_file_output, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -253,13 +228,13 @@ void JSONParser::graphics::IncreaseFPSLimit() {
     changed = true;
 }
 
-void JSONParser::graphics::DecreaseFPSLimit() {
+auto JSONParser::graphics::DecreaseFPSLimit() -> void {
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -269,24 +244,23 @@ void JSONParser::graphics::DecreaseFPSLimit() {
 
     int frame_rate = 0;
     if (!json_graphics.contains("frame_rate")) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> frame_rate");
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> frame_rate");
     }
     frame_rate = json_graphics["frame_rate"].get<int>();
 
     auto it = std::lower_bound(allowedFPS.begin(), allowedFPS.end(), frame_rate);
     if (it != allowedFPS.begin()) {
         --it;
-        frame_rate = *it;   
+        frame_rate = *it;
     }
-
 
     json_graphics["frame_rate"] = frame_rate;
 
     std::ofstream graphics_file_output;
     try {
-        FileOpener::OpenFileOutput( graphics_file_output, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileOutput(graphics_file_output, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -295,13 +269,13 @@ void JSONParser::graphics::DecreaseFPSLimit() {
     changed = true;
 }
 
-int JSONParser::graphics::GetFrameRate() {
+auto JSONParser::graphics::GetFrameRate() -> int {
     std::ifstream graphics_file;
 
     try {
-        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileInput(graphics_file, json_graphics_file_path);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
@@ -309,18 +283,18 @@ int JSONParser::graphics::GetFrameRate() {
     graphics_file >> json_graphics;
     int frame_rate = 0;
 
-    if ( !json_graphics.contains("frame_rate") ) {
-        THROW_FILE_MALFORMED( json_graphics_file_path + "\t=> frame_rate");
+    if (!json_graphics.contains("frame_rate")) {
+        THROW_FILE_MALFORMED(json_graphics_file_path + "\t=> frame_rate");
     }
 
     frame_rate = json_graphics["frame_rate"].get<int>();
     return frame_rate;
 }
 
-bool JSONParser::graphics::Changed() {
+auto JSONParser::graphics::Changed() -> bool {
     return changed;
 }
 
-void JSONParser::graphics::ChangesApplied() {
+auto JSONParser::graphics::ChangesApplied() -> void {
     changed = false;
 }

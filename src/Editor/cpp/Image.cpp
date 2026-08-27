@@ -5,7 +5,7 @@
 Image::Image() {
 }
 
-void Image::LoadImage(const std::string& path) {
+auto Image::LoadImage(const std::string& path) -> void {
 
     int width, height, channels;
 
@@ -27,7 +27,7 @@ void Image::LoadImage(const std::string& path) {
     }
 }
 
-void Image::DrawImage(SDL_Renderer* r) {
+auto Image::DrawImage(SDL_Renderer* r) -> void {
     for (Pixel* p : pixels) {
         p->Draw(r);
     }

@@ -22,11 +22,11 @@ Room::~Room() {
     tiles.clear();
 }
 
-std::vector<std::vector<Tile*>> Room::GetTiles() {
+auto Room::GetTiles() -> std::vector<std::vector<Tile*>> {
     return this->tiles;
 }
 
-void Room::Draw(SDL_Renderer* renderer) {
+auto Room::Draw(SDL_Renderer* renderer) -> void {
 
     for (std::vector<Tile*>& tiles_row : tiles) {
         for (Tile*& tile : tiles_row) {
@@ -35,39 +35,39 @@ void Room::Draw(SDL_Renderer* renderer) {
     }
 }
 
-void Room::SetTiles(const std::vector<std::vector<Tile*>>& new_tiles) {
+auto Room::SetTiles(const std::vector<std::vector<Tile*>>& new_tiles) -> void {
     this->tiles = new_tiles;
-    this->horizontal_tiles = this->tiles[0].size();
-    this->vertical_tiles = this->tiles.size();
+    this->horizontal_tiles = static_cast<int>(this->tiles[0].size());
+    this->vertical_tiles = static_cast<int>(this->tiles.size());
 
-    this->tile_width = width / horizontal_tiles;
-    this->tile_height = height / vertical_tiles;
+    this->tile_width = static_cast<float>(width) / static_cast<float>(horizontal_tiles);
+    this->tile_height = static_cast<float>(height) / static_cast<float>(vertical_tiles);
 }
 
-void Room::SetSpawnCoord(int x, int y) {
+auto Room::SetSpawnCoord(int x, int y) -> void {
     this->spawn_x = x;
     this->spawn_y = y;
 }
 
-int Room::GetSpawnX() const {
+auto Room::GetSpawnX() const -> int {
     return spawn_x;
 }
 
-int Room::GetSpawnY() const {
+auto Room::GetSpawnY() const -> int {
     return spawn_y;
 }
 
-int Room::GetHorizontalTiles() {
+auto Room::GetHorizontalTiles() const -> int {
     return horizontal_tiles;
 }
 
-int Room::GetVerticalTiles() {
+auto Room::GetVerticalTiles() const -> int {
     return vertical_tiles;
 }
 
-void Room::SetFilepath(const std::string& filepath) {
+auto Room::SetFilepath(const std::string& filepath) -> void {
     this->filepath = filepath;
 }
 
-void Room::CheckPlayerCollision(Player* player) {
+auto Room::CheckPlayerCollision(Player* player) -> void {
 }

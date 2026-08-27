@@ -6,22 +6,23 @@ Entity::Entity() {
     this->componentes.clear();
 }
 
-void Entity::Draw() {
-    ECS::Components::Rendering* rendering = GetComponent<ECS::Components::Rendering>();
-    ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();
+auto Entity::Draw() -> void {
+    auto rendering = GetComponent<ECS::Components::Rendering>();
+    auto sprite = GetComponent<ECS::Components::Sprites>();
     SDL_SetTextureBlendMode(sprite->current_frame->txt->GetTexture(), SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(
         rendering->renderer, sprite->current_frame->txt->GetTexture(), nullptr, sprite->sprite_rect.to_sdl()
     );
 }
 
-void Entity::Move() {
-    ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();
-    ECS::Components::Velocites* velocities = GetComponent<ECS::Components::Velocites>();
-    ECS::Components::Transform* transform = GetComponent<ECS::Components::Transform>();
-    ECS::Components::MovementState* movements = GetComponent<ECS::Components::MovementState>();
-    transform->position = transform->position + velocities->movement;
-    transform->position = transform->position + velocities->jump;
+auto Entity::Move() -> void {
+    auto sprite = GetComponent<ECS::Components::Sprites>();
+    auto velocities = GetComponent<ECS::Components::Velocites>();
+    auto transform = GetComponent<ECS::Components::Transform>();
+    auto movements = GetComponent<ECS::Components::MovementState>();
+
+    transform->position += velocities->movement;
+    transform->position += velocities->jump;
 
     sprite->sprite_rect.Move(velocities->movement);
     sprite->sprite_rect.Move(velocities->jump);
@@ -34,20 +35,21 @@ void Entity::Move() {
     this->UpdateComponent<ECS::Components::Velocites>(velocities);
 }
 
-void Entity::Resize(const float scale) {
-    ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();
+auto Entity::Resize(const float scale) -> void {
+    auto sprite = GetComponent<ECS::Components::Sprites>();
     sprite->sprite_rect.Resize(scale);
 }
 
-void Entity::Resize(const ECS::Components::Vector2D& scale) {
-    ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();
+auto Entity::Resize(const ECS::Components::Vector2D& scale) -> void {
+    auto sprite = GetComponent<ECS::Components::Sprites>();
     sprite->sprite_rect.Resize(scale);
 }
 
-void Entity::UpdateFrame() {
-    ECS::Components::Sprites* sprite = GetComponent<ECS::Components::Sprites>();
-    ECS::Components::MovementState* movement_state = GetComponent<ECS::Components::MovementState>();
-    ECS::Components::Transform* transform = GetComponent<ECS::Components::Transform>();
+auto Entity::UpdateFrame() -> void {
+
+    auto sprite = GetComponent<ECS::Components::Sprites>();
+    auto movement_state = GetComponent<ECS::Components::MovementState>();
+    auto transform = GetComponent<ECS::Components::Transform>();
 
     std::string direction;
     std::string animation_name;
@@ -111,7 +113,7 @@ void Entity::UpdateFrame() {
     UpdateComponent<ECS::Components::Sprites>(sprite);
 }
 
-void Entity::LoadSprites(const std::string& filepath) {
+auto Entity::LoadSprites(const std::string& filepath) -> void {
 
     try {
         JSONParser::animations::SetConfigFile(filepath);
@@ -121,7 +123,7 @@ void Entity::LoadSprites(const std::string& filepath) {
     }
 
     int number_of_animations = JSONParser::animations::GetAnimationNumbers();
-    ECS::Components::Sprites* sprites = GetComponent<ECS::Components::Sprites>();
+    auto sprites = GetComponent<ECS::Components::Sprites>();
 
     for (int i = 0; i < number_of_animations; i++) {
 
@@ -133,8 +135,9 @@ void Entity::LoadSprites(const std::string& filepath) {
             animation_name,
             std::make_pair(animation_characteristic.frame_number, animation_characteristic.frame_to_load)
         );
+
         std::vector<ECS::Frame*> frames;
-        ECS::Components::Rendering* rendering = GetComponent<ECS::Components::Rendering>();
+        auto rendering = GetComponent<ECS::Components::Rendering>();
         for (int j = 0; j < animation_characteristic.frame_to_load; j++) {
             std::string texture_name = animation_characteristic.path + "frame" + std::to_string(j) + ".png";
             frames.emplace_back(new ECS::Frame{.txt = rendering->manager->GetTextureByName(texture_name)});
@@ -148,10 +151,10 @@ void Entity::LoadSprites(const std::string& filepath) {
     Logger::ClearTempLoggingFiles();
 }
 
-void Entity::SetDeltaTime(float delta) {
+auto Entity::SetDeltaTime(float delta) -> void {
     this->delta_time = delta;
 }
 
-float Entity::GetDeltaTime() const {
+auto Entity::GetDeltaTime() const -> float {
     return this->delta_time;
 }

@@ -12,7 +12,7 @@ class Entity {
   public:
     Entity();
 
-    template <typename T> void AddComponent(ECS::Components::Component* cmp) {
+    template <typename T> auto AddComponent(ECS::Components::Component* cmp) -> void {
         std::type_index index(typeid(T));
         if (this->componentes.contains(index))
             return;
@@ -20,7 +20,7 @@ class Entity {
         this->componentes.emplace(index, cmp);
     }
 
-    template <typename T> void UpdateComponent(ECS::Components::Component* cmp) {
+    template <typename T> auto UpdateComponent(ECS::Components::Component* cmp) -> void {
         std::type_index index(typeid(T));
         if (!this->componentes.contains(index))
             return;
@@ -28,7 +28,7 @@ class Entity {
         this->componentes[index] = cmp;
     }
 
-    template <typename T> T* GetComponent() {
+    template <typename T> auto GetComponent() -> T* {
         std::type_index index = typeid(T);
         if (this->componentes.contains(index))
             return static_cast<T*>(this->componentes.at(index));
@@ -36,17 +36,17 @@ class Entity {
         return nullptr;
     }
 
-    template <typename T> bool HasComponent() {
+    template <typename T> auto HasComponent() -> bool {
         std::type_index index(typeid(T));
         return this->componentes.contains(index);
     }
-    void Draw();
-    void UpdateFrame();
-    void Move();
-    void Resize(const ECS::Components::Vector2D& scale);
-    void Resize(const float scale);
-    void SetDeltaTime(float delta);
-    float GetDeltaTime() const;
+    auto Draw() -> void;
+    auto UpdateFrame() -> void;
+    auto Move() -> void;
+    auto Resize(const ECS::Components::Vector2D&) -> void;
+    auto Resize(const float) -> void;
+    auto SetDeltaTime(float) -> void;
+    auto GetDeltaTime() const -> float;
 
-    void LoadSprites(const std::string& filepath);
+    auto LoadSprites(const std::string&) -> void;
 };

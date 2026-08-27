@@ -11,7 +11,6 @@
 #include <unordered_map>
 
 #include "../../Utils/hpp/Logger.hpp"
-#include "../../Utils/hpp/Reflector.hpp"
 #include "Texture.hpp"
 
 class TextureManager {
@@ -27,18 +26,10 @@ class TextureManager {
     TextureManager();
     ~TextureManager();
 
-    void LoadTextures(const std::string& filepath);
-    void SetRenderer(SDL_Renderer* new_renderer);
-    Texture* GetTextureByName(const std::string& texture_name);
-    Texture* GetTextureByCode(const std::string& texture_code);
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<TextureManager, SDL_Renderer*>{"renderer", &TextureManager::renderer},
-            Field<TextureManager, std::unordered_map<std::string, Texture>>{"textures", &TextureManager::textures},
-            Field<TextureManager, std::unordered_map<std::string, std::string>>{"codes", &TextureManager::codes}
-        );
-    }
+    auto LoadTextures(const std::string&) -> void;
+    auto SetRenderer(SDL_Renderer*) -> void;
+    auto GetTextureByName(const std::string&) -> Texture*;
+    auto GetTextureByCode(const std::string&) -> Texture*;
 };
 
 #endif // HERION_HERO_TEXTUREMANAGER_HPP

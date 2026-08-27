@@ -16,9 +16,9 @@ class Text {
 
   public:
     Text();
-    void SetRenderables(std::vector<Renderable*> renderables);
-    void Draw(SDL_Renderer* renderer) const;
-    void DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const;
+    auto SetRenderables(std::vector<Renderable*>) -> void;
+    auto Draw(SDL_Renderer*) const -> void;
+    auto DrawWithOffset(SDL_Renderer*, const float, const float) const -> void;
 };
 
 #endif // HERION_HERO_TEXT_HPP

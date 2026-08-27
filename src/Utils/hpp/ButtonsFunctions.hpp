@@ -5,7 +5,6 @@
 #ifndef HERION_HERO_BUTTONSFUNCTIONS_HPP
 #define HERION_HERO_BUTTONSFUNCTIONS_HPP
 
-
 #include "../../Entities/hpp/Player.hpp"
 
 class ButtonsFunctions {
@@ -15,204 +14,54 @@ class ButtonsFunctions {
     static TextureManager* texture_manager;
     static Texture* texture;
 
-    static void SetTexture(Texture* texture);
-    static Texture* GetTexture();
+    static auto SetTexture(Texture*) -> void;
+    static auto GetTexture() -> Texture*;
 
   public:
-    // CHANGE GAMEMODE
-    /**
-     * @brief Set the Player::GameMode to IN_GAME
-     */
-    static void StartGame();
-
-    /**
-     * @brief Unimplemented
-     */
-    static void StartNewGame();
-
-    /**
-     * @brief Set the Player::GameMode to EXIT
-     */
-    static void EndGame();
-
-    /**
-     * @brief Set the Player::GameMode to MAIN_MENU
-     */
-    static void OpenMainMenu();
-
-    /**
-     * @brief Set the Player::GameMode to SETTINGS_MENU
-     */
-    static void OpenGeneralSettingsMenu();
-
-    static void OpenGraphicsSettingsMenu();
-
-    static void OpenAudioSettingsMenu();
-
-    /**
-     * @brief Set the Player::Gamemode to LEVEL_EDITOR
-     */
-    static void OpenEditorMenu();
-
-    /**
-     * @brief Set the player::GameMode to TEXTURE_SELECTIONS
-     */
-    static void OpenTextureSelectionMenu();
-
-    /**
-     * @brief Set the Player::Gamemode to LEVEL_EDITOR
-     */
-    static void OpenLevelEditor();
-
-    /**
-     * @brief Set the Player::GameMode to ANIMATION_EDITOR
-     */
-    static void OpenAnimationEditor();
-
-    /**
-     * @brief Set the player::GameMode to Player::GetPreviousGameMode()
-     */
-    static void ReturnPreviousState();
-
-    // GRAPHICS SETTINGS
-    /**
-     * @brief Call JSONParser::graphics::IncreaseResolution();
-     */
-    static void IncreaseResolution();
-
-    /**
-     * @brief Call JSONParser::graphics::DecreaseResolution();
-     */
-    static void DecreaseResolution();
-
-    /**
-     * @brief Unimplement
-     */
-    static void ChangeWindowMode();
-
-    /**
-     * @brief Call JSONParser::graphics::IncreaseFPSLimit();
-     */
-    static void IncreaseFrameLimit();
-
-    /**
-     * @brief Call JSONParser::graphics::DecreaseFPSLimit();
-     */
-    static void DecreaseFrameLimit();
-
-    /**
-     * Unimplemented
-     */
-    static void IncreaseBrightness();
-
-    /**
-     * Unimplemented
-     */
-    static void DecreaseBrightness();
-
-    // AUDIO SETTINGS
-    //
-    static void SetMasterVolume(int volume);
-    static void IncreaseMasterVolume();
-    static void DecreaseMasterVolume();
-
-    static void SetMusicVolume(int volume);
-    static void IncreaseMusicVolume();
-    static void DecreaseMusicVolume();
-
-    static void SetSFXVolume(int volume);
-    static void IncreaseSFXVolume();
-    static void DecreaseSFXVolume();
-
-    /**
-     * Unimplemented
-     */
-    static void ToggleMute();
-
-    /**
-     * Unimplemented
-     */
-    static void SelectMusicTrack();
-
-    // KEYMAPPING
-
-    /**
-     * Unimplemented
-     */
-    static void ResetKeybinds();
-
-    /**
-     * Unimplemented
-     */
-    static void ChangeKey();
-
-    // GAME
-
-    /**
-     * Unimplemented
-     */
-    static void IncreaseDifficulty();
-
-    /**
-     * Unimplemented
-     */
-    static void DecreaseDifficulty();
-
-    /**
-     * Unimplemented
-     */
-    static void ChangeGameMode();
-
-    /**
-     * Unimplemented
-     */
-    static void ToggleTutorial();
-
-    // INTERFACE
-
-    /**
-     * Unimplemented
-     */
-    static void ToggleHUD();
-
-    /**
-     * Unimplemented
-     */
-    static void ChangeTheme();
-
-    // SAVE
-
-    /**
-     * Unimplemented
-     */
-    static void ToggleAutoSave();
-
-    /**
-     * Unimplemented
-     */
-    static void IncreaseAutoSaveTime();
-
-    /**
-     * Unimplemented
-     */
-    static void DecreaseAutoSaveTime();
-
-    /**
-     * Unimplemented
-     */
-    static void ToggleSaveCloud();
-
-    /**
-     * @brief Set the player to do the operations
-     * @param player Pointer to the Player
-     */
-    static void SetPlayer(Player* player);
-
-    /**
-     * @brief Set the TextureManager to do the operations
-     * @param texture_manager Pointer to the Texturemanager
-     */
-    static void SetTextureManager(TextureManager* texture_manager);
+    static auto StartGame() -> void;
+    static auto StartNewGame() -> void;
+    static auto EndGame() -> void;
+    static auto OpenMainMenu() -> void;
+    static auto OpenGeneralSettingsMenu() -> void;
+    static auto OpenGraphicsSettingsMenu() -> void;
+    static auto OpenAudioSettingsMenu() -> void;
+    static auto OpenEditorMenu() -> void;
+    static auto OpenTextureSelectionMenu() -> void;
+    static auto OpenLevelEditor() -> void;
+    static auto OpenAnimationEditor() -> void;
+    static auto ReturnPreviousState() -> void;
+    static auto IncreaseResolution() -> void;
+    static auto DecreaseResolution() -> void;
+    static auto ChangeWindowMode() -> void;
+    static auto IncreaseFrameLimit() -> void;
+    static auto DecreaseFrameLimit() -> void;
+    static auto IncreaseBrightness() -> void;
+    static auto DecreaseBrightness() -> void;
+    static auto SetMasterVolume(int) -> void;
+    static auto IncreaseMasterVolume() -> void;
+    static auto DecreaseMasterVolume() -> void;
+    static auto SetMusicVolume(int) -> void;
+    static auto IncreaseMusicVolume() -> void;
+    static auto DecreaseMusicVolume() -> void;
+    static auto SetSFXVolume(int) -> void;
+    static auto IncreaseSFXVolume() -> void;
+    static auto DecreaseSFXVolume() -> void;
+    static auto ToggleMute() -> void;
+    static auto SelectMusicTrack() -> void;
+    static auto ResetKeybinds() -> void;
+    static auto ChangeKey() -> void;
+    static auto IncreaseDifficulty() -> void;
+    static auto DecreaseDifficulty() -> void;
+    static auto ChangeGameMode() -> void;
+    static auto ToggleTutorial() -> void;
+    static auto ToggleHUD() -> void;
+    static auto ChangeTheme() -> void;
+    static auto ToggleAutoSave() -> void;
+    static auto IncreaseAutoSaveTime() -> void;
+    static auto DecreaseAutoSaveTime() -> void;
+    static auto ToggleSaveCloud() -> void;
+    static auto SetPlayer(Player*) -> void;
+    static auto SetTextureManager(TextureManager*) -> void;
 };
 
 #endif // HERION_HERO_BUTTONSFUNCTIONS_HPP

@@ -5,10 +5,10 @@ Renderable::Renderable(Texture* t, SDL_FRect* r) {
     this->rect = r;
 }
 
-Texture* Renderable::GetTexture() {
+auto Renderable::GetTexture() -> Texture* {
     return texture;
 }
 
-SDL_FRect* Renderable::GetRect() {
+auto Renderable::GetRect() -> SDL_FRect* {
     return rect;
 }

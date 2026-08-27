@@ -9,7 +9,7 @@
 #include <string>
 
 
-std::vector<std::string> CMD::get_files_and_directories_names( const std::string& path) {
+auto CMD::get_files_and_directories_names( const std::string& path) -> std::vector<std::string> {
     std::vector<std::string> result;
 
     if( !std::filesystem::exists(path) || !std::filesystem::is_directory(path) ) {

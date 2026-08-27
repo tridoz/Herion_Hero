@@ -9,25 +9,22 @@
 
 class Save {
 
-private:
-	static Player* player;
-	static std::string save_file_name;
+  private:
+    static Player* player;
+    static std::string save_file_name;
 
-	typedef struct new_save_values {
+    typedef struct new_save_values {
 
-	}new_save_values;
+    } new_save_values;
 
-public:
+  public:
+    static auto SetPlayer(Player*) -> void;
+    static auto SetSaveFilename(std::string&) -> void;
 
-	static void SetPlayer( Player* player );
-	static void SetSaveFilename( std::string& filename );
-
-	static void LoadSave();
-	static void CreateSave();
-	static void SaveGame();
-	static void DeleteSave();
-
+    static auto LoadSave() -> void;
+    static auto CreateSave() -> void;
+    static auto SaveGame() -> void;
+    static auto DeleteSave() -> void;
 };
 
-
-#endif //HERION_HERO_SAVE_HPP
+#endif // HERION_HERO_SAVE_HPP

@@ -2,37 +2,39 @@
 // Created by david on 21/11/2025.
 //
 
+#include <utility>
+
 #include "../hpp/Button.hpp"
 
 Button::Button() = default;
 
-void Button::SetOnClick(std::function<void()> action) {
-    this->OnClick = action;
+auto Button::SetOnClick(std::function<void()> action) -> void {
+    this->OnClick = std::move(action);
 }
 
-void Button::SetOnClickReturn(std::function<std::string()> action) {
-    this->OnClickReturn = action;
+auto Button::SetOnClickReturn(std::function<std::string()> action) -> void {
+    this->OnClickReturn = std::move(action);
 }
 
-void Button::Click() const {
+auto Button::Click() const -> void {
 
     if (OnClick) {
         OnClick();
     }
 }
 
-std::string Button::ClickReturn() const {
+auto Button::ClickReturn() const -> std::string {
     if (OnClickReturn) {
         return OnClickReturn();
     }
     return {};
 }
 
-void Button::SetRenderables(std::vector<Renderable*> r) {
-    this->renderable = r;
+auto Button::SetRenderables(std::vector<Renderable*> r) -> void {
+    this->renderable = std::move(r);
 }
 
-void Button::Draw(SDL_Renderer* renderer) const {
+auto Button::Draw(SDL_Renderer* renderer) const -> void {
 
     for (int i = 0; i < this->renderable.size(); i++) {
         SDL_SetTextureBlendMode(renderable[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
@@ -40,7 +42,7 @@ void Button::Draw(SDL_Renderer* renderer) const {
     }
 }
 
-void Button::DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const {
+auto Button::DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const -> void {
 
     for (int i = 0; i < this->renderable.size(); i++) {
         Texture* texture = this->renderable[i]->GetTexture();
@@ -55,16 +57,17 @@ void Button::DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const 
     }
 }
 
-void Button::SetText(const std::string& text_to_set) {
+auto Button::SetText(const std::string& text_to_set) -> void {
     this->text = text_to_set;
 }
 
-std::string Button::GetText() const {
+auto Button::GetText() const -> std::string {
     return text;
 }
 
-std::vector<SDL_FRect> Button::GetRects() {
+auto Button::GetRects() -> std::vector<SDL_FRect> {
     std::vector<SDL_FRect> rects;
+    rects.reserve(renderable.size());
 
     for (auto ren : renderable) {
         rects.emplace_back(*ren->GetRect());

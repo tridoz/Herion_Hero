@@ -96,27 +96,27 @@ Window::Window(const std::string& title, int width, int height) {
     is_open = false;
 }
 
-SDL_Renderer* Window::GetRenderer() const {
+auto Window::GetRenderer() const -> SDL_Renderer* {
     return this->renderer;
 }
 
-SDL_Window* Window::GetWindow() const {
+auto Window::GetWindow() const -> SDL_Window* {
     return this->window;
 }
 
-void Window::Clear() const {
+auto Window::Clear() const -> void {
     SDL_RenderClear(this->renderer);
 }
 
-void Window::SetColor(const COLORS::Color color) const {
+auto Window::SetColor(const COLORS::Color color) const -> void {
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 }
 
-void Window::Present() const {
+auto Window::Present() const -> void {
     SDL_RenderPresent(renderer);
 }
 
-void Window::Resize() {
+auto Window::Resize() -> void {
 
     try {
         this->height = JSONParser::graphics::GetHeight();
@@ -133,26 +133,26 @@ void Window::Resize() {
     JSONParser::graphics::ChangesApplied();
 }
 
-int Window::GetWidth() const {
+auto Window::GetWidth() const -> int {
     return this->width;
 }
 
-int Window::GetHeight() const {
+auto Window::GetHeight() const -> int {
     return this->height;
 }
 
-void Window::Sleep() const {
+auto Window::Sleep() const -> void {
     SDL_Delay(1000 / JSONParser::graphics::GetFrameRate());
 }
 
-void Window::LoadCursors(const std::string& filename) {
+auto Window::LoadCursors(const std::string& filename) -> void {
 
     std::ifstream cursors_file("../" + filename, std::ios::in);
     std::string line;
     std::stringstream ss;
 
     while (std::getline(cursors_file, line)) {
-        ss << line << std::endl;
+        ss << line << '\n';
         std::string cursor_name, cursor_path;
         int hotX, hotY;
         ss >> cursor_name >> cursor_path >> hotX >> hotY;
@@ -164,37 +164,37 @@ void Window::LoadCursors(const std::string& filename) {
     }
 }
 
-void Window::SetCursor(const std::string& cursor_name) {
+auto Window::SetCursor(const std::string& cursor_name) -> void {
     SDL_SetCursor(Cursors[cursor_name]);
     current_cursor_name = cursor_name;
 }
 
-SDL_Cursor* Window::GetCursor() {
+auto Window::GetCursor() -> SDL_Cursor* {
     return Cursors[current_cursor_name];
 }
 
-void Window::SetMenu(const std::string& name, Menu* menu_to_set) {
+auto Window::SetMenu(const std::string& name, Menu* menu_to_set) -> void {
     menus.emplace(name, menu_to_set);
 }
 
-void Window::SetCurrentMenu(const std::string& name) {
+auto Window::SetCurrentMenu(const std::string& name) -> void {
     this->current_menu = menus.at(name);
 }
 
-Menu* Window::GetCurrentMenu() const {
+auto Window::GetCurrentMenu() const -> Menu* {
     return this->current_menu;
 }
 
-bool Window::IsOpen() const {
+auto Window::IsOpen() const -> bool {
     return this->is_open;
 }
 
-void Window::Hide() {
+auto Window::Hide() -> void {
     SDL_HideWindow(window);
     this->is_open = false;
 }
 
-void Window::Show() {
+auto Window::Show() -> void {
     SDL_ShowWindow(window);
     this->is_open = true;
 }

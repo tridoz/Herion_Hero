@@ -29,42 +29,46 @@ namespace ECS {
             float dx = 0;
             float dy = 0;
 
-            SDL_FPoint* to_sdl() {
-                return new SDL_FPoint{dx, dy};
+            auto to_sdl() -> SDL_FPoint* {
+                return new SDL_FPoint{.x = dx, .y = dy};
             }
 
-            Vector2D operator-(const Vector2D& other) {
-                return {dx - other.dx, dy - other.dy};
+            auto operator-(const Vector2D& other) -> Vector2D {
+                return {.dx = dx - other.dx, .dy = dy - other.dy};
             }
 
-            Vector2D operator+(const Vector2D& other) {
-                return {dx + other.dx, dy + other.dy};
+            auto operator+(const Vector2D& other) -> Vector2D {
+                return {.dx = dx + other.dx, .dy = dy + other.dy};
             }
 
-            Vector2D operator*(const float scalar) {
-                return {dx * scalar, dy * scalar};
-            }
-            Vector2D operator*(const Vector2D& other) {
-                return {dx * other.dx, dy * other.dy};
+            auto operator*(const float scalar) -> Vector2D {
+                return {.dx = dx * scalar, .dy = dy * scalar};
             }
 
-            void operator-=(const Vector2D& other) {
+            auto operator*(const Vector2D& other) -> Vector2D {
+                return {.dx = dx * other.dx, .dy = dy * other.dy};
+            }
+
+            auto operator-=(const Vector2D& other) -> Vector2D& {
                 dx -= other.dx;
                 dy -= other.dy;
             }
 
-            void operator+=(const Vector2D& other) {
+            auto operator+=(const Vector2D& other) -> Vector2D& {
                 dx += other.dx;
                 dy += other.dy;
+                return *this;
             }
 
-            void operator*=(const float scalar) {
+            auto operator*=(const float scalar) -> Vector2D& {
                 dx *= scalar;
                 dy *= scalar;
+                return *this;
             }
-            void operator*=(const Vector2D& other) {
+            auto operator*=(const Vector2D& other) -> Vector2D& {
                 dx *= other.dx;
                 dy *= other.dy;
+                return *this;
             }
         };
 
@@ -75,17 +79,17 @@ namespace ECS {
                 Vector2D size;
                 Vector2D position;
 
-                SDL_FRect* to_sdl() {
-                    return new SDL_FRect{position.dx, position.dy, size.dx, size.dy};
+                auto to_sdl() -> SDL_FRect* {
+                    return new SDL_FRect{.x = position.dx, .y = position.dy, .w = size.dx, .h = size.dy};
                 }
 
-                void Move(const Vector2D& direction) {
+                auto Move(const Vector2D& direction) -> void {
                     position += direction;
                 }
-                void Resize(const Vector2D& scale) {
+                auto Resize(const Vector2D& scale) -> void {
                     size *= scale;
                 }
-                void Resize(const float scale) {
+                auto Resize(const float scale) -> void {
                     size *= scale;
                 }
             };
@@ -94,10 +98,10 @@ namespace ECS {
                 Vector2D position;
                 float radius;
 
-                void Move(const Vector2D& direction) {
+                auto Move(const Vector2D& direction) -> void {
                     position += direction;
                 }
-                void Resize(const float scale) {
+                auto Resize(const float scale) -> void {
                     radius += scale;
                 }
             };
@@ -146,27 +150,27 @@ namespace ECS {
     } // namespace Components
 
     struct Collision {
-        static constexpr bool CollidedRects(Components::Shapes::FRect r1, Components::Shapes::FRect r2) {
+        static constexpr auto CollidedRects(Components::Shapes::FRect r1, Components::Shapes::FRect r2) -> bool {
             return SDL_HasRectIntersectionFloat(r1.to_sdl(), r2.to_sdl());
         }
-        static constexpr bool CollideRectPoint(Components::Shapes::FRect r, Components::Vector2D point) {
+        static constexpr auto CollideRectPoint(Components::Shapes::FRect r, Components::Vector2D point) -> bool {
             return SDL_PointInRectFloat(point.to_sdl(), r.to_sdl());
         }
-        static constexpr bool CollidedCircles(Components::Shapes::FCircle c1, Components::Shapes::FCircle c2) {
+        static constexpr auto CollidedCircles(Components::Shapes::FCircle c1, Components::Shapes::FCircle c2) -> bool {
             float dx = c1.position.dx - c2.position.dx;
             float dy = c1.position.dy - c2.position.dy;
             float distanceSquared = dx * dx + dy * dy;
             float radiusSum = c1.radius + c2.radius;
             return distanceSquared <= radiusSum * radiusSum;
         }
-        static constexpr bool CollideCircleRect(Components::Shapes::FCircle c, Components::Shapes::FRect r) {
+        static constexpr auto CollideCircleRect(Components::Shapes::FCircle c, Components::Shapes::FRect r) -> bool {
             float closestX = std::max(r.position.dx, std::min(c.position.dx, r.position.dx + r.size.dx));
             float closestY = std::max(r.position.dy, std::min(c.position.dy, r.position.dy + r.size.dy));
             float dx = c.position.dx - closestX;
             float dy = c.position.dy - closestY;
             return dx * dx + dy * dy <= c.radius * c.radius;
         }
-        static constexpr bool CollideCirclePoint(Components::Shapes::FCircle c, Components::Vector2D point) {
+        static constexpr auto CollideCirclePoint(Components::Shapes::FCircle c, Components::Vector2D point) -> bool {
             float dx = c.position.dx - point.dx;
             float dy = c.position.dy - point.dy;
             float distanceSquared = dx * dx + dy * dy;
@@ -178,7 +182,7 @@ namespace ECS {
         constexpr float gravity = 9.80665f;
         constexpr float pi = std::numbers::pi;
 
-        constexpr void ApplyGravity(Components::Velocites* cmp) {
+        constexpr auto ApplyGravity(Components::Velocites* cmp) -> void {
             cmp->jump.dy += gravity / static_cast<float>(JSONParser::graphics::GetFrameRate());
         }
 

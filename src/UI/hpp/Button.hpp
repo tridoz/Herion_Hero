@@ -21,24 +21,16 @@ class Button {
 
   public:
     Button();
-    void SetOnClick(std::function<void()> action);
-    void SetOnClickReturn(std::function<std::string()> action);
-    void Click() const;
-    std::string ClickReturn() const;
-    void SetRenderables(std::vector<Renderable*> renderables);
-    void Draw(SDL_Renderer* renderer) const;
-    void DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const;
+    auto SetOnClick(std::function<void()>) -> void;
+    auto SetOnClickReturn(std::function<std::string()>) -> void;
+    auto Click() const -> void;
+    auto ClickReturn() const -> std::string;
+    auto SetRenderables(std::vector<Renderable*>) -> void;
+    auto Draw(SDL_Renderer*) const -> void;
+    void DrawWithOffset(SDL_Renderer*, const float, const float) const;
     std::vector<SDL_FRect> GetRects();
-    void SetText(const std::string& text_to_set);
+    void SetText(const std::string&);
     std::string GetText() const;
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<Button, std::function<void()>>{"OnClick", &Button::OnClick},
-            Field<Button, std::function<std::string()>>{"OnClickReturn", &Button::OnClickReturn},
-            Field<Button, std::string>{"text", &Button::text}
-        );
-    }
 };
 
 #endif // HERION_HERO_BUTTON_HPP

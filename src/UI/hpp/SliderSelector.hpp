@@ -43,58 +43,27 @@ class SliderSelector {
     SliderSelector();
     ~SliderSelector();
 
-    void SetRenderable(std::vector<Renderable*> r);
-
-    void SetSliderButtonTexture(Texture* slider_texture);
-    void SetSliderButtonRect(SDL_FRect slider_rect);
-
-    void SetSliderBarTexture(Texture* slider_bar_texture);
-    void SetSliderBarRect(SDL_FRect slider_rect);
-
-    void SetMaxMinStep(float max, float min, float step);
-    void SetXValues(float max, float min);
-
-    [[nodiscard]] SDL_FRect* GetSliderButtonRect(float mouse_x, float mouse_y);
-
-    void StartUpdating();
-    void StopUpdating();
-
-    void Draw(SDL_Renderer* renderer) const;
-
-    bool IsUpdating() const;
-
-    void SetOffsetX(float offsetX);
-    void SetOffsetY(float offsetY);
-
-    void SetLength(float lenght);
-
-    void SaveVolume();
-
-    void SetToSet(std::string to_set);
-
-    float GetMaxX() const;
-
-    float GetMinX() const;
-
-    float GetOffsetX() const;
-    float GetOffsetY() const;
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<SliderSelector, bool>{"is_updating", &SliderSelector::is_updating},
-            Field<SliderSelector, float>{"offsetX", &SliderSelector::offsetX},
-            Field<SliderSelector, float>{"offsetY", &SliderSelector::offsetY},
-            Field<SliderSelector, Texture*>{"slider_button_texture", &SliderSelector::slider_button_texture},
-            Field<SliderSelector, SDL_FRect>{"slider_button_rect", &SliderSelector::slider_button_rect},
-            Field<SliderSelector, Texture*>{"slider_bar_texture", &SliderSelector::slider_bar_texture},
-            Field<SliderSelector, SDL_FRect>{"slider_bar_rect", &SliderSelector::slider_bar_rect},
-            Field<SliderSelector, int>{"max_value", &SliderSelector::max_value},
-            Field<SliderSelector, int>{"min_value", &SliderSelector::min_value},
-            Field<SliderSelector, float>{"max_value_x", &SliderSelector::max_value_x},
-            Field<SliderSelector, float>{"min_value_x", &SliderSelector::min_value_x},
-            Field<SliderSelector, float>{"step", &SliderSelector::step}
-        );
-    }
+    auto SetRenderable(std::vector<Renderable*>) -> void;
+    auto SetSliderButtonTexture(Texture*) -> void;
+    auto SetSliderButtonRect(SDL_FRect) -> void;
+    auto SetSliderBarTexture(Texture*) -> void;
+    auto SetSliderBarRect(SDL_FRect) -> void;
+    auto SetMaxMinStep(float, float, float) -> void;
+    auto SetXValues(float, float) -> void;
+    [[nodiscard]] auto GetSliderButtonRect(float, float) -> SDL_FRect*;
+    auto StartUpdating() -> void;
+    auto StopUpdating() -> void;
+    auto Draw(SDL_Renderer*) const -> void;
+    [[nodiscard]] auto IsUpdating() const -> bool;
+    auto SetOffsetX(float) -> void;
+    auto SetOffsetY(float) -> void;
+    auto SetLength(float) -> void;
+    auto SaveVolume() -> void;
+    auto SetToSet(std::string) -> void;
+    [[nodiscard]] auto GetMaxX() const -> float;
+    [[nodiscard]] auto GetMinX() const -> float;
+    [[nodiscard]] auto GetOffsetX() const -> float;
+    [[nodiscard]] auto GetOffsetY() const -> float;
 };
 
 #endif // HERION_HERO_SLIDERSELECTOR_HPP

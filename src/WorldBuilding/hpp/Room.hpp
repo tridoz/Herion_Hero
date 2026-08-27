@@ -7,14 +7,13 @@
 
 #include <vector>
 
-#include "Tile.hpp"
 #include "../../Entities/hpp/Player.hpp"
-
+#include "Tile.hpp"
 
 class Room {
 
-protected:
-    std::vector< std::vector<Tile* > > tiles;
+  protected:
+    std::vector<std::vector<Tile*>> tiles;
 
     std::string filepath;
 
@@ -23,79 +22,20 @@ protected:
     float tile_width, tile_height;
     int spawn_x, spawn_y;
 
-public:
+  public:
     Room();
     ~Room();
 
-    /**
-     * @brief Return the tiles
-     * @return std::vector < std::vector < Tile* > >
-     */
-    std::vector< std::vector< Tile * > > GetTiles();
-
-    /**
-     * @brief Set the tiles to draw after generating them in RoomManager::GenerateRoom
-     * @param new_tiles The tiles to set
-     */
-    void SetTiles(const std::vector< std::vector<Tile*> > &new_tiles);
-
-    /**
-     * @brief Draw the room
-     * @param renderer Renderer needed to draw the rrom
-     */
-    void Draw( SDL_Renderer* renderer );
-
-    /**
-     * @brief Draw the axis for each tile (used only in Level Editor mode)
-     * @param renderer Renderer needed to draw the axis
-     */
-
-
-    /**
-     * @brief Set the spawn coordinates of the room
-     * @param x Coordinate X of spawn
-     * @param y Coordinate Y of spawn
-     */
-    void SetSpawnCoord( int x, int y );
-
-    /**
-     * @brief Return the X spawn coordinate
-     * @return int
-     */
-    int GetSpawnX() const;
-
-    /**
-     * @brief Return the Y spawn coordinate
-     * @return int
-     */
-    int GetSpawnY() const;
-
-
-    int GetHorizontalTiles();
-    int GetVerticalTiles();
-
-    void SetFilepath( const std::string& filepath );
-
-    void CheckPlayerCollision( Player* player );
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<Room, std::vector<std::vector<Tile*>>>{"tiles", &Room::tiles},
-            Field<Room, std::string>{"filepath", &Room::filepath},
-            Field<Room, int>{"horizontal_tiles", &Room::horizontal_tiles},
-            Field<Room, int>{"vertical_tiles", &Room::vertical_tiles},
-            Field<Room, int>{"width", &Room::width},
-            Field<Room, int>{"height", &Room::height},
-            Field<Room, float>{"tile_width", &Room::tile_width},
-            Field<Room, float>{"tile_height", &Room::tile_height},
-            Field<Room, int>{"spawn_x", &Room::spawn_x},
-            Field<Room, int>{"spawn_y", &Room::spawn_y}
-        );
-    }
-
-
-
-
+    auto GetTiles() -> std::vector<std::vector<Tile*>>;
+    auto SetTiles(const std::vector<std::vector<Tile*>>&) -> void;
+    auto Draw(SDL_Renderer*) -> void;
+    auto SetSpawnCoord(int, int) -> void;
+    [[nodiscard]] auto GetSpawnX() const -> int;
+    [[nodiscard]] auto GetSpawnY() const -> int;
+    [[nodiscard]] auto GetHorizontalTiles() const -> int;
+    [[nodiscard]] auto GetVerticalTiles() const -> int;
+    auto SetFilepath(const std::string&) -> void;
+    auto CheckPlayerCollision(Player*) -> void;
 };
 
-#endif //HERION_HERO_ROOM_HPP
+#endif // HERION_HERO_ROOM_HPP

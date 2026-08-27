@@ -28,40 +28,40 @@ InputProcessor::~InputProcessor() {
     this->running = false;
 }
 
-void InputProcessor::SetEvent(SDL_Event& event) {
+auto InputProcessor::SetEvent(SDL_Event& event) -> void {
     this->event = event;
 }
 
-void InputProcessor::SetPlayer(Player* player) {
+auto InputProcessor::SetPlayer(Player* player) -> void {
     this->player = player;
 }
 
-void InputProcessor::SetRoomManager(RoomManager* room_manager) {
+auto InputProcessor::SetRoomManager(RoomManager* room_manager) -> void {
     this->room_manager = room_manager;
 }
 
-void InputProcessor::SetMenus(std::string name, Menu* menu) {
+auto InputProcessor::SetMenus(std::string name, Menu* menu) -> void {
     menus.emplace(name, menu);
 }
 
-void InputProcessor::SetTextureManager(std::string name, TextureManager* texture_manager) {
+auto InputProcessor::SetTextureManager(std::string name, TextureManager* texture_manager) -> void {
     texture_managers.emplace(name, texture_manager);
 }
 
-void InputProcessor::SetEditorRoom(EditorRoom* room) {
+auto InputProcessor::SetEditorRoom(EditorRoom* room) -> void {
     this->editor_room = room;
 }
 
-void InputProcessor::SetWindowTools(std::unordered_map<std::string, Window*> window_tools) {
+auto InputProcessor::SetWindowTools(std::unordered_map<std::string, Window*> window_tools) -> void {
     this->window_tools = std::move(window_tools);
 }
 
-void InputProcessor::process_main_menu(int scancode) {
+auto InputProcessor::process_main_menu(int scancode) -> void {
     if (scancode == SDL_SCANCODE_ESCAPE)
         this->running = false;
 }
 
-void InputProcessor::process_in_game(int scancode) {
+auto InputProcessor::process_in_game(int scancode) -> void {
     switch (scancode) {
     default:
         break;
@@ -91,8 +91,6 @@ void InputProcessor::process_in_game(int scancode) {
 
     case SDL_SCANCODE_R:
         room_manager->GenerateRoom(RoomManager::DIRECTION::DIR_NONE, "maps/room1/");
-        // player->Spawn(room_manager->GetPlayerSpawnCellX(), room_manager->GetPlayerSpawnCellY());
-        // player->reset();
         break;
 
     case SDL_SCANCODE_A:
@@ -106,7 +104,7 @@ void InputProcessor::process_in_game(int scancode) {
     }
 }
 
-void InputProcessor::process_animation_editor(int scancode) {
+auto InputProcessor::process_animation_editor(int scancode) -> void {
     switch (scancode) {
     default:
         break;
@@ -117,7 +115,7 @@ void InputProcessor::process_animation_editor(int scancode) {
     }
 }
 
-void InputProcessor::process_level_editor(int scancode) {
+auto InputProcessor::process_level_editor(int scancode) -> void {
 
     switch (scancode) {
     default:
@@ -202,7 +200,7 @@ void InputProcessor::process_level_editor(int scancode) {
     }
 }
 
-void InputProcessor::process_key_down(int scancode) {
+auto InputProcessor::process_key_down(int scancode) -> void {
 
     Engine::GameState game_mode = Engine::GetGameState();
 
@@ -224,7 +222,7 @@ void InputProcessor::process_key_down(int scancode) {
     }
 }
 
-void InputProcessor::process_key_up(const int scancode) {
+auto InputProcessor::process_key_up(const int scancode) -> void {
     Engine::GameState game_mode = Engine::GetGameState();
 
     switch (scancode) {
@@ -244,7 +242,7 @@ void InputProcessor::process_key_up(const int scancode) {
     }
 }
 
-void InputProcessor::process_mouse_left_pressed() {
+auto InputProcessor::process_mouse_left_pressed() -> void {
     this->mouse_left_pressed = true;
 
     SDL_GetMouseState(&mouse_x, &mouse_y);
@@ -316,7 +314,6 @@ void InputProcessor::process_mouse_left_pressed() {
 
                 if (window->IsOpen()) {
                     btn = window->GetCurrentMenu()->GetCollisionButton(mouse_x, mouse_y);
-                    Logger::debug_reflection_print(window->GetCurrentMenu(), 0);
                     if (btn != nullptr) {
                         std::string str = btn->ClickReturn();
                         TextureManager* mng = texture_managers.at("MAIN");
@@ -389,7 +386,7 @@ void InputProcessor::process_mouse_left_pressed() {
     }
 }
 
-void InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) {
+auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void {
 
     if (active_slider == nullptr)
         return;
@@ -400,7 +397,7 @@ void InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) {
     active_slider->SetOffsetX(mouse_x);
 }
 
-void InputProcessor::process_mouse_left_lifted() {
+auto InputProcessor::process_mouse_left_lifted() -> void {
     mouse_left_pressed = false;
     Button* btn;
 
@@ -415,15 +412,15 @@ void InputProcessor::process_mouse_left_lifted() {
     }
 }
 
-void InputProcessor::process_mouse_right_lifted() {
+auto InputProcessor::process_mouse_right_lifted() -> void {
     // TODO
 }
 
-void InputProcessor::process_mouse_right_pressed() {
+auto InputProcessor::process_mouse_right_pressed() -> void {
     // Non implementato
 }
 
-void InputProcessor::Process() {
+auto InputProcessor::Process() -> void {
     switch (this->event.type) {
     case SDL_EVENT_QUIT:
         this->running = false;
@@ -480,23 +477,23 @@ void InputProcessor::Process() {
     }
 }
 
-bool InputProcessor::ShouldQuit() const {
+auto InputProcessor::ShouldQuit() const -> bool {
     return !this->running;
 }
 
-bool InputProcessor::isMouseLeftPressed() const {
+auto InputProcessor::isMouseLeftPressed() const -> bool {
     return this->mouse_left_pressed;
 }
 
-bool InputProcessor::isMouseRightPressed() const {
+auto InputProcessor::isMouseRightPressed() const -> bool {
     return this->mouse_right_pressed;
 }
 
-void InputProcessor::update_player_movement(float delta_time) {
+auto InputProcessor::update_player_movement(float delta_time) -> void {
 
-    ECS::Components::Velocites* vel = player->GetComponent<ECS::Components::Velocites>();
-    ECS::Components::MovementState* mvm = player->GetComponent<ECS::Components::MovementState>();
-    ECS::Components::Transform* trs = player->GetComponent<ECS::Components::Transform>();
+    auto vel = player->GetComponent<ECS::Components::Velocites>();
+    auto mvm = player->GetComponent<ECS::Components::MovementState>();
+    auto trs = player->GetComponent<ECS::Components::Transform>();
 
     if (key_left_pressed) {
 
@@ -541,7 +538,7 @@ void InputProcessor::update_player_movement(float delta_time) {
     player->Move();
 }
 
-bool InputProcessor::AllWindowsClosed() {
+auto InputProcessor::AllWindowsClosed() -> bool {
     for (const auto& [name, window] : window_tools) {
         if (window->IsOpen()) {
             return false;

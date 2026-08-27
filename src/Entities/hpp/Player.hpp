@@ -10,7 +10,6 @@
 #include "Entity.hpp"
 
 #include "../../Utils/hpp/Logger.hpp"
-#include "../../Utils/hpp/Reflector.hpp"
 
 class TextureManager;
 
@@ -20,13 +19,7 @@ class Player : public Entity {
     Player();
     ~Player();
 
-    void SetTextureManager(TextureManager* new_texture_manager);
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<Player, TextureManager*>{.name = "texture_manager", .ptr = &Player::texture_manager}
-        );
-    }
+    auto SetTextureManager(TextureManager*) -> void;
 
   private:
     TextureManager* texture_manager;

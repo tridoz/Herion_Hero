@@ -4,10 +4,9 @@
 
 #include "../hpp/Text.hpp"
 
-Text::Text() {
-}
+Text::Text() = default;
 
-void Text::Draw(SDL_Renderer* renderer) const {
+auto Text::Draw(SDL_Renderer* renderer) const -> void {
 
     for (int i = 0; i < this->renderable.size(); i++) {
         SDL_SetTextureBlendMode(renderable[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
@@ -15,15 +14,15 @@ void Text::Draw(SDL_Renderer* renderer) const {
     }
 }
 
-void Text::SetRenderables(std::vector<Renderable*> r) {
-    this->renderable = r;
+auto Text::SetRenderables(std::vector<Renderable*> r) -> void {
+    this->renderable = std::move(r);
 }
 
-void Text::DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const {
+auto Text::DrawWithOffset(SDL_Renderer* renderer, const float offset_y, const float offset_x) const -> void {
 
-    for (int i = 0; i < this->renderable.size(); i++) {
-        Texture* texture = this->renderable[i]->GetTexture();
-        SDL_FRect rect = *this->renderable[i]->GetRect();
+    for (auto i : this->renderable) {
+        Texture* texture = i->GetTexture();
+        SDL_FRect rect = *i->GetRect();
         rect.x += offset_x;
         rect.y += offset_y;
 

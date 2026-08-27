@@ -16,11 +16,11 @@ TextureManager::~TextureManager() {
     }
 }
 
-void TextureManager::SetRenderer(SDL_Renderer* new_renderer) {
+auto TextureManager::SetRenderer(SDL_Renderer* new_renderer) -> void {
     this->renderer = new_renderer;
 }
 
-void TextureManager::LoadTextures(const std::string& filepath) {
+auto TextureManager::LoadTextures(const std::string& filepath) -> void {
 
     std::ifstream texture_file;
 
@@ -61,7 +61,7 @@ void TextureManager::LoadTextures(const std::string& filepath) {
     }
 }
 
-Texture* TextureManager::GetTextureByName(const std::string& texture_name) {
+auto TextureManager::GetTextureByName(const std::string& texture_name) -> Texture* {
 
     if (!textures.contains(texture_name)) {
         THROW_FILE_NOT_FOUND(texture_name);
@@ -70,7 +70,7 @@ Texture* TextureManager::GetTextureByName(const std::string& texture_name) {
     return &textures.at(texture_name);
 }
 
-Texture* TextureManager::GetTextureByCode(const std::string& texture_code) {
+auto TextureManager::GetTextureByCode(const std::string& texture_code) -> Texture* {
 
     if (!codes.contains(texture_code)) {
         THROW_FILE_NOT_FOUND(texture_code);

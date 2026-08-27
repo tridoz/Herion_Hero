@@ -5,7 +5,7 @@
 #include "../hpp/ScrollPaneMenu.hpp"
 #include "Renderable.hpp"
 
-void ScrollPaneMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
+auto ScrollPaneMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void {
 
     this->filepath = cfg_json_filepath;
 
@@ -20,10 +20,11 @@ void ScrollPaneMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
 
     this->background_filepath = JSONParser::menu_configuration::GetBackgroundImagePath();
     this->background = this->texture_manager->GetTextureByName(this->background_filepath);
-    float w = JSONParser::graphics::GetWidth();
-    float h = JSONParser::graphics::GetHeight();
 
-    this->background_rect = {0, 0, w, h};
+    auto w = static_cast<float>(JSONParser::graphics::GetWidth());
+    auto h = static_cast<float>(JSONParser::graphics::GetHeight());
+
+    this->background_rect = {.x = 0, .y = 0, .w = w, .h = h};
 
     try {
         this->scale = JSONParser::graphics::GetScale();
@@ -48,17 +49,17 @@ void ScrollPaneMenu::LoadConfiguration(const std::string& cfg_json_filepath) {
     }
 }
 
-bool ScrollPaneMenu::CheckCollision(const std::vector<SDL_FRect> buttons, float x, float y) {
-    for (SDL_FRect button : buttons) {
-        button.y += mouse_offset;
-        if (x >= button.x && x <= button.x + button.w && y >= button.y && y <= button.y + button.h) {
+auto ScrollPaneMenu::CheckCollision(const std::vector<SDL_FRect>& buttons, float x, float y) -> bool {
+    for (const SDL_FRect& button : buttons) {
+        if (x >= button.x && x <= button.x + button.w && y >= button.y + mouse_offset &&
+            y <= button.y + mouse_offset + button.h) {
             return true;
         }
     }
     return false;
 }
 
-Button* ScrollPaneMenu::GetCollisionButton(float x, float y) {
+auto ScrollPaneMenu::GetCollisionButton(float x, float y) -> Button* {
     for (const auto& [id, btn] : this->buttons) {
         if (CheckCollision(btn->GetRects(), x, y)) {
             return btn;
@@ -68,7 +69,7 @@ Button* ScrollPaneMenu::GetCollisionButton(float x, float y) {
     return nullptr;
 }
 
-void ScrollPaneMenu::Draw(SDL_Renderer* renderer) const {
+auto ScrollPaneMenu::Draw(SDL_Renderer* renderer) const -> void {
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(renderer, background->GetTexture(), nullptr, &background_rect);
@@ -82,7 +83,7 @@ void ScrollPaneMenu::Draw(SDL_Renderer* renderer) const {
     }
 }
 
-void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
+auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
 
     const int texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
     const int texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
@@ -94,18 +95,19 @@ void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
         for (auto& [name, path, texture] : dir->Files) {
 
             const int depth = dir->depth;
-            const int previous_element_already_drawn = texts.size() + buttons.size();
+            const int previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
 
             std::vector<Renderable*> renderables;
 
             SDL_FRect file_rect = {
                 .x = static_cast<float>((texture_size_directory * depth) + (texture_size_directory)),
                 .y = static_cast<float>(
-                    (previous_element_already_drawn * texture_size_directory +
-                     texture_size_directory * scale * previous_element_already_drawn)
+                    (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
+                     static_cast<float>(texture_size_directory) * scale *
+                         static_cast<float>(previous_element_already_drawn))
                 ),
-                .w = static_cast<float>(texture_size_directory * scale),
-                .h = static_cast<float>(texture_size_directory * scale)
+                .w = static_cast<float>(texture_size_directory) * scale,
+                .h = static_cast<float>(texture_size_directory) * scale
             };
 
             renderables.emplace_back(new Renderable(texture, new SDL_FRect{file_rect}));
@@ -143,12 +145,13 @@ void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
                 SDL_FRect char_rect = {
                     .x = static_cast<float>((depth * texture_size_file) + (texture_size_file * (i + 2))),
                     .y = static_cast<float>(
-                        (previous_element_already_drawn * texture_size_file +
-                         texture_size_file * scale * previous_element_already_drawn +
-                         diff * scale * previous_element_already_drawn)
+                        (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_file) +
+                         static_cast<float>(texture_size_file) * scale *
+                             static_cast<float>(previous_element_already_drawn) +
+                         static_cast<float>(diff) * scale * static_cast<float>(previous_element_already_drawn))
                     ),
-                    .w = static_cast<float>(texture_size_file * scale),
-                    .h = static_cast<float>(texture_size_file * scale)
+                    .w = static_cast<float>(texture_size_directory) * scale,
+                    .h = static_cast<float>(texture_size_directory) * scale
                 };
 
                 renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
@@ -169,19 +172,19 @@ void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
 
         const int depth = dir->depth;
         const std::string path = dir->path;
-        const int previous_element_already_drawn = texts.size() + buttons.size();
+        const int previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
 
         std::vector<Renderable*> renderables;
 
         Texture* folder_txt = texture_manager->GetTextureByName("Assets/Ui/Editor/Folder.png");
         SDL_FRect folder_rect = {
             .x = static_cast<float>((texture_size_directory * depth)),
-            .y = static_cast<float>(
-                (previous_element_already_drawn * texture_size_directory +
-                 texture_size_directory * scale * previous_element_already_drawn)
-            ),
-            .w = static_cast<float>(texture_size_directory * scale),
-            .h = static_cast<float>(texture_size_directory * scale)
+            .y = static_cast<float>((
+                static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
+                static_cast<float>(texture_size_directory) * scale * static_cast<float>(previous_element_already_drawn)
+            )),
+            .w = static_cast<float>(texture_size_directory) * scale,
+            .h = static_cast<float>(texture_size_directory) * scale
         };
 
         renderables.emplace_back(new Renderable(folder_txt, new SDL_FRect{folder_rect}));
@@ -220,11 +223,12 @@ void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
             SDL_FRect char_rect = {
                 .x = static_cast<float>((texture_size_directory * depth) + (texture_size_directory * (i + 1))),
                 .y = static_cast<float>(
-                    (previous_element_already_drawn * texture_size_directory +
-                     texture_size_directory * scale * previous_element_already_drawn)
+                    (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
+                     static_cast<float>(texture_size_directory) * scale *
+                         static_cast<float>(previous_element_already_drawn))
                 ),
-                .w = static_cast<float>(texture_size_directory * scale),
-                .h = static_cast<float>(texture_size_directory * scale)
+                .w = static_cast<float>(texture_size_directory) * scale,
+                .h = static_cast<float>(texture_size_directory) * scale
             };
 
             renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
@@ -238,7 +242,7 @@ void ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) {
     }
 }
 
-void ScrollPaneMenu::CreateSubDirectories(Directory*& directory, const std::string& base_directory, int depth) {
+auto ScrollPaneMenu::CreateSubDirectories(Directory*& directory, const std::string& base_directory, int depth) -> void {
 
     std::vector<std::string> cmd_output = CMD::get_files_and_directories_names(base_directory);
 
@@ -268,8 +272,7 @@ void ScrollPaneMenu::CreateSubDirectories(Directory*& directory, const std::stri
             );
 
         } else if (output_line.contains(".cpp")) {
-            std::string file_name = base_directory + output_line;
-            Texture* txt = new Texture();
+            auto txt = new Texture();
             directory->Files.emplace_back(output_line, base_directory + output_line, txt);
             ;
         }

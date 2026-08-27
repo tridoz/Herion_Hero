@@ -43,79 +43,30 @@ class Menu {
     std::string type;
     std::string font_style;
 
-    void Rescale(SDL_FRect* rect);
+    auto Rescale(SDL_FRect*) -> void;
 
-    std::string GetText(const std::string& text_type);
+    auto GetText(const std::string&) -> std::string;
 
-    bool isspecial(const char c);
+    auto isspecial(const char) -> bool;
 
-    std::string GetNameOfSpecialChar(const char c);
-    std::vector<std::string> split(const std::string& str);
+    auto GetNameOfSpecialChar(const char) -> std::string;
+    auto split(const std::string&) -> std::vector<std::string>;
 
-    virtual bool CheckCollision(std::vector<SDL_FRect> buttons, float x, float y) = 0;
+    virtual auto CheckCollision(const std::vector<SDL_FRect>&, float, float) -> bool = 0;
 
   public:
     Menu();
     ~Menu();
+    auto SetDimension(float, float) -> void;
+    auto SetTextureManager(TextureManager*) -> void;
+    auto GetButton(const std::string&) const -> Button*;
+    auto GetButtons() const -> std::vector<Button*>;
 
-    /**
-     * @brief Set the dimension for the Menu rendering
-     * @param w Width of the menu
-     * @param h Heigth of the menu
-     */
-    void SetDimension(float w, float h);
-
-    /**
-     * @brief Set the texture_manager to gather the Texure objects while loading the menu.
-     * @param texture_manager The texture manager
-     */
-    void SetTextureManager(TextureManager* texture_manager);
-
-    /**
-     * @brief Draw the elements on the given renderer
-     * @param renderer The renderer used to draw
-     */
-
-    /**
-     * @brief Get the Button based on a given action
-     * @param action The action need to retrieve the button
-     * @return Button*
-     */
-    Button* GetButton(const std::string& action) const;
-
-    /**
-     * @brief Return all the buttons
-     * @return std::vector < Button* >
-     */
-    std::vector<Button*> GetButtons() const;
-
-    virtual Button* GetCollisionButton(float x, float y) = 0;
-    virtual void LoadConfiguration(const std::string& filepath) = 0;
-    virtual void Draw(SDL_Renderer* renderer) const = 0;
-    void SetMouseOffset(float diff);
-    void ReloadConfiguration();
-
-    static constexpr auto reflect_members() {
-        return std::make_tuple(
-            Field<Menu, TextureManager*>{"texture_manager", &Menu::texture_manager},
-            Field<Menu, Texture*>{"background", &Menu::background},
-            Field<Menu, float>{"mouse_offset", &Menu::mouse_offset},
-            Field<Menu, float>{"scale", &Menu::scale},
-            Field<Menu, float>{"char_width", &Menu::char_width},
-            Field<Menu, std::string>{"button_style", &Menu::button_style},
-            Field<Menu, SDL_FRect>{"background_rect", &Menu::background_rect},
-            Field<Menu, std::unordered_map<std::string, std::function<void()>>>{
-                "buttons_functions", &Menu::buttons_functions
-            },
-            Field<Menu, std::unordered_map<std::string, Button*>>{"buttons", &Menu::buttons},
-            Field<Menu, std::unordered_map<std::string, Text*>>{"texts", &Menu::texts},
-            Field<Menu, std::unordered_map<std::string, SliderSelector*>>{"slider_selectors", &Menu::slider_selectors},
-            Field<Menu, std::string>{"filepath", &Menu::filepath},
-            Field<Menu, std::string>{"background_filepath", &Menu::background_filepath},
-            Field<Menu, std::string>{"type", &Menu::type},
-            Field<Menu, std::string>{"font_style", &Menu::font_style}
-        );
-    }
+    virtual auto GetCollisionButton(float, float) -> Button* = 0;
+    virtual auto LoadConfiguration(const std::string&) -> void = 0;
+    virtual auto Draw(SDL_Renderer*) const -> void = 0;
+    auto SetMouseOffset(float) -> void;
+    auto ReloadConfiguration() -> void;
 };
 
 #endif // HERION_HERO_MENU_HPP

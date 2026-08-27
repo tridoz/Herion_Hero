@@ -17,57 +17,67 @@ EditorRoom::~EditorRoom() {
     delete current_editor_texture;
     current_editor_texture = nullptr;
 
-    for( auto& [name, btns] : buttons ) {
-        for( Button* b : btns ) {
+    for (auto& [name, btns] : buttons) {
+        for (Button* b : btns) {
             delete b;
             b = nullptr;
         }
     }
 
-    for( ForegroundElement* fe : foreground_elements ) {
+    for (ForegroundElement* fe : foreground_elements) {
         delete fe;
         fe = nullptr;
     }
 
-    for( BackgroundElement* be : background_elements ) {
+    for (BackgroundElement* be : background_elements) {
         delete be;
         be = nullptr;
     }
-    
 }
 
-void EditorRoom::DrawAxis(SDL_Renderer* renderer) const {
+auto EditorRoom::DrawAxis(SDL_Renderer* renderer) const -> void {
 
-    SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-    for ( int i = 0 ; i <= horizontal_tiles ; ++i ) {
-        SDL_RenderLine( renderer, i*tile_width, 0, i*tile_width, height );
+    for (int i = 0; i <= horizontal_tiles; ++i) {
+        SDL_RenderLine(
+            renderer,
+            static_cast<float>(i) * tile_width,
+            0,
+            static_cast<float>(i) * tile_width,
+            static_cast<float>(height)
+        );
     }
 
-    for ( int i = 0 ; i <= vertical_tiles ; ++i ) {
-        SDL_RenderLine( renderer, 0, i*tile_height, width, i*tile_height );
+    for (int i = 0; i <= vertical_tiles; ++i) {
+        SDL_RenderLine(
+            renderer,
+            0,
+            static_cast<float>(i) * tile_height,
+            static_cast<float>(width),
+            static_cast<float>(i) * tile_height
+        );
     }
-
 }
 
-void EditorRoom::SetHitboxes() {
+auto EditorRoom::SetHitboxes() -> void {
 
-    for (size_t j = 0; j < tiles.size(); ++j) {
-        std::vector < bool > row;
-        for (size_t i = 0; i < tiles[j].size(); ++i) {
-            bool hitbox = tiles[j][i]->HasHitbox();
+    for (auto& tile : tiles) {
+        std::vector<bool> row;
+        for (auto& i : tile) {
+            bool hitbox = i->HasHitbox();
             row.push_back(hitbox);
         }
         hitboxes.push_back(row);
     }
-
 }
 
-void EditorRoom::UpdateHitbox(int cell_x, int cell_y) {
+auto EditorRoom::UpdateHitbox(int cell_x, int cell_y) -> void {
     this->hitboxes[cell_y][cell_x] = !this->hitboxes[cell_y][cell_x];
 }
 
-void EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const {
+auto EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const -> void {
+
     for (size_t j = 0; j < hitboxes.size(); ++j) {
         for (size_t i = 0; i < hitboxes[j].size(); ++i) {
             bool hitbox = hitboxes[j][i];
@@ -76,8 +86,8 @@ void EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const {
                 SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
                 SDL_FRect rect;
-                rect.x = i * tile_width;
-                rect.y = j * tile_height;
+                rect.x = static_cast<float>(i) * tile_width;
+                rect.y = static_cast<float>(j) * tile_height;
                 rect.w = tile_width;
                 rect.h = tile_height;
 
@@ -87,121 +97,119 @@ void EditorRoom::DrawHitboxes(SDL_Renderer* renderer) const {
     }
 }
 
-void EditorRoom::Draw(SDL_Renderer* r) {
-    for ( std::vector<Tile*> & tiles_row : tiles) {
-        for ( Tile* & tile : tiles_row) {
+auto EditorRoom::Draw(SDL_Renderer* r) -> void {
+    for (std::vector<Tile*>& tiles_row : tiles) {
+        for (Tile*& tile : tiles_row) {
             tile->Draw(r);
         }
     }
 
-    for( const auto [name, btns] : buttons ) {
-        for( Button* b : btns ) {
+    for (const auto& [name, btns] : buttons) {
+        for (Button* b : btns) {
             b->Draw(r);
         }
     }
 }
 
-void EditorRoom::SetCurrentEditorTexture(Texture *texture) {
+auto EditorRoom::SetCurrentEditorTexture(Texture* texture) -> void {
     this->current_editor_texture = texture;
 }
 
-Texture *EditorRoom::GetCurrentEditorTexture() {
+auto EditorRoom::GetCurrentEditorTexture() -> Texture* {
     return current_editor_texture;
 }
 
-void EditorRoom::AppendToFile(const std::string &row, std::vector<std::string>& vect ) {
-    vect.push_back( row );
+auto EditorRoom::AppendToFile(const std::string& row, std::vector<std::string>& vect) -> void {
+    vect.push_back(row);
 }
 
-void EditorRoom::SaveNewEditConfiguration() {
+auto EditorRoom::SaveNewEditConfiguration() -> void {
 
-
-    for ( const auto& row : tiles ) {
+    for (const auto& row : tiles) {
         std::string str_row;
-        for ( const auto& tile : row ) {
+        for (const auto& tile : row) {
             str_row += tile->GetCode() + " ";
         }
-        AppendToFile( str_row, this->base_plan_output_file );
+        AppendToFile(str_row, this->base_plan_output_file);
     }
 
-    for ( const auto& row : hitboxes ) {
+    for (const auto& row : hitboxes) {
         std::string str_row;
-        for ( bool hitbox : row ) {
-            str_row += std::to_string( hitbox ) + " ";
+        for (bool hitbox : row) {
+            str_row += std::to_string(hitbox) + " ";
         }
-        AppendToFile( str_row, this->hitboxes_output_file );
+        AppendToFile(str_row, this->hitboxes_output_file);
     }
 
     std::ofstream base_place_output_file_stream;
     std::ofstream hitbox_output_file_stream;
 
     try {
-        FileOpener::OpenFileOutput( base_place_output_file_stream, filepath + "base_plane_textures.hhmap" );
-        FileOpener::OpenFileOutput( hitbox_output_file_stream, filepath + "hitboxes.hhmap" );
-    } catch ( HerionException::File::FileException& ex ) {
-        ex.UpdateStackTrace( GET_CONTEXT() );
+        FileOpener::OpenFileOutput(base_place_output_file_stream, filepath + "base_plane_textures.hhmap");
+        FileOpener::OpenFileOutput(hitbox_output_file_stream, filepath + "hitboxes.hhmap");
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
         throw;
     }
 
-    for ( const auto& line : base_plan_output_file ) {
-        base_place_output_file_stream << line << std::endl;
+    for (const auto& line : base_plan_output_file) {
+        base_place_output_file_stream << line << '\n';
     }
 
-    for ( const auto& line : hitboxes_output_file ) {
-        hitbox_output_file_stream << line << std::endl;
+    for (const auto& line : hitboxes_output_file) {
+        hitbox_output_file_stream << line << '\n';
     }
 
-    this->base_plan_output_file.erase( base_plan_output_file.begin() + 2 , base_plan_output_file.end()  );
+    this->base_plan_output_file.erase(base_plan_output_file.begin() + 2, base_plan_output_file.end());
     this->hitboxes_output_file.clear();
-
 }
 
-void EditorRoom::ToggleAxis() {
+auto EditorRoom::ToggleAxis() -> void {
     draw_axis = !draw_axis;
 }
 
-bool EditorRoom::ShouldDrawAxis() const {
+auto EditorRoom::ShouldDrawAxis() const -> bool {
     return draw_axis;
 }
 
-void EditorRoom::ToggleHitboxes() {
+auto EditorRoom::ToggleHitboxes() -> void {
     draw_hitboxes = !draw_hitboxes;
 }
 
-bool EditorRoom::ShouldDrawHitboxes() const {
+auto EditorRoom::ShouldDrawHitboxes() const -> bool {
     return draw_hitboxes;
 }
 
-void EditorRoom::SetAction(const std::string &action) {
+auto EditorRoom::SetAction(const std::string& action) -> void {
     this->action = action;
 }
 
-std::string EditorRoom::GetAction() const {
+auto EditorRoom::GetAction() const -> std::string {
     return this->action;
 }
 
-void EditorRoom::SetCurrentEntityToSet( const std::string& entity ) {
+auto EditorRoom::SetCurrentEntityToSet(const std::string& entity) -> void {
     this->current_entity_to_set = entity;
 }
 
-std::string EditorRoom::GetCurrentEntity() const {
+auto EditorRoom::GetCurrentEntity() const -> std::string {
     return this->current_entity_to_set;
 }
 
-std::vector<std::string> &EditorRoom::GetBackgroundVector() {
+auto EditorRoom::GetBackgroundVector() -> std::vector<std::string>& {
     return this->background_output_file;
 }
 
-std::vector<std::string> &EditorRoom::GetForegroundVector() {
+auto EditorRoom::GetForegroundVector() -> std::vector<std::string>& {
     return this->foreground_output_file;
 }
 
-std::vector<std::string> &EditorRoom::GetBasePlaneVector() {
+auto EditorRoom::GetBasePlaneVector() -> std::vector<std::string>& {
     return this->base_plan_output_file;
 }
 
-void EditorRoom::AddButton(Button* btn, std::string name) {
-    if( this->buttons.contains(name) ) {
+auto EditorRoom::AddButton(Button* btn, std::string name) -> void {
+    if (this->buttons.contains(name)) {
         this->buttons.at(name).emplace_back(btn);
     } else {
         std::vector<Button*> b{btn};
@@ -209,6 +217,6 @@ void EditorRoom::AddButton(Button* btn, std::string name) {
     }
 }
 
-int EditorRoom::GetEntitiCount(std::string name ) {
-    return this->buttons.contains(name)? buttons.at(name).size(): 0;
+auto EditorRoom::GetEntitiCount(const std::string& name) const -> int {
+    return this->buttons.contains(name) ? static_cast<int>(this->buttons.at(name).size()) : 0;
 }
