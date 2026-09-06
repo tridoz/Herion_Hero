@@ -60,12 +60,11 @@ void LoadEnv() {
     file.close();
 }
 
-int main(int argc, char* argv[]) {
+auto main(int argc, char* argv[]) -> int {
 
     // LoadEnv();
 
-    // find src_game \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} + | sort
-    // -n
+    // find src \( -name "*.cpp" -o -name "*.hpp" \) -exec wc -l {} + | sort -n
 
     SoundBoard::Init();
     SoundBoard::LoadSound("test", "../sounds/test.mp3");

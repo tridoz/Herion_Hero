@@ -15,6 +15,7 @@
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "../../Utils/hpp/Logger.hpp"
 #include "Button.hpp"
+#include "Font.hpp"
 #include "SliderSelector.hpp"
 #include "Text.hpp"
 

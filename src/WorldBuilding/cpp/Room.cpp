@@ -5,6 +5,7 @@
 #include "../hpp/Room.hpp"
 
 #include "../../Utils/hpp/JSONParser.hpp"
+#include "Player.hpp"
 #include "SDL3/SDL_oldnames.h"
 #include "SDL3/SDL_rect.h"
 
@@ -70,4 +71,15 @@ auto Room::SetFilepath(const std::string& filepath) -> void {
 }
 
 auto Room::CheckPlayerCollision(Player* player) -> void {
+    auto sprite = player->GetComponent<ECS::Components::Sprites>();
+    for (auto& row : tiles) {
+        for (Tile* tile : row) {
+            if (!tile->HasHitbox())
+                continue;
+
+            SDL_FRect* rect = tile->GetRect();
+
+            SDL_HasRectIntersectionFloat(rect, sprite->sprite_rect.to_sdl());
+        }
+    }
 }

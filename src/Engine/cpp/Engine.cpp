@@ -414,7 +414,7 @@ auto Engine::CheckGameMode() -> void {
 
     case Engine::GameState::IN_GAME:
         game_room_manager->DrawCurrentRoom(main_window->GetRenderer());
-
+        
         processor->update_player_movement(deltaTime);
         player->UpdateFrame();
         player->Draw();

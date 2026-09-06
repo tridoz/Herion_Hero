@@ -85,77 +85,40 @@ auto ScrollPaneMenu::Draw(SDL_Renderer* renderer) const -> void {
 
 auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
 
-    const int texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
-    const int texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
-    const int diff = texture_size_directory - texture_size_file;
+    struct Font::FontOptions opt = {};
+    Font::SetTextureManager(this->texture_manager);
+
+    opt.texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
+    opt.texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
+    opt.diff = opt.texture_size_directory - opt.texture_size_file;
+    opt.scale = scale;
 
     if (dir->SubDirectory.size() == 0) {
         // DRAW FILES
 
         for (auto& [name, path, texture] : dir->Files) {
 
-            const int depth = dir->depth;
-            const int previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
+            opt.depth = dir->depth;
+            opt.previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
 
             std::vector<Renderable*> renderables;
 
             SDL_FRect file_rect = {
-                .x = static_cast<float>((texture_size_directory * depth) + (texture_size_directory)),
+                .x = static_cast<float>((opt.texture_size_directory * opt.depth) + (opt.texture_size_directory)),
                 .y = static_cast<float>(
-                    (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
-                     static_cast<float>(texture_size_directory) * scale *
-                         static_cast<float>(previous_element_already_drawn))
+                    (static_cast<float>(opt.previous_element_already_drawn) *
+                         static_cast<float>(opt.texture_size_directory) +
+                     static_cast<float>(opt.texture_size_directory) * opt.scale *
+                         static_cast<float>(opt.previous_element_already_drawn))
                 ),
-                .w = static_cast<float>(texture_size_directory) * scale,
-                .h = static_cast<float>(texture_size_directory) * scale
+                .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
+                .h = static_cast<float>(opt.texture_size_directory) * opt.scale
             };
 
             renderables.emplace_back(new Renderable(texture, new SDL_FRect{file_rect}));
 
-            for (int i = 0; i < name.size(); i++) {
-                char c = name[i];
-
-                Texture* char_tex = nullptr;
-                try {
-
-                    if (std::isupper(c))
-                        char_tex = texture_manager->GetTextureByName(
-                            "Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png"
-                        );
-                    else if (std::islower(c))
-                        char_tex = texture_manager->GetTextureByName(
-                            "Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png"
-                        );
-                    else if (std::isdigit(c))
-                        char_tex = texture_manager->GetTextureByName(
-                            "Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png"
-                        );
-                    else if (isspecial(c))
-                        char_tex = texture_manager->GetTextureByName(
-                            "Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png"
-                        );
-                    else if (isspace(c))
-                        char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/space.png");
-
-                } catch (HerionException::File::FileNotFoundException& ex) {
-                    ex.UpdateStackTrace(GET_CONTEXT());
-                    throw;
-                }
-
-                SDL_FRect char_rect = {
-                    .x = static_cast<float>((depth * texture_size_file) + (texture_size_file * (i + 2))),
-                    .y = static_cast<float>(
-                        (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_file) +
-                         static_cast<float>(texture_size_file) * scale *
-                             static_cast<float>(previous_element_already_drawn) +
-                         static_cast<float>(diff) * scale * static_cast<float>(previous_element_already_drawn))
-                    ),
-                    .w = static_cast<float>(texture_size_directory) * scale,
-                    .h = static_cast<float>(texture_size_directory) * scale
-                };
-
-                renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
-            }
+            std::vector<Renderable*> text = Font::CreateText(name, opt);
+            renderables.insert(renderables.end(), text.begin(), text.end());
 
             Button* btn = new Button();
             btn->SetText(path);
@@ -170,70 +133,31 @@ auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
 
     for (auto& [name, dir] : dir->SubDirectory) {
 
-        const int depth = dir->depth;
+        opt.depth = dir->depth;
         const std::string path = dir->path;
-        const int previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
+        opt.previous_element_already_drawn = static_cast<int>(texts.size() + buttons.size());
 
         std::vector<Renderable*> renderables;
 
         Texture* folder_txt = texture_manager->GetTextureByName("Assets/Ui/Editor/Folder.png");
         SDL_FRect folder_rect = {
-            .x = static_cast<float>((texture_size_directory * depth)),
-            .y = static_cast<float>((
-                static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
-                static_cast<float>(texture_size_directory) * scale * static_cast<float>(previous_element_already_drawn)
-            )),
-            .w = static_cast<float>(texture_size_directory) * scale,
-            .h = static_cast<float>(texture_size_directory) * scale
+            .x = static_cast<float>((opt.texture_size_directory * opt.depth)),
+            .y = static_cast<float>(
+                (static_cast<float>(opt.previous_element_already_drawn) *
+                     static_cast<float>(opt.texture_size_directory) +
+                 static_cast<float>(opt.texture_size_directory) * opt.scale *
+                     static_cast<float>(opt.previous_element_already_drawn))
+            ),
+            .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
+            .h = static_cast<float>(opt.texture_size_directory) * opt.scale
         };
 
         renderables.emplace_back(new Renderable(folder_txt, new SDL_FRect{folder_rect}));
 
         // DRAWING
 
-        for (int i = 0; i < name.size(); i++) {
-            char c = name[i];
-            Texture* char_tex = nullptr;
-
-            try {
-
-                if (std::isupper(c))
-                    char_tex = texture_manager->GetTextureByName(
-                        "Assets/Font/Editor/UppercaseLetters/" + std::string(1, c) + ".png"
-                    );
-                else if (std::islower(c))
-                    char_tex = texture_manager->GetTextureByName(
-                        "Assets/Font/Editor/LowercaseLetters/" + std::string(1, c) + ".png"
-                    );
-                else if (std::isdigit(c))
-                    char_tex =
-                        texture_manager->GetTextureByName("Assets/Font/Editor/Numbers/" + std::string(1, c) + ".png");
-                else if (isspecial(c))
-                    char_tex = texture_manager->GetTextureByName(
-                        "Assets/Font/Editor/SpecialCharacters/" + GetNameOfSpecialChar(c) + ".png"
-                    );
-                else if (isspace(c))
-                    char_tex = texture_manager->GetTextureByName("Assets/Font/Editor/SpecialCharacters/space.png");
-
-            } catch (HerionException::File::FileNotFoundException& ex) {
-                ex.UpdateStackTrace(GET_CONTEXT());
-                throw;
-            }
-
-            SDL_FRect char_rect = {
-                .x = static_cast<float>((texture_size_directory * depth) + (texture_size_directory * (i + 1))),
-                .y = static_cast<float>(
-                    (static_cast<float>(previous_element_already_drawn) * static_cast<float>(texture_size_directory) +
-                     static_cast<float>(texture_size_directory) * scale *
-                         static_cast<float>(previous_element_already_drawn))
-                ),
-                .w = static_cast<float>(texture_size_directory) * scale,
-                .h = static_cast<float>(texture_size_directory) * scale
-            };
-
-            renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
-        }
-
+        std::vector<Renderable*> text = Font::CreateText(name, opt);
+        renderables.insert(renderables.end(), text.begin(), text.end());
         Text* txt = new Text();
         txt->SetRenderables(renderables);
         texts.emplace(path, txt);

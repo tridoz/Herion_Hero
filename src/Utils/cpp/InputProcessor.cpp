@@ -8,6 +8,7 @@
 #include "SDL3/SDL_video.h"
 #include "SliderSelector.hpp"
 #include <cctype>
+#include <compare>
 #include <iostream>
 
 InputProcessor::InputProcessor() {
@@ -425,7 +426,6 @@ auto InputProcessor::Process() -> void {
     case SDL_EVENT_QUIT:
         this->running = false;
         break;
-
     case SDL_EVENT_KEY_DOWN:
         if (event.key.scancode < MAX_SCANCODES) {
             this->keys[event.key.scancode] = true;
@@ -465,7 +465,7 @@ auto InputProcessor::Process() -> void {
     case SDL_EVENT_MOUSE_WHEEL:
 
         if (window_tools.at("TEXTURE_SELECTION")->IsOpen())
-            window_tools.at("TEXUTRE_SELECTION")->GetCurrentMenu()->SetMouseOffset(event.wheel.y);
+            window_tools.at("TEXTURE_SELECTION")->GetCurrentMenu()->SetMouseOffset(event.wheel.y);
 
         else if (window_tools.at("ENTITY_SELECTION")->IsOpen())
             window_tools.at("ENTITY_SELECTION")->GetCurrentMenu()->SetMouseOffset(event.wheel.y);
@@ -495,6 +495,8 @@ auto InputProcessor::update_player_movement(float delta_time) -> void {
     auto mvm = player->GetComponent<ECS::Components::MovementState>();
     auto trs = player->GetComponent<ECS::Components::Transform>();
 
+    room_manager->GetCurrentRoom()->CheckPlayerCollision(player);
+
     if (key_left_pressed) {
 
         vel->movement = {
@@ -502,10 +504,15 @@ auto InputProcessor::update_player_movement(float delta_time) -> void {
             .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
         };
 
+        if (!mvm->is_grounded) {
+            ECS::Math::ApplyGravity(vel);
+        }
+
         if (mvm->is_grounded)
             mvm->movement = ECS::states::Movements::RUN;
 
         trs->facing_direction = ECS::states::FacingDirection::LEFT;
+
     } else if (key_right_pressed) {
 
         vel->movement = {
@@ -513,18 +520,24 @@ auto InputProcessor::update_player_movement(float delta_time) -> void {
             .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
         };
 
+        if (!mvm->is_grounded) {
+            ECS::Math::ApplyGravity(vel);
+        }
+
         if (mvm->is_grounded)
             mvm->movement = ECS::states::Movements::RUN;
 
         trs->facing_direction = ECS::states::FacingDirection::RIGHT;
+
     } else {
 
         if (mvm->is_grounded)
             mvm->movement = ECS::states::Movements::IDLE;
+
         vel->movement = {.dx = 0, .dy = vel->movement.dy};
     }
 
-    if (space_pressed) {
+    if (space_pressed && mvm->is_grounded) {
         mvm->is_grounded = false;
         mvm->is_jumping = true;
 
