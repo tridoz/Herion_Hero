@@ -1,45 +1,46 @@
 {
-  "background_path" : "Assets/Backgrounds/Black.png",
-  "start_y" : 350,
-  "button_y_offset" : 12,
-  "center_piece_offset" : 8,
+  "background_path": "Assets/Backgrounds/Black.png",
+  "start_y": 350,
+  "button_y_offset": 12,
+  "center_piece_offset": 8,
   "menu_type": "button_menu",
-  "button_style" : "Game",
-  "font_style" : "Game",
-  "char_width" : 22.0,
+  "button_style": "Game",
+  "font_style": "Game",
+  "char_width": 22.0,
   "rows": [
     {
-      "starting_x" : 250,
-      "button_x_offset" : 50,
-      "elements" : [
+      "starting_x": 250,
+      "button_x_offset": 50,
+      "elements": [
         {
-          "type" : "BUTTON",
-          "text" : "Levels",
-          "action" : "OPEN_LEVEL_EDITOR",
-          "id" : "button_for_opening_level_editor"
+          "type": "BUTTON",
+          "text": "LEVELS",
+          "action": "OPEN_LEVEL_EDITOR",
+          "id": "button_for_opening_level_editor"
         }
       ]
     },
     {
-      "starting_x" : 250,
-      "button_x_offset" : 50,
-      "elements" : [
+      "starting_x": 250,
+      "button_x_offset": 50,
+      "elements": [
         {
-          "type" : "BUTTON",
-          "text" : "Animations",
-          "action" : "OPEN_ANIMATION_EDITOR",
-          "id" : "button_for_opening_animation_editor"
+          "type": "BUTTON",
+          "text": "ANIMATIONS",
+          "action": "OPEN_ANIMATION_EDITOR",
+          "id": "button_for_opening_animation_editor"
         }
       ]
-    },{
-      "starting_x" : 250,
-      "button_x_offset" : 50,
-      "elements" : [
+    },
+    {
+      "starting_x": 250,
+      "button_x_offset": 50,
+      "elements": [
         {
-          "type" : "BUTTON",
-          "text" : "Back",
-          "action" : "OPEN_MAIN_MENU",
-          "id" : "button_return_previous_game_mode"
+          "type": "BUTTON",
+          "text": "BACK",
+          "action": "OPEN_MAIN_MENU",
+          "id": "button_return_previous_game_mode"
         }
       ]
     }

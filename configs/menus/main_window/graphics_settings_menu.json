@@ -1,12 +1,12 @@
 {
-  "background_path" : "Assets/Backgrounds/Black.png",
-  "start_y" : 150,
-  "button_y_offset" : 12,
-  "center_piece_offset" : 8,
+  "background_path": "Assets/Backgrounds/Black.png",
+  "start_y": 150,
+  "button_y_offset": 12,
+  "center_piece_offset": 8,
   "menu_type": "button_menu",
-  "button_style" : "Game",
-  "font_style" : "Game",
-  "char_width" : 22.0,
+  "button_style": "Game",
+  "font_style": "Game",
+  "char_width": 22.0,
   "rows": [
     {
       "starting_x": 500,
@@ -14,7 +14,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "Resolution",
+          "text": "RESOLUTION ",
           "id": "static_text_display_resolution_label"
         },
         {
@@ -42,7 +42,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "Frame Rate",
+          "text": "FRAME RATE",
           "id": "static_text_display_framerate_label"
         },
         {
@@ -65,12 +65,12 @@
       ]
     },
     {
-      "starting_x" : 1000,
-      "button_x_offset" : 0,
+      "starting_x": 1000,
+      "button_x_offset": 0,
       "elements": [
         {
-          "type" : "BUTTON",
-          "text" : "Done",
+          "type": "BUTTON",
+          "text": "DONE",
           "action": "RETURN_PREVIOUS_GAME_MODE",
           "id": "button_return_previous_game_mode"
         }

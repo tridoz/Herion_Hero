@@ -14,7 +14,7 @@
       "elements": [
         {
           "type": "BUTTON",
-          "text": "Add texture",
+          "text": "ADD TEXTURE",
           "return_value": "add_texture",
           "action": "RETURN_VALUE",
           "id": "button_for_selecting_action_of_texture_adding"
@@ -27,7 +27,7 @@
       "elements": [
         {
           "type": "BUTTON",
-          "text": "Change hitbox",
+          "text": "CHANGE HITBOX",
           "return_value": "change_hitbox",
           "action": "RETURN_VALUE",
           "id": "button_for_selecting_action_of_hitbox_changing"
@@ -40,7 +40,7 @@
       "elements": [
         {
           "type": "BUTTON",
-          "text": "Add Entity",
+          "text": "ADD ENTITY",
           "return_value": "add_entity",
           "action": "RETURN_VALUE",
           "id": "button_for_adding_entities_changing"

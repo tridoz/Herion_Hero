@@ -20,5 +20,7 @@ class Font {
     };
 
     static auto CreateText(const std::string&, struct FontOptions) -> std::vector<Renderable*>;
+    static auto CreateFRect( struct FontOptions ) -> SDL_FRect;
+    static auto CreateFRectShift( struct FontOptions, int ) -> SDL_FRect;
     static auto SetTextureManager(TextureManager*) -> void;
 };

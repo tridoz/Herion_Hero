@@ -85,7 +85,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
         const auto starting_x = static_cast<float>(JSONParser::menu_configuration::GetRowStartingX(row_number)) * scale;
         const auto button_x_offset =
             static_cast<float>(JSONParser::menu_configuration::GetRowButtonXOffset(row_number));
-        const auto num_elements = static_cast<float>(JSONParser::menu_configuration::GetRowNumElements(row_number));
+        const auto num_elements = JSONParser::menu_configuration::GetRowNumElements(row_number);
 
         float cumulative_x = static_cast<float>(starting_x);
         float row_height = 0.0f;
@@ -125,6 +125,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
             renderables.emplace_back(new Renderable(left_texture, new SDL_FRect{left_rect}));
 
             float char_w = this->char_width * this->scale;
+            float char_h = this->char_width * this->scale;
 
             float text_total_w = 0;
 
@@ -132,7 +133,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                 text = (menu_element_characteristic.type == "DYNAMIC_TEXT")
                            ? GetText(menu_element_characteristic.text.value())
                            : menu_element_characteristic.text.value();
-                text_total_w = static_cast<float>(text.size()) * (char_w);
+                text_total_w = static_cast<float>(text.size()) * (char_w) + static_cast<float>(5 * (text.size() - 1));
             } else {
                 text_total_w = menu_element_characteristic.length.value();
             }
@@ -155,6 +156,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
             float char_x = center_rect.x;
 
             if (menu_element_characteristic.type != "SLIDER_SELECTOR") {
+                int characters = 0;
                 for (char c : text) {
                     Texture* char_tex = nullptr;
 
@@ -189,7 +191,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
 
                     SDL_GetTextureSize(char_tex->GetTexture(), &cw, &ch);
                     SDL_FRect char_rect = {
-                        .x = char_x + (char_w - cw * scale) / 2.0f,
+                        .x = char_x + (char_w - cw * scale) / 2.0f + static_cast<float>(5 * characters++),
                         .y = center_rect.y + (center_rect.h - ch * scale) / 2.0f,
                         .w = cw * scale,
                         .h = ch * scale

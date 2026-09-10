@@ -14,7 +14,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "Master Volume",
+          "text": "MASTER VOLUME",
           "id": "static_text_display_master_volume_label"
         },
         {
@@ -53,7 +53,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "Music Volume",
+          "text": "MUSIC VOLUME",
           "id": "static_text_display_music_volume_label"
         },
         {
@@ -92,7 +92,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "SFX Volume",
+          "text": "SFX VOLUME",
           "id": "static_text_display_sfx_volume_label"
         },
         {
@@ -131,7 +131,7 @@
       "elements": [
         {
           "type": "BUTTON",
-          "text": "Done",
+          "text": "DONE",
           "action": "RETURN_PREVIOUS_GAME_MODE",
           "id": "button_return_previous_game_mode"
         }

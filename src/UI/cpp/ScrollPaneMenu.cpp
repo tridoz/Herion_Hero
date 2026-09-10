@@ -88,8 +88,8 @@ auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
     struct Font::FontOptions opt = {};
     Font::SetTextureManager(this->texture_manager);
 
-    opt.texture_size_file = JSONParser::menu_configuration::GetFileTextureSize();
-    opt.texture_size_directory = JSONParser::menu_configuration::GetDirectoryTextureSize();
+    opt.texture_size_file = static_cast<float>(JSONParser::menu_configuration::GetFileTextureSize());
+    opt.texture_size_directory = static_cast<float>(JSONParser::menu_configuration::GetDirectoryTextureSize());
     opt.diff = opt.texture_size_directory - opt.texture_size_file;
     opt.scale = scale;
 
@@ -103,19 +103,7 @@ auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
 
             std::vector<Renderable*> renderables;
 
-            SDL_FRect file_rect = {
-                .x = static_cast<float>((opt.texture_size_directory * opt.depth) + (opt.texture_size_directory)),
-                .y = static_cast<float>(
-                    (static_cast<float>(opt.previous_element_already_drawn) *
-                         static_cast<float>(opt.texture_size_directory) +
-                     static_cast<float>(opt.texture_size_directory) * opt.scale *
-                         static_cast<float>(opt.previous_element_already_drawn))
-                ),
-                .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
-                .h = static_cast<float>(opt.texture_size_directory) * opt.scale
-            };
-
-            renderables.emplace_back(new Renderable(texture, new SDL_FRect{file_rect}));
+            renderables.emplace_back(new Renderable(texture, new SDL_FRect{Font::CreateFRect(opt)}));
 
             std::vector<Renderable*> text = Font::CreateText(name, opt);
             renderables.insert(renderables.end(), text.begin(), text.end());
@@ -140,19 +128,8 @@ auto ScrollPaneMenu::CreateButtonsAndTexts(Directory*& dir) -> void {
         std::vector<Renderable*> renderables;
 
         Texture* folder_txt = texture_manager->GetTextureByName("Assets/Ui/Editor/Folder.png");
-        SDL_FRect folder_rect = {
-            .x = static_cast<float>((opt.texture_size_directory * opt.depth)),
-            .y = static_cast<float>(
-                (static_cast<float>(opt.previous_element_already_drawn) *
-                     static_cast<float>(opt.texture_size_directory) +
-                 static_cast<float>(opt.texture_size_directory) * opt.scale *
-                     static_cast<float>(opt.previous_element_already_drawn))
-            ),
-            .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
-            .h = static_cast<float>(opt.texture_size_directory) * opt.scale
-        };
 
-        renderables.emplace_back(new Renderable(folder_txt, new SDL_FRect{folder_rect}));
+        renderables.emplace_back(new Renderable(folder_txt, new SDL_FRect{Font::CreateFRect(opt)}));
 
         // DRAWING
 

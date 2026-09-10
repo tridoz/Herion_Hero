@@ -38,19 +38,7 @@ auto Font::CreateText(const std::string& text, struct FontOptions opt) -> std::v
             throw;
         }
 
-        SDL_FRect char_rect = {
-            .x = static_cast<float>((opt.depth * opt.texture_size_file) + (opt.texture_size_file * (i + 2))),
-            .y = static_cast<float>(
-                (static_cast<float>(opt.previous_element_already_drawn) * static_cast<float>(opt.texture_size_file) +
-                 static_cast<float>(opt.texture_size_file) * opt.scale *
-                     static_cast<float>(opt.previous_element_already_drawn) +
-                 static_cast<float>(opt.diff) * opt.scale * static_cast<float>(opt.previous_element_already_drawn))
-            ),
-            .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
-            .h = static_cast<float>(opt.texture_size_directory) * opt.scale
-        };
-
-        renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
+        renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{CreateFRectShift(opt, (i + 2))}));
     }
 
     return renderables;
@@ -95,4 +83,32 @@ auto Font::GetNameOfSpecialChar(const char c) -> std::string {
     } else {
         return "Unknown"; // Restituisce "Unknown" se non è un carattere speciale
     }
+}
+
+auto Font::CreateFRect(struct FontOptions opt) -> SDL_FRect {
+    return {
+        .x = static_cast<float>((opt.texture_size_directory * opt.depth) + (opt.texture_size_directory)),
+        .y = static_cast<float>(
+            (static_cast<float>(opt.previous_element_already_drawn) * static_cast<float>(opt.texture_size_directory) +
+             static_cast<float>(opt.texture_size_directory) * opt.scale *
+                 static_cast<float>(opt.previous_element_already_drawn))
+        ),
+        .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
+        .h = static_cast<float>(opt.texture_size_directory) * opt.scale
+    };
+}
+
+auto Font::CreateFRectShift(struct FontOptions opt, int shift) -> SDL_FRect {
+
+    return {
+        .x = static_cast<float>(opt.depth) * opt.texture_size_file + opt.texture_size_file * static_cast<float>(shift),
+        .y = static_cast<float>(
+            (static_cast<float>(opt.previous_element_already_drawn) * static_cast<float>(opt.texture_size_file) +
+             static_cast<float>(opt.texture_size_file) * opt.scale *
+                 static_cast<float>(opt.previous_element_already_drawn) +
+             static_cast<float>(opt.diff) * opt.scale * static_cast<float>(opt.previous_element_already_drawn))
+        ),
+        .w = static_cast<float>(opt.texture_size_directory) * opt.scale,
+        .h = static_cast<float>(opt.texture_size_directory) * opt.scale
+    };
 }
