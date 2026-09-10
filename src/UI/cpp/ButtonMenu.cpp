@@ -19,7 +19,7 @@ auto ButtonMenu::GetCollisionButton(float x, float y) -> Button* {
     for (const auto& [id, btn] : this->buttons) {
         const SDL_FPoint* point = new SDL_FPoint{.x = x, .y = y};
         const SDL_FRect* interaction_rect = btn->GetInteractionRect();
-        if (SDL_PointInRectFloat(point, btn->GetInteractionRect())) {
+        if (SDL_PointInRectFloat(point, interaction_rect)) {
             return btn;
         }
     }
@@ -147,13 +147,15 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/" + GetNameOfSpecialChar(c) +
                                 ".png"
                             );
-                            // char_tex_selected = texture_manager->GetTextureByName(
-                            //     "Assets/Font/" + this->font_style + "/SpecialCharacters/Selected" + std::string(1, c)
-                            //     +
-                            //     ".png"
-                            // );
+                            char_tex_selected = texture_manager->GetTextureByName(
+                                "Assets/Font/" + this->font_style + "/SpecialCharacters/Selected" +
+                                GetNameOfSpecialChar(c) + ".png"
+                            );
                         } else if (isspace(c)) {
                             char_tex_unselected = texture_manager->GetTextureByName(
+                                "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png"
+                            );
+                            char_tex_selected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png"
                             );
                         }

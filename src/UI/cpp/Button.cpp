@@ -50,7 +50,7 @@ auto Button::addRenderables(State state, std::vector<Renderable*> r) -> void {
 
 auto Button::Draw(SDL_Renderer* renderer) const -> void {
 
-    for (int i = 0; i < this->renderable.size(); i++) {
+    for (int i = 0; i < this->renderables.at(this->state).size(); i++) {
         SDL_SetTextureBlendMode(renderables.at(this->state)[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
         SDL_RenderTexture(
             renderer,

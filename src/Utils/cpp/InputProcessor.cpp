@@ -388,6 +388,7 @@ auto InputProcessor::process_mouse_left_pressed() -> void {
 }
 
 auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void {
+
     Button* btn = nullptr;
     std::vector<Button*> buttons;
 
@@ -405,6 +406,8 @@ auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void 
         if (btn != nullptr)
             btn->state = Button::State::FOCUSED;
 
+        break;
+
     case Engine::GameState::GENERAL_SETTINGS_MENU:
         btn = menus.at(Strings::Menus::Main_Window::Names::general_settings_menu_name)
                   ->GetCollisionButton(mouse_x, mouse_y);
@@ -417,20 +420,76 @@ auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void 
 
         if (btn != nullptr)
             btn->state = Button::State::FOCUSED;
-    case Engine::GameState::GRAPHICS_SETTINGS_MENU:
-    case Engine::GameState::PAUSE_MENU:
+
+        break;
+
     case Engine::GameState::EDITOR_MENU:
-    case Engine::GameState::AUDIO_SETTINGS_MENU:
-        if (true) {
+        btn = menus.at(Strings::Menus::Main_Window::Names::editor_menu_name)->GetCollisionButton(mouse_x, mouse_y);
+        buttons = menus.at(Strings::Menus::Main_Window::Names::editor_menu_name)->GetButtons();
+        for (Button* b : buttons) {
+            if (b != btn) {
+                b->state = Button::State::UNACTIVE;
+            }
         }
-        // if (active_slider == nullptr)
-        //     return;
 
-        // if (!active_slider->IsUpdating())
-        //     return;
+        if (btn != nullptr)
+            btn->state = Button::State::FOCUSED;
 
-        // active_slider->SetOffsetX(mouse_x);
+        break;
+
+    case Engine::GameState::GRAPHICS_SETTINGS_MENU:
+        btn = menus.at(Strings::Menus::Main_Window::Names::graphics_settings_menu_name)
+                  ->GetCollisionButton(mouse_x, mouse_y);
+        buttons = menus.at(Strings::Menus::Main_Window::Names::graphics_settings_menu_name)->GetButtons();
+        for (Button* b : buttons) {
+            if (b != btn) {
+                b->state = Button::State::UNACTIVE;
+            }
+        }
+
+        if (btn != nullptr)
+            btn->state = Button::State::FOCUSED;
+
+        break;
+
+    case Engine::GameState::PAUSE_MENU:
+        btn = menus.at(Strings::Menus::Main_Window::Names::pause_menu_name)->GetCollisionButton(mouse_x, mouse_y);
+        buttons = menus.at(Strings::Menus::Main_Window::Names::pause_menu_name)->GetButtons();
+        for (Button* b : buttons) {
+            if (b != btn) {
+                b->state = Button::State::UNACTIVE;
+            }
+        }
+
+        if (btn != nullptr)
+            btn->state = Button::State::FOCUSED;
+
+        break;
+
+    case Engine::GameState::AUDIO_SETTINGS_MENU:
+        btn = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)
+                  ->GetCollisionButton(mouse_x, mouse_y);
+        buttons = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)->GetButtons();
+        for (Button* b : buttons) {
+            if (b != btn) {
+                b->state = Button::State::UNACTIVE;
+            }
+        }
+
+        if (btn != nullptr)
+            btn->state = Button::State::FOCUSED;
+
+        break;
+        if (active_slider == nullptr)
+            return;
+
+        if (!active_slider->IsUpdating())
+            return;
+
+        active_slider->SetOffsetX(mouse_x);
     }
+
+    
 }
 auto InputProcessor::process_mouse_left_lifted() -> void {
     mouse_left_pressed = false;
@@ -491,9 +550,7 @@ auto InputProcessor::Process() -> void {
         break;
 
     case SDL_EVENT_MOUSE_MOTION:
-        if (mouse_left_pressed) {
-            process_mouse_motion(event.motion.x, event.motion.y);
-        }
+        process_mouse_motion(event.motion.x, event.motion.y);
         break;
 
     case SDL_EVENT_MOUSE_WHEEL:
