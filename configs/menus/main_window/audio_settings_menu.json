@@ -6,7 +6,7 @@
   "menu_type": "button_menu",
   "button_style": "Game",
   "font_style": "Game",
-  "char_width": 22.0,
+  "char_width": 50.0,
   "rows": [
     {
       "starting_x": 150,
@@ -16,18 +16,13 @@
           "type": "STATIC_TEXT",
           "text": "MASTER VOLUME",
           "id": "static_text_display_master_volume_label"
-        },
-        {
-          "type": "DYNAMIC_TEXT",
-          "text": "MASTER_VOLUME",
-          "id": "dynamic_text_master_volume_value"
-        },
-        {
-          "type": "BUTTON",
-          "text": "Minus",
-          "action": "DECREASE_MASTER_VOLUME",
-          "id": "button_decrease_master_volume"
-        },
+        }
+      ]
+    },
+    {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
         {
           "type": "SLIDER_SELECTOR",
           "max_value": 100,
@@ -40,10 +35,9 @@
           "value_to_set": "MASTER_VOLUME"
         },
         {
-          "type": "BUTTON",
-          "text": "Plus",
-          "action": "INCREASE_MASTER_VOLUME",
-          "id": "button_increase_master_volume"
+          "type": "DYNAMIC_TEXT",
+          "text": "MASTER_VOLUME",
+          "id": "dynamic_text_master_volume_value"
         }
       ]
     },
@@ -55,18 +49,13 @@
           "type": "STATIC_TEXT",
           "text": "MUSIC VOLUME",
           "id": "static_text_display_music_volume_label"
-        },
-        {
-          "type": "DYNAMIC_TEXT",
-          "text": "MUSIC_VOLUME",
-          "id": "dynamic_text_music_volume_value"
-        },
-        {
-          "type": "BUTTON",
-          "text": "Minus",
-          "action": "DECREASE_MUSIC_VOLUME",
-          "id": "button_decrease_music_volume"
-        },
+        }
+      ]
+    },
+    {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
         {
           "type": "SLIDER_SELECTOR",
           "max_value": 100,
@@ -79,10 +68,9 @@
           "value_to_set": "MUSIC_VOLUME"
         },
         {
-          "type": "BUTTON",
-          "text": "Plus",
-          "action": "INCREASE_MUSIC_VOLUME",
-          "id": "button_increase_music_volume"
+          "type": "DYNAMIC_TEXT",
+          "text": "MUSIC_VOLUME",
+          "id": "dynamic_text_music_volume_value"
         }
       ]
     },
@@ -94,18 +82,13 @@
           "type": "STATIC_TEXT",
           "text": "SFX VOLUME",
           "id": "static_text_display_sfx_volume_label"
-        },
-        {
-          "type": "DYNAMIC_TEXT",
-          "text": "SFX_VOLUME",
-          "id": "dynamic_text_sfx_volume_value"
-        },
-        {
-          "type": "BUTTON",
-          "text": "Minus",
-          "action": "DECREASE_SFX_VOLUME",
-          "id": "button_decrease_sfx_volume"
-        },
+        }
+      ]
+    },
+    {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
         {
           "type": "SLIDER_SELECTOR",
           "max_value": 100,
@@ -118,15 +101,14 @@
           "value_to_set": "SFX_VOLUME"
         },
         {
-          "type": "BUTTON",
-          "text": "Plus",
-          "action": "INCREASE_SFX_VOLUME",
-          "id": "button_increase_sfx_volume"
+          "type": "DYNAMIC_TEXT",
+          "text": "SFX_VOLUME",
+          "id": "dynamic_text_sfx_volume_value"
         }
       ]
     },
     {
-      "starting_x": 1000,
+      "starting_x": 150,
       "button_x_offset": 0,
       "elements": [
         {

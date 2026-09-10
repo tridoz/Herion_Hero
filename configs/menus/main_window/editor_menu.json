@@ -6,10 +6,10 @@
   "menu_type": "button_menu",
   "button_style": "Game",
   "font_style": "Game",
-  "char_width": 22.0,
+  "char_width": 50.0,
   "rows": [
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {

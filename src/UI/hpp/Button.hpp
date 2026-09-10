@@ -12,15 +12,23 @@
 #include "../../Utils/hpp/Logger.hpp"
 
 class Button {
+
   private:
     std::function<void()> OnClick;
     std::function<std::string()> OnClickReturn;
 
     std::vector<Renderable*> renderable;
+    SDL_FRect interaction_rect;
     std::string text;
 
   public:
+    enum class State : std::uint8_t { UNACTIVE, CLICKED, FOCUSED };
+
+    State state;
+
     Button();
+    auto GetInteractionRect() -> SDL_FRect*;
+    auto SetInteractionRect(const SDL_FRect&) -> void;
     auto SetOnClick(std::function<void()>) -> void;
     auto SetOnClickReturn(std::function<std::string()>) -> void;
     auto Click() const -> void;

@@ -1,15 +1,15 @@
 {
   "background_path": "Assets/Backgrounds/Black.png",
   "start_y": 150,
-  "button_y_offset": 12,
+  "button_y_offset": 18,
   "center_piece_offset": 8,
   "menu_type": "button_menu",
   "button_style": "Game",
   "font_style": "Game",
-  "char_width": 22.0,
+  "char_width": 50.0,
   "rows": [
     {
-      "starting_x": 500,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -24,20 +24,20 @@
         },
         {
           "type": "BUTTON",
-          "text": "Minus",
+          "text": "MINUS",
           "action": "DECREASE_RESOLUTION",
           "id": "button_decrease_resolution"
         },
         {
           "type": "BUTTON",
-          "text": "Plus",
+          "text": "PLUS",
           "action": "INCREASE_RESOLUTION",
           "id": "button_increase_resolution"
         }
       ]
     },
     {
-      "starting_x": 500,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -52,21 +52,21 @@
         },
         {
           "type": "BUTTON",
-          "text": "Minus",
+          "text": "MINUS",
           "action": "DECREASE_FRAME_RATE",
           "id": "button_decrease_framerate"
         },
         {
           "type": "BUTTON",
-          "text": "Plus",
+          "text": "PLUS",
           "action": "INCREASE_FRAME_RATE",
           "id": "button_increase_framerate"
         }
       ]
     },
     {
-      "starting_x": 1000,
-      "button_x_offset": 0,
+      "starting_x": 150,
+      "button_x_offset": 50,
       "elements": [
         {
           "type": "BUTTON",

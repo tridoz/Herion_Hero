@@ -74,7 +74,7 @@ auto Menu::GetText(const std::string& text_type) -> std::string {
         const int width = JSONParser::graphics::GetWidth();
         const int height = JSONParser::graphics::GetHeight();
 
-        text = std::to_string(width) + "x" + std::to_string(height);
+        text = std::to_string(width) + "X" + std::to_string(height);
     } else if (text_type == "FRAME_RATE") {
         const int frame_rate = JSONParser::graphics::GetFrameRate();
         text = std::to_string(frame_rate);

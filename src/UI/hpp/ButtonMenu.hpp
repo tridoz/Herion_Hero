@@ -15,10 +15,11 @@ class ButtonMenu : public Menu {
     float center_piece_offset;
 
   public:
+    ButtonMenu();
     ~ButtonMenu();
-    auto CheckCollision(const std::vector<SDL_FRect>&, float, float) -> bool override;
     auto LoadConfiguration(const std::string&) -> void override;
     auto GetCollisionButton(float, float) -> Button* override;
+    auto CheckCollision(const std::vector<SDL_FRect>&, float, float) -> bool override;
     auto GetSliderSelector(float, float) -> SliderSelector*;
     auto Draw(SDL_Renderer*) const -> void override;
 };

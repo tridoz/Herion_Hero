@@ -6,7 +6,17 @@
 
 #include "../hpp/Button.hpp"
 
-Button::Button() = default;
+Button::Button() {
+    this->state = State::UNACTIVE;
+}
+
+auto Button::GetInteractionRect() -> SDL_FRect* {
+    return &interaction_rect;
+}
+
+auto Button::SetInteractionRect(const SDL_FRect& rect) -> void {
+    this->interaction_rect = rect;
+}
 
 auto Button::SetOnClick(std::function<void()> action) -> void {
     this->OnClick = std::move(action);
@@ -39,6 +49,12 @@ auto Button::Draw(SDL_Renderer* renderer) const -> void {
     for (int i = 0; i < this->renderable.size(); i++) {
         SDL_SetTextureBlendMode(renderable[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
         SDL_RenderTexture(renderer, renderable[i]->GetTexture()->GetTexture(), nullptr, renderable[i]->GetRect());
+    }
+
+    if (this->state == State::FOCUSED) {
+        // TODO
+    } else if (this->state == State::CLICKED) {
+        // TODO
     }
 }
 

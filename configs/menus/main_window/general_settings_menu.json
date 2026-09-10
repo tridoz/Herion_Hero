@@ -1,15 +1,15 @@
 {
   "background_path": "Assets/Backgrounds/Black.png",
   "start_y": 350,
-  "button_y_offset": 12,
+  "button_y_offset": 18,
   "center_piece_offset": 8,
   "menu_type": "button_menu",
   "button_style": "Game",
   "font_style": "Game",
-  "char_width": 22.0,
+  "char_width": 50.0,
   "rows": [
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "starting_x": 250,
+      "starting_x": 150,
       "button_x_offset": 50,
       "elements": [
         {

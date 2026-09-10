@@ -6,7 +6,7 @@
   "menu_type": "button_menu",
   "button_style": "Editor",
   "font_style": "Editor",
-  "char_width": 40.0,
+  "char_width": 22.0,
   "rows": [
     {
       "starting_x": 5,
