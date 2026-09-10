@@ -44,17 +44,20 @@ auto Button::SetRenderables(std::vector<Renderable*> r) -> void {
     this->renderable = std::move(r);
 }
 
+auto Button::addRenderables(State state, std::vector<Renderable*> r) -> void {
+    this->renderables[state] = std::move(r);
+}
+
 auto Button::Draw(SDL_Renderer* renderer) const -> void {
 
     for (int i = 0; i < this->renderable.size(); i++) {
-        SDL_SetTextureBlendMode(renderable[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
-        SDL_RenderTexture(renderer, renderable[i]->GetTexture()->GetTexture(), nullptr, renderable[i]->GetRect());
-    }
-
-    if (this->state == State::FOCUSED) {
-        // TODO
-    } else if (this->state == State::CLICKED) {
-        // TODO
+        SDL_SetTextureBlendMode(renderables.at(this->state)[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
+        SDL_RenderTexture(
+            renderer,
+            renderables.at(this->state)[i]->GetTexture()->GetTexture(),
+            nullptr,
+            renderables.at(this->state)[i]->GetRect()
+        );
     }
 }
 

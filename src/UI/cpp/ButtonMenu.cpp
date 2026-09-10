@@ -104,36 +104,59 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                 text = menu_element_characteristic.text.value();
             }
 
-            std::vector<Renderable*> renderables;
+            std::vector<Renderable*> renderables_unselected;
+            std::vector<Renderable*> renderables_selected;
+            std::vector<Renderable*> renderables_clicked;
 
             if (menu_element_characteristic.type != "SLIDER_SELECTOR") {
 
                 int characters = 0;
                 for (char c : text) {
-                    Texture* char_tex = nullptr;
+                    Texture* char_tex_unselected = nullptr;
+                    Texture* char_tex_selected = nullptr;
+                    Texture* char_tex_clicked = nullptr;
 
                     try {
-                        if (std::isupper(c))
-                            char_tex = texture_manager->GetTextureByName(
+                        if (std::isupper(c)) {
+                            char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/UppercaseLetters/" + std::string(1, c) + ".png"
                             );
-                        else if (std::islower(c))
-                            char_tex = texture_manager->GetTextureByName(
+
+                            char_tex_selected = texture_manager->GetTextureByName(
+                                "Assets/Font/" + this->font_style + "/UppercaseLetters/Selected/" + std::string(1, c) +
+                                ".png"
+                            );
+                        } else if (std::islower(c)) {
+                            char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/LowercaseLetters/" + std::string(1, c) + ".png"
                             );
-                        else if (std::isdigit(c))
-                            char_tex = texture_manager->GetTextureByName(
+                            // char_tex_selected = texture_manager->GetTextureByName(
+                            //     "Assets/Font/" + this->font_style + "/LowercaseLetters/Selected" + std::string(1, c)
+                            //     +
+                            //     ".png"
+                            // );
+                        } else if (std::isdigit(c)) {
+                            char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/Numbers/" + std::string(1, c) + ".png"
                             );
-                        else if (isspecial(c))
-                            char_tex = texture_manager->GetTextureByName(
+                            // char_tex_selected = texture_manager->GetTextureByName(
+                            //     "Assets/Font/" + this->font_style + "/Numbers/Selected/" + std::string(1, c) + ".png"
+                            // );
+                        } else if (isspecial(c)) {
+                            char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/" + GetNameOfSpecialChar(c) +
                                 ".png"
                             );
-                        else if (isspace(c))
-                            char_tex = texture_manager->GetTextureByName(
+                            // char_tex_selected = texture_manager->GetTextureByName(
+                            //     "Assets/Font/" + this->font_style + "/SpecialCharacters/Selected" + std::string(1, c)
+                            //     +
+                            //     ".png"
+                            // );
+                        } else if (isspace(c)) {
+                            char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png"
                             );
+                        }
                     } catch (HerionException::File::FileNotFoundException& ex) {
                         ex.UpdateStackTrace(GET_CONTEXT());
                         throw;
@@ -147,12 +170,14 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                     };
 
                     cumulative_x += char_width * scale + 5;
-                    renderables.emplace_back(new Renderable(char_tex, new SDL_FRect{char_rect}));
+                    renderables_unselected.emplace_back(new Renderable(char_tex_unselected, new SDL_FRect{char_rect}));
+                    renderables_selected.emplace_back(new Renderable(char_tex_selected, new SDL_FRect{char_rect}));
                 }
 
                 if (menu_element_characteristic.type == "BUTTON") {
                     Button* btn = new Button();
-                    btn->SetRenderables(renderables);
+                    btn->addRenderables(Button::State::UNACTIVE, renderables_unselected);
+                    btn->addRenderables(Button::State::FOCUSED, renderables_selected);
 
                     if (menu_element_characteristic.action.value() == "RETURN_VALUE") {
                         btn->SetText(menu_element_characteristic.return_value.value());
@@ -166,11 +191,12 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                     }
 
                     SDL_FRect interaction_rect = {
-                        .x = renderables.front()->GetRect()->x,
-                        .y = renderables.front()->GetRect()->y,
-                        .w = (renderables.back()->GetRect()->x + renderables.back()->GetRect()->w) -
-                             renderables.front()->GetRect()->x,
-                        .h = renderables.front()->GetRect()->h
+                        .x = renderables_unselected.front()->GetRect()->x,
+                        .y = renderables_unselected.front()->GetRect()->y,
+                        .w = (renderables_unselected.back()->GetRect()->x +
+                              renderables_unselected.back()->GetRect()->w) -
+                             renderables_unselected.front()->GetRect()->x,
+                        .h = renderables_unselected.front()->GetRect()->h
                     };
 
                     btn->SetInteractionRect(interaction_rect);
@@ -178,7 +204,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                     buttons.emplace(menu_element_characteristic.id, btn);
                 } else if (menu_element_characteristic.type.contains("TEXT")) {
                     Text* txt = new Text();
-                    txt->SetRenderables(renderables);
+                    txt->SetRenderables(renderables_unselected);
                     texts.emplace(menu_element_characteristic.id, txt);
                 }
 
@@ -220,7 +246,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                     .h = char_width * scale
                 };
 
-                slider->SetRenderable(renderables);
+                slider->SetRenderable(renderables_unselected);
 
                 slider->SetLength(menu_element_characteristic.length.value());
                 slider->SetMaxMinStep(

@@ -33,6 +33,8 @@ auto Texture::CreateTexture(SDL_Renderer* renderer, const std::string& texture_t
         THROW_FILE_NOT_FOUND((this->texture_name + " nor ../" + this->texture_name));
     }
 
+    SDL_SetTextureScaleMode(this->texture, SDL_SCALEMODE_NEAREST);
+
     texture_created = true;
 }
 

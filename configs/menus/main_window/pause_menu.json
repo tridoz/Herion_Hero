@@ -6,7 +6,7 @@
   "menu_type": "button_menu",
   "button_style": "Game",
   "font_style": "Game",
-  "char_width": 22.0,
+  "char_width": 32.0,
   "rows": [
     {
       "starting_x": 250,
