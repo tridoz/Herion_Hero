@@ -14,7 +14,7 @@
       "elements": [
         {
           "type": "STATIC_TEXT",
-          "text": "RESOLUTION ",
+          "text": "RESOLUTION",
           "id": "static_text_display_resolution_label"
         },
         {

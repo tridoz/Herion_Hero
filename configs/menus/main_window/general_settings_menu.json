@@ -1,5 +1,5 @@
 {
-  "background_path": "Assets/Backgrounds/Black.png",
+  "background_path": "Assets/Backgrounds/SettingsMenu.png",
   "start_y": 350,
   "button_y_offset": 18,
   "center_piece_offset": 8,

@@ -488,8 +488,6 @@ auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void 
 
         active_slider->SetOffsetX(mouse_x);
     }
-
-    
 }
 auto InputProcessor::process_mouse_left_lifted() -> void {
     mouse_left_pressed = false;
