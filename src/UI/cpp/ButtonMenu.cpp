@@ -230,6 +230,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
 
                 const std::string value_to_set = menu_element_characteristic.value_to_set.value();
                 float volume_percentage = 0;
+
                 if (value_to_set == "MASTER_VOLUME")
                     volume_percentage = JSONParser::audio::GetMasterVolume();
                 else if (value_to_set == "MUSIC_VOLUME")
@@ -239,7 +240,6 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
 
                 const float bar_percentage =
                     menu_element_characteristic.length.value() / 100 * volume_percentage * scale;
-                ;
 
                 const SDL_FRect slider_button_rect = {
                     .x = slider_bar_rect.x - (char_width * scale / 2.0f) + bar_percentage,
@@ -248,7 +248,7 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                     .h = char_width * scale
                 };
 
-                slider->SetRenderable(renderables_unselected);
+                // slider->SetRenderable(renderables_unselected);
 
                 slider->SetLength(menu_element_characteristic.length.value());
                 slider->SetMaxMinStep(

@@ -48,7 +48,7 @@ auto SliderSelector::SetMaxMinStep(const float max, const float min, const float
     this->min_value = static_cast<int>(min);
     this->step = static_cast<float>(step);
 
-    // SetXValues(  this->rects[2].x, this->rects[0].x + this->rects[0].w  );
+    SetXValues(this->slider_bar_rect.x + this->slider_bar_rect.w, this->slider_bar_rect.x);
 }
 
 auto SliderSelector::SetToSet(std::string to_set) -> void {
@@ -56,16 +56,20 @@ auto SliderSelector::SetToSet(std::string to_set) -> void {
 }
 
 auto SliderSelector::SaveVolume() -> void {
-    int start = static_cast<int>(
-        this->slider_button_rect.x + this->slider_button_rect.w / 2 - this->renderables[1]->GetRect()->x
-    );
+
+    float val_min = slider_bar_rect.x;
+    float val_max = slider_bar_rect.x + slider_bar_rect.w;
+
+    float button_center = slider_button_rect.x + slider_button_rect.w / 2.0f;
+
+    float fixed_start = (button_center - val_min) * 100.0f / (val_max - val_min);
 
     if (to_set == "MASTER_VOLUME")
-        JSONParser::audio::SetMasterVolume(std::clamp(start / 5, 0, 100));
+        JSONParser::audio::SetMasterVolume(static_cast<int>(std::round(fixed_start)));
     else if (to_set == "MUSIC_VOLUME")
-        JSONParser::audio::SetMusicVolume(std::clamp(start / 5, 0, 100));
+        JSONParser::audio::SetMusicVolume(static_cast<int>(std::round(fixed_start)));
     else if (to_set == "SFX_VOLUME")
-        JSONParser::audio::SetSFXVolume(std::clamp(start / 5, 0, 100));
+        JSONParser::audio::SetSFXVolume(static_cast<int>(std::round(fixed_start)));
 }
 
 auto SliderSelector::SetLength(float lenght) -> void {
@@ -78,10 +82,10 @@ auto SliderSelector::SetXValues(const float max, const float min) -> void {
 }
 
 auto SliderSelector::Draw(SDL_Renderer* renderer) const -> void {
-    for (int i = 0; i < this->renderables.size(); i++) {
-        SDL_SetTextureBlendMode(renderables[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
-        SDL_RenderTexture(renderer, renderables[i]->GetTexture()->GetTexture(), nullptr, renderables[i]->GetRect());
-    }
+    // for (int i = 0; i < this->renderables.size(); i++) {
+    //     SDL_SetTextureBlendMode(renderables[i]->GetTexture()->GetTexture(), SDL_BLENDMODE_BLEND);
+    //     SDL_RenderTexture(renderer, renderables[i]->GetTexture()->GetTexture(), nullptr, renderables[i]->GetRect());
+    // }
 
     SDL_SetTextureBlendMode(this->slider_bar_texture->GetTexture(), SDL_BLENDMODE_BLEND);
     SDL_RenderTexture(renderer, this->slider_bar_texture->GetTexture(), nullptr, &slider_bar_rect);
@@ -91,8 +95,8 @@ auto SliderSelector::Draw(SDL_Renderer* renderer) const -> void {
 }
 
 auto SliderSelector::GetSliderButtonRect(float mouse_x, float mouse_y) -> SDL_FRect* {
-    if (mouse_x > slider_button_rect.x && mouse_x < slider_button_rect.x + slider_button_rect.w &&
-        mouse_y > slider_button_rect.y && mouse_y < slider_button_rect.y + slider_button_rect.h) {
+    SDL_FPoint p = {.x = mouse_x, .y = mouse_y};
+    if (SDL_PointInRectFloat(&p, &slider_button_rect)) {
         return &this->slider_button_rect;
     }
 
@@ -104,7 +108,7 @@ auto SliderSelector::StartUpdating() -> void {
 }
 
 auto SliderSelector::StopUpdating() -> void {
-    this->is_updating = false;
+    is_updating = false;
 }
 
 auto SliderSelector::IsUpdating() const -> bool {

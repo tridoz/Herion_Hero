@@ -470,6 +470,7 @@ auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void 
         btn = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)
                   ->GetCollisionButton(mouse_x, mouse_y);
         buttons = menus.at(Strings::Menus::Main_Window::Names::audio_settings_menu_name)->GetButtons();
+
         for (Button* b : buttons) {
             if (b != btn) {
                 b->state = Button::State::UNACTIVE;
@@ -479,16 +480,22 @@ auto InputProcessor::process_mouse_motion(float mouse_x, float mouse_y) -> void 
         if (btn != nullptr)
             btn->state = Button::State::FOCUSED;
 
+        if (mouse_left_pressed) {
+
+            if (active_slider == nullptr)
+                return;
+
+            if (!active_slider->IsUpdating())
+                return;
+
+            // std::cout << "updating slider\n";
+            active_slider->SetOffsetX(mouse_x);
+        }
+
         break;
-        if (active_slider == nullptr)
-            return;
-
-        if (!active_slider->IsUpdating())
-            return;
-
-        active_slider->SetOffsetX(mouse_x);
     }
 }
+
 auto InputProcessor::process_mouse_left_lifted() -> void {
     mouse_left_pressed = false;
     Button* btn;
