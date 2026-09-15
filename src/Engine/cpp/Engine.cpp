@@ -83,6 +83,9 @@ auto Engine::InitWindows() -> void {
         throw;
     }
 
+    main_window->LoadCursors("Assets/all_cursors.txt");
+    main_window->SetCursor("hand");
+
     Window* texture_selection;
     Window* action_selection;
     Window* entity_selection;

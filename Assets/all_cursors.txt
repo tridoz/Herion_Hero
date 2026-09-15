@@ -1,0 +1,1 @@
+hand Assets/Cursor/Hand.png 0 0

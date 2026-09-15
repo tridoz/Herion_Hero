@@ -158,14 +158,17 @@ auto Window::LoadCursors(const std::string& filename) -> void {
         ss >> cursor_name >> cursor_path >> hotX >> hotY;
 
         ss.clear();
-        SDL_Surface* cursor_surface = IMG_Load(cursor_path.c_str());
+        SDL_Surface* cursor_surface = IMG_Load(std::string("../" + cursor_path).c_str());
+
         Cursors[cursor_name] = SDL_CreateColorCursor(cursor_surface, hotX, hotY);
+        
         SDL_DestroySurface(cursor_surface);
     }
 }
 
 auto Window::SetCursor(const std::string& cursor_name) -> void {
     SDL_SetCursor(Cursors[cursor_name]);
+    SDL_ShowCursor();
     current_cursor_name = cursor_name;
 }
 
