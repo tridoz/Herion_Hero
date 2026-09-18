@@ -42,19 +42,6 @@ echo -e "${RESET}"
 # Loading animation
 # ==========================
 
-loading()
-{
-    local msg="$1"
-    local spin='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
-
-    for ((i=0; i<20; i++)); do
-        printf "\r${YELLOW}%c${RESET} %s" "${spin:$((i%10)):1}" "$msg"
-        sleep 0.08
-    done
-
-    printf "\r"
-}
-
 
 # ==========================
 # Check executable
@@ -67,8 +54,6 @@ if [ ! -f "./bin/Herion_Hero" ]; then
 fi
 
 
-loading "Awakening Herion Hero..."
-
 
 echo -e "${GREEN}✔ Launching game...${RESET}"
 echo
@@ -77,6 +62,8 @@ echo
 # ==========================
 # Run game
 # ==========================
+
+clear
 
 ./bin/Herion_Hero
 

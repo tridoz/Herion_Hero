@@ -1,3 +1,5 @@
+
+
 #ifndef HERION_HERO_WINDOW_HPP
 #define HERION_HERO_WINDOW_HPP
 

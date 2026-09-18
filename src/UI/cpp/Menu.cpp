@@ -13,6 +13,7 @@ Menu::Menu() {
     buttons_functions.emplace("OPEN_EDITOR_MENU", ButtonsFunctions::OpenEditorMenu);
     buttons_functions.emplace("OPEN_GENERAL_SETTINGS_MENU", ButtonsFunctions::OpenGeneralSettingsMenu);
     buttons_functions.emplace("OPEN_GRAPHICS_SETTINGS_MENU", ButtonsFunctions::OpenGraphicsSettingsMenu);
+    buttons_functions.emplace("OPEN_MENU_EDITOR", nullptr);
     buttons_functions.emplace("OPEN_AUDIO_SETTINGS_MENU", ButtonsFunctions::OpenAudioSettingsMenu);
     buttons_functions.emplace("OPEN_LEVEL_EDITOR", ButtonsFunctions::OpenLevelEditor);
     buttons_functions.emplace("OPEN_ANIMATION_EDITOR", ButtonsFunctions::OpenAnimationEditor);

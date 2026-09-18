@@ -1,9 +1,4 @@
-//
-// Created by tridoz on 22/05/26.
-//
-
-#ifndef HERION_HERO_SLIDERSELECTOR_HPP
-#define HERION_HERO_SLIDERSELECTOR_HPP
+#pragma once
 
 #include <SDL3/SDL.h>
 
@@ -65,5 +60,3 @@ class SliderSelector {
     [[nodiscard]] auto GetOffsetX() const -> float;
     [[nodiscard]] auto GetOffsetY() const -> float;
 };
-
-#endif // HERION_HERO_SLIDERSELECTOR_HPP

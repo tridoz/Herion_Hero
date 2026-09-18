@@ -28,7 +28,7 @@ auto ButtonsFunctions::GetTexture() -> Texture* {
 auto ButtonsFunctions::StartGame() -> void {
     Engine::SetGameState(Engine::GameState::IN_GAME);
 }
-auto ButtonsFunctions::StartNewGame() -> void{
+auto ButtonsFunctions::StartNewGame() -> void {
 }
 
 auto ButtonsFunctions::EndGame() -> void {
@@ -42,6 +42,10 @@ auto ButtonsFunctions::OpenLevelEditor() -> void {
 }
 auto ButtonsFunctions::OpenAnimationEditor() -> void {
     Engine::SetGameState(Engine::GameState::ANIMATION_EDITOR);
+}
+
+auto ButtonsFunctions::OpenMenuEditor() -> void {
+    Engine::SetGameState(Engine::GameState::MENU_EDITOR);
 }
 auto ButtonsFunctions::OpenEditorMenu() -> void {
     Engine::SetGameState(Engine::GameState::EDITOR_MENU);

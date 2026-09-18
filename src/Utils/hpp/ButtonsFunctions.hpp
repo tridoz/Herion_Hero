@@ -29,6 +29,7 @@ class ButtonsFunctions {
     static auto OpenTextureSelectionMenu() -> void;
     static auto OpenLevelEditor() -> void;
     static auto OpenAnimationEditor() -> void;
+    static auto OpenMenuEditor() -> void;
     static auto ReturnPreviousState() -> void;
     static auto IncreaseResolution() -> void;
     static auto DecreaseResolution() -> void;

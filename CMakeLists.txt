@@ -27,6 +27,7 @@ include_directories(
         "${CMAKE_SOURCE_DIR}/src/WorldBuilding/hpp"
         "${CMAKE_SOURCE_DIR}/src/Sound/hpp"
         "${CMAKE_SOURCE_DIR}/src/Exceptions/hpp"
+        "${CMAKE_SOURCE_DIR}/src/ParserCML/hpp"
         "${CMAKE_SOURCE_DIR}/headers_only_dependencies/"
 )
 

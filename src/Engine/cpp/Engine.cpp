@@ -415,6 +415,11 @@ auto Engine::CheckGameMode() -> void {
         img_editor->DrawImage();
         break;
 
+    case Engine::GameState::MENU_EDITOR:
+        SDL_SetRenderDrawColor(main_window->GetRenderer(), 0, 0, 0, 0);
+        SDL_RenderClear(main_window->GetRenderer());
+        break;
+
     case Engine::GameState::IN_GAME:
         game_room_manager->DrawCurrentRoom(main_window->GetRenderer());
 

@@ -1,4 +1,9 @@
 #include "src/Engine/hpp/Engine.hpp"
+#include "src/Utils/hpp/TimeMesure.hpp"
+
+#include "src/ParserCML/hpp/Lexer.hpp"
+#include "src/ParserCML/hpp/Parser.hpp"
+#include <fstream>
 
 #ifdef _WIN32
 #include <stdlib.h>
@@ -73,8 +78,18 @@ auto main(int argc, char* argv[]) -> int {
 
     Engine* engine = new Engine();
 
+    std::ifstream file("configs/menus/main_window/audio_settings_menu.cml");
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+
+    const CMLDocument document = (new Parser((new Lexer(buffer.str()))->Tokenize()))->Parse();
+
+    std::cout << document.ToString() << '\n';
+
+    return 0;
+
     try {
-        engine->Init();
+        std::cout << Time::MearureTime([&]() { engine->Init(); });
     } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());

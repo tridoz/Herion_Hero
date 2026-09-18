@@ -70,6 +70,7 @@ class Engine {
         EDITOR_MENU,
         LEVEL_EDITOR,
         ANIMATION_EDITOR,
+        MENU_EDITOR,
         IN_GAME,
         EXIT
     };

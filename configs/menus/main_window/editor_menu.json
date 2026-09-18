@@ -38,6 +38,18 @@
       "elements": [
         {
           "type": "BUTTON",
+          "text": "MENUS",
+          "action": "OPEN_MENU_EDITOR",
+          "id": "button_for_opening_menu_editor"
+        }
+      ]
+    },
+    {
+      "starting_x": 150,
+      "button_x_offset": 50,
+      "elements": [
+        {
+          "type": "BUTTON",
           "text": "BACK",
           "action": "OPEN_MAIN_MENU",
           "id": "button_return_previous_game_mode"
