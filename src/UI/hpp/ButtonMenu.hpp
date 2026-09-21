@@ -5,6 +5,9 @@
 #ifndef HERION_HERO_BUTTONMENU_HPP
 #define HERION_HERO_BUTTONMENU_HPP
 
+#include "../../ParserCML/hpp/AST.hpp"
+#include "../../ParserCML/hpp/Lexer.hpp"
+#include "../../ParserCML/hpp/Parser.hpp"
 #include "Menu.hpp"
 
 class ButtonMenu : public Menu {
@@ -18,6 +21,7 @@ class ButtonMenu : public Menu {
     ButtonMenu();
     ~ButtonMenu();
     auto LoadConfiguration(const std::string&) -> void override;
+    auto LoadConfigurationCML(const std::string&) -> void;
     auto GetCollisionButton(float, float) -> Button* override;
     auto CheckCollision(const std::vector<SDL_FRect>&, float, float) -> bool override;
     auto GetSliderSelector(float, float) -> SliderSelector*;

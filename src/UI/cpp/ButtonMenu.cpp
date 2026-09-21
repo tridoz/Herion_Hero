@@ -3,6 +3,9 @@
 //
 
 #include "../hpp/ButtonMenu.hpp"
+
+#include "AST.hpp"
+#include "HerionFileException.hpp"
 #include "JSONParser.hpp"
 #include "SDL3/SDL_events.h"
 
@@ -278,6 +281,29 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
         }
 
         current_y += row_height + static_cast<float>(button_y_offset);
+    }
+}
+
+auto ButtonMenu::LoadConfigurationCML(const std::string& filename) -> void {
+    std::ifstream file;
+    try {
+        FileOpener::OpenFileInput(file, filename);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
+        throw ex;
+    }
+
+    std::stringstream ss;
+    ss << file.rdbuf();
+
+    CMLDocument document = (new Parser((new Lexer(ss.str()))->Tokenize()))->Parse();
+
+    for (const CMLParameter& parameter : document.components[0].parameters) {
+        std::cout << parameter.ToString() << "\n";
+    }
+
+    for (const CMLComponent& component : document.components[0].children) {
+        std::cout << component.ToString() << "\n\n\n";
     }
 }
 
