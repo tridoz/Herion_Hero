@@ -23,6 +23,7 @@ class ButtonMenu : public Menu {
     ButtonMenu();
     ~ButtonMenu();
     auto LoadConfiguration(const std::string&) -> void override;
+    auto LoadConfigurationCML(const std::string&) -> void;
     auto GetCollisionButton(float, float) -> Button* override;
     auto CheckCollision(const std::vector<SDL_FRect>&, float, float) -> bool override;
     auto GetSliderSelector(float, float) -> SliderSelector*;

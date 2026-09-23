@@ -168,15 +168,17 @@ auto Engine::InitRoomManager() -> void {
 
 auto Engine::LoadMenusConfigurations() -> void {
     try {
-        main_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::main_menu_config_path);
+        main_menu->LoadConfigurationCML(Strings::Menus::Main_Window::Paths::main_menu_config_path);
 
-        general_settings_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::general_settings_menu_config_path);
-        graphics_settings_menu->LoadConfiguration(
+        general_settings_menu->LoadConfigurationCML(
+            Strings::Menus::Main_Window::Paths::general_settings_menu_config_path
+        );
+        graphics_settings_menu->LoadConfigurationCML(
             Strings::Menus::Main_Window::Paths::graphics_settings_menu_config_path
         );
-        audio_settings_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path);
-        pause_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::pause_menu_config_path);
-        editor_menu->LoadConfiguration(Strings::Menus::Main_Window::Paths::editor_menu_config_path);
+        audio_settings_menu->LoadConfigurationCML(Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path);
+        pause_menu->LoadConfigurationCML(Strings::Menus::Main_Window::Paths::pause_menu_config_path);
+        editor_menu->LoadConfigurationCML(Strings::Menus::Main_Window::Paths::editor_menu_config_path);
 
         texture_selection_menu->LoadConfiguration(
             Strings::Menus::Level_Editors_Window::Paths::texture_selection_menu_config_path
@@ -336,7 +338,7 @@ auto Engine::Run() -> void {
         if (JSONParser::audio::changed) {
             JSONParser::audio::ChangesApplied();
             try {
-                audio_settings_menu->LoadConfiguration(
+                audio_settings_menu->LoadConfigurationCML(
                     Strings::Menus::Main_Window::Paths::audio_settings_menu_config_path
                 );
             } catch (HerionException::File::FileException& ex) {

@@ -216,6 +216,7 @@ auto InputProcessor::process_key_down(int scancode) -> void {
 
     case Engine::GameState::ANIMATION_EDITOR:
         process_animation_editor(scancode);
+        break;
 
     case Engine::GameState::IN_GAME:
         process_in_game(scancode);

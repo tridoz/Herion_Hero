@@ -9,8 +9,8 @@ component Menu(
         param starting_y {150}
         
         component StaticText(
-            param starting_x {150},
-            param text {"MASTER VOLUME"},
+            param starting_x {150}
+            param text {"MASTER VOLUME"}
             param id {"static_text_display_master_volume_label"}
         )
     )
@@ -20,20 +20,20 @@ component Menu(
         param starting_y {194}
 
         component SliderSelector(
-            param starting_x {150},
-            param max_value {100},
-            param min_value {0},
-            param step {1},
-            param slider_bar_offset {30},
-            param length {500},
-            param id {"slider_selector_for_master_volume"},
-            param action {"SETTER"},
+            param starting_x {150}
+            param max_value {100}
+            param min_value {0}
+            param step {1}
+            param slider_bar_offset {30}
+            param length {500}
+            param id {"slider_selector_for_master_volume"}
+            param action {"SETTER"}
             param value_to_set {"MASTER_VOLUME"}
         )
 
         component DynamicText(
-            param starting_x {700},
-            param reference {"MASTER_VOLUME"},
+            param starting_x {700}
+            param reference {"MASTER_VOLUME"}
             param id {"dynamic_text_master_volume_value"}
         )
 
@@ -46,8 +46,8 @@ component Menu(
         param starting_y {238}
 
         component StaticText(
-            param starting_x {150},
-            param text {"MUSIC VOLUME"},
+            param starting_x {150}
+            param text {"MUSIC VOLUME"}
             param id {"static_text_display_music_volume_label"}
         )
     )
@@ -57,20 +57,20 @@ component Menu(
         param starting_y {282}
 
         component SliderSelector(
-            param starting_x {150},
-            param max_value {100},
-            param min_value {0},
-            param step {1},
-            param slider_bar_offset {30},
-            param length {500},
-            param id {"slider_selector_for_music_volume"},
-            param action {"SETTER"},
+            param starting_x {150}
+            param max_value {100}
+            param min_value {0}
+            param step {1}
+            param slider_bar_offset {30}
+            param length {500}
+            param id {"slider_selector_for_music_volume"}
+            param action {"SETTER"}
             param value_to_set {"MUSIC_VOLUME"}
         )
 
         component DynamicText(
-            param starting_x {700},
-            param reference {"MUSIC_VOLUME"},
+            param starting_x {700}
+            param reference {"MUSIC_VOLUME"}
             param id {"dynamic_text_music_volume_value"}
         )
     )
@@ -80,8 +80,8 @@ component Menu(
         param starting_y {326} 
 
         component StaticText(
-            param starting_x {150},
-            param text {"SFX VOLUME"},
+            param starting_x {150}
+            param text {"SFX VOLUME"}
             param id {"static_text_display_sfx_volume_label"}
         )
     )
@@ -91,20 +91,20 @@ component Menu(
         param starting_y {370}
 
         component SliderSelector(
-            param starting_x {150},
-            param max_value {100},
-            param min_value {0},
-            param step {1},
-            param slider_bar_offset {30},
-            param length {500},
-            param id {"slider_selector_for_sfx_volume"},
-            param action {"SETTER"},
+            param starting_x {150}
+            param max_value {100}
+            param min_value {0}
+            param step {1}
+            param slider_bar_offset {30}
+            param length {500}
+            param id {"slider_selector_for_sfx_volume"}
+            param action {"SETTER"}
             param value_to_set {"SFX_VOLUME"}
         )
 
         component DynamicText(
-            param starting_x {700},
-            param reference {"SFX_VOLUME"},
+            param starting_x {700}
+            param reference {"SFX_VOLUME"}
             param id {"dynamic_text_sfx_volume_value"}
         )
     )
@@ -115,8 +115,8 @@ component Menu(
 
         component Button(
             param starting_x {150}
-            param text {"DONE"},
-            param function {"RETURN_PREVIOUS_GAME_MODE"},
+            param text {"DONE"}
+            param function {"RETURN_PREVIOUS_GAME_MODE"}
             param id {"button_return_previous_game_mode"}
         )
     )
