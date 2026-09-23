@@ -26,6 +26,7 @@ class Texture {
     [[nodiscard]] auto GetTextureName() const -> std::string;
     [[nodiscard]] auto GetTexture() const -> SDL_Texture*;
     auto SetCode(const std::string&) -> void;
+    auto SetTexture(SDL_Texture*, const std::string&) -> void;
     [[nodiscard]] auto GetCode() const -> std::string;
 };
 

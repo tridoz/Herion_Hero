@@ -1,26 +1,26 @@
 component Menu(
-    param backgorund_path {"Assets/Backgrounds/Black.png"};
-    param start_y {150};
-    param button_y_offset {12};
-    param center_piece_offset {8};
-    param menu_type {"button_menu"};
-    param button_style {"Game"};
-    param font_style {"Game"};
-    param char_width {32.0};
+    param background_path {"Assets/Backgrounds/Black.png"}
+    param button_y_offset {12}
+    param font_style {"Game"}
+    param char_dim {32}
 
     component Row(
-        param starting_x {150};
-        param button_x_offset {50};
+        param row_number {0}
+        param starting_y {150}
+        
         component StaticText(
+            param starting_x {150},
             param text {"MASTER VOLUME"},
-            param id {"static_text_displayy_master_volume_label"}
-        );
-    );
+            param id {"static_text_display_master_volume_label"}
+        )
+    )
 
     component Row(
-        param starting_x {150};
-        param button_x_offset {150};
+        param row_number {1}
+        param starting_y {194}
+
         component SliderSelector(
+            param starting_x {150},
             param max_value {100},
             param min_value {0},
             param step {1},
@@ -29,18 +29,35 @@ component Menu(
             param id {"slider_selector_for_master_volume"},
             param action {"SETTER"},
             param value_to_set {"MASTER_VOLUME"}
-        );
+        )
 
         component DynamicText(
-            param reference {MASTER_VOLUME},
+            param starting_x {700},
+            param reference {"MASTER_VOLUME"},
             param id {"dynamic_text_master_volume_value"}
-        );
-    );
+        )
+
+
+
+    )
 
     component Row(
-        param starting_x {150};
-        param button_x_offset {150};
+        param row_number {2}
+        param starting_y {238}
+
+        component StaticText(
+            param starting_x {150},
+            param text {"MUSIC VOLUME"},
+            param id {"static_text_display_music_volume_label"}
+        )
+    )
+
+    component Row(
+        param row_number {3}
+        param starting_y {282}
+
         component SliderSelector(
+            param starting_x {150},
             param max_value {100},
             param min_value {0},
             param step {1},
@@ -49,18 +66,32 @@ component Menu(
             param id {"slider_selector_for_music_volume"},
             param action {"SETTER"},
             param value_to_set {"MUSIC_VOLUME"}
-        );
+        )
 
         component DynamicText(
-            param reference {MASTER_VOLUME},
+            param starting_x {700},
+            param reference {"MUSIC_VOLUME"},
             param id {"dynamic_text_music_volume_value"}
-        );
-    );
+        )
+    )
+    
+    component Row(
+        param row_number {2}
+        param starting_y {326} 
+
+        component StaticText(
+            param starting_x {150},
+            param text {"SFX VOLUME"},
+            param id {"static_text_display_sfx_volume_label"}
+        )
+    )
 
     component Row(
-        param starting_x {150};
-        param button_x_offset {150};
+        param row_number {5}
+        param starting_y {370}
+
         component SliderSelector(
+            param starting_x {150},
             param max_value {100},
             param min_value {0},
             param step {1},
@@ -69,22 +100,25 @@ component Menu(
             param id {"slider_selector_for_sfx_volume"},
             param action {"SETTER"},
             param value_to_set {"SFX_VOLUME"}
-        );
+        )
 
         component DynamicText(
-            param reference {MASTER_VOLUME},
+            param starting_x {700},
+            param reference {"SFX_VOLUME"},
             param id {"dynamic_text_sfx_volume_value"}
-        );
-    );
+        )
+    )
 
     component Row(
-        param starting_x {150};
-        param button_x_offset {0};
-        component Button(
-            param text {"DONE"},
-            param function {"ButtonFunctions::ReturnPreviousState"},
-            param id {"button_return_previous_game_mode"}
-        );
-    );
+        param row_number {6}
+        param starting_y {414}
 
-);
+        component Button(
+            param starting_x {150}
+            param text {"DONE"},
+            param function {"RETURN_PREVIOUS_GAME_MODE"},
+            param id {"button_return_previous_game_mode"}
+        )
+    )
+
+)

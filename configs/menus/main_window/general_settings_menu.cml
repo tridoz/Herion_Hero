@@ -1,0 +1,41 @@
+component Menu(
+    param background_path {"Assets/Backgrounds/SettingsMenu.png"}
+    param font_style {"Game"}
+    param char_dim {32}
+
+    component Row(
+        param row_number {0}
+        param starting_y {150}
+
+        component Button(
+            param starting_x {150}
+            param text {"GRAPHICS"}
+            param function {"OPEN_GRAPHICS_SETTINGS_MENU"}
+            param id {"button_for_graphics_settings_menu"}
+        )
+    )
+
+    component Row(
+        param row_number {1}
+        param starting_y {194}
+
+        component Button(
+            param starting_x {150}
+            param text {"AUDIO"}
+            param function {"OPEN_AUDIO_SETTINGS_MENU"}
+            param id {"button_for_graphics_audio_menu"}
+        )
+    )
+
+    component Row (
+        param row_number {2}
+        param starting_y {238}
+
+        component Button(
+            param starting_x {150}
+            param text {"EXIT"}
+            param function {"OPEN_MAIN_MENU"}
+            param id {"button_for_exiting_the_game"}
+        )
+    )
+)

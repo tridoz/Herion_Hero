@@ -21,15 +21,15 @@ namespace Strings {
             namespace Paths {
                 inline const std::string main_window_general_path = "configs/menus/main_window/";
 
-                inline const std::string main_menu_config_path = main_window_general_path + "main_menu.json";
+                inline const std::string main_menu_config_path = main_window_general_path + "main_menu.cml";
                 inline const std::string general_settings_menu_config_path =
-                    main_window_general_path + "general_settings_menu.json";
+                    main_window_general_path + "general_settings_menu.cml";
                 inline const std::string graphics_settings_menu_config_path =
-                    main_window_general_path + "graphics_settings_menu.json";
+                    main_window_general_path + "graphics_settings_menu.cml";
                 inline const std::string audio_settings_menu_config_path =
-                    main_window_general_path + "audio_settings_menu.json";
-                inline const std::string pause_menu_config_path = main_window_general_path + "pause_menu.json";
-                inline const std::string editor_menu_config_path = main_window_general_path + "editor_menu.json";
+                    main_window_general_path + "audio_settings_menu.cml";
+                inline const std::string pause_menu_config_path = main_window_general_path + "pause_menu.cml";
+                inline const std::string editor_menu_config_path = main_window_general_path + "editor_menu.cml";
 
             } // namespace Paths
 

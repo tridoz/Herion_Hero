@@ -57,3 +57,9 @@ auto Texture::SetCode(const std::string& code) -> void {
 auto Texture::GetCode() const -> std::string {
     return code;
 }
+
+auto Texture::SetTexture(SDL_Texture* txt, const std::string& n) -> void {
+    this->texture = txt;
+    this->texture_created = true;
+    this->texture_name = n;
+}

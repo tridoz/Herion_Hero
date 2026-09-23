@@ -18,7 +18,7 @@ struct CMLIdentifier {
 };
 
 struct CMLNumber {
-    double value;
+    float value;
 
     [[nodiscard]]
     std::string ToString() const;

@@ -1,0 +1,79 @@
+component Menu(
+    param background_path {"Assets/Backgrounds/Black.png"}
+    param font_style {"Game"}
+    param char_dim {32}
+
+    component Row(
+        param row_number {0}
+        param starting_y {150}
+
+        component StaticText(
+            param starting_x {150}
+            param text {"RESOLUTION"}
+            param id {"static_text_display_resolution_label"}
+        )
+
+        component DynamicText(
+            param starting_x {520}
+            param reference {"RESOLUTION_ASPECT"}
+            param id {"dynamic_text_current_resolution_value"} 
+        )
+
+        component Button(
+            param starting_x {903}
+            param text {"MINUS"}
+            param function {"DECREASE_RESOLUTION"}
+            param id {"button_decrease_resolution"}
+        )
+
+        component Button(
+            param starting_x {1101}
+            param text {"PLUS"}
+            param function {"INCREASE_RESOLUTION"}
+            param id {"button_increase_resolution"}
+        )
+    )
+
+    component Row(
+        param row_number {1}
+        param starting_y {194}
+
+        component StaticText(
+            param starting_x {150}
+            param text {"FRAME RATE"}
+            param id {"static_text_display_frame_rate_label"}
+        )
+
+        component DynamicText(
+            param starting_x {520}
+            param reference {"FRAME_RATE"}
+            param id {"dynamic_text_current_frame_rate_value"} 
+        )
+
+        component Button(
+            param starting_x {903}
+            param text {"MINUS"}
+            param function {"DECREASE_FRAME_RATE"}
+            param id {"button_decrease_frame_rate"}
+        )
+
+        component Button(
+            param starting_x {1101}
+            param text {"PLUS"}
+            param function {"INCREASE_FRAME_RATE"}
+            param id {"button_increase_frame_rate"}
+        )
+    )
+
+    component Row(
+        param row_number {2}
+        param starting_y {238}
+
+        component Button(
+            param starting_x {150}
+            param text {"DONE"}
+            param function {"RETURN_PREVIOUS_GAME_MODE"}
+            param id {"button_return_previous_game_mode"}
+        )
+    )
+)

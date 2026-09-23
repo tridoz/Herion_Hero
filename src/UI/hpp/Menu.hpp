@@ -28,7 +28,7 @@ class Menu {
     float mouse_offset;
     const std::string base_path = "../";
     float scale;
-    float char_width;
+    float char_dim;
     std::string button_style;
 
     SDL_FRect background_rect;

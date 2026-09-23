@@ -1,0 +1,41 @@
+component Menu(
+    param background_path {"Assets/Backgrounds/PauseMenu.png"}
+    param font_style {"Game"}
+    param char_dim {32}
+
+    component Row(
+        param row_number {0}
+        param starting_y {150}
+        
+        component Button(
+            param starting_x {150}
+            param text {"SETTINGS"}
+            param function {"OPEN_GENERAL_SETTINGS_MENU"}
+            param id {"button_for_opening_settings_menu"}
+        )
+    )
+
+    component Row(
+        param row_number {1}
+        param starting_y {194}
+        
+        component Button(
+            param starting_x {150}
+            param text {"DONE"}
+            param function {"START_GAME"}
+            param id {"button_for_starting_game"}
+        )
+    )
+
+    component Row(
+        param row_number {2}
+        param starting_y {238}
+
+        component Button(
+            param starting_x {150}
+            param text {"EXIT"}
+            param function {"OPEN_MAIN_MENU"}
+            param id {"button_for_exiting_game"}
+        )
+    )
+)

@@ -2,6 +2,7 @@
 
 #include "CMLValue.hpp"
 
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -29,3 +30,12 @@ struct CMLDocument {
     [[nodiscard]]
     std::string ToString() const;
 };
+
+template <typename T> auto GetParameter(const std::string& name, const std::vector<CMLParameter>& params) -> T {
+    for (const CMLParameter& par : params) {
+        if (par.name == name)
+            return std::get<T>(par.value);
+    }
+
+    throw std::runtime_error("CML parameter not found: " + name);
+}
