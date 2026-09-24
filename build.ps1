@@ -1,4 +1,3 @@
-```powershell
 #Requires -Version 5.1
 
 $ErrorActionPreference = "Stop"
@@ -11,8 +10,7 @@ $BuildDir = "build"
 $CMakeLog = Join-Path $env:TEMP "herion_hero_cmake.log"
 
 # ANSI colors
-$ESC = [char]27
-
+$ESC    = [char]27
 $RED    = "$ESC[1;31m"
 $GREEN  = "$ESC[1;32m"
 $YELLOW = "$ESC[1;33m"
@@ -22,10 +20,16 @@ $WHITE  = "$ESC[1;37m"
 $GRAY   = "$ESC[90m"
 $RESET  = "$ESC[0m"
 
-# Enable ANSI escape sequences in Windows Terminal / modern PowerShell
+# ============================================================
+# Initialization
+# ============================================================
+
 try {
     $Host.UI.RawUI.WindowTitle = "Herion Hero - Build"
-} catch {}
+}
+catch {
+    # Ignore terminals that do not support WindowTitle
+}
 
 # ============================================================
 # Helpers
@@ -48,11 +52,15 @@ function Write-Centered {
 
     $width = try {
         $Host.UI.RawUI.WindowSize.Width
-    } catch {
+    }
+    catch {
         80
     }
 
-    $padding = [Math]::Max(0, [int](($width - $Text.Length) / 2))
+    $padding = [Math]::Max(
+        0,
+        [int](($width - $Text.Length) / 2)
+    )
 
     Write-Host (" " * $padding) -NoNewline
     Write-Host "$Color$Text$RESET"
@@ -84,6 +92,7 @@ function Show-Banner {
     Write-Centered "╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝"
 
     Write-Host "$RESET"
+
     Write-Centered "BUILD SYSTEM" $WHITE
 
     Write-Host ""
@@ -150,7 +159,7 @@ function Show-Progress {
     for ($i = 0; $i -le $width; $i++) {
 
         $filled = "█" * $i
-        $empty  = "░" * ($width - $i)
+        $empty = "░" * ($width - $i)
 
         $percent = [int](($i / $width) * 100)
 
@@ -207,7 +216,6 @@ try {
     Write-Host "  $GRAY> Generator : $RESET Ninja"
     Write-Host "  $GRAY> Build type: $RESET Debug"
     Write-Host "  $GRAY> Directory : $RESET $BuildDir"
-
     Write-Host ""
 
     cmake `
@@ -220,18 +228,24 @@ try {
     if ($LASTEXITCODE -ne 0) {
 
         Write-Host ""
+
         Write-Color "  ✘ CMake configuration failed!" $RED
 
         Write-Host ""
+
         Write-Color "  ── CMake output ─────────────────────────────────────" $RED
 
-        Get-Content $CMakeLog
+        if (Test-Path $CMakeLog) {
+            Get-Content $CMakeLog
+        }
 
         Write-Host ""
+
         exit 1
     }
 
     Write-Host ""
+
     Write-Color "  ✓ CMake configuration complete" $GREEN
 
     # --------------------------------------------------------
@@ -249,7 +263,12 @@ try {
     # Start build process
     $process = Start-Process `
         -FilePath "cmake" `
-        -ArgumentList "--build", $BuildDir, "--parallel" `
+        -ArgumentList @(
+            "--build",
+            $BuildDir,
+            "--parallel",
+            $cores
+        ) `
         -NoNewWindow `
         -PassThru
 
@@ -263,12 +282,15 @@ try {
     if ($process.ExitCode -ne 0) {
 
         Write-Host ""
+
         Write-Color "  ✘ Build failed!" $RED
 
         Write-Host ""
+
         Write-Color "  Exit code: $($process.ExitCode)" $RED
 
         Write-Host ""
+
         exit $process.ExitCode
     }
 
@@ -281,6 +303,7 @@ try {
     Write-Section "Build complete"
 
     Write-Host ""
+
     Write-Centered "╔══════════════════════════════════════════╗" $GREEN
     Write-Centered "║                                          ║" $GREEN
     Write-Centered "║       ✓ BUILD COMPLETED SUCCESSFULLY     ║" $GREEN
@@ -293,16 +316,19 @@ try {
     Write-Host "  $WHITEBuild directory:$RESET $CYAN$BuildDir$RESET"
 
     Write-Host ""
-
 }
 catch {
 
     Write-Host ""
+
     Write-Color "  ✘ ERROR" $RED
+
     Write-Host ""
+
     Write-Host "  $WHITE$($_.Exception.Message)$RESET"
+
     Write-Host ""
 
     exit 1
 }
-```
+
