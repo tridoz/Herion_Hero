@@ -2,18 +2,52 @@ cmake_minimum_required(VERSION 3.20)
 
 project(Herion_Hero)
 
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# ============================================================
+# C++ standard
+# ============================================================
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_compile_options(-g -O0)
+if (MSVC)
+    # MSVC currently exposes the latest C++ standard through
+    # /std:c++latest rather than CXX26.
+    add_compile_options(/std:c++latest)
+else()
+    set(CMAKE_CXX_STANDARD 26)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
+# ============================================================
+# Output
+# ============================================================
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+        ${CMAKE_SOURCE_DIR}/bin
+)
+
+# ============================================================
+# Debug
+# ============================================================
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+
+    if (MSVC)
+        add_compile_options(/Od /Zi)
+    else()
+        add_compile_options(-g -O0)
+    endif()
+
+endif()
+
+# ============================================================
+# SDL3
+# ============================================================
+
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/SDL3")
+
+# ============================================================
+# Include directories
+# ============================================================
 
 include_directories(
         "${SDL3_DIR}/include"
@@ -31,13 +65,25 @@ include_directories(
         "${CMAKE_SOURCE_DIR}/headers_only_dependencies/"
 )
 
+# ============================================================
+# Source files
+# ============================================================
+
 file(GLOB_RECURSE SRC_FILES
         "${CMAKE_SOURCE_DIR}/headers_only_dependencies/*.cpp"
         "${CMAKE_SOURCE_DIR}/src/*.cpp"
         "${CMAKE_SOURCE_DIR}/main.cpp"
 )
 
+# ============================================================
+# Executable
+# ============================================================
+
 add_executable(Herion_Hero ${SRC_FILES})
+
+# ============================================================
+# Warnings
+# ============================================================
 
 if (MSVC)
     target_compile_options(Herion_Hero PRIVATE /w)
@@ -45,7 +91,11 @@ else()
     target_compile_options(Herion_Hero PRIVATE -w)
 endif()
 
-if(WIN32)
+# ============================================================
+# Windows
+# ============================================================
+
+if (WIN32)
 
     target_link_libraries(Herion_Hero PRIVATE
             "${SDL3_DIR}/lib/Windows/SDL3.lib"
@@ -56,13 +106,19 @@ if(WIN32)
 
     foreach(DLL SDL3 SDL3_image SDL3_ttf)
 
-        add_custom_command(TARGET Herion_Hero POST_BUILD
+        add_custom_command(
+                TARGET Herion_Hero
+                POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${SDL3_DIR}/lib/Windows/${DLL}.dll"
                 "$<TARGET_FILE_DIR:Herion_Hero>"
         )
 
     endforeach()
+
+# ============================================================
+# Linux
+# ============================================================
 
 elseif(UNIX)
 
