@@ -1,3 +1,4 @@
+#include "../../Concurrency/hpp/ThreadSpawner.hpp"
 #include "../../Editor/hpp/ImageEditor.hpp"
 #include "../../Entities/hpp/Player.hpp"
 #include "../../Exceptions/hpp/HerionFileException.hpp"
@@ -11,6 +12,7 @@
 #include "../../Utils/hpp/InputProcessor.hpp"
 #include "../../Utils/hpp/Logger.hpp"
 #include "../../Utils/hpp/STRINGS.hpp"
+#include "../../Utils/hpp/TimeMesure.hpp"
 #include "../../WorldBuilding/hpp/EditorRoom.hpp"
 #include "../../WorldBuilding/hpp/RoomManager.hpp"
 

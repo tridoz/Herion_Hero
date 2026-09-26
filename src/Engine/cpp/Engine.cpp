@@ -29,7 +29,9 @@ Engine::Engine() {
 
 auto Engine::Init() -> void {
     InitWindows();
+
     InitTextureManagers();
+
     InitRoomManager();
     InitMenus();
     InitInputProcessor();
@@ -126,6 +128,7 @@ auto Engine::InitWindows() -> void {
 }
 
 auto Engine::LoadTextureManagers() -> void {
+
     try {
         main_texture_manager->LoadTextures(Strings::Textures::Paths::all_textures_path);
         texture_selection_texture_manager->LoadTextures(Strings::Textures::Paths::all_textures_path);
@@ -168,6 +171,7 @@ auto Engine::InitRoomManager() -> void {
 
 auto Engine::LoadMenusConfigurations() -> void {
     try {
+
         main_menu->LoadConfigurationCML(Strings::Menus::Main_Window::Paths::main_menu_config_path);
 
         general_settings_menu->LoadConfigurationCML(
@@ -189,6 +193,7 @@ auto Engine::LoadMenusConfigurations() -> void {
         entity_selection_menu->LoadConfiguration(
             Strings::Menus::Level_Editors_Window::Paths::entity_selection_menu_config_path
         );
+
     } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         throw;

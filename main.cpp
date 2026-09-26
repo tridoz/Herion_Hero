@@ -1,5 +1,5 @@
+#include "HerionFileException.hpp"
 #include "src/Engine/hpp/Engine.hpp"
-#include "src/Utils/hpp/TimeMesure.hpp"
 
 #include "src/ParserCML/hpp/Lexer.hpp"
 #include "src/ParserCML/hpp/Parser.hpp"
@@ -79,7 +79,7 @@ auto main(int argc, char* argv[]) -> int {
     Engine* engine = new Engine();
 
     try {
-        std::cout << Time::MearureTime([&]() { engine->Init(); });
+        std::cout << Time::MearureTime([engine]() { engine->Init(); });
     } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());
