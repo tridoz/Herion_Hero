@@ -13,22 +13,22 @@ component Menu(
             param id {"static_text_display_resolution_label"}
         )
 
+        component Button(
+            param starting_x {540}
+            param text {"-"}
+            param function {"DECREASE_RESOLUTION"}
+            param id {"button_decrease_resolution"}
+        )
+
         component DynamicText(
-            param starting_x {520}
+            param starting_x {597}
             param reference {"RESOLUTION_ASPECT"}
             param id {"dynamic_text_current_resolution_value"} 
         )
 
         component Button(
-            param starting_x {903}
-            param text {"MINUS"}
-            param function {"DECREASE_RESOLUTION"}
-            param id {"button_decrease_resolution"}
-        )
-
-        component Button(
-            param starting_x {1101}
-            param text {"PLUS"}
+            param starting_x {950}
+            param text {"+"}
             param function {"INCREASE_RESOLUTION"}
             param id {"button_increase_resolution"}
         )
@@ -44,22 +44,22 @@ component Menu(
             param id {"static_text_display_frame_rate_label"}
         )
 
+        component Button(
+            param starting_x {540}
+            param text {"-"}
+            param function {"DECREASE_FRAME_RATE"}
+            param id {"button_decrease_frame_rate"}
+        )
+
         component DynamicText(
-            param starting_x {520}
+            param starting_x {597}
             param reference {"FRAME_RATE"}
             param id {"dynamic_text_current_frame_rate_value"} 
         )
 
         component Button(
-            param starting_x {903}
-            param text {"MINUS"}
-            param function {"DECREASE_FRAME_RATE"}
-            param id {"button_decrease_frame_rate"}
-        )
-
-        component Button(
-            param starting_x {1101}
-            param text {"PLUS"}
+            param starting_x {950}
+            param text {"+"}
             param function {"INCREASE_FRAME_RATE"}
             param id {"button_increase_frame_rate"}
         )

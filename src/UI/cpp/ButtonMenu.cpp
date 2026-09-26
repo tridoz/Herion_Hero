@@ -153,10 +153,10 @@ auto ButtonMenu::LoadConfiguration(const std::string& cfg_json_filepath) -> void
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/" + GetNameOfSpecialChar(c) +
                                 ".png"
                             );
-                            char_tex_selected = texture_manager->GetTextureByName(
-                                "Assets/Font/" + this->font_style + "/SpecialCharacters/Selected" +
-                                GetNameOfSpecialChar(c) + ".png"
-                            );
+                            // char_tex_selected = texture_manager->GetTextureByName(
+                            //     "Assets/Font/" + this->font_style + "/SpecialCharacters/Selected" +
+                            //     GetNameOfSpecialChar(c) + ".png"
+                            // );
                         } else if (isspace(c)) {
                             char_tex_unselected = texture_manager->GetTextureByName(
                                 "Assets/Font/" + this->font_style + "/SpecialCharacters/space.png"
@@ -347,7 +347,7 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
     // }
 
     // std::cout << "\n\n\n";
-    float cumulative_x = GetParameter<CMLNumber>("starting_x", params).value;
+    float cumulative_x = GetParameter<CMLNumber>("starting_x", params).value * scale;
 
     if (cmp.name == "Button") {
         std::string text = GetParameter<CMLString>("text", std::move(params)).value;
@@ -373,21 +373,11 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/LowercaseLetters/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                    //     "/LowercaseLetters/Selected" + std::string(1, c)
-                    //     +
-                    //     ".png"
-                    // );
                 } else if (std::isdigit(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/Selected/" +
-                    //     std::string(1, c) + ".png"
-                    // );
                 } else if (isspecial(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/SpecialCharacters/" +
@@ -395,7 +385,7 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
                     );
                     char_tex_selected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/SpecialCharacters/Selected" + GetNameOfSpecialChar(c) + ".png"
+                        "/SpecialCharacters/Selected/" + GetNameOfSpecialChar(c) + ".png"
                     );
                 } else if (isspace(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
@@ -414,12 +404,12 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
 
             SDL_FRect char_rect{
                 .x = cumulative_x,
-                .y = GetParameter<CMLNumber>("starting_y", params).value,
+                .y = GetParameter<CMLNumber>("starting_y", params).value * scale,
                 .w = char_dim * scale,
                 .h = char_dim * scale
             };
 
-            cumulative_x += char_dim * scale + 5;
+            cumulative_x += (char_dim + 5) * scale;
             renderables_unselected.emplace_back(new Renderable(char_tex_unselected, new SDL_FRect{char_rect}));
             renderables_selected.emplace_back(new Renderable(char_tex_selected, new SDL_FRect{char_rect}));
         }
@@ -461,46 +451,23 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/UppercaseLetters/" +
                         std::string(1, c) + ".png"
                     );
-
-                    char_tex_selected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/UppercaseLetters/Selected/" + std::string(1, c) + ".png"
-                    );
                 } else if (std::islower(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/LowercaseLetters/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                    //     "/LowercaseLetters/Selected" + std::string(1, c)
-                    //     +
-                    //     ".png"
-                    // );
                 } else if (std::isdigit(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/Selected/" +
-                    //     std::string(1, c) + ".png"
-                    // );
                 } else if (isspecial(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/SpecialCharacters/" +
                         GetNameOfSpecialChar(c) + ".png"
                     );
-                    char_tex_selected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/SpecialCharacters/Selected" + GetNameOfSpecialChar(c) + ".png"
-                    );
                 } else if (isspace(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/SpecialCharacters/space.png"
-                    );
-                    char_tex_selected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
                         "/SpecialCharacters/space.png"
                     );
@@ -512,12 +479,12 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
 
             SDL_FRect char_rect{
                 .x = cumulative_x,
-                .y = GetParameter<CMLNumber>("starting_y", params).value,
+                .y = GetParameter<CMLNumber>("starting_y", params).value * scale,
                 .w = char_dim * scale,
                 .h = char_dim * scale
             };
 
-            cumulative_x += char_dim * scale + 5;
+            cumulative_x += (char_dim + 5) * scale;
             renderables_unselected.emplace_back(new Renderable((char_tex_unselected), new SDL_FRect{char_rect}));
         }
 
@@ -530,8 +497,6 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
         int characters = 0;
         for (char c : text) {
             Texture* char_tex_unselected = nullptr;
-            Texture* char_tex_selected = nullptr;
-            Texture* char_tex_clicked = nullptr;
 
             try {
                 if (std::isupper(c)) {
@@ -540,45 +505,24 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
                         std::string(1, c) + ".png"
                     );
 
-                    char_tex_selected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/UppercaseLetters/Selected/" + std::string(1, c) + ".png"
-                    );
                 } else if (std::islower(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/LowercaseLetters/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                    //     "/LowercaseLetters/Selected" + std::string(1, c)
-                    //     +
-                    //     ".png"
-                    // );
                 } else if (std::isdigit(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/" +
                         std::string(1, c) + ".png"
                     );
-                    // char_tex_selected = texture_manager->GetTextureByName(
-                    //     "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/Numbers/Selected/" +
-                    //     std::string(1, c) + ".png"
-                    // );
                 } else if (isspecial(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value + "/SpecialCharacters/" +
                         GetNameOfSpecialChar(c) + ".png"
                     );
-                    char_tex_selected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/SpecialCharacters/Selected" + GetNameOfSpecialChar(c) + ".png"
-                    );
+
                 } else if (isspace(c)) {
                     char_tex_unselected = texture_manager->GetTextureByName(
-                        "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
-                        "/SpecialCharacters/space.png"
-                    );
-                    char_tex_selected = texture_manager->GetTextureByName(
                         "Assets/Font/" + GetParameter<CMLString>("font_style", params).value +
                         "/SpecialCharacters/space.png"
                     );
@@ -590,12 +534,12 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
 
             SDL_FRect char_rect{
                 .x = cumulative_x,
-                .y = GetParameter<CMLNumber>("starting_y", params).value,
+                .y = GetParameter<CMLNumber>("starting_y", params).value * scale,
                 .w = char_dim * scale,
                 .h = char_dim * scale
             };
 
-            cumulative_x += char_dim * scale + 5;
+            cumulative_x += (char_dim + 5) * scale;
             renderables_unselected.emplace_back(new Renderable((char_tex_unselected), new SDL_FRect{char_rect}));
         }
 
@@ -607,7 +551,7 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
         Texture* slider_bar_txt = texture_manager->GetTextureByName("Assets/Ui/Bars/SliderBar.png");
         SDL_FRect slider_bar_rect = {
             .x = cumulative_x,
-            .y = GetParameter<CMLNumber>("starting_y", params).value,
+            .y = GetParameter<CMLNumber>("starting_y", params).value * scale,
             .w = GetParameter<CMLNumber>("length", params).value * scale,
             .h = char_dim * scale
         };

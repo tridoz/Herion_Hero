@@ -35,6 +35,11 @@ Assets/WorldBuilding/BasePlan/Floor/BaseFloor.png;AWBBF_BF
 Assets/WorldBuilding/BasePlan/Background/Nothing.png;AWBBB_N
 
 Assets/Font/Game/SpecialCharacters/space.png;AFGSC_S
+Assets/Font/Game/SpecialCharacters/minus.png;AFGSP_M
+Assets/Font/Game/SpecialCharacters/plus.png;AFGSP_P
+
+Assets/Font/Game/SpecialCharacters/Selected/minus.png;AFGSPS_M
+Assets/Font/Game/SpecialCharacters/Selected/plus.png;AFGSPS_P
 
 Assets/Font/Game/LowercaseLetters/a.png;AFGLL_A
 Assets/Font/Game/LowercaseLetters/b.png;AFGLL_B
@@ -130,6 +135,7 @@ Assets/Font/Game/Numbers/9.png;AFGN_9
 
 Assets/Font/Editor/SpecialCharacters/space.png;AFESC_S
 Assets/Font/Editor/SpecialCharacters/dot.png;AFESC_D
+
 
 Assets/Font/Editor/LowercaseLetters/a.png;AFELL_A
 Assets/Font/Editor/LowercaseLetters/b.png;AFELL_B

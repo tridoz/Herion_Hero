@@ -56,7 +56,7 @@ namespace JSONParser {
         inline const std::vector<std::pair<int, int>> resolutions{
             {640, 360}, {854, 480}, {960, 540}, {1280, 720}, {1600, 900}, {1920, 1080}, {2560, 1440}, {3840, 2160}
         };
-        inline const std::vector<float> texture_scales{0.25, 0.333, 0.375, 0.5, 0.625, 0.75, 1.0, 1.5};
+        inline const std::vector<float> texture_scales{0.333, 0.375, 0.5, 0.625, 0.75, 1.0, 1.5, 2.0};
         auto IncreaseResolution() -> void;
         auto DecreaseResolution() -> void;
         auto GetWidth() -> int;

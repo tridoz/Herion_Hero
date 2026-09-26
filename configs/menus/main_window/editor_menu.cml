@@ -1,7 +1,5 @@
 component Menu(
     param background_path {"Assets/Backgrounds/Black.png"}
-    param button_y_offset {12}
-    param center_piece_offset {8}
     param font_style {"Game"}
     param char_dim {32}
 
