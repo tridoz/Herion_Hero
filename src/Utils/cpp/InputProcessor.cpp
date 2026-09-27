@@ -639,6 +639,7 @@ auto InputProcessor::update_player_movement(float delta_time) -> void {
         mvm->is_jumping = true;
 
         vel->jump = {.dx = 0, .dy = -300 / static_cast<float>(JSONParser::graphics::GetFrameRate())};
+        ECS::Math::ApplyGravity(vel);
     }
 
     player->UpdateComponent<ECS::Components::Velocites>(vel);

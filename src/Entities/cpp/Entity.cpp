@@ -21,10 +21,6 @@ auto Entity::Move() -> void {
     auto transform = GetComponent<ECS::Components::Transform>();
     auto movements = GetComponent<ECS::Components::MovementState>();
 
-    if (movements->is_jumping) {
-        ECS::Math::ApplyGravity(velocities);
-    }
-
     transform->position += velocities->movement;
     transform->position += velocities->jump;
 

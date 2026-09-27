@@ -57,6 +57,12 @@ auto Player::Draw() -> void {
         .h = sprite->sprite_rect.size.dy
     };
 
+    sprite->sprite_rect = {.size = {.dx = dst.w, .dy = dst.h}, .position = {.dx = dst.x, .dy = dst.y}};
+
+    UpdateComponent<ECS::Components::Sprites>(sprite);
+
     SDL_SetTextureBlendMode(sprite->current_frame->txt->GetTexture(), SDL_BLENDMODE_BLEND);
-    SDL_RenderTexture(rendering->renderer, sprite->current_frame->txt->GetTexture(), nullptr, &dst);
+    SDL_RenderTexture(
+        rendering->renderer, sprite->current_frame->txt->GetTexture(), nullptr, sprite->sprite_rect.to_sdl()
+    );
 }
