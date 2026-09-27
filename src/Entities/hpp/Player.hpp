@@ -18,7 +18,7 @@ class Player : public Entity {
   public:
     Player();
     ~Player();
-
+    auto Draw() -> void;
     auto SetTextureManager(TextureManager*) -> void;
 
   private:

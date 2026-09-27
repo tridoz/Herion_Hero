@@ -6,6 +6,7 @@
 
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "HerionFileException.hpp"
+#include "SDL3/SDL_error.h"
 
 Window::Window() {
     this->window = nullptr;
@@ -147,21 +148,39 @@ auto Window::Sleep() const -> void {
 
 auto Window::LoadCursors(const std::string& filename) -> void {
 
-    std::ifstream cursors_file("../" + filename, std::ios::in);
+    std::ifstream cursors_file;
+
+    try {
+        FileOpener::OpenFileInput(cursors_file, filename);
+    } catch (HerionException::File::FileException& ex) {
+        ex.UpdateStackTrace(GET_CONTEXT());
+        throw ex;
+    }
+
     std::string line;
     std::stringstream ss;
 
     while (std::getline(cursors_file, line)) {
+        ss.clear();
+        ss.str("");
         ss << line << '\n';
         std::string cursor_name, cursor_path;
         int hotX, hotY;
         ss >> cursor_name >> cursor_path >> hotX >> hotY;
 
-        ss.clear();
-        SDL_Surface* cursor_surface = IMG_Load(std::string("../" + cursor_path).c_str());
+        SDL_Surface* cursor_surface = IMG_Load(std::string(cursor_path).c_str());
+        if (!cursor_surface) {
+            std::cout << "Impossibile accedere al file del cursore " << SDL_GetError() << '\n';
+            return;
+        }
 
         Cursors[cursor_name] = SDL_CreateColorCursor(cursor_surface, hotX, hotY);
-        
+
+        if (!Cursors[cursor_name]) {
+            std::cout << "Impossibile creare il cursore " << SDL_GetError() << '\n';
+            return;
+        }
+
         SDL_DestroySurface(cursor_surface);
     }
 }

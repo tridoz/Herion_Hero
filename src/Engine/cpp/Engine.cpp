@@ -1,4 +1,5 @@
 #include "../hpp/Engine.hpp"
+#include "SDL3/SDL_mouse.h"
 #include "STRINGS.hpp"
 
 Engine::GameState Engine::state = Engine::GameState::MAIN_MENU;
@@ -365,6 +366,10 @@ auto Engine::Run() -> void {
 auto Engine::CheckGameMode() -> void {
     Engine::GameState game_mode = GetGameState();
 
+    if (!SDL_CursorVisible()) {
+        SDL_ShowCursor();
+    }
+
     switch (game_mode) {
 
     default:
@@ -430,6 +435,7 @@ auto Engine::CheckGameMode() -> void {
         break;
 
     case Engine::GameState::IN_GAME:
+        SDL_HideCursor();
         game_room_manager->DrawCurrentRoom(main_window->GetRenderer());
 
         processor->update_player_movement(deltaTime);

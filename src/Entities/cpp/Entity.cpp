@@ -21,18 +21,19 @@ auto Entity::Move() -> void {
     auto transform = GetComponent<ECS::Components::Transform>();
     auto movements = GetComponent<ECS::Components::MovementState>();
 
+    if (movements->is_jumping) {
+        ECS::Math::ApplyGravity(velocities);
+    }
+
     transform->position += velocities->movement;
     transform->position += velocities->jump;
 
     sprite->sprite_rect.Move(velocities->movement);
     sprite->sprite_rect.Move(velocities->jump);
 
-    if (movements->is_jumping) {
-        ECS::Math::ApplyGravity(velocities);
-    }
-
     this->UpdateComponent<ECS::Components::Sprites>(sprite);
     this->UpdateComponent<ECS::Components::Velocites>(velocities);
+    this->UpdateComponent<ECS::Components::Transform>(transform);
 }
 
 auto Entity::Resize(const float scale) -> void {
