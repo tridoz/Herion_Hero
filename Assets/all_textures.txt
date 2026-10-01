@@ -34,6 +34,8 @@ Assets/WorldBuilding/BasePlan/Ceiling/BaseCeiling.png;AWBBC_BC
 Assets/WorldBuilding/BasePlan/Floor/BaseFloor.png;AWBBF_BF
 Assets/WorldBuilding/BasePlan/Background/Nothing.png;AWBBB_N
 
+Assets/WorldBuilding/Background/Wall/WallTop.png
+
 Assets/Font/Game/SpecialCharacters/space.png;AFGSC_S
 Assets/Font/Game/SpecialCharacters/minus.png;AFGSP_M
 Assets/Font/Game/SpecialCharacters/plus.png;AFGSP_P
@@ -132,6 +134,7 @@ Assets/Font/Game/Numbers/6.png;AFGN_6
 Assets/Font/Game/Numbers/7.png;AFGN_7
 Assets/Font/Game/Numbers/8.png;AFGN_8
 Assets/Font/Game/Numbers/9.png;AFGN_9
+
 
 Assets/Font/Editor/SpecialCharacters/space.png;AFESC_S
 Assets/Font/Editor/SpecialCharacters/dot.png;AFESC_D
@@ -250,29 +253,23 @@ Assets/Entities/Slime/Idle/Left/frame1.png;AESIL_F1
 Assets/Entities/Slime/Idle/Left/frame2.png;AESIL_F2
 Assets/Entities/Slime/Idle/Left/frame3.png;AESIL_F3
 Assets/Entities/Slime/Idle/Left/frame4.png;AESIL_F4
-Assets/Entities/Slime/Idle/Left/frame5.png;AESIL_F5
-Assets/Entities/Slime/Idle/Left/frame6.png;AESIL_F6
-Assets/Entities/Slime/Idle/Left/frame7.png;AESIL_F7
+
 
 Assets/Entities/Slime/Idle/Right/frame0.png;AESIR_F0
 Assets/Entities/Slime/Idle/Right/frame1.png;AESIR_F1
 Assets/Entities/Slime/Idle/Right/frame2.png;AESIR_F2
 Assets/Entities/Slime/Idle/Right/frame3.png;AESIR_F3
 Assets/Entities/Slime/Idle/Right/frame4.png;AESIR_F4
-Assets/Entities/Slime/Idle/Right/frame5.png;AESIR_F5
-Assets/Entities/Slime/Idle/Right/frame6.png;AESIR_F6
-Assets/Entities/Slime/Idle/Right/frame7.png;AESIR_F7
+
 
 Assets/Entities/Slime/Run/Left/frame0.png;AESRL_F0
 Assets/Entities/Slime/Run/Left/frame1.png;AESRL_F1
 Assets/Entities/Slime/Run/Left/frame2.png;AESRL_F2
 Assets/Entities/Slime/Run/Left/frame3.png;AESRL_F3
-Assets/Entities/Slime/Run/Left/frame4.png;AESRL_F4
-Assets/Entities/Slime/Run/Left/frame5.png;AESRL_F5
+
 
 Assets/Entities/Slime/Run/Right/frame0.png;AESRR_F0
 Assets/Entities/Slime/Run/Right/frame1.png;AESRR_F1
 Assets/Entities/Slime/Run/Right/frame2.png;AESRR_F2
 Assets/Entities/Slime/Run/Right/frame3.png;AESRR_F3
-Assets/Entities/Slime/Run/Right/frame4.png;AESRR_F4
-Assets/Entities/Slime/Run/Right/frame5.png;AESRR_F5
+

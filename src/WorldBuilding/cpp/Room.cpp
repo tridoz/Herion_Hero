@@ -8,6 +8,8 @@
 #include "Player.hpp"
 #include "SDL3/SDL_oldnames.h"
 #include "SDL3/SDL_rect.h"
+#include "SDL3/SDL_render.h"
+#include "json.hpp"
 
 Room::Room() {
 }
@@ -71,15 +73,15 @@ auto Room::SetFilepath(const std::string& filepath) -> void {
 }
 
 auto Room::CheckPlayerCollision(Player* player) -> void {
-    auto sprite = player->GetComponent<ECS::Components::Sprites>();
-    for (auto& row : tiles) {
-        for (Tile* tile : row) {
-            if (!tile->HasHitbox())
-                continue;
 
-            SDL_FRect* rect = tile->GetRect();
+    // auto sprite = player->GetComponent<ECS::Components::Sprites>();
+    // auto transform = player->GetComponent<ECS::Components::Transform>();
+    // auto mv_state = player->GetComponent<ECS::Components::MovementState>();
+    // auto vel = player->GetComponent<ECS::Components::Velocites>();
+    // auto rendering = player->GetComponent<ECS::Components::Rendering>();
 
-            SDL_HasRectIntersectionFloat(rect, sprite->sprite_rect.to_sdl());
-        }
-    }
+    // player->UpdateComponent<ECS::Components::Sprites>(sprite);
+    // player->UpdateComponent<ECS::Components::Transform>(transform);
+    // player->UpdateComponent<ECS::Components::MovementState>(mv_state);
+    // player->UpdateComponent<ECS::Components::Velocites>(vel);
 }

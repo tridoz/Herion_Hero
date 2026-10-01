@@ -5,7 +5,7 @@ component Menu(
 
     component Row(
         param row_number {0}
-        param starting_y {150}
+        param starting_y {400}
 
         component Button(
             param starting_x {150}
@@ -17,7 +17,7 @@ component Menu(
 
     component Row(
         param row_number {1}
-        param starting_y {194}
+        param starting_y {444}
 
         component Button(
             param starting_x {150}
@@ -29,7 +29,7 @@ component Menu(
 
     component Row(
         param row_number {2}
-        param starting_y {238}
+        param starting_y {488}
 
         component Button(
             param starting_x {150}
@@ -41,7 +41,7 @@ component Menu(
 
     component Row(
         param row_number {3}
-        param starting_y {282}
+        param starting_y {532}
 
         component Button(
             param starting_x {150}
@@ -53,7 +53,7 @@ component Menu(
 
     component Row(
         param row_number {4}
-        param starting_y {326}
+        param starting_y {576}
 
         component Button(
             param starting_x {150}

@@ -123,10 +123,6 @@ namespace ECS {
         struct MovementState : public Component {
             states::Movements movement = states::Movements::IDLE;
             bool is_grounded = false;
-            bool is_jumping = false;
-            bool is_falling = false;
-            bool is_attached_wall_left = false;
-            bool is_attached_wall_right = false;
         };
 
         struct Interactable : public Component {
@@ -182,8 +178,8 @@ namespace ECS {
         constexpr float gravity = 9.80665f;
         constexpr float pi = std::numbers::pi;
 
-        constexpr auto ApplyGravity(Components::Velocites* cmp) -> void {
-            cmp->jump.dy += gravity / static_cast<float>(JSONParser::graphics::GetFrameRate());
+        constexpr auto ApplyGravity(Components::Velocites* cmp, const float delta_time) -> void {
+            cmp->jump.dy += gravity * delta_time;
         }
 
     } // namespace Math

@@ -9,7 +9,7 @@
 
 Player::Player() {
     this->AddComponent<ECS::Components::Transform>(new ECS::Components::Transform{
-        .position = {.dx = 400, .dy = 400},
+        .position = {.dx = 400, .dy = 1020},
         .scale = {.dx = 1, .dy = 1},
         .rotation = 0,
         .facing_direction = ECS::states::FacingDirection::RIGHT
@@ -21,9 +21,7 @@ Player::Player() {
 
     this->AddComponent<ECS::Components::MovementState>(new ECS::Components::MovementState{
         .movement = ECS::states::Movements::IDLE,
-        .is_grounded = true,
-        .is_attached_wall_left = false,
-        .is_attached_wall_right = false
+        .is_grounded = false,
     });
 
     this->AddComponent<ECS::Components::Sprites>(new ECS::Components::Sprites{
@@ -65,4 +63,8 @@ auto Player::Draw() -> void {
     SDL_RenderTexture(
         rendering->renderer, sprite->current_frame->txt->GetTexture(), nullptr, sprite->sprite_rect.to_sdl()
     );
+
+    // SDL_SetRenderDrawColor(rendering->renderer, 0, 255, 0, 255);
+    // SDL_RenderRect(rendering->renderer, sprite->sprite_rect.to_sdl());
+    // SDL_SetRenderDrawColor(rendering->renderer, 0, 0, 0, 255);
 }

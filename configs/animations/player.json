@@ -2,26 +2,26 @@
   "animations": [
     {
       "path": "Assets/Entities/Slime/Idle/Left/",
-      "frame_number": 8,
-      "frame_to_load": 8,
+      "frame_number": 5,
+      "frame_to_load": 5,
       "name": "IDLE_LEFT"
     },
     {
       "path": "Assets/Entities/Slime/Idle/Right/",
-      "frame_number": 8,
-      "frame_to_load": 8,
+      "frame_number": 5,
+      "frame_to_load": 5,
       "name": "IDLE_RIGHT"
     },
     {
       "path": "Assets/Entities/Slime/Run/Left/",
-      "frame_number": 6,
-      "frame_to_load": 6,
+      "frame_number": 4,
+      "frame_to_load": 4,
       "name": "RUN_LEFT"
     },
     {
       "path": "Assets/Entities/Slime/Run/Right/",
-      "frame_number": 6,
-      "frame_to_load": 6,
+      "frame_number": 4,
+      "frame_to_load": 4,
       "name": "RUN_RIGHT"
     }
   ]

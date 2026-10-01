@@ -241,6 +241,12 @@ auto InputProcessor::process_key_up(const int scancode) -> void {
             key_left_pressed = false;
         }
         break;
+
+    case SDL_SCANCODE_SPACE:
+        if (game_mode == Engine::GameState::IN_GAME) {
+            space_pressed = false;
+        }
+        break;
     }
 }
 
@@ -596,50 +602,20 @@ auto InputProcessor::update_player_movement(float delta_time) -> void {
 
     if (key_left_pressed) {
 
-        vel->movement = {
-            .dx = (-300 / static_cast<float>(JSONParser::graphics::GetFrameRate())),
-            .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
-        };
-
-        if (!mvm->is_grounded) {
-            ECS::Math::ApplyGravity(vel);
-        }
-
-        if (mvm->is_grounded)
-            mvm->movement = ECS::states::Movements::RUN;
-
+        vel->movement = {.dx = (-300 * delta_time), .dy = 0};
+        mvm->movement = ECS::states::Movements::RUN;
         trs->facing_direction = ECS::states::FacingDirection::LEFT;
 
     } else if (key_right_pressed) {
 
-        vel->movement = {
-            .dx = (300 / static_cast<float>(JSONParser::graphics::GetFrameRate())),
-            .dy = (vel->movement.dy / static_cast<float>(JSONParser::graphics::GetFrameRate()))
-        };
-
-        if (!mvm->is_grounded) {
-            ECS::Math::ApplyGravity(vel);
-        }
-
-        if (mvm->is_grounded)
-            mvm->movement = ECS::states::Movements::RUN;
-
+        vel->movement = {.dx = (300 * delta_time), .dy = 0};
+        mvm->movement = ECS::states::Movements::RUN;
         trs->facing_direction = ECS::states::FacingDirection::RIGHT;
 
     } else {
 
-        if (mvm->is_grounded)
-            mvm->movement = ECS::states::Movements::IDLE;
-
-        vel->movement = {.dx = 0, .dy = vel->movement.dy};
-    }
-
-    if (space_pressed && mvm->is_grounded) {
-        mvm->is_grounded = false;
-        mvm->is_jumping = true;
-
-        vel->jump = {.dx = 0, .dy = -300 / static_cast<float>(JSONParser::graphics::GetFrameRate())};
-        ECS::Math::ApplyGravity(vel);
+        vel->movement = {.dx = 0, .dy = 0};
+        mvm->movement = ECS::states::Movements::IDLE;
     }
 
     player->UpdateComponent<ECS::Components::Velocites>(vel);
