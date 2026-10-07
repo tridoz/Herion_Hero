@@ -157,25 +157,27 @@ auto ScrollPaneMenu::CreateSubDirectories(Directory*& directory, const std::stri
 
     for (const auto& output_line : cmd_output) {
 
-        Directory* dir = new Directory(depth + 1, {}, {}, {});
-
         if (!output_line.contains(".png") && !output_line.contains(".txt") && !output_line.contains(".cpp")) {
 
-            directory->SubDirectory.emplace(std::make_pair(output_line, dir));
+            Directory* dir = new Directory(depth + 1, {}, {}, {});
+
+            directory->SubDirectory.emplace(output_line, dir);
+
             dir->path = base_directory + output_line + "/";
+
             CreateSubDirectories(dir, base_directory + output_line + "/", depth + 1);
 
         } else if (output_line.contains(".png")) {
 
-            std::string file_name = base_directory + output_line;
-            directory->Files.emplace_back(
-                output_line, base_directory + output_line, this->texture_manager->GetTextureByName(file_name)
-            );
+            const std::string file_name = base_directory + output_line;
+
+            directory->Files.emplace_back(output_line, file_name, this->texture_manager->GetTextureByName(file_name));
 
         } else if (output_line.contains(".cpp")) {
-            auto txt = new Texture();
+
+            auto* txt = new Texture();
+
             directory->Files.emplace_back(output_line, base_directory + output_line, txt);
-            ;
         }
     }
 }

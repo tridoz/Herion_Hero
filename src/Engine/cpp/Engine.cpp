@@ -42,32 +42,7 @@ auto Engine::Init() -> void {
     img_editor->SetImagePath("Assets/Entities/Player/Idle/Left/frame0.png");
 }
 
-Engine::~Engine() {
-    delete main_window;
-
-    for (const auto& [editor_win_name, editor_win] : editors_windows) {
-        delete editor_win;
-    }
-
-    delete main_texture_manager;
-    delete texture_selection_texture_manager;
-    delete action_selection_texture_manager;
-    delete entity_selection_texture_manager;
-    delete game_room_manager;
-    delete editor_room;
-    delete player;
-    delete main_menu;
-    delete general_settings_menu;
-    delete graphics_settings_menu;
-    delete audio_settings_menu;
-    delete pause_menu;
-    delete editor_menu;
-    delete img_editor;
-    delete action_selection_menu;
-    delete texture_selection_menu;
-    delete entity_selection_menu;
-    delete processor;
-}
+Engine::~Engine() = default;
 
 auto Engine::InitPlayer() -> void {
     this->player->AddComponent<ECS::Components::Rendering>(

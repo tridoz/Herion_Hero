@@ -21,10 +21,14 @@ auto ButtonMenu::CheckCollision(const std::vector<SDL_FRect>& rects, float x, fl
 }
 
 auto ButtonMenu::GetCollisionButton(float x, float y) -> Button* {
+
+    const SDL_FPoint point{.x = x, .y = y};
+
     for (const auto& [id, btn] : this->buttons) {
-        const SDL_FPoint* point = new SDL_FPoint{.x = x, .y = y};
+
         const SDL_FRect* interaction_rect = btn->GetInteractionRect();
-        if (SDL_PointInRectFloat(point, interaction_rect)) {
+
+        if (SDL_PointInRectFloat(&point, interaction_rect)) {
             return btn;
         }
     }
@@ -306,13 +310,14 @@ auto ButtonMenu::LoadConfigurationCML(const std::string& filename) -> void {
     std::stringstream ss;
     ss << file.rdbuf();
 
-    CMLDocument document = (new Parser((new Lexer(ss.str()))->Tokenize()))->Parse();
+    Lexer lexer(ss.str());
+    Parser parser(lexer.Tokenize());
+
+    CMLDocument document = parser.Parse();
 
     buttons.clear();
     texts.clear();
     slider_selectors.clear();
-
-    // std::cout << document.components[0].ToString() << '\n';
 
     this->background = texture_manager->GetTextureByName(
         GetParameter<CMLString>("background_path", document.components[0].parameters).value

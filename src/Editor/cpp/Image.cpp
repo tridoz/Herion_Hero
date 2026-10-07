@@ -11,9 +11,16 @@ auto Image::LoadImage(const std::string& path) -> void {
 
     unsigned char* pixels = stbi_load(path.c_str(), &width, &height, &channels, 0);
 
+    if (pixels == nullptr) {
+        return;
+    }
+
     for (int y = 0; y < height; y++) {
+
         for (int x = 0; x < width; x++) {
+
             int index = (y * width + x) * 4;
+
             this->pixels.emplace_back(
                 new Pixel(pixels[index], pixels[index + 1], pixels[index + 2], pixels[index + 3])
             );
@@ -25,6 +32,8 @@ auto Image::LoadImage(const std::string& path) -> void {
             });
         }
     }
+
+    stbi_image_free(pixels);
 }
 
 auto Image::DrawImage(SDL_Renderer* r) -> void {

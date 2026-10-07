@@ -76,10 +76,10 @@ auto main(int argc, char* argv[]) -> int {
 
     Logger::EnableSTDOUTLogging();
 
-    Engine* engine = new Engine();
+    auto engine = Engine();
 
     try {
-        std::cout << Time::MearureTime([engine]() { engine->Init(); });
+        std::cout << Time::MearureTime([&]() { engine.Init(); });
     } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());
@@ -87,7 +87,7 @@ auto main(int argc, char* argv[]) -> int {
     }
 
     try {
-        engine->Run();
+        engine.Run();
     } catch (HerionException::File::FileException& ex) {
         ex.UpdateStackTrace(GET_CONTEXT());
         Logger::LogStackTrace(std::time(nullptr), ex.GetStackTrace());

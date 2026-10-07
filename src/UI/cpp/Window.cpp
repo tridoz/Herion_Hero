@@ -14,8 +14,16 @@ Window::Window() {
 }
 
 Window::~Window() {
-    SDL_DestroyRenderer(this->renderer);
-    SDL_DestroyWindow(this->window);
+    if (this->renderer) {
+        SDL_DestroyRenderer(this->renderer);
+        this->renderer = nullptr;
+    }
+
+    if (this->window) {
+        SDL_DestroyWindow(this->window);
+        this->window = nullptr;
+    }
+
     for (auto& [name, menu] : menus) {
         delete menu;
         menu = nullptr;
@@ -24,6 +32,8 @@ Window::~Window() {
         SDL_DestroyCursor(cursor);
         cursor = nullptr;
     }
+
+    SDL_Quit();
 }
 
 Window::Window(const std::string& title) {

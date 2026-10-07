@@ -64,8 +64,8 @@ echo
 # ==========================
 
 clear
-
-valgrind --leak-check=full --show-leak-kinds=all --log-file=valgrind.log ./bin/Herion_Hero
+echo "" > valgrind.log
+valgrind --leak-check=full --show-leak-kinds=all --num-callers=30 --log-file=valgrind.log ./bin/Herion_Hero
 
 EXIT_CODE=$?
 
