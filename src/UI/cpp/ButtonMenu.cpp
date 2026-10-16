@@ -346,12 +346,6 @@ auto ButtonMenu::BuildComponent(CMLComponent cmp, std::vector<CMLParameter> para
     std::vector<Renderable*> renderables_clicked;
     params.insert(params.end(), cmp.parameters.begin(), cmp.parameters.end());
 
-    // std::cout << cmp.name << '\n';
-    // for (const CMLParameter& p : params) {
-    //     std::cout << p.ToString() << '\n';
-    // }
-
-    // std::cout << "\n\n\n";
     float cumulative_x = GetParameter<CMLNumber>("starting_x", params).value * scale;
 
     if (cmp.name == "Button") {

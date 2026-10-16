@@ -1,17 +1,11 @@
+#pragma once
 
-
-#ifndef HERION_HERO_WINDOW_HPP
-#define HERION_HERO_WINDOW_HPP
-
-// SDL3 INCLUDES
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_image.h>
 
-// STD INCLUDES
-#include <string>
-
-// CUSTOM INCLUDES
+#include <expected>
 #include <random>
+#include <string>
 
 #include "../../Utils/hpp/COLORS.hpp"
 #include "../../Utils/hpp/JSONParser.hpp"
@@ -44,22 +38,23 @@ class Window {
 
     [[nodiscard]] auto GetRenderer() const -> SDL_Renderer*;
     [[nodiscard]] auto GetWindow() const -> SDL_Window*;
+
     auto Clear() const -> void;
     auto SetColor(COLORS::Color) const -> void;
     auto Present() const -> void;
     auto Resize() -> void;
+
     [[nodiscard]] auto GetWidth() const -> int;
     [[nodiscard]] auto GetHeight() const -> int;
+
     auto Sleep() const -> void;
-    auto LoadCursors(const std::string&) -> void;
-    auto SetCursor(const std::string&) -> void;
+    auto LoadCursors(const std::string&) -> std::expected<bool, std::string>;
+    auto SetCursor(const std::string&) -> std::expected<bool, std::string>;
     auto GetCursor() -> SDL_Cursor*;
     auto IsOpen() const -> bool;
     auto Show() -> void;
     auto Hide() -> void;
     auto SetMenu(const std::string&, Menu*) -> void;
-    auto SetCurrentMenu(const std::string&) -> void;
+    auto SetCurrentMenu(const std::string&) -> std::expected<bool, std::string>;
     auto GetCurrentMenu() const -> Menu*;
 };
-
-#endif // HERION_HERO_WINDOW_HPP

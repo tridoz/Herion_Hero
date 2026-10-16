@@ -7,6 +7,7 @@
 #include "../../Utils/hpp/JSONParser.hpp"
 #include "HerionFileException.hpp"
 #include "SDL3/SDL_error.h"
+#include <expected>
 
 Window::Window() {
     this->window = nullptr;
@@ -156,7 +157,7 @@ auto Window::Sleep() const -> void {
     SDL_Delay(1000 / JSONParser::graphics::GetFrameRate());
 }
 
-auto Window::LoadCursors(const std::string& filename) -> void {
+auto Window::LoadCursors(const std::string& filename) -> std::expected<bool, std::string> {
 
     std::ifstream cursors_file;
 
@@ -180,25 +181,30 @@ auto Window::LoadCursors(const std::string& filename) -> void {
 
         SDL_Surface* cursor_surface = IMG_Load(std::string(cursor_path).c_str());
         if (!cursor_surface) {
-            std::cout << "Impossibile accedere al file del cursore " << SDL_GetError() << '\n';
-            return;
+            return std::unexpected(
+                std::string("Can't create surface for cursor [" + cursor_path + "] => ") + SDL_GetError()
+            );
         }
 
         Cursors[cursor_name] = SDL_CreateColorCursor(cursor_surface, hotX, hotY);
 
         if (!Cursors[cursor_name]) {
-            std::cout << "Impossibile creare il cursore " << SDL_GetError() << '\n';
-            return;
+            return std::unexpected(std::string("Can't create cursor [" + cursor_path + "] => ") + SDL_GetError());
         }
 
         SDL_DestroySurface(cursor_surface);
+        return true;
     }
 }
 
-auto Window::SetCursor(const std::string& cursor_name) -> void {
+auto Window::SetCursor(const std::string& cursor_name) -> std::expected<bool, std::string> {
+    if (!Cursors.contains(cursor_name)) {
+        return std::unexpected(std::string("Couldn't find cursor with name [" + cursor_name + "]"));
+    }
     SDL_SetCursor(Cursors[cursor_name]);
     SDL_ShowCursor();
     current_cursor_name = cursor_name;
+    return true;
 }
 
 auto Window::GetCursor() -> SDL_Cursor* {
@@ -209,8 +215,13 @@ auto Window::SetMenu(const std::string& name, Menu* menu_to_set) -> void {
     menus.emplace(name, menu_to_set);
 }
 
-auto Window::SetCurrentMenu(const std::string& name) -> void {
+auto Window::SetCurrentMenu(const std::string& name) -> std::expected<bool, std::string> {
+    if (!menus.contains(name)) {
+        return std::unexpected(std::string("Couldn't find menu with name [" + name + "]"));
+    }
+
     this->current_menu = menus.at(name);
+    return true;
 }
 
 auto Window::GetCurrentMenu() const -> Menu* {

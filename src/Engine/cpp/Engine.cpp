@@ -94,13 +94,28 @@ auto Engine::InitWindows() -> void {
     main_window->SetMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name, audio_settings_menu);
 
     texture_selection->SetMenu("TEXTURE_SELECTION", texture_selection_menu);
-    texture_selection->SetCurrentMenu("TEXTURE_SELECTION");
+    auto result_texture_selection_current_menu_setting = texture_selection->SetCurrentMenu("TEXTURE_SELECTION");
+
+    if (!result_texture_selection_current_menu_setting.has_value()) {
+        std::cout << result_texture_selection_current_menu_setting.error() << '\n';
+        return;
+    }
 
     action_selection->SetMenu("ACTION_SELECTION", action_selection_menu);
-    action_selection->SetCurrentMenu("ACTION_SELECTION");
+    auto result_action_selection_current_menu_setting = action_selection->SetCurrentMenu("ACTION_SELECTION");
+
+    if (!result_action_selection_current_menu_setting.has_value()) {
+        std::cout << result_action_selection_current_menu_setting.error() << '\n';
+        return;
+    }
 
     entity_selection->SetMenu("ENTITY_SELECTION", entity_selection_menu);
-    entity_selection->SetCurrentMenu("ENTITY_SELECTION");
+    auto result_entity_selection_current_menu_setting = entity_selection->SetCurrentMenu("ENTITY_SELECTION");
+
+    if (!result_entity_selection_current_menu_setting.has_value()) {
+        std::cout << result_entity_selection_current_menu_setting.error() << '\n';
+        return;
+    }
 }
 
 auto Engine::LoadTextureManagers() -> void {
@@ -340,6 +355,7 @@ auto Engine::Run() -> void {
 
 auto Engine::CheckGameMode() -> void {
     Engine::GameState game_mode = GetGameState();
+    std::expected<bool, std::string> main_window_current_menu_setting;
 
     if (!SDL_CursorVisible()) {
         SDL_ShowCursor();
@@ -351,32 +367,56 @@ auto Engine::CheckGameMode() -> void {
         break;
 
     case Engine::GameState::MAIN_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::main_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::main_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
     case Engine::GameState::GENERAL_SETTINGS_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::general_settings_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::general_settings_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
     case Engine::GameState::GRAPHICS_SETTINGS_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::graphics_settings_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::graphics_settings_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
     case Engine::GameState::AUDIO_SETTINGS_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::audio_settings_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
     case Engine::GameState::PAUSE_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::pause_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::pause_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
     case Engine::GameState::EDITOR_MENU:
-        main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::editor_menu_name);
+        main_window_current_menu_setting =
+            main_window->SetCurrentMenu(Strings::Menus::Main_Window::Names::editor_menu_name);
+        if (!main_window_current_menu_setting.has_value()) {
+            break;
+        }
         main_window->GetCurrentMenu()->Draw(main_window->GetRenderer());
         break;
 
@@ -417,6 +457,10 @@ auto Engine::CheckGameMode() -> void {
         player->UpdateFrame();
         player->Draw();
         break;
+    }
+
+    if (!main_window_current_menu_setting.has_value()) {
+        std::cout << main_window_current_menu_setting.error() << '\n';
     }
 }
 
